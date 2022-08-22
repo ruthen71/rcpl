@@ -26,5 +26,5 @@ struct unionfind {
 
 /**
  * @brief UnionFind
- * @docs docs/data-structure/unionfind.md
+ * @docs docs/data_structure/unionfind.md
  */
