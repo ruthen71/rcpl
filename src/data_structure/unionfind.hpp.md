@@ -10,7 +10,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    _deprecated_at_docs: docs/data-structure/unionfind.md
+    _deprecated_at_docs: docs/data_structure/unionfind.md
     document_title: UnionFind
     links: []
   bundledCode: "#line 2 \"src/data_structure/unionfind.hpp\"\n\nstruct unionfind {\n\
@@ -22,7 +22,7 @@ data:
     \ true;\n    }\n\n    bool same(int x, int y) { return leader(x) == leader(y);\
     \ }\n\n    int size(int x) { return -parents[leader(x)]; }\n\n    void init(int\
     \ n) { parents.assign(n, -1); }  // reset\n};\n\n/**\n * @brief UnionFind\n *\
-    \ @docs docs/data-structure/unionfind.md\n */\n"
+    \ @docs docs/data_structure/unionfind.md\n */\n"
   code: "#pragma once\n\nstruct unionfind {\n    std::vector<int> parents;\n\n   \
     \ unionfind() {}\n    unionfind(int n) : parents(n, -1) {}\n\n    int leader(int\
     \ x) { return parents[x] < 0 ? x : parents[x] = leader(parents[x]); }\n\n    bool\
@@ -32,12 +32,12 @@ data:
     \    }\n\n    bool same(int x, int y) { return leader(x) == leader(y); }\n\n \
     \   int size(int x) { return -parents[leader(x)]; }\n\n    void init(int n) {\
     \ parents.assign(n, -1); }  // reset\n};\n\n/**\n * @brief UnionFind\n * @docs\
-    \ docs/data-structure/unionfind.md\n */\n"
+    \ docs/data_structure/unionfind.md\n */\n"
   dependsOn: []
   isVerificationFile: false
   path: src/data_structure/unionfind.hpp
   requiredBy: []
-  timestamp: '2022-08-22 13:53:19+09:00'
+  timestamp: '2022-08-22 14:23:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_data_structure/lc_unionfind.test.cpp
@@ -48,3 +48,8 @@ redirect_from:
 - /library/src/data_structure/unionfind.hpp.html
 title: UnionFind
 ---
+# UnionFind
+
+## 概要
+
+UnionFind とは、うにおんふぁいんどのことである。
