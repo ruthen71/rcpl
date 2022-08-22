@@ -1,10 +1,10 @@
 #pragma once
 
-template <class T> struct fenwicktree {
+template <class T> struct fenwick_tree {
     int N;
     std::vector<T> seg;
-    fenwicktree(int N) : N(N), seg(N + 1, 0) {}
-    fenwicktree(std::vector<T> &A) {
+    fenwick_tree(int N) : N(N), seg(N + 1, 0) {}
+    fenwick_tree(std::vector<T> &A) {
         N = (int)A.size();
         seg.resize(N + 1);
         for (int i = 0; i < N; i++) add(i, A[i]);
@@ -32,5 +32,5 @@ template <class T> struct fenwicktree {
 
 /**
  * @brief Fenwick Tree (Binary Indexed Tree)
- * @docs docs/data_structure/fenwicktree.md
+ * @docs docs/data_structure/fenwick_tree.md
  */

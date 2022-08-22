@@ -3,14 +3,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#include "../../src/data_structure/fenwicktree.hpp"
+#include "../../src/data_structure/fenwick_tree.hpp"
 
 int main() {
     int N, Q;
     cin >> N >> Q;
     std::vector<long long> a(N);
     for (int i = 0; i < N; i++) cin >> a[i];
-    fenwicktree<long long> fen(a);
+    fenwick_tree<long long> fen(a);
     while (Q--) {
         int t;
         cin >> t;
