@@ -7,11 +7,6 @@ data:
       path: src/data_structure/unionfind.hpp
       title: UnionFind
   verificationCategories:
-  - name: .
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: example.test.cpp
-      title: example.test.cpp
   - name: verify/lc_data_structure
     pages:
     - icon: ':heavy_check_mark:'
