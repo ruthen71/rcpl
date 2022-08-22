@@ -20,7 +20,7 @@ template <class T> struct cumulative_sum_2d {
             }
         }
         for (int i = 0; i < H; i++) {
-            for (int j = 0; j < W + 1; j) {
+            for (int j = 0; j < W + 1; j++) {
                 cum[i + 1][j] += cum[i][j];
             }
         }
@@ -60,9 +60,9 @@ template <class T> struct cumulative_sum_2d {
 
     // output
     friend ostream &operator<<(ostream &os, const cumulative_sum_2d &A) {
-        for (int i = 0; i < (int)A.size(); i++) {
-            for (int j = 0; j < (int)A[i].size(); j++) {
-                os << A[i][j] << " \n"[j == (int)A[i].size() - 1];
+        for (int i = 0; i < (int)A.cum.size(); i++) {
+            for (int j = 0; j < (int)A.cum[i].size(); j++) {
+                os << A.cum[i][j] << " \n"[j == (int)A.cum[i].size() - 1];
             }
         }
         return os;
