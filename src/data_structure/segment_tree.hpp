@@ -20,26 +20,26 @@ template <class Monoid> struct segment_tree {
     void update(int k) { d[k] = Monoid::op(d[k << 1], d[(k << 1) | 1]); }
 
     void set(int p, const S& x) {
-        assert(0 <= p && p < _n);
+        assert(0 <= p and p < _n);
         p += size;
         d[p] = x;
         for (int i = 1; i <= log; i++) update(p >> i);
     }
 
     void chset(int p, const S& x) {
-        assert(0 <= p && p < _n);
+        assert(0 <= p and p < _n);
         p += size;
         d[p] = Monoid::op(d[p], x);
         for (int i = 1; i <= log; i++) update(p >> i);
     }
 
     S operator[](int p) const {
-        assert(0 <= p && p < _n);
+        assert(0 <= p and p < _n);
         return d[p + size];
     }
 
     S prod(int l, int r) const {
-        assert(0 <= l && l <= r && r <= _n);
+        assert(0 <= l and l <= r and r <= _n);
         S sml = Monoid::e(), smr = Monoid::e();
         l += size;
         r += size;
@@ -56,7 +56,7 @@ template <class Monoid> struct segment_tree {
     S all_prod() const { return d[1]; }
 
     template <class F> int max_right(int l, F& f) const {
-        assert(0 <= l && l <= _n);
+        assert(0 <= l and l <= _n);
         assert(f(Monoid::e()));
         if (l == _n) return _n;
         l += size;
@@ -80,14 +80,14 @@ template <class Monoid> struct segment_tree {
     }
 
     template <class F> int min_left(int r, F& f) const {
-        assert(0 <= r && r <= _n);
+        assert(0 <= r and r <= _n);
         assert(f(Monoid::e()));
         if (r == 0) return 0;
         r += size;
         S sm = Monoid::e();
         do {
             r--;
-            while (r > 1 && (r & 1)) r >>= 1;
+            while (r > 1 and (r & 1)) r >>= 1;
             if (!f(Monoid::op(d[r], sm))) {
                 while (r < size) {
                     r = (r << 1) | 1;
