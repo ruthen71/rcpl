@@ -20,8 +20,10 @@
     - `segment_tree<monoid_max<int>> seg(n);` などでRMQが使える
 - `ac-library` の `seg.get(i)` に相当する機能を `seg[i]` で実現している
     - より直感的
-- `op(a[p], x) == x` が成立するときのみ `set()` を行う `chset()` を採用
-    - 案外 `seg.set(i, op(seg[i], x))` みたいなコードを書く機会は多いと思っている
-    - `op(a[p], x) == x` の成立・不成立によらず、計算量は $ O(\log N) $
+- `seg[p] = op(seg[p], x)` とする `seg.chset(p, x)` を採用
+    - `seg[p] = x` とするのは `seg.set(p, x)`
+    - 案外 `seg.set(p, op(seg[p], x))` みたいなコードを書く機会は多いと思っている
+    - 計算量は $ O(\log N) $
         - 条件分岐させても良かったが、モノイドが複雑になると `==` などでややこしくなりそうな気がした
-
+- マクロ不使用
+    - 使いやすさを意識
