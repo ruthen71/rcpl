@@ -1,6 +1,6 @@
 {
-"verify/aoj_dsl/aoj_dsl_5_b.test.cpp": "2022-08-23 00:53:43 +0900",
-"verify/lc_data_structure/lc_point_add_range_sum_fenwick_tree.test.cpp": "2022-08-22 23:08:23 +0900",
-"verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp": "2022-08-23 20:50:22 +0900",
-"verify/lc_data_structure/lc_unionfind.test.cpp": "2022-08-22 14:23:16 +0900"
+"verify/aoj_dsl/aoj_dsl_5_b.test.cpp": "2022-08-23 20:59:42 +0900",
+"verify/lc_data_structure/lc_point_add_range_sum_fenwick_tree.test.cpp": "2022-08-23 20:59:42 +0900",
+"verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp": "2022-08-23 20:59:42 +0900",
+"verify/lc_data_structure/lc_unionfind.test.cpp": "2022-08-23 20:59:42 +0900"
 }
