@@ -68,19 +68,18 @@ data:
     \ seg(A);\n    while (Q--) {\n        int l, r;\n        std::cin >> l >> r;\n\
     \        std::cout << seg.prod(l, r) << '\\n';\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/staticrmq\"\n\n#include\
-    \ <bits/stdc++.h>\n\n#include \"../../src/algebra/monoid_min.hpp\"\n#include \"\
-    ../../src/data_structure/segment_tree.hpp\"\n\nint main() {\n    int N, Q;\n \
-    \   std::cin >> N >> Q;\n    std::vector<int> A(N);\n    for (int i = 0; i < N;\
-    \ i++) std::cin >> A[i];\n    segment_tree<monoid_min<int>> seg(A);\n    while\
-    \ (Q--) {\n        int l, r;\n        std::cin >> l >> r;\n        std::cout <<\
-    \ seg.prod(l, r) << '\\n';\n    }\n    return 0;\n}"
+    \ <bits/stdc++.h>\n\n#include \"src/algebra/monoid_min.hpp\"\n#include \"src/data_structure/segment_tree.hpp\"\
+    \n\nint main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    std::vector<int>\
+    \ A(N);\n    for (int i = 0; i < N; i++) std::cin >> A[i];\n    segment_tree<monoid_min<int>>\
+    \ seg(A);\n    while (Q--) {\n        int l, r;\n        std::cin >> l >> r;\n\
+    \        std::cout << seg.prod(l, r) << '\\n';\n    }\n    return 0;\n}"
   dependsOn:
   - src/algebra/monoid_min.hpp
   - src/data_structure/segment_tree.hpp
   isVerificationFile: true
   path: verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp
   requiredBy: []
-  timestamp: '2022-08-23 20:50:22+09:00'
+  timestamp: '2022-08-23 20:59:42+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp

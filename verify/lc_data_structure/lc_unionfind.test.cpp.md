@@ -32,7 +32,7 @@ data:
     \   uf.merge(u, v);\n        } else {\n            cout << uf.same(u, v) << '\\\
     n';\n        }\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/unionfind\"\n\n#include\
-    \ <bits/stdc++.h>\nusing namespace std;\n\n#include \"../../src/data_structure/unionfind.hpp\"\
+    \ <bits/stdc++.h>\nusing namespace std;\n\n#include \"src/data_structure/unionfind.hpp\"\
     \n\nint main() {\n    int N, Q;\n    cin >> N >> Q;\n    unionfind uf(N);\n  \
     \  while (Q--) {\n        int t, u, v;\n        cin >> t >> u >> v;\n        if\
     \ (t == 0) {\n            uf.merge(u, v);\n        } else {\n            cout\
@@ -42,7 +42,7 @@ data:
   isVerificationFile: true
   path: verify/lc_data_structure/lc_unionfind.test.cpp
   requiredBy: []
-  timestamp: '2022-08-22 14:23:16+09:00'
+  timestamp: '2022-08-23 20:59:42+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_data_structure/lc_unionfind.test.cpp

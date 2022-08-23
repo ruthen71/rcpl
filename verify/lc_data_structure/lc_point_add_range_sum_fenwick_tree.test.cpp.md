@@ -36,7 +36,7 @@ data:
     \           cout << fen.sum(l, r) << '\\n';\n        }\n    }\n    return 0;\n\
     }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\
-    \n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"../../src/data_structure/fenwick_tree.hpp\"\
+    \n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"src/data_structure/fenwick_tree.hpp\"\
     \n\nint main() {\n    int N, Q;\n    cin >> N >> Q;\n    std::vector<long long>\
     \ a(N);\n    for (int i = 0; i < N; i++) cin >> a[i];\n    fenwick_tree<long long>\
     \ fen(a);\n    while (Q--) {\n        int t;\n        cin >> t;\n        if (t\
@@ -49,7 +49,7 @@ data:
   isVerificationFile: true
   path: verify/lc_data_structure/lc_point_add_range_sum_fenwick_tree.test.cpp
   requiredBy: []
-  timestamp: '2022-08-22 23:08:23+09:00'
+  timestamp: '2022-08-23 20:59:42+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_data_structure/lc_point_add_range_sum_fenwick_tree.test.cpp
