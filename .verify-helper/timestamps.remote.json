@@ -3,5 +3,6 @@
 "verify/lc_data_structure/lc_point_add_range_sum_fenwick_tree.test.cpp": "2022-08-23 20:59:42 +0900",
 "verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp": "2022-08-23 22:12:12 +0900",
 "verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp": "2022-08-23 21:51:59 +0900",
-"verify/lc_data_structure/lc_unionfind.test.cpp": "2022-08-23 20:59:42 +0900"
+"verify/lc_data_structure/lc_unionfind.test.cpp": "2022-08-23 20:59:42 +0900",
+"verify/yuki/yuki_1036_segment_tree.test.cpp": "2022-08-23 23:16:52 +0900"
 }
