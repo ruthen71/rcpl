@@ -2,8 +2,8 @@
 
 #include <bits/stdc++.h>
 
-#include "../../src/algebra/monoid_min.hpp"
-#include "../../src/data_structure/segment_tree.hpp"
+#include "src/algebra/monoid_min.hpp"
+#include "src/data_structure/segment_tree.hpp"
 
 int main() {
     int N, Q;

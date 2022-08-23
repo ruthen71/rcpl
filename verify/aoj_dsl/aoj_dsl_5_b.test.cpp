@@ -3,7 +3,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#include "../../src/data_structure/cumulative_sum_2d.hpp"
+#include "src/data_structure/cumulative_sum_2d.hpp"
 
 int main() {
     int N;

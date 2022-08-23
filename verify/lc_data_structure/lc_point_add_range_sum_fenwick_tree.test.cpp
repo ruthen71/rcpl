@@ -3,7 +3,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#include "../../src/data_structure/fenwick_tree.hpp"
+#include "src/data_structure/fenwick_tree.hpp"
 
 int main() {
     int N, Q;
