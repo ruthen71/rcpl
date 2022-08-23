@@ -67,9 +67,9 @@ data:
     \ docs/data_structure/segment_tree.md\n */\n#line 7 \"verify/yuki/yuki_1036_segment_tree.test.cpp\"\
     \n\nint main() {\n    int N;\n    std::cin >> N;\n    std::vector<long long> A(N);\n\
     \    for (int i = 0; i < N; i++) std::cin >> A[i];\n    segment_tree<monoid_gcd<long\
-    \ long>> seg(A);\n    auto f = [](long long v) -> bool { return v != 1; };\n \
-    \   long long ansL = 0, ansR = 0;\n    for (int l = 0; l < N; l++) {\n       \
-    \ int r = seg.max_right(l, f);\n        ansL += N - r;\n    }\n    for (int r\
+    \ long>> seg(A);\n    auto f = [](long long v) -> bool { return v != 1LL; };\n\
+    \    long long ansL = 0, ansR = 0;\n    for (int l = 0; l < N; l++) {\n      \
+    \  int r = seg.max_right(l, f);\n        ansL += N - r;\n    }\n    for (int r\
     \ = N; r > 0; r--) {\n        int l = seg.min_left(r, f);\n        ansR += l;\n\
     \    }\n    assert(ansL == ansR);\n    std::cout << ansL << '\\n';\n    return\
     \ 0;\n}\n"
@@ -77,9 +77,9 @@ data:
     \n#include \"src/algebra/monoid_gcd.hpp\"\n#include \"src/data_structure/segment_tree.hpp\"\
     \n\nint main() {\n    int N;\n    std::cin >> N;\n    std::vector<long long> A(N);\n\
     \    for (int i = 0; i < N; i++) std::cin >> A[i];\n    segment_tree<monoid_gcd<long\
-    \ long>> seg(A);\n    auto f = [](long long v) -> bool { return v != 1; };\n \
-    \   long long ansL = 0, ansR = 0;\n    for (int l = 0; l < N; l++) {\n       \
-    \ int r = seg.max_right(l, f);\n        ansL += N - r;\n    }\n    for (int r\
+    \ long>> seg(A);\n    auto f = [](long long v) -> bool { return v != 1LL; };\n\
+    \    long long ansL = 0, ansR = 0;\n    for (int l = 0; l < N; l++) {\n      \
+    \  int r = seg.max_right(l, f);\n        ansL += N - r;\n    }\n    for (int r\
     \ = N; r > 0; r--) {\n        int l = seg.min_left(r, f);\n        ansR += l;\n\
     \    }\n    assert(ansL == ansR);\n    std::cout << ansL << '\\n';\n    return\
     \ 0;\n}"
@@ -89,7 +89,7 @@ data:
   isVerificationFile: true
   path: verify/yuki/yuki_1036_segment_tree.test.cpp
   requiredBy: []
-  timestamp: '2022-08-23 23:16:52+09:00'
+  timestamp: '2022-08-23 23:41:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/yuki/yuki_1036_segment_tree.test.cpp
