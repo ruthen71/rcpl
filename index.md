@@ -3,7 +3,7 @@ data:
   libraryCategories:
   - name: src/algebra
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/algebra/monoid_gcd.hpp
       title: src/algebra/monoid_gcd.hpp
     - icon: ':warning:'
@@ -23,7 +23,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data_structure/fenwick_tree.hpp
       title: Fenwick Tree (Binary Indexed Tree)
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/segment_tree.hpp
       title: "Segment Tree (\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     - icon: ':heavy_check_mark:'
@@ -51,7 +51,7 @@ data:
       title: verify/lc_data_structure/lc_unionfind.test.cpp
   - name: verify/yuki
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/yuki/yuki_1036_segment_tree.test.cpp
       title: verify/yuki/yuki_1036_segment_tree.test.cpp
 layout: toppage

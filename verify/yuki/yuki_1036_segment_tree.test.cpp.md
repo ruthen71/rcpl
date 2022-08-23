@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/algebra/monoid_gcd.hpp
     title: src/algebra/monoid_gcd.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/segment_tree.hpp
     title: "Segment Tree (\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://yukicoder.me/problems/no/1036
@@ -90,7 +90,7 @@ data:
   path: verify/yuki/yuki_1036_segment_tree.test.cpp
   requiredBy: []
   timestamp: '2022-08-23 23:16:52+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/yuki/yuki_1036_segment_tree.test.cpp
 layout: document

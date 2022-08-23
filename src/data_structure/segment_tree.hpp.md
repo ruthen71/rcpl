@@ -9,12 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp
     title: verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/yuki/yuki_1036_segment_tree.test.cpp
     title: verify/yuki/yuki_1036_segment_tree.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/data_structure/segment_tree.md
     document_title: "Segment Tree (\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
@@ -111,7 +111,7 @@ data:
   path: src/data_structure/segment_tree.hpp
   requiredBy: []
   timestamp: '2022-08-23 21:51:59+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yuki/yuki_1036_segment_tree.test.cpp
   - verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp
