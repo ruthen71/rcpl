@@ -32,19 +32,19 @@ data:
     \ i = 0; i < _n; i++) d[i + size] = v[i];\n        for (int i = size - 1; i >=\
     \ 1; i--) {\n            update(i);\n        }\n    }\n\n    void update(int k)\
     \ { d[k] = Monoid::op(d[k << 1], d[(k << 1) | 1]); }\n\n    void set(int p, const\
-    \ S& x) {\n        assert(0 <= p && p < _n);\n        p += size;\n        d[p]\
+    \ S& x) {\n        assert(0 <= p and p < _n);\n        p += size;\n        d[p]\
     \ = x;\n        for (int i = 1; i <= log; i++) update(p >> i);\n    }\n\n    void\
-    \ chset(int p, const S& x) {\n        assert(0 <= p && p < _n);\n        p +=\
+    \ chset(int p, const S& x) {\n        assert(0 <= p and p < _n);\n        p +=\
     \ size;\n        d[p] = Monoid::op(d[p], x);\n        for (int i = 1; i <= log;\
     \ i++) update(p >> i);\n    }\n\n    S operator[](int p) const {\n        assert(0\
-    \ <= p && p < _n);\n        return d[p + size];\n    }\n\n    S prod(int l, int\
-    \ r) const {\n        assert(0 <= l && l <= r && r <= _n);\n        S sml = Monoid::e(),\
-    \ smr = Monoid::e();\n        l += size;\n        r += size;\n\n        while\
-    \ (l < r) {\n            if (l & 1) sml = Monoid::op(sml, d[l++]);\n         \
-    \   if (r & 1) smr = Monoid::op(d[--r], smr);\n            l >>= 1;\n        \
-    \    r >>= 1;\n        }\n        return Monoid::op(sml, smr);\n    }\n\n    S\
-    \ all_prod() const { return d[1]; }\n\n    template <class F> int max_right(int\
-    \ l, F& f) const {\n        assert(0 <= l && l <= _n);\n        assert(f(Monoid::e()));\n\
+    \ <= p and p < _n);\n        return d[p + size];\n    }\n\n    S prod(int l, int\
+    \ r) const {\n        assert(0 <= l and l <= r and r <= _n);\n        S sml =\
+    \ Monoid::e(), smr = Monoid::e();\n        l += size;\n        r += size;\n\n\
+    \        while (l < r) {\n            if (l & 1) sml = Monoid::op(sml, d[l++]);\n\
+    \            if (r & 1) smr = Monoid::op(d[--r], smr);\n            l >>= 1;\n\
+    \            r >>= 1;\n        }\n        return Monoid::op(sml, smr);\n    }\n\
+    \n    S all_prod() const { return d[1]; }\n\n    template <class F> int max_right(int\
+    \ l, F& f) const {\n        assert(0 <= l and l <= _n);\n        assert(f(Monoid::e()));\n\
     \        if (l == _n) return _n;\n        l += size;\n        S sm = Monoid::e();\n\
     \        do {\n            while ((l & 1) == 0) l >>= 1;\n            if (!f(Monoid::op(sm,\
     \ d[l]))) {\n                while (l < size) {\n                    l <<= 1;\n\
@@ -54,10 +54,10 @@ data:
     \    sm = Monoid::op(sm, d[l]);\n            l++;\n        } while ((l & -l) !=\
     \ l);  // 2\u3079\u304D\u307E\u305F\u306F0\u306E\u3068\u304Dfalse\n        return\
     \ _n;\n    }\n\n    template <class F> int min_left(int r, F& f) const {\n   \
-    \     assert(0 <= r && r <= _n);\n        assert(f(Monoid::e()));\n        if\
+    \     assert(0 <= r and r <= _n);\n        assert(f(Monoid::e()));\n        if\
     \ (r == 0) return 0;\n        r += size;\n        S sm = Monoid::e();\n      \
-    \  do {\n            r--;\n            while (r > 1 && (r & 1)) r >>= 1;\n   \
-    \         if (!f(Monoid::op(d[r], sm))) {\n                while (r < size) {\n\
+    \  do {\n            r--;\n            while (r > 1 and (r & 1)) r >>= 1;\n  \
+    \          if (!f(Monoid::op(d[r], sm))) {\n                while (r < size) {\n\
     \                    r = (r << 1) | 1;\n                    if (f(Monoid::op(d[r],\
     \ sm))) {\n                        sm = Monoid::op(d[r], sm);\n              \
     \          r--;\n                    }\n                }\n                return\
@@ -89,7 +89,7 @@ data:
   isVerificationFile: true
   path: verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
   requiredBy: []
-  timestamp: '2022-08-23 22:12:12+09:00'
+  timestamp: '2022-08-24 01:38:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
