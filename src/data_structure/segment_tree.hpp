@@ -19,31 +19,31 @@ template <class Monoid> struct segment_tree {
 
     void update(int k) { d[k] = Monoid::op(d[k << 1], d[(k << 1) | 1]); }
 
-    void set(int p, S x) {
+    void set(int p, const S& x) {
         assert(0 <= p && p < _n);
         p += size;
         d[p] = x;
         for (int i = 1; i <= log; i++) update(p >> i);
     }
 
-    S get(int p) const {
+    S operator[](int p) const {
         assert(0 <= p && p < _n);
         return d[p + size];
     }
 
     S prod(int l, int r) const {
         assert(0 <= l && l <= r && r <= _n);
-        S vl = Monoid::e(), vr = Monoid::e();
+        S sml = Monoid::e(), smr = Monoid::e();
         l += size;
         r += size;
 
         while (l < r) {
-            if (l & 1) vl = Monoid::op(vl, d[l++]);
-            if (r & 1) vr = Monoid::op(d[--r], vr);
+            if (l & 1) sml = Monoid::op(sml, d[l++]);
+            if (r & 1) smr = Monoid::op(d[--r], smr);
             l >>= 1;
             r >>= 1;
         }
-        return Monoid::op(vl, vr);
+        return Monoid::op(sml, smr);
     }
 
     S all_prod() const { return d[1]; }
