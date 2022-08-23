@@ -26,6 +26,13 @@ template <class Monoid> struct segment_tree {
         for (int i = 1; i <= log; i++) update(p >> i);
     }
 
+    void chset(int p, const S& x) {
+        assert(0 <= p && p < _n);
+        p += size;
+        d[p] = Monoid::op(d[p], x);
+        for (int i = 1; i <= log; i++) update(p >> i);
+    }
+
     S operator[](int p) const {
         assert(0 <= p && p < _n);
         return d[p + size];
