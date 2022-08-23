@@ -9,6 +9,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/algebra/monoid_min.hpp
       title: src/algebra/monoid_min.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/algebra/monoid_sum.hpp
+      title: src/algebra/monoid_sum.hpp
   - name: src/data_structure
     pages:
     - icon: ':heavy_check_mark:'
@@ -34,6 +37,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/lc_data_structure/lc_point_add_range_sum_fenwick_tree.test.cpp
       title: verify/lc_data_structure/lc_point_add_range_sum_fenwick_tree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
+      title: verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp
       title: verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp

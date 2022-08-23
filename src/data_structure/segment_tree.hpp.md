@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
+    title: verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp
     title: verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp
   _isVerificationFailed: false
@@ -108,6 +111,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp
+  - verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
 documentation_of: src/data_structure/segment_tree.hpp
 layout: document
 redirect_from:
