@@ -3,7 +3,7 @@ data:
   libraryCategories:
   - name: src/algebra
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/algebra/monoid_min.hpp
       title: src/algebra/monoid_min.hpp
   - name: src/data_structure
@@ -14,6 +14,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data_structure/fenwick_tree.hpp
       title: Fenwick Tree (Binary Indexed Tree)
+    - icon: ':heavy_check_mark:'
+      path: src/data_structure/segment_tree.hpp
+      title: "Segment Tree (\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     - icon: ':heavy_check_mark:'
       path: src/data_structure/unionfind.hpp
       title: UnionFind
@@ -28,7 +31,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/lc_data_structure/lc_point_add_range_sum_fenwick_tree.test.cpp
       title: verify/lc_data_structure/lc_point_add_range_sum_fenwick_tree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp
       title: verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp
     - icon: ':heavy_check_mark:'
