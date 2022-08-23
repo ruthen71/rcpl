@@ -11,7 +11,7 @@ int main() {
     std::vector<long long> A(N);
     for (int i = 0; i < N; i++) std::cin >> A[i];
     segment_tree<monoid_gcd<long long>> seg(A);
-    auto f = [](long long v) -> bool { return v != 1; };
+    auto f = [](long long v) -> bool { return v != 1LL; };
     long long ansL = 0, ansR = 0;
     for (int l = 0; l < N; l++) {
         int r = seg.max_right(l, f);
