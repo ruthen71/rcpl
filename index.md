@@ -3,6 +3,9 @@ data:
   libraryCategories:
   - name: src/algebra
     pages:
+    - icon: ':warning:'
+      path: src/algebra/monoid_max.hpp
+      title: src/algebra/monoid_max.hpp
     - icon: ':heavy_check_mark:'
       path: src/algebra/monoid_min.hpp
       title: src/algebra/monoid_min.hpp
