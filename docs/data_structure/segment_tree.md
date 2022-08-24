@@ -2,9 +2,6 @@
 
 ## 概要
 
-実装は [ac-library](https://github.com/atcoder/ac-library/blob/master/atcoder/segtree.hpp) と [maspyさんのライブラリ](https://github.com/maspypy/library/blob/main/ds/segtree.hpp) を参考にさせていただきました。この場を借りてお礼申し上げます。
-
-
 基本は `ac-library` と同じ。
 
 - 非再帰
@@ -25,3 +22,8 @@
     - 計算量は $ O(\log N) $
 - マクロ不使用
     - 使いやすさを意識
+
+## 謝辞
+
+変数やメソッドの命名規則、メソッドの実装は [ac-library](https://github.com/atcoder/ac-library/blob/master/atcoder/segtree.hpp) を、モノイドの抽象化は [maspyさんのライブラリ](https://github.com/maspypy/library/blob/main/ds/segtree.hpp) を参考にさせていただきました。ありがとうございます。
+
