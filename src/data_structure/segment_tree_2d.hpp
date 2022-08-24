@@ -1,9 +1,11 @@
 #pragma once
 
 template <class Monoid> struct segment_tree_2d {
+   public:
     using S = typename Monoid::value_type;
     int _h, logh, sizeh, _w, logw, sizew;
-    std::vector<std::vector<S>> d;
+    std::vector<S> d;
+
     segment_tree_2d() : segment_tree_2d(0, 0) {}
     segment_tree_2d(int h, int w) : segment_tree_2d(std::vector<std::vector<S>>(h, std::vector<S>(w, Monoid::e()))) {}
     segment_tree_2d(const std::vector<std::vector<S>>& v) : _h((int)v.size()), _w((int)v[0].size()) {
@@ -13,11 +15,10 @@ template <class Monoid> struct segment_tree_2d {
         logw = 0;
         while ((1U << logw) < (unsigned int)(_w)) logw++;
         sizew = 1 << logw;
-        d = std::vector<std::vector<S>>(2 * sizeh, std::vector<S>(2 * sizew, Monoid::e()));
-        d.shrink_to_fit();  // MLE 対策
+        d = std::vector<S>(4 * sizeh * sizew, Monoid::e());
         for (int i = 0; i < _h; i++) {
             for (int j = 0; j < _w; j++) {
-                d[i + sizeh][j + sizew] = v[i][j];
+                d[index(i + sizeh, j + sizew)] = v[i][j];
             }
         }
         for (int i = sizeh - 1; i >= 1; i--) {
@@ -32,15 +33,15 @@ template <class Monoid> struct segment_tree_2d {
         }
     }
 
-    void update_bottom(int i, int j) { d[i][j] = Monoid::op(d[i << 1][j], d[(i << 1) | 1][j]); }
+    void update_bottom(int i, int j) { d[index(i, j)] = Monoid::op(d[index(i << 1, j)], d[index((i << 1) | 1, j)]); }
 
-    void update_else(int i, int j) { d[i][j] = Monoid::op(d[i][j << 1], d[i][(j << 1) | 1]); }
+    void update_else(int i, int j) { d[index(i, j)] = Monoid::op(d[index(i, j << 1)], d[index(i, (j << 1) | 1)]); }
 
     void set(int h, int w, const S& x) {
         assert(0 <= h and h < _h and 0 <= w and w < _w);
         h += sizeh;
         w += sizew;
-        d[h][w] = x;
+        d[index(h, w)] = x;
         for (int i = 1; i <= logh; i++) update_bottom(h >> i, w);
         for (int i = 0; i <= logh; i++) {
             for (int j = 1; j <= logw; j++) {
@@ -53,7 +54,7 @@ template <class Monoid> struct segment_tree_2d {
         assert(0 <= h and h < _h and 0 <= w and w < _w);
         h += sizeh;
         w += sizew;
-        d[h][w] = Monoid::op(d[h][w], x);
+        d[index(h, w)] = Monoid::op(d[index(h, w)], x);
         for (int i = 1; i <= logh; i++) update_bottom(h >> i, w);
         for (int i = 0; i <= logh; i++) {
             for (int j = 1; j <= logw; j++) {
@@ -64,14 +65,14 @@ template <class Monoid> struct segment_tree_2d {
 
     S operator()(int h, int w) const {
         assert(0 <= h and h < _h and 0 <= w and w < _w);
-        return d[h + sizeh][w + sizew];
+        return d[index(h + sizeh, w + sizew)];
     }
 
     S inner_prod(int h, int w1, int w2) {
         S sml = Monoid::e(), smr = Monoid::e();
         while (w1 < w2) {
-            if (w1 & 1) sml = Monoid::op(sml, d[h][w1++]);
-            if (w2 & 1) smr = Monoid::op(d[h][--w2], smr);
+            if (w1 & 1) sml = Monoid::op(sml, d[index(h, w1++)]);
+            if (w2 & 1) smr = Monoid::op(d[index(h, --w2)], smr);
             w1 >>= 1;
             w2 >>= 1;
         }
@@ -96,7 +97,10 @@ template <class Monoid> struct segment_tree_2d {
         return Monoid::op(sml, smr);
     }
 
-    S all_prod() const { return d[1][1]; }
+    S all_prod() const { return d[index(1, 1)]; }
+
+   private:
+    inline int index(int h, int w) { return (h << (logw + 1)) | w; }
 };
 
 /**
