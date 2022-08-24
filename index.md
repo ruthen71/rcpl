@@ -27,6 +27,9 @@ data:
       path: src/data_structure/segment_tree.hpp
       title: "Segment Tree (\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     - icon: ':heavy_check_mark:'
+      path: src/data_structure/segment_tree_2d.hpp
+      title: "2D Segment Tree (2\u6B21\u5143\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/unionfind.hpp
       title: UnionFind
   verificationCategories:
@@ -35,6 +38,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_dsl/aoj_dsl_5_b.test.cpp
       title: verify/aoj_dsl/aoj_dsl_5_b.test.cpp
+  - name: verify/aoj_other
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_other/aoj_1068.test.cpp
+      title: verify/aoj_other/aoj_1068.test.cpp
   - name: verify/lc_data_structure
     pages:
     - icon: ':heavy_check_mark:'
