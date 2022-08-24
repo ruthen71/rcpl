@@ -127,7 +127,6 @@ title: "2D Segment Tree (2\u6B21\u5143\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
 
 [自分の1次元セグメント木](https://ruthen71.github.io/rcpl/src/data_structure/segment_tree.hpp) をなるべくそのまま2次元に拡張することを意識して設計されている。
 
-変数やメソッドの命名規則、1次元セグメント木と共通する部分は [ac-library](https://github.com/atcoder/ac-library/blob/master/atcoder/segtree.hpp) を、モノイドの抽象化は [maspyさんのライブラリ](https://github.com/maspypy/library/blob/main/ds/segtree.hpp) を、2次元への拡張による追加の処理の記述は [Nyaanさんのライブラリ](https://github.com/NyaanNyaan/library/blob/master/data-structure-2d/2d-segment-tree.hpp) を参考にさせていただきました。この場を借りてお礼申し上げます。
 
 基本は `ac-library` と同じ。
 
@@ -149,3 +148,6 @@ title: "2D Segment Tree (2\u6B21\u5143\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
 - マクロ不使用
     - 使いやすさを意識
 
+## 謝辞
+
+変数やメソッドの命名規則、1次元セグメント木と共通する部分は [ac-library](https://github.com/atcoder/ac-library/blob/master/atcoder/segtree.hpp) を、モノイドの抽象化は [maspyさんのライブラリ](https://github.com/maspypy/library/blob/main/ds/segtree.hpp) を、2次元への拡張による追加の処理の記述は [Nyaanさんのライブラリ](https://github.com/NyaanNyaan/library/blob/master/data-structure-2d/2d-segment-tree.hpp) を参考にさせていただきました。ありがとうございます。
