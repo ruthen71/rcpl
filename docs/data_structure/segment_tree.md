@@ -2,7 +2,7 @@
 
 ## 概要
 
-実装は [ac-library](https://github.com/atcoder/ac-library/blob/master/atcoder/segtree.hpp) と [maspyさんのライブラリ](https://github.com/maspypy/library/blob/main/ds/segtree.hpp) を大いに参考にさせていただきました。この場を借りてお礼申し上げます。
+実装は [ac-library](https://github.com/atcoder/ac-library/blob/master/atcoder/segtree.hpp) と [maspyさんのライブラリ](https://github.com/maspypy/library/blob/main/ds/segtree.hpp) を参考にさせていただきました。この場を借りてお礼申し上げます。
 
 
 基本は `ac-library` と同じ。
@@ -19,11 +19,9 @@
     - `#include "src/algebra/monoid_max.hpp"` などでインクルードできる
     - `segment_tree<monoid_max<int>> seg(n);` などでRMQが使える
 - `ac-library` の `seg.get(i)` に相当する機能を `seg[i]` で実現している
-    - より直感的
 - `seg[p] = op(seg[p], x)` とする `seg.chset(p, x)` を採用
     - `seg[p] = x` とするのは `seg.set(p, x)`
     - 案外 `seg.set(p, op(seg[p], x))` みたいなコードを書く機会は多いと思っている
     - 計算量は $ O(\log N) $
-        - 条件分岐させても良かったが、モノイドが複雑になると `==` などでややこしくなりそうな気がした
 - マクロ不使用
     - 使いやすさを意識
