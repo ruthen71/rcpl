@@ -145,6 +145,7 @@ title: "2D Segment Tree (2\u6B21\u5143\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     - `seg[h][w] = x` とするのは `seg.set(h, w, x)`
     - 案外 `seg.set(h, w, op(seg[h][w], x))` みたいなコードを書く機会は多いと思っている
     - 計算量は $ O(\log H \log W) $
+    - モノイドが可換でないなどの理由により、`op(seg[h][w], x)` と `op(x, seg[h][w])` の結果が異なる場合に注意
 - マクロ不使用
     - 使いやすさを意識
 

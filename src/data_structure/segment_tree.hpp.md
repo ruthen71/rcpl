@@ -146,6 +146,7 @@ title: "Segment Tree (\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     - `seg[p] = x` とするのは `seg.set(p, x)`
     - 案外 `seg.set(p, op(seg[p], x))` みたいなコードを書く機会は多いと思っている
     - 計算量は $ O(\log N) $
+    - モノイドが可換でないなどの理由により、`op(seg[p], x)` と `op(x, seg[p])` の結果が異なる場合に注意
 - マクロ不使用
     - 使いやすさを意識
 
