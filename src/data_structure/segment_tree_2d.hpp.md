@@ -22,18 +22,18 @@ data:
     \ _w((int)v[0].size()) {\n        logh = 0;\n        while ((1U << logh) < (unsigned\
     \ int)(_h)) logh++;\n        sizeh = 1 << logh;\n        logw = 0;\n        while\
     \ ((1U << logw) < (unsigned int)(_w)) logw++;\n        sizew = 1 << logw;\n  \
-    \      d = std::vector<std::vector<S>>(2 * sizeh, std::vector<S>(2 * sizew, Monoid::e()));\n\
-    \        for (int i = 0; i < _h; i++) {\n            for (int j = 0; j < _w; j++)\
-    \ {\n                d[i + sizeh][j + sizew] = v[i][j];\n            }\n     \
-    \   }\n        for (int i = sizeh - 1; i >= 1; i--) {\n            for (int j\
-    \ = sizew; j < 2 * sizew; j++) {\n                update_bottom(i, j);\n     \
-    \       }\n        }\n        for (int i = 0; i < 2 * sizeh; i++) {\n        \
-    \    for (int j = sizew - 1; j >= 1; j--) {\n                update_else(i, j);\n\
-    \            }\n        }\n    }\n\n    void set(int h, int w, const S& x) {\n\
-    \        assert(0 <= h and h < _h and 0 <= w and w < _w);\n        h += sizeh;\n\
-    \        w += sizew;\n        d[h][w] = x;\n        for (int i = 1; i <= logh;\
-    \ i++) update_bottom(h >> i, w);\n        for (int i = 0; i <= logh; i++) {\n\
-    \            for (int j = 1; j <= logw; j++) {\n                update_else(h\
+    \      d = std::vector<std::vector<S>>(sizeh << 1, std::vector<S>(sizew << 1,\
+    \ Monoid::e()));\n        for (int i = 0; i < _h; i++) {\n            for (int\
+    \ j = 0; j < _w; j++) {\n                d[i + sizeh][j + sizew] = v[i][j];\n\
+    \            }\n        }\n        for (int i = sizeh - 1; i >= 1; i--) {\n  \
+    \          for (int j = sizew; j < (sizew << 1); j++) {\n                update_bottom(i,\
+    \ j);\n            }\n        }\n        for (int i = 0; i < (sizeh << 1); i++)\
+    \ {\n            for (int j = sizew - 1; j >= 1; j--) {\n                update_else(i,\
+    \ j);\n            }\n        }\n    }\n\n    void set(int h, int w, const S&\
+    \ x) {\n        assert(0 <= h and h < _h and 0 <= w and w < _w);\n        h +=\
+    \ sizeh;\n        w += sizew;\n        d[h][w] = x;\n        for (int i = 1; i\
+    \ <= logh; i++) update_bottom(h >> i, w);\n        for (int i = 0; i <= logh;\
+    \ i++) {\n            for (int j = 1; j <= logw; j++) {\n                update_else(h\
     \ >> i, w >> j);\n            }\n        }\n    }\n\n    void chset(int h, int\
     \ w, const S& x) {\n        assert(0 <= h and h < _h and 0 <= w and w < _w);\n\
     \        h += sizeh;\n        w += sizew;\n        d[h][w] = Monoid::op(d[h][w],\
@@ -67,15 +67,15 @@ data:
     \ v) : _h((int)v.size()), _w((int)v[0].size()) {\n        logh = 0;\n        while\
     \ ((1U << logh) < (unsigned int)(_h)) logh++;\n        sizeh = 1 << logh;\n  \
     \      logw = 0;\n        while ((1U << logw) < (unsigned int)(_w)) logw++;\n\
-    \        sizew = 1 << logw;\n        d = std::vector<std::vector<S>>(2 * sizeh,\
-    \ std::vector<S>(2 * sizew, Monoid::e()));\n        for (int i = 0; i < _h; i++)\
-    \ {\n            for (int j = 0; j < _w; j++) {\n                d[i + sizeh][j\
+    \        sizew = 1 << logw;\n        d = std::vector<std::vector<S>>(sizeh <<\
+    \ 1, std::vector<S>(sizew << 1, Monoid::e()));\n        for (int i = 0; i < _h;\
+    \ i++) {\n            for (int j = 0; j < _w; j++) {\n                d[i + sizeh][j\
     \ + sizew] = v[i][j];\n            }\n        }\n        for (int i = sizeh -\
-    \ 1; i >= 1; i--) {\n            for (int j = sizew; j < 2 * sizew; j++) {\n \
-    \               update_bottom(i, j);\n            }\n        }\n        for (int\
-    \ i = 0; i < 2 * sizeh; i++) {\n            for (int j = sizew - 1; j >= 1; j--)\
-    \ {\n                update_else(i, j);\n            }\n        }\n    }\n\n \
-    \   void set(int h, int w, const S& x) {\n        assert(0 <= h and h < _h and\
+    \ 1; i >= 1; i--) {\n            for (int j = sizew; j < (sizew << 1); j++) {\n\
+    \                update_bottom(i, j);\n            }\n        }\n        for (int\
+    \ i = 0; i < (sizeh << 1); i++) {\n            for (int j = sizew - 1; j >= 1;\
+    \ j--) {\n                update_else(i, j);\n            }\n        }\n    }\n\
+    \n    void set(int h, int w, const S& x) {\n        assert(0 <= h and h < _h and\
     \ 0 <= w and w < _w);\n        h += sizeh;\n        w += sizew;\n        d[h][w]\
     \ = x;\n        for (int i = 1; i <= logh; i++) update_bottom(h >> i, w);\n  \
     \      for (int i = 0; i <= logh; i++) {\n            for (int j = 1; j <= logw;\
@@ -110,7 +110,7 @@ data:
   isVerificationFile: false
   path: src/data_structure/segment_tree_2d.hpp
   requiredBy: []
-  timestamp: '2022-08-25 17:41:16+09:00'
+  timestamp: '2022-08-26 03:38:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_other/aoj_1068.test.cpp

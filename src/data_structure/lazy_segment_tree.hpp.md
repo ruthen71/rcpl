@@ -28,7 +28,7 @@ data:
     \    using F = typename Lazy::value_type_F;\n    lazy_segment_tree(int n) : lazy_segment_tree(std::vector<S>(n,\
     \ Lazy::e())) {}\n    lazy_segment_tree(const std::vector<S>& v) : _n((int)v.size())\
     \ {\n        log = 0;\n        while ((1U << log) < (unsigned int)(_n)) log++;\n\
-    \        size = 1 << log;\n        d = std::vector<S>(2 * size, Lazy::e());\n\
+    \        size = 1 << log;\n        d = std::vector<S>(size << 1, Lazy::e());\n\
     \        lz = std::vector<F>(size, Lazy::id());\n        for (int i = 0; i < _n;\
     \ i++) d[i + size] = v[i];\n        for (int i = size - 1; i >= 1; i--) {\n  \
     \          update(i);\n        }\n    }\n\n    void set(int p, const S& x) {\n\
@@ -100,8 +100,8 @@ data:
     \    lazy_segment_tree(int n) : lazy_segment_tree(std::vector<S>(n, Lazy::e()))\
     \ {}\n    lazy_segment_tree(const std::vector<S>& v) : _n((int)v.size()) {\n \
     \       log = 0;\n        while ((1U << log) < (unsigned int)(_n)) log++;\n  \
-    \      size = 1 << log;\n        d = std::vector<S>(2 * size, Lazy::e());\n  \
-    \      lz = std::vector<F>(size, Lazy::id());\n        for (int i = 0; i < _n;\
+    \      size = 1 << log;\n        d = std::vector<S>(size << 1, Lazy::e());\n \
+    \       lz = std::vector<F>(size, Lazy::id());\n        for (int i = 0; i < _n;\
     \ i++) d[i + size] = v[i];\n        for (int i = size - 1; i >= 1; i--) {\n  \
     \          update(i);\n        }\n    }\n\n    void set(int p, const S& x) {\n\
     \        assert(0 <= p and p < _n);\n        p += size;\n        for (int i =\
@@ -171,7 +171,7 @@ data:
   isVerificationFile: false
   path: src/data_structure/lazy_segment_tree.hpp
   requiredBy: []
-  timestamp: '2022-08-25 20:59:48+09:00'
+  timestamp: '2022-08-26 03:38:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp

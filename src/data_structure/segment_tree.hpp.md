@@ -24,7 +24,7 @@ data:
     \    segment_tree() : segment_tree(0) {}\n    segment_tree(int n) : segment_tree(std::vector<S>(n,\
     \ Monoid::e())) {}\n    segment_tree(const std::vector<S>& v) : _n((int)v.size())\
     \ {\n        log = 0;\n        while ((1U << log) < (unsigned int)(_n)) log++;\n\
-    \        size = 1 << log;\n        d = std::vector<S>(2 * size, Monoid::e());\n\
+    \        size = 1 << log;\n        d = std::vector<S>(size << 1, Monoid::e());\n\
     \        for (int i = 0; i < _n; i++) d[i + size] = v[i];\n        for (int i\
     \ = size - 1; i >= 1; i--) {\n            update(i);\n        }\n    }\n\n   \
     \ void set(int p, const S& x) {\n        assert(0 <= p and p < _n);\n        p\
@@ -68,7 +68,7 @@ data:
     \ {}\n    segment_tree(int n) : segment_tree(std::vector<S>(n, Monoid::e())) {}\n\
     \    segment_tree(const std::vector<S>& v) : _n((int)v.size()) {\n        log\
     \ = 0;\n        while ((1U << log) < (unsigned int)(_n)) log++;\n        size\
-    \ = 1 << log;\n        d = std::vector<S>(2 * size, Monoid::e());\n        for\
+    \ = 1 << log;\n        d = std::vector<S>(size << 1, Monoid::e());\n        for\
     \ (int i = 0; i < _n; i++) d[i + size] = v[i];\n        for (int i = size - 1;\
     \ i >= 1; i--) {\n            update(i);\n        }\n    }\n\n    void set(int\
     \ p, const S& x) {\n        assert(0 <= p and p < _n);\n        p += size;\n \
@@ -111,7 +111,7 @@ data:
   isVerificationFile: false
   path: src/data_structure/segment_tree.hpp
   requiredBy: []
-  timestamp: '2022-08-25 17:41:16+09:00'
+  timestamp: '2022-08-26 03:38:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yuki/yuki_1036_segment_tree.test.cpp
