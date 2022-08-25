@@ -4,8 +4,14 @@ data:
   - name: src/algebra
     pages:
     - icon: ':warning:'
+      path: src/algebra/lazy_max_add.hpp
+      title: src/algebra/lazy_max_add.hpp
+    - icon: ':warning:'
       path: src/algebra/lazy_max_set.hpp
       title: src/algebra/lazy_max_set.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/algebra/lazy_min_add.hpp
+      title: src/algebra/lazy_min_add.hpp
     - icon: ':heavy_check_mark:'
       path: src/algebra/lazy_min_set.hpp
       title: src/algebra/lazy_min_set.hpp
@@ -47,6 +53,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
       title: verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_dsl/aoj_dsl_2_h_lazy_segment_tree.test.cpp
+      title: verify/aoj_dsl/aoj_dsl_2_h_lazy_segment_tree.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj_dsl/aoj_dsl_5_b.test.cpp
       title: verify/aoj_dsl/aoj_dsl_5_b.test.cpp

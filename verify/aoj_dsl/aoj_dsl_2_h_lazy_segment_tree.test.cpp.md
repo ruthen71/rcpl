@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/algebra/lazy_min_set.hpp
-    title: src/algebra/lazy_min_set.hpp
+    path: src/algebra/lazy_min_add.hpp
+    title: src/algebra/lazy_min_add.hpp
   - icon: ':heavy_check_mark:'
     path: src/data_structure/lazy_segment_tree.hpp
     title: "Lazy Segment Tree (\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
@@ -14,20 +14,19 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_F
+    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H
     links:
-    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_F
-  bundledCode: "#line 1 \"verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp\"\n\
-    #define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_F\"\
-    \n\n#include <bits/stdc++.h>\n\n#line 2 \"src/algebra/lazy_min_set.hpp\"\n\ntemplate\
-    \ <class S> struct lazy_min_set {\n    using F = S;\n    using value_type_S =\
+    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H
+  bundledCode: "#line 1 \"verify/aoj_dsl/aoj_dsl_2_h_lazy_segment_tree.test.cpp\"\n\
+    #define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H\"\
+    \n\n#include <bits/stdc++.h>\n\n#line 2 \"src/algebra/lazy_min_add.hpp\"\n\ntemplate\
+    \ <class S> struct lazy_min_add {\n    using F = S;\n    using value_type_S =\
     \ S;\n    using value_type_F = F;\n    static constexpr S op(S a, S b) { return\
     \ std::min(a, b); }\n    static constexpr S e() { return std::numeric_limits<S>::max();\
-    \ }\n    static constexpr S mapping(F f, S x) { return f == id() ? x : f; }\n\
-    \    static constexpr F composition(F f, F g) { return f == id() ? g : f; }\n\
-    \    static constexpr F id() { return std::numeric_limits<F>::max(); }\n};\n#line\
-    \ 2 \"src/data_structure/lazy_segment_tree.hpp\"\n\ntemplate <class Lazy> struct\
-    \ lazy_segment_tree {\n   public:\n    using S = typename Lazy::value_type_S;\n\
+    \ }\n    static constexpr S mapping(F f, S x) { return f + x; }\n    static constexpr\
+    \ F composition(F f, F g) { return f + g; }\n    static constexpr F id() { return\
+    \ 0; }\n};\n#line 2 \"src/data_structure/lazy_segment_tree.hpp\"\n\ntemplate <class\
+    \ Lazy> struct lazy_segment_tree {\n   public:\n    using S = typename Lazy::value_type_S;\n\
     \    using F = typename Lazy::value_type_F;\n    lazy_segment_tree(int n) : lazy_segment_tree(std::vector<S>(n,\
     \ Lazy::e())) {}\n    lazy_segment_tree(const std::vector<S>& v) : _n((int)v.size())\
     \ {\n        log = 0;\n        while ((1U << log) < (unsigned int)(_n)) log++;\n\
@@ -97,35 +96,36 @@ data:
     \  all_apply(k << 1, lz[k]);\n        all_apply((k << 1) | 1, lz[k]);\n      \
     \  lz[k] = Lazy::id();\n    }\n};\n\n/**\n * @brief Lazy Segment Tree (\u9045\u5EF6\
     \u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n * @docs docs/data_structure/lazy_segment_tree.md\n\
-    \ */\n#line 7 \"verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp\"\n\nint\
-    \ main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    lazy_segment_tree<lazy_min_set<int>>\
-    \ seg(N);\n    while (Q--) {\n        int t;\n        std::cin >> t;\n       \
-    \ if (t == 0) {\n            int l, r, x;\n            std::cin >> l >> r >> x;\n\
-    \            seg.apply(l, r + 1, x);\n        } else {\n            int l, r;\n\
-    \            std::cin >> l >> r;\n            std::cout << seg.prod(l, r + 1)\
-    \ << '\\n';\n        }\n    }\n    return 0;\n}\n"
-  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_F\"\
-    \n\n#include <bits/stdc++.h>\n\n#include \"src/algebra/lazy_min_set.hpp\"\n#include\
+    \ */\n#line 7 \"verify/aoj_dsl/aoj_dsl_2_h_lazy_segment_tree.test.cpp\"\n\nint\
+    \ main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    lazy_segment_tree<lazy_min_add<long\
+    \ long>> seg(std::vector<long long>(N, 0));\n    while (Q--) {\n        int t;\n\
+    \        std::cin >> t;\n        if (t == 0) {\n            int l, r, x;\n   \
+    \         std::cin >> l >> r >> x;\n            seg.apply(l, r + 1, x);\n    \
+    \    } else {\n            int l, r;\n            std::cin >> l >> r;\n      \
+    \      std::cout << seg.prod(l, r + 1) << '\\n';\n        }\n    }\n    return\
+    \ 0;\n}\n"
+  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H\"\
+    \n\n#include <bits/stdc++.h>\n\n#include \"src/algebra/lazy_min_add.hpp\"\n#include\
     \ \"src/data_structure/lazy_segment_tree.hpp\"\n\nint main() {\n    int N, Q;\n\
-    \    std::cin >> N >> Q;\n    lazy_segment_tree<lazy_min_set<int>> seg(N);\n \
-    \   while (Q--) {\n        int t;\n        std::cin >> t;\n        if (t == 0)\
-    \ {\n            int l, r, x;\n            std::cin >> l >> r >> x;\n        \
-    \    seg.apply(l, r + 1, x);\n        } else {\n            int l, r;\n      \
-    \      std::cin >> l >> r;\n            std::cout << seg.prod(l, r + 1) << '\\\
-    n';\n        }\n    }\n    return 0;\n}\n"
+    \    std::cin >> N >> Q;\n    lazy_segment_tree<lazy_min_add<long long>> seg(std::vector<long\
+    \ long>(N, 0));\n    while (Q--) {\n        int t;\n        std::cin >> t;\n \
+    \       if (t == 0) {\n            int l, r, x;\n            std::cin >> l >>\
+    \ r >> x;\n            seg.apply(l, r + 1, x);\n        } else {\n           \
+    \ int l, r;\n            std::cin >> l >> r;\n            std::cout << seg.prod(l,\
+    \ r + 1) << '\\n';\n        }\n    }\n    return 0;\n}\n"
   dependsOn:
-  - src/algebra/lazy_min_set.hpp
+  - src/algebra/lazy_min_add.hpp
   - src/data_structure/lazy_segment_tree.hpp
   isVerificationFile: true
-  path: verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
+  path: verify/aoj_dsl/aoj_dsl_2_h_lazy_segment_tree.test.cpp
   requiredBy: []
   timestamp: '2022-08-25 20:59:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
+documentation_of: verify/aoj_dsl/aoj_dsl_2_h_lazy_segment_tree.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
-- /verify/verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp.html
-title: verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
+- /verify/verify/aoj_dsl/aoj_dsl_2_h_lazy_segment_tree.test.cpp
+- /verify/verify/aoj_dsl/aoj_dsl_2_h_lazy_segment_tree.test.cpp.html
+title: verify/aoj_dsl/aoj_dsl_2_h_lazy_segment_tree.test.cpp
 ---
