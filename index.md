@@ -3,6 +3,9 @@ data:
   libraryCategories:
   - name: src/algebra
     pages:
+    - icon: ':heavy_check_mark:'
+      path: src/algebra/dual_set.hpp
+      title: src/algebra/dual_set.hpp
     - icon: ':warning:'
       path: src/algebra/lazy_max_add.hpp
       title: src/algebra/lazy_max_add.hpp
@@ -39,6 +42,9 @@ data:
       path: src/data_structure/cumulative_sum_2d.hpp
       title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
     - icon: ':heavy_check_mark:'
+      path: src/data_structure/dual_segment_tree.hpp
+      title: "Dual Segment Tree (\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/fenwick_tree.hpp
       title: Fenwick Tree (Binary Indexed Tree)
     - icon: ':heavy_check_mark:'
@@ -56,6 +62,9 @@ data:
   verificationCategories:
   - name: verify/aoj_dsl
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp
+      title: verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
       title: verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
