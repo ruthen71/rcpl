@@ -16,7 +16,6 @@ data:
     links: []
   bundledCode: "#line 2 \"src/data_structure/segment_tree_2d.hpp\"\n\ntemplate <class\
     \ Monoid> struct segment_tree_2d {\n   public:\n    using S = typename Monoid::value_type;\n\
-    \    int _h, logh, sizeh, _w, logw, sizew;\n    std::vector<std::vector<S>> d;\n\
     \    segment_tree_2d() : segment_tree_2d(0, 0) {}\n    segment_tree_2d(int h,\
     \ int w) : segment_tree_2d(std::vector<std::vector<S>>(h, std::vector<S>(w, Monoid::e())))\
     \ {}\n    segment_tree_2d(const std::vector<std::vector<S>>& v) : _h((int)v.size()),\
@@ -55,14 +54,14 @@ data:
     \ inner_prod(h1++, w1, w2));\n            if (h2 & 1) smr = Monoid::op(inner_prod(--h2,\
     \ w1, w2), smr);\n            h1 >>= 1;\n            h2 >>= 1;\n        }\n  \
     \      return Monoid::op(sml, smr);\n    }\n\n    S all_prod() const { return\
-    \ d[1][1]; }\n\n   private:\n    inline void update_bottom(int i, int j) { d[i][j]\
-    \ = Monoid::op(d[(i << 1) | 0][j], d[(i << 1) | 1][j]); }\n    inline void update_else(int\
-    \ i, int j) { d[i][j] = Monoid::op(d[i][(j << 1) | 0], d[i][(j << 1) | 1]); }\n\
-    };\n\n/**\n * @brief 2D Segment Tree (2\u6B21\u5143\u30BB\u30B0\u30E1\u30F3\u30C8\
-    \u6728)\n * @docs docs/data_structure/segment_tree_2d.md\n */\n"
+    \ d[1][1]; }\n\n   private:\n    int _h, logh, sizeh, _w, logw, sizew;\n    std::vector<std::vector<S>>\
+    \ d;\n    inline void update_bottom(int i, int j) { d[i][j] = Monoid::op(d[(i\
+    \ << 1) | 0][j], d[(i << 1) | 1][j]); }\n    inline void update_else(int i, int\
+    \ j) { d[i][j] = Monoid::op(d[i][(j << 1) | 0], d[i][(j << 1) | 1]); }\n};\n\n\
+    /**\n * @brief 2D Segment Tree (2\u6B21\u5143\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
+    )\n * @docs docs/data_structure/segment_tree_2d.md\n */\n"
   code: "#pragma once\n\ntemplate <class Monoid> struct segment_tree_2d {\n   public:\n\
-    \    using S = typename Monoid::value_type;\n    int _h, logh, sizeh, _w, logw,\
-    \ sizew;\n    std::vector<std::vector<S>> d;\n    segment_tree_2d() : segment_tree_2d(0,\
+    \    using S = typename Monoid::value_type;\n    segment_tree_2d() : segment_tree_2d(0,\
     \ 0) {}\n    segment_tree_2d(int h, int w) : segment_tree_2d(std::vector<std::vector<S>>(h,\
     \ std::vector<S>(w, Monoid::e()))) {}\n    segment_tree_2d(const std::vector<std::vector<S>>&\
     \ v) : _h((int)v.size()), _w((int)v[0].size()) {\n        logh = 0;\n        while\
@@ -101,6 +100,7 @@ data:
     \ w2));\n            if (h2 & 1) smr = Monoid::op(inner_prod(--h2, w1, w2), smr);\n\
     \            h1 >>= 1;\n            h2 >>= 1;\n        }\n        return Monoid::op(sml,\
     \ smr);\n    }\n\n    S all_prod() const { return d[1][1]; }\n\n   private:\n\
+    \    int _h, logh, sizeh, _w, logw, sizew;\n    std::vector<std::vector<S>> d;\n\
     \    inline void update_bottom(int i, int j) { d[i][j] = Monoid::op(d[(i << 1)\
     \ | 0][j], d[(i << 1) | 1][j]); }\n    inline void update_else(int i, int j) {\
     \ d[i][j] = Monoid::op(d[i][(j << 1) | 0], d[i][(j << 1) | 1]); }\n};\n\n/**\n\
@@ -110,7 +110,7 @@ data:
   isVerificationFile: false
   path: src/data_structure/segment_tree_2d.hpp
   requiredBy: []
-  timestamp: '2022-08-24 15:37:10+09:00'
+  timestamp: '2022-08-25 17:41:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_other/aoj_1068.test.cpp
