@@ -23,8 +23,7 @@
     - モノイドが可換でないなどの理由により、`op(seg[p], x)` と `op(x, seg[p])` の結果が異なる場合に注意
 - マクロ不使用
     - 使いやすさを意識
-- RSQ and RUQ で配列の長さだけ与えればいい感じに初期化してくれる(区間長1で初期値0)
-    - 単位元を `e()` とし、コンストラクタの配列の初期化には `init()` を使う
+- RSQ など区間長を別で持つ必要がある場合の初期化の方法は [ここ](https://ruthen71.github.io/rcpl/verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp) を参考にすること
 
 ## 謝辞
 
