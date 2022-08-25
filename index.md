@@ -3,6 +3,12 @@ data:
   libraryCategories:
   - name: src/algebra
     pages:
+    - icon: ':warning:'
+      path: src/algebra/lazy_max_set.hpp
+      title: src/algebra/lazy_max_set.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/algebra/lazy_min_set.hpp
+      title: src/algebra/lazy_min_set.hpp
     - icon: ':heavy_check_mark:'
       path: src/algebra/monoid_gcd.hpp
       title: src/algebra/monoid_gcd.hpp
@@ -24,6 +30,9 @@ data:
       path: src/data_structure/fenwick_tree.hpp
       title: Fenwick Tree (Binary Indexed Tree)
     - icon: ':heavy_check_mark:'
+      path: src/data_structure/lazy_segment_tree.hpp
+      title: "Lazy Segment Tree (\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/segment_tree.hpp
       title: "Segment Tree (\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     - icon: ':heavy_check_mark:'
@@ -35,6 +44,9 @@ data:
   verificationCategories:
   - name: verify/aoj_dsl
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
+      title: verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj_dsl/aoj_dsl_5_b.test.cpp
       title: verify/aoj_dsl/aoj_dsl_5_b.test.cpp
