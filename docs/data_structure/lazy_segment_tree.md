@@ -24,6 +24,7 @@
 - マクロ不使用
     - 使いやすさを意識
 - RSQ など区間長を別で持つ必要がある場合の初期化の方法は [ここ](https://ruthen71.github.io/rcpl/verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp) を参考にすること
+    - 要するに `std::pair` の `first` に値を、`second` に区間長を入れる
 
 ## 謝辞
 
