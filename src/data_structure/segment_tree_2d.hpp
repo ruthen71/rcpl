@@ -12,18 +12,18 @@ template <class Monoid> struct segment_tree_2d {
         logw = 0;
         while ((1U << logw) < (unsigned int)(_w)) logw++;
         sizew = 1 << logw;
-        d = std::vector<std::vector<S>>(2 * sizeh, std::vector<S>(2 * sizew, Monoid::e()));
+        d = std::vector<std::vector<S>>(sizeh << 1, std::vector<S>(sizew << 1, Monoid::e()));
         for (int i = 0; i < _h; i++) {
             for (int j = 0; j < _w; j++) {
                 d[i + sizeh][j + sizew] = v[i][j];
             }
         }
         for (int i = sizeh - 1; i >= 1; i--) {
-            for (int j = sizew; j < 2 * sizew; j++) {
+            for (int j = sizew; j < (sizew << 1); j++) {
                 update_bottom(i, j);
             }
         }
-        for (int i = 0; i < 2 * sizeh; i++) {
+        for (int i = 0; i < (sizeh << 1); i++) {
             for (int j = sizew - 1; j >= 1; j--) {
                 update_else(i, j);
             }

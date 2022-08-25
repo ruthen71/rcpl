@@ -9,7 +9,7 @@ template <class Lazy> struct lazy_segment_tree {
         log = 0;
         while ((1U << log) < (unsigned int)(_n)) log++;
         size = 1 << log;
-        d = std::vector<S>(2 * size, Lazy::e());
+        d = std::vector<S>(size << 1, Lazy::e());
         lz = std::vector<F>(size, Lazy::id());
         for (int i = 0; i < _n; i++) d[i + size] = v[i];
         for (int i = size - 1; i >= 1; i--) {
