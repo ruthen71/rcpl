@@ -4,6 +4,9 @@ data:
   - name: src/algebra
     pages:
     - icon: ':heavy_check_mark:'
+      path: src/algebra/dual_add.hpp
+      title: src/algebra/dual_add.hpp
+    - icon: ':heavy_check_mark:'
       path: src/algebra/dual_set.hpp
       title: src/algebra/dual_set.hpp
     - icon: ':warning:'
@@ -65,6 +68,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp
       title: verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_dsl/aoj_dsl_2_e_dual_segment_tree.test.cpp
+      title: verify/aoj_dsl/aoj_dsl_2_e_dual_segment_tree.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
       title: verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp

@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp
     title: verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_dsl/aoj_dsl_2_e_dual_segment_tree.test.cpp
+    title: verify/aoj_dsl/aoj_dsl_2_e_dual_segment_tree.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -73,6 +76,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp
+  - verify/aoj_dsl/aoj_dsl_2_e_dual_segment_tree.test.cpp
 documentation_of: src/data_structure/dual_segment_tree.hpp
 layout: document
 redirect_from:
