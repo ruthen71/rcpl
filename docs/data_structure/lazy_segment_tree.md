@@ -28,5 +28,5 @@
 
 ## 謝辞
 
-変数やメソッドの命名規則、メソッドの実装は [ac-library](https://github.com/atcoder/ac-library/blob/master/atcoder/segtree.hpp) を、モノイドの抽象化は [maspyさんのライブラリ](https://github.com/maspypy/library/blob/main/ds/segtree.hpp) を参考にさせていただきました。ありがとうございます。
+変数やメソッドの命名規則、メソッドの実装は [ac-library](https://github.com/atcoder/ac-library/blob/master/atcoder/segtree.hpp) を、モノイドの抽象化は [maspyさんのライブラリ](https://github.com/maspypy/library/blob/main/ds/segtree.hpp) および [ARMERIAさんのブログ](https://betrue12.hateblo.jp/entry/2020/09/23/005940) を参考にさせていただきました。ありがとうございます。
 
