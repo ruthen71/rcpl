@@ -3,8 +3,6 @@
 template <class Monoid> struct segment_tree_2d {
    public:
     using S = typename Monoid::value_type;
-    int _h, logh, sizeh, _w, logw, sizew;
-    std::vector<std::vector<S>> d;
     segment_tree_2d() : segment_tree_2d(0, 0) {}
     segment_tree_2d(int h, int w) : segment_tree_2d(std::vector<std::vector<S>>(h, std::vector<S>(w, Monoid::e()))) {}
     segment_tree_2d(const std::vector<std::vector<S>>& v) : _h((int)v.size()), _w((int)v[0].size()) {
@@ -95,6 +93,8 @@ template <class Monoid> struct segment_tree_2d {
     S all_prod() const { return d[1][1]; }
 
    private:
+    int _h, logh, sizeh, _w, logw, sizew;
+    std::vector<std::vector<S>> d;
     inline void update_bottom(int i, int j) { d[i][j] = Monoid::op(d[(i << 1) | 0][j], d[(i << 1) | 1][j]); }
     inline void update_else(int i, int j) { d[i][j] = Monoid::op(d[i][(j << 1) | 0], d[i][(j << 1) | 1]); }
 };

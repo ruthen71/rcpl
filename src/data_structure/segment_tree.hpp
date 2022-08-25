@@ -1,9 +1,8 @@
 #pragma once
 
 template <class Monoid> struct segment_tree {
+   public:
     using S = typename Monoid::value_type;
-    int _n, log, size;
-    std::vector<S> d;
     segment_tree() : segment_tree(0) {}
     segment_tree(int n) : segment_tree(std::vector<S>(n, Monoid::e())) {}
     segment_tree(const std::vector<S>& v) : _n((int)v.size()) {
@@ -16,8 +15,6 @@ template <class Monoid> struct segment_tree {
             update(i);
         }
     }
-
-    void update(int k) { d[k] = Monoid::op(d[k << 1], d[(k << 1) | 1]); }
 
     void set(int p, const S& x) {
         assert(0 <= p and p < _n);
@@ -102,6 +99,11 @@ template <class Monoid> struct segment_tree {
         } while ((r & -r) != r);  // 2べきまたは0のときfalse
         return 0;
     }
+
+   private:
+    int _n, log, size;
+    std::vector<S> d;
+    inline void update(int k) { d[k] = Monoid::op(d[k << 1], d[(k << 1) | 1]); }
 };
 
 /**
