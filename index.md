@@ -62,7 +62,17 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data_structure/unionfind.hpp
       title: UnionFind
+  - name: src/dp
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: src/dp/inversion_number.hpp
+      title: "Inversion Number (\u8EE2\u5012\u6570)"
   verificationCategories:
+  - name: verify/aoj_alds1
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_alds1/aoj_alds1_5_d.test.cpp
+      title: verify/aoj_alds1/aoj_alds1_5_d.test.cpp
   - name: verify/aoj_dsl
     pages:
     - icon: ':heavy_check_mark:'
