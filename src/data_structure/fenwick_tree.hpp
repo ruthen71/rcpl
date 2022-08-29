@@ -11,6 +11,7 @@ template <class T> struct fenwick_tree {
     }
     // A[i] += x
     void add(int i, T x) {
+        assert(0 <= i and i < N);
         i++;  // 1-indexed
         while (i <= N) {
             seg[i] += x;
@@ -18,7 +19,8 @@ template <class T> struct fenwick_tree {
         }
     }
     // A[0] + ... + A[i - 1]
-    T sum(int i) {
+    T sum(int i) const {
+        assert(0 <= i and i <= N);
         T s = 0;
         while (i > 0) {
             s += seg[i];
@@ -27,7 +29,16 @@ template <class T> struct fenwick_tree {
         return s;
     }
     // A[a] + ... + A[b - 1]
-    T sum(int a, int b) { return sum(b) - sum(a); }
+    T sum(int a, int b) const {
+        assert(0 <= a and a <= b and b <= N);
+        return sum(b) - sum(a);
+    }
+
+    // output
+    friend std::ostream &operator<<(std::ostream &os, const fenwick_tree &A) {
+        for (int i = 0; i < A.N; i++) os << A.sum(i, i + 1) << " \n"[i == A.N - 1];
+        return os;
+    }
 };
 
 /**
