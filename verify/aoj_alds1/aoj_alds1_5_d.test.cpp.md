@@ -42,7 +42,7 @@ data:
     \ long ret = 0;\n    for (auto& ai : A) {\n        int i = lower_bound(B.begin(),\
     \ B.end(), ai) - B.begin();\n        ret += fen.sum(i + 1, N);\n        fen.add(i,\
     \ 1);\n    }\n    return ret;\n}\n\n/**\n * @brief Inversion Number (\u8EE2\u5012\
-    \u6570)\n * @docs docs/data_structure/inversion_number.md\n */\n#line 6 \"verify/aoj_alds1/aoj_alds1_5_d.test.cpp\"\
+    \u6570)\n * @docs docs/dp/inversion_number.md\n */\n#line 6 \"verify/aoj_alds1/aoj_alds1_5_d.test.cpp\"\
     \n\nint main() {\n    int N;\n    std::cin >> N;\n    std::vector<int> A(N);\n\
     \    for (int i = 0; i < N; i++) std::cin >> A[i];\n    std::cout << inversion_number<int>(A)\
     \ << '\\n';\n    return 0;\n}\n"
@@ -57,7 +57,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_alds1/aoj_alds1_5_d.test.cpp
   requiredBy: []
-  timestamp: '2022-08-30 02:17:16+09:00'
+  timestamp: '2022-08-30 02:21:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_alds1/aoj_alds1_5_d.test.cpp

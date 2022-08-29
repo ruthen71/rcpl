@@ -13,7 +13,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    _deprecated_at_docs: docs/data_structure/inversion_number.md
+    _deprecated_at_docs: docs/dp/inversion_number.md
     document_title: "Inversion Number (\u8EE2\u5012\u6570)"
     links: []
   bundledCode: "#line 2 \"src/dp/inversion_number.hpp\"\n\n#line 2 \"src/data_structure/fenwick_tree.hpp\"\
@@ -38,7 +38,7 @@ data:
     \    fenwick_tree<int> fen(N);\n    long long ret = 0;\n    for (auto& ai : A)\
     \ {\n        int i = lower_bound(B.begin(), B.end(), ai) - B.begin();\n      \
     \  ret += fen.sum(i + 1, N);\n        fen.add(i, 1);\n    }\n    return ret;\n\
-    }\n\n/**\n * @brief Inversion Number (\u8EE2\u5012\u6570)\n * @docs docs/data_structure/inversion_number.md\n\
+    }\n\n/**\n * @brief Inversion Number (\u8EE2\u5012\u6570)\n * @docs docs/dp/inversion_number.md\n\
     \ */\n"
   code: "#pragma once\n\n#include \"src/data_structure/fenwick_tree.hpp\"\n\ntemplate\
     \ <class T> long long inversion_number(std::vector<T>& A) {\n    auto B = A;\n\
@@ -47,13 +47,13 @@ data:
     \ = 0;\n    for (auto& ai : A) {\n        int i = lower_bound(B.begin(), B.end(),\
     \ ai) - B.begin();\n        ret += fen.sum(i + 1, N);\n        fen.add(i, 1);\n\
     \    }\n    return ret;\n}\n\n/**\n * @brief Inversion Number (\u8EE2\u5012\u6570\
-    )\n * @docs docs/data_structure/inversion_number.md\n */\n"
+    )\n * @docs docs/dp/inversion_number.md\n */\n"
   dependsOn:
   - src/data_structure/fenwick_tree.hpp
   isVerificationFile: false
   path: src/dp/inversion_number.hpp
   requiredBy: []
-  timestamp: '2022-08-30 02:17:16+09:00'
+  timestamp: '2022-08-30 02:21:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_alds1/aoj_alds1_5_d.test.cpp
@@ -64,3 +64,11 @@ redirect_from:
 - /library/src/dp/inversion_number.hpp.html
 title: "Inversion Number (\u8EE2\u5012\u6570)"
 ---
+# Inversion Number (転倒数)
+
+## 概要
+
+$ O(N \log N) $ で転倒数を求める。
+座圧する。
+転倒数はバブルソートの交換回数と等しい。
+
