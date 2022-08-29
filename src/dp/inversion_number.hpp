@@ -19,5 +19,5 @@ template <class T> long long inversion_number(std::vector<T>& A) {
 
 /**
  * @brief Inversion Number (転倒数)
- * @docs docs/data_structure/inversion_number.md
+ * @docs docs/dp/inversion_number.md
  */
