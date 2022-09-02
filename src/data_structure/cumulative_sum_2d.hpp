@@ -27,7 +27,11 @@ template <class T> struct cumulative_sum_2d {
     }
 
     // [lx, ly) x [rx, ry)
-    T query(int lx, int ly, int rx, int ry) { return (cum[rx][ry] - cum[lx][ry] - cum[rx][ly] + cum[lx][ly]); }
+    T sum(int lx, int ly, int rx, int ry) {
+        assert(0 <= lx and lx <= rx and rx <= H);
+        assert(0 <= ly and ly <= ry and ry <= W);
+        return (cum[rx][ry] - cum[lx][ry] - cum[rx][ly] + cum[lx][ly]);
+    }
 
     // A[x][y] = z
     void set(int x, int y, T z) { cum[x + 1][y + 1] = z; }
@@ -56,10 +60,13 @@ template <class T> struct cumulative_sum_2d {
         }
     }
 
-    T get(int x, int y) { return cum[x + 1][y + 1]; }
+    T operator()(int x, int y) {
+        assert(0 <= x and x < H and 0 <= y and y < W);
+        return cum[x + 1][y + 1];
+    }
 
     // output
-    friend ostream &operator<<(ostream &os, const cumulative_sum_2d &A) {
+    friend std::ostream &operator<<(std::ostream &os, const cumulative_sum_2d &A) {
         for (int i = 0; i < (int)A.cum.size(); i++) {
             for (int j = 0; j < (int)A.cum[i].size(); j++) {
                 os << A.cum[i][j] << " \n"[j == (int)A.cum[i].size() - 1];
