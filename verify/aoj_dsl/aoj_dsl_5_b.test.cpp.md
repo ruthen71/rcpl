@@ -31,29 +31,32 @@ data:
     \ lx, int ly, int rx, int ry) {\n        assert(0 <= lx and lx <= rx and rx <=\
     \ H);\n        assert(0 <= ly and ly <= ry and ry <= W);\n        return (cum[rx][ry]\
     \ - cum[lx][ry] - cum[rx][ly] + cum[lx][ly]);\n    }\n\n    // A[x][y] = z\n \
-    \   void set(int x, int y, T z) { cum[x + 1][y + 1] = z; }\n\n    // A[x][y] +=\
-    \ z\n    void add(int x, int y, T z) { cum[x + 1][y + 1] += z; }\n\n    // (i,\
-    \ j) \\in [lx, ly) x [rx, ry) cum[i][j] += z;\n    void imos(int lx, int ly, int\
-    \ rx, int ry, T z = 1) {\n        add(lx, ly, z);\n        add(lx, ry, -z);\n\
-    \        add(rx, ly, -z);\n        add(rx, ry, z);\n    }\n\n    void build()\
-    \ {\n        for (int i = 0; i < H + 1; i++) {\n            for (int j = 0; j\
-    \ < W; j++) {\n                cum[i][j + 1] += cum[i][j];\n            }\n  \
-    \      }\n        for (int i = 0; i < H; i++) {\n            for (int j = 0; j\
-    \ < W + 1; j++) {\n                cum[i + 1][j] += cum[i][j];\n            }\n\
-    \        }\n    }\n\n    T operator()(int x, int y) {\n        assert(0 <= x and\
-    \ x < H and 0 <= y and y < W);\n        return cum[x + 1][y + 1];\n    }\n\n \
-    \   // output\n    friend std::ostream &operator<<(std::ostream &os, const cumulative_sum_2d\
-    \ &A) {\n        for (int i = 0; i < (int)A.cum.size(); i++) {\n            for\
-    \ (int j = 0; j < (int)A.cum[i].size(); j++) {\n                os << A.cum[i][j]\
-    \ << \" \\n\"[j == (int)A.cum[i].size() - 1];\n            }\n        }\n    \
-    \    return os;\n    }\n};\n\n/**\n * @brief 2\u6B21\u5143\u7D2F\u7A4D\u548C\n\
-    \ * @docs docs/data_structure/cumulative_sum_2d.md\n */\n#line 7 \"verify/aoj_dsl/aoj_dsl_5_b.test.cpp\"\
-    \n\nint main() {\n    int N;\n    cin >> N;\n    int M = 1000;\n    cumulative_sum_2d<int>\
-    \ rui(M + 1, M + 1);\n    while (N--) {\n        int x1, y1, x2, y2;\n       \
-    \ cin >> x1 >> y1 >> x2 >> y2;\n        rui.imos(x1, y1, x2, y2);\n    }\n   \
-    \ rui.build();\n    int ans = 0;\n    for (int i = 0; i < M; i++)\n        for\
-    \ (int j = 0; j < M; j++) ans = max(ans, rui(i, j));\n    cout << ans << '\\n';\n\
-    \    return 0;\n}\n"
+    \   void set(int x, int y, T z) {\n        assert(0 <= x and x < H);\n       \
+    \ assert(0 <= y and y < W);\n        cum[x + 1][y + 1] = z;\n    }\n\n    // A[x][y]\
+    \ += z\n    void add(int x, int y, T z) {\n        assert(0 <= x and x < H);\n\
+    \        assert(0 <= y and y < W);\n        cum[x + 1][y + 1] += z;\n    }\n\n\
+    \    // (i, j) \\in [lx, ly) x [rx, ry) cum[i][j] += z;\n    void imos(int lx,\
+    \ int ly, int rx, int ry, T z = 1) {\n        add(lx, ly, z);\n        add(lx,\
+    \ ry, -z);\n        add(rx, ly, -z);\n        add(rx, ry, z);\n    }\n\n    void\
+    \ build() {\n        for (int i = 0; i < H + 1; i++) {\n            for (int j\
+    \ = 0; j < W; j++) {\n                cum[i][j + 1] += cum[i][j];\n          \
+    \  }\n        }\n        for (int i = 0; i < H; i++) {\n            for (int j\
+    \ = 0; j < W + 1; j++) {\n                cum[i + 1][j] += cum[i][j];\n      \
+    \      }\n        }\n    }\n\n    T operator()(int x, int y) {\n        assert(0\
+    \ <= x and x < H and 0 <= y and y < W);\n        return cum[x + 1][y + 1];\n \
+    \   }\n\n    // output\n    friend std::ostream &operator<<(std::ostream &os,\
+    \ const cumulative_sum_2d &A) {\n        for (int i = 0; i < (int)A.cum.size();\
+    \ i++) {\n            for (int j = 0; j < (int)A.cum[i].size(); j++) {\n     \
+    \           os << A.cum[i][j] << \" \\n\"[j == (int)A.cum[i].size() - 1];\n  \
+    \          }\n        }\n        return os;\n    }\n};\n\n/**\n * @brief 2\u6B21\
+    \u5143\u7D2F\u7A4D\u548C\n * @docs docs/data_structure/cumulative_sum_2d.md\n\
+    \ */\n#line 7 \"verify/aoj_dsl/aoj_dsl_5_b.test.cpp\"\n\nint main() {\n    int\
+    \ N;\n    cin >> N;\n    int M = 1000;\n    cumulative_sum_2d<int> rui(M + 1,\
+    \ M + 1);\n    while (N--) {\n        int x1, y1, x2, y2;\n        cin >> x1 >>\
+    \ y1 >> x2 >> y2;\n        rui.imos(x1, y1, x2, y2);\n    }\n    rui.build();\n\
+    \    int ans = 0;\n    for (int i = 0; i < M; i++)\n        for (int j = 0; j\
+    \ < M; j++) ans = max(ans, rui(i, j));\n    cout << ans << '\\n';\n    return\
+    \ 0;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_B\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"src/data_structure/cumulative_sum_2d.hpp\"\
     \n\nint main() {\n    int N;\n    cin >> N;\n    int M = 1000;\n    cumulative_sum_2d<int>\
@@ -67,7 +70,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_dsl/aoj_dsl_5_b.test.cpp
   requiredBy: []
-  timestamp: '2022-09-03 04:52:51+09:00'
+  timestamp: '2022-09-03 04:56:30+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/aoj_dsl/aoj_dsl_5_b.test.cpp
