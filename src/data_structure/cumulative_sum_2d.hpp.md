@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj_dsl/aoj_dsl_5_b.test.cpp
     title: verify/aoj_dsl/aoj_dsl_5_b.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     _deprecated_at_docs: docs/data_structure/cumulative_sum_2d.md
     document_title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
@@ -24,25 +24,27 @@ data:
     \ = 0; j < W; j++) {\n                cum[i][j + 1] += cum[i][j];\n          \
     \  }\n        }\n        for (int i = 0; i < H; i++) {\n            for (int j\
     \ = 0; j < W + 1; j++) {\n                cum[i + 1][j] += cum[i][j];\n      \
-    \      }\n        }\n    }\n\n    // [lx, ly) x [rx, ry)\n    T query(int lx,\
-    \ int ly, int rx, int ry) { return (cum[rx][ry] - cum[lx][ry] - cum[rx][ly] +\
-    \ cum[lx][ly]); }\n\n    // A[x][y] = z\n    void set(int x, int y, T z) { cum[x\
-    \ + 1][y + 1] = z; }\n\n    // A[x][y] += z\n    void add(int x, int y, T z) {\
-    \ cum[x + 1][y + 1] += z; }\n\n    // (i, j) \\in [lx, ly) x [rx, ry) cum[i][j]\
-    \ += z;\n    void imos(int lx, int ly, int rx, int ry, T z = 1) {\n        add(lx,\
-    \ ly, z);\n        add(lx, ry, -z);\n        add(rx, ly, -z);\n        add(rx,\
-    \ ry, z);\n    }\n\n    void build() {\n        for (int i = 0; i < H + 1; i++)\
-    \ {\n            for (int j = 0; j < W; j++) {\n                cum[i][j + 1]\
-    \ += cum[i][j];\n            }\n        }\n        for (int i = 0; i < H; i++)\
-    \ {\n            for (int j = 0; j < W + 1; j++) {\n                cum[i + 1][j]\
-    \ += cum[i][j];\n            }\n        }\n    }\n\n    T get(int x, int y) {\
-    \ return cum[x + 1][y + 1]; }\n\n    // output\n    friend ostream &operator<<(ostream\
-    \ &os, const cumulative_sum_2d &A) {\n        for (int i = 0; i < (int)A.cum.size();\
-    \ i++) {\n            for (int j = 0; j < (int)A.cum[i].size(); j++) {\n     \
-    \           os << A.cum[i][j] << \" \\n\"[j == (int)A.cum[i].size() - 1];\n  \
-    \          }\n        }\n        return os;\n    }\n};\n\n/**\n * @brief 2\u6B21\
-    \u5143\u7D2F\u7A4D\u548C\n * @docs docs/data_structure/cumulative_sum_2d.md\n\
-    \ */\n"
+    \      }\n        }\n    }\n\n    // [lx, ly) x [rx, ry)\n    T sum(int lx, int\
+    \ ly, int rx, int ry) {\n        assert(0 <= lx and lx <= rx and rx <= H);\n \
+    \       assert(0 <= ly and ly <= ry and ry <= W);\n        return (cum[rx][ry]\
+    \ - cum[lx][ry] - cum[rx][ly] + cum[lx][ly]);\n    }\n\n    // A[x][y] = z\n \
+    \   void set(int x, int y, T z) { cum[x + 1][y + 1] = z; }\n\n    // A[x][y] +=\
+    \ z\n    void add(int x, int y, T z) { cum[x + 1][y + 1] += z; }\n\n    // (i,\
+    \ j) \\in [lx, ly) x [rx, ry) cum[i][j] += z;\n    void imos(int lx, int ly, int\
+    \ rx, int ry, T z = 1) {\n        add(lx, ly, z);\n        add(lx, ry, -z);\n\
+    \        add(rx, ly, -z);\n        add(rx, ry, z);\n    }\n\n    void build()\
+    \ {\n        for (int i = 0; i < H + 1; i++) {\n            for (int j = 0; j\
+    \ < W; j++) {\n                cum[i][j + 1] += cum[i][j];\n            }\n  \
+    \      }\n        for (int i = 0; i < H; i++) {\n            for (int j = 0; j\
+    \ < W + 1; j++) {\n                cum[i + 1][j] += cum[i][j];\n            }\n\
+    \        }\n    }\n\n    T operator()(int x, int y) {\n        assert(0 <= x and\
+    \ x < H and 0 <= y and y < W);\n        return cum[x + 1][y + 1];\n    }\n\n \
+    \   // output\n    friend std::ostream &operator<<(std::ostream &os, const cumulative_sum_2d\
+    \ &A) {\n        for (int i = 0; i < (int)A.cum.size(); i++) {\n            for\
+    \ (int j = 0; j < (int)A.cum[i].size(); j++) {\n                os << A.cum[i][j]\
+    \ << \" \\n\"[j == (int)A.cum[i].size() - 1];\n            }\n        }\n    \
+    \    return os;\n    }\n};\n\n/**\n * @brief 2\u6B21\u5143\u7D2F\u7A4D\u548C\n\
+    \ * @docs docs/data_structure/cumulative_sum_2d.md\n */\n"
   code: "#pragma once\n\ntemplate <class T> struct cumulative_sum_2d {\n    std::vector<std::vector<T>>\
     \ cum;\n    int H, W;\n\n    cumulative_sum_2d(int W, int H) : H(H), W(W), cum(W\
     \ + 1, std::vector<T>(H + 1, 0)) {}\n\n    cumulative_sum_2d(std::vector<std::vector<T>>\
@@ -53,31 +55,33 @@ data:
     \     for (int j = 0; j < W; j++) {\n                cum[i][j + 1] += cum[i][j];\n\
     \            }\n        }\n        for (int i = 0; i < H; i++) {\n           \
     \ for (int j = 0; j < W + 1; j++) {\n                cum[i + 1][j] += cum[i][j];\n\
-    \            }\n        }\n    }\n\n    // [lx, ly) x [rx, ry)\n    T query(int\
-    \ lx, int ly, int rx, int ry) { return (cum[rx][ry] - cum[lx][ry] - cum[rx][ly]\
-    \ + cum[lx][ly]); }\n\n    // A[x][y] = z\n    void set(int x, int y, T z) { cum[x\
-    \ + 1][y + 1] = z; }\n\n    // A[x][y] += z\n    void add(int x, int y, T z) {\
-    \ cum[x + 1][y + 1] += z; }\n\n    // (i, j) \\in [lx, ly) x [rx, ry) cum[i][j]\
-    \ += z;\n    void imos(int lx, int ly, int rx, int ry, T z = 1) {\n        add(lx,\
-    \ ly, z);\n        add(lx, ry, -z);\n        add(rx, ly, -z);\n        add(rx,\
-    \ ry, z);\n    }\n\n    void build() {\n        for (int i = 0; i < H + 1; i++)\
-    \ {\n            for (int j = 0; j < W; j++) {\n                cum[i][j + 1]\
-    \ += cum[i][j];\n            }\n        }\n        for (int i = 0; i < H; i++)\
-    \ {\n            for (int j = 0; j < W + 1; j++) {\n                cum[i + 1][j]\
-    \ += cum[i][j];\n            }\n        }\n    }\n\n    T get(int x, int y) {\
-    \ return cum[x + 1][y + 1]; }\n\n    // output\n    friend ostream &operator<<(ostream\
-    \ &os, const cumulative_sum_2d &A) {\n        for (int i = 0; i < (int)A.cum.size();\
-    \ i++) {\n            for (int j = 0; j < (int)A.cum[i].size(); j++) {\n     \
-    \           os << A.cum[i][j] << \" \\n\"[j == (int)A.cum[i].size() - 1];\n  \
-    \          }\n        }\n        return os;\n    }\n};\n\n/**\n * @brief 2\u6B21\
-    \u5143\u7D2F\u7A4D\u548C\n * @docs docs/data_structure/cumulative_sum_2d.md\n\
-    \ */\n"
+    \            }\n        }\n    }\n\n    // [lx, ly) x [rx, ry)\n    T sum(int\
+    \ lx, int ly, int rx, int ry) {\n        assert(0 <= lx and lx <= rx and rx <=\
+    \ H);\n        assert(0 <= ly and ly <= ry and ry <= W);\n        return (cum[rx][ry]\
+    \ - cum[lx][ry] - cum[rx][ly] + cum[lx][ly]);\n    }\n\n    // A[x][y] = z\n \
+    \   void set(int x, int y, T z) { cum[x + 1][y + 1] = z; }\n\n    // A[x][y] +=\
+    \ z\n    void add(int x, int y, T z) { cum[x + 1][y + 1] += z; }\n\n    // (i,\
+    \ j) \\in [lx, ly) x [rx, ry) cum[i][j] += z;\n    void imos(int lx, int ly, int\
+    \ rx, int ry, T z = 1) {\n        add(lx, ly, z);\n        add(lx, ry, -z);\n\
+    \        add(rx, ly, -z);\n        add(rx, ry, z);\n    }\n\n    void build()\
+    \ {\n        for (int i = 0; i < H + 1; i++) {\n            for (int j = 0; j\
+    \ < W; j++) {\n                cum[i][j + 1] += cum[i][j];\n            }\n  \
+    \      }\n        for (int i = 0; i < H; i++) {\n            for (int j = 0; j\
+    \ < W + 1; j++) {\n                cum[i + 1][j] += cum[i][j];\n            }\n\
+    \        }\n    }\n\n    T operator()(int x, int y) {\n        assert(0 <= x and\
+    \ x < H and 0 <= y and y < W);\n        return cum[x + 1][y + 1];\n    }\n\n \
+    \   // output\n    friend std::ostream &operator<<(std::ostream &os, const cumulative_sum_2d\
+    \ &A) {\n        for (int i = 0; i < (int)A.cum.size(); i++) {\n            for\
+    \ (int j = 0; j < (int)A.cum[i].size(); j++) {\n                os << A.cum[i][j]\
+    \ << \" \\n\"[j == (int)A.cum[i].size() - 1];\n            }\n        }\n    \
+    \    return os;\n    }\n};\n\n/**\n * @brief 2\u6B21\u5143\u7D2F\u7A4D\u548C\n\
+    \ * @docs docs/data_structure/cumulative_sum_2d.md\n */\n"
   dependsOn: []
   isVerificationFile: false
   path: src/data_structure/cumulative_sum_2d.hpp
   requiredBy: []
-  timestamp: '2022-08-23 00:53:43+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2022-09-03 04:52:51+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/aoj_dsl/aoj_dsl_5_b.test.cpp
 documentation_of: src/data_structure/cumulative_sum_2d.hpp
@@ -93,7 +97,7 @@ title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
 2つの使い方が想定される
 1. ある2次元配列を入力し、さまざまな矩形和を求める場合
     - コンストラクタ引数にその2次元配列を直接取ると、勝手に構築する
-    - `query(lx, ly, rx, ry)`で $ [lx, rx) \times [ly, ry) $ の和を返す
+    - `sum(lx, ly, rx, ry)`で $ [lx, rx) \times [ly, ry) $ の和を返す
 1. 2次元imos法のように使いたい場合
     - コンストラクタ引数には配列のサイズを入力する
     - このとき、配列サイズは行列ともに1大きくする
