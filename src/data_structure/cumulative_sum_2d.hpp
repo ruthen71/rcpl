@@ -34,10 +34,18 @@ template <class T> struct cumulative_sum_2d {
     }
 
     // A[x][y] = z
-    void set(int x, int y, T z) { cum[x + 1][y + 1] = z; }
+    void set(int x, int y, T z) {
+        assert(0 <= x and x < H);
+        assert(0 <= y and y < W);
+        cum[x + 1][y + 1] = z;
+    }
 
     // A[x][y] += z
-    void add(int x, int y, T z) { cum[x + 1][y + 1] += z; }
+    void add(int x, int y, T z) {
+        assert(0 <= x and x < H);
+        assert(0 <= y and y < W);
+        cum[x + 1][y + 1] += z;
+    }
 
     // (i, j) \in [lx, ly) x [rx, ry) cum[i][j] += z;
     void imos(int lx, int ly, int rx, int ry, T z = 1) {
