@@ -42,6 +42,9 @@ data:
   - name: src/data_structure
     pages:
     - icon: ':heavy_check_mark:'
+      path: src/data_structure/cumulative_sum.hpp
+      title: "\u7D2F\u7A4D\u548C"
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/cumulative_sum_2d.hpp
       title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
     - icon: ':heavy_check_mark:'
@@ -109,6 +112,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
       title: verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/lc_data_structure/lc_static_range_sum.test.cpp
+      title: verify/lc_data_structure/lc_static_range_sum.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp
       title: verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp
