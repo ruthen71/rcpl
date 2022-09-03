@@ -33,9 +33,15 @@ data:
     - icon: ':warning:'
       path: src/algebra/monoid_max.hpp
       title: src/algebra/monoid_max.hpp
+    - icon: ':warning:'
+      path: src/algebra/monoid_max_index.hpp
+      title: src/algebra/monoid_max_index.hpp
     - icon: ':heavy_check_mark:'
       path: src/algebra/monoid_min.hpp
       title: src/algebra/monoid_min.hpp
+    - icon: ':warning:'
+      path: src/algebra/monoid_min_index.hpp
+      title: src/algebra/monoid_min_index.hpp
     - icon: ':heavy_check_mark:'
       path: src/algebra/monoid_sum.hpp
       title: src/algebra/monoid_sum.hpp
