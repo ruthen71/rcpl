@@ -41,5 +41,5 @@ title: src/algebra/monoid_min_index.hpp
 
 ## 使用例
 
-- https://atcoder.jp/contests/abc267/tasks/abc267_e
+- [ABC267 E](https://atcoder.jp/contests/abc267/tasks/abc267_e)
 
