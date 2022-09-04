@@ -7,8 +7,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/lc_graph/lc_graph_dijkstra.test.cpp
-    title: verify/lc_graph/lc_graph_dijkstra.test.cpp
+    path: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
+    title: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -85,7 +85,7 @@ data:
   timestamp: '2022-09-05 04:46:53+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/lc_graph/lc_graph_dijkstra.test.cpp
+  - verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
 documentation_of: src/graph/dijkstra.hpp
 layout: document
 redirect_from:

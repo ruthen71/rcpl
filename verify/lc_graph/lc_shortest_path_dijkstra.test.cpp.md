@@ -17,8 +17,8 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/shortest_path
     links:
     - https://judge.yosupo.jp/problem/shortest_path
-  bundledCode: "#line 1 \"verify/lc_graph/lc_graph_dijkstra.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/shortest_path\"\n\n#include <bits/stdc++.h>\n\
+  bundledCode: "#line 1 \"verify/lc_graph/lc_shortest_path_dijkstra.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/shortest_path\"\n\n#include <bits/stdc++.h>\n\
     \n#line 2 \"src/graph/dijkstra.hpp\"\n\n#line 2 \"src/graph/template.hpp\"\n\n\
     template <class T> struct edge {\n    int from, to;\n    T cost;\n    int id;\n\
     \n    edge(int from, int to, T cost = 1, int id = -1) : from(from), to(to), cost(cost),\
@@ -63,8 +63,8 @@ data:
     \ = v;\n                que.emplace(dist[e.to], e.to);\n            }\n      \
     \  }\n    }\n    return {dist, par, root};\n}\n\n/**\n * @brief Dijkstra's algorithm\
     \ (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)\n * @docs docs/graph/dijkstra.md\n\
-    \ */\n#line 6 \"verify/lc_graph/lc_graph_dijkstra.test.cpp\"\n\nint main() {\n\
-    \    int N, M, s, t;\n    std::cin >> N >> M >> s >> t;\n    graph<long long,\
+    \ */\n#line 6 \"verify/lc_graph/lc_shortest_path_dijkstra.test.cpp\"\n\nint main()\
+    \ {\n    int N, M, s, t;\n    std::cin >> N >> M >> s >> t;\n    graph<long long,\
     \ true> G(N);\n    G.read_graph(M, true, 0);\n    std::vector<int> ss = {s};\n\
     \    auto [d, p, r] = dijkstra(G, ss);\n    if (d[t] == std::numeric_limits<long\
     \ long>::max() / 4) {\n        std::cout << -1 << '\\n';\n        return 0;\n\
@@ -88,15 +88,15 @@ data:
   - src/graph/dijkstra.hpp
   - src/graph/template.hpp
   isVerificationFile: true
-  path: verify/lc_graph/lc_graph_dijkstra.test.cpp
+  path: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
   requiredBy: []
-  timestamp: '2022-09-05 04:46:53+09:00'
+  timestamp: '2022-09-05 04:49:47+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/lc_graph/lc_graph_dijkstra.test.cpp
+documentation_of: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/lc_graph/lc_graph_dijkstra.test.cpp
-- /verify/verify/lc_graph/lc_graph_dijkstra.test.cpp.html
-title: verify/lc_graph/lc_graph_dijkstra.test.cpp
+- /verify/verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
+- /verify/verify/lc_graph/lc_shortest_path_dijkstra.test.cpp.html
+title: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
 ---

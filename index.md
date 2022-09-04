@@ -147,8 +147,8 @@ data:
   - name: verify/lc_graph
     pages:
     - icon: ':heavy_check_mark:'
-      path: verify/lc_graph/lc_graph_dijkstra.test.cpp
-      title: verify/lc_graph/lc_graph_dijkstra.test.cpp
+      path: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
+      title: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
   - name: verify/lc_tree
     pages:
     - icon: ':heavy_check_mark:'

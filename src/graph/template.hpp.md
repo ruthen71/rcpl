@@ -13,8 +13,8 @@ data:
     title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/lc_graph/lc_graph_dijkstra.test.cpp
-    title: verify/lc_graph/lc_graph_dijkstra.test.cpp
+    path: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
+    title: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/lc_tree/lc_lowest_common_ancestor.test.cpp
     title: verify/lc_tree/lc_lowest_common_ancestor.test.cpp
@@ -98,7 +98,7 @@ data:
   verifiedWith:
   - verify/lc_tree/lc_lowest_common_ancestor.test.cpp
   - verify/lc_tree/lc_tree_diameter.test.cpp
-  - verify/lc_graph/lc_graph_dijkstra.test.cpp
+  - verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
 documentation_of: src/graph/template.hpp
 layout: document
 redirect_from:
