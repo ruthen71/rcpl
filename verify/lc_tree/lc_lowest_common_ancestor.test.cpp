@@ -9,7 +9,7 @@ int main() {
     std::cin >> N >> Q;
     graph<long long> G(N);
     G.read_parent(0);
-    lowest_common_ancestor<decltype(G)> tq(G, 0);
+    lowest_common_ancestor tq(G, 0);
     while (Q--) {
         int u, v;
         std::cin >> u >> v;
