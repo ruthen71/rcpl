@@ -98,4 +98,4 @@ title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"
 
 ## 概要
 
-- `auto [d, path] = tree_diameter<decltype(G)>(G);` で `d` に直径の長さが、`path` に辺の集合が入る
+- `auto [d, path] = tree_diameter(G);` で `d` に直径の長さが、`path` に辺の集合が入る

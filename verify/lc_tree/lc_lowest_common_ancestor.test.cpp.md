@@ -73,22 +73,22 @@ data:
     \ Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)\n * @docs docs/graph/lowest_common_ancestor.md\n\
     \ */\n#line 6 \"verify/lc_tree/lc_lowest_common_ancestor.test.cpp\"\n\nint main()\
     \ {\n    int N, Q;\n    std::cin >> N >> Q;\n    graph<long long> G(N);\n    G.read_parent(0);\n\
-    \    lowest_common_ancestor<decltype(G)> tq(G, 0);\n    while (Q--) {\n      \
-    \  int u, v;\n        std::cin >> u >> v;\n        std::cout << tq.lca(u, v) <<\
-    \ '\\n';\n    }\n    return 0;\n}\n"
+    \    lowest_common_ancestor tq(G, 0);\n    while (Q--) {\n        int u, v;\n\
+    \        std::cin >> u >> v;\n        std::cout << tq.lca(u, v) << '\\n';\n  \
+    \  }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include <bits/stdc++.h>\n\
     \n#include \"src/graph/lowest_common_ancestor.hpp\"\n\nint main() {\n    int N,\
     \ Q;\n    std::cin >> N >> Q;\n    graph<long long> G(N);\n    G.read_parent(0);\n\
-    \    lowest_common_ancestor<decltype(G)> tq(G, 0);\n    while (Q--) {\n      \
-    \  int u, v;\n        std::cin >> u >> v;\n        std::cout << tq.lca(u, v) <<\
-    \ '\\n';\n    }\n    return 0;\n}"
+    \    lowest_common_ancestor tq(G, 0);\n    while (Q--) {\n        int u, v;\n\
+    \        std::cin >> u >> v;\n        std::cout << tq.lca(u, v) << '\\n';\n  \
+    \  }\n    return 0;\n}"
   dependsOn:
   - src/graph/lowest_common_ancestor.hpp
   - src/graph/template.hpp
   isVerificationFile: true
   path: verify/lc_tree/lc_lowest_common_ancestor.test.cpp
   requiredBy: []
-  timestamp: '2022-09-04 19:39:24+09:00'
+  timestamp: '2022-09-05 05:02:50+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_tree/lc_lowest_common_ancestor.test.cpp

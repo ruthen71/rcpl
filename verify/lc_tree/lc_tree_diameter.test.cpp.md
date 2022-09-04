@@ -66,24 +66,24 @@ data:
     \ Tree Diameter (\u6728\u306E\u76F4\u5F84)\n * @docs docs/graph/tree_diameter.md\n\
     \ */\n#line 6 \"verify/lc_tree/lc_tree_diameter.test.cpp\"\n\nint main() {\n \
     \   int N;\n    std::cin >> N;\n    graph<long long> G(N);\n    G.read_tree(true,\
-    \ 0);\n    auto [d, path] = tree_diameter<decltype(G)>(G);\n    std::cout << d\
-    \ << ' ' << path.size() + 1 << '\\n';\n    std::cout << path.front().from;\n \
-    \   for (auto &e : path) {\n        std::cout << ' ' << e.to;\n    }\n    std::cout\
-    \ << '\\n';\n    return 0;\n}\n"
+    \ 0);\n    auto [d, path] = tree_diameter(G);\n    std::cout << d << ' ' << path.size()\
+    \ + 1 << '\\n';\n    std::cout << path.front().from;\n    for (auto &e : path)\
+    \ {\n        std::cout << ' ' << e.to;\n    }\n    std::cout << '\\n';\n    return\
+    \ 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tree_diameter\"\n\n#include\
     \ <bits/stdc++.h>\n\n#include \"src/graph/tree_diameter.hpp\"\n\nint main() {\n\
     \    int N;\n    std::cin >> N;\n    graph<long long> G(N);\n    G.read_tree(true,\
-    \ 0);\n    auto [d, path] = tree_diameter<decltype(G)>(G);\n    std::cout << d\
-    \ << ' ' << path.size() + 1 << '\\n';\n    std::cout << path.front().from;\n \
-    \   for (auto &e : path) {\n        std::cout << ' ' << e.to;\n    }\n    std::cout\
-    \ << '\\n';\n    return 0;\n}"
+    \ 0);\n    auto [d, path] = tree_diameter(G);\n    std::cout << d << ' ' << path.size()\
+    \ + 1 << '\\n';\n    std::cout << path.front().from;\n    for (auto &e : path)\
+    \ {\n        std::cout << ' ' << e.to;\n    }\n    std::cout << '\\n';\n    return\
+    \ 0;\n}"
   dependsOn:
   - src/graph/tree_diameter.hpp
   - src/graph/template.hpp
   isVerificationFile: true
   path: verify/lc_tree/lc_tree_diameter.test.cpp
   requiredBy: []
-  timestamp: '2022-09-04 19:39:24+09:00'
+  timestamp: '2022-09-05 05:02:50+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_tree/lc_tree_diameter.test.cpp
