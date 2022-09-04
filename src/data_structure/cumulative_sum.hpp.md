@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/aoj_other/aoj_0360.test.cpp
+    title: verify/aoj_other/aoj_0360.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/lc_data_structure/lc_static_range_sum.test.cpp
     title: verify/lc_data_structure/lc_static_range_sum.test.cpp
   _isVerificationFailed: false
@@ -20,43 +23,44 @@ data:
     \ i = 0; i < _n; i++) seg[i + 1] = seg[i] + A[i];\n    }\n\n    // [l, r)\n  \
     \  T sum(int l, int r) const {\n        assert(0 <= l and l <= r and r <= _n);\n\
     \        return seg[r] - seg[l];\n    }\n\n    // A[p] = x\n    void set(int p,\
-    \ T &x) {\n        assert(0 <= p and p < _n);\n        seg[p + 1] = x;\n    }\n\
-    \n    // A[p] += x\n    void add(int p, T &x) {\n        assert(0 <= p and p <\
+    \ T x) {\n        assert(0 <= p and p < _n);\n        seg[p + 1] = x;\n    }\n\
+    \n    // A[p] += x\n    void add(int p, T x) {\n        assert(0 <= p and p <\
     \ _n);\n        seg[p + 1] += x;\n    }\n\n    // A[l] += x, A[l + 1] += x, ...\
-    \ , A[r - 1] += x\n    void imos(int l, int r, T &x = 1) {\n        add(l, x);\n\
+    \ , A[r - 1] += x\n    void imos(int l, int r, T x = T(1)) {\n        add(l, x);\n\
     \        add(r, -x);\n    }\n\n    void build() {\n        for (int i = 0; i <\
     \ _n; i++) seg[i + 1] += seg[i];\n    }\n\n    T operator[](int p) const {\n \
-    \       assert(0 <= p and p <= _n);\n        return seg[p];\n    }\n\n    // output\n\
-    \    friend std::ostream &operator<<(std::ostream &os, const cumulative_sum &A)\
-    \ {\n        for (int i = 0; i < A._n + 1; i++) os << A[i] << \" \\n\"[i == A._n];\n\
-    \        return os;\n    }\n};\n\n/**\n * @brief \u7D2F\u7A4D\u548C\n * @docs\
-    \ docs/data_structure/cumulative_sum.md\n */\n"
+    \       assert(0 <= p and p < _n);\n        return seg[p + 1];\n    }\n\n    //\
+    \ output\n    friend std::ostream &operator<<(std::ostream &os, const cumulative_sum\
+    \ &A) {\n        for (int i = 0; i <= A._n; i++) os << A.seg[i] << \" \\n\"[i\
+    \ == A._n];\n        return os;\n    }\n};\n\n/**\n * @brief \u7D2F\u7A4D\u548C\
+    \n * @docs docs/data_structure/cumulative_sum.md\n */\n"
   code: "#pragma once\n\ntemplate <class T> struct cumulative_sum {\n    std::vector<T>\
     \ seg;\n    int _n;\n\n    cumulative_sum(int _n) : _n(_n), seg(_n + 1, 0) {}\n\
     \    cumulative_sum(std::vector<T> &A) {\n        _n = (int)A.size();\n      \
     \  seg.assign(_n + 1, T(0));\n        for (int i = 0; i < _n; i++) seg[i + 1]\
     \ = seg[i] + A[i];\n    }\n\n    // [l, r)\n    T sum(int l, int r) const {\n\
     \        assert(0 <= l and l <= r and r <= _n);\n        return seg[r] - seg[l];\n\
-    \    }\n\n    // A[p] = x\n    void set(int p, T &x) {\n        assert(0 <= p\
-    \ and p < _n);\n        seg[p + 1] = x;\n    }\n\n    // A[p] += x\n    void add(int\
-    \ p, T &x) {\n        assert(0 <= p and p < _n);\n        seg[p + 1] += x;\n \
-    \   }\n\n    // A[l] += x, A[l + 1] += x, ... , A[r - 1] += x\n    void imos(int\
-    \ l, int r, T &x = 1) {\n        add(l, x);\n        add(r, -x);\n    }\n\n  \
-    \  void build() {\n        for (int i = 0; i < _n; i++) seg[i + 1] += seg[i];\n\
-    \    }\n\n    T operator[](int p) const {\n        assert(0 <= p and p <= _n);\n\
-    \        return seg[p];\n    }\n\n    // output\n    friend std::ostream &operator<<(std::ostream\
-    \ &os, const cumulative_sum &A) {\n        for (int i = 0; i < A._n + 1; i++)\
-    \ os << A[i] << \" \\n\"[i == A._n];\n        return os;\n    }\n};\n\n/**\n *\
-    \ @brief \u7D2F\u7A4D\u548C\n * @docs docs/data_structure/cumulative_sum.md\n\
+    \    }\n\n    // A[p] = x\n    void set(int p, T x) {\n        assert(0 <= p and\
+    \ p < _n);\n        seg[p + 1] = x;\n    }\n\n    // A[p] += x\n    void add(int\
+    \ p, T x) {\n        assert(0 <= p and p < _n);\n        seg[p + 1] += x;\n  \
+    \  }\n\n    // A[l] += x, A[l + 1] += x, ... , A[r - 1] += x\n    void imos(int\
+    \ l, int r, T x = T(1)) {\n        add(l, x);\n        add(r, -x);\n    }\n\n\
+    \    void build() {\n        for (int i = 0; i < _n; i++) seg[i + 1] += seg[i];\n\
+    \    }\n\n    T operator[](int p) const {\n        assert(0 <= p and p < _n);\n\
+    \        return seg[p + 1];\n    }\n\n    // output\n    friend std::ostream &operator<<(std::ostream\
+    \ &os, const cumulative_sum &A) {\n        for (int i = 0; i <= A._n; i++) os\
+    \ << A.seg[i] << \" \\n\"[i == A._n];\n        return os;\n    }\n};\n\n/**\n\
+    \ * @brief \u7D2F\u7A4D\u548C\n * @docs docs/data_structure/cumulative_sum.md\n\
     \ */\n"
   dependsOn: []
   isVerificationFile: false
   path: src/data_structure/cumulative_sum.hpp
   requiredBy: []
-  timestamp: '2022-09-03 04:22:55+09:00'
+  timestamp: '2022-09-05 03:23:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_data_structure/lc_static_range_sum.test.cpp
+  - verify/aoj_other/aoj_0360.test.cpp
 documentation_of: src/data_structure/cumulative_sum.hpp
 layout: document
 redirect_from:

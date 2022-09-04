@@ -119,6 +119,9 @@ data:
   - name: verify/aoj_other
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/aoj_other/aoj_0360.test.cpp
+      title: verify/aoj_other/aoj_0360.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/aoj_other/aoj_1068.test.cpp
       title: verify/aoj_other/aoj_1068.test.cpp
   - name: verify/lc_data_structure
