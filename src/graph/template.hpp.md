@@ -3,9 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: src/graph/lowest_common_ancestor.hpp
+    title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
+  - icon: ':heavy_check_mark:'
     path: src/graph/tree_diameter.hpp
     title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/lc_tree/lc_lowest_common_ancestor.test.cpp
+    title: verify/lc_tree/lc_lowest_common_ancestor.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/lc_tree/lc_tree_diameter.test.cpp
     title: verify/lc_tree/lc_tree_diameter.test.cpp
@@ -31,17 +37,19 @@ data:
     \ b -= offset;\n            if (weight) {\n                T c;\n            \
     \    std::cin >> c;\n                add_edge(a, b, c);\n            } else {\n\
     \                add_edge(a, b);\n            }\n        }\n    }\n\n    void\
-    \ add_edge(const int &a, const int &b, T cost = 1) {\n        assert(0 <= a and\
-    \ a < N and 0 <= b and b < N);\n        if (!directed) G[b].push_back(edge_type(b,\
-    \ a, cost, M));\n        G[a].push_back(edge_type(a, b, cost, M++));\n    }\n\n\
-    \    inline std::vector<edge_type> &operator[](const int &k) { return G[k]; }\n\
-    \n    inline const std::vector<edge_type> &operator[](const int &k) const { return\
-    \ G[k]; }\n\n    friend std::ostream &operator<<(std::ostream &os, const graph<T>\
-    \ &G) {\n        os << \"V: \" << G.N << '\\n';\n        os << \"E: \" << G.M\
-    \ << '\\n';\n        for (int v = 0; v < G.N; v++) {\n            os << \"G[\"\
-    \ << v << \"] = \";\n            os << \"[ \";\n            for (auto &e : G[v])\
-    \ os << e << \" \";\n            os << \"]\\n\";\n        }\n        return os;\n\
-    \    }\n};\n"
+    \ read_parent(int offset = 1) {\n        for (int i = 1; i < N; i++) {\n     \
+    \       int p;\n            std::cin >> p;\n            p -= offset;\n       \
+    \     add_edge(i, p);\n        }\n    }\n\n    void add_edge(const int &a, const\
+    \ int &b, T cost = 1) {\n        assert(0 <= a and a < N and 0 <= b and b < N);\n\
+    \        if (!directed) G[b].push_back(edge_type(b, a, cost, M));\n        G[a].push_back(edge_type(a,\
+    \ b, cost, M++));\n    }\n\n    inline std::vector<edge_type> &operator[](const\
+    \ int &k) { return G[k]; }\n\n    inline const std::vector<edge_type> &operator[](const\
+    \ int &k) const { return G[k]; }\n\n    friend std::ostream &operator<<(std::ostream\
+    \ &os, const graph<T> &G) {\n        os << \"V: \" << G.N << '\\n';\n        os\
+    \ << \"E: \" << G.M << '\\n';\n        for (int v = 0; v < G.N; v++) {\n     \
+    \       os << \"G[\" << v << \"] = \";\n            os << \"[ \";\n          \
+    \  for (auto &e : G[v]) os << e << \" \";\n            os << \"]\\n\";\n     \
+    \   }\n        return os;\n    }\n};\n"
   code: "#pragma once\n\ntemplate <class T> struct edge {\n    int from, to;\n   \
     \ T cost;\n    int id;\n\n    edge(int from, int to, T cost = 1, int id = -1)\
     \ : from(from), to(to), cost(cost), id(id) {}\n\n    friend std::ostream &operator<<(std::ostream\
@@ -58,25 +66,30 @@ data:
     \ >> b;\n            a -= offset, b -= offset;\n            if (weight) {\n  \
     \              T c;\n                std::cin >> c;\n                add_edge(a,\
     \ b, c);\n            } else {\n                add_edge(a, b);\n            }\n\
-    \        }\n    }\n\n    void add_edge(const int &a, const int &b, T cost = 1)\
-    \ {\n        assert(0 <= a and a < N and 0 <= b and b < N);\n        if (!directed)\
-    \ G[b].push_back(edge_type(b, a, cost, M));\n        G[a].push_back(edge_type(a,\
-    \ b, cost, M++));\n    }\n\n    inline std::vector<edge_type> &operator[](const\
-    \ int &k) { return G[k]; }\n\n    inline const std::vector<edge_type> &operator[](const\
-    \ int &k) const { return G[k]; }\n\n    friend std::ostream &operator<<(std::ostream\
-    \ &os, const graph<T> &G) {\n        os << \"V: \" << G.N << '\\n';\n        os\
-    \ << \"E: \" << G.M << '\\n';\n        for (int v = 0; v < G.N; v++) {\n     \
-    \       os << \"G[\" << v << \"] = \";\n            os << \"[ \";\n          \
-    \  for (auto &e : G[v]) os << e << \" \";\n            os << \"]\\n\";\n     \
-    \   }\n        return os;\n    }\n};"
+    \        }\n    }\n\n    void read_parent(int offset = 1) {\n        for (int\
+    \ i = 1; i < N; i++) {\n            int p;\n            std::cin >> p;\n     \
+    \       p -= offset;\n            add_edge(i, p);\n        }\n    }\n\n    void\
+    \ add_edge(const int &a, const int &b, T cost = 1) {\n        assert(0 <= a and\
+    \ a < N and 0 <= b and b < N);\n        if (!directed) G[b].push_back(edge_type(b,\
+    \ a, cost, M));\n        G[a].push_back(edge_type(a, b, cost, M++));\n    }\n\n\
+    \    inline std::vector<edge_type> &operator[](const int &k) { return G[k]; }\n\
+    \n    inline const std::vector<edge_type> &operator[](const int &k) const { return\
+    \ G[k]; }\n\n    friend std::ostream &operator<<(std::ostream &os, const graph<T>\
+    \ &G) {\n        os << \"V: \" << G.N << '\\n';\n        os << \"E: \" << G.M\
+    \ << '\\n';\n        for (int v = 0; v < G.N; v++) {\n            os << \"G[\"\
+    \ << v << \"] = \";\n            os << \"[ \";\n            for (auto &e : G[v])\
+    \ os << e << \" \";\n            os << \"]\\n\";\n        }\n        return os;\n\
+    \    }\n};"
   dependsOn: []
   isVerificationFile: false
   path: src/graph/template.hpp
   requiredBy:
   - src/graph/tree_diameter.hpp
-  timestamp: '2022-09-04 19:21:59+09:00'
+  - src/graph/lowest_common_ancestor.hpp
+  timestamp: '2022-09-04 19:39:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/lc_tree/lc_lowest_common_ancestor.test.cpp
   - verify/lc_tree/lc_tree_diameter.test.cpp
 documentation_of: src/graph/template.hpp
 layout: document

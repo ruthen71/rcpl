@@ -79,6 +79,9 @@ data:
   - name: src/graph
     pages:
     - icon: ':heavy_check_mark:'
+      path: src/graph/lowest_common_ancestor.hpp
+      title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
+    - icon: ':heavy_check_mark:'
       path: src/graph/template.hpp
       title: src/graph/template.hpp
     - icon: ':heavy_check_mark:'
@@ -137,6 +140,9 @@ data:
       title: verify/lc_data_structure/lc_unionfind.test.cpp
   - name: verify/lc_tree
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/lc_tree/lc_lowest_common_ancestor.test.cpp
+      title: verify/lc_tree/lc_lowest_common_ancestor.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/lc_tree/lc_tree_diameter.test.cpp
       title: verify/lc_tree/lc_tree_diameter.test.cpp
