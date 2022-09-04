@@ -18,19 +18,19 @@ template <class T> struct cumulative_sum {
     }
 
     // A[p] = x
-    void set(int p, T &x) {
+    void set(int p, T x) {
         assert(0 <= p and p < _n);
         seg[p + 1] = x;
     }
 
     // A[p] += x
-    void add(int p, T &x) {
+    void add(int p, T x) {
         assert(0 <= p and p < _n);
         seg[p + 1] += x;
     }
 
     // A[l] += x, A[l + 1] += x, ... , A[r - 1] += x
-    void imos(int l, int r, T &x = 1) {
+    void imos(int l, int r, T x = T(1)) {
         add(l, x);
         add(r, -x);
     }
@@ -40,13 +40,13 @@ template <class T> struct cumulative_sum {
     }
 
     T operator[](int p) const {
-        assert(0 <= p and p <= _n);
-        return seg[p];
+        assert(0 <= p and p < _n);
+        return seg[p + 1];
     }
 
     // output
     friend std::ostream &operator<<(std::ostream &os, const cumulative_sum &A) {
-        for (int i = 0; i < A._n + 1; i++) os << A[i] << " \n"[i == A._n];
+        for (int i = 0; i <= A._n; i++) os << A.seg[i] << " \n"[i == A._n];
         return os;
     }
 };
