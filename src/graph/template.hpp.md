@@ -3,12 +3,18 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: src/graph/dijkstra.hpp
+    title: "Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
+  - icon: ':heavy_check_mark:'
     path: src/graph/lowest_common_ancestor.hpp
     title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
   - icon: ':heavy_check_mark:'
     path: src/graph/tree_diameter.hpp
     title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/lc_graph/lc_graph_dijkstra.test.cpp
+    title: verify/lc_graph/lc_graph_dijkstra.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/lc_tree/lc_lowest_common_ancestor.test.cpp
     title: verify/lc_tree/lc_lowest_common_ancestor.test.cpp
@@ -84,6 +90,7 @@ data:
   isVerificationFile: false
   path: src/graph/template.hpp
   requiredBy:
+  - src/graph/dijkstra.hpp
   - src/graph/tree_diameter.hpp
   - src/graph/lowest_common_ancestor.hpp
   timestamp: '2022-09-04 19:39:24+09:00'
@@ -91,6 +98,7 @@ data:
   verifiedWith:
   - verify/lc_tree/lc_lowest_common_ancestor.test.cpp
   - verify/lc_tree/lc_tree_diameter.test.cpp
+  - verify/lc_graph/lc_graph_dijkstra.test.cpp
 documentation_of: src/graph/template.hpp
 layout: document
 redirect_from:

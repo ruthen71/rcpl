@@ -79,6 +79,9 @@ data:
   - name: src/graph
     pages:
     - icon: ':heavy_check_mark:'
+      path: src/graph/dijkstra.hpp
+      title: "Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
+    - icon: ':heavy_check_mark:'
       path: src/graph/lowest_common_ancestor.hpp
       title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
     - icon: ':heavy_check_mark:'
@@ -141,6 +144,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/lc_data_structure/lc_unionfind.test.cpp
       title: verify/lc_data_structure/lc_unionfind.test.cpp
+  - name: verify/lc_graph
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/lc_graph/lc_graph_dijkstra.test.cpp
+      title: verify/lc_graph/lc_graph_dijkstra.test.cpp
   - name: verify/lc_tree
     pages:
     - icon: ':heavy_check_mark:'
