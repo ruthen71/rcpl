@@ -43,6 +43,15 @@ template <class T, bool directed = false> struct graph {
         }
     }
 
+    void read_parent(int offset = 1) {
+        for (int i = 1; i < N; i++) {
+            int p;
+            std::cin >> p;
+            p -= offset;
+            add_edge(i, p);
+        }
+    }
+
     void add_edge(const int &a, const int &b, T cost = 1) {
         assert(0 <= a and a < N and 0 <= b and b < N);
         if (!directed) G[b].push_back(edge_type(b, a, cost, M));
