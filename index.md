@@ -50,7 +50,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data_structure/cumulative_sum.hpp
       title: "\u7D2F\u7A4D\u548C"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/cumulative_sum_2d.hpp
       title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
     - icon: ':heavy_check_mark:'
@@ -76,6 +76,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/dp/inversion_number.hpp
       title: "Inversion Number (\u8EE2\u5012\u6570)"
+  - name: src/graph
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: src/graph/template.hpp
+      title: src/graph/template.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/graph/tree_diameter.hpp
+      title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"
   verificationCategories:
   - name: verify/aoj_alds1
     pages:
@@ -102,7 +110,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
       title: verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj_dsl/aoj_dsl_5_b.test.cpp
       title: verify/aoj_dsl/aoj_dsl_5_b.test.cpp
   - name: verify/aoj_other
@@ -127,6 +135,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/lc_data_structure/lc_unionfind.test.cpp
       title: verify/lc_data_structure/lc_unionfind.test.cpp
+  - name: verify/lc_tree
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/lc_tree/lc_tree_diameter.test.cpp
+      title: verify/lc_tree/lc_tree_diameter.test.cpp
   - name: verify/yuki
     pages:
     - icon: ':heavy_check_mark:'

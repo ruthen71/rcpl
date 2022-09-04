@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_dsl/aoj_dsl_5_b.test.cpp
     title: verify/aoj_dsl/aoj_dsl_5_b.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/data_structure/cumulative_sum_2d.md
     document_title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
@@ -87,7 +87,7 @@ data:
   path: src/data_structure/cumulative_sum_2d.hpp
   requiredBy: []
   timestamp: '2022-09-03 04:56:30+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_dsl/aoj_dsl_5_b.test.cpp
 documentation_of: src/data_structure/cumulative_sum_2d.hpp
