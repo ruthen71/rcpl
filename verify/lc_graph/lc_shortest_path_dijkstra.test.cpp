@@ -10,8 +10,9 @@ int main() {
     graph<long long, true> G(N);
     G.read_graph(M, true, 0);
     std::vector<int> ss = {s};
-    auto [d, p, r] = dijkstra(G, ss);
-    if (d[t] == std::numeric_limits<long long>::max() / 4) {
+    const long long INF = 1LL << 60;
+    auto [d, p, r] = dijkstra(G, ss, INF);
+    if (d[t] == INF) {
         std::cout << -1 << '\n';
         return 0;
     }

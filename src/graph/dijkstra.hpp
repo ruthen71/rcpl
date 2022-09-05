@@ -4,9 +4,8 @@
 
 template <class Graph>
 std::tuple<std::vector<typename Graph::cost_type>, std::vector<int>, std::vector<int>>  //
-dijkstra(Graph &G, std::vector<int> &s) {
+dijkstra(Graph &G, std::vector<int> &s, const typename Graph::cost_type INF = std::numeric_limits<typename Graph::cost_type>::max() / 4) {
     using T = typename Graph::cost_type;
-    const T INF = std::numeric_limits<T>::max() / 4;
 
     int N = (int)G.size();
     std::vector<T> dist(N, INF);
