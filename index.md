@@ -94,6 +94,20 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/graph/tree_diameter.hpp
       title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"
+  - name: src/math
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: src/math/divisor.hpp
+      title: src/math/divisor.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/math/pow_mod.hpp
+      title: src/math/pow_mod.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/math/prime_factor.hpp
+      title: src/math/prime_factor.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/math/totient.hpp
+      title: src/math/totient.hpp
   verificationCategories:
   - name: verify/aoj_alds1
     pages:
@@ -128,6 +142,22 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_grl/aoj_grl_1_b.test.cpp
       title: verify/aoj_grl/aoj_grl_1_b.test.cpp
+  - name: verify/aoj_itp1
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_itp1/aoj_itp1_3_d.test.cpp
+      title: verify/aoj_itp1/aoj_itp1_3_d.test.cpp
+  - name: verify/aoj_ntl
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_ntl/aoj_ntl_1_a.test.cpp
+      title: verify/aoj_ntl/aoj_ntl_1_a.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_ntl/aoj_ntl_1_b.test.cpp
+      title: verify/aoj_ntl/aoj_ntl_1_b.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_ntl/aoj_ntl_1_d.test.cpp
+      title: verify/aoj_ntl/aoj_ntl_1_d.test.cpp
   - name: verify/aoj_other
     pages:
     - icon: ':heavy_check_mark:'
