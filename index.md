@@ -79,6 +79,10 @@ data:
   - name: src/graph
     pages:
     - icon: ':heavy_check_mark:'
+      path: src/graph/bellman_ford.hpp
+      title: "Bellman-Ford algorithm (\u30D9\u30EB\u30DE\u30F3\u30D5\u30A9\u30FC\u30C9\
+        \u6CD5)"
+    - icon: ':heavy_check_mark:'
       path: src/graph/dijkstra.hpp
       title: "Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
     - icon: ':heavy_check_mark:'
@@ -119,6 +123,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_dsl/aoj_dsl_5_b.test.cpp
       title: verify/aoj_dsl/aoj_dsl_5_b.test.cpp
+  - name: verify/aoj_grl
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_grl/aoj_grl_1_b.test.cpp
+      title: verify/aoj_grl/aoj_grl_1_b.test.cpp
   - name: verify/aoj_other
     pages:
     - icon: ':heavy_check_mark:'
