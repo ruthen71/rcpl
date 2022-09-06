@@ -47,7 +47,7 @@ data:
       title: src/algebra/monoid_sum.hpp
   - name: src/data_structure
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/cumulative_sum.hpp
       title: "\u7D2F\u7A4D\u548C"
     - icon: ':heavy_check_mark:'
@@ -117,7 +117,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/totient.hpp
       title: src/math/totient.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/math/totient_table.hpp
       title: src/math/totient_table.hpp
   verificationCategories:
@@ -184,7 +184,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_other/aoj_1068.test.cpp
       title: verify/aoj_other/aoj_1068.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj_other/aoj_2286.test.cpp
       title: verify/aoj_other/aoj_2286.test.cpp
   - name: verify/lc_data_structure
