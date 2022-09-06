@@ -6,12 +6,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_other/aoj_0360.test.cpp
     title: verify/aoj_other/aoj_0360.test.cpp
+  - icon: ':x:'
+    path: verify/aoj_other/aoj_2286.test.cpp
+    title: verify/aoj_other/aoj_2286.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/lc_data_structure/lc_static_range_sum.test.cpp
     title: verify/lc_data_structure/lc_static_range_sum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/data_structure/cumulative_sum.md
     document_title: "\u7D2F\u7A4D\u548C"
@@ -57,9 +60,10 @@ data:
   path: src/data_structure/cumulative_sum.hpp
   requiredBy: []
   timestamp: '2022-09-05 03:23:47+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/lc_data_structure/lc_static_range_sum.test.cpp
+  - verify/aoj_other/aoj_2286.test.cpp
   - verify/aoj_other/aoj_0360.test.cpp
 documentation_of: src/data_structure/cumulative_sum.hpp
 layout: document

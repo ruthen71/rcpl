@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data_structure/cumulative_sum.hpp
     title: "\u7D2F\u7A4D\u548C"
   _extendedRequiredBy: []
