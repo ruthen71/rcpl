@@ -100,17 +100,32 @@ data:
       path: src/math/divisor.hpp
       title: src/math/divisor.hpp
     - icon: ':heavy_check_mark:'
+      path: src/math/enumerate_primes.hpp
+      title: src/math/enumerate_primes.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/math/osa_k.hpp
+      title: src/math/osa_k.hpp
+    - icon: ':heavy_check_mark:'
       path: src/math/pow_mod.hpp
       title: src/math/pow_mod.hpp
     - icon: ':heavy_check_mark:'
       path: src/math/prime_factor.hpp
       title: src/math/prime_factor.hpp
     - icon: ':heavy_check_mark:'
+      path: src/math/prime_table.hpp
+      title: src/math/prime_table.hpp
+    - icon: ':heavy_check_mark:'
       path: src/math/totient.hpp
       title: src/math/totient.hpp
   verificationCategories:
   - name: verify/aoj_alds1
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_alds1/aoj_alds1_1_c.test.cpp
+      title: verify/aoj_alds1/aoj_alds1_1_c.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_alds1/aoj_alds1_1_c_osa_k.test.cpp
+      title: verify/aoj_alds1/aoj_alds1_1_c_osa_k.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj_alds1/aoj_alds1_5_d.test.cpp
       title: verify/aoj_alds1/aoj_alds1_5_d.test.cpp
@@ -188,6 +203,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
       title: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
+  - name: verify/lc_math
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/lc_math/lc_enumerate_primes.test.cpp
+      title: verify/lc_math/lc_enumerate_primes.test.cpp
   - name: verify/lc_tree
     pages:
     - icon: ':heavy_check_mark:'
