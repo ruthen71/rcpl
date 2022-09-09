@@ -62,12 +62,10 @@ template <class T, bool directed = false> struct graph {
 
     inline const std::vector<edge_type> &operator[](const int &k) const { return G[k]; }
 
-    friend std::ostream &operator<<(std::ostream &os, const graph<T> &G) {
-        os << "V: " << G.N << '\n';
-        os << "E: " << G.M << '\n';
+    friend std::ostream &operator<<(std::ostream &os, const graph<T, directed> &G) {
+        os << "V: " << G.N << "\nE: " << G.M << '\n';
         for (int v = 0; v < G.N; v++) {
-            os << "G[" << v << "] = ";
-            os << "[ ";
+            os << "G[" << v << "] = [";
             for (auto &e : G[v]) os << e << " ";
             os << "]\n";
         }
