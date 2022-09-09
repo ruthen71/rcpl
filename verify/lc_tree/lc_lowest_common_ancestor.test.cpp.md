@@ -44,22 +44,21 @@ data:
     \ a, cost, M));\n        G[a].push_back(edge_type(a, b, cost, M++));\n    }\n\n\
     \    inline std::vector<edge_type> &operator[](const int &k) { return G[k]; }\n\
     \n    inline const std::vector<edge_type> &operator[](const int &k) const { return\
-    \ G[k]; }\n\n    friend std::ostream &operator<<(std::ostream &os, const graph<T>\
-    \ &G) {\n        os << \"V: \" << G.N << '\\n';\n        os << \"E: \" << G.M\
-    \ << '\\n';\n        for (int v = 0; v < G.N; v++) {\n            os << \"G[\"\
-    \ << v << \"] = \";\n            os << \"[ \";\n            for (auto &e : G[v])\
-    \ os << e << \" \";\n            os << \"]\\n\";\n        }\n        return os;\n\
-    \    }\n};\n#line 4 \"src/graph/lowest_common_ancestor.hpp\"\n\ntemplate <class\
-    \ Graph> struct lowest_common_ancestor {\n    std::vector<int> depth;\n    std::vector<std::vector<int>>\
-    \ parent;\n    int n, LOG;\n\n    lowest_common_ancestor(Graph &G, int root =\
-    \ 0) : n(G.size()), LOG(32 - __builtin_clz(G.size())) {\n        depth.assign(n,\
-    \ 0);\n        parent.assign(LOG, std::vector<int>(n));\n        auto dfs = [&](auto\
-    \ f, int cur, int par) -> void {\n            parent[0][cur] = par;\n        \
-    \    for (auto &e : G[cur]) {\n                if (e.to == par) continue;\n  \
-    \              depth[e.to] = depth[cur] + 1;\n                f(f, e.to, cur);\n\
-    \            }\n        };\n        dfs(dfs, root, -1);\n        for (int k =\
-    \ 0; k + 1 < LOG; k++) {\n            for (int v = 0; v < n; v++) {\n        \
-    \        parent[k + 1][v] = (parent[k][v] < 0 ? -1 : parent[k][parent[k][v]]);\n\
+    \ G[k]; }\n\n    friend std::ostream &operator<<(std::ostream &os, const graph<T,\
+    \ directed> &G) {\n        os << \"V: \" << G.N << \"\\nE: \" << G.M << '\\n';\n\
+    \        for (int v = 0; v < G.N; v++) {\n            os << \"G[\" << v << \"\
+    ] = [\";\n            for (auto &e : G[v]) os << e << \" \";\n            os <<\
+    \ \"]\\n\";\n        }\n        return os;\n    }\n};\n#line 4 \"src/graph/lowest_common_ancestor.hpp\"\
+    \n\ntemplate <class Graph> struct lowest_common_ancestor {\n    std::vector<int>\
+    \ depth;\n    std::vector<std::vector<int>> parent;\n    int n, LOG;\n\n    lowest_common_ancestor(Graph\
+    \ &G, int root = 0) : n(G.size()), LOG(32 - __builtin_clz(G.size())) {\n     \
+    \   depth.assign(n, 0);\n        parent.assign(LOG, std::vector<int>(n));\n  \
+    \      auto dfs = [&](auto f, int cur, int par) -> void {\n            parent[0][cur]\
+    \ = par;\n            for (auto &e : G[cur]) {\n                if (e.to == par)\
+    \ continue;\n                depth[e.to] = depth[cur] + 1;\n                f(f,\
+    \ e.to, cur);\n            }\n        };\n        dfs(dfs, root, -1);\n      \
+    \  for (int k = 0; k + 1 < LOG; k++) {\n            for (int v = 0; v < n; v++)\
+    \ {\n                parent[k + 1][v] = (parent[k][v] < 0 ? -1 : parent[k][parent[k][v]]);\n\
     \            }\n        }\n    }\n\n    int lca(int u, int v) {\n        assert((int)depth.size()\
     \ == n);\n        if (depth[u] > depth[v]) std::swap(u, v);\n        // depth[u]\
     \ <= depth[v]\n        for (int k = 0; k < LOG; k++)\n            if ((depth[v]\
@@ -88,7 +87,7 @@ data:
   isVerificationFile: true
   path: verify/lc_tree/lc_lowest_common_ancestor.test.cpp
   requiredBy: []
-  timestamp: '2022-09-05 05:02:50+09:00'
+  timestamp: '2022-09-09 18:41:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_tree/lc_lowest_common_ancestor.test.cpp

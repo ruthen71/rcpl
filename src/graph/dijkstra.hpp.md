@@ -42,27 +42,26 @@ data:
     \ a, cost, M));\n        G[a].push_back(edge_type(a, b, cost, M++));\n    }\n\n\
     \    inline std::vector<edge_type> &operator[](const int &k) { return G[k]; }\n\
     \n    inline const std::vector<edge_type> &operator[](const int &k) const { return\
-    \ G[k]; }\n\n    friend std::ostream &operator<<(std::ostream &os, const graph<T>\
-    \ &G) {\n        os << \"V: \" << G.N << '\\n';\n        os << \"E: \" << G.M\
-    \ << '\\n';\n        for (int v = 0; v < G.N; v++) {\n            os << \"G[\"\
-    \ << v << \"] = \";\n            os << \"[ \";\n            for (auto &e : G[v])\
-    \ os << e << \" \";\n            os << \"]\\n\";\n        }\n        return os;\n\
-    \    }\n};\n#line 4 \"src/graph/dijkstra.hpp\"\n\ntemplate <class Graph>\nstd::tuple<std::vector<typename\
-    \ Graph::cost_type>, std::vector<int>, std::vector<int>>  //\ndijkstra(Graph &G,\
-    \ std::vector<int> &s, const typename Graph::cost_type INF = std::numeric_limits<typename\
-    \ Graph::cost_type>::max() / 4) {\n    using T = typename Graph::cost_type;\n\n\
-    \    int N = (int)G.size();\n    std::vector<T> dist(N, INF);\n    std::vector<int>\
-    \ par(N, -1), root(N, -1);\n\n    std::priority_queue<std::pair<T, int>, std::vector<std::pair<T,\
-    \ int>>, std::greater<std::pair<T, int>>> que;\n\n    for (auto &v : s) {\n  \
-    \      dist[v] = 0;\n        root[v] = v;\n        que.emplace(T(0), v);\n   \
-    \ }\n\n    while (!que.empty()) {\n        auto [d, v] = que.top();\n        que.pop();\n\
-    \        if (dist[v] != d) continue;  // dist[v] < d\n        for (auto &e : G[v])\
-    \ {\n            if (dist[e.to] > d + e.cost) {\n                dist[e.to] =\
-    \ d + e.cost;\n                root[e.to] = root[v];\n                par[e.to]\
-    \ = v;\n                que.emplace(dist[e.to], e.to);\n            }\n      \
-    \  }\n    }\n    return {dist, par, root};\n}\n\n/**\n * @brief Dijkstra's algorithm\
-    \ (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)\n * @docs docs/graph/dijkstra.md\n\
-    \ */\n"
+    \ G[k]; }\n\n    friend std::ostream &operator<<(std::ostream &os, const graph<T,\
+    \ directed> &G) {\n        os << \"V: \" << G.N << \"\\nE: \" << G.M << '\\n';\n\
+    \        for (int v = 0; v < G.N; v++) {\n            os << \"G[\" << v << \"\
+    ] = [\";\n            for (auto &e : G[v]) os << e << \" \";\n            os <<\
+    \ \"]\\n\";\n        }\n        return os;\n    }\n};\n#line 4 \"src/graph/dijkstra.hpp\"\
+    \n\ntemplate <class Graph>\nstd::tuple<std::vector<typename Graph::cost_type>,\
+    \ std::vector<int>, std::vector<int>>  //\ndijkstra(Graph &G, std::vector<int>\
+    \ &s, const typename Graph::cost_type INF = std::numeric_limits<typename Graph::cost_type>::max()\
+    \ / 4) {\n    using T = typename Graph::cost_type;\n\n    int N = (int)G.size();\n\
+    \    std::vector<T> dist(N, INF);\n    std::vector<int> par(N, -1), root(N, -1);\n\
+    \n    std::priority_queue<std::pair<T, int>, std::vector<std::pair<T, int>>, std::greater<std::pair<T,\
+    \ int>>> que;\n\n    for (auto &v : s) {\n        dist[v] = 0;\n        root[v]\
+    \ = v;\n        que.emplace(T(0), v);\n    }\n\n    while (!que.empty()) {\n \
+    \       auto [d, v] = que.top();\n        que.pop();\n        if (dist[v] != d)\
+    \ continue;  // dist[v] < d\n        for (auto &e : G[v]) {\n            if (dist[e.to]\
+    \ > d + e.cost) {\n                dist[e.to] = d + e.cost;\n                root[e.to]\
+    \ = root[v];\n                par[e.to] = v;\n                que.emplace(dist[e.to],\
+    \ e.to);\n            }\n        }\n    }\n    return {dist, par, root};\n}\n\n\
+    /**\n * @brief Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5\
+    )\n * @docs docs/graph/dijkstra.md\n */\n"
   code: "#pragma once\n\n#include \"src/graph/template.hpp\"\n\ntemplate <class Graph>\n\
     std::tuple<std::vector<typename Graph::cost_type>, std::vector<int>, std::vector<int>>\
     \  //\ndijkstra(Graph &G, std::vector<int> &s, const typename Graph::cost_type\
@@ -84,7 +83,7 @@ data:
   isVerificationFile: false
   path: src/graph/dijkstra.hpp
   requiredBy: []
-  timestamp: '2022-09-06 00:48:30+09:00'
+  timestamp: '2022-09-09 18:41:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_graph/lc_shortest_path_dijkstra.test.cpp

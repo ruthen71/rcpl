@@ -41,26 +41,25 @@ data:
     \ a, cost, M));\n        G[a].push_back(edge_type(a, b, cost, M++));\n    }\n\n\
     \    inline std::vector<edge_type> &operator[](const int &k) { return G[k]; }\n\
     \n    inline const std::vector<edge_type> &operator[](const int &k) const { return\
-    \ G[k]; }\n\n    friend std::ostream &operator<<(std::ostream &os, const graph<T>\
-    \ &G) {\n        os << \"V: \" << G.N << '\\n';\n        os << \"E: \" << G.M\
-    \ << '\\n';\n        for (int v = 0; v < G.N; v++) {\n            os << \"G[\"\
-    \ << v << \"] = \";\n            os << \"[ \";\n            for (auto &e : G[v])\
-    \ os << e << \" \";\n            os << \"]\\n\";\n        }\n        return os;\n\
-    \    }\n};\n#line 4 \"src/graph/tree_diameter.hpp\"\n\ntemplate <class Graph>\n\
-    std::pair<typename Graph::cost_type, std::vector<typename Graph::edge_type>> \
-    \ //\ntree_diameter(Graph &G) {\n    using T = typename Graph::cost_type;\n  \
-    \  std::vector<int> to(G.size(), -1);\n\n    auto dfs = [&](auto f, int cur, int\
-    \ par) -> std::pair<T, int> {\n        std::pair<T, int> ret = {0, cur};\n   \
-    \     for (auto &e : G[cur]) {\n            if (e.to == par) continue;\n     \
-    \       auto cost = f(f, e.to, cur);\n            cost.first += e.cost;\n    \
-    \        if (ret.first < cost.first) {\n                ret = cost;\n        \
-    \        to[cur] = e.to;\n            }\n        }\n        return ret;\n    };\n\
-    \n    auto s = dfs(dfs, 0, -1);\n    auto t = dfs(dfs, s.second, -1);\n\n    int\
-    \ cur = s.second;\n    std::vector<typename Graph::edge_type> path;\n    while\
-    \ (cur != t.second) {\n        for (auto &e : G[cur]) {\n            if (to[cur]\
-    \ == e.to) {\n                path.emplace_back(e);\n            }\n        }\n\
-    \        cur = to[cur];\n    }\n    return {t.first, path};\n}\n\n/**\n * @brief\
-    \ Tree Diameter (\u6728\u306E\u76F4\u5F84)\n * @docs docs/graph/tree_diameter.md\n\
+    \ G[k]; }\n\n    friend std::ostream &operator<<(std::ostream &os, const graph<T,\
+    \ directed> &G) {\n        os << \"V: \" << G.N << \"\\nE: \" << G.M << '\\n';\n\
+    \        for (int v = 0; v < G.N; v++) {\n            os << \"G[\" << v << \"\
+    ] = [\";\n            for (auto &e : G[v]) os << e << \" \";\n            os <<\
+    \ \"]\\n\";\n        }\n        return os;\n    }\n};\n#line 4 \"src/graph/tree_diameter.hpp\"\
+    \n\ntemplate <class Graph>\nstd::pair<typename Graph::cost_type, std::vector<typename\
+    \ Graph::edge_type>>  //\ntree_diameter(Graph &G) {\n    using T = typename Graph::cost_type;\n\
+    \    std::vector<int> to(G.size(), -1);\n\n    auto dfs = [&](auto f, int cur,\
+    \ int par) -> std::pair<T, int> {\n        std::pair<T, int> ret = {0, cur};\n\
+    \        for (auto &e : G[cur]) {\n            if (e.to == par) continue;\n  \
+    \          auto cost = f(f, e.to, cur);\n            cost.first += e.cost;\n \
+    \           if (ret.first < cost.first) {\n                ret = cost;\n     \
+    \           to[cur] = e.to;\n            }\n        }\n        return ret;\n \
+    \   };\n\n    auto s = dfs(dfs, 0, -1);\n    auto t = dfs(dfs, s.second, -1);\n\
+    \n    int cur = s.second;\n    std::vector<typename Graph::edge_type> path;\n\
+    \    while (cur != t.second) {\n        for (auto &e : G[cur]) {\n           \
+    \ if (to[cur] == e.to) {\n                path.emplace_back(e);\n            }\n\
+    \        }\n        cur = to[cur];\n    }\n    return {t.first, path};\n}\n\n\
+    /**\n * @brief Tree Diameter (\u6728\u306E\u76F4\u5F84)\n * @docs docs/graph/tree_diameter.md\n\
     \ */\n"
   code: "#pragma once\n\n#include \"src/graph/template.hpp\"\n\ntemplate <class Graph>\n\
     std::pair<typename Graph::cost_type, std::vector<typename Graph::edge_type>> \
@@ -83,7 +82,7 @@ data:
   isVerificationFile: false
   path: src/graph/tree_diameter.hpp
   requiredBy: []
-  timestamp: '2022-09-04 19:39:24+09:00'
+  timestamp: '2022-09-09 18:41:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_tree/lc_tree_diameter.test.cpp

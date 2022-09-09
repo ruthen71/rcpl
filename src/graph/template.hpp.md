@@ -58,11 +58,10 @@ data:
     \ b, cost, M++));\n    }\n\n    inline std::vector<edge_type> &operator[](const\
     \ int &k) { return G[k]; }\n\n    inline const std::vector<edge_type> &operator[](const\
     \ int &k) const { return G[k]; }\n\n    friend std::ostream &operator<<(std::ostream\
-    \ &os, const graph<T> &G) {\n        os << \"V: \" << G.N << '\\n';\n        os\
-    \ << \"E: \" << G.M << '\\n';\n        for (int v = 0; v < G.N; v++) {\n     \
-    \       os << \"G[\" << v << \"] = \";\n            os << \"[ \";\n          \
-    \  for (auto &e : G[v]) os << e << \" \";\n            os << \"]\\n\";\n     \
-    \   }\n        return os;\n    }\n};\n"
+    \ &os, const graph<T, directed> &G) {\n        os << \"V: \" << G.N << \"\\nE:\
+    \ \" << G.M << '\\n';\n        for (int v = 0; v < G.N; v++) {\n            os\
+    \ << \"G[\" << v << \"] = [\";\n            for (auto &e : G[v]) os << e << \"\
+    \ \";\n            os << \"]\\n\";\n        }\n        return os;\n    }\n};\n"
   code: "#pragma once\n\ntemplate <class T> struct edge {\n    int from, to;\n   \
     \ T cost;\n    int id;\n\n    edge(int from, int to, T cost = 1, int id = -1)\
     \ : from(from), to(to), cost(cost), id(id) {}\n\n    friend std::ostream &operator<<(std::ostream\
@@ -87,12 +86,11 @@ data:
     \ a, cost, M));\n        G[a].push_back(edge_type(a, b, cost, M++));\n    }\n\n\
     \    inline std::vector<edge_type> &operator[](const int &k) { return G[k]; }\n\
     \n    inline const std::vector<edge_type> &operator[](const int &k) const { return\
-    \ G[k]; }\n\n    friend std::ostream &operator<<(std::ostream &os, const graph<T>\
-    \ &G) {\n        os << \"V: \" << G.N << '\\n';\n        os << \"E: \" << G.M\
-    \ << '\\n';\n        for (int v = 0; v < G.N; v++) {\n            os << \"G[\"\
-    \ << v << \"] = \";\n            os << \"[ \";\n            for (auto &e : G[v])\
-    \ os << e << \" \";\n            os << \"]\\n\";\n        }\n        return os;\n\
-    \    }\n};"
+    \ G[k]; }\n\n    friend std::ostream &operator<<(std::ostream &os, const graph<T,\
+    \ directed> &G) {\n        os << \"V: \" << G.N << \"\\nE: \" << G.M << '\\n';\n\
+    \        for (int v = 0; v < G.N; v++) {\n            os << \"G[\" << v << \"\
+    ] = [\";\n            for (auto &e : G[v]) os << e << \" \";\n            os <<\
+    \ \"]\\n\";\n        }\n        return os;\n    }\n};"
   dependsOn: []
   isVerificationFile: false
   path: src/graph/template.hpp
@@ -101,7 +99,7 @@ data:
   - src/graph/tree_diameter.hpp
   - src/graph/bellman_ford.hpp
   - src/graph/lowest_common_ancestor.hpp
-  timestamp: '2022-09-04 19:39:24+09:00'
+  timestamp: '2022-09-09 18:41:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_grl/aoj_grl_1_b.test.cpp
