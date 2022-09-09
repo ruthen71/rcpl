@@ -96,6 +96,9 @@ data:
       title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"
   - name: src/math
     pages:
+    - icon: ':warning:'
+      path: src/math/binomial.hpp
+      title: "Binomial (\u524D\u8A08\u7B97\u3042\u308A\u4E8C\u9805\u4FC2\u6570)"
     - icon: ':heavy_check_mark:'
       path: src/math/divisor.hpp
       title: src/math/divisor.hpp
