@@ -80,6 +80,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/dp/inversion_number.hpp
       title: "Inversion Number (\u8EE2\u5012\u6570)"
+    - icon: ':heavy_check_mark:'
+      path: src/dp/sliding_window_minimum.hpp
+      title: "Sliding Window Minimum (\u30B9\u30E9\u30A4\u30C9\u6700\u5C0F\u5024)"
   - name: src/graph
     pages:
     - icon: ':heavy_check_mark:'
@@ -164,6 +167,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
       title: verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_dsl/aoj_dsl_3_d.test.cpp
+      title: verify/aoj_dsl/aoj_dsl_3_d.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj_dsl/aoj_dsl_5_b.test.cpp
       title: verify/aoj_dsl/aoj_dsl_5_b.test.cpp
