@@ -21,6 +21,6 @@ template <class T> T histogram_largest_rectangle(std::vector<T> &h) {
 }
 
 /**
- * @brief histogram largest rectangle (ヒストグラムの最大長方形)
+ * @brief Histogram Largest Rectangle (ヒストグラムの最大長方形)
  * @docs docs/dp/histogram_largest_rectangle.md
  */
