@@ -75,7 +75,7 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: src/dp/histogram_largest_rectangle.hpp
-      title: "histogram largest rectangle (\u30D2\u30B9\u30C8\u30B0\u30E9\u30E0\u306E\
+      title: "Histogram Largest Rectangle (\u30D2\u30B9\u30C8\u30B0\u30E9\u30E0\u306E\
         \u6700\u5927\u9577\u65B9\u5F62)"
     - icon: ':heavy_check_mark:'
       path: src/dp/inversion_number.hpp
