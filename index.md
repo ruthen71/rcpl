@@ -81,6 +81,10 @@ data:
       path: src/dp/inversion_number.hpp
       title: "Inversion Number (\u8EE2\u5012\u6570)"
     - icon: ':heavy_check_mark:'
+      path: src/dp/knapsack_limitations.hpp
+      title: "Knapsack Limitations (\u500B\u6570\u5236\u9650\u4ED8\u304D\u30CA\u30C3\
+        \u30D7\u30B5\u30C3\u30AF\u554F\u984C)"
+    - icon: ':heavy_check_mark:'
       path: src/dp/sliding_window_minimum.hpp
       title: "Sliding Window Minimum (\u30B9\u30E9\u30A4\u30C9\u6700\u5C0F\u5024)"
   - name: src/graph
@@ -144,6 +148,9 @@ data:
       title: verify/aoj_alds1/aoj_alds1_5_d.test.cpp
   - name: verify/aoj_dpl
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_dpl/aoj_dpl_1_g.test.cpp
+      title: verify/aoj_dpl/aoj_dpl_1_g.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj_dpl/aoj_dpl_3_c.test.cpp
       title: verify/aoj_dpl/aoj_dpl_3_c.test.cpp
