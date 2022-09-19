@@ -74,6 +74,9 @@ data:
   - name: src/dp
     pages:
     - icon: ':heavy_check_mark:'
+      path: src/dp/histogram_largest_rectangle.hpp
+      title: src/dp/histogram_largest_rectangle.hpp
+    - icon: ':heavy_check_mark:'
       path: src/dp/inversion_number.hpp
       title: "Inversion Number (\u8EE2\u5012\u6570)"
   - name: src/graph
@@ -135,6 +138,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_alds1/aoj_alds1_5_d.test.cpp
       title: verify/aoj_alds1/aoj_alds1_5_d.test.cpp
+  - name: verify/aoj_dpl
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_dpl/aoj_dpl_3_c.test.cpp
+      title: verify/aoj_dpl/aoj_dpl_3_c.test.cpp
   - name: verify/aoj_dsl
     pages:
     - icon: ':heavy_check_mark:'
