@@ -13,11 +13,23 @@ data:
       path: src/algebra/lazy_max_add.hpp
       title: src/algebra/lazy_max_add.hpp
     - icon: ':warning:'
+      path: src/algebra/lazy_max_index_add.hpp
+      title: src/algebra/lazy_max_index_add.hpp
+    - icon: ':warning:'
+      path: src/algebra/lazy_max_index_set.hpp
+      title: src/algebra/lazy_max_index_set.hpp
+    - icon: ':warning:'
       path: src/algebra/lazy_max_set.hpp
       title: src/algebra/lazy_max_set.hpp
     - icon: ':heavy_check_mark:'
       path: src/algebra/lazy_min_add.hpp
       title: src/algebra/lazy_min_add.hpp
+    - icon: ':warning:'
+      path: src/algebra/lazy_min_index_add.hpp
+      title: src/algebra/lazy_min_index_add.hpp
+    - icon: ':warning:'
+      path: src/algebra/lazy_min_index_set.hpp
+      title: src/algebra/lazy_min_index_set.hpp
     - icon: ':heavy_check_mark:'
       path: src/algebra/lazy_min_set.hpp
       title: src/algebra/lazy_min_set.hpp
