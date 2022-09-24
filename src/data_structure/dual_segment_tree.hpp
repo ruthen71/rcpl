@@ -19,6 +19,13 @@ template <class Dual> struct dual_segment_tree {
         return lz[p];
     }
 
+    F get(int p) {
+        assert(0 <= p and p < _n);
+        p += size;
+        for (int i = log; i >= 1; i--) push(p >> i);  // 上から下へ伝搬
+        return lz[p];
+    }
+
     void set(int p, const F& x) {
         assert(0 <= p and p < _n);
         p += size;

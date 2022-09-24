@@ -35,6 +35,11 @@ template <class Monoid> struct segment_tree {
         return d[p + size];
     }
 
+    S get(int p) const {
+        assert(0 <= p && p < _n);
+        return d[p + size];
+    }
+
     S prod(int l, int r) const {
         assert(0 <= l and l <= r and r <= _n);
         S sml = Monoid::e(), smr = Monoid::e();

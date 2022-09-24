@@ -61,6 +61,11 @@ template <class Monoid> struct segment_tree_2d {
         return d[h + sizeh][w + sizew];
     }
 
+    S get(int h, int w) const {
+        assert(0 <= h and h < _h and 0 <= w and w < _w);
+        return d[h + sizeh][w + sizew];
+    }
+
     S inner_prod(int h, int w1, int w2) {
         S sml = Monoid::e(), smr = Monoid::e();
         while (w1 < w2) {

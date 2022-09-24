@@ -40,6 +40,13 @@ template <class Lazy> struct lazy_segment_tree {
         return d[p];
     }
 
+    S get(int p) {
+        assert(0 <= p and p < _n);
+        p += size;
+        for (int i = log; i >= 1; i--) push(p >> i);  // 上から下へ伝搬
+        return d[p];
+    }
+
     S prod(int l, int r) {
         assert(0 <= l and l <= r and r <= _n);
         if (l == r) return Lazy::e();
