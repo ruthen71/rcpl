@@ -33,7 +33,7 @@ template <class Lazy> struct lazy_segment_tree {
         for (int i = 1; i <= log; i++) update(p >> i);  // 下から上に更新
     }
 
-    S operator[](int p) const {
+    S operator[](int p) {
         assert(0 <= p and p < _n);
         p += size;
         for (int i = log; i >= 1; i--) push(p >> i);  // 上から下へ伝搬
