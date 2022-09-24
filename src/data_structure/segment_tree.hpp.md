@@ -33,36 +33,37 @@ data:
     \ and p < _n);\n        p += size;\n        d[p] = Monoid::op(d[p], x);\n    \
     \    for (int i = 1; i <= log; i++) update(p >> i);\n    }\n\n    S operator[](int\
     \ p) const {\n        assert(0 <= p and p < _n);\n        return d[p + size];\n\
-    \    }\n\n    S prod(int l, int r) const {\n        assert(0 <= l and l <= r and\
-    \ r <= _n);\n        S sml = Monoid::e(), smr = Monoid::e();\n        l += size;\n\
-    \        r += size;\n\n        while (l < r) {\n            if (l & 1) sml = Monoid::op(sml,\
-    \ d[l++]);\n            if (r & 1) smr = Monoid::op(d[--r], smr);\n          \
-    \  l >>= 1;\n            r >>= 1;\n        }\n        return Monoid::op(sml, smr);\n\
-    \    }\n\n    S all_prod() const { return d[1]; }\n\n    template <class F> int\
-    \ max_right(int l, F& f) const {\n        assert(0 <= l and l <= _n);\n      \
-    \  assert(f(Monoid::e()));\n        if (l == _n) return _n;\n        l += size;\n\
-    \        S sm = Monoid::e();\n        do {\n            while ((l & 1) == 0) l\
-    \ >>= 1;\n            if (!f(Monoid::op(sm, d[l]))) {\n                while (l\
-    \ < size) {\n                    l <<= 1;\n                    if (f(Monoid::op(sm,\
-    \ d[l]))) {\n                        sm = Monoid::op(sm, d[l]);\n            \
-    \            l++;\n                    }\n                }\n                return\
-    \ l - size;\n            }\n            sm = Monoid::op(sm, d[l]);\n         \
-    \   l++;\n        } while ((l & -l) != l);  // 2\u3079\u304D\u307E\u305F\u306F\
-    0\u306E\u3068\u304Dfalse\n        return _n;\n    }\n\n    template <class F>\
-    \ int min_left(int r, F& f) const {\n        assert(0 <= r and r <= _n);\n   \
-    \     assert(f(Monoid::e()));\n        if (r == 0) return 0;\n        r += size;\n\
-    \        S sm = Monoid::e();\n        do {\n            r--;\n            while\
-    \ (r > 1 and (r & 1)) r >>= 1;\n            if (!f(Monoid::op(d[r], sm))) {\n\
-    \                while (r < size) {\n                    r = (r << 1) | 1;\n \
-    \                   if (f(Monoid::op(d[r], sm))) {\n                        sm\
-    \ = Monoid::op(d[r], sm);\n                        r--;\n                    }\n\
-    \                }\n                return r + 1 - size;\n            }\n    \
-    \        sm = Monoid::op(d[r], sm);\n        } while ((r & -r) != r);  // 2\u3079\
-    \u304D\u307E\u305F\u306F0\u306E\u3068\u304Dfalse\n        return 0;\n    }\n\n\
-    \   private:\n    int _n, log, size;\n    std::vector<S> d;\n    inline void update(int\
-    \ k) { d[k] = Monoid::op(d[k << 1], d[(k << 1) | 1]); }\n};\n\n/**\n * @brief\
-    \ Segment Tree (\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n * @docs docs/data_structure/segment_tree.md\n\
-    \ */\n"
+    \    }\n\n    S get(int p) const {\n        assert(0 <= p && p < _n);\n      \
+    \  return d[p + size];\n    }\n\n    S prod(int l, int r) const {\n        assert(0\
+    \ <= l and l <= r and r <= _n);\n        S sml = Monoid::e(), smr = Monoid::e();\n\
+    \        l += size;\n        r += size;\n\n        while (l < r) {\n         \
+    \   if (l & 1) sml = Monoid::op(sml, d[l++]);\n            if (r & 1) smr = Monoid::op(d[--r],\
+    \ smr);\n            l >>= 1;\n            r >>= 1;\n        }\n        return\
+    \ Monoid::op(sml, smr);\n    }\n\n    S all_prod() const { return d[1]; }\n\n\
+    \    template <class F> int max_right(int l, F& f) const {\n        assert(0 <=\
+    \ l and l <= _n);\n        assert(f(Monoid::e()));\n        if (l == _n) return\
+    \ _n;\n        l += size;\n        S sm = Monoid::e();\n        do {\n       \
+    \     while ((l & 1) == 0) l >>= 1;\n            if (!f(Monoid::op(sm, d[l])))\
+    \ {\n                while (l < size) {\n                    l <<= 1;\n      \
+    \              if (f(Monoid::op(sm, d[l]))) {\n                        sm = Monoid::op(sm,\
+    \ d[l]);\n                        l++;\n                    }\n              \
+    \  }\n                return l - size;\n            }\n            sm = Monoid::op(sm,\
+    \ d[l]);\n            l++;\n        } while ((l & -l) != l);  // 2\u3079\u304D\
+    \u307E\u305F\u306F0\u306E\u3068\u304Dfalse\n        return _n;\n    }\n\n    template\
+    \ <class F> int min_left(int r, F& f) const {\n        assert(0 <= r and r <=\
+    \ _n);\n        assert(f(Monoid::e()));\n        if (r == 0) return 0;\n     \
+    \   r += size;\n        S sm = Monoid::e();\n        do {\n            r--;\n\
+    \            while (r > 1 and (r & 1)) r >>= 1;\n            if (!f(Monoid::op(d[r],\
+    \ sm))) {\n                while (r < size) {\n                    r = (r << 1)\
+    \ | 1;\n                    if (f(Monoid::op(d[r], sm))) {\n                 \
+    \       sm = Monoid::op(d[r], sm);\n                        r--;\n           \
+    \         }\n                }\n                return r + 1 - size;\n       \
+    \     }\n            sm = Monoid::op(d[r], sm);\n        } while ((r & -r) !=\
+    \ r);  // 2\u3079\u304D\u307E\u305F\u306F0\u306E\u3068\u304Dfalse\n        return\
+    \ 0;\n    }\n\n   private:\n    int _n, log, size;\n    std::vector<S> d;\n  \
+    \  inline void update(int k) { d[k] = Monoid::op(d[k << 1], d[(k << 1) | 1]);\
+    \ }\n};\n\n/**\n * @brief Segment Tree (\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n\
+    \ * @docs docs/data_structure/segment_tree.md\n */\n"
   code: "#pragma once\n\ntemplate <class Monoid> struct segment_tree {\n   public:\n\
     \    using S = typename Monoid::value_type;\n    segment_tree() : segment_tree(0)\
     \ {}\n    segment_tree(int n) : segment_tree(std::vector<S>(n, Monoid::e())) {}\n\
@@ -77,41 +78,42 @@ data:
     \        p += size;\n        d[p] = Monoid::op(d[p], x);\n        for (int i =\
     \ 1; i <= log; i++) update(p >> i);\n    }\n\n    S operator[](int p) const {\n\
     \        assert(0 <= p and p < _n);\n        return d[p + size];\n    }\n\n  \
-    \  S prod(int l, int r) const {\n        assert(0 <= l and l <= r and r <= _n);\n\
-    \        S sml = Monoid::e(), smr = Monoid::e();\n        l += size;\n       \
-    \ r += size;\n\n        while (l < r) {\n            if (l & 1) sml = Monoid::op(sml,\
-    \ d[l++]);\n            if (r & 1) smr = Monoid::op(d[--r], smr);\n          \
-    \  l >>= 1;\n            r >>= 1;\n        }\n        return Monoid::op(sml, smr);\n\
-    \    }\n\n    S all_prod() const { return d[1]; }\n\n    template <class F> int\
-    \ max_right(int l, F& f) const {\n        assert(0 <= l and l <= _n);\n      \
-    \  assert(f(Monoid::e()));\n        if (l == _n) return _n;\n        l += size;\n\
-    \        S sm = Monoid::e();\n        do {\n            while ((l & 1) == 0) l\
-    \ >>= 1;\n            if (!f(Monoid::op(sm, d[l]))) {\n                while (l\
-    \ < size) {\n                    l <<= 1;\n                    if (f(Monoid::op(sm,\
-    \ d[l]))) {\n                        sm = Monoid::op(sm, d[l]);\n            \
-    \            l++;\n                    }\n                }\n                return\
-    \ l - size;\n            }\n            sm = Monoid::op(sm, d[l]);\n         \
-    \   l++;\n        } while ((l & -l) != l);  // 2\u3079\u304D\u307E\u305F\u306F\
-    0\u306E\u3068\u304Dfalse\n        return _n;\n    }\n\n    template <class F>\
-    \ int min_left(int r, F& f) const {\n        assert(0 <= r and r <= _n);\n   \
-    \     assert(f(Monoid::e()));\n        if (r == 0) return 0;\n        r += size;\n\
-    \        S sm = Monoid::e();\n        do {\n            r--;\n            while\
-    \ (r > 1 and (r & 1)) r >>= 1;\n            if (!f(Monoid::op(d[r], sm))) {\n\
-    \                while (r < size) {\n                    r = (r << 1) | 1;\n \
-    \                   if (f(Monoid::op(d[r], sm))) {\n                        sm\
-    \ = Monoid::op(d[r], sm);\n                        r--;\n                    }\n\
-    \                }\n                return r + 1 - size;\n            }\n    \
-    \        sm = Monoid::op(d[r], sm);\n        } while ((r & -r) != r);  // 2\u3079\
-    \u304D\u307E\u305F\u306F0\u306E\u3068\u304Dfalse\n        return 0;\n    }\n\n\
-    \   private:\n    int _n, log, size;\n    std::vector<S> d;\n    inline void update(int\
-    \ k) { d[k] = Monoid::op(d[k << 1], d[(k << 1) | 1]); }\n};\n\n/**\n * @brief\
-    \ Segment Tree (\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n * @docs docs/data_structure/segment_tree.md\n\
-    \ */\n"
+    \  S get(int p) const {\n        assert(0 <= p && p < _n);\n        return d[p\
+    \ + size];\n    }\n\n    S prod(int l, int r) const {\n        assert(0 <= l and\
+    \ l <= r and r <= _n);\n        S sml = Monoid::e(), smr = Monoid::e();\n    \
+    \    l += size;\n        r += size;\n\n        while (l < r) {\n            if\
+    \ (l & 1) sml = Monoid::op(sml, d[l++]);\n            if (r & 1) smr = Monoid::op(d[--r],\
+    \ smr);\n            l >>= 1;\n            r >>= 1;\n        }\n        return\
+    \ Monoid::op(sml, smr);\n    }\n\n    S all_prod() const { return d[1]; }\n\n\
+    \    template <class F> int max_right(int l, F& f) const {\n        assert(0 <=\
+    \ l and l <= _n);\n        assert(f(Monoid::e()));\n        if (l == _n) return\
+    \ _n;\n        l += size;\n        S sm = Monoid::e();\n        do {\n       \
+    \     while ((l & 1) == 0) l >>= 1;\n            if (!f(Monoid::op(sm, d[l])))\
+    \ {\n                while (l < size) {\n                    l <<= 1;\n      \
+    \              if (f(Monoid::op(sm, d[l]))) {\n                        sm = Monoid::op(sm,\
+    \ d[l]);\n                        l++;\n                    }\n              \
+    \  }\n                return l - size;\n            }\n            sm = Monoid::op(sm,\
+    \ d[l]);\n            l++;\n        } while ((l & -l) != l);  // 2\u3079\u304D\
+    \u307E\u305F\u306F0\u306E\u3068\u304Dfalse\n        return _n;\n    }\n\n    template\
+    \ <class F> int min_left(int r, F& f) const {\n        assert(0 <= r and r <=\
+    \ _n);\n        assert(f(Monoid::e()));\n        if (r == 0) return 0;\n     \
+    \   r += size;\n        S sm = Monoid::e();\n        do {\n            r--;\n\
+    \            while (r > 1 and (r & 1)) r >>= 1;\n            if (!f(Monoid::op(d[r],\
+    \ sm))) {\n                while (r < size) {\n                    r = (r << 1)\
+    \ | 1;\n                    if (f(Monoid::op(d[r], sm))) {\n                 \
+    \       sm = Monoid::op(d[r], sm);\n                        r--;\n           \
+    \         }\n                }\n                return r + 1 - size;\n       \
+    \     }\n            sm = Monoid::op(d[r], sm);\n        } while ((r & -r) !=\
+    \ r);  // 2\u3079\u304D\u307E\u305F\u306F0\u306E\u3068\u304Dfalse\n        return\
+    \ 0;\n    }\n\n   private:\n    int _n, log, size;\n    std::vector<S> d;\n  \
+    \  inline void update(int k) { d[k] = Monoid::op(d[k << 1], d[(k << 1) | 1]);\
+    \ }\n};\n\n/**\n * @brief Segment Tree (\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n\
+    \ * @docs docs/data_structure/segment_tree.md\n */\n"
   dependsOn: []
   isVerificationFile: false
   path: src/data_structure/segment_tree.hpp
   requiredBy: []
-  timestamp: '2022-08-26 03:38:19+09:00'
+  timestamp: '2022-09-25 06:30:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yuki/yuki_1036_segment_tree.test.cpp

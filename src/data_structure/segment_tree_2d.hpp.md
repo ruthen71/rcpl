@@ -42,19 +42,21 @@ data:
     \ j++) {\n                update_else(h >> i, w >> j);\n            }\n      \
     \  }\n    }\n\n    S operator()(int h, int w) const {\n        assert(0 <= h and\
     \ h < _h and 0 <= w and w < _w);\n        return d[h + sizeh][w + sizew];\n  \
-    \  }\n\n    S inner_prod(int h, int w1, int w2) {\n        S sml = Monoid::e(),\
-    \ smr = Monoid::e();\n        while (w1 < w2) {\n            if (w1 & 1) sml =\
-    \ Monoid::op(sml, d[h][w1++]);\n            if (w2 & 1) smr = Monoid::op(d[h][--w2],\
-    \ smr);\n            w1 >>= 1;\n            w2 >>= 1;\n        }\n        return\
-    \ Monoid::op(sml, smr);\n    }\n\n    S prod(int h1, int w1, int h2, int w2) {\n\
-    \        assert(0 <= h1 and h1 <= h2 and h2 <= _h);\n        assert(0 <= w1 and\
-    \ w1 <= w2 and w2 <= _w);\n        S sml = Monoid::e(), smr = Monoid::e();\n \
-    \       h1 += sizeh;\n        h2 += sizeh;\n        w1 += sizew;\n        w2 +=\
-    \ sizew;\n\n        while (h1 < h2) {\n            if (h1 & 1) sml = Monoid::op(sml,\
-    \ inner_prod(h1++, w1, w2));\n            if (h2 & 1) smr = Monoid::op(inner_prod(--h2,\
-    \ w1, w2), smr);\n            h1 >>= 1;\n            h2 >>= 1;\n        }\n  \
-    \      return Monoid::op(sml, smr);\n    }\n\n    S all_prod() const { return\
-    \ d[1][1]; }\n\n   private:\n    int _h, logh, sizeh, _w, logw, sizew;\n    std::vector<std::vector<S>>\
+    \  }\n\n    S get(int h, int w) const {\n        assert(0 <= h and h < _h and\
+    \ 0 <= w and w < _w);\n        return d[h + sizeh][w + sizew];\n    }\n\n    S\
+    \ inner_prod(int h, int w1, int w2) {\n        S sml = Monoid::e(), smr = Monoid::e();\n\
+    \        while (w1 < w2) {\n            if (w1 & 1) sml = Monoid::op(sml, d[h][w1++]);\n\
+    \            if (w2 & 1) smr = Monoid::op(d[h][--w2], smr);\n            w1 >>=\
+    \ 1;\n            w2 >>= 1;\n        }\n        return Monoid::op(sml, smr);\n\
+    \    }\n\n    S prod(int h1, int w1, int h2, int w2) {\n        assert(0 <= h1\
+    \ and h1 <= h2 and h2 <= _h);\n        assert(0 <= w1 and w1 <= w2 and w2 <= _w);\n\
+    \        S sml = Monoid::e(), smr = Monoid::e();\n        h1 += sizeh;\n     \
+    \   h2 += sizeh;\n        w1 += sizew;\n        w2 += sizew;\n\n        while\
+    \ (h1 < h2) {\n            if (h1 & 1) sml = Monoid::op(sml, inner_prod(h1++,\
+    \ w1, w2));\n            if (h2 & 1) smr = Monoid::op(inner_prod(--h2, w1, w2),\
+    \ smr);\n            h1 >>= 1;\n            h2 >>= 1;\n        }\n        return\
+    \ Monoid::op(sml, smr);\n    }\n\n    S all_prod() const { return d[1][1]; }\n\
+    \n   private:\n    int _h, logh, sizeh, _w, logw, sizew;\n    std::vector<std::vector<S>>\
     \ d;\n    inline void update_bottom(int i, int j) { d[i][j] = Monoid::op(d[(i\
     \ << 1) | 0][j], d[(i << 1) | 1][j]); }\n    inline void update_else(int i, int\
     \ j) { d[i][j] = Monoid::op(d[i][(j << 1) | 0], d[i][(j << 1) | 1]); }\n};\n\n\
@@ -87,30 +89,32 @@ data:
     \            for (int j = 1; j <= logw; j++) {\n                update_else(h\
     \ >> i, w >> j);\n            }\n        }\n    }\n\n    S operator()(int h, int\
     \ w) const {\n        assert(0 <= h and h < _h and 0 <= w and w < _w);\n     \
-    \   return d[h + sizeh][w + sizew];\n    }\n\n    S inner_prod(int h, int w1,\
-    \ int w2) {\n        S sml = Monoid::e(), smr = Monoid::e();\n        while (w1\
-    \ < w2) {\n            if (w1 & 1) sml = Monoid::op(sml, d[h][w1++]);\n      \
-    \      if (w2 & 1) smr = Monoid::op(d[h][--w2], smr);\n            w1 >>= 1;\n\
-    \            w2 >>= 1;\n        }\n        return Monoid::op(sml, smr);\n    }\n\
-    \n    S prod(int h1, int w1, int h2, int w2) {\n        assert(0 <= h1 and h1\
-    \ <= h2 and h2 <= _h);\n        assert(0 <= w1 and w1 <= w2 and w2 <= _w);\n \
-    \       S sml = Monoid::e(), smr = Monoid::e();\n        h1 += sizeh;\n      \
-    \  h2 += sizeh;\n        w1 += sizew;\n        w2 += sizew;\n\n        while (h1\
-    \ < h2) {\n            if (h1 & 1) sml = Monoid::op(sml, inner_prod(h1++, w1,\
-    \ w2));\n            if (h2 & 1) smr = Monoid::op(inner_prod(--h2, w1, w2), smr);\n\
-    \            h1 >>= 1;\n            h2 >>= 1;\n        }\n        return Monoid::op(sml,\
-    \ smr);\n    }\n\n    S all_prod() const { return d[1][1]; }\n\n   private:\n\
-    \    int _h, logh, sizeh, _w, logw, sizew;\n    std::vector<std::vector<S>> d;\n\
-    \    inline void update_bottom(int i, int j) { d[i][j] = Monoid::op(d[(i << 1)\
-    \ | 0][j], d[(i << 1) | 1][j]); }\n    inline void update_else(int i, int j) {\
-    \ d[i][j] = Monoid::op(d[i][(j << 1) | 0], d[i][(j << 1) | 1]); }\n};\n\n/**\n\
-    \ * @brief 2D Segment Tree (2\u6B21\u5143\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
-    )\n * @docs docs/data_structure/segment_tree_2d.md\n */\n"
+    \   return d[h + sizeh][w + sizew];\n    }\n\n    S get(int h, int w) const {\n\
+    \        assert(0 <= h and h < _h and 0 <= w and w < _w);\n        return d[h\
+    \ + sizeh][w + sizew];\n    }\n\n    S inner_prod(int h, int w1, int w2) {\n \
+    \       S sml = Monoid::e(), smr = Monoid::e();\n        while (w1 < w2) {\n \
+    \           if (w1 & 1) sml = Monoid::op(sml, d[h][w1++]);\n            if (w2\
+    \ & 1) smr = Monoid::op(d[h][--w2], smr);\n            w1 >>= 1;\n           \
+    \ w2 >>= 1;\n        }\n        return Monoid::op(sml, smr);\n    }\n\n    S prod(int\
+    \ h1, int w1, int h2, int w2) {\n        assert(0 <= h1 and h1 <= h2 and h2 <=\
+    \ _h);\n        assert(0 <= w1 and w1 <= w2 and w2 <= _w);\n        S sml = Monoid::e(),\
+    \ smr = Monoid::e();\n        h1 += sizeh;\n        h2 += sizeh;\n        w1 +=\
+    \ sizew;\n        w2 += sizew;\n\n        while (h1 < h2) {\n            if (h1\
+    \ & 1) sml = Monoid::op(sml, inner_prod(h1++, w1, w2));\n            if (h2 &\
+    \ 1) smr = Monoid::op(inner_prod(--h2, w1, w2), smr);\n            h1 >>= 1;\n\
+    \            h2 >>= 1;\n        }\n        return Monoid::op(sml, smr);\n    }\n\
+    \n    S all_prod() const { return d[1][1]; }\n\n   private:\n    int _h, logh,\
+    \ sizeh, _w, logw, sizew;\n    std::vector<std::vector<S>> d;\n    inline void\
+    \ update_bottom(int i, int j) { d[i][j] = Monoid::op(d[(i << 1) | 0][j], d[(i\
+    \ << 1) | 1][j]); }\n    inline void update_else(int i, int j) { d[i][j] = Monoid::op(d[i][(j\
+    \ << 1) | 0], d[i][(j << 1) | 1]); }\n};\n\n/**\n * @brief 2D Segment Tree (2\u6B21\
+    \u5143\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n * @docs docs/data_structure/segment_tree_2d.md\n\
+    \ */\n"
   dependsOn: []
   isVerificationFile: false
   path: src/data_structure/segment_tree_2d.hpp
   requiredBy: []
-  timestamp: '2022-08-26 03:38:19+09:00'
+  timestamp: '2022-09-25 06:30:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_other/aoj_1068.test.cpp
