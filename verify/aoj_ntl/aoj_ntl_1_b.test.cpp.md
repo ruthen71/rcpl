@@ -17,11 +17,13 @@ data:
   bundledCode: "#line 1 \"verify/aoj_ntl/aoj_ntl_1_b.test.cpp\"\n#define PROBLEM \"\
     https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_B\"\n\n#include\
     \ <bits/stdc++.h>\n\n#line 2 \"src/math/pow_mod.hpp\"\n\nlong long pow_mod(long\
-    \ long a, long long n, long long mod) {\n    a %= mod;\n    long long res = 1;\n\
-    \    while (n) {\n        if (n & 1) res = res * a % mod;\n        a = a * a %\
-    \ mod;\n        n >>= 1;\n    }\n    return res;\n}\n#line 6 \"verify/aoj_ntl/aoj_ntl_1_b.test.cpp\"\
-    \n\nint main() {\n    long long m, n;\n    std::cin >> m >> n;\n    std::cout\
-    \ << pow_mod(m, n, 1000000007) << '\\n';\n    return 0;\n}\n"
+    \ long a, long long n, const long long mod) {\n    assert(n >= 0 and mod >= 0);\n\
+    \    a %= mod;\n    if (a < 0) a += mod;\n    if (a == 0) return (n == 0 ? 1 %\
+    \ mod : 0);  // 0 ^ 0 = 1\n    long long res = 1;\n    while (n) {\n        if\
+    \ (n & 1) res = res * a % mod;\n        a = a * a % mod;\n        n >>= 1;\n \
+    \   }\n    return res;\n}\n#line 6 \"verify/aoj_ntl/aoj_ntl_1_b.test.cpp\"\n\n\
+    int main() {\n    long long m, n;\n    std::cin >> m >> n;\n    std::cout << pow_mod(m,\
+    \ n, 1000000007) << '\\n';\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_B\"\
     \n\n#include <bits/stdc++.h>\n\n#include \"src/math/pow_mod.hpp\"\n\nint main()\
     \ {\n    long long m, n;\n    std::cin >> m >> n;\n    std::cout << pow_mod(m,\
@@ -31,7 +33,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_ntl/aoj_ntl_1_b.test.cpp
   requiredBy: []
-  timestamp: '2022-09-06 04:26:23+09:00'
+  timestamp: '2022-09-25 07:00:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_ntl/aoj_ntl_1_b.test.cpp
