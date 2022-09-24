@@ -43,49 +43,48 @@ data:
     \ (int i = log; i >= 1; i--) push(p >> i);  // \u4E0A\u304B\u3089\u4E0B\u3078\u4F1D\
     \u642C\n        d[p] = Lazy::op(d[p], x);\n        for (int i = 1; i <= log; i++)\
     \ update(p >> i);  // \u4E0B\u304B\u3089\u4E0A\u306B\u66F4\u65B0\n    }\n\n  \
-    \  S operator[](int p) const {\n        assert(0 <= p and p < _n);\n        p\
-    \ += size;\n        for (int i = log; i >= 1; i--) push(p >> i);  // \u4E0A\u304B\
-    \u3089\u4E0B\u3078\u4F1D\u642C\n        return d[p];\n    }\n\n    S prod(int\
-    \ l, int r) {\n        assert(0 <= l and l <= r and r <= _n);\n        if (l ==\
-    \ r) return Lazy::e();\n\n        l += size;\n        r += size;\n\n        for\
-    \ (int i = log; i >= 1; i--) {\n            if (((l >> i) << i) != l) push(l >>\
-    \ i);\n            if (((r >> i) << i) != r) push((r - 1) >> i);\n        }\n\n\
-    \        S sml = Lazy::e(), smr = Lazy::e();\n        while (l < r) {\n      \
-    \      if (l & 1) sml = Lazy::op(sml, d[l++]);\n            if (r & 1) smr = Lazy::op(d[--r],\
-    \ smr);\n            l >>= 1;\n            r >>= 1;\n        }\n        return\
-    \ Lazy::op(sml, smr);\n    }\n\n    S all_prod() { return d[1]; }\n\n    void\
-    \ apply(int p, const F& f) {\n        assert(0 <= p and p < _n);\n        p +=\
-    \ size;\n        for (int i = log; i >= 1; i--) push(p >> i);\n        d[p] =\
-    \ Lazy::mapping(f, d[p]);\n        for (int i = 1; i <= log; i++) update(p >>\
-    \ i);\n    }\n\n    void apply(int l, int r, const F& f) {\n        assert(0 <=\
-    \ l and l <= r and r <= _n);\n        if (l == r) return;\n\n        l += size;\n\
-    \        r += size;\n\n        for (int i = log; i >= 1; i--) {\n            if\
-    \ (((l >> i) << i) != l) push(l >> i);\n            if (((r >> i) << i) != r)\
-    \ push((r - 1) >> i);\n        }\n\n        {\n            int l2 = l, r2 = r;\n\
-    \            while (l < r) {\n                if (l & 1) all_apply(l++, f);\n\
-    \                if (r & 1) all_apply(--r, f);\n                l >>= 1;\n   \
-    \             r >>= 1;\n            }\n            l = l2;\n            r = r2;\n\
-    \        }\n\n        for (int i = 1; i <= log; i++) {\n            if (((l >>\
-    \ i) << i) != l) update(l >> i);\n            if (((r >> i) << i) != r) update((r\
-    \ - 1) >> i);\n        }\n    }\n\n    template <class G> int max_right(int l,\
-    \ G& g) {\n        assert(0 <= l && l <= _n);\n        assert(g(Lazy::e()));\n\
-    \        if (l == _n) return _n;\n        l += size;\n        for (int i = log;\
-    \ i >= 1; i--) push(l >> i);\n        S sm = Lazy::e();\n        do {\n      \
-    \      while ((l & 1) == 0) l >>= 1;\n            if (!g(Lazy::op(sm, d[l])))\
-    \ {\n                while (l < size) {\n                    push(l);\n      \
-    \              l <<= 1;\n                    if (g(Lazy::op(sm, d[l]))) {\n  \
-    \                      sm = Lazy::op(sm, d[l]);\n                        l++;\n\
-    \                    }\n                }\n                return l - size;\n\
-    \            }\n            sm = Lazy::op(sm, d[l]);\n            l++;\n     \
-    \   } while ((l & -l) != l);  // 2\u3079\u304D\u307E\u305F\u306F0\u306E\u3068\u304D\
-    false\n        return _n;\n    }\n\n    template <class G> int min_left(int r,\
-    \ G& g) {\n        assert(0 <= r && r <= _n);\n        assert(g(Lazy::e()));\n\
-    \        if (r == 0) return 0;\n        r += size;\n        for (int i = log;\
-    \ i >= 1; i--) push((r - 1) >> i);\n        S sm = Lazy::e();\n        do {\n\
-    \            r--;\n            while (r > 1 && (r & 1)) r >>= 1;\n           \
-    \ if (!g(Lazy::op(d[r], sm))) {\n                while (r < size) {\n        \
-    \            push(r);\n                    r = (r << 1) | 1;\n               \
-    \     if (g(Lazy::op(d[r], sm))) {\n                        sm = Lazy::op(d[r],\
+    \  S operator[](int p) {\n        assert(0 <= p and p < _n);\n        p += size;\n\
+    \        for (int i = log; i >= 1; i--) push(p >> i);  // \u4E0A\u304B\u3089\u4E0B\
+    \u3078\u4F1D\u642C\n        return d[p];\n    }\n\n    S prod(int l, int r) {\n\
+    \        assert(0 <= l and l <= r and r <= _n);\n        if (l == r) return Lazy::e();\n\
+    \n        l += size;\n        r += size;\n\n        for (int i = log; i >= 1;\
+    \ i--) {\n            if (((l >> i) << i) != l) push(l >> i);\n            if\
+    \ (((r >> i) << i) != r) push((r - 1) >> i);\n        }\n\n        S sml = Lazy::e(),\
+    \ smr = Lazy::e();\n        while (l < r) {\n            if (l & 1) sml = Lazy::op(sml,\
+    \ d[l++]);\n            if (r & 1) smr = Lazy::op(d[--r], smr);\n            l\
+    \ >>= 1;\n            r >>= 1;\n        }\n        return Lazy::op(sml, smr);\n\
+    \    }\n\n    S all_prod() { return d[1]; }\n\n    void apply(int p, const F&\
+    \ f) {\n        assert(0 <= p and p < _n);\n        p += size;\n        for (int\
+    \ i = log; i >= 1; i--) push(p >> i);\n        d[p] = Lazy::mapping(f, d[p]);\n\
+    \        for (int i = 1; i <= log; i++) update(p >> i);\n    }\n\n    void apply(int\
+    \ l, int r, const F& f) {\n        assert(0 <= l and l <= r and r <= _n);\n  \
+    \      if (l == r) return;\n\n        l += size;\n        r += size;\n\n     \
+    \   for (int i = log; i >= 1; i--) {\n            if (((l >> i) << i) != l) push(l\
+    \ >> i);\n            if (((r >> i) << i) != r) push((r - 1) >> i);\n        }\n\
+    \n        {\n            int l2 = l, r2 = r;\n            while (l < r) {\n  \
+    \              if (l & 1) all_apply(l++, f);\n                if (r & 1) all_apply(--r,\
+    \ f);\n                l >>= 1;\n                r >>= 1;\n            }\n   \
+    \         l = l2;\n            r = r2;\n        }\n\n        for (int i = 1; i\
+    \ <= log; i++) {\n            if (((l >> i) << i) != l) update(l >> i);\n    \
+    \        if (((r >> i) << i) != r) update((r - 1) >> i);\n        }\n    }\n\n\
+    \    template <class G> int max_right(int l, G& g) {\n        assert(0 <= l &&\
+    \ l <= _n);\n        assert(g(Lazy::e()));\n        if (l == _n) return _n;\n\
+    \        l += size;\n        for (int i = log; i >= 1; i--) push(l >> i);\n  \
+    \      S sm = Lazy::e();\n        do {\n            while ((l & 1) == 0) l >>=\
+    \ 1;\n            if (!g(Lazy::op(sm, d[l]))) {\n                while (l < size)\
+    \ {\n                    push(l);\n                    l <<= 1;\n            \
+    \        if (g(Lazy::op(sm, d[l]))) {\n                        sm = Lazy::op(sm,\
+    \ d[l]);\n                        l++;\n                    }\n              \
+    \  }\n                return l - size;\n            }\n            sm = Lazy::op(sm,\
+    \ d[l]);\n            l++;\n        } while ((l & -l) != l);  // 2\u3079\u304D\
+    \u307E\u305F\u306F0\u306E\u3068\u304Dfalse\n        return _n;\n    }\n\n    template\
+    \ <class G> int min_left(int r, G& g) {\n        assert(0 <= r && r <= _n);\n\
+    \        assert(g(Lazy::e()));\n        if (r == 0) return 0;\n        r += size;\n\
+    \        for (int i = log; i >= 1; i--) push((r - 1) >> i);\n        S sm = Lazy::e();\n\
+    \        do {\n            r--;\n            while (r > 1 && (r & 1)) r >>= 1;\n\
+    \            if (!g(Lazy::op(d[r], sm))) {\n                while (r < size) {\n\
+    \                    push(r);\n                    r = (r << 1) | 1;\n       \
+    \             if (g(Lazy::op(d[r], sm))) {\n                        sm = Lazy::op(d[r],\
     \ sm);\n                        r--;\n                    }\n                }\n\
     \                return r + 1 - size;\n            }\n            sm = Lazy::op(d[r],\
     \ sm);\n        } while ((r & -r) != r);  // 2\u3079\u304D\u307E\u305F\u306F0\u306E\
@@ -121,7 +120,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp
   requiredBy: []
-  timestamp: '2022-08-26 03:38:19+09:00'
+  timestamp: '2022-09-25 06:28:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp
