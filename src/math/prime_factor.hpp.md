@@ -34,8 +34,8 @@ data:
   timestamp: '2022-09-06 04:21:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj_ntl/aoj_ntl_1_a.test.cpp
   - verify/aoj_ntl/aoj_ntl_1_d.test.cpp
+  - verify/aoj_ntl/aoj_ntl_1_a.test.cpp
 documentation_of: src/math/prime_factor.hpp
 layout: document
 redirect_from:

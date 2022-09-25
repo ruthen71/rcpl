@@ -17,7 +17,7 @@ data:
   bundledCode: "#line 1 \"verify/aoj_ntl/aoj_ntl_1_b.test.cpp\"\n#define PROBLEM \"\
     https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_B\"\n\n#include\
     \ <bits/stdc++.h>\n\n#line 2 \"src/math/pow_mod.hpp\"\n\nlong long pow_mod(long\
-    \ long a, long long n, const long long mod) {\n    assert(n >= 0 and mod >= 0);\n\
+    \ long a, long long n, const long long mod) {\n    assert(n >= 0 and mod >= 1);\n\
     \    a %= mod;\n    if (a < 0) a += mod;\n    if (a == 0) return (n == 0 ? (mod\
     \ != 1 ? 1 : 0) : 0);  // 0 ^ 0 = 1\n    long long res = 1;\n    while (n) {\n\
     \        if (n & 1) res = res * a % mod;\n        a = a * a % mod;\n        n\
@@ -33,7 +33,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_ntl/aoj_ntl_1_b.test.cpp
   requiredBy: []
-  timestamp: '2022-09-26 00:30:57+09:00'
+  timestamp: '2022-09-26 00:37:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_ntl/aoj_ntl_1_b.test.cpp

@@ -35,8 +35,8 @@ data:
   timestamp: '2022-09-06 17:08:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/lc_math/lc_enumerate_primes.test.cpp
   - verify/aoj_alds1/aoj_alds1_1_c.test.cpp
+  - verify/lc_math/lc_enumerate_primes.test.cpp
 documentation_of: src/math/prime_table.hpp
 layout: document
 redirect_from:
