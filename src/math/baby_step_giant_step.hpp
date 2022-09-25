@@ -1,6 +1,6 @@
 #pragma once
 
-#include "src/math/inv.hpp"
+#include "src/math/inv_mod.hpp"
 #include "src/math/pow_mod.hpp"
 
 // find minimum K s.t. X ^ K = Y (mod M) and K >= lb
@@ -20,7 +20,7 @@ long long baby_step_giant_step(long long X, long long Y, long long M, long long 
     }
     // Z = X ^ sqM (mod M)
     // R = Z ^ (-1) (mod M)
-    long long R = inv(pow_mod(X, sqM, M), M);
+    long long R = inv_mod(pow_mod(X, sqM, M), M);
     // Giant-step
     for (int i = 0; i <= sqM; i++) {
         if (mp.find(Y) != mp.end()) return mp[Y] + i * sqM;

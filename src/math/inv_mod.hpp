@@ -2,7 +2,7 @@
 
 #include "src/math/ext_gcd.hpp"
 
-long long inv(long long a, long long mod) {
+long long inv_mod(long long a, long long mod) {
     assert(a != 0);
     long long x, y;
     ext_gcd(a, mod, x, y);
