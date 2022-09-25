@@ -57,6 +57,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/algebra/monoid_sum.hpp
       title: src/algebra/monoid_sum.hpp
+    - icon: ':warning:'
+      path: src/algebra/monoid_xor.hpp
+      title: src/algebra/monoid_xor.hpp
   - name: src/data_structure
     pages:
     - icon: ':heavy_check_mark:'
