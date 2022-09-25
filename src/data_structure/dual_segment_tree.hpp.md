@@ -81,8 +81,8 @@ data:
   timestamp: '2022-09-25 06:30:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj_dsl/aoj_dsl_2_e_dual_segment_tree.test.cpp
   - verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp
+  - verify/aoj_dsl/aoj_dsl_2_e_dual_segment_tree.test.cpp
 documentation_of: src/data_structure/dual_segment_tree.hpp
 layout: document
 redirect_from:

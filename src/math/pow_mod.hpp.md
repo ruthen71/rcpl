@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: src/math/baby_step_giant_step.hpp
+    title: src/math/baby_step_giant_step.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_ntl/aoj_ntl_1_b.test.cpp
@@ -26,7 +29,8 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: src/math/pow_mod.hpp
-  requiredBy: []
+  requiredBy:
+  - src/math/baby_step_giant_step.hpp
   timestamp: '2022-09-26 00:37:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

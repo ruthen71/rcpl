@@ -123,6 +123,9 @@ data:
   - name: src/math
     pages:
     - icon: ':warning:'
+      path: src/math/baby_step_giant_step.hpp
+      title: src/math/baby_step_giant_step.hpp
+    - icon: ':warning:'
       path: src/math/binomial.hpp
       title: "Binomial (\u524D\u8A08\u7B97\u3042\u308A\u4E8C\u9805\u4FC2\u6570)"
     - icon: ':heavy_check_mark:'
@@ -131,9 +134,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/enumerate_primes.hpp
       title: src/math/enumerate_primes.hpp
-    - icon: ':heavy_check_mark:'
-      path: src/math/extgcd.hpp
-      title: src/math/extgcd.hpp
+    - icon: ':warning:'
+      path: src/math/ext_gcd.hpp
+      title: src/math/ext_gcd.hpp
+    - icon: ':warning:'
+      path: src/math/inv.hpp
+      title: src/math/inv.hpp
     - icon: ':heavy_check_mark:'
       path: src/math/osa_k.hpp
       title: src/math/osa_k.hpp
@@ -219,7 +225,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_ntl/aoj_ntl_1_d.test.cpp
       title: verify/aoj_ntl/aoj_ntl_1_d.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/aoj_ntl/aoj_ntl_1_e.test.cpp
       title: verify/aoj_ntl/aoj_ntl_1_e.test.cpp
   - name: verify/aoj_other
