@@ -13,20 +13,20 @@ data:
     \ bool left = true> struct monoid_max_index {\n    using S = std::pair<T, int>;\n\
     \    using value_type = S;\n    static constexpr S op(S a, S b) {\n        if\
     \ (a.first > b.first) return a;\n        if (a.first < b.first) return b;\n  \
-    \      if (a.second > b.second) swap(a, b);\n        return (left ? a : b);\n\
+    \      if (a.second > b.second) std::swap(a, b);\n        return (left ? a : b);\n\
     \    }\n    static constexpr S e() { return {std::numeric_limits<T>::lowest(),\
     \ -1}; }\n};\n\n/**\n * @docs docs/algebra/monoid_max_index.md\n */\n"
   code: "#pragma once\n\ntemplate <class T, bool left = true> struct monoid_max_index\
     \ {\n    using S = std::pair<T, int>;\n    using value_type = S;\n    static constexpr\
     \ S op(S a, S b) {\n        if (a.first > b.first) return a;\n        if (a.first\
-    \ < b.first) return b;\n        if (a.second > b.second) swap(a, b);\n       \
-    \ return (left ? a : b);\n    }\n    static constexpr S e() { return {std::numeric_limits<T>::lowest(),\
+    \ < b.first) return b;\n        if (a.second > b.second) std::swap(a, b);\n  \
+    \      return (left ? a : b);\n    }\n    static constexpr S e() { return {std::numeric_limits<T>::lowest(),\
     \ -1}; }\n};\n\n/**\n * @docs docs/algebra/monoid_max_index.md\n */"
   dependsOn: []
   isVerificationFile: false
   path: src/algebra/monoid_max_index.hpp
   requiredBy: []
-  timestamp: '2022-09-23 05:31:03+09:00'
+  timestamp: '2022-09-26 06:11:28+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/algebra/monoid_max_index.hpp
