@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: src/math/ext_gcd.hpp
     title: src/math/ext_gcd.hpp
   _extendedRequiredBy:

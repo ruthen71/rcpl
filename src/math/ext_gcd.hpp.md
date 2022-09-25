@@ -8,10 +8,13 @@ data:
   - icon: ':warning:'
     path: src/math/inv.hpp
     title: src/math/inv.hpp
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_ntl/aoj_ntl_1_e.test.cpp
+    title: verify/aoj_ntl/aoj_ntl_1_e.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/math/ext_gcd.hpp\"\n\n// find (x, y) s.t. ax + by =\
@@ -30,8 +33,9 @@ data:
   - src/math/baby_step_giant_step.hpp
   - src/math/inv.hpp
   timestamp: '2022-09-26 05:21:31+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/aoj_ntl/aoj_ntl_1_e.test.cpp
 documentation_of: src/math/ext_gcd.hpp
 layout: document
 redirect_from:

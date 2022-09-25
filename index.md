@@ -134,7 +134,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/enumerate_primes.hpp
       title: src/math/enumerate_primes.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/math/ext_gcd.hpp
       title: src/math/ext_gcd.hpp
     - icon: ':warning:'
@@ -225,7 +225,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_ntl/aoj_ntl_1_d.test.cpp
       title: verify/aoj_ntl/aoj_ntl_1_d.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj_ntl/aoj_ntl_1_e.test.cpp
       title: verify/aoj_ntl/aoj_ntl_1_e.test.cpp
   - name: verify/aoj_other
