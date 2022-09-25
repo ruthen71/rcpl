@@ -8,7 +8,7 @@ template <class T, bool left = true> struct lazy_min_index_add {
     static constexpr S op(S a, S b) {
         if (a.first < b.first) return a;
         if (a.first > b.first) return b;
-        if (a.second > b.second) swap(a, b);
+        if (a.second > b.second) std::swap(a, b);
         return (left ? a : b);
     }
     static constexpr S e() { return {std::numeric_limits<T>::max(), -1}; }
