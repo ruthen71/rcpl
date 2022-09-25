@@ -1,7 +1,7 @@
 #pragma once
 
 long long pow_mod(long long a, long long n, const long long mod) {
-    assert(n >= 0 and mod >= 0);
+    assert(n >= 0 and mod >= 1);
     a %= mod;
     if (a < 0) a += mod;
     if (a == 0) return (n == 0 ? (mod != 1 ? 1 : 0) : 0);  // 0 ^ 0 = 1
