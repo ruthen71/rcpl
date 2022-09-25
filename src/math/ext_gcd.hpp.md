@@ -6,8 +6,8 @@ data:
     path: src/math/baby_step_giant_step.hpp
     title: src/math/baby_step_giant_step.hpp
   - icon: ':warning:'
-    path: src/math/inv.hpp
-    title: src/math/inv.hpp
+    path: src/math/inv_mod.hpp
+    title: src/math/inv_mod.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_ntl/aoj_ntl_1_e.test.cpp
@@ -31,7 +31,7 @@ data:
   path: src/math/ext_gcd.hpp
   requiredBy:
   - src/math/baby_step_giant_step.hpp
-  - src/math/inv.hpp
+  - src/math/inv_mod.hpp
   timestamp: '2022-09-26 05:21:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

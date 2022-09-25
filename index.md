@@ -138,8 +138,8 @@ data:
       path: src/math/ext_gcd.hpp
       title: src/math/ext_gcd.hpp
     - icon: ':warning:'
-      path: src/math/inv.hpp
-      title: src/math/inv.hpp
+      path: src/math/inv_mod.hpp
+      title: src/math/inv_mod.hpp
     - icon: ':heavy_check_mark:'
       path: src/math/osa_k.hpp
       title: src/math/osa_k.hpp
