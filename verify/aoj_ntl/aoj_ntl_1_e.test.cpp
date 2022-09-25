@@ -2,12 +2,12 @@
 
 #include <bits/stdc++.h>
 
-#include "src/math/extgcd.hpp"
+#include "src/math/ext_gcd.hpp"
 
 int main() {
     long long a, b, x, y;
     std::cin >> a >> b;
-    extgcd(a, b, x, y);
+    ext_gcd(a, b, x, y);
     std::cout << x << ' ' << y << '\n';
     return 0;
 }
