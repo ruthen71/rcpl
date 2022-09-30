@@ -46,6 +46,7 @@ template <class T, bool directed = false> struct graph {
     }
 
     void read_parent(int offset = 1) {
+        es.reserve(N - 1);
         for (int i = 1; i < N; i++) {
             int p;
             std::cin >> p;
