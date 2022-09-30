@@ -50,19 +50,20 @@ data:
     \ >> a >> b;\n            a -= offset, b -= offset;\n            if (weight) {\n\
     \                T c;\n                std::cin >> c;\n                add_edge(a,\
     \ b, c);\n            } else {\n                add_edge(a, b);\n            }\n\
-    \        }\n    }\n\n    void read_parent(int offset = 1) {\n        for (int\
-    \ i = 1; i < N; i++) {\n            int p;\n            std::cin >> p;\n     \
-    \       p -= offset;\n            add_edge(i, p);\n        }\n    }\n\n    void\
-    \ add_edge(const int &a, const int &b, T cost = 1) {\n        assert(0 <= a and\
-    \ a < N and 0 <= b and b < N);\n        if (!directed) G[b].push_back(edge_type(b,\
-    \ a, cost, M));\n        G[a].push_back(edge_type(a, b, cost, M));\n        es.push_back(edge_type(a,\
-    \ b, cost, M++));\n    }\n\n    inline std::vector<edge_type> &operator[](const\
-    \ int &k) { return G[k]; }\n\n    inline const std::vector<edge_type> &operator[](const\
-    \ int &k) const { return G[k]; }\n\n    friend std::ostream &operator<<(std::ostream\
-    \ &os, const graph<T, directed> &G) {\n        os << \"V: \" << G.N << \"\\nE:\
-    \ \" << G.M << '\\n';\n        for (int v = 0; v < G.N; v++) {\n            os\
-    \ << \"G[\" << v << \"] = [\";\n            for (auto &e : G[v]) os << e << \"\
-    \ \";\n            os << \"]\\n\";\n        }\n        return os;\n    }\n};\n"
+    \        }\n    }\n\n    void read_parent(int offset = 1) {\n        es.reserve(N\
+    \ - 1);\n        for (int i = 1; i < N; i++) {\n            int p;\n         \
+    \   std::cin >> p;\n            p -= offset;\n            add_edge(i, p);\n  \
+    \      }\n    }\n\n    void add_edge(const int &a, const int &b, T cost = 1) {\n\
+    \        assert(0 <= a and a < N and 0 <= b and b < N);\n        if (!directed)\
+    \ G[b].push_back(edge_type(b, a, cost, M));\n        G[a].push_back(edge_type(a,\
+    \ b, cost, M));\n        es.push_back(edge_type(a, b, cost, M++));\n    }\n\n\
+    \    inline std::vector<edge_type> &operator[](const int &k) { return G[k]; }\n\
+    \n    inline const std::vector<edge_type> &operator[](const int &k) const { return\
+    \ G[k]; }\n\n    friend std::ostream &operator<<(std::ostream &os, const graph<T,\
+    \ directed> &G) {\n        os << \"V: \" << G.N << \"\\nE: \" << G.M << '\\n';\n\
+    \        for (int v = 0; v < G.N; v++) {\n            os << \"G[\" << v << \"\
+    ] = [\";\n            for (auto &e : G[v]) os << e << \" \";\n            os <<\
+    \ \"]\\n\";\n        }\n        return os;\n    }\n};\n"
   code: "#pragma once\n\ntemplate <class T> struct edge {\n    int from, to;\n   \
     \ T cost;\n    int id;\n\n    edge(int from, int to, T cost = 1, int id = -1)\
     \ : from(from), to(to), cost(cost), id(id) {}\n\n    friend std::ostream &operator<<(std::ostream\
@@ -80,12 +81,12 @@ data:
     \ a -= offset, b -= offset;\n            if (weight) {\n                T c;\n\
     \                std::cin >> c;\n                add_edge(a, b, c);\n        \
     \    } else {\n                add_edge(a, b);\n            }\n        }\n   \
-    \ }\n\n    void read_parent(int offset = 1) {\n        for (int i = 1; i < N;\
-    \ i++) {\n            int p;\n            std::cin >> p;\n            p -= offset;\n\
-    \            add_edge(i, p);\n        }\n    }\n\n    void add_edge(const int\
-    \ &a, const int &b, T cost = 1) {\n        assert(0 <= a and a < N and 0 <= b\
-    \ and b < N);\n        if (!directed) G[b].push_back(edge_type(b, a, cost, M));\n\
-    \        G[a].push_back(edge_type(a, b, cost, M));\n        es.push_back(edge_type(a,\
+    \ }\n\n    void read_parent(int offset = 1) {\n        es.reserve(N - 1);\n  \
+    \      for (int i = 1; i < N; i++) {\n            int p;\n            std::cin\
+    \ >> p;\n            p -= offset;\n            add_edge(i, p);\n        }\n  \
+    \  }\n\n    void add_edge(const int &a, const int &b, T cost = 1) {\n        assert(0\
+    \ <= a and a < N and 0 <= b and b < N);\n        if (!directed) G[b].push_back(edge_type(b,\
+    \ a, cost, M));\n        G[a].push_back(edge_type(a, b, cost, M));\n        es.push_back(edge_type(a,\
     \ b, cost, M++));\n    }\n\n    inline std::vector<edge_type> &operator[](const\
     \ int &k) { return G[k]; }\n\n    inline const std::vector<edge_type> &operator[](const\
     \ int &k) const { return G[k]; }\n\n    friend std::ostream &operator<<(std::ostream\
@@ -101,7 +102,7 @@ data:
   - src/graph/bellman_ford.hpp
   - src/graph/lowest_common_ancestor.hpp
   - src/graph/dijkstra.hpp
-  timestamp: '2022-09-30 19:15:46+09:00'
+  timestamp: '2022-09-30 19:25:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
