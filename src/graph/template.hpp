@@ -18,6 +18,7 @@ template <class T, bool directed = false> struct graph {
     using cost_type = T;
     using edge_type = edge<T>;
     std::vector<std::vector<edge_type>> G;
+    std::vector<edge_type> es;
 
     graph() : N(0), M(0) {}
     graph(int N) : N(N), M(0), G(N) {}
@@ -29,6 +30,7 @@ template <class T, bool directed = false> struct graph {
     void read_tree(bool weight = false, int offset = 1) { read_graph(N - 1, weight, offset); }
 
     void read_graph(int _M, bool weight = false, int offset = 1) {
+        es.reserve(_M);
         for (int i = 0; i < _M; i++) {
             int a, b;
             std::cin >> a >> b;
@@ -55,7 +57,8 @@ template <class T, bool directed = false> struct graph {
     void add_edge(const int &a, const int &b, T cost = 1) {
         assert(0 <= a and a < N and 0 <= b and b < N);
         if (!directed) G[b].push_back(edge_type(b, a, cost, M));
-        G[a].push_back(edge_type(a, b, cost, M++));
+        G[a].push_back(edge_type(a, b, cost, M));
+        es.push_back(edge_type(a, b, cost, M++));
     }
 
     inline std::vector<edge_type> &operator[](const int &k) { return G[k]; }
