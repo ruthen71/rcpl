@@ -86,6 +86,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data_structure/segment_tree_2d.hpp
       title: "2D Segment Tree (2\u6B21\u5143\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
+    - icon: ':warning:'
+      path: src/data_structure/static_matrix.hpp
+      title: "Static Matrix (\u884C\u5217, \u30B5\u30A4\u30BA\u56FA\u5B9A)"
     - icon: ':heavy_check_mark:'
       path: src/data_structure/unionfind.hpp
       title: UnionFind
