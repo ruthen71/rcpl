@@ -100,15 +100,15 @@ data:
   requiredBy:
   - src/graph/tree_diameter.hpp
   - src/graph/bellman_ford.hpp
-  - src/graph/lowest_common_ancestor.hpp
   - src/graph/dijkstra.hpp
+  - src/graph/lowest_common_ancestor.hpp
   timestamp: '2022-09-30 19:25:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
-  - verify/lc_tree/lc_lowest_common_ancestor.test.cpp
-  - verify/lc_tree/lc_tree_diameter.test.cpp
   - verify/aoj_grl/aoj_grl_1_b.test.cpp
+  - verify/lc_tree/lc_tree_diameter.test.cpp
+  - verify/lc_tree/lc_lowest_common_ancestor.test.cpp
 documentation_of: src/graph/template.hpp
 layout: document
 redirect_from:

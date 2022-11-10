@@ -164,6 +164,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/totient_table.hpp
       title: src/math/totient_table.hpp
+  - name: src/string
+    pages:
+    - icon: ':warning:'
+      path: src/string/run_length_encoding.hpp
+      title: "Run Length Encoding (\u30E9\u30F3\u30EC\u30F3\u30B0\u30B9\u5727\u7E2E\
+        )"
   verificationCategories:
   - name: verify/aoj_alds1
     pages:
