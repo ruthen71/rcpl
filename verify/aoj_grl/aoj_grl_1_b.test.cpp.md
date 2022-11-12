@@ -5,7 +5,7 @@ data:
     path: src/graph/bellman_ford.hpp
     title: "Bellman-Ford algorithm (\u30D9\u30EB\u30DE\u30F3\u30D5\u30A9\u30FC\u30C9\
       \u6CD5)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/template.hpp
     title: src/graph/template.hpp
   _extendedRequiredBy: []

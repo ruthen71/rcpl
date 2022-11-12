@@ -123,9 +123,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/graph/lowest_common_ancestor.hpp
       title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/graph/template.hpp
       title: src/graph/template.hpp
+    - icon: ':x:'
+      path: src/graph/topological_sort.hpp
+      title: "Topological Sort (\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8\
+        )"
     - icon: ':heavy_check_mark:'
       path: src/graph/tree_diameter.hpp
       title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"
@@ -248,6 +252,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_other/aoj_0360.test.cpp
       title: verify/aoj_other/aoj_0360.test.cpp
+    - icon: ':x:'
+      path: verify/aoj_other/aoj_0519.test.cpp
+      title: verify/aoj_other/aoj_0519.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj_other/aoj_1068.test.cpp
       title: verify/aoj_other/aoj_1068.test.cpp
