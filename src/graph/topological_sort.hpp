@@ -14,7 +14,7 @@ template <class Graph> std::vector<int> topological_sort(Graph &G) {
         if (indeg[i] == 0) res.push_back(i);
     }
     int i = 0;
-    while (i < N) {
+    while (i < (int)res.size()) {
         int v = res[i];
         i++;
         for (auto &e : G[v]) {

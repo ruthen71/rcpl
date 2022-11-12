@@ -12,12 +12,13 @@ int main() {
     graph<int, true> G(N);
     for (int i = 0; i < M; i++) {
         std::cin >> a[i] >> b[i];
-        a[i]--, b[i]--;
+        a[i] = N - a[i];
+        b[i] = N - b[i];
         G.add_edge(a[i], b[i]);
         C[a[i]][b[i]] = 1;
     }
     auto res = topological_sort(G);
-    for (auto &e : res) std::cout << e + 1 << '\n';
+    for (auto &e : res) std::cout << N - e << '\n';
     int ok = 1;
     for (int i = 0; i < N - 1; i++) {
         ok &= C[res[i]][res[i + 1]];
