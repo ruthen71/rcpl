@@ -53,21 +53,21 @@ data:
     \    std::vector<int> indeg(N, 0);\n    for (int i = 0; i < N; i++) {\n      \
     \  for (auto &e : G[i]) indeg[e.to]++;\n    }\n    std::vector<int> res;\n   \
     \ for (int i = 0; i < N; i++) {\n        if (indeg[i] == 0) res.push_back(i);\n\
-    \    }\n    int i = 0;\n    while (i < N) {\n        int v = res[i];\n       \
-    \ i++;\n        for (auto &e : G[v]) {\n            indeg[e.to]--;\n         \
-    \   if (indeg[e.to] == 0) res.push_back(e.to);\n        }\n    }\n    if ((int)res.size()\
-    \ != N) {\n        return std::vector<int>();\n    }\n    return res;\n}\n\n/**\n\
-    \ * @brief Topological Sort (\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8\
-    )\n * @docs docs/graph/topological_sort.md\n */\n"
+    \    }\n    int i = 0;\n    while (i < (int)res.size()) {\n        int v = res[i];\n\
+    \        i++;\n        for (auto &e : G[v]) {\n            indeg[e.to]--;\n  \
+    \          if (indeg[e.to] == 0) res.push_back(e.to);\n        }\n    }\n    if\
+    \ ((int)res.size() != N) {\n        return std::vector<int>();\n    }\n    return\
+    \ res;\n}\n\n/**\n * @brief Topological Sort (\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\
+    \u30BD\u30FC\u30C8)\n * @docs docs/graph/topological_sort.md\n */\n"
   code: "#pragma once\n\n#include \"src/graph/template.hpp\"\n\ntemplate <class Graph>\
     \ std::vector<int> topological_sort(Graph &G) {\n    assert(G.is_directed());\n\
     \    int N = (int)G.size();\n    std::vector<int> indeg(N, 0);\n    for (int i\
     \ = 0; i < N; i++) {\n        for (auto &e : G[i]) indeg[e.to]++;\n    }\n   \
     \ std::vector<int> res;\n    for (int i = 0; i < N; i++) {\n        if (indeg[i]\
-    \ == 0) res.push_back(i);\n    }\n    int i = 0;\n    while (i < N) {\n      \
-    \  int v = res[i];\n        i++;\n        for (auto &e : G[v]) {\n           \
-    \ indeg[e.to]--;\n            if (indeg[e.to] == 0) res.push_back(e.to);\n   \
-    \     }\n    }\n    if ((int)res.size() != N) {\n        return std::vector<int>();\n\
+    \ == 0) res.push_back(i);\n    }\n    int i = 0;\n    while (i < (int)res.size())\
+    \ {\n        int v = res[i];\n        i++;\n        for (auto &e : G[v]) {\n \
+    \           indeg[e.to]--;\n            if (indeg[e.to] == 0) res.push_back(e.to);\n\
+    \        }\n    }\n    if ((int)res.size() != N) {\n        return std::vector<int>();\n\
     \    }\n    return res;\n}\n\n/**\n * @brief Topological Sort (\u30C8\u30DD\u30ED\
     \u30B8\u30AB\u30EB\u30BD\u30FC\u30C8)\n * @docs docs/graph/topological_sort.md\n\
     \ */\n"
@@ -76,7 +76,7 @@ data:
   isVerificationFile: false
   path: src/graph/topological_sort.hpp
   requiredBy: []
-  timestamp: '2022-11-13 00:39:21+09:00'
+  timestamp: '2022-11-13 01:20:32+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/aoj_other/aoj_0519.test.cpp
