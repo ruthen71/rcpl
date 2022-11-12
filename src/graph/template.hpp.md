@@ -6,6 +6,9 @@ data:
     path: src/graph/bellman_ford.hpp
     title: "Bellman-Ford algorithm (\u30D9\u30EB\u30DE\u30F3\u30D5\u30A9\u30FC\u30C9\
       \u6CD5)"
+  - icon: ':warning:'
+    path: src/graph/bfs01.hpp
+    title: 01-BFS
   - icon: ':heavy_check_mark:'
     path: src/graph/dijkstra.hpp
     title: "Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
@@ -101,6 +104,7 @@ data:
   - src/graph/tree_diameter.hpp
   - src/graph/bellman_ford.hpp
   - src/graph/dijkstra.hpp
+  - src/graph/bfs01.hpp
   - src/graph/lowest_common_ancestor.hpp
   timestamp: '2022-09-30 19:25:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
