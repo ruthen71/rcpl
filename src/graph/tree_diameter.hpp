@@ -1,11 +1,8 @@
 #pragma once
 
-#include "src/graph/template.hpp"
+#include "src/graph/graph_template.hpp"
 
-template <class Graph>
-std::pair<typename Graph::cost_type, std::vector<typename Graph::edge_type>>  //
-tree_diameter(Graph &G) {
-    using T = typename Graph::cost_type;
+template <class T, class Graph> std::pair<T, std::vector<edge<T>>> tree_diameter(Graph &G) {
     std::vector<int> to(G.size(), -1);
 
     auto dfs = [&](auto f, int cur, int par) -> std::pair<T, int> {
@@ -26,7 +23,7 @@ tree_diameter(Graph &G) {
     auto t = dfs(dfs, s.second, -1);
 
     int cur = s.second;
-    std::vector<typename Graph::edge_type> path;
+    std::vector<edge<T>> path;
     while (cur != t.second) {
         for (auto &e : G[cur]) {
             if (to[cur] == e.to) {
