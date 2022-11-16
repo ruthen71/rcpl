@@ -15,8 +15,8 @@ template <class T> graph<T> read_graph(int N, int M, const bool weight = false, 
             G[a].push_back(edge(a, b, c, i));
         } else {
             // c = 1
-            if (!directed) G[b].push_back(edge(b, a, 1, i));
-            G[a].push_back(edge(a, b, 1, i));
+            if (!directed) G[b].push_back(edge(b, a, T(1), i));
+            G[a].push_back(edge(a, b, T(1), i));
         }
     }
     return G;
