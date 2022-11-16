@@ -121,12 +121,18 @@ data:
       path: src/graph/dijkstra.hpp
       title: "Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
     - icon: ':heavy_check_mark:'
+      path: src/graph/graph_template.hpp
+      title: src/graph/graph_template.hpp
+    - icon: ':heavy_check_mark:'
       path: src/graph/lowest_common_ancestor.hpp
       title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
+      path: src/graph/read_graph.hpp
+      title: src/graph/read_graph.hpp
+    - icon: ':warning:'
       path: src/graph/template.hpp
       title: src/graph/template.hpp
-    - icon: ':x:'
+    - icon: ':warning:'
       path: src/graph/topological_sort.hpp
       title: "Topological Sort (\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8\
         )"
@@ -252,9 +258,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_other/aoj_0360.test.cpp
       title: verify/aoj_other/aoj_0360.test.cpp
-    - icon: ':x:'
-      path: verify/aoj_other/aoj_0519.test.cpp
-      title: verify/aoj_other/aoj_0519.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj_other/aoj_1068.test.cpp
       title: verify/aoj_other/aoj_1068.test.cpp

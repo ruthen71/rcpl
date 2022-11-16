@@ -1,46 +1,11 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: src/graph/bellman_ford.hpp
-    title: "Bellman-Ford algorithm (\u30D9\u30EB\u30DE\u30F3\u30D5\u30A9\u30FC\u30C9\
-      \u6CD5)"
-  - icon: ':warning:'
-    path: src/graph/bfs01.hpp
-    title: 01-BFS
-  - icon: ':heavy_check_mark:'
-    path: src/graph/dijkstra.hpp
-    title: "Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
-  - icon: ':heavy_check_mark:'
-    path: src/graph/lowest_common_ancestor.hpp
-    title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
-  - icon: ':x:'
-    path: src/graph/topological_sort.hpp
-    title: "Topological Sort (\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8\
-      )"
-  - icon: ':heavy_check_mark:'
-    path: src/graph/tree_diameter.hpp
-    title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj_grl/aoj_grl_1_b.test.cpp
-    title: verify/aoj_grl/aoj_grl_1_b.test.cpp
-  - icon: ':x:'
-    path: verify/aoj_other/aoj_0519.test.cpp
-    title: verify/aoj_other/aoj_0519.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
-    title: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/lc_tree/lc_lowest_common_ancestor.test.cpp
-    title: verify/lc_tree/lc_lowest_common_ancestor.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/lc_tree/lc_tree_diameter.test.cpp
-    title: verify/lc_tree/lc_tree_diameter.test.cpp
-  _isVerificationFailed: true
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/graph/template.hpp\"\n\ntemplate <class T> struct edge\
@@ -107,21 +72,10 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: src/graph/template.hpp
-  requiredBy:
-  - src/graph/tree_diameter.hpp
-  - src/graph/bellman_ford.hpp
-  - src/graph/topological_sort.hpp
-  - src/graph/dijkstra.hpp
-  - src/graph/bfs01.hpp
-  - src/graph/lowest_common_ancestor.hpp
+  requiredBy: []
   timestamp: '2022-09-30 19:25:29+09:00'
-  verificationStatus: LIBRARY_SOME_WA
-  verifiedWith:
-  - verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
-  - verify/aoj_other/aoj_0519.test.cpp
-  - verify/aoj_grl/aoj_grl_1_b.test.cpp
-  - verify/lc_tree/lc_tree_diameter.test.cpp
-  - verify/lc_tree/lc_lowest_common_ancestor.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/graph/template.hpp
 layout: document
 redirect_from:
