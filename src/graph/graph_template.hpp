@@ -5,6 +5,7 @@ template <class T> struct edge {
     T cost;
     int id;
 
+    edge() = default;
     edge(int from, int to, T cost = 1, int id = -1) : from(from), to(to), cost(cost), id(id) {}
 
     friend std::ostream &operator<<(std::ostream &os, const edge<T> &e) {
