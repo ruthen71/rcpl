@@ -3,12 +3,12 @@
 #include <bits/stdc++.h>
 
 #include "src/graph/dijkstra.hpp"
+#include "src/graph/read_graph.hpp"
 
 int main() {
     int N, M, s, t;
     std::cin >> N >> M >> s >> t;
-    graph<long long, true> G(N);
-    G.read_graph(M, true, 0);
+    auto G = read_graph<long long>(N, M, true, true, 0);
     std::vector<int> ss = {s};
     const long long INF = 1LL << 60;
     auto [d, p, r] = dijkstra(G, ss, INF);

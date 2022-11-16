@@ -1,12 +1,10 @@
 #pragma once
 
-#include "src/graph/template.hpp"
+#include "src/graph/graph_template.hpp"
 
-template <class Graph>
-std::tuple<std::vector<typename Graph::cost_type>, std::vector<int>, std::vector<int>>  //
-bfs01(Graph &G, std::vector<int> &s, const typename Graph::cost_type INF = std::numeric_limits<typename Graph::cost_type>::max() / 4) {
-    using T = typename Graph::cost_type;
-
+template <class T, class Graph>
+std::tuple<std::vector<T>, std::vector<int>, std::vector<int>>  //
+bfs01(Graph &G, std::vector<int> &s, const T INF) {
     int N = (int)G.size();
     std::vector<T> dist(N, INF);
     std::vector<int> par(N, -1), root(N, -1);
