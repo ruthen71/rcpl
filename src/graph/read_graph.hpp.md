@@ -7,6 +7,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/aoj_dpl/aoj_dpl_2_a.test.cpp
+    title: verify/aoj_dpl/aoj_dpl_2_a.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_grl/aoj_grl_1_b.test.cpp
     title: verify/aoj_grl/aoj_grl_1_b.test.cpp
   - icon: ':heavy_check_mark:'
@@ -61,6 +64,7 @@ data:
   - verify/aoj_grl/aoj_grl_2_a.test.cpp
   - verify/aoj_grl/aoj_grl_1_b.test.cpp
   - verify/lc_tree/lc_tree_diameter.test.cpp
+  - verify/aoj_dpl/aoj_dpl_2_a.test.cpp
 documentation_of: src/graph/read_graph.hpp
 layout: document
 redirect_from:

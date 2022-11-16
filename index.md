@@ -108,6 +108,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/dp/sliding_window_minimum.hpp
       title: "Sliding Window Minimum (\u30B9\u30E9\u30A4\u30C9\u6700\u5C0F\u5024)"
+    - icon: ':heavy_check_mark:'
+      path: src/dp/traveling_salesman_problem.hpp
+      title: "Traveling Salesman Problem (\u5DE1\u56DE\u30BB\u30FC\u30EB\u30B9\u30DE\
+        \u30F3\u554F\u984C)"
   - name: src/graph
     pages:
     - icon: ':heavy_check_mark:'
@@ -203,6 +207,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_dpl/aoj_dpl_1_g.test.cpp
       title: verify/aoj_dpl/aoj_dpl_1_g.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_dpl/aoj_dpl_2_a.test.cpp
+      title: verify/aoj_dpl/aoj_dpl_2_a.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj_dpl/aoj_dpl_3_c.test.cpp
       title: verify/aoj_dpl/aoj_dpl_3_c.test.cpp
