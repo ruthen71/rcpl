@@ -29,5 +29,6 @@
 "verify/lc_graph/lc_shortest_path_dijkstra.test.cpp": "2022-11-16 18:45:11 +0900",
 "verify/lc_math/lc_enumerate_primes.test.cpp": "2022-09-06 17:21:56 +0900",
 "verify/lc_tree/lc_lowest_common_ancestor.test.cpp": "2022-11-16 18:00:01 +0900",
+"verify/lc_tree/lc_tree_diameter.test.cpp": "2022-11-16 19:00:15 +0900",
 "verify/yuki/yuki_1036_segment_tree.test.cpp": "2022-09-25 06:30:46 +0900"
 }
