@@ -3,12 +3,12 @@
 #include <bits/stdc++.h>
 
 #include "src/graph/bellman_ford.hpp"
+#include "src/graph/read_graph.hpp"
 
 int main() {
     int N, M, r;
     std::cin >> N >> M >> r;
-    graph<int, true> G(N);
-    G.read_graph(M, true, 0);
+    graph<int> G = read_graph<int>(N, M, true, true, 0);
     std::vector<int> s = {r};
     const int INF = 1 << 30;
     auto [dist, par, root] = bellman_ford(G, s, INF);
