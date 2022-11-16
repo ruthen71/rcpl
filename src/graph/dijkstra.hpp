@@ -1,6 +1,6 @@
 #pragma once
 
-#include "src/graph/template.hpp"
+#include "src/graph/graph_template.hpp"
 
 template <class T, class Graph>
 std::tuple<std::vector<T>, std::vector<int>, std::vector<int>>  //
