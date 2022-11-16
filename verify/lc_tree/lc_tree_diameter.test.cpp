@@ -8,7 +8,7 @@
 int main() {
     int N;
     std::cin >> N;
-    auto G = read_graph<long long>(N, N - 1, true, false, 1);
+    auto G = read_graph<long long>(N, N - 1, true, false, 0);
     auto [d, path] = tree_diameter<long long>(G);
     std::cout << d << ' ' << path.size() + 1 << '\n';
     std::cout << path.front().from;
