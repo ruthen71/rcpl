@@ -1,8 +1,14 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: src/graph/kruskal.hpp
+    title: "Kruskal's algorithm (\u30AF\u30E9\u30B9\u30AB\u30EB\u6CD5)"
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_grl/aoj_grl_2_a.test.cpp
+    title: verify/aoj_grl/aoj_grl_2_a.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/lc_data_structure/lc_unionfind.test.cpp
     title: verify/lc_data_structure/lc_unionfind.test.cpp
@@ -36,11 +42,13 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: src/data_structure/unionfind.hpp
-  requiredBy: []
+  requiredBy:
+  - src/graph/kruskal.hpp
   timestamp: '2022-08-22 14:23:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_data_structure/lc_unionfind.test.cpp
+  - verify/aoj_grl/aoj_grl_2_a.test.cpp
 documentation_of: src/data_structure/unionfind.hpp
 layout: document
 redirect_from:

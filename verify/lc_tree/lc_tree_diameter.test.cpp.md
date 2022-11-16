@@ -24,18 +24,18 @@ data:
     \ \"https://judge.yosupo.jp/problem/tree_diameter\"\n\n#include <bits/stdc++.h>\n\
     \n#line 2 \"src/graph/read_graph.hpp\"\n\n#line 2 \"src/graph/graph_template.hpp\"\
     \n\ntemplate <class T> struct edge {\n    int from, to;\n    T cost;\n    int\
-    \ id;\n\n    edge(int from, int to, T cost = 1, int id = -1) : from(from), to(to),\
-    \ cost(cost), id(id) {}\n\n    friend std::ostream &operator<<(std::ostream &os,\
-    \ const edge<T> &e) {\n        // { id : from -> to, cost }\n        return os\
-    \ << \"{ \" << e.id << \" : \" << e.from << \" -> \" << e.to << \", \" << e.cost\
-    \ << \" }\";\n    }\n};\n\ntemplate <class T> using edges = std::vector<edge<T>>;\n\
-    template <class T> using graph = std::vector<std::vector<edge<T>>>;\n#line 4 \"\
-    src/graph/read_graph.hpp\"\n\ntemplate <class T> graph<T> read_graph(int N, int\
-    \ M, const bool weight = false, const bool directed = false, const int offset\
-    \ = 1) {\n    graph<T> G(N);\n    for (int i = 0; i < M; i++) {\n        int a,\
-    \ b;\n        std::cin >> a >> b;\n        a -= offset, b -= offset;\n       \
-    \ if (weight) {\n            T c;\n            std::cin >> c;\n            if\
-    \ (!directed) G[b].push_back(edge(b, a, c, i));\n            G[a].push_back(edge(a,\
+    \ id;\n\n    edge() = default;\n    edge(int from, int to, T cost = 1, int id\
+    \ = -1) : from(from), to(to), cost(cost), id(id) {}\n\n    friend std::ostream\
+    \ &operator<<(std::ostream &os, const edge<T> &e) {\n        // { id : from ->\
+    \ to, cost }\n        return os << \"{ \" << e.id << \" : \" << e.from << \" ->\
+    \ \" << e.to << \", \" << e.cost << \" }\";\n    }\n};\n\ntemplate <class T> using\
+    \ edges = std::vector<edge<T>>;\ntemplate <class T> using graph = std::vector<std::vector<edge<T>>>;\n\
+    #line 4 \"src/graph/read_graph.hpp\"\n\ntemplate <class T> graph<T> read_graph(int\
+    \ N, int M, const bool weight = false, const bool directed = false, const int\
+    \ offset = 1) {\n    graph<T> G(N);\n    for (int i = 0; i < M; i++) {\n     \
+    \   int a, b;\n        std::cin >> a >> b;\n        a -= offset, b -= offset;\n\
+    \        if (weight) {\n            T c;\n            std::cin >> c;\n       \
+    \     if (!directed) G[b].push_back(edge(b, a, c, i));\n            G[a].push_back(edge(a,\
     \ b, c, i));\n        } else {\n            // c = 1\n            if (!directed)\
     \ G[b].push_back(edge(b, a, T(1), i));\n            G[a].push_back(edge(a, b,\
     \ T(1), i));\n        }\n    }\n    return G;\n}\n#line 2 \"src/graph/tree_diameter.hpp\"\
@@ -72,7 +72,7 @@ data:
   isVerificationFile: true
   path: verify/lc_tree/lc_tree_diameter.test.cpp
   requiredBy: []
-  timestamp: '2022-11-16 19:00:15+09:00'
+  timestamp: '2022-11-16 19:50:14+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_tree/lc_tree_diameter.test.cpp

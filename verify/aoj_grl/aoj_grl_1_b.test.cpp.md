@@ -25,13 +25,13 @@ data:
     https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_B\"\n\n#include\
     \ <bits/stdc++.h>\n\n#line 2 \"src/graph/bellman_ford.hpp\"\n\n#line 2 \"src/graph/graph_template.hpp\"\
     \n\ntemplate <class T> struct edge {\n    int from, to;\n    T cost;\n    int\
-    \ id;\n\n    edge(int from, int to, T cost = 1, int id = -1) : from(from), to(to),\
-    \ cost(cost), id(id) {}\n\n    friend std::ostream &operator<<(std::ostream &os,\
-    \ const edge<T> &e) {\n        // { id : from -> to, cost }\n        return os\
-    \ << \"{ \" << e.id << \" : \" << e.from << \" -> \" << e.to << \", \" << e.cost\
-    \ << \" }\";\n    }\n};\n\ntemplate <class T> using edges = std::vector<edge<T>>;\n\
-    template <class T> using graph = std::vector<std::vector<edge<T>>>;\n#line 4 \"\
-    src/graph/bellman_ford.hpp\"\n\ntemplate <class T, class Graph>\nstd::tuple<std::vector<T>,\
+    \ id;\n\n    edge() = default;\n    edge(int from, int to, T cost = 1, int id\
+    \ = -1) : from(from), to(to), cost(cost), id(id) {}\n\n    friend std::ostream\
+    \ &operator<<(std::ostream &os, const edge<T> &e) {\n        // { id : from ->\
+    \ to, cost }\n        return os << \"{ \" << e.id << \" : \" << e.from << \" ->\
+    \ \" << e.to << \", \" << e.cost << \" }\";\n    }\n};\n\ntemplate <class T> using\
+    \ edges = std::vector<edge<T>>;\ntemplate <class T> using graph = std::vector<std::vector<edge<T>>>;\n\
+    #line 4 \"src/graph/bellman_ford.hpp\"\n\ntemplate <class T, class Graph>\nstd::tuple<std::vector<T>,\
     \ std::vector<int>, std::vector<int>>  //\nbellman_ford(Graph &G, std::vector<int>\
     \ &s, const T INF) {\n    int N = (int)G.size();\n    std::vector<T> dist(N, INF);\n\
     \    std::vector<int> par(N, -1), root(N, -1);\n\n    for (auto &v : s) {\n  \
@@ -82,7 +82,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_grl/aoj_grl_1_b.test.cpp
   requiredBy: []
-  timestamp: '2022-11-16 18:45:11+09:00'
+  timestamp: '2022-11-16 19:50:14+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_grl/aoj_grl_1_b.test.cpp

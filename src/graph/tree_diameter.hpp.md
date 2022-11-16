@@ -18,13 +18,13 @@ data:
     links: []
   bundledCode: "#line 2 \"src/graph/tree_diameter.hpp\"\n\n#line 2 \"src/graph/graph_template.hpp\"\
     \n\ntemplate <class T> struct edge {\n    int from, to;\n    T cost;\n    int\
-    \ id;\n\n    edge(int from, int to, T cost = 1, int id = -1) : from(from), to(to),\
-    \ cost(cost), id(id) {}\n\n    friend std::ostream &operator<<(std::ostream &os,\
-    \ const edge<T> &e) {\n        // { id : from -> to, cost }\n        return os\
-    \ << \"{ \" << e.id << \" : \" << e.from << \" -> \" << e.to << \", \" << e.cost\
-    \ << \" }\";\n    }\n};\n\ntemplate <class T> using edges = std::vector<edge<T>>;\n\
-    template <class T> using graph = std::vector<std::vector<edge<T>>>;\n#line 4 \"\
-    src/graph/tree_diameter.hpp\"\n\ntemplate <class T, class Graph> std::pair<T,\
+    \ id;\n\n    edge() = default;\n    edge(int from, int to, T cost = 1, int id\
+    \ = -1) : from(from), to(to), cost(cost), id(id) {}\n\n    friend std::ostream\
+    \ &operator<<(std::ostream &os, const edge<T> &e) {\n        // { id : from ->\
+    \ to, cost }\n        return os << \"{ \" << e.id << \" : \" << e.from << \" ->\
+    \ \" << e.to << \", \" << e.cost << \" }\";\n    }\n};\n\ntemplate <class T> using\
+    \ edges = std::vector<edge<T>>;\ntemplate <class T> using graph = std::vector<std::vector<edge<T>>>;\n\
+    #line 4 \"src/graph/tree_diameter.hpp\"\n\ntemplate <class T, class Graph> std::pair<T,\
     \ std::vector<edge<T>>> tree_diameter(Graph &G) {\n    std::vector<int> to(G.size(),\
     \ -1);\n\n    auto dfs = [&](auto f, int cur, int par) -> std::pair<T, int> {\n\
     \        std::pair<T, int> ret = {0, cur};\n        for (auto &e : G[cur]) {\n\
@@ -57,7 +57,7 @@ data:
   isVerificationFile: false
   path: src/graph/tree_diameter.hpp
   requiredBy: []
-  timestamp: '2022-11-16 18:37:12+09:00'
+  timestamp: '2022-11-16 19:50:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_tree/lc_tree_diameter.test.cpp

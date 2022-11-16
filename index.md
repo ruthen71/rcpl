@@ -121,8 +121,14 @@ data:
       path: src/graph/dijkstra.hpp
       title: "Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
     - icon: ':heavy_check_mark:'
+      path: src/graph/get_edges.hpp
+      title: src/graph/get_edges.hpp
+    - icon: ':heavy_check_mark:'
       path: src/graph/graph_template.hpp
       title: src/graph/graph_template.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/graph/kruskal.hpp
+      title: "Kruskal's algorithm (\u30AF\u30E9\u30B9\u30AB\u30EB\u6CD5)"
     - icon: ':heavy_check_mark:'
       path: src/graph/lowest_common_ancestor.hpp
       title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
@@ -231,6 +237,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_grl/aoj_grl_1_b.test.cpp
       title: verify/aoj_grl/aoj_grl_1_b.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_grl/aoj_grl_2_a.test.cpp
+      title: verify/aoj_grl/aoj_grl_2_a.test.cpp
   - name: verify/aoj_itp1
     pages:
     - icon: ':heavy_check_mark:'
