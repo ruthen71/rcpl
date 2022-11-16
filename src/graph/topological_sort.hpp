@@ -1,9 +1,8 @@
 #pragma once
 
-#include "src/graph/template.hpp"
+#include "src/graph/graph_template.hpp"
 
 template <class Graph> std::vector<int> topological_sort(Graph &G) {
-    assert(G.is_directed());
     int N = (int)G.size();
     std::vector<int> indeg(N, 0);
     for (int i = 0; i < N; i++) {
