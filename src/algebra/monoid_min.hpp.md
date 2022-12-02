@@ -28,8 +28,8 @@ data:
   timestamp: '2022-08-23 17:30:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj_other/aoj_1068.test.cpp
   - verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp
+  - verify/aoj_other/aoj_1068.test.cpp
 documentation_of: src/algebra/monoid_min.hpp
 layout: document
 redirect_from:

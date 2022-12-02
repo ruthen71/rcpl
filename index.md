@@ -68,6 +68,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data_structure/cumulative_sum_2d.hpp
       title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
+    - icon: ':warning:'
+      path: src/data_structure/cumulative_sum_diag.hpp
+      title: "\u659C\u3081\u7D2F\u7A4D\u548C"
     - icon: ':heavy_check_mark:'
       path: src/data_structure/dual_segment_tree.hpp
       title: "Dual Segment Tree (\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
