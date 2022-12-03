@@ -1,0 +1,12 @@
+- ポテンシャルつき UnionFind とも言う
+- アーベル群が乗る
+    - マグマ(閉じている)
+    - 半群(閉じている、結合法則)
+    - モノイド(閉じている、結合法則、単位元)
+    - 群(閉じている、結合法則、単位元、逆元)
+    - アーベル群(閉じている、結合法則、単位元、逆元、交換法則)
+- `merge()` の説明
+    - `diff_weight` は各頂点の `leader` からの重みの総和となっている(なので `weight()` は `diff_weight[x]` を返すだけで良い)
+    - もともと `w` は `weight(y) - weight(x)` となっており、`w += weight(x)` によって `w` は `weight(y) - weight(leader(x))` となり、`w -= weight(y)` によって `w` は `weight(leader(y)) - weight(leader(x))` となり、最後に、`leader(x)` と `leader(y)` を Union by Size している
+    - `leader(x)` の重みを 0 として、相対的に表現しているため、`diff_weight[y] = w` でOK
+
