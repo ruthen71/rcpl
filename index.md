@@ -95,6 +95,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data_structure/unionfind.hpp
       title: UnionFind
+    - icon: ':heavy_check_mark:'
+      path: src/data_structure/weighted_unionfind.hpp
+      title: "Weighted UnionFind (\u91CD\u307F\u3064\u304D UnionFind)"
   - name: src/dp
     pages:
     - icon: ':heavy_check_mark:'
@@ -218,6 +221,9 @@ data:
       title: verify/aoj_dpl/aoj_dpl_3_c.test.cpp
   - name: verify/aoj_dsl
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_dsl/aoj_dsl_1_b.test.cpp
+      title: verify/aoj_dsl/aoj_dsl_1_b.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp
       title: verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp
