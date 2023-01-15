@@ -6,7 +6,7 @@ template <class Mint> struct rolling_hash {
 
     static inline Mint generate_base() {
         std::mt19937_64 mt(std::chrono::steady_clock::now().time_since_epoch().count());
-        std::uniform_int_distribution<int> rand(1, Mint::mod() - 1);
+        std::uniform_int_distribution<uint64_t> rand(1, Mint::mod() - 1);
         return Mint(rand(mt));
     }
 
