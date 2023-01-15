@@ -16,6 +16,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    _deprecated_at_docs: docs/math/modint261.md
     links: []
   bundledCode: "#line 2 \"src/math/modint261.hpp\"\n\nstruct modint261 {\n    static\
     \ constexpr uint64_t m = (1ULL << 61) - 1;\n    using uint128_t = __uint128_t;\n\
@@ -41,7 +42,8 @@ data:
     \ -= rhs; }\n    friend mint operator*(const mint &lhs, const mint &rhs) { return\
     \ mint(lhs) *= rhs; }\n    friend bool operator==(const mint &lhs, const mint\
     \ &rhs) { return lhs._v == rhs._v; }\n    friend bool operator!=(const mint &lhs,\
-    \ const mint &rhs) { return lhs._v != rhs._v; }\n};\n"
+    \ const mint &rhs) { return lhs._v != rhs._v; }\n};\n\n/**\n * @docs docs/math/modint261.md\n\
+    \ */\n"
   code: "#pragma once\n\nstruct modint261 {\n    static constexpr uint64_t m = (1ULL\
     \ << 61) - 1;\n    using uint128_t = __uint128_t;\n    using mint = modint261;\n\
     \    uint64_t _v;\n\n    static constexpr uint64_t mod() { return m; }\n\n   \
@@ -65,14 +67,15 @@ data:
     \ mint &lhs, const mint &rhs) { return mint(lhs) -= rhs; }\n    friend mint operator*(const\
     \ mint &lhs, const mint &rhs) { return mint(lhs) *= rhs; }\n    friend bool operator==(const\
     \ mint &lhs, const mint &rhs) { return lhs._v == rhs._v; }\n    friend bool operator!=(const\
-    \ mint &lhs, const mint &rhs) { return lhs._v != rhs._v; }\n};"
+    \ mint &lhs, const mint &rhs) { return lhs._v != rhs._v; }\n};\n\n/**\n * @docs\
+    \ docs/math/modint261.md\n */"
   dependsOn: []
   isVerificationFile: false
   path: src/math/modint261.hpp
   requiredBy:
   - src/string/rolling_hash.hpp
   - src/algebra/monoid_rolling_hash.hpp
-  timestamp: '2023-01-16 02:07:01+09:00'
+  timestamp: '2023-01-16 02:29:02+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_alds1/aoj_alds1_14_b.test.cpp
@@ -83,3 +86,6 @@ redirect_from:
 - /library/src/math/modint261.hpp.html
 title: src/math/modint261.hpp
 ---
+## 参考
+- [安全で爆速なRollingHashの話](https://qiita.com/keymoon/items/11fac5627672a6d6a9f6)
+    - `a * b` を `z = a * b` として `(z >> 61) + (z & mod)` でできる理由など
