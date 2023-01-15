@@ -36,7 +36,5 @@ redirect_from:
 - /library/src/algebra/monoid_max_index.hpp.html
 title: src/algebra/monoid_max_index.hpp
 ---
-# monoid_max_index
-
 ## 使用例
 

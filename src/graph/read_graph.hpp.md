@@ -60,9 +60,9 @@ data:
   timestamp: '2022-11-16 19:50:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
   - verify/aoj_dpl/aoj_dpl_2_a.test.cpp
   - verify/lc_tree/lc_tree_diameter.test.cpp
+  - verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
   - verify/aoj_grl/aoj_grl_1_b.test.cpp
   - verify/aoj_grl/aoj_grl_2_a.test.cpp
 documentation_of: src/graph/read_graph.hpp

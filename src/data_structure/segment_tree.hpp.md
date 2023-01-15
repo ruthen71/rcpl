@@ -117,8 +117,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yuki/yuki_1036_segment_tree.test.cpp
-  - verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
   - verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp
+  - verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
 documentation_of: src/data_structure/segment_tree.hpp
 layout: document
 redirect_from:

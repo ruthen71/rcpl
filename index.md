@@ -54,6 +54,9 @@ data:
     - icon: ':warning:'
       path: src/algebra/monoid_min_index.hpp
       title: src/algebra/monoid_min_index.hpp
+    - icon: ':warning:'
+      path: src/algebra/monoid_rolling_hash.hpp
+      title: src/algebra/monoid_rolling_hash.hpp
     - icon: ':heavy_check_mark:'
       path: src/algebra/monoid_sum.hpp
       title: src/algebra/monoid_sum.hpp
@@ -192,6 +195,9 @@ data:
       title: src/math/totient_table.hpp
   - name: src/string
     pages:
+    - icon: ':warning:'
+      path: src/string/rolling_hash.hpp
+      title: src/string/rolling_hash.hpp
     - icon: ':warning:'
       path: src/string/run_length_encoding.hpp
       title: "Run Length Encoding (\u30E9\u30F3\u30EC\u30F3\u30B0\u30B9\u5727\u7E2E\

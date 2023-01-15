@@ -36,8 +36,6 @@ redirect_from:
 - /library/src/algebra/monoid_min_index.hpp.html
 title: src/algebra/monoid_min_index.hpp
 ---
-# monoid_min_index
-
 ## 使用例
 
 - [ABC267 E](https://atcoder.jp/contests/abc267/tasks/abc267_e)

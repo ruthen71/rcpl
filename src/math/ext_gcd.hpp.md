@@ -30,8 +30,8 @@ data:
   isVerificationFile: false
   path: src/math/ext_gcd.hpp
   requiredBy:
-  - src/math/inv_mod.hpp
   - src/math/baby_step_giant_step.hpp
+  - src/math/inv_mod.hpp
   timestamp: '2022-09-26 05:21:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
