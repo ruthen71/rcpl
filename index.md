@@ -175,6 +175,9 @@ data:
     - icon: ':warning:'
       path: src/math/inv_mod.hpp
       title: src/math/inv_mod.hpp
+    - icon: ':warning:'
+      path: src/math/modint261.hpp
+      title: src/math/modint261.hpp
     - icon: ':heavy_check_mark:'
       path: src/math/osa_k.hpp
       title: src/math/osa_k.hpp
