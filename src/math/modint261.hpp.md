@@ -5,16 +5,16 @@ data:
   - icon: ':warning:'
     path: src/algebra/monoid_rolling_hash.hpp
     title: src/algebra/monoid_rolling_hash.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/string/rolling_hash.hpp
     title: src/string/rolling_hash.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_alds1/aoj_alds1_14_b.test.cpp
     title: verify/aoj_alds1/aoj_alds1_14_b.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/math/modint261.hpp\"\n\nstruct modint261 {\n    static\
@@ -73,7 +73,7 @@ data:
   - src/string/rolling_hash.hpp
   - src/algebra/monoid_rolling_hash.hpp
   timestamp: '2023-01-16 02:07:01+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_alds1/aoj_alds1_14_b.test.cpp
 documentation_of: src/math/modint261.hpp

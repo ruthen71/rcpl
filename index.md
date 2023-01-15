@@ -175,7 +175,7 @@ data:
     - icon: ':warning:'
       path: src/math/inv_mod.hpp
       title: src/math/inv_mod.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/math/modint261.hpp
       title: src/math/modint261.hpp
     - icon: ':heavy_check_mark:'
@@ -198,7 +198,7 @@ data:
       title: src/math/totient_table.hpp
   - name: src/string
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/string/rolling_hash.hpp
       title: src/string/rolling_hash.hpp
     - icon: ':warning:'
@@ -208,7 +208,7 @@ data:
   verificationCategories:
   - name: verify/aoj_alds1
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj_alds1/aoj_alds1_14_b.test.cpp
       title: verify/aoj_alds1/aoj_alds1_14_b.test.cpp
     - icon: ':heavy_check_mark:'

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/modint261.hpp
     title: src/math/modint261.hpp
   _extendedRequiredBy:
@@ -9,12 +9,12 @@ data:
     path: src/algebra/monoid_rolling_hash.hpp
     title: src/algebra/monoid_rolling_hash.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_alds1/aoj_alds1_14_b.test.cpp
     title: verify/aoj_alds1/aoj_alds1_14_b.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/string/rolling_hash.hpp\"\n\n#line 2 \"src/math/modint261.hpp\"\
@@ -91,7 +91,7 @@ data:
   requiredBy:
   - src/algebra/monoid_rolling_hash.hpp
   timestamp: '2023-01-16 02:13:09+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_alds1/aoj_alds1_14_b.test.cpp
 documentation_of: src/string/rolling_hash.hpp

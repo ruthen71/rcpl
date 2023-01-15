@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/modint261.hpp
     title: src/math/modint261.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/string/rolling_hash.hpp
     title: src/string/rolling_hash.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_D=B
+    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B
     links:
-    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_D=B
+    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B
   bundledCode: "#line 1 \"verify/aoj_alds1/aoj_alds1_14_b.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_D=B\"\n\
-    \n#include <bits/stdc++.h>\n\n#line 2 \"src/string/rolling_hash.hpp\"\n\n#line\
-    \ 2 \"src/math/modint261.hpp\"\n\nstruct modint261 {\n    static constexpr uint64_t\
+    \ \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B\"\n\n\
+    #include <bits/stdc++.h>\n\n#line 2 \"src/string/rolling_hash.hpp\"\n\n#line 2\
+    \ \"src/math/modint261.hpp\"\n\nstruct modint261 {\n    static constexpr uint64_t\
     \ m = (1ULL << 61) - 1;\n    using uint128_t = __uint128_t;\n    using mint =\
     \ modint261;\n    uint64_t _v;\n\n    static constexpr uint64_t mod() { return\
     \ m; }\n\n    modint261() : _v(0ULL) {}\n\n    template <class T> modint261(T\
@@ -70,7 +70,7 @@ data:
     \ i + P.size() <= T.size(); i++) {\n        if (rh.prod(rht, i, i + P.size())\
     \ == rh.prod(rhp, 0, P.size())) {\n            std::cout << i << '\\n';\n    \
     \    }\n    }\n    return 0;\n}\n"
-  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_D=B\"\
+  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B\"\
     \n\n#include <bits/stdc++.h>\n\n#include \"src/string/rolling_hash.hpp\"\n\nint\
     \ main() {\n    std::string T, P;\n    std::cin >> T >> P;\n    rolling_hash<modint261>\
     \ rh;\n    auto rht = rh.build(T);\n    auto rhp = rh.build(P);\n    for (int\
@@ -83,8 +83,8 @@ data:
   isVerificationFile: true
   path: verify/aoj_alds1/aoj_alds1_14_b.test.cpp
   requiredBy: []
-  timestamp: '2023-01-16 02:13:09+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-01-16 02:22:23+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_alds1/aoj_alds1_14_b.test.cpp
 layout: document
