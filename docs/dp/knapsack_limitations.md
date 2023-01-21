@@ -11,8 +11,8 @@
 - $ O(nW) $
 - 部分和問題を解くために `w[i] < 0` の処理も加えた
 - 使用例
-    - [ABC269-G](https://atcoder.jp/contests/abc269/tasks/abc269_g)
+    - [ABC269-G](https://atcoder.jp/contests/abc269/submissions/35003309)
         - `w[i] < 0` の処理を加えたおかげ
-    - [ABC286-D](https://atcoder.jp/contests/abc286/tasks/abc286_d)
-        - $ O(X \sum_{i=1}^{N} B_{i}) $ で通る制約なので必要ないが、$ O(XN) $ で解くなら必要
+    - [ABC286-D](https://atcoder.jp/contests/abc286/submissions/38232340)
+        - $ O \left( X \sum_{i=1}^{N} B_{i} \right) $ で通る制約なので必要ないが、$ O(XN) $ で解くなら必要
 
