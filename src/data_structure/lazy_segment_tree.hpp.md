@@ -179,9 +179,9 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_dsl/aoj_dsl_2_h_lazy_segment_tree.test.cpp
-  - verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
   - verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
   - verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp
+  - verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
 documentation_of: src/data_structure/lazy_segment_tree.hpp
 layout: document
 redirect_from:

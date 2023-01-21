@@ -97,4 +97,9 @@ title: "Knapsack Limitations (\u500B\u6570\u5236\u9650\u4ED8\u304D\u30CA\u30C3\u
     - `s` : 初期値 (普通は0だが、部分和問題などでは違うかもしれない)
 - $ O(nW) $
 - 部分和問題を解くために `w[i] < 0` の処理も加えた
-    - [ABC269-G](https://atcoder.jp/contests/abc269/tasks/abc269_g) を簡単に解ける
+- 使用例
+    - [ABC269-G](https://atcoder.jp/contests/abc269/tasks/abc269_g)
+        - `w[i] < 0` の処理を加えたおかげ
+    - [ABC286-D](https://atcoder.jp/contests/abc286/tasks/abc286_d)
+        - $ O(X \sum_{i=1}^{N} B_{i}) $ で通る制約なので必要ないが、$ O(XN) $ で解くなら必要
+
