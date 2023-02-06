@@ -48,15 +48,13 @@ data:
     \ const cumulative_sum_2d &A) {\n        for (int i = 0; i < (int)A.cum.size();\
     \ i++) {\n            for (int j = 0; j < (int)A.cum[i].size(); j++) {\n     \
     \           os << A.cum[i][j] << \" \\n\"[j == (int)A.cum[i].size() - 1];\n  \
-    \          }\n        }\n        return os;\n    }\n};\n\n/**\n * @brief 2\u6B21\
-    \u5143\u7D2F\u7A4D\u548C\n * @docs docs/data_structure/cumulative_sum_2d.md\n\
-    \ */\n#line 7 \"verify/aoj_dsl/aoj_dsl_5_b.test.cpp\"\n\nint main() {\n    int\
-    \ N;\n    cin >> N;\n    int M = 1000;\n    cumulative_sum_2d<int> rui(M + 1,\
-    \ M + 1);\n    while (N--) {\n        int x1, y1, x2, y2;\n        cin >> x1 >>\
-    \ y1 >> x2 >> y2;\n        rui.imos(x1, y1, x2, y2);\n    }\n    rui.build();\n\
-    \    int ans = 0;\n    for (int i = 0; i < M; i++)\n        for (int j = 0; j\
-    \ < M; j++) ans = max(ans, rui(i, j));\n    cout << ans << '\\n';\n    return\
-    \ 0;\n}\n"
+    \          }\n        }\n        return os;\n    }\n};\n#line 7 \"verify/aoj_dsl/aoj_dsl_5_b.test.cpp\"\
+    \n\nint main() {\n    int N;\n    cin >> N;\n    int M = 1000;\n    cumulative_sum_2d<int>\
+    \ rui(M + 1, M + 1);\n    while (N--) {\n        int x1, y1, x2, y2;\n       \
+    \ cin >> x1 >> y1 >> x2 >> y2;\n        rui.imos(x1, y1, x2, y2);\n    }\n   \
+    \ rui.build();\n    int ans = 0;\n    for (int i = 0; i < M; i++)\n        for\
+    \ (int j = 0; j < M; j++) ans = max(ans, rui(i, j));\n    cout << ans << '\\n';\n\
+    \    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_B\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"data_structure/cumulative_sum_2d.hpp\"\
     \n\nint main() {\n    int N;\n    cin >> N;\n    int M = 1000;\n    cumulative_sum_2d<int>\
@@ -70,7 +68,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_dsl/aoj_dsl_5_b.test.cpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:13:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_dsl/aoj_dsl_5_b.test.cpp

@@ -65,8 +65,7 @@ data:
     \ r);  // 2\u3079\u304D\u307E\u305F\u306F0\u306E\u3068\u304Dfalse\n        return\
     \ 0;\n    }\n\n   private:\n    int _n, log, size;\n    std::vector<S> d;\n  \
     \  inline void update(int k) { d[k] = Monoid::op(d[k << 1], d[(k << 1) | 1]);\
-    \ }\n};\n\n/**\n * @brief Segment Tree (\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n\
-    \ * @docs docs/data_structure/segment_tree.md\n */\n#line 7 \"verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp\"\
+    \ }\n};\n#line 7 \"verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp\"\
     \n\nint main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    std::vector<int>\
     \ A(N);\n    for (int i = 0; i < N; i++) std::cin >> A[i];\n    segment_tree<monoid_min<int>>\
     \ seg(A);\n    while (Q--) {\n        int l, r;\n        std::cin >> l >> r;\n\
@@ -83,7 +82,7 @@ data:
   isVerificationFile: true
   path: verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:13:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp

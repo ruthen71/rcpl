@@ -10,8 +10,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    _deprecated_at_docs: docs/graph/bfs01.md
-    document_title: 01-BFS
     links: []
   bundledCode: "#line 2 \"graph/bfs01.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
     \n\ntemplate <class T> struct edge {\n    int from, to;\n    T cost;\n    int\
@@ -32,8 +30,7 @@ data:
     \            root[e.to] = root[v];\n                par[e.to] = v;\n         \
     \       if (e.cost != 0) {\n                    que.push_back(e.to);\n       \
     \         } else {\n                    que.push_front(e.to);\n              \
-    \  }\n            }\n        }\n    }\n    return {dist, par, root};\n}\n\n/**\n\
-    \ * @brief 01-BFS\n * @docs docs/graph/bfs01.md\n */\n"
+    \  }\n            }\n        }\n    }\n    return {dist, par, root};\n}\n"
   code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\ntemplate <class\
     \ T, class Graph>\nstd::tuple<std::vector<T>, std::vector<int>, std::vector<int>>\
     \  //\nbfs01(Graph &G, std::vector<int> &s, const T INF) {\n    int N = (int)G.size();\n\
@@ -46,20 +43,16 @@ data:
     \                par[e.to] = v;\n                if (e.cost != 0) {\n        \
     \            que.push_back(e.to);\n                } else {\n                \
     \    que.push_front(e.to);\n                }\n            }\n        }\n    }\n\
-    \    return {dist, par, root};\n}\n\n/**\n * @brief 01-BFS\n * @docs docs/graph/bfs01.md\n\
-    \ */\n"
+    \    return {dist, par, root};\n}"
   dependsOn:
   - graph/graph_template.hpp
   isVerificationFile: false
   path: graph/bfs01.hpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:40:21+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: graph/bfs01.hpp
 layout: document
-redirect_from:
-- /library/graph/bfs01.hpp
-- /library/graph/bfs01.hpp.html
 title: 01-BFS
 ---

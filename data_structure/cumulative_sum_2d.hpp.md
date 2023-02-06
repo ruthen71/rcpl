@@ -10,8 +10,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    _deprecated_at_docs: docs/data_structure/cumulative_sum_2d.md
-    document_title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
     links: []
   bundledCode: "#line 2 \"data_structure/cumulative_sum_2d.hpp\"\n\ntemplate <class\
     \ T> struct cumulative_sum_2d {\n    std::vector<std::vector<T>> cum;\n    int\
@@ -45,9 +43,7 @@ data:
     \ const cumulative_sum_2d &A) {\n        for (int i = 0; i < (int)A.cum.size();\
     \ i++) {\n            for (int j = 0; j < (int)A.cum[i].size(); j++) {\n     \
     \           os << A.cum[i][j] << \" \\n\"[j == (int)A.cum[i].size() - 1];\n  \
-    \          }\n        }\n        return os;\n    }\n};\n\n/**\n * @brief 2\u6B21\
-    \u5143\u7D2F\u7A4D\u548C\n * @docs docs/data_structure/cumulative_sum_2d.md\n\
-    \ */\n"
+    \          }\n        }\n        return os;\n    }\n};\n"
   code: "#pragma once\n\ntemplate <class T> struct cumulative_sum_2d {\n    std::vector<std::vector<T>>\
     \ cum;\n    int H, W;\n\n    cumulative_sum_2d(int W, int H) : H(H), W(W), cum(W\
     \ + 1, std::vector<T>(H + 1, 0)) {}\n\n    cumulative_sum_2d(std::vector<std::vector<T>>\
@@ -79,27 +75,20 @@ data:
     \ const cumulative_sum_2d &A) {\n        for (int i = 0; i < (int)A.cum.size();\
     \ i++) {\n            for (int j = 0; j < (int)A.cum[i].size(); j++) {\n     \
     \           os << A.cum[i][j] << \" \\n\"[j == (int)A.cum[i].size() - 1];\n  \
-    \          }\n        }\n        return os;\n    }\n};\n\n/**\n * @brief 2\u6B21\
-    \u5143\u7D2F\u7A4D\u548C\n * @docs docs/data_structure/cumulative_sum_2d.md\n\
-    \ */\n"
+    \          }\n        }\n        return os;\n    }\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/cumulative_sum_2d.hpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:13:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_dsl/aoj_dsl_5_b.test.cpp
 documentation_of: data_structure/cumulative_sum_2d.hpp
 layout: document
-redirect_from:
-- /library/data_structure/cumulative_sum_2d.hpp
-- /library/data_structure/cumulative_sum_2d.hpp.html
 title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
 ---
-# 2次元累積和
 
-## 概要
 2つの使い方が想定される
 1. ある2次元配列を入力し、さまざまな矩形和を求める場合
     - コンストラクタ引数にその2次元配列を直接取ると、勝手に構築する

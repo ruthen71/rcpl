@@ -48,10 +48,8 @@ data:
     \   private:\n    int _n, log, size;\n    std::vector<F> lz;\n    void all_apply(int\
     \ k, const F& f) { lz[k] = Dual::composition(f, lz[k]); }\n    void push(int k)\
     \ {\n        all_apply(k << 1, lz[k]);\n        all_apply((k << 1) | 1, lz[k]);\n\
-    \        lz[k] = Dual::id();\n    }\n};\n\n/**\n * @brief Dual Segment Tree (\u53CC\
-    \u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n * @docs docs/data_structure/dual_segment_tree.md\n\
-    \ */\n#line 7 \"verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp\"\n\nint\
-    \ main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    dual_segment_tree<dual_set<int>>\
+    \        lz[k] = Dual::id();\n    }\n};\n#line 7 \"verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp\"\
+    \n\nint main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    dual_segment_tree<dual_set<int>>\
     \ seg(N);\n    while (Q--) {\n        int t;\n        std::cin >> t;\n       \
     \ if (t == 0) {\n            int l, r, x;\n            std::cin >> l >> r >> x;\n\
     \            seg.apply(l, r + 1, x);\n        } else {\n            int i;\n \
@@ -71,7 +69,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:13:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp

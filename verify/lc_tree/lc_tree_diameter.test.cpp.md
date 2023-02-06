@@ -50,13 +50,11 @@ data:
     \n    int cur = s.second;\n    std::vector<edge<T>> path;\n    while (cur != t.second)\
     \ {\n        for (auto &e : G[cur]) {\n            if (to[cur] == e.to) {\n  \
     \              path.emplace_back(e);\n            }\n        }\n        cur =\
-    \ to[cur];\n    }\n    return {t.first, path};\n}\n\n/**\n * @brief Tree Diameter\
-    \ (\u6728\u306E\u76F4\u5F84)\n * @docs docs/graph/tree_diameter.md\n */\n#line\
-    \ 7 \"verify/lc_tree/lc_tree_diameter.test.cpp\"\n\nint main() {\n    int N;\n\
-    \    std::cin >> N;\n    auto G = read_graph<long long>(N, N - 1, true, false,\
-    \ 0);\n    auto [d, path] = tree_diameter<long long>(G);\n    std::cout << d <<\
-    \ ' ' << path.size() + 1 << '\\n';\n    std::cout << path.front().from;\n    for\
-    \ (auto &e : path) {\n        std::cout << ' ' << e.to;\n    }\n    std::cout\
+    \ to[cur];\n    }\n    return {t.first, path};\n}\n#line 7 \"verify/lc_tree/lc_tree_diameter.test.cpp\"\
+    \n\nint main() {\n    int N;\n    std::cin >> N;\n    auto G = read_graph<long\
+    \ long>(N, N - 1, true, false, 0);\n    auto [d, path] = tree_diameter<long long>(G);\n\
+    \    std::cout << d << ' ' << path.size() + 1 << '\\n';\n    std::cout << path.front().from;\n\
+    \    for (auto &e : path) {\n        std::cout << ' ' << e.to;\n    }\n    std::cout\
     \ << '\\n';\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tree_diameter\"\n\n#include\
     \ <bits/stdc++.h>\n\n#include \"graph/read_graph.hpp\"\n#include \"graph/tree_diameter.hpp\"\
@@ -72,7 +70,7 @@ data:
   isVerificationFile: true
   path: verify/lc_tree/lc_tree_diameter.test.cpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:40:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_tree/lc_tree_diameter.test.cpp

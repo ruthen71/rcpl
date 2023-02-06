@@ -7,7 +7,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    document_title: "Matrix (\u884C\u5217)"
     links: []
   bundledCode: "#line 2 \"data_structure/matrix.hpp\"\n\ntemplate <class T> struct\
     \ matrix {\n    std::vector<std::vector<T>> A;\n\n    matrix(int N) : A(N, std::vector<T>(N,\
@@ -54,7 +53,7 @@ data:
     \    }\n\n    matrix operator+(const T &k) { return ((*this) += k); }\n\n    matrix\
     \ operator-(const T &k) { return ((*this) -= k); }\n\n    matrix operator*(const\
     \ T &k) { return ((*this) *= k); }\n\n    matrix operator/(const T &k) { return\
-    \ ((*this) /= k); }\n};\n\n/**\n * @brief Matrix (\u884C\u5217)\n */\n"
+    \ ((*this) /= k); }\n};\n"
   code: "#pragma once\n\ntemplate <class T> struct matrix {\n    std::vector<std::vector<T>>\
     \ A;\n\n    matrix(int N) : A(N, std::vector<T>(N, T(0))) {}\n    matrix(int N,\
     \ int M, T val = T(0)) : A(N, std::vector<T>(M, val)) {}\n\n    size_t size()\
@@ -99,19 +98,15 @@ data:
     \ (*this)[i][j] /= k;\n        return (*this);\n    }\n\n    matrix operator+(const\
     \ T &k) { return ((*this) += k); }\n\n    matrix operator-(const T &k) { return\
     \ ((*this) -= k); }\n\n    matrix operator*(const T &k) { return ((*this) *= k);\
-    \ }\n\n    matrix operator/(const T &k) { return ((*this) /= k); }\n};\n\n/**\n\
-    \ * @brief Matrix (\u884C\u5217)\n */"
+    \ }\n\n    matrix operator/(const T &k) { return ((*this) /= k); }\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/matrix.hpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:13:58+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: data_structure/matrix.hpp
 layout: document
-redirect_from:
-- /library/data_structure/matrix.hpp
-- /library/data_structure/matrix.hpp.html
 title: "Matrix (\u884C\u5217)"
 ---

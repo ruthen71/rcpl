@@ -13,8 +13,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    _deprecated_at_docs: docs/dp/inversion_number.md
-    document_title: "Inversion Number (\u8EE2\u5012\u6570)"
     links: []
   bundledCode: "#line 2 \"dp/inversion_number.hpp\"\n\n#line 2 \"data_structure/fenwick_tree.hpp\"\
     \n\ntemplate <class T> struct fenwick_tree {\n    int N;\n    std::vector<T> seg;\n\
@@ -30,42 +28,33 @@ data:
     \       assert(0 <= a and a <= b and b <= N);\n        return sum(b) - sum(a);\n\
     \    }\n\n    // output\n    friend std::ostream &operator<<(std::ostream &os,\
     \ const fenwick_tree &A) {\n        for (int i = 0; i < A.N; i++) os << A.sum(i,\
-    \ i + 1) << \" \\n\"[i == A.N - 1];\n        return os;\n    }\n};\n\n/**\n *\
-    \ @brief Fenwick Tree (Binary Indexed Tree)\n * @docs docs/data_structure/fenwick_tree.md\n\
-    \ */\n#line 4 \"dp/inversion_number.hpp\"\n\ntemplate <class T> long long inversion_number(std::vector<T>&\
+    \ i + 1) << \" \\n\"[i == A.N - 1];\n        return os;\n    }\n};\n#line 4 \"\
+    dp/inversion_number.hpp\"\n\ntemplate <class T> long long inversion_number(std::vector<T>&\
     \ A) {\n    auto B = A;\n    sort(B.begin(), B.end());\n    B.erase(unique(B.begin(),\
     \ B.end()), B.end());\n    int N = (int)B.size();\n    fenwick_tree<int> fen(N);\n\
     \    long long ret = 0;\n    for (auto& ai : A) {\n        int i = lower_bound(B.begin(),\
     \ B.end(), ai) - B.begin();\n        ret += fen.sum(i + 1, N);\n        fen.add(i,\
-    \ 1);\n    }\n    return ret;\n}\n\n/**\n * @brief Inversion Number (\u8EE2\u5012\
-    \u6570)\n * @docs docs/dp/inversion_number.md\n */\n"
+    \ 1);\n    }\n    return ret;\n}\n"
   code: "#pragma once\n\n#include \"data_structure/fenwick_tree.hpp\"\n\ntemplate\
     \ <class T> long long inversion_number(std::vector<T>& A) {\n    auto B = A;\n\
     \    sort(B.begin(), B.end());\n    B.erase(unique(B.begin(), B.end()), B.end());\n\
     \    int N = (int)B.size();\n    fenwick_tree<int> fen(N);\n    long long ret\
     \ = 0;\n    for (auto& ai : A) {\n        int i = lower_bound(B.begin(), B.end(),\
     \ ai) - B.begin();\n        ret += fen.sum(i + 1, N);\n        fen.add(i, 1);\n\
-    \    }\n    return ret;\n}\n\n/**\n * @brief Inversion Number (\u8EE2\u5012\u6570\
-    )\n * @docs docs/dp/inversion_number.md\n */\n"
+    \    }\n    return ret;\n}"
   dependsOn:
   - data_structure/fenwick_tree.hpp
   isVerificationFile: false
   path: dp/inversion_number.hpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:40:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_alds1/aoj_alds1_5_d.test.cpp
 documentation_of: dp/inversion_number.hpp
 layout: document
-redirect_from:
-- /library/dp/inversion_number.hpp
-- /library/dp/inversion_number.hpp.html
 title: "Inversion Number (\u8EE2\u5012\u6570)"
 ---
-# Inversion Number (転倒数)
-
-## 概要
 
 $ O(N \log N) $ で転倒数を求める。
 座圧する。

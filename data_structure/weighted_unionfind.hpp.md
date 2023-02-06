@@ -10,8 +10,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    _deprecated_at_docs: docs/data_structure/weighted_unionfind.md
-    document_title: "Weighted UnionFind (\u91CD\u307F\u3064\u304D UnionFind)"
     links: []
   bundledCode: "#line 2 \"data_structure/weighted_unionfind.hpp\"\n\ntemplate <class\
     \ T> struct weighted_unionfind {\n    std::vector<int> parents;\n    std::vector<T>\
@@ -29,8 +27,7 @@ data:
     \ x, int y) { return weight(y) - weight(x); }\n\n    bool same(int x, int y) {\
     \ return leader(x) == leader(y); }\n\n    int size(int x) { return -parents[leader(x)];\
     \ }\n\n    void init(int n) { parents.assign(n, -1), diff_weight.assign(n, 0);\
-    \ }  // reset\n};\n\n/**\n * @brief Weighted UnionFind (\u91CD\u307F\u3064\u304D\
-    \ UnionFind)\n * @docs docs/data_structure/weighted_unionfind.md\n */\n"
+    \ }  // reset\n};\n"
   code: "#pragma once\n\ntemplate <class T> struct weighted_unionfind {\n    std::vector<int>\
     \ parents;\n    std::vector<T> diff_weight;\n\n    weighted_unionfind() {}\n \
     \   weighted_unionfind(int n) : parents(n, -1), diff_weight(n) {}\n\n    int leader(int\
@@ -46,23 +43,20 @@ data:
     \   T diff(int x, int y) { return weight(y) - weight(x); }\n\n    bool same(int\
     \ x, int y) { return leader(x) == leader(y); }\n\n    int size(int x) { return\
     \ -parents[leader(x)]; }\n\n    void init(int n) { parents.assign(n, -1), diff_weight.assign(n,\
-    \ 0); }  // reset\n};\n\n/**\n * @brief Weighted UnionFind (\u91CD\u307F\u3064\
-    \u304D UnionFind)\n * @docs docs/data_structure/weighted_unionfind.md\n */"
+    \ 0); }  // reset\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/weighted_unionfind.hpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:13:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_dsl/aoj_dsl_1_b.test.cpp
 documentation_of: data_structure/weighted_unionfind.hpp
 layout: document
-redirect_from:
-- /library/data_structure/weighted_unionfind.hpp
-- /library/data_structure/weighted_unionfind.hpp.html
 title: "Weighted UnionFind (\u91CD\u307F\u3064\u304D UnionFind)"
 ---
+
 - ポテンシャルつき UnionFind とも言う
 - アーベル群が乗る
     - マグマ(閉じている)

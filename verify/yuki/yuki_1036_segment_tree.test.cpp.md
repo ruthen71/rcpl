@@ -64,16 +64,15 @@ data:
     \        sm = Monoid::op(d[r], sm);\n        } while ((r & -r) != r);  // 2\u3079\
     \u304D\u307E\u305F\u306F0\u306E\u3068\u304Dfalse\n        return 0;\n    }\n\n\
     \   private:\n    int _n, log, size;\n    std::vector<S> d;\n    inline void update(int\
-    \ k) { d[k] = Monoid::op(d[k << 1], d[(k << 1) | 1]); }\n};\n\n/**\n * @brief\
-    \ Segment Tree (\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n * @docs docs/data_structure/segment_tree.md\n\
-    \ */\n#line 7 \"verify/yuki/yuki_1036_segment_tree.test.cpp\"\n\nint main() {\n\
-    \    int N;\n    std::cin >> N;\n    std::vector<long long> A(N);\n    for (int\
-    \ i = 0; i < N; i++) std::cin >> A[i];\n    segment_tree<monoid_gcd<long long>>\
-    \ seg(A);\n    auto f = [](long long v) -> bool { return v != 1LL; };\n    long\
-    \ long ansL = 0, ansR = 0;\n    for (int l = 0; l < N; l++) {\n        int r =\
-    \ seg.max_right(l, f);\n        ansL += N - r;\n    }\n    for (int r = N; r >\
-    \ 0; r--) {\n        int l = seg.min_left(r, f);\n        ansR += l;\n    }\n\
-    \    assert(ansL == ansR);\n    std::cout << ansL << '\\n';\n    return 0;\n}\n"
+    \ k) { d[k] = Monoid::op(d[k << 1], d[(k << 1) | 1]); }\n};\n#line 7 \"verify/yuki/yuki_1036_segment_tree.test.cpp\"\
+    \n\nint main() {\n    int N;\n    std::cin >> N;\n    std::vector<long long> A(N);\n\
+    \    for (int i = 0; i < N; i++) std::cin >> A[i];\n    segment_tree<monoid_gcd<long\
+    \ long>> seg(A);\n    auto f = [](long long v) -> bool { return v != 1LL; };\n\
+    \    long long ansL = 0, ansR = 0;\n    for (int l = 0; l < N; l++) {\n      \
+    \  int r = seg.max_right(l, f);\n        ansL += N - r;\n    }\n    for (int r\
+    \ = N; r > 0; r--) {\n        int l = seg.min_left(r, f);\n        ansR += l;\n\
+    \    }\n    assert(ansL == ansR);\n    std::cout << ansL << '\\n';\n    return\
+    \ 0;\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/1036\"\n\n#include <bits/stdc++.h>\n\
     \n#include \"algebra/monoid_gcd.hpp\"\n#include \"data_structure/segment_tree.hpp\"\
     \n\nint main() {\n    int N;\n    std::cin >> N;\n    std::vector<long long> A(N);\n\
@@ -90,7 +89,7 @@ data:
   isVerificationFile: true
   path: verify/yuki/yuki_1036_segment_tree.test.cpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:13:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/yuki/yuki_1036_segment_tree.test.cpp

@@ -25,9 +25,7 @@ data:
     \    for (int i = n - 1; i >= 0; i--) {\n        while (t > 0 and h[st[t - 1]]\
     \ >= h[i]) t--;\n        R[i] = (t == 0 ? n : st[t - 1]);\n        st[t++] = i;\n\
     \    }\n    T res = 0;\n    for (int i = 0; i < n; i++) res = std::max(res, h[i]\
-    \ * (R[i] - L[i]));\n    return res;\n}\n\n/**\n * @brief Histogram Largest Rectangle\
-    \ (\u30D2\u30B9\u30C8\u30B0\u30E9\u30E0\u306E\u6700\u5927\u9577\u65B9\u5F62)\n\
-    \ * @docs docs/dp/histogram_largest_rectangle.md\n */\n#line 6 \"verify/aoj_dpl/aoj_dpl_3_c.test.cpp\"\
+    \ * (R[i] - L[i]));\n    return res;\n}\n#line 6 \"verify/aoj_dpl/aoj_dpl_3_c.test.cpp\"\
     \n\nint main() {\n    int N;\n    std::cin >> N;\n    std::vector<long long> A(N);\n\
     \    for (int i = 0; i < N; i++) std::cin >> A[i];\n    std::cout << histogram_largest_rectangle(A)\
     \ << '\\n';\n    return 0;\n}\n"
@@ -41,7 +39,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_dpl/aoj_dpl_3_c.test.cpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:40:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_dpl/aoj_dpl_3_c.test.cpp

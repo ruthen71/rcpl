@@ -10,9 +10,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    _deprecated_at_docs: docs/graph/topological_sort.md
-    document_title: "Topological Sort (\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\
-      \u30C8)"
     links: []
   bundledCode: "#line 2 \"graph/topological_sort.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
     \n\ntemplate <class T> struct edge {\n    int from, to;\n    T cost;\n    int\
@@ -30,9 +27,7 @@ data:
     \    while (i < (int)res.size()) {\n        int v = res[i];\n        i++;\n  \
     \      for (auto &e : G[v]) {\n            indeg[e.to]--;\n            if (indeg[e.to]\
     \ == 0) res.push_back(e.to);\n        }\n    }\n    if ((int)res.size() != N)\
-    \ {\n        return std::vector<int>();\n    }\n    return res;\n}\n\n/**\n *\
-    \ @brief Topological Sort (\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8\
-    )\n * @docs docs/graph/topological_sort.md\n */\n"
+    \ {\n        return std::vector<int>();\n    }\n    return res;\n}\n"
   code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\ntemplate <class\
     \ Graph> std::vector<int> topological_sort(Graph &G) {\n    int N = (int)G.size();\n\
     \    std::vector<int> indeg(N, 0);\n    for (int i = 0; i < N; i++) {\n      \
@@ -42,21 +37,18 @@ data:
     \        i++;\n        for (auto &e : G[v]) {\n            indeg[e.to]--;\n  \
     \          if (indeg[e.to] == 0) res.push_back(e.to);\n        }\n    }\n    if\
     \ ((int)res.size() != N) {\n        return std::vector<int>();\n    }\n    return\
-    \ res;\n}\n\n/**\n * @brief Topological Sort (\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\
-    \u30BD\u30FC\u30C8)\n * @docs docs/graph/topological_sort.md\n */\n"
+    \ res;\n}"
   dependsOn:
   - graph/graph_template.hpp
   isVerificationFile: false
   path: graph/topological_sort.hpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:40:21+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: graph/topological_sort.hpp
 layout: document
-redirect_from:
-- /library/graph/topological_sort.hpp
-- /library/graph/topological_sort.hpp.html
 title: "Topological Sort (\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8)"
 ---
+
 - トポロジカルソートできない場合、空の配列を返す

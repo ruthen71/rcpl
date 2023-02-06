@@ -32,8 +32,5 @@ data:
   verifiedWith: []
 documentation_of: string/run_length_encoding.hpp
 layout: document
-redirect_from:
-- /library/string/run_length_encoding.hpp
-- /library/string/run_length_encoding.hpp.html
 title: "Run Length Encoding (\u30E9\u30F3\u30EC\u30F3\u30B0\u30B9\u5727\u7E2E)"
 ---

@@ -34,18 +34,16 @@ data:
     \        return sum(b) - sum(a);\n    }\n\n    // output\n    friend std::ostream\
     \ &operator<<(std::ostream &os, const fenwick_tree &A) {\n        for (int i =\
     \ 0; i < A.N; i++) os << A.sum(i, i + 1) << \" \\n\"[i == A.N - 1];\n        return\
-    \ os;\n    }\n};\n\n/**\n * @brief Fenwick Tree (Binary Indexed Tree)\n * @docs\
-    \ docs/data_structure/fenwick_tree.md\n */\n#line 4 \"dp/inversion_number.hpp\"\
-    \n\ntemplate <class T> long long inversion_number(std::vector<T>& A) {\n    auto\
-    \ B = A;\n    sort(B.begin(), B.end());\n    B.erase(unique(B.begin(), B.end()),\
-    \ B.end());\n    int N = (int)B.size();\n    fenwick_tree<int> fen(N);\n    long\
-    \ long ret = 0;\n    for (auto& ai : A) {\n        int i = lower_bound(B.begin(),\
-    \ B.end(), ai) - B.begin();\n        ret += fen.sum(i + 1, N);\n        fen.add(i,\
-    \ 1);\n    }\n    return ret;\n}\n\n/**\n * @brief Inversion Number (\u8EE2\u5012\
-    \u6570)\n * @docs docs/dp/inversion_number.md\n */\n#line 6 \"verify/aoj_alds1/aoj_alds1_5_d.test.cpp\"\
-    \n\nint main() {\n    int N;\n    std::cin >> N;\n    std::vector<int> A(N);\n\
-    \    for (int i = 0; i < N; i++) std::cin >> A[i];\n    std::cout << inversion_number<int>(A)\
-    \ << '\\n';\n    return 0;\n}\n"
+    \ os;\n    }\n};\n#line 4 \"dp/inversion_number.hpp\"\n\ntemplate <class T> long\
+    \ long inversion_number(std::vector<T>& A) {\n    auto B = A;\n    sort(B.begin(),\
+    \ B.end());\n    B.erase(unique(B.begin(), B.end()), B.end());\n    int N = (int)B.size();\n\
+    \    fenwick_tree<int> fen(N);\n    long long ret = 0;\n    for (auto& ai : A)\
+    \ {\n        int i = lower_bound(B.begin(), B.end(), ai) - B.begin();\n      \
+    \  ret += fen.sum(i + 1, N);\n        fen.add(i, 1);\n    }\n    return ret;\n\
+    }\n#line 6 \"verify/aoj_alds1/aoj_alds1_5_d.test.cpp\"\n\nint main() {\n    int\
+    \ N;\n    std::cin >> N;\n    std::vector<int> A(N);\n    for (int i = 0; i <\
+    \ N; i++) std::cin >> A[i];\n    std::cout << inversion_number<int>(A) << '\\\
+    n';\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_D\"\
     \n\n#include <bits/stdc++.h>\n\n#include \"dp/inversion_number.hpp\"\n\nint main()\
     \ {\n    int N;\n    std::cin >> N;\n    std::vector<int> A(N);\n    for (int\
@@ -57,7 +55,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_alds1/aoj_alds1_5_d.test.cpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:40:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_alds1/aoj_alds1_5_d.test.cpp

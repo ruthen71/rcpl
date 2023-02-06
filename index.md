@@ -47,16 +47,16 @@ data:
       title: algebra/monoid_max.hpp
     - icon: ':warning:'
       path: algebra/monoid_max_index.hpp
-      title: algebra/monoid_max_index.hpp
+      title: "\u6700\u5927\u5024(\u30A4\u30F3\u30C7\u30C3\u30AF\u30B9)\u53D6\u5F97"
     - icon: ':heavy_check_mark:'
       path: algebra/monoid_min.hpp
       title: algebra/monoid_min.hpp
     - icon: ':warning:'
       path: algebra/monoid_min_index.hpp
-      title: algebra/monoid_min_index.hpp
+      title: "\u6700\u5C0F\u5024(\u30A4\u30F3\u30C7\u30C3\u30AF\u30B9)\u53D6\u5F97"
     - icon: ':warning:'
       path: algebra/monoid_rolling_hash.hpp
-      title: algebra/monoid_rolling_hash.hpp
+      title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
     - icon: ':heavy_check_mark:'
       path: algebra/monoid_sum.hpp
       title: algebra/monoid_sum.hpp
@@ -162,7 +162,7 @@ data:
       title: math/baby_step_giant_step.hpp
     - icon: ':warning:'
       path: math/binomial.hpp
-      title: "Binomial (\u524D\u8A08\u7B97\u3042\u308A\u4E8C\u9805\u4FC2\u6570)"
+      title: "Binomial (\u4E8C\u9805\u4FC2\u6570, \u524D\u8A08\u7B97\u3042\u308A)"
     - icon: ':heavy_check_mark:'
       path: math/divisor.hpp
       title: math/divisor.hpp
@@ -177,7 +177,7 @@ data:
       title: math/inv_mod.hpp
     - icon: ':heavy_check_mark:'
       path: math/modint261.hpp
-      title: math/modint261.hpp
+      title: ModInt ($ \mod = 2^{61} $)
     - icon: ':heavy_check_mark:'
       path: math/osa_k.hpp
       title: math/osa_k.hpp

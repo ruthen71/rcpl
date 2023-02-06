@@ -32,17 +32,15 @@ data:
     \ x, int y) { return weight(y) - weight(x); }\n\n    bool same(int x, int y) {\
     \ return leader(x) == leader(y); }\n\n    int size(int x) { return -parents[leader(x)];\
     \ }\n\n    void init(int n) { parents.assign(n, -1), diff_weight.assign(n, 0);\
-    \ }  // reset\n};\n\n/**\n * @brief Weighted UnionFind (\u91CD\u307F\u3064\u304D\
-    \ UnionFind)\n * @docs docs/data_structure/weighted_unionfind.md\n */\n#line 6\
-    \ \"verify/aoj_dsl/aoj_dsl_1_b.test.cpp\"\n\nint main() {\n    int N, Q;\n   \
-    \ std::cin >> N >> Q;\n    weighted_unionfind<long long> uf(N);\n    while (Q--)\
-    \ {\n        int t;\n        std::cin >> t;\n        if (t == 0) {\n         \
-    \   int x, y;\n            std::cin >> x >> y;\n            long long z;\n   \
-    \         std::cin >> z;\n            uf.merge(x, y, z);\n        } else {\n \
-    \           int x, y;\n            std::cin >> x >> y;\n            if (uf.same(x,\
-    \ y)) {\n                std::cout << uf.diff(x, y) << '\\n';\n            } else\
-    \ {\n                std::cout << '?' << '\\n';\n            }\n        }\n  \
-    \  }\n    return 0;\n}\n"
+    \ }  // reset\n};\n#line 6 \"verify/aoj_dsl/aoj_dsl_1_b.test.cpp\"\n\nint main()\
+    \ {\n    int N, Q;\n    std::cin >> N >> Q;\n    weighted_unionfind<long long>\
+    \ uf(N);\n    while (Q--) {\n        int t;\n        std::cin >> t;\n        if\
+    \ (t == 0) {\n            int x, y;\n            std::cin >> x >> y;\n       \
+    \     long long z;\n            std::cin >> z;\n            uf.merge(x, y, z);\n\
+    \        } else {\n            int x, y;\n            std::cin >> x >> y;\n  \
+    \          if (uf.same(x, y)) {\n                std::cout << uf.diff(x, y) <<\
+    \ '\\n';\n            } else {\n                std::cout << '?' << '\\n';\n \
+    \           }\n        }\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B\"\
     \n\n#include <bits/stdc++.h>\n\n#include \"data_structure/weighted_unionfind.hpp\"\
     \n\nint main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    weighted_unionfind<long\
@@ -58,7 +56,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_dsl/aoj_dsl_1_b.test.cpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:13:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_dsl/aoj_dsl_1_b.test.cpp

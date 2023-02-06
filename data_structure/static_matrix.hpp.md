@@ -7,8 +7,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    _deprecated_at_docs: docs/data_structure/static_matrix.md
-    document_title: "Static Matrix (\u884C\u5217, \u30B5\u30A4\u30BA\u56FA\u5B9A)"
     links: []
   bundledCode: "#line 2 \"data_structure/static_matrix.hpp\"\n\ntemplate <class T,\
     \ size_t n, size_t m = n> struct static_matrix {\n    std::array<std::array<T,\
@@ -58,8 +56,7 @@ data:
     \ { return ((*this) += k); }\n\n    static_matrix operator-(const T &k) { return\
     \ ((*this) -= k); }\n\n    static_matrix operator*(const T &k) { return ((*this)\
     \ *= k); }\n\n    static_matrix operator/(const T &k) { return ((*this) /= k);\
-    \ }\n};\n\n/**\n * @brief Static Matrix (\u884C\u5217, \u30B5\u30A4\u30BA\u56FA\
-    \u5B9A)\n * @docs docs/data_structure/static_matrix.md\n */\n"
+    \ }\n};\n"
   code: "#pragma once\n\ntemplate <class T, size_t n, size_t m = n> struct static_matrix\
     \ {\n    std::array<std::array<T, m>, n> A;\n\n    static_matrix() : A{{}} {}\n\
     \n    static_matrix(T val) : A{{}} {\n        for (int i = 0; i < (int)n; i++)\
@@ -108,25 +105,20 @@ data:
     \ { return ((*this) += k); }\n\n    static_matrix operator-(const T &k) { return\
     \ ((*this) -= k); }\n\n    static_matrix operator*(const T &k) { return ((*this)\
     \ *= k); }\n\n    static_matrix operator/(const T &k) { return ((*this) /= k);\
-    \ }\n};\n\n/**\n * @brief Static Matrix (\u884C\u5217, \u30B5\u30A4\u30BA\u56FA\
-    \u5B9A)\n * @docs docs/data_structure/static_matrix.md\n */"
+    \ }\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/static_matrix.hpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:13:58+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: data_structure/static_matrix.hpp
 layout: document
-redirect_from:
-- /library/data_structure/static_matrix.hpp
-- /library/data_structure/static_matrix.hpp.html
 title: "Static Matrix (\u884C\u5217, \u30B5\u30A4\u30BA\u56FA\u5B9A)"
 ---
-## 概要
 
-- 行列のサイズが入力を受け取る前に決まっている場合、使うと速い
+行列のサイズが入力を受け取る前に決まっている場合、使うと速い
 
 ## 使用例
 

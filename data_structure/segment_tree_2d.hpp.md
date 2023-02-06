@@ -10,9 +10,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    _deprecated_at_docs: docs/data_structure/segment_tree_2d.md
-    document_title: "2D Segment Tree (2\u6B21\u5143\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
-      )"
     links: []
   bundledCode: "#line 2 \"data_structure/segment_tree_2d.hpp\"\n\ntemplate <class\
     \ Monoid> struct segment_tree_2d {\n   public:\n    using S = typename Monoid::value_type;\n\
@@ -59,9 +56,7 @@ data:
     \n   private:\n    int _h, logh, sizeh, _w, logw, sizew;\n    std::vector<std::vector<S>>\
     \ d;\n    inline void update_bottom(int i, int j) { d[i][j] = Monoid::op(d[(i\
     \ << 1) | 0][j], d[(i << 1) | 1][j]); }\n    inline void update_else(int i, int\
-    \ j) { d[i][j] = Monoid::op(d[i][(j << 1) | 0], d[i][(j << 1) | 1]); }\n};\n\n\
-    /**\n * @brief 2D Segment Tree (2\u6B21\u5143\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
-    )\n * @docs docs/data_structure/segment_tree_2d.md\n */\n"
+    \ j) { d[i][j] = Monoid::op(d[i][(j << 1) | 0], d[i][(j << 1) | 1]); }\n};\n"
   code: "#pragma once\n\ntemplate <class Monoid> struct segment_tree_2d {\n   public:\n\
     \    using S = typename Monoid::value_type;\n    segment_tree_2d() : segment_tree_2d(0,\
     \ 0) {}\n    segment_tree_2d(int h, int w) : segment_tree_2d(std::vector<std::vector<S>>(h,\
@@ -107,27 +102,19 @@ data:
     \ sizeh, _w, logw, sizew;\n    std::vector<std::vector<S>> d;\n    inline void\
     \ update_bottom(int i, int j) { d[i][j] = Monoid::op(d[(i << 1) | 0][j], d[(i\
     \ << 1) | 1][j]); }\n    inline void update_else(int i, int j) { d[i][j] = Monoid::op(d[i][(j\
-    \ << 1) | 0], d[i][(j << 1) | 1]); }\n};\n\n/**\n * @brief 2D Segment Tree (2\u6B21\
-    \u5143\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n * @docs docs/data_structure/segment_tree_2d.md\n\
-    \ */\n"
+    \ << 1) | 0], d[i][(j << 1) | 1]); }\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/segment_tree_2d.hpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:13:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_other/aoj_1068.test.cpp
 documentation_of: data_structure/segment_tree_2d.hpp
 layout: document
-redirect_from:
-- /library/data_structure/segment_tree_2d.hpp
-- /library/data_structure/segment_tree_2d.hpp.html
 title: "2D Segment Tree (2\u6B21\u5143\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
 ---
-# 2D Segment Tree (2次元セグメント木)
-
-## 概要
 
 [自分の1次元セグメント木](https://ruthen71.github.io/rcpl/src/data_structure/segment_tree.hpp) をなるべくそのまま2次元に拡張することを意識して設計されている。
 

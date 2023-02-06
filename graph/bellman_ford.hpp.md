@@ -13,9 +13,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    _deprecated_at_docs: docs/graph/bellman_ford.md
-    document_title: "Bellman-Ford algorithm (\u30D9\u30EB\u30DE\u30F3\u30D5\u30A9\u30FC\
-      \u30C9\u6CD5)"
     links: []
   bundledCode: "#line 2 \"graph/bellman_ford.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
     \n\ntemplate <class T> struct edge {\n    int from, to;\n    T cost;\n    int\
@@ -37,9 +34,7 @@ data:
     \ = cur;\n                    root[e.to] = root[cur];\n                    update\
     \ = true;\n                    if (loop_count >= N) nd = -INF;\n             \
     \       dist[e.to] = nd;\n                }\n            }\n        }\n      \
-    \  if (!update) break;\n    }\n    return {dist, par, root};\n}\n\n/**\n * @brief\
-    \ Bellman-Ford algorithm (\u30D9\u30EB\u30DE\u30F3\u30D5\u30A9\u30FC\u30C9\u6CD5\
-    )\n * @docs docs/graph/bellman_ford.md\n */\n"
+    \  if (!update) break;\n    }\n    return {dist, par, root};\n}\n"
   code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\ntemplate <class\
     \ T, class Graph>\nstd::tuple<std::vector<T>, std::vector<int>, std::vector<int>>\
     \  //\nbellman_ford(Graph &G, std::vector<int> &s, const T INF) {\n    int N =\
@@ -53,29 +48,21 @@ data:
     \                    root[e.to] = root[cur];\n                    update = true;\n\
     \                    if (loop_count >= N) nd = -INF;\n                    dist[e.to]\
     \ = nd;\n                }\n            }\n        }\n        if (!update) break;\n\
-    \    }\n    return {dist, par, root};\n}\n\n/**\n * @brief Bellman-Ford algorithm\
-    \ (\u30D9\u30EB\u30DE\u30F3\u30D5\u30A9\u30FC\u30C9\u6CD5)\n * @docs docs/graph/bellman_ford.md\n\
-    \ */\n"
+    \    }\n    return {dist, par, root};\n}"
   dependsOn:
   - graph/graph_template.hpp
   isVerificationFile: false
   path: graph/bellman_ford.hpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:40:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_grl/aoj_grl_1_b.test.cpp
 documentation_of: graph/bellman_ford.hpp
 layout: document
-redirect_from:
-- /library/graph/bellman_ford.hpp
-- /library/graph/bellman_ford.hpp.html
 title: "Bellman-Ford algorithm (\u30D9\u30EB\u30DE\u30F3\u30D5\u30A9\u30FC\u30C9\u6CD5\
   )"
 ---
-# Bellman-Ford algorithm (ベルマンフォード法)
-
-## 概要
 
 - 到達できない場合は `INF`
 - 負閉路を使って小さくできる場合は `-INF`

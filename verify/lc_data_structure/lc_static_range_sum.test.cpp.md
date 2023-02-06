@@ -32,13 +32,11 @@ data:
     \ p) const {\n        assert(0 <= p and p < _n);\n        return seg[p + 1];\n\
     \    }\n\n    // output\n    friend std::ostream &operator<<(std::ostream &os,\
     \ const cumulative_sum &A) {\n        for (int i = 0; i <= A._n; i++) os << A.seg[i]\
-    \ << \" \\n\"[i == A._n];\n        return os;\n    }\n};\n\n/**\n * @brief \u7D2F\
-    \u7A4D\u548C\n * @docs docs/data_structure/cumulative_sum.md\n */\n#line 6 \"\
-    verify/lc_data_structure/lc_static_range_sum.test.cpp\"\n\nint main() {\n    int\
-    \ N, Q;\n    std::cin >> N >> Q;\n    std::vector<long long> A(N);\n    for (int\
-    \ i = 0; i < N; i++) std::cin >> A[i];\n    cumulative_sum<long long> rui(A);\n\
-    \    while (Q--) {\n        int l, r;\n        std::cin >> l >> r;\n        std::cout\
-    \ << rui.sum(l, r) << '\\n';\n    }\n    return 0;\n}\n"
+    \ << \" \\n\"[i == A._n];\n        return os;\n    }\n};\n#line 6 \"verify/lc_data_structure/lc_static_range_sum.test.cpp\"\
+    \n\nint main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    std::vector<long\
+    \ long> A(N);\n    for (int i = 0; i < N; i++) std::cin >> A[i];\n    cumulative_sum<long\
+    \ long> rui(A);\n    while (Q--) {\n        int l, r;\n        std::cin >> l >>\
+    \ r;\n        std::cout << rui.sum(l, r) << '\\n';\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_sum\"\n\n\
     #include <bits/stdc++.h>\n\n#include \"data_structure/cumulative_sum.hpp\"\n\n\
     int main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    std::vector<long long>\
@@ -50,7 +48,7 @@ data:
   isVerificationFile: true
   path: verify/lc_data_structure/lc_static_range_sum.test.cpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:13:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_data_structure/lc_static_range_sum.test.cpp

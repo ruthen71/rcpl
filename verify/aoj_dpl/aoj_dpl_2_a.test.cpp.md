@@ -42,10 +42,8 @@ data:
     \  for (int v = 0; v < N; v++) {\n            if (s >> v & 1) continue;\n    \
     \        for (int u = 0; u < N; u++) {\n                if (u == v) continue;\n\
     \                dp[s | (1 << v)][v] = std::min(dp[s | (1 << v)][v], dp[s][u]\
-    \ + dist[u][v]);\n            }\n        }\n    }\n    return dp;\n}\n\n/**\n\
-    \ * @brief Traveling Salesman Problem (\u5DE1\u56DE\u30BB\u30FC\u30EB\u30B9\u30DE\
-    \u30F3\u554F\u984C)\n * @docs docs/dp/traveling_salesman_problem.md\n */\n#line\
-    \ 2 \"graph/read_graph.hpp\"\n\n#line 4 \"graph/read_graph.hpp\"\n\ntemplate <class\
+    \ + dist[u][v]);\n            }\n        }\n    }\n    return dp;\n}\n#line 2\
+    \ \"graph/read_graph.hpp\"\n\n#line 4 \"graph/read_graph.hpp\"\n\ntemplate <class\
     \ T> graph<T> read_graph(int N, int M, const bool weight = false, const bool directed\
     \ = false, const int offset = 1) {\n    graph<T> G(N);\n    for (int i = 0; i\
     \ < M; i++) {\n        int a, b;\n        std::cin >> a >> b;\n        a -= offset,\
@@ -73,7 +71,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_dpl/aoj_dpl_2_a.test.cpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:40:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_dpl/aoj_dpl_2_a.test.cpp

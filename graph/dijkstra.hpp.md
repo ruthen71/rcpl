@@ -13,9 +13,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    _deprecated_at_docs: docs/graph/dijkstra.md
-    document_title: "Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5\
-      )"
     links: []
   bundledCode: "#line 2 \"graph/dijkstra.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
     \n\ntemplate <class T> struct edge {\n    int from, to;\n    T cost;\n    int\
@@ -36,9 +33,7 @@ data:
     \ dist[v] < d\n        for (auto &e : G[v]) {\n            if (dist[e.to] > d\
     \ + e.cost) {\n                dist[e.to] = d + e.cost;\n                root[e.to]\
     \ = root[v];\n                par[e.to] = v;\n                que.emplace(dist[e.to],\
-    \ e.to);\n            }\n        }\n    }\n    return {dist, par, root};\n}\n\n\
-    /**\n * @brief Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5\
-    )\n * @docs docs/graph/dijkstra.md\n */\n"
+    \ e.to);\n            }\n        }\n    }\n    return {dist, par, root};\n}\n"
   code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\ntemplate <class\
     \ T, class Graph>\nstd::tuple<std::vector<T>, std::vector<int>, std::vector<int>>\
     \  //\ndijkstra(Graph &G, std::vector<int> &s, const T INF) {\n    int N = (int)G.size();\n\
@@ -50,28 +45,20 @@ data:
     \ continue;  // dist[v] < d\n        for (auto &e : G[v]) {\n            if (dist[e.to]\
     \ > d + e.cost) {\n                dist[e.to] = d + e.cost;\n                root[e.to]\
     \ = root[v];\n                par[e.to] = v;\n                que.emplace(dist[e.to],\
-    \ e.to);\n            }\n        }\n    }\n    return {dist, par, root};\n}\n\n\
-    /**\n * @brief Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5\
-    )\n * @docs docs/graph/dijkstra.md\n */\n"
+    \ e.to);\n            }\n        }\n    }\n    return {dist, par, root};\n}"
   dependsOn:
   - graph/graph_template.hpp
   isVerificationFile: false
   path: graph/dijkstra.hpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:40:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
 documentation_of: graph/dijkstra.hpp
 layout: document
-redirect_from:
-- /library/graph/dijkstra.hpp
-- /library/graph/dijkstra.hpp.html
 title: "Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
 ---
-# Dijkstra's algorithm (ダイクストラ法)
-
-## 概要
 
 - 多始点スタートに対応
 - `s` に始点となる頂点を入れて、`auto [dist, par, root] = dijkstra(G, s, INF);` で距離、親、始点が各頂点について得られる

@@ -98,10 +98,8 @@ data:
     \ const F& f) {\n        d[k] = Lazy::mapping(f, d[k]);\n        if (k < size)\
     \ lz[k] = Lazy::composition(f, lz[k]);\n    }\n    void push(int k) {\n      \
     \  all_apply(k << 1, lz[k]);\n        all_apply((k << 1) | 1, lz[k]);\n      \
-    \  lz[k] = Lazy::id();\n    }\n};\n\n/**\n * @brief Lazy Segment Tree (\u9045\u5EF6\
-    \u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n * @docs docs/data_structure/lazy_segment_tree.md\n\
-    \ */\n#line 7 \"verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp\"\n\nint\
-    \ main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    lazy_segment_tree<lazy_sum_set<long\
+    \  lz[k] = Lazy::id();\n    }\n};\n#line 7 \"verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp\"\
+    \n\nint main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    lazy_segment_tree<lazy_sum_set<long\
     \ long>> seg(std::vector<std::pair<long long, int>>(N, {0, 1}));\n    while (Q--)\
     \ {\n        int t;\n        std::cin >> t;\n        if (t == 0) {\n         \
     \   int l, r, x;\n            std::cin >> l >> r >> x;\n            seg.apply(l,\
@@ -123,7 +121,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:13:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp

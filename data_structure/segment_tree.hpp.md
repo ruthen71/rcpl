@@ -16,8 +16,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    _deprecated_at_docs: docs/data_structure/segment_tree.md
-    document_title: "Segment Tree (\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     links: []
   bundledCode: "#line 2 \"data_structure/segment_tree.hpp\"\n\ntemplate <class Monoid>\
     \ struct segment_tree {\n   public:\n    using S = typename Monoid::value_type;\n\
@@ -62,8 +60,7 @@ data:
     \ r);  // 2\u3079\u304D\u307E\u305F\u306F0\u306E\u3068\u304Dfalse\n        return\
     \ 0;\n    }\n\n   private:\n    int _n, log, size;\n    std::vector<S> d;\n  \
     \  inline void update(int k) { d[k] = Monoid::op(d[k << 1], d[(k << 1) | 1]);\
-    \ }\n};\n\n/**\n * @brief Segment Tree (\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n\
-    \ * @docs docs/data_structure/segment_tree.md\n */\n"
+    \ }\n};\n"
   code: "#pragma once\n\ntemplate <class Monoid> struct segment_tree {\n   public:\n\
     \    using S = typename Monoid::value_type;\n    segment_tree() : segment_tree(0)\
     \ {}\n    segment_tree(int n) : segment_tree(std::vector<S>(n, Monoid::e())) {}\n\
@@ -107,13 +104,12 @@ data:
     \ r);  // 2\u3079\u304D\u307E\u305F\u306F0\u306E\u3068\u304Dfalse\n        return\
     \ 0;\n    }\n\n   private:\n    int _n, log, size;\n    std::vector<S> d;\n  \
     \  inline void update(int k) { d[k] = Monoid::op(d[k << 1], d[(k << 1) | 1]);\
-    \ }\n};\n\n/**\n * @brief Segment Tree (\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n\
-    \ * @docs docs/data_structure/segment_tree.md\n */\n"
+    \ }\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/segment_tree.hpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:13:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp
@@ -121,14 +117,8 @@ data:
   - verify/yuki/yuki_1036_segment_tree.test.cpp
 documentation_of: data_structure/segment_tree.hpp
 layout: document
-redirect_from:
-- /library/data_structure/segment_tree.hpp
-- /library/data_structure/segment_tree.hpp.html
 title: "Segment Tree (\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
 ---
-# Segment Tree (セグメント木)
-
-## 概要
 
 基本は `ac-library` と同じ。
 

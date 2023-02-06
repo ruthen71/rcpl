@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: math/modint261.hpp
-    title: math/modint261.hpp
+    title: ModInt ($ \mod = 2^{61} $)
   - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
     title: string/rolling_hash.hpp
@@ -13,7 +13,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    _deprecated_at_docs: docs/algebra/monoid_rolling_hash.md
     links: []
   bundledCode: "#line 2 \"algebra/monoid_rolling_hash.hpp\"\n\n#line 2 \"string/rolling_hash.hpp\"\
     \n\n#line 2 \"math/modint261.hpp\"\n\nstruct modint261 {\n    static constexpr\
@@ -39,55 +38,51 @@ data:
     \ mint &lhs, const mint &rhs) { return mint(lhs) -= rhs; }\n    friend mint operator*(const\
     \ mint &lhs, const mint &rhs) { return mint(lhs) *= rhs; }\n    friend bool operator==(const\
     \ mint &lhs, const mint &rhs) { return lhs._v == rhs._v; }\n    friend bool operator!=(const\
-    \ mint &lhs, const mint &rhs) { return lhs._v != rhs._v; }\n};\n\n/**\n * @docs\
-    \ docs/math/modint261.md\n */\n#line 4 \"string/rolling_hash.hpp\"\n\ntemplate\
-    \ <class Mint> struct rolling_hash {\n    std::vector<Mint> pwr;\n    const Mint\
-    \ base;\n\n    static inline Mint generate_base() {\n        std::mt19937_64 mt(std::chrono::steady_clock::now().time_since_epoch().count());\n\
-    \        std::uniform_int_distribution<uint64_t> rand(1, Mint::mod() - 1);\n \
-    \       return Mint(rand(mt));\n    }\n\n    void extend() {\n        int n =\
-    \ pwr.size();\n        int m = n * 2;\n        pwr.resize(m);\n        for (int\
-    \ i = n; i < m; i++) pwr[i] = pwr[i - 1] * base;\n    }\n\n    rolling_hash(int\
-    \ N = 0, Mint base = generate_base()) : base(base) {\n        pwr.resize(1, Mint(1));\n\
-    \        while (N >= (int)pwr.size()) extend();\n    }\n\n    Mint power(int i)\
-    \ {  // return base ^ i\n        assert(i >= 0);\n        while (i >= (int)pwr.size())\
-    \ extend();\n        return pwr[i];\n    }\n\n    std::vector<Mint> build(const\
-    \ std::string &s) const {\n        int N = (int)s.size();\n        std::vector<Mint>\
-    \ res(N + 1);\n        for (int i = 0; i < N; i++) {\n            res[i + 1] =\
-    \ res[i] * base + s[i];\n        }\n        return res;\n    }\n\n    template\
-    \ <class T> std::vector<Mint> build(const std::vector<T> &s) const {\n       \
-    \ int N = (int)s.size();\n        std::vector<Mint> res(N + 1);\n        for (int\
-    \ i = 0; i < N; i++) {\n            res[i + 1] = res[i] * base + s[i];\n     \
-    \   }\n        return res;\n    }\n\n    Mint prod(const std::vector<Mint> &hs,\
-    \ int l, int r) {\n        assert(0 <= l and l <= r and r < hs.size());\n    \
-    \    return hs[r] - hs[l] * power(r - l);\n    }\n\n    Mint combine(Mint h1,\
-    \ Mint h2, int h2len) { return h1 * power(h2len) + h2; }\n};\n#line 4 \"algebra/monoid_rolling_hash.hpp\"\
-    \n\nrolling_hash<modint261> rh;\n\ntemplate <class Mint> struct monoid_rolling_hash\
-    \ {\n    using S = std::pair<Mint, int>;\n    using value_type = S;\n    static\
-    \ constexpr S op(S a, S b) { return {rh.combine(a.first, b.first, b.second), a.second\
-    \ + b.second}; }\n    static constexpr S e() { return {0, 0}; }\n};\n\n/**\n *\
-    \ @docs docs/algebra/monoid_rolling_hash.md\n */\n"
+    \ mint &lhs, const mint &rhs) { return lhs._v != rhs._v; }\n};\n#line 4 \"string/rolling_hash.hpp\"\
+    \n\ntemplate <class Mint> struct rolling_hash {\n    std::vector<Mint> pwr;\n\
+    \    const Mint base;\n\n    static inline Mint generate_base() {\n        std::mt19937_64\
+    \ mt(std::chrono::steady_clock::now().time_since_epoch().count());\n        std::uniform_int_distribution<uint64_t>\
+    \ rand(1, Mint::mod() - 1);\n        return Mint(rand(mt));\n    }\n\n    void\
+    \ extend() {\n        int n = pwr.size();\n        int m = n * 2;\n        pwr.resize(m);\n\
+    \        for (int i = n; i < m; i++) pwr[i] = pwr[i - 1] * base;\n    }\n\n  \
+    \  rolling_hash(int N = 0, Mint base = generate_base()) : base(base) {\n     \
+    \   pwr.resize(1, Mint(1));\n        while (N >= (int)pwr.size()) extend();\n\
+    \    }\n\n    Mint power(int i) {  // return base ^ i\n        assert(i >= 0);\n\
+    \        while (i >= (int)pwr.size()) extend();\n        return pwr[i];\n    }\n\
+    \n    std::vector<Mint> build(const std::string &s) const {\n        int N = (int)s.size();\n\
+    \        std::vector<Mint> res(N + 1);\n        for (int i = 0; i < N; i++) {\n\
+    \            res[i + 1] = res[i] * base + s[i];\n        }\n        return res;\n\
+    \    }\n\n    template <class T> std::vector<Mint> build(const std::vector<T>\
+    \ &s) const {\n        int N = (int)s.size();\n        std::vector<Mint> res(N\
+    \ + 1);\n        for (int i = 0; i < N; i++) {\n            res[i + 1] = res[i]\
+    \ * base + s[i];\n        }\n        return res;\n    }\n\n    Mint prod(const\
+    \ std::vector<Mint> &hs, int l, int r) {\n        assert(0 <= l and l <= r and\
+    \ r < hs.size());\n        return hs[r] - hs[l] * power(r - l);\n    }\n\n   \
+    \ Mint combine(Mint h1, Mint h2, int h2len) { return h1 * power(h2len) + h2; }\n\
+    };\n#line 4 \"algebra/monoid_rolling_hash.hpp\"\n\nrolling_hash<modint261> rh;\n\
+    \ntemplate <class Mint> struct monoid_rolling_hash {\n    using S = std::pair<Mint,\
+    \ int>;\n    using value_type = S;\n    static constexpr S op(S a, S b) { return\
+    \ {rh.combine(a.first, b.first, b.second), a.second + b.second}; }\n    static\
+    \ constexpr S e() { return {0, 0}; }\n};\n"
   code: "#pragma once\n\n#include \"string/rolling_hash.hpp\"\n\nrolling_hash<modint261>\
     \ rh;\n\ntemplate <class Mint> struct monoid_rolling_hash {\n    using S = std::pair<Mint,\
     \ int>;\n    using value_type = S;\n    static constexpr S op(S a, S b) { return\
     \ {rh.combine(a.first, b.first, b.second), a.second + b.second}; }\n    static\
-    \ constexpr S e() { return {0, 0}; }\n};\n\n/**\n * @docs docs/algebra/monoid_rolling_hash.md\n\
-    \ */"
+    \ constexpr S e() { return {0, 0}; }\n};"
   dependsOn:
   - string/rolling_hash.hpp
   - math/modint261.hpp
   isVerificationFile: false
   path: algebra/monoid_rolling_hash.hpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:48:41+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: algebra/monoid_rolling_hash.hpp
 layout: document
-redirect_from:
-- /library/algebra/monoid_rolling_hash.hpp
-- /library/algebra/monoid_rolling_hash.hpp.html
-title: algebra/monoid_rolling_hash.hpp
+title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
 ---
+
 ## 使用例
 
 - [ABC285 F](https://atcoder.jp/contests/abc285/tasks/abc285_f)

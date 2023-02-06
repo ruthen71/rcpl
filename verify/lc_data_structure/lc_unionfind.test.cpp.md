@@ -24,8 +24,7 @@ data:
     \ parents[y]) std::swap(x, y);\n        parents[x] += parents[y];\n        parents[y]\
     \ = x;\n        return true;\n    }\n\n    bool same(int x, int y) { return leader(x)\
     \ == leader(y); }\n\n    int size(int x) { return -parents[leader(x)]; }\n\n \
-    \   void init(int n) { parents.assign(n, -1); }  // reset\n};\n\n/**\n * @brief\
-    \ UnionFind\n * @docs docs/data_structure/unionfind.md\n */\n#line 7 \"verify/lc_data_structure/lc_unionfind.test.cpp\"\
+    \   void init(int n) { parents.assign(n, -1); }  // reset\n};\n#line 7 \"verify/lc_data_structure/lc_unionfind.test.cpp\"\
     \n\nint main() {\n    int N, Q;\n    cin >> N >> Q;\n    unionfind uf(N);\n  \
     \  while (Q--) {\n        int t, u, v;\n        cin >> t >> u >> v;\n        if\
     \ (t == 0) {\n            uf.merge(u, v);\n        } else {\n            cout\
@@ -41,7 +40,7 @@ data:
   isVerificationFile: true
   path: verify/lc_data_structure/lc_unionfind.test.cpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:13:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_data_structure/lc_unionfind.test.cpp

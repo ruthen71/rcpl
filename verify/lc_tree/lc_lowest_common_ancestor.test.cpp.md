@@ -47,14 +47,13 @@ data:
     \            }\n        }\n        return parent[0][u];\n    }\n\n    int level_ancestor(int\
     \ u, int d) {\n        assert((int)depth.size() == n);\n        if (depth[u] <\
     \ d) return -1;\n        for (int k = 0; k < LOG; k++)\n            if (d >> k\
-    \ & 1) u = parent[k][u];\n        return u;\n    }\n};\n\n/**\n * @brief Lowest\
-    \ Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)\n * @docs docs/graph/lowest_common_ancestor.md\n\
-    \ */\n#line 6 \"verify/lc_tree/lc_lowest_common_ancestor.test.cpp\"\n\nint main()\
-    \ {\n    int N, Q;\n    std::cin >> N >> Q;\n    graph<int> G(N);\n    for (int\
-    \ i = 1; i < N; i++) {\n        int p;\n        std::cin >> p;\n        G[i].push_back(edge(i,\
-    \ p, 1, i - 1));\n        G[p].push_back(edge(p, i, 1, i - 1));\n    }\n    lowest_common_ancestor\
-    \ tq(G, 0);\n    while (Q--) {\n        int u, v;\n        std::cin >> u >> v;\n\
-    \        std::cout << tq.lca(u, v) << '\\n';\n    }\n    return 0;\n}\n"
+    \ & 1) u = parent[k][u];\n        return u;\n    }\n};\n#line 6 \"verify/lc_tree/lc_lowest_common_ancestor.test.cpp\"\
+    \n\nint main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    graph<int> G(N);\n\
+    \    for (int i = 1; i < N; i++) {\n        int p;\n        std::cin >> p;\n \
+    \       G[i].push_back(edge(i, p, 1, i - 1));\n        G[p].push_back(edge(p,\
+    \ i, 1, i - 1));\n    }\n    lowest_common_ancestor tq(G, 0);\n    while (Q--)\
+    \ {\n        int u, v;\n        std::cin >> u >> v;\n        std::cout << tq.lca(u,\
+    \ v) << '\\n';\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include <bits/stdc++.h>\n\
     \n#include \"graph/lowest_common_ancestor.hpp\"\n\nint main() {\n    int N, Q;\n\
     \    std::cin >> N >> Q;\n    graph<int> G(N);\n    for (int i = 1; i < N; i++)\
@@ -68,7 +67,7 @@ data:
   isVerificationFile: true
   path: verify/lc_tree/lc_lowest_common_ancestor.test.cpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:40:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_tree/lc_lowest_common_ancestor.test.cpp

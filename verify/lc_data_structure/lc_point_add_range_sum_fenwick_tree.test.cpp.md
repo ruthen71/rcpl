@@ -30,16 +30,14 @@ data:
     \       assert(0 <= a and a <= b and b <= N);\n        return sum(b) - sum(a);\n\
     \    }\n\n    // output\n    friend std::ostream &operator<<(std::ostream &os,\
     \ const fenwick_tree &A) {\n        for (int i = 0; i < A.N; i++) os << A.sum(i,\
-    \ i + 1) << \" \\n\"[i == A.N - 1];\n        return os;\n    }\n};\n\n/**\n *\
-    \ @brief Fenwick Tree (Binary Indexed Tree)\n * @docs docs/data_structure/fenwick_tree.md\n\
-    \ */\n#line 7 \"verify/lc_data_structure/lc_point_add_range_sum_fenwick_tree.test.cpp\"\
-    \n\nint main() {\n    int N, Q;\n    cin >> N >> Q;\n    std::vector<long long>\
-    \ a(N);\n    for (int i = 0; i < N; i++) cin >> a[i];\n    fenwick_tree<long long>\
-    \ fen(a);\n    while (Q--) {\n        int t;\n        cin >> t;\n        if (t\
-    \ == 0) {\n            int p, x;\n            cin >> p >> x;\n            fen.add(p,\
-    \ x);\n        } else {\n            int l, r;\n            cin >> l >> r;\n \
-    \           cout << fen.sum(l, r) << '\\n';\n        }\n    }\n    return 0;\n\
-    }\n"
+    \ i + 1) << \" \\n\"[i == A.N - 1];\n        return os;\n    }\n};\n#line 7 \"\
+    verify/lc_data_structure/lc_point_add_range_sum_fenwick_tree.test.cpp\"\n\nint\
+    \ main() {\n    int N, Q;\n    cin >> N >> Q;\n    std::vector<long long> a(N);\n\
+    \    for (int i = 0; i < N; i++) cin >> a[i];\n    fenwick_tree<long long> fen(a);\n\
+    \    while (Q--) {\n        int t;\n        cin >> t;\n        if (t == 0) {\n\
+    \            int p, x;\n            cin >> p >> x;\n            fen.add(p, x);\n\
+    \        } else {\n            int l, r;\n            cin >> l >> r;\n       \
+    \     cout << fen.sum(l, r) << '\\n';\n        }\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\
     \n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"data_structure/fenwick_tree.hpp\"\
     \n\nint main() {\n    int N, Q;\n    cin >> N >> Q;\n    std::vector<long long>\
@@ -54,7 +52,7 @@ data:
   isVerificationFile: true
   path: verify/lc_data_structure/lc_point_add_range_sum_fenwick_tree.test.cpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:13:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_data_structure/lc_point_add_range_sum_fenwick_tree.test.cpp

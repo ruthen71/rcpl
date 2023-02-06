@@ -4,7 +4,7 @@ data:
   _extendedRequiredBy:
   - icon: ':warning:'
     path: algebra/monoid_rolling_hash.hpp
-    title: algebra/monoid_rolling_hash.hpp
+    title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
   - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
     title: string/rolling_hash.hpp
@@ -16,7 +16,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    _deprecated_at_docs: docs/math/modint261.md
     links: []
   bundledCode: "#line 2 \"math/modint261.hpp\"\n\nstruct modint261 {\n    static constexpr\
     \ uint64_t m = (1ULL << 61) - 1;\n    using uint128_t = __uint128_t;\n    using\
@@ -41,8 +40,7 @@ data:
     \ mint &lhs, const mint &rhs) { return mint(lhs) -= rhs; }\n    friend mint operator*(const\
     \ mint &lhs, const mint &rhs) { return mint(lhs) *= rhs; }\n    friend bool operator==(const\
     \ mint &lhs, const mint &rhs) { return lhs._v == rhs._v; }\n    friend bool operator!=(const\
-    \ mint &lhs, const mint &rhs) { return lhs._v != rhs._v; }\n};\n\n/**\n * @docs\
-    \ docs/math/modint261.md\n */\n"
+    \ mint &lhs, const mint &rhs) { return lhs._v != rhs._v; }\n};\n"
   code: "#pragma once\n\nstruct modint261 {\n    static constexpr uint64_t m = (1ULL\
     \ << 61) - 1;\n    using uint128_t = __uint128_t;\n    using mint = modint261;\n\
     \    uint64_t _v;\n\n    static constexpr uint64_t mod() { return m; }\n\n   \
@@ -66,25 +64,21 @@ data:
     \ mint &lhs, const mint &rhs) { return mint(lhs) -= rhs; }\n    friend mint operator*(const\
     \ mint &lhs, const mint &rhs) { return mint(lhs) *= rhs; }\n    friend bool operator==(const\
     \ mint &lhs, const mint &rhs) { return lhs._v == rhs._v; }\n    friend bool operator!=(const\
-    \ mint &lhs, const mint &rhs) { return lhs._v != rhs._v; }\n};\n\n/**\n * @docs\
-    \ docs/math/modint261.md\n */"
+    \ mint &lhs, const mint &rhs) { return lhs._v != rhs._v; }\n};"
   dependsOn: []
   isVerificationFile: false
   path: math/modint261.hpp
   requiredBy:
   - string/rolling_hash.hpp
   - algebra/monoid_rolling_hash.hpp
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:48:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_alds1/aoj_alds1_14_b.test.cpp
 documentation_of: math/modint261.hpp
 layout: document
-redirect_from:
-- /library/math/modint261.hpp
-- /library/math/modint261.hpp.html
-title: math/modint261.hpp
+title: ModInt ($ \mod = 2^{61} $)
 ---
-## 参考
-- [安全で爆速なRollingHashの話](https://qiita.com/keymoon/items/11fac5627672a6d6a9f6)
-    - `a * b` を `z = a * b` として `(z >> 61) + (z & mod)` でできる理由など
+
+## 参考文献
+- [安全で爆速なRollingHashの話](https://qiita.com/keymoon/items/11fac5627672a6d6a9f6) `a * b` を `z = a * b` として `(z >> 61) + (z & mod)` でできる理由など

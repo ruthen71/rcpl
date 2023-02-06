@@ -42,11 +42,9 @@ data:
     \ w[i]] = deqv[s] + j * v[i];\n                        if (deq[s] == j - m[i])\
     \ s++;\n                    }\n                }\n            }\n        } else\
     \ {\n            // w[i] = 0\n            continue;\n        }\n    }\n    return\
-    \ dp;\n}\n\n/**\n * @brief Knapsack Limitations (\u500B\u6570\u5236\u9650\u4ED8\
-    \u304D\u30CA\u30C3\u30D7\u30B5\u30C3\u30AF\u554F\u984C)\n * @docs docs/dp/knapsack_limitations.md\n\
-    \ */\n#line 6 \"verify/aoj_dpl/aoj_dpl_1_g.test.cpp\"\n\nint main() {\n    int\
-    \ N, W;\n    std::cin >> N >> W;\n    std::vector<int> v(N), w(N), m(N);\n   \
-    \ for (int i = 0; i < N; i++) std::cin >> v[i] >> w[i] >> m[i];\n    auto ret1\
+    \ dp;\n}\n#line 6 \"verify/aoj_dpl/aoj_dpl_1_g.test.cpp\"\n\nint main() {\n  \
+    \  int N, W;\n    std::cin >> N >> W;\n    std::vector<int> v(N), w(N), m(N);\n\
+    \    for (int i = 0; i < N; i++) std::cin >> v[i] >> w[i] >> m[i];\n    auto ret1\
     \ = knapsack_limitations(w, v, m, W, -1);\n    auto ans1 = *std::max_element(ret1.begin(),\
     \ ret1.end());\n    for (int i = 0; i < N; i++) v[i] = -v[i];\n    auto ret2 =\
     \ knapsack_limitations(w, v, m, W, 1, std::less<int>());\n    auto ans2 = *std::min_element(ret2.begin(),\
@@ -66,7 +64,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_dpl/aoj_dpl_1_g.test.cpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:40:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_dpl/aoj_dpl_1_g.test.cpp

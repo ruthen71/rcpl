@@ -16,8 +16,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    _deprecated_at_docs: docs/data_structure/fenwick_tree.md
-    document_title: Fenwick Tree (Binary Indexed Tree)
     links: []
   bundledCode: "#line 2 \"data_structure/fenwick_tree.hpp\"\n\ntemplate <class T>\
     \ struct fenwick_tree {\n    int N;\n    std::vector<T> seg;\n    fenwick_tree(int\
@@ -33,8 +31,7 @@ data:
     \ <= a and a <= b and b <= N);\n        return sum(b) - sum(a);\n    }\n\n   \
     \ // output\n    friend std::ostream &operator<<(std::ostream &os, const fenwick_tree\
     \ &A) {\n        for (int i = 0; i < A.N; i++) os << A.sum(i, i + 1) << \" \\\
-    n\"[i == A.N - 1];\n        return os;\n    }\n};\n\n/**\n * @brief Fenwick Tree\
-    \ (Binary Indexed Tree)\n * @docs docs/data_structure/fenwick_tree.md\n */\n"
+    n\"[i == A.N - 1];\n        return os;\n    }\n};\n"
   code: "#pragma once\n\ntemplate <class T> struct fenwick_tree {\n    int N;\n  \
     \  std::vector<T> seg;\n    fenwick_tree(int N) : N(N), seg(N + 1, 0) {}\n   \
     \ fenwick_tree(std::vector<T> &A) {\n        N = (int)A.size();\n        seg.resize(N\
@@ -48,29 +45,22 @@ data:
     \ a, int b) const {\n        assert(0 <= a and a <= b and b <= N);\n        return\
     \ sum(b) - sum(a);\n    }\n\n    // output\n    friend std::ostream &operator<<(std::ostream\
     \ &os, const fenwick_tree &A) {\n        for (int i = 0; i < A.N; i++) os << A.sum(i,\
-    \ i + 1) << \" \\n\"[i == A.N - 1];\n        return os;\n    }\n};\n\n/**\n *\
-    \ @brief Fenwick Tree (Binary Indexed Tree)\n * @docs docs/data_structure/fenwick_tree.md\n\
-    \ */\n"
+    \ i + 1) << \" \\n\"[i == A.N - 1];\n        return os;\n    }\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/fenwick_tree.hpp
   requiredBy:
   - dp/inversion_number.hpp
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:13:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_data_structure/lc_point_add_range_sum_fenwick_tree.test.cpp
   - verify/aoj_alds1/aoj_alds1_5_d.test.cpp
 documentation_of: data_structure/fenwick_tree.hpp
 layout: document
-redirect_from:
-- /library/data_structure/fenwick_tree.hpp
-- /library/data_structure/fenwick_tree.hpp.html
 title: Fenwick Tree (Binary Indexed Tree)
 ---
-# Fenwick Tree (Binary Indexed Tree)
 
-## 概要
 - 一点更新区間和取得ができるデータ構造である
 - 内部実装では1-indexedで、外部からは0-indexedで利用するようになっている
 - `add(i, x)`: `A[i]`に`x`を加算する

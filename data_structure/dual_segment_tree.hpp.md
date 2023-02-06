@@ -13,9 +13,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    _deprecated_at_docs: docs/data_structure/dual_segment_tree.md
-    document_title: "Dual Segment Tree (\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\
-      \u6728)"
     links: []
   bundledCode: "#line 2 \"data_structure/dual_segment_tree.hpp\"\n\ntemplate <class\
     \ Dual> struct dual_segment_tree {\n   public:\n    using F = typename Dual::value_type;\n\
@@ -43,9 +40,7 @@ data:
     \   private:\n    int _n, log, size;\n    std::vector<F> lz;\n    void all_apply(int\
     \ k, const F& f) { lz[k] = Dual::composition(f, lz[k]); }\n    void push(int k)\
     \ {\n        all_apply(k << 1, lz[k]);\n        all_apply((k << 1) | 1, lz[k]);\n\
-    \        lz[k] = Dual::id();\n    }\n};\n\n/**\n * @brief Dual Segment Tree (\u53CC\
-    \u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n * @docs docs/data_structure/dual_segment_tree.md\n\
-    \ */\n"
+    \        lz[k] = Dual::id();\n    }\n};\n"
   code: "#pragma once\n\ntemplate <class Dual> struct dual_segment_tree {\n   public:\n\
     \    using F = typename Dual::value_type;\n    dual_segment_tree(int n) : dual_segment_tree(std::vector<F>(n,\
     \ Dual::id())) {}\n    dual_segment_tree(const std::vector<F>& v) : _n((int)v.size())\
@@ -71,28 +66,20 @@ data:
     \   private:\n    int _n, log, size;\n    std::vector<F> lz;\n    void all_apply(int\
     \ k, const F& f) { lz[k] = Dual::composition(f, lz[k]); }\n    void push(int k)\
     \ {\n        all_apply(k << 1, lz[k]);\n        all_apply((k << 1) | 1, lz[k]);\n\
-    \        lz[k] = Dual::id();\n    }\n};\n\n/**\n * @brief Dual Segment Tree (\u53CC\
-    \u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n * @docs docs/data_structure/dual_segment_tree.md\n\
-    \ */\n"
+    \        lz[k] = Dual::id();\n    }\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/dual_segment_tree.hpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:13:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp
   - verify/aoj_dsl/aoj_dsl_2_e_dual_segment_tree.test.cpp
 documentation_of: data_structure/dual_segment_tree.hpp
 layout: document
-redirect_from:
-- /library/data_structure/dual_segment_tree.hpp
-- /library/data_structure/dual_segment_tree.hpp.html
 title: "Dual Segment Tree (\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
 ---
-# Dual Segment Tree (双対セグメント木)
-
-## 概要
 
 `ac-library` を参考に。
 

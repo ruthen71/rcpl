@@ -13,8 +13,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    _deprecated_at_docs: docs/graph/tree_diameter.md
-    document_title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"
     links: []
   bundledCode: "#line 2 \"graph/tree_diameter.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
     \n\ntemplate <class T> struct edge {\n    int from, to;\n    T cost;\n    int\
@@ -36,8 +34,7 @@ data:
     \ path;\n    while (cur != t.second) {\n        for (auto &e : G[cur]) {\n   \
     \         if (to[cur] == e.to) {\n                path.emplace_back(e);\n    \
     \        }\n        }\n        cur = to[cur];\n    }\n    return {t.first, path};\n\
-    }\n\n/**\n * @brief Tree Diameter (\u6728\u306E\u76F4\u5F84)\n * @docs docs/graph/tree_diameter.md\n\
-    \ */\n"
+    }\n"
   code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\ntemplate <class\
     \ T, class Graph> std::pair<T, std::vector<edge<T>>> tree_diameter(Graph &G) {\n\
     \    std::vector<int> to(G.size(), -1);\n\n    auto dfs = [&](auto f, int cur,\
@@ -50,26 +47,19 @@ data:
     \n    int cur = s.second;\n    std::vector<edge<T>> path;\n    while (cur != t.second)\
     \ {\n        for (auto &e : G[cur]) {\n            if (to[cur] == e.to) {\n  \
     \              path.emplace_back(e);\n            }\n        }\n        cur =\
-    \ to[cur];\n    }\n    return {t.first, path};\n}\n\n/**\n * @brief Tree Diameter\
-    \ (\u6728\u306E\u76F4\u5F84)\n * @docs docs/graph/tree_diameter.md\n */\n"
+    \ to[cur];\n    }\n    return {t.first, path};\n}"
   dependsOn:
   - graph/graph_template.hpp
   isVerificationFile: false
   path: graph/tree_diameter.hpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:40:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_tree/lc_tree_diameter.test.cpp
 documentation_of: graph/tree_diameter.hpp
 layout: document
-redirect_from:
-- /library/graph/tree_diameter.hpp
-- /library/graph/tree_diameter.hpp.html
 title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"
 ---
-# Tree Diameter (木の直径)
-
-## 概要
 
 - `auto [d, path] = tree_diameter(G);` で `d` に直径の長さが、`path` に辺の集合が入る

@@ -10,9 +10,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    _deprecated_at_docs: docs/dp/knapsack_limitations.md
-    document_title: "Knapsack Limitations (\u500B\u6570\u5236\u9650\u4ED8\u304D\u30CA\
-      \u30C3\u30D7\u30B5\u30C3\u30AF\u554F\u984C)"
     links: []
   bundledCode: "#line 2 \"dp/knapsack_limitations.hpp\"\n\ntemplate <class T, class\
     \ F = std::greater<T>>\nstd::vector<T> knapsack_limitations(const std::vector<int>\
@@ -39,9 +36,7 @@ data:
     \ w[i]] = deqv[s] + j * v[i];\n                        if (deq[s] == j - m[i])\
     \ s++;\n                    }\n                }\n            }\n        } else\
     \ {\n            // w[i] = 0\n            continue;\n        }\n    }\n    return\
-    \ dp;\n}\n\n/**\n * @brief Knapsack Limitations (\u500B\u6570\u5236\u9650\u4ED8\
-    \u304D\u30CA\u30C3\u30D7\u30B5\u30C3\u30AF\u554F\u984C)\n * @docs docs/dp/knapsack_limitations.md\n\
-    \ */\n"
+    \ dp;\n}\n"
   code: "#pragma once\n\ntemplate <class T, class F = std::greater<T>>\nstd::vector<T>\
     \ knapsack_limitations(const std::vector<int> &w, const std::vector<T> &v, const\
     \ std::vector<int> &m,  //\n                                    const int W, const\
@@ -66,26 +61,20 @@ data:
     \   dp[W - a + j * w[i]] = deqv[s] + j * v[i];\n                        if (deq[s]\
     \ == j - m[i]) s++;\n                    }\n                }\n            }\n\
     \        } else {\n            // w[i] = 0\n            continue;\n        }\n\
-    \    }\n    return dp;\n}\n\n/**\n * @brief Knapsack Limitations (\u500B\u6570\
-    \u5236\u9650\u4ED8\u304D\u30CA\u30C3\u30D7\u30B5\u30C3\u30AF\u554F\u984C)\n *\
-    \ @docs docs/dp/knapsack_limitations.md\n */\n"
+    \    }\n    return dp;\n}"
   dependsOn: []
   isVerificationFile: false
   path: dp/knapsack_limitations.hpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:40:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_dpl/aoj_dpl_1_g.test.cpp
 documentation_of: dp/knapsack_limitations.hpp
 layout: document
-redirect_from:
-- /library/dp/knapsack_limitations.hpp
-- /library/dp/knapsack_limitations.hpp.html
 title: "Knapsack Limitations (\u500B\u6570\u5236\u9650\u4ED8\u304D\u30CA\u30C3\u30D7\
   \u30B5\u30C3\u30AF\u554F\u984C)"
 ---
-## 概要
 
 - 個数制限付きナップサック問題をスライド最大値のテクニックを使って解く
     - `w` : 荷物の重さ
@@ -97,9 +86,10 @@ title: "Knapsack Limitations (\u500B\u6570\u5236\u9650\u4ED8\u304D\u30CA\u30C3\u
     - `s` : 初期値 (普通は0だが、部分和問題などでは違うかもしれない)
 - $ O(nW) $
 - 部分和問題を解くために `w[i] < 0` の処理も加えた
-- 使用例
-    - [ABC269-G](https://atcoder.jp/contests/abc269/submissions/35003309)
-        - `w[i] < 0` の処理を加えたおかげ
-    - [ABC286-D](https://atcoder.jp/contests/abc286/submissions/38232340)
-        - $ O \left( X \sum_{i=1}^{N} B_{i} \right) $ で通る制約なので必要ないが、$ O(XN) $ で解くなら必要
+
+## 使用例
+- [ABC269-G](https://atcoder.jp/contests/abc269/submissions/35003309)
+    - `w[i] < 0` の処理を加えたおかげ
+- [ABC286-D](https://atcoder.jp/contests/abc286/submissions/38232340)
+    - $ O \left( X \sum_{i=1}^{N} B_{i} \right) $ で通る制約なので必要ないが、$ O(XN) $ で解くなら必要
 

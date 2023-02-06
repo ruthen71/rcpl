@@ -1,2 +1,0 @@
-- 閉区間なので注意
-- [使用例1](https://atcoder.jp/contests/abc265/submissions/36930250)

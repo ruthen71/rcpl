@@ -16,8 +16,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    _deprecated_at_docs: docs/data_structure/cumulative_sum.md
-    document_title: "\u7D2F\u7A4D\u548C"
     links: []
   bundledCode: "#line 2 \"data_structure/cumulative_sum.hpp\"\n\ntemplate <class T>\
     \ struct cumulative_sum {\n    std::vector<T> seg;\n    int _n;\n\n    cumulative_sum(int\
@@ -35,8 +33,7 @@ data:
     \       assert(0 <= p and p < _n);\n        return seg[p + 1];\n    }\n\n    //\
     \ output\n    friend std::ostream &operator<<(std::ostream &os, const cumulative_sum\
     \ &A) {\n        for (int i = 0; i <= A._n; i++) os << A.seg[i] << \" \\n\"[i\
-    \ == A._n];\n        return os;\n    }\n};\n\n/**\n * @brief \u7D2F\u7A4D\u548C\
-    \n * @docs docs/data_structure/cumulative_sum.md\n */\n"
+    \ == A._n];\n        return os;\n    }\n};\n"
   code: "#pragma once\n\ntemplate <class T> struct cumulative_sum {\n    std::vector<T>\
     \ seg;\n    int _n;\n\n    cumulative_sum(int _n) : _n(_n), seg(_n + 1, 0) {}\n\
     \    cumulative_sum(std::vector<T> &A) {\n        _n = (int)A.size();\n      \
@@ -52,14 +49,12 @@ data:
     \    }\n\n    T operator[](int p) const {\n        assert(0 <= p and p < _n);\n\
     \        return seg[p + 1];\n    }\n\n    // output\n    friend std::ostream &operator<<(std::ostream\
     \ &os, const cumulative_sum &A) {\n        for (int i = 0; i <= A._n; i++) os\
-    \ << A.seg[i] << \" \\n\"[i == A._n];\n        return os;\n    }\n};\n\n/**\n\
-    \ * @brief \u7D2F\u7A4D\u548C\n * @docs docs/data_structure/cumulative_sum.md\n\
-    \ */\n"
+    \ << A.seg[i] << \" \\n\"[i == A._n];\n        return os;\n    }\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/cumulative_sum.hpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:13:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_data_structure/lc_static_range_sum.test.cpp
@@ -67,14 +62,10 @@ data:
   - verify/aoj_other/aoj_2286.test.cpp
 documentation_of: data_structure/cumulative_sum.hpp
 layout: document
-redirect_from:
-- /library/data_structure/cumulative_sum.hpp
-- /library/data_structure/cumulative_sum.hpp.html
 title: "\u7D2F\u7A4D\u548C"
 ---
-# 累積和
 
-## 概要
+
 2つの使い方が想定される
 1. ある配列を入力し、さまざまな区間和を求める場合
     - コンストラクタ引数にその配列を直接取ると、勝手に構築する

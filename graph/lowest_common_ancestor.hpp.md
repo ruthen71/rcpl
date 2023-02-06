@@ -13,8 +13,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    _deprecated_at_docs: docs/graph/lowest_common_ancestor.md
-    document_title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
     links: []
   bundledCode: "#line 2 \"graph/lowest_common_ancestor.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
     \n\ntemplate <class T> struct edge {\n    int from, to;\n    T cost;\n    int\
@@ -44,9 +42,7 @@ data:
     \            }\n        }\n        return parent[0][u];\n    }\n\n    int level_ancestor(int\
     \ u, int d) {\n        assert((int)depth.size() == n);\n        if (depth[u] <\
     \ d) return -1;\n        for (int k = 0; k < LOG; k++)\n            if (d >> k\
-    \ & 1) u = parent[k][u];\n        return u;\n    }\n};\n\n/**\n * @brief Lowest\
-    \ Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)\n * @docs docs/graph/lowest_common_ancestor.md\n\
-    \ */\n"
+    \ & 1) u = parent[k][u];\n        return u;\n    }\n};\n"
   code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\ntemplate <class\
     \ Graph> struct lowest_common_ancestor {\n    std::vector<int> depth;\n    std::vector<std::vector<int>>\
     \ parent;\n    int n, LOG;\n\n    lowest_common_ancestor(Graph &G, int root =\
@@ -67,28 +63,20 @@ data:
     \            }\n        }\n        return parent[0][u];\n    }\n\n    int level_ancestor(int\
     \ u, int d) {\n        assert((int)depth.size() == n);\n        if (depth[u] <\
     \ d) return -1;\n        for (int k = 0; k < LOG; k++)\n            if (d >> k\
-    \ & 1) u = parent[k][u];\n        return u;\n    }\n};\n\n/**\n * @brief Lowest\
-    \ Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)\n * @docs docs/graph/lowest_common_ancestor.md\n\
-    \ */\n"
+    \ & 1) u = parent[k][u];\n        return u;\n    }\n};"
   dependsOn:
   - graph/graph_template.hpp
   isVerificationFile: false
   path: graph/lowest_common_ancestor.hpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:40:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_tree/lc_lowest_common_ancestor.test.cpp
 documentation_of: graph/lowest_common_ancestor.hpp
 layout: document
-redirect_from:
-- /library/graph/lowest_common_ancestor.hpp
-- /library/graph/lowest_common_ancestor.hpp.html
 title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
 ---
-# Lowest Common Ancestor (最小共通祖先)
-
-## 概要
 
 - `lowest_common_ancestor tq(G, root);` で作成
 - `tq.lca(u, v)` で `u` と `v` の最小共通祖先を出力

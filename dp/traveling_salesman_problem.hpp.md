@@ -13,9 +13,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    _deprecated_at_docs: docs/dp/traveling_salesman_problem.md
-    document_title: "Traveling Salesman Problem (\u5DE1\u56DE\u30BB\u30FC\u30EB\u30B9\
-      \u30DE\u30F3\u554F\u984C)"
     links: []
   bundledCode: "#line 2 \"dp/traveling_salesman_problem.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
     \n\ntemplate <class T> struct edge {\n    int from, to;\n    T cost;\n    int\
@@ -36,9 +33,7 @@ data:
     \ v = 0; v < N; v++) {\n            if (s >> v & 1) continue;\n            for\
     \ (int u = 0; u < N; u++) {\n                if (u == v) continue;\n         \
     \       dp[s | (1 << v)][v] = std::min(dp[s | (1 << v)][v], dp[s][u] + dist[u][v]);\n\
-    \            }\n        }\n    }\n    return dp;\n}\n\n/**\n * @brief Traveling\
-    \ Salesman Problem (\u5DE1\u56DE\u30BB\u30FC\u30EB\u30B9\u30DE\u30F3\u554F\u984C\
-    )\n * @docs docs/dp/traveling_salesman_problem.md\n */\n"
+    \            }\n        }\n    }\n    return dp;\n}\n"
   code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\ntemplate <class\
     \ T, class Graph>\nstd::vector<std::vector<T>>  //\ntraveling_salesman_problem(Graph\
     \ &G, const T INF) {\n    int N = (int)G.size();\n    int N2 = 1 << N;\n\n   \
@@ -50,26 +45,22 @@ data:
     \  for (int v = 0; v < N; v++) {\n            if (s >> v & 1) continue;\n    \
     \        for (int u = 0; u < N; u++) {\n                if (u == v) continue;\n\
     \                dp[s | (1 << v)][v] = std::min(dp[s | (1 << v)][v], dp[s][u]\
-    \ + dist[u][v]);\n            }\n        }\n    }\n    return dp;\n}\n\n/**\n\
-    \ * @brief Traveling Salesman Problem (\u5DE1\u56DE\u30BB\u30FC\u30EB\u30B9\u30DE\
-    \u30F3\u554F\u984C)\n * @docs docs/dp/traveling_salesman_problem.md\n */"
+    \ + dist[u][v]);\n            }\n        }\n    }\n    return dp;\n}"
   dependsOn:
   - graph/graph_template.hpp
   isVerificationFile: false
   path: dp/traveling_salesman_problem.hpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:40:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_dpl/aoj_dpl_2_a.test.cpp
 documentation_of: dp/traveling_salesman_problem.hpp
 layout: document
-redirect_from:
-- /library/dp/traveling_salesman_problem.hpp
-- /library/dp/traveling_salesman_problem.hpp.html
 title: "Traveling Salesman Problem (\u5DE1\u56DE\u30BB\u30FC\u30EB\u30B9\u30DE\u30F3\
   \u554F\u984C)"
 ---
+
 - 初期化 (TSP = 最短ハミルトン閉路問題の場合)
     - TSP は閉路なのでどこを始点にしても良い
     - 始点を `s` とすると、「まだどこにも行ってないけど `s` にいる」ので `dp[0][s] = 0`

@@ -43,10 +43,8 @@ data:
     \ = cur;\n                    root[e.to] = root[cur];\n                    update\
     \ = true;\n                    if (loop_count >= N) nd = -INF;\n             \
     \       dist[e.to] = nd;\n                }\n            }\n        }\n      \
-    \  if (!update) break;\n    }\n    return {dist, par, root};\n}\n\n/**\n * @brief\
-    \ Bellman-Ford algorithm (\u30D9\u30EB\u30DE\u30F3\u30D5\u30A9\u30FC\u30C9\u6CD5\
-    )\n * @docs docs/graph/bellman_ford.md\n */\n#line 2 \"graph/read_graph.hpp\"\n\
-    \n#line 4 \"graph/read_graph.hpp\"\n\ntemplate <class T> graph<T> read_graph(int\
+    \  if (!update) break;\n    }\n    return {dist, par, root};\n}\n#line 2 \"graph/read_graph.hpp\"\
+    \n\n#line 4 \"graph/read_graph.hpp\"\n\ntemplate <class T> graph<T> read_graph(int\
     \ N, int M, const bool weight = false, const bool directed = false, const int\
     \ offset = 1) {\n    graph<T> G(N);\n    for (int i = 0; i < M; i++) {\n     \
     \   int a, b;\n        std::cin >> a >> b;\n        a -= offset, b -= offset;\n\
@@ -82,7 +80,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_grl/aoj_grl_1_b.test.cpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 19:40:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_grl/aoj_grl_1_b.test.cpp
