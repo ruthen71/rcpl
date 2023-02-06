@@ -1,5 +1,5 @@
 ---
-title:Lazy Segment Tree (遅延セグメント木)
+title: Lazy Segment Tree (遅延セグメント木)
 documentation_of: //data_structure/lazy_segment_tree.hpp
 ---
 
