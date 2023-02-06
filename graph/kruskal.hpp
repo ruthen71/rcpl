@@ -21,8 +21,3 @@ template <class T, class Graph> std::pair<T, edges<T>> kruskal(Graph &G) {
     }
     return {ret, es_ret};
 }
-
-/**
- * @brief Kruskal's algorithm (クラスカル法)
- * @docs docs/graph/kruskal.md
- */

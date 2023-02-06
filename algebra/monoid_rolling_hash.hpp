@@ -10,7 +10,3 @@ template <class Mint> struct monoid_rolling_hash {
     static constexpr S op(S a, S b) { return {rh.combine(a.first, b.first, b.second), a.second + b.second}; }
     static constexpr S e() { return {0, 0}; }
 };
-
-/**
- * @docs docs/algebra/monoid_rolling_hash.md
- */

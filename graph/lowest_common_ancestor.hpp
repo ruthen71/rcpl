@@ -51,8 +51,3 @@ template <class Graph> struct lowest_common_ancestor {
         return u;
     }
 };
-
-/**
- * @brief Lowest Common Ancestor (最小共通祖先)
- * @docs docs/graph/lowest_common_ancestor.md
- */

@@ -1,6 +1,7 @@
-# Bellman-Ford algorithm (ベルマンフォード法)
-
-## 概要
+---
+title: Bellman-Ford algorithm (ベルマンフォード法)
+documentation_of: ../graph/bellman_ford.hpp
+---
 
 - 到達できない場合は `INF`
 - 負閉路を使って小さくできる場合は `-INF`

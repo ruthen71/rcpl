@@ -35,8 +35,3 @@ bellman_ford(Graph &G, std::vector<int> &s, const T INF) {
     }
     return {dist, par, root};
 }
-
-/**
- * @brief Bellman-Ford algorithm (ベルマンフォード法)
- * @docs docs/graph/bellman_ford.md
- */

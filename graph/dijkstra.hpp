@@ -32,8 +32,3 @@ dijkstra(Graph &G, std::vector<int> &s, const T INF) {
     }
     return {dist, par, root};
 }
-
-/**
- * @brief Dijkstra's algorithm (ダイクストラ法)
- * @docs docs/graph/dijkstra.md
- */

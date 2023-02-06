@@ -35,8 +35,3 @@ bfs01(Graph &G, std::vector<int> &s, const T INF) {
     }
     return {dist, par, root};
 }
-
-/**
- * @brief 01-BFS
- * @docs docs/graph/bfs01.md
- */

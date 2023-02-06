@@ -34,8 +34,3 @@ template <class T, class Graph> std::pair<T, std::vector<edge<T>>> tree_diameter
     }
     return {t.first, path};
 }
-
-/**
- * @brief Tree Diameter (木の直径)
- * @docs docs/graph/tree_diameter.md
- */
