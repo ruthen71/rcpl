@@ -1,6 +1,6 @@
 ---
 title: Static Matrix (行列, サイズ固定)
-documentation_of: ../../data_structure/static_matrix.hpp
+documentation_of: ./data_structure/static_matrix.hpp
 ---
 
 行列のサイズが入力を受け取る前に決まっている場合、使うと速い

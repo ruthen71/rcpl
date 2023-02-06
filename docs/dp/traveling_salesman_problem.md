@@ -1,6 +1,6 @@
 ---
 title: Traveling Salesman Problem (巡回セールスマン問題)
-documentation_of: ../../dp/traveling_salesman_problem.hpp
+documentation_of: ./dp/traveling_salesman_problem.hpp
 ---
 
 - 初期化 (TSP = 最短ハミルトン閉路問題の場合)

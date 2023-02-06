@@ -1,6 +1,6 @@
 ---
 title: Dual Segment Tree (双対セグメント木)
-documentation_of: ../../data_structure/dual_segment_tree.hpp
+documentation_of: ./data_structure/dual_segment_tree.hpp
 ---
 
 `ac-library` を参考に。

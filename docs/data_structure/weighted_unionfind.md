@@ -1,6 +1,6 @@
 ---
 title: Weighted UnionFind (重みつき UnionFind)
-documentation_of: ../../data_structure/weighted_unionfind.hpp
+documentation_of: ./data_structure/weighted_unionfind.hpp
 ---
 
 - ポテンシャルつき UnionFind とも言う

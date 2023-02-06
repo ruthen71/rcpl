@@ -1,6 +1,6 @@
 ---
 title: Inversion Number (転倒数)
-documentation_of: ../../dp/inversion_number.hpp
+documentation_of: ./dp/inversion_number.hpp
 ---
 
 $ O(N \log N) $ で転倒数を求める。

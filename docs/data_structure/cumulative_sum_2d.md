@@ -1,6 +1,6 @@
 ---
 title: 2次元累積和
-documentation_of: ../../data_structure/cumulative_sum_2d.hpp
+documentation_of: ./data_structure/cumulative_sum_2d.hpp
 ---
 
 2つの使い方が想定される
