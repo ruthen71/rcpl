@@ -1,6 +1,6 @@
 ---
 title: ローリングハッシュ
-documentation_of: ./algebra/monoid_rolling_hash.hpp
+documentation_of: //algebra/monoid_rolling_hash.hpp
 ---
 
 ## 使用例

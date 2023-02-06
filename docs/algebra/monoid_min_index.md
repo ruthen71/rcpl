@@ -1,6 +1,6 @@
 ---
 title: 最小値(インデックス)取得
-documentation_of: ./algebra/monoid_min_index.hpp
+documentation_of: //algebra/monoid_min_index.hpp
 ---
 
 ## 使用例
