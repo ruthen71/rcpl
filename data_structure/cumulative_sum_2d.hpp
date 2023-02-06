@@ -83,8 +83,3 @@ template <class T> struct cumulative_sum_2d {
         return os;
     }
 };
-
-/**
- * @brief 2次元累積和
- * @docs docs/data_structure/cumulative_sum_2d.md
- */

@@ -1,6 +1,7 @@
-# Segment Tree (セグメント木)
-
-## 概要
+---
+title: Segment Tree (セグメント木)
+documentation_of: ../data_structure/segment_tree.hpp
+---
 
 基本は `ac-library` と同じ。
 

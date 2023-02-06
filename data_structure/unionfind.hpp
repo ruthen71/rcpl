@@ -23,8 +23,3 @@ struct unionfind {
 
     void init(int n) { parents.assign(n, -1); }  // reset
 };
-
-/**
- * @brief UnionFind
- * @docs docs/data_structure/unionfind.md
- */
