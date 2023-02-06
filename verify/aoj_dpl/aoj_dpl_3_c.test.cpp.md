@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/dp/histogram_largest_rectangle.hpp
+    path: dp/histogram_largest_rectangle.hpp
     title: "Histogram Largest Rectangle (\u30D2\u30B9\u30C8\u30B0\u30E9\u30E0\u306E\
       \u6700\u5927\u9577\u65B9\u5F62)"
   _extendedRequiredBy: []
@@ -17,7 +17,7 @@ data:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_3_C
   bundledCode: "#line 1 \"verify/aoj_dpl/aoj_dpl_3_c.test.cpp\"\n#define PROBLEM \"\
     http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_3_C\"\n\n#include\
-    \ <bits/stdc++.h>\n\n#line 2 \"src/dp/histogram_largest_rectangle.hpp\"\n\ntemplate\
+    \ <bits/stdc++.h>\n\n#line 2 \"dp/histogram_largest_rectangle.hpp\"\n\ntemplate\
     \ <class T> T histogram_largest_rectangle(std::vector<T> &h) {\n    int n = (int)h.size();\n\
     \    std::vector<int> st(n), L(n), R(n);\n    int t = 0;\n    for (int i = 0;\
     \ i < n; i++) {\n        while (t > 0 and h[st[t - 1]] >= h[i]) t--;\n       \
@@ -32,16 +32,16 @@ data:
     \    for (int i = 0; i < N; i++) std::cin >> A[i];\n    std::cout << histogram_largest_rectangle(A)\
     \ << '\\n';\n    return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_3_C\"\
-    \n\n#include <bits/stdc++.h>\n\n#include \"src/dp/histogram_largest_rectangle.hpp\"\
+    \n\n#include <bits/stdc++.h>\n\n#include \"dp/histogram_largest_rectangle.hpp\"\
     \n\nint main() {\n    int N;\n    std::cin >> N;\n    std::vector<long long> A(N);\n\
     \    for (int i = 0; i < N; i++) std::cin >> A[i];\n    std::cout << histogram_largest_rectangle(A)\
     \ << '\\n';\n    return 0;\n}"
   dependsOn:
-  - src/dp/histogram_largest_rectangle.hpp
+  - dp/histogram_largest_rectangle.hpp
   isVerificationFile: true
   path: verify/aoj_dpl/aoj_dpl_3_c.test.cpp
   requiredBy: []
-  timestamp: '2022-09-19 22:39:47+09:00'
+  timestamp: '2023-02-06 17:52:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_dpl/aoj_dpl_3_c.test.cpp

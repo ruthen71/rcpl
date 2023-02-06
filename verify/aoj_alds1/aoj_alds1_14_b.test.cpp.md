@@ -2,11 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/math/modint261.hpp
-    title: src/math/modint261.hpp
+    path: math/modint261.hpp
+    title: math/modint261.hpp
   - icon: ':heavy_check_mark:'
-    path: src/string/rolling_hash.hpp
-    title: src/string/rolling_hash.hpp
+    path: string/rolling_hash.hpp
+    title: string/rolling_hash.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -19,16 +19,16 @@ data:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B
   bundledCode: "#line 1 \"verify/aoj_alds1/aoj_alds1_14_b.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B\"\n\n\
-    #include <bits/stdc++.h>\n\n#line 2 \"src/string/rolling_hash.hpp\"\n\n#line 2\
-    \ \"src/math/modint261.hpp\"\n\nstruct modint261 {\n    static constexpr uint64_t\
-    \ m = (1ULL << 61) - 1;\n    using uint128_t = __uint128_t;\n    using mint =\
-    \ modint261;\n    uint64_t _v;\n\n    static constexpr uint64_t mod() { return\
-    \ m; }\n\n    modint261() : _v(0ULL) {}\n\n    template <class T> modint261(T\
-    \ v) {\n        long long x = (long long)(v % (long long)mod());\n        if (x\
-    \ < 0) x += mod();\n        _v = x;\n    }\n\n    uint64_t val() const { return\
-    \ _v; }\n\n    mint &operator++() {\n        _v++;\n        if (_v == mod()) _v\
-    \ = 0;\n        return *this;\n    }\n    mint &operator--() {\n        if (_v\
-    \ == 0) _v = mod();\n        _v--;\n        return *this;\n    }\n\n    mint &operator+=(const\
+    #include <bits/stdc++.h>\n\n#line 2 \"string/rolling_hash.hpp\"\n\n#line 2 \"\
+    math/modint261.hpp\"\n\nstruct modint261 {\n    static constexpr uint64_t m =\
+    \ (1ULL << 61) - 1;\n    using uint128_t = __uint128_t;\n    using mint = modint261;\n\
+    \    uint64_t _v;\n\n    static constexpr uint64_t mod() { return m; }\n\n   \
+    \ modint261() : _v(0ULL) {}\n\n    template <class T> modint261(T v) {\n     \
+    \   long long x = (long long)(v % (long long)mod());\n        if (x < 0) x +=\
+    \ mod();\n        _v = x;\n    }\n\n    uint64_t val() const { return _v; }\n\n\
+    \    mint &operator++() {\n        _v++;\n        if (_v == mod()) _v = 0;\n \
+    \       return *this;\n    }\n    mint &operator--() {\n        if (_v == 0) _v\
+    \ = mod();\n        _v--;\n        return *this;\n    }\n\n    mint &operator+=(const\
     \ mint &rhs) {\n        _v += rhs._v;\n        if (_v >= mod()) _v -= mod();\n\
     \        return *this;\n    }\n    mint &operator-=(const mint &rhs) {\n     \
     \   _v -= rhs._v;\n        if (_v >= mod()) _v += mod();\n        return *this;\n\
@@ -44,7 +44,7 @@ data:
     \ mint &lhs, const mint &rhs) { return mint(lhs) *= rhs; }\n    friend bool operator==(const\
     \ mint &lhs, const mint &rhs) { return lhs._v == rhs._v; }\n    friend bool operator!=(const\
     \ mint &lhs, const mint &rhs) { return lhs._v != rhs._v; }\n};\n\n/**\n * @docs\
-    \ docs/math/modint261.md\n */\n#line 4 \"src/string/rolling_hash.hpp\"\n\ntemplate\
+    \ docs/math/modint261.md\n */\n#line 4 \"string/rolling_hash.hpp\"\n\ntemplate\
     \ <class Mint> struct rolling_hash {\n    std::vector<Mint> pwr;\n    const Mint\
     \ base;\n\n    static inline Mint generate_base() {\n        std::mt19937_64 mt(std::chrono::steady_clock::now().time_since_epoch().count());\n\
     \        std::uniform_int_distribution<uint64_t> rand(1, Mint::mod() - 1);\n \
@@ -71,19 +71,19 @@ data:
     \ == rh.prod(rhp, 0, P.size())) {\n            std::cout << i << '\\n';\n    \
     \    }\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B\"\
-    \n\n#include <bits/stdc++.h>\n\n#include \"src/string/rolling_hash.hpp\"\n\nint\
-    \ main() {\n    std::string T, P;\n    std::cin >> T >> P;\n    rolling_hash<modint261>\
+    \n\n#include <bits/stdc++.h>\n\n#include \"string/rolling_hash.hpp\"\n\nint main()\
+    \ {\n    std::string T, P;\n    std::cin >> T >> P;\n    rolling_hash<modint261>\
     \ rh;\n    auto rht = rh.build(T);\n    auto rhp = rh.build(P);\n    for (int\
     \ i = 0; i + P.size() <= T.size(); i++) {\n        if (rh.prod(rht, i, i + P.size())\
     \ == rh.prod(rhp, 0, P.size())) {\n            std::cout << i << '\\n';\n    \
     \    }\n    }\n    return 0;\n}\n"
   dependsOn:
-  - src/string/rolling_hash.hpp
-  - src/math/modint261.hpp
+  - string/rolling_hash.hpp
+  - math/modint261.hpp
   isVerificationFile: true
   path: verify/aoj_alds1/aoj_alds1_14_b.test.cpp
   requiredBy: []
-  timestamp: '2023-01-16 02:29:02+09:00'
+  timestamp: '2023-02-06 17:52:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_alds1/aoj_alds1_14_b.test.cpp

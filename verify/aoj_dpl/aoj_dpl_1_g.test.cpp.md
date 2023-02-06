@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/dp/knapsack_limitations.hpp
+    path: dp/knapsack_limitations.hpp
     title: "Knapsack Limitations (\u500B\u6570\u5236\u9650\u4ED8\u304D\u30CA\u30C3\
       \u30D7\u30B5\u30C3\u30AF\u554F\u984C)"
   _extendedRequiredBy: []
@@ -17,7 +17,7 @@ data:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_G
   bundledCode: "#line 1 \"verify/aoj_dpl/aoj_dpl_1_g.test.cpp\"\n#define PROBLEM \"\
     http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_G\"\n\n#include\
-    \ <bits/stdc++.h>\n\n#line 2 \"src/dp/knapsack_limitations.hpp\"\n\ntemplate <class\
+    \ <bits/stdc++.h>\n\n#line 2 \"dp/knapsack_limitations.hpp\"\n\ntemplate <class\
     \ T, class F = std::greater<T>>\nstd::vector<T> knapsack_limitations(const std::vector<int>\
     \ &w, const std::vector<T> &v, const std::vector<int> &m,  //\n              \
     \                      const int W, const T &e, const F &comp = F(), const int\
@@ -53,8 +53,8 @@ data:
     \ ret2.end());\n    assert(ans1 == -ans2);\n    std::cout << ans1 << '\\n';\n\
     \    return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_G\"\
-    \n\n#include <bits/stdc++.h>\n\n#include \"src/dp/knapsack_limitations.hpp\"\n\
-    \nint main() {\n    int N, W;\n    std::cin >> N >> W;\n    std::vector<int> v(N),\
+    \n\n#include <bits/stdc++.h>\n\n#include \"dp/knapsack_limitations.hpp\"\n\nint\
+    \ main() {\n    int N, W;\n    std::cin >> N >> W;\n    std::vector<int> v(N),\
     \ w(N), m(N);\n    for (int i = 0; i < N; i++) std::cin >> v[i] >> w[i] >> m[i];\n\
     \    auto ret1 = knapsack_limitations(w, v, m, W, -1);\n    auto ans1 = *std::max_element(ret1.begin(),\
     \ ret1.end());\n    for (int i = 0; i < N; i++) v[i] = -v[i];\n    auto ret2 =\
@@ -62,11 +62,11 @@ data:
     \ ret2.end());\n    assert(ans1 == -ans2);\n    std::cout << ans1 << '\\n';\n\
     \    return 0;\n}"
   dependsOn:
-  - src/dp/knapsack_limitations.hpp
+  - dp/knapsack_limitations.hpp
   isVerificationFile: true
   path: verify/aoj_dpl/aoj_dpl_1_g.test.cpp
   requiredBy: []
-  timestamp: '2022-09-20 03:42:29+09:00'
+  timestamp: '2023-02-06 17:52:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_dpl/aoj_dpl_1_g.test.cpp

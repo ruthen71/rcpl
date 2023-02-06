@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/algebra/monoid_sum.hpp
-    title: src/algebra/monoid_sum.hpp
+    path: algebra/monoid_sum.hpp
+    title: algebra/monoid_sum.hpp
   - icon: ':heavy_check_mark:'
-    path: src/data_structure/segment_tree.hpp
+    path: data_structure/segment_tree.hpp
     title: "Segment Tree (\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -19,12 +19,12 @@ data:
     - https://judge.yosupo.jp/problem/point_add_range_sum
   bundledCode: "#line 1 \"verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\n\
-    #include <bits/stdc++.h>\n\n#line 2 \"src/algebra/monoid_sum.hpp\"\n\ntemplate\
-    \ <class S> struct monoid_sum {\n    using value_type = S;\n    static constexpr\
-    \ S op(S a, S b) { return a + b; }\n    static constexpr S e() { return 0; }\n\
-    };\n#line 2 \"src/data_structure/segment_tree.hpp\"\n\ntemplate <class Monoid>\
-    \ struct segment_tree {\n   public:\n    using S = typename Monoid::value_type;\n\
-    \    segment_tree() : segment_tree(0) {}\n    segment_tree(int n) : segment_tree(std::vector<S>(n,\
+    #include <bits/stdc++.h>\n\n#line 2 \"algebra/monoid_sum.hpp\"\n\ntemplate <class\
+    \ S> struct monoid_sum {\n    using value_type = S;\n    static constexpr S op(S\
+    \ a, S b) { return a + b; }\n    static constexpr S e() { return 0; }\n};\n#line\
+    \ 2 \"data_structure/segment_tree.hpp\"\n\ntemplate <class Monoid> struct segment_tree\
+    \ {\n   public:\n    using S = typename Monoid::value_type;\n    segment_tree()\
+    \ : segment_tree(0) {}\n    segment_tree(int n) : segment_tree(std::vector<S>(n,\
     \ Monoid::e())) {}\n    segment_tree(const std::vector<S>& v) : _n((int)v.size())\
     \ {\n        log = 0;\n        while ((1U << log) < (unsigned int)(_n)) log++;\n\
     \        size = 1 << log;\n        d = std::vector<S>(size << 1, Monoid::e());\n\
@@ -75,22 +75,22 @@ data:
     \       std::cin >> l >> r;\n            std::cout << fen.prod(l, r) << '\\n';\n\
     \        }\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\
-    \n#include <bits/stdc++.h>\n\n#include \"src/algebra/monoid_sum.hpp\"\n#include\
-    \ \"src/data_structure/segment_tree.hpp\"\n\nint main() {\n    int N, Q;\n   \
-    \ std::cin >> N >> Q;\n    std::vector<long long> a(N);\n    for (int i = 0; i\
-    \ < N; i++) std::cin >> a[i];\n    segment_tree<monoid_sum<long long>> fen(a);\n\
-    \    while (Q--) {\n        int t;\n        std::cin >> t;\n        if (t == 0)\
-    \ {\n            int p, x;\n            std::cin >> p >> x;\n            fen.chset(p,\
+    \n#include <bits/stdc++.h>\n\n#include \"algebra/monoid_sum.hpp\"\n#include \"\
+    data_structure/segment_tree.hpp\"\n\nint main() {\n    int N, Q;\n    std::cin\
+    \ >> N >> Q;\n    std::vector<long long> a(N);\n    for (int i = 0; i < N; i++)\
+    \ std::cin >> a[i];\n    segment_tree<monoid_sum<long long>> fen(a);\n    while\
+    \ (Q--) {\n        int t;\n        std::cin >> t;\n        if (t == 0) {\n   \
+    \         int p, x;\n            std::cin >> p >> x;\n            fen.chset(p,\
     \ x);\n        } else {\n            int l, r;\n            std::cin >> l >> r;\n\
     \            std::cout << fen.prod(l, r) << '\\n';\n        }\n    }\n    return\
     \ 0;\n}\n"
   dependsOn:
-  - src/algebra/monoid_sum.hpp
-  - src/data_structure/segment_tree.hpp
+  - algebra/monoid_sum.hpp
+  - data_structure/segment_tree.hpp
   isVerificationFile: true
   path: verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
   requiredBy: []
-  timestamp: '2022-09-25 06:30:46+09:00'
+  timestamp: '2023-02-06 17:52:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp

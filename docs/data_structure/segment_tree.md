@@ -13,7 +13,7 @@
 工夫点は以下。
 
 - 毎回モノイドを書くのはめんどくさい、ということで、モノイド構造体をインクルードすれば済むようになっている
-    - `#include "src/algebra/monoid_max.hpp"` などでインクルードできる
+    - `#include "algebra/monoid_max.hpp"` などでインクルードできる
     - `segment_tree<monoid_max<int>> seg(n);` などでRMQが使える
 - `ac-library` の `seg.get(i)` に相当する機能を `seg[i]` で実現している
 - `seg[p] = op(seg[p], x)` とする `seg.chset(p, x)` を採用

@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/math/prime_factor.hpp
-    title: src/math/prime_factor.hpp
+    path: math/prime_factor.hpp
+    title: math/prime_factor.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -16,7 +16,7 @@ data:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_A
   bundledCode: "#line 1 \"verify/aoj_ntl/aoj_ntl_1_a.test.cpp\"\n#define PROBLEM \"\
     https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_A\"\n\n#include\
-    \ <bits/stdc++.h>\n\n#line 2 \"src/math/prime_factor.hpp\"\n\nstd::map<long long,\
+    \ <bits/stdc++.h>\n\n#line 2 \"math/prime_factor.hpp\"\n\nstd::map<long long,\
     \ int> prime_factor(long long n) {\n    std::map<long long, int> res;\n    for\
     \ (long long i = 2; i * i <= n; i++) {\n        while (n % i == 0) {\n       \
     \     res[i]++;\n            n /= i;\n        }\n    }\n    if (n != 1) res[n]++;\n\
@@ -26,17 +26,17 @@ data:
     \ i < e; i++) std::cout << ' ' << p;\n    std::cout << '\\n';\n    return 0;\n\
     }\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_A\"\
-    \n\n#include <bits/stdc++.h>\n\n#include \"src/math/prime_factor.hpp\"\n\nint\
-    \ main() {\n    long long n;\n    std::cin >> n;\n    auto pf = prime_factor(n);\n\
-    \    std::cout << n << ':';\n    for (auto &[p, e] : pf)\n        for (int i =\
-    \ 0; i < e; i++) std::cout << ' ' << p;\n    std::cout << '\\n';\n    return 0;\n\
+    \n\n#include <bits/stdc++.h>\n\n#include \"math/prime_factor.hpp\"\n\nint main()\
+    \ {\n    long long n;\n    std::cin >> n;\n    auto pf = prime_factor(n);\n  \
+    \  std::cout << n << ':';\n    for (auto &[p, e] : pf)\n        for (int i = 0;\
+    \ i < e; i++) std::cout << ' ' << p;\n    std::cout << '\\n';\n    return 0;\n\
     }"
   dependsOn:
-  - src/math/prime_factor.hpp
+  - math/prime_factor.hpp
   isVerificationFile: true
   path: verify/aoj_ntl/aoj_ntl_1_a.test.cpp
   requiredBy: []
-  timestamp: '2022-09-06 04:21:05+09:00'
+  timestamp: '2023-02-06 17:52:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_ntl/aoj_ntl_1_a.test.cpp

@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/data_structure/fenwick_tree.hpp
+    path: data_structure/fenwick_tree.hpp
     title: Fenwick Tree (Binary Indexed Tree)
   - icon: ':heavy_check_mark:'
-    path: src/dp/inversion_number.hpp
+    path: dp/inversion_number.hpp
     title: "Inversion Number (\u8EE2\u5012\u6570)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -19,10 +19,10 @@ data:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_D
   bundledCode: "#line 1 \"verify/aoj_alds1/aoj_alds1_5_d.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_D\"\n\n\
-    #include <bits/stdc++.h>\n\n#line 2 \"src/dp/inversion_number.hpp\"\n\n#line 2\
-    \ \"src/data_structure/fenwick_tree.hpp\"\n\ntemplate <class T> struct fenwick_tree\
-    \ {\n    int N;\n    std::vector<T> seg;\n    fenwick_tree(int N) : N(N), seg(N\
-    \ + 1, 0) {}\n    fenwick_tree(std::vector<T> &A) {\n        N = (int)A.size();\n\
+    #include <bits/stdc++.h>\n\n#line 2 \"dp/inversion_number.hpp\"\n\n#line 2 \"\
+    data_structure/fenwick_tree.hpp\"\n\ntemplate <class T> struct fenwick_tree {\n\
+    \    int N;\n    std::vector<T> seg;\n    fenwick_tree(int N) : N(N), seg(N +\
+    \ 1, 0) {}\n    fenwick_tree(std::vector<T> &A) {\n        N = (int)A.size();\n\
     \        seg.resize(N + 1);\n        for (int i = 0; i < N; i++) add(i, A[i]);\n\
     \    }\n    // A[i] += x\n    void add(int i, T x) {\n        assert(0 <= i and\
     \ i < N);\n        i++;  // 1-indexed\n        while (i <= N) {\n            seg[i]\
@@ -35,7 +35,7 @@ data:
     \ &operator<<(std::ostream &os, const fenwick_tree &A) {\n        for (int i =\
     \ 0; i < A.N; i++) os << A.sum(i, i + 1) << \" \\n\"[i == A.N - 1];\n        return\
     \ os;\n    }\n};\n\n/**\n * @brief Fenwick Tree (Binary Indexed Tree)\n * @docs\
-    \ docs/data_structure/fenwick_tree.md\n */\n#line 4 \"src/dp/inversion_number.hpp\"\
+    \ docs/data_structure/fenwick_tree.md\n */\n#line 4 \"dp/inversion_number.hpp\"\
     \n\ntemplate <class T> long long inversion_number(std::vector<T>& A) {\n    auto\
     \ B = A;\n    sort(B.begin(), B.end());\n    B.erase(unique(B.begin(), B.end()),\
     \ B.end());\n    int N = (int)B.size();\n    fenwick_tree<int> fen(N);\n    long\
@@ -47,17 +47,17 @@ data:
     \    for (int i = 0; i < N; i++) std::cin >> A[i];\n    std::cout << inversion_number<int>(A)\
     \ << '\\n';\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_D\"\
-    \n\n#include <bits/stdc++.h>\n\n#include \"src/dp/inversion_number.hpp\"\n\nint\
-    \ main() {\n    int N;\n    std::cin >> N;\n    std::vector<int> A(N);\n    for\
-    \ (int i = 0; i < N; i++) std::cin >> A[i];\n    std::cout << inversion_number<int>(A)\
+    \n\n#include <bits/stdc++.h>\n\n#include \"dp/inversion_number.hpp\"\n\nint main()\
+    \ {\n    int N;\n    std::cin >> N;\n    std::vector<int> A(N);\n    for (int\
+    \ i = 0; i < N; i++) std::cin >> A[i];\n    std::cout << inversion_number<int>(A)\
     \ << '\\n';\n    return 0;\n}\n"
   dependsOn:
-  - src/dp/inversion_number.hpp
-  - src/data_structure/fenwick_tree.hpp
+  - dp/inversion_number.hpp
+  - data_structure/fenwick_tree.hpp
   isVerificationFile: true
   path: verify/aoj_alds1/aoj_alds1_5_d.test.cpp
   requiredBy: []
-  timestamp: '2022-08-30 02:21:29+09:00'
+  timestamp: '2023-02-06 17:52:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_alds1/aoj_alds1_5_d.test.cpp

@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/algebra/lazy_sum_set.hpp
-    title: src/algebra/lazy_sum_set.hpp
+    path: algebra/lazy_sum_set.hpp
+    title: algebra/lazy_sum_set.hpp
   - icon: ':heavy_check_mark:'
-    path: src/data_structure/lazy_segment_tree.hpp
+    path: data_structure/lazy_segment_tree.hpp
     title: "Lazy Segment Tree (\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -19,7 +19,7 @@ data:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_I
   bundledCode: "#line 1 \"verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp\"\n\
     #define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_I\"\
-    \n\n#include <bits/stdc++.h>\n\n#line 2 \"src/algebra/lazy_sum_set.hpp\"\n\ntemplate\
+    \n\n#include <bits/stdc++.h>\n\n#line 2 \"algebra/lazy_sum_set.hpp\"\n\ntemplate\
     \ <class T> struct lazy_sum_set {\n    using S = std::pair<T, int>;\n    using\
     \ F = T;\n    using value_type_S = S;\n    using value_type_F = F;\n    static\
     \ constexpr S op(S a, S b) { return {a.first + b.first, a.second + b.second};\
@@ -27,7 +27,7 @@ data:
     \ f, S x) {\n        if (f != id()) x.first = f * x.second;\n        return x;\n\
     \    }\n    static constexpr F composition(F f, F g) { return f == id() ? g :\
     \ f; }\n    static constexpr F id() { return std::numeric_limits<F>::max(); }\n\
-    };\n#line 2 \"src/data_structure/lazy_segment_tree.hpp\"\n\ntemplate <class Lazy>\
+    };\n#line 2 \"data_structure/lazy_segment_tree.hpp\"\n\ntemplate <class Lazy>\
     \ struct lazy_segment_tree {\n   public:\n    using S = typename Lazy::value_type_S;\n\
     \    using F = typename Lazy::value_type_F;\n    lazy_segment_tree(int n) : lazy_segment_tree(std::vector<S>(n,\
     \ Lazy::e())) {}\n    lazy_segment_tree(const std::vector<S>& v) : _n((int)v.size())\
@@ -109,21 +109,21 @@ data:
     \ l >> r;\n            std::cout << seg.prod(l, r + 1).first << '\\n';\n     \
     \   }\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_I\"\
-    \n\n#include <bits/stdc++.h>\n\n#include \"src/algebra/lazy_sum_set.hpp\"\n#include\
-    \ \"src/data_structure/lazy_segment_tree.hpp\"\n\nint main() {\n    int N, Q;\n\
-    \    std::cin >> N >> Q;\n    lazy_segment_tree<lazy_sum_set<long long>> seg(std::vector<std::pair<long\
+    \n\n#include <bits/stdc++.h>\n\n#include \"algebra/lazy_sum_set.hpp\"\n#include\
+    \ \"data_structure/lazy_segment_tree.hpp\"\n\nint main() {\n    int N, Q;\n  \
+    \  std::cin >> N >> Q;\n    lazy_segment_tree<lazy_sum_set<long long>> seg(std::vector<std::pair<long\
     \ long, int>>(N, {0, 1}));\n    while (Q--) {\n        int t;\n        std::cin\
     \ >> t;\n        if (t == 0) {\n            int l, r, x;\n            std::cin\
     \ >> l >> r >> x;\n            seg.apply(l, r + 1, x);\n        } else {\n   \
     \         int l, r;\n            std::cin >> l >> r;\n            std::cout <<\
     \ seg.prod(l, r + 1).first << '\\n';\n        }\n    }\n    return 0;\n}\n"
   dependsOn:
-  - src/algebra/lazy_sum_set.hpp
-  - src/data_structure/lazy_segment_tree.hpp
+  - algebra/lazy_sum_set.hpp
+  - data_structure/lazy_segment_tree.hpp
   isVerificationFile: true
   path: verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
   requiredBy: []
-  timestamp: '2022-09-25 06:30:46+09:00'
+  timestamp: '2023-02-06 17:52:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp

@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/data_structure/cumulative_sum.hpp
+    path: data_structure/cumulative_sum.hpp
     title: "\u7D2F\u7A4D\u548C"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -16,7 +16,7 @@ data:
     - https://judge.yosupo.jp/problem/static_range_sum
   bundledCode: "#line 1 \"verify/lc_data_structure/lc_static_range_sum.test.cpp\"\n\
     #define PROBLEM \"https://judge.yosupo.jp/problem/static_range_sum\"\n\n#include\
-    \ <bits/stdc++.h>\n\n#line 2 \"src/data_structure/cumulative_sum.hpp\"\n\ntemplate\
+    \ <bits/stdc++.h>\n\n#line 2 \"data_structure/cumulative_sum.hpp\"\n\ntemplate\
     \ <class T> struct cumulative_sum {\n    std::vector<T> seg;\n    int _n;\n\n\
     \    cumulative_sum(int _n) : _n(_n), seg(_n + 1, 0) {}\n    cumulative_sum(std::vector<T>\
     \ &A) {\n        _n = (int)A.size();\n        seg.assign(_n + 1, T(0));\n    \
@@ -40,17 +40,17 @@ data:
     \    while (Q--) {\n        int l, r;\n        std::cin >> l >> r;\n        std::cout\
     \ << rui.sum(l, r) << '\\n';\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_sum\"\n\n\
-    #include <bits/stdc++.h>\n\n#include \"src/data_structure/cumulative_sum.hpp\"\
-    \n\nint main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    std::vector<long\
-    \ long> A(N);\n    for (int i = 0; i < N; i++) std::cin >> A[i];\n    cumulative_sum<long\
+    #include <bits/stdc++.h>\n\n#include \"data_structure/cumulative_sum.hpp\"\n\n\
+    int main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    std::vector<long long>\
+    \ A(N);\n    for (int i = 0; i < N; i++) std::cin >> A[i];\n    cumulative_sum<long\
     \ long> rui(A);\n    while (Q--) {\n        int l, r;\n        std::cin >> l >>\
     \ r;\n        std::cout << rui.sum(l, r) << '\\n';\n    }\n    return 0;\n}"
   dependsOn:
-  - src/data_structure/cumulative_sum.hpp
+  - data_structure/cumulative_sum.hpp
   isVerificationFile: true
   path: verify/lc_data_structure/lc_static_range_sum.test.cpp
   requiredBy: []
-  timestamp: '2022-09-05 03:23:47+09:00'
+  timestamp: '2023-02-06 17:52:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_data_structure/lc_static_range_sum.test.cpp

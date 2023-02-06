@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/algebra/monoid_gcd.hpp
-    title: src/algebra/monoid_gcd.hpp
+    path: algebra/monoid_gcd.hpp
+    title: algebra/monoid_gcd.hpp
   - icon: ':heavy_check_mark:'
-    path: src/data_structure/segment_tree.hpp
+    path: data_structure/segment_tree.hpp
     title: "Segment Tree (\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -19,9 +19,9 @@ data:
     - https://yukicoder.me/problems/no/1036
   bundledCode: "#line 1 \"verify/yuki/yuki_1036_segment_tree.test.cpp\"\n#define PROBLEM\
     \ \"https://yukicoder.me/problems/no/1036\"\n\n#include <bits/stdc++.h>\n\n#line\
-    \ 2 \"src/algebra/monoid_gcd.hpp\"\n\ntemplate <class S> struct monoid_gcd {\n\
-    \    using value_type = S;\n    static constexpr S op(S a, S b) { return std::gcd(a,\
-    \ b); }\n    static constexpr S e() { return 0; }\n};\n#line 2 \"src/data_structure/segment_tree.hpp\"\
+    \ 2 \"algebra/monoid_gcd.hpp\"\n\ntemplate <class S> struct monoid_gcd {\n   \
+    \ using value_type = S;\n    static constexpr S op(S a, S b) { return std::gcd(a,\
+    \ b); }\n    static constexpr S e() { return 0; }\n};\n#line 2 \"data_structure/segment_tree.hpp\"\
     \n\ntemplate <class Monoid> struct segment_tree {\n   public:\n    using S = typename\
     \ Monoid::value_type;\n    segment_tree() : segment_tree(0) {}\n    segment_tree(int\
     \ n) : segment_tree(std::vector<S>(n, Monoid::e())) {}\n    segment_tree(const\
@@ -75,7 +75,7 @@ data:
     \ 0; r--) {\n        int l = seg.min_left(r, f);\n        ansR += l;\n    }\n\
     \    assert(ansL == ansR);\n    std::cout << ansL << '\\n';\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/1036\"\n\n#include <bits/stdc++.h>\n\
-    \n#include \"src/algebra/monoid_gcd.hpp\"\n#include \"src/data_structure/segment_tree.hpp\"\
+    \n#include \"algebra/monoid_gcd.hpp\"\n#include \"data_structure/segment_tree.hpp\"\
     \n\nint main() {\n    int N;\n    std::cin >> N;\n    std::vector<long long> A(N);\n\
     \    for (int i = 0; i < N; i++) std::cin >> A[i];\n    segment_tree<monoid_gcd<long\
     \ long>> seg(A);\n    auto f = [](long long v) -> bool { return v != 1LL; };\n\
@@ -85,12 +85,12 @@ data:
     \    }\n    assert(ansL == ansR);\n    std::cout << ansL << '\\n';\n    return\
     \ 0;\n}"
   dependsOn:
-  - src/algebra/monoid_gcd.hpp
-  - src/data_structure/segment_tree.hpp
+  - algebra/monoid_gcd.hpp
+  - data_structure/segment_tree.hpp
   isVerificationFile: true
   path: verify/yuki/yuki_1036_segment_tree.test.cpp
   requiredBy: []
-  timestamp: '2022-09-25 06:30:46+09:00'
+  timestamp: '2023-02-06 17:52:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/yuki/yuki_1036_segment_tree.test.cpp

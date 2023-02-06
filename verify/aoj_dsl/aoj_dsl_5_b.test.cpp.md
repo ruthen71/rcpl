@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/data_structure/cumulative_sum_2d.hpp
+    path: data_structure/cumulative_sum_2d.hpp
     title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -16,7 +16,7 @@ data:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_B
   bundledCode: "#line 1 \"verify/aoj_dsl/aoj_dsl_5_b.test.cpp\"\n#define PROBLEM \"\
     https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_B\"\n\n#include\
-    \ <bits/stdc++.h>\nusing namespace std;\n\n#line 2 \"src/data_structure/cumulative_sum_2d.hpp\"\
+    \ <bits/stdc++.h>\nusing namespace std;\n\n#line 2 \"data_structure/cumulative_sum_2d.hpp\"\
     \n\ntemplate <class T> struct cumulative_sum_2d {\n    std::vector<std::vector<T>>\
     \ cum;\n    int H, W;\n\n    cumulative_sum_2d(int W, int H) : H(H), W(W), cum(W\
     \ + 1, std::vector<T>(H + 1, 0)) {}\n\n    cumulative_sum_2d(std::vector<std::vector<T>>\
@@ -58,7 +58,7 @@ data:
     \ < M; j++) ans = max(ans, rui(i, j));\n    cout << ans << '\\n';\n    return\
     \ 0;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_B\"\
-    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"src/data_structure/cumulative_sum_2d.hpp\"\
+    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#include \"data_structure/cumulative_sum_2d.hpp\"\
     \n\nint main() {\n    int N;\n    cin >> N;\n    int M = 1000;\n    cumulative_sum_2d<int>\
     \ rui(M + 1, M + 1);\n    while (N--) {\n        int x1, y1, x2, y2;\n       \
     \ cin >> x1 >> y1 >> x2 >> y2;\n        rui.imos(x1, y1, x2, y2);\n    }\n   \
@@ -66,11 +66,11 @@ data:
     \ (int j = 0; j < M; j++) ans = max(ans, rui(i, j));\n    cout << ans << '\\n';\n\
     \    return 0;\n}"
   dependsOn:
-  - src/data_structure/cumulative_sum_2d.hpp
+  - data_structure/cumulative_sum_2d.hpp
   isVerificationFile: true
   path: verify/aoj_dsl/aoj_dsl_5_b.test.cpp
   requiredBy: []
-  timestamp: '2022-09-03 04:56:30+09:00'
+  timestamp: '2023-02-06 17:52:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_dsl/aoj_dsl_5_b.test.cpp

@@ -2,14 +2,14 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/graph/dijkstra.hpp
+    path: graph/dijkstra.hpp
     title: "Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
   - icon: ':heavy_check_mark:'
-    path: src/graph/graph_template.hpp
-    title: src/graph/graph_template.hpp
+    path: graph/graph_template.hpp
+    title: graph/graph_template.hpp
   - icon: ':heavy_check_mark:'
-    path: src/graph/read_graph.hpp
-    title: src/graph/read_graph.hpp
+    path: graph/read_graph.hpp
+    title: graph/read_graph.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -22,15 +22,15 @@ data:
     - https://judge.yosupo.jp/problem/shortest_path
   bundledCode: "#line 1 \"verify/lc_graph/lc_shortest_path_dijkstra.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/shortest_path\"\n\n#include <bits/stdc++.h>\n\
-    \n#line 2 \"src/graph/dijkstra.hpp\"\n\n#line 2 \"src/graph/graph_template.hpp\"\
-    \n\ntemplate <class T> struct edge {\n    int from, to;\n    T cost;\n    int\
-    \ id;\n\n    edge() = default;\n    edge(int from, int to, T cost = 1, int id\
-    \ = -1) : from(from), to(to), cost(cost), id(id) {}\n\n    friend std::ostream\
-    \ &operator<<(std::ostream &os, const edge<T> &e) {\n        // { id : from ->\
-    \ to, cost }\n        return os << \"{ \" << e.id << \" : \" << e.from << \" ->\
-    \ \" << e.to << \", \" << e.cost << \" }\";\n    }\n};\n\ntemplate <class T> using\
-    \ edges = std::vector<edge<T>>;\ntemplate <class T> using graph = std::vector<std::vector<edge<T>>>;\n\
-    #line 4 \"src/graph/dijkstra.hpp\"\n\ntemplate <class T, class Graph>\nstd::tuple<std::vector<T>,\
+    \n#line 2 \"graph/dijkstra.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\n\ntemplate\
+    \ <class T> struct edge {\n    int from, to;\n    T cost;\n    int id;\n\n   \
+    \ edge() = default;\n    edge(int from, int to, T cost = 1, int id = -1) : from(from),\
+    \ to(to), cost(cost), id(id) {}\n\n    friend std::ostream &operator<<(std::ostream\
+    \ &os, const edge<T> &e) {\n        // { id : from -> to, cost }\n        return\
+    \ os << \"{ \" << e.id << \" : \" << e.from << \" -> \" << e.to << \", \" << e.cost\
+    \ << \" }\";\n    }\n};\n\ntemplate <class T> using edges = std::vector<edge<T>>;\n\
+    template <class T> using graph = std::vector<std::vector<edge<T>>>;\n#line 4 \"\
+    graph/dijkstra.hpp\"\n\ntemplate <class T, class Graph>\nstd::tuple<std::vector<T>,\
     \ std::vector<int>, std::vector<int>>  //\ndijkstra(Graph &G, std::vector<int>\
     \ &s, const T INF) {\n    int N = (int)G.size();\n    std::vector<T> dist(N, INF);\n\
     \    std::vector<int> par(N, -1), root(N, -1);\n\n    std::priority_queue<std::pair<T,\
@@ -43,8 +43,8 @@ data:
     \ = root[v];\n                par[e.to] = v;\n                que.emplace(dist[e.to],\
     \ e.to);\n            }\n        }\n    }\n    return {dist, par, root};\n}\n\n\
     /**\n * @brief Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5\
-    )\n * @docs docs/graph/dijkstra.md\n */\n#line 2 \"src/graph/read_graph.hpp\"\n\
-    \n#line 4 \"src/graph/read_graph.hpp\"\n\ntemplate <class T> graph<T> read_graph(int\
+    )\n * @docs docs/graph/dijkstra.md\n */\n#line 2 \"graph/read_graph.hpp\"\n\n\
+    #line 4 \"graph/read_graph.hpp\"\n\ntemplate <class T> graph<T> read_graph(int\
     \ N, int M, const bool weight = false, const bool directed = false, const int\
     \ offset = 1) {\n    graph<T> G(N);\n    for (int i = 0; i < M; i++) {\n     \
     \   int a, b;\n        std::cin >> a >> b;\n        a -= offset, b -= offset;\n\
@@ -63,7 +63,7 @@ data:
     \ (int i = 0; i < ans.size() - 1; i++) std::cout << ans[i] << ' ' << ans[i + 1]\
     \ << '\\n';\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/shortest_path\"\n\n#include\
-    \ <bits/stdc++.h>\n\n#include \"src/graph/dijkstra.hpp\"\n#include \"src/graph/read_graph.hpp\"\
+    \ <bits/stdc++.h>\n\n#include \"graph/dijkstra.hpp\"\n#include \"graph/read_graph.hpp\"\
     \n\nint main() {\n    int N, M, s, t;\n    std::cin >> N >> M >> s >> t;\n   \
     \ auto G = read_graph<long long>(N, M, true, true, 0);\n    std::vector<int> ss\
     \ = {s};\n    const long long INF = 1LL << 60;\n    auto [d, p, r] = dijkstra(G,\
@@ -74,13 +74,13 @@ data:
     \ (int i = 0; i < ans.size() - 1; i++) std::cout << ans[i] << ' ' << ans[i + 1]\
     \ << '\\n';\n    return 0;\n}"
   dependsOn:
-  - src/graph/dijkstra.hpp
-  - src/graph/graph_template.hpp
-  - src/graph/read_graph.hpp
+  - graph/dijkstra.hpp
+  - graph/graph_template.hpp
+  - graph/read_graph.hpp
   isVerificationFile: true
   path: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
   requiredBy: []
-  timestamp: '2022-11-16 19:50:14+09:00'
+  timestamp: '2023-02-06 17:52:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp

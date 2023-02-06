@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/math/pow_mod.hpp
-    title: src/math/pow_mod.hpp
+    path: math/pow_mod.hpp
+    title: math/pow_mod.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -16,9 +16,9 @@ data:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_B
   bundledCode: "#line 1 \"verify/aoj_ntl/aoj_ntl_1_b.test.cpp\"\n#define PROBLEM \"\
     https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_B\"\n\n#include\
-    \ <bits/stdc++.h>\n\n#line 2 \"src/math/pow_mod.hpp\"\n\nlong long pow_mod(long\
-    \ long a, long long n, const long long mod) {\n    assert(n >= 0 and mod >= 1);\n\
-    \    if (mod == 1) return 0;\n    a %= mod;\n    if (a < 0) a += mod;\n    long\
+    \ <bits/stdc++.h>\n\n#line 2 \"math/pow_mod.hpp\"\n\nlong long pow_mod(long long\
+    \ a, long long n, const long long mod) {\n    assert(n >= 0 and mod >= 1);\n \
+    \   if (mod == 1) return 0;\n    a %= mod;\n    if (a < 0) a += mod;\n    long\
     \ long res = 1;\n    while (n) {\n        if (n & 1) res = res * a % mod;\n  \
     \      a = a * a % mod;\n        n >>= 1;\n    }\n    return res;\n}\n#line 6\
     \ \"verify/aoj_ntl/aoj_ntl_1_b.test.cpp\"\n\nint main() {\n    // a = 0\n    assert(pow_mod(0,\
@@ -33,8 +33,8 @@ data:
     \ >> m >> n;\n    std::cout << pow_mod(m, n, 1000000007) << '\\n';\n    return\
     \ 0;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_B\"\
-    \n\n#include <bits/stdc++.h>\n\n#include \"src/math/pow_mod.hpp\"\n\nint main()\
-    \ {\n    // a = 0\n    assert(pow_mod(0, 0, 1) == 0);  // 0 ^ 0 = 1\n    assert(pow_mod(0,\
+    \n\n#include <bits/stdc++.h>\n\n#include \"math/pow_mod.hpp\"\n\nint main() {\n\
+    \    // a = 0\n    assert(pow_mod(0, 0, 1) == 0);  // 0 ^ 0 = 1\n    assert(pow_mod(0,\
     \ 0, 2) == 1);\n    assert(pow_mod(0, 0, 3) == 1);\n    assert(pow_mod(0, 1, 1)\
     \ == 0);  // 0 ^ 1 = 0\n    assert(pow_mod(0, 1, 2) == 0);\n    assert(pow_mod(0,\
     \ 1, 3) == 0);\n    assert(pow_mod(0, 2, 1) == 0);  // 0 ^ 2 = 0\n    assert(pow_mod(0,\
@@ -45,11 +45,11 @@ data:
     \ >> m >> n;\n    std::cout << pow_mod(m, n, 1000000007) << '\\n';\n    return\
     \ 0;\n}"
   dependsOn:
-  - src/math/pow_mod.hpp
+  - math/pow_mod.hpp
   isVerificationFile: true
   path: verify/aoj_ntl/aoj_ntl_1_b.test.cpp
   requiredBy: []
-  timestamp: '2022-09-26 06:39:47+09:00'
+  timestamp: '2023-02-06 17:52:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_ntl/aoj_ntl_1_b.test.cpp

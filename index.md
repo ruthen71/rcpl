@@ -1,208 +1,208 @@
 ---
 data:
   libraryCategories:
-  - name: src/algebra
+  - name: algebra
     pages:
     - icon: ':heavy_check_mark:'
-      path: src/algebra/dual_add.hpp
-      title: src/algebra/dual_add.hpp
+      path: algebra/dual_add.hpp
+      title: algebra/dual_add.hpp
     - icon: ':heavy_check_mark:'
-      path: src/algebra/dual_set.hpp
-      title: src/algebra/dual_set.hpp
+      path: algebra/dual_set.hpp
+      title: algebra/dual_set.hpp
     - icon: ':warning:'
-      path: src/algebra/lazy_max_add.hpp
-      title: src/algebra/lazy_max_add.hpp
+      path: algebra/lazy_max_add.hpp
+      title: algebra/lazy_max_add.hpp
     - icon: ':warning:'
-      path: src/algebra/lazy_max_index_add.hpp
-      title: src/algebra/lazy_max_index_add.hpp
+      path: algebra/lazy_max_index_add.hpp
+      title: algebra/lazy_max_index_add.hpp
     - icon: ':warning:'
-      path: src/algebra/lazy_max_index_set.hpp
-      title: src/algebra/lazy_max_index_set.hpp
+      path: algebra/lazy_max_index_set.hpp
+      title: algebra/lazy_max_index_set.hpp
     - icon: ':warning:'
-      path: src/algebra/lazy_max_set.hpp
-      title: src/algebra/lazy_max_set.hpp
+      path: algebra/lazy_max_set.hpp
+      title: algebra/lazy_max_set.hpp
     - icon: ':heavy_check_mark:'
-      path: src/algebra/lazy_min_add.hpp
-      title: src/algebra/lazy_min_add.hpp
+      path: algebra/lazy_min_add.hpp
+      title: algebra/lazy_min_add.hpp
     - icon: ':warning:'
-      path: src/algebra/lazy_min_index_add.hpp
-      title: src/algebra/lazy_min_index_add.hpp
+      path: algebra/lazy_min_index_add.hpp
+      title: algebra/lazy_min_index_add.hpp
     - icon: ':warning:'
-      path: src/algebra/lazy_min_index_set.hpp
-      title: src/algebra/lazy_min_index_set.hpp
+      path: algebra/lazy_min_index_set.hpp
+      title: algebra/lazy_min_index_set.hpp
     - icon: ':heavy_check_mark:'
-      path: src/algebra/lazy_min_set.hpp
-      title: src/algebra/lazy_min_set.hpp
+      path: algebra/lazy_min_set.hpp
+      title: algebra/lazy_min_set.hpp
     - icon: ':heavy_check_mark:'
-      path: src/algebra/lazy_sum_add.hpp
-      title: src/algebra/lazy_sum_add.hpp
+      path: algebra/lazy_sum_add.hpp
+      title: algebra/lazy_sum_add.hpp
     - icon: ':heavy_check_mark:'
-      path: src/algebra/lazy_sum_set.hpp
-      title: src/algebra/lazy_sum_set.hpp
+      path: algebra/lazy_sum_set.hpp
+      title: algebra/lazy_sum_set.hpp
     - icon: ':heavy_check_mark:'
-      path: src/algebra/monoid_gcd.hpp
-      title: src/algebra/monoid_gcd.hpp
+      path: algebra/monoid_gcd.hpp
+      title: algebra/monoid_gcd.hpp
     - icon: ':warning:'
-      path: src/algebra/monoid_max.hpp
-      title: src/algebra/monoid_max.hpp
+      path: algebra/monoid_max.hpp
+      title: algebra/monoid_max.hpp
     - icon: ':warning:'
-      path: src/algebra/monoid_max_index.hpp
-      title: src/algebra/monoid_max_index.hpp
+      path: algebra/monoid_max_index.hpp
+      title: algebra/monoid_max_index.hpp
     - icon: ':heavy_check_mark:'
-      path: src/algebra/monoid_min.hpp
-      title: src/algebra/monoid_min.hpp
+      path: algebra/monoid_min.hpp
+      title: algebra/monoid_min.hpp
     - icon: ':warning:'
-      path: src/algebra/monoid_min_index.hpp
-      title: src/algebra/monoid_min_index.hpp
+      path: algebra/monoid_min_index.hpp
+      title: algebra/monoid_min_index.hpp
     - icon: ':warning:'
-      path: src/algebra/monoid_rolling_hash.hpp
-      title: src/algebra/monoid_rolling_hash.hpp
+      path: algebra/monoid_rolling_hash.hpp
+      title: algebra/monoid_rolling_hash.hpp
     - icon: ':heavy_check_mark:'
-      path: src/algebra/monoid_sum.hpp
-      title: src/algebra/monoid_sum.hpp
+      path: algebra/monoid_sum.hpp
+      title: algebra/monoid_sum.hpp
     - icon: ':warning:'
-      path: src/algebra/monoid_xor.hpp
-      title: src/algebra/monoid_xor.hpp
-  - name: src/data_structure
+      path: algebra/monoid_xor.hpp
+      title: algebra/monoid_xor.hpp
+  - name: data_structure
     pages:
     - icon: ':heavy_check_mark:'
-      path: src/data_structure/cumulative_sum.hpp
+      path: data_structure/cumulative_sum.hpp
       title: "\u7D2F\u7A4D\u548C"
     - icon: ':heavy_check_mark:'
-      path: src/data_structure/cumulative_sum_2d.hpp
+      path: data_structure/cumulative_sum_2d.hpp
       title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
     - icon: ':warning:'
-      path: src/data_structure/cumulative_sum_diag.hpp
+      path: data_structure/cumulative_sum_diag.hpp
       title: "\u659C\u3081\u7D2F\u7A4D\u548C"
     - icon: ':heavy_check_mark:'
-      path: src/data_structure/dual_segment_tree.hpp
+      path: data_structure/dual_segment_tree.hpp
       title: "Dual Segment Tree (\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     - icon: ':heavy_check_mark:'
-      path: src/data_structure/fenwick_tree.hpp
+      path: data_structure/fenwick_tree.hpp
       title: Fenwick Tree (Binary Indexed Tree)
     - icon: ':heavy_check_mark:'
-      path: src/data_structure/lazy_segment_tree.hpp
+      path: data_structure/lazy_segment_tree.hpp
       title: "Lazy Segment Tree (\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     - icon: ':warning:'
-      path: src/data_structure/matrix.hpp
+      path: data_structure/matrix.hpp
       title: "Matrix (\u884C\u5217)"
     - icon: ':heavy_check_mark:'
-      path: src/data_structure/segment_tree.hpp
+      path: data_structure/segment_tree.hpp
       title: "Segment Tree (\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     - icon: ':heavy_check_mark:'
-      path: src/data_structure/segment_tree_2d.hpp
+      path: data_structure/segment_tree_2d.hpp
       title: "2D Segment Tree (2\u6B21\u5143\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     - icon: ':warning:'
-      path: src/data_structure/static_matrix.hpp
+      path: data_structure/static_matrix.hpp
       title: "Static Matrix (\u884C\u5217, \u30B5\u30A4\u30BA\u56FA\u5B9A)"
     - icon: ':heavy_check_mark:'
-      path: src/data_structure/unionfind.hpp
+      path: data_structure/unionfind.hpp
       title: UnionFind
     - icon: ':heavy_check_mark:'
-      path: src/data_structure/weighted_unionfind.hpp
+      path: data_structure/weighted_unionfind.hpp
       title: "Weighted UnionFind (\u91CD\u307F\u3064\u304D UnionFind)"
-  - name: src/dp
+  - name: dp
     pages:
     - icon: ':heavy_check_mark:'
-      path: src/dp/histogram_largest_rectangle.hpp
+      path: dp/histogram_largest_rectangle.hpp
       title: "Histogram Largest Rectangle (\u30D2\u30B9\u30C8\u30B0\u30E9\u30E0\u306E\
         \u6700\u5927\u9577\u65B9\u5F62)"
     - icon: ':heavy_check_mark:'
-      path: src/dp/inversion_number.hpp
+      path: dp/inversion_number.hpp
       title: "Inversion Number (\u8EE2\u5012\u6570)"
     - icon: ':heavy_check_mark:'
-      path: src/dp/knapsack_limitations.hpp
+      path: dp/knapsack_limitations.hpp
       title: "Knapsack Limitations (\u500B\u6570\u5236\u9650\u4ED8\u304D\u30CA\u30C3\
         \u30D7\u30B5\u30C3\u30AF\u554F\u984C)"
     - icon: ':heavy_check_mark:'
-      path: src/dp/sliding_window_minimum.hpp
+      path: dp/sliding_window_minimum.hpp
       title: "Sliding Window Minimum (\u30B9\u30E9\u30A4\u30C9\u6700\u5C0F\u5024)"
     - icon: ':heavy_check_mark:'
-      path: src/dp/traveling_salesman_problem.hpp
+      path: dp/traveling_salesman_problem.hpp
       title: "Traveling Salesman Problem (\u5DE1\u56DE\u30BB\u30FC\u30EB\u30B9\u30DE\
         \u30F3\u554F\u984C)"
-  - name: src/graph
+  - name: graph
     pages:
     - icon: ':heavy_check_mark:'
-      path: src/graph/bellman_ford.hpp
+      path: graph/bellman_ford.hpp
       title: "Bellman-Ford algorithm (\u30D9\u30EB\u30DE\u30F3\u30D5\u30A9\u30FC\u30C9\
         \u6CD5)"
     - icon: ':warning:'
-      path: src/graph/bfs01.hpp
+      path: graph/bfs01.hpp
       title: 01-BFS
     - icon: ':heavy_check_mark:'
-      path: src/graph/dijkstra.hpp
+      path: graph/dijkstra.hpp
       title: "Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
     - icon: ':heavy_check_mark:'
-      path: src/graph/get_edges.hpp
-      title: src/graph/get_edges.hpp
+      path: graph/get_edges.hpp
+      title: graph/get_edges.hpp
     - icon: ':heavy_check_mark:'
-      path: src/graph/graph_template.hpp
-      title: src/graph/graph_template.hpp
+      path: graph/graph_template.hpp
+      title: graph/graph_template.hpp
     - icon: ':heavy_check_mark:'
-      path: src/graph/kruskal.hpp
+      path: graph/kruskal.hpp
       title: "Kruskal's algorithm (\u30AF\u30E9\u30B9\u30AB\u30EB\u6CD5)"
     - icon: ':heavy_check_mark:'
-      path: src/graph/lowest_common_ancestor.hpp
+      path: graph/lowest_common_ancestor.hpp
       title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
     - icon: ':heavy_check_mark:'
-      path: src/graph/read_graph.hpp
-      title: src/graph/read_graph.hpp
+      path: graph/read_graph.hpp
+      title: graph/read_graph.hpp
     - icon: ':warning:'
-      path: src/graph/topological_sort.hpp
+      path: graph/topological_sort.hpp
       title: "Topological Sort (\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8\
         )"
     - icon: ':heavy_check_mark:'
-      path: src/graph/tree_diameter.hpp
+      path: graph/tree_diameter.hpp
       title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"
-  - name: src/math
+  - name: math
     pages:
     - icon: ':warning:'
-      path: src/math/baby_step_giant_step.hpp
-      title: src/math/baby_step_giant_step.hpp
+      path: math/baby_step_giant_step.hpp
+      title: math/baby_step_giant_step.hpp
     - icon: ':warning:'
-      path: src/math/binomial.hpp
+      path: math/binomial.hpp
       title: "Binomial (\u524D\u8A08\u7B97\u3042\u308A\u4E8C\u9805\u4FC2\u6570)"
     - icon: ':heavy_check_mark:'
-      path: src/math/divisor.hpp
-      title: src/math/divisor.hpp
+      path: math/divisor.hpp
+      title: math/divisor.hpp
     - icon: ':heavy_check_mark:'
-      path: src/math/enumerate_primes.hpp
-      title: src/math/enumerate_primes.hpp
+      path: math/enumerate_primes.hpp
+      title: math/enumerate_primes.hpp
     - icon: ':heavy_check_mark:'
-      path: src/math/ext_gcd.hpp
-      title: src/math/ext_gcd.hpp
+      path: math/ext_gcd.hpp
+      title: math/ext_gcd.hpp
     - icon: ':warning:'
-      path: src/math/inv_mod.hpp
-      title: src/math/inv_mod.hpp
+      path: math/inv_mod.hpp
+      title: math/inv_mod.hpp
     - icon: ':heavy_check_mark:'
-      path: src/math/modint261.hpp
-      title: src/math/modint261.hpp
+      path: math/modint261.hpp
+      title: math/modint261.hpp
     - icon: ':heavy_check_mark:'
-      path: src/math/osa_k.hpp
-      title: src/math/osa_k.hpp
+      path: math/osa_k.hpp
+      title: math/osa_k.hpp
     - icon: ':heavy_check_mark:'
-      path: src/math/pow_mod.hpp
-      title: src/math/pow_mod.hpp
+      path: math/pow_mod.hpp
+      title: math/pow_mod.hpp
     - icon: ':heavy_check_mark:'
-      path: src/math/prime_factor.hpp
-      title: src/math/prime_factor.hpp
+      path: math/prime_factor.hpp
+      title: math/prime_factor.hpp
     - icon: ':heavy_check_mark:'
-      path: src/math/prime_table.hpp
-      title: src/math/prime_table.hpp
+      path: math/prime_table.hpp
+      title: math/prime_table.hpp
     - icon: ':heavy_check_mark:'
-      path: src/math/totient.hpp
-      title: src/math/totient.hpp
+      path: math/totient.hpp
+      title: math/totient.hpp
     - icon: ':heavy_check_mark:'
-      path: src/math/totient_table.hpp
-      title: src/math/totient_table.hpp
-  - name: src/string
+      path: math/totient_table.hpp
+      title: math/totient_table.hpp
+  - name: string
     pages:
     - icon: ':heavy_check_mark:'
-      path: src/string/rolling_hash.hpp
-      title: src/string/rolling_hash.hpp
+      path: string/rolling_hash.hpp
+      title: string/rolling_hash.hpp
     - icon: ':warning:'
-      path: src/string/run_length_encoding.hpp
+      path: string/run_length_encoding.hpp
       title: "Run Length Encoding (\u30E9\u30F3\u30EC\u30F3\u30B0\u30B9\u5727\u7E2E\
         )"
   verificationCategories:

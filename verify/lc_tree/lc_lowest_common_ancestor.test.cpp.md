@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/graph/graph_template.hpp
-    title: src/graph/graph_template.hpp
+    path: graph/graph_template.hpp
+    title: graph/graph_template.hpp
   - icon: ':heavy_check_mark:'
-    path: src/graph/lowest_common_ancestor.hpp
+    path: graph/lowest_common_ancestor.hpp
     title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -19,7 +19,7 @@ data:
     - https://judge.yosupo.jp/problem/lca
   bundledCode: "#line 1 \"verify/lc_tree/lc_lowest_common_ancestor.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include <bits/stdc++.h>\n\
-    \n#line 2 \"src/graph/lowest_common_ancestor.hpp\"\n\n#line 2 \"src/graph/graph_template.hpp\"\
+    \n#line 2 \"graph/lowest_common_ancestor.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
     \n\ntemplate <class T> struct edge {\n    int from, to;\n    T cost;\n    int\
     \ id;\n\n    edge() = default;\n    edge(int from, int to, T cost = 1, int id\
     \ = -1) : from(from), to(to), cost(cost), id(id) {}\n\n    friend std::ostream\
@@ -27,7 +27,7 @@ data:
     \ to, cost }\n        return os << \"{ \" << e.id << \" : \" << e.from << \" ->\
     \ \" << e.to << \", \" << e.cost << \" }\";\n    }\n};\n\ntemplate <class T> using\
     \ edges = std::vector<edge<T>>;\ntemplate <class T> using graph = std::vector<std::vector<edge<T>>>;\n\
-    #line 4 \"src/graph/lowest_common_ancestor.hpp\"\n\ntemplate <class Graph> struct\
+    #line 4 \"graph/lowest_common_ancestor.hpp\"\n\ntemplate <class Graph> struct\
     \ lowest_common_ancestor {\n    std::vector<int> depth;\n    std::vector<std::vector<int>>\
     \ parent;\n    int n, LOG;\n\n    lowest_common_ancestor(Graph &G, int root =\
     \ 0) : n(G.size()), LOG(32 - __builtin_clz(G.size())) {\n        depth.assign(n,\
@@ -56,19 +56,19 @@ data:
     \ tq(G, 0);\n    while (Q--) {\n        int u, v;\n        std::cin >> u >> v;\n\
     \        std::cout << tq.lca(u, v) << '\\n';\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include <bits/stdc++.h>\n\
-    \n#include \"src/graph/lowest_common_ancestor.hpp\"\n\nint main() {\n    int N,\
-    \ Q;\n    std::cin >> N >> Q;\n    graph<int> G(N);\n    for (int i = 1; i < N;\
-    \ i++) {\n        int p;\n        std::cin >> p;\n        G[i].push_back(edge(i,\
-    \ p, 1, i - 1));\n        G[p].push_back(edge(p, i, 1, i - 1));\n    }\n    lowest_common_ancestor\
+    \n#include \"graph/lowest_common_ancestor.hpp\"\n\nint main() {\n    int N, Q;\n\
+    \    std::cin >> N >> Q;\n    graph<int> G(N);\n    for (int i = 1; i < N; i++)\
+    \ {\n        int p;\n        std::cin >> p;\n        G[i].push_back(edge(i, p,\
+    \ 1, i - 1));\n        G[p].push_back(edge(p, i, 1, i - 1));\n    }\n    lowest_common_ancestor\
     \ tq(G, 0);\n    while (Q--) {\n        int u, v;\n        std::cin >> u >> v;\n\
     \        std::cout << tq.lca(u, v) << '\\n';\n    }\n    return 0;\n}"
   dependsOn:
-  - src/graph/lowest_common_ancestor.hpp
-  - src/graph/graph_template.hpp
+  - graph/lowest_common_ancestor.hpp
+  - graph/graph_template.hpp
   isVerificationFile: true
   path: verify/lc_tree/lc_lowest_common_ancestor.test.cpp
   requiredBy: []
-  timestamp: '2022-11-16 19:50:14+09:00'
+  timestamp: '2023-02-06 17:52:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_tree/lc_lowest_common_ancestor.test.cpp

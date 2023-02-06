@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/algebra/dual_set.hpp
-    title: src/algebra/dual_set.hpp
+    path: algebra/dual_set.hpp
+    title: algebra/dual_set.hpp
   - icon: ':heavy_check_mark:'
-    path: src/data_structure/dual_segment_tree.hpp
+    path: data_structure/dual_segment_tree.hpp
     title: "Dual Segment Tree (\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -19,10 +19,10 @@ data:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_D
   bundledCode: "#line 1 \"verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp\"\n\
     #define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_D\"\
-    \n\n#include <bits/stdc++.h>\n\n#line 2 \"src/algebra/dual_set.hpp\"\n\ntemplate\
-    \ <class F> struct dual_set {\n    using value_type = F;\n    static constexpr\
-    \ F composition(F f, F g) { return f == id() ? g : f; }\n    static constexpr\
-    \ F id() { return std::numeric_limits<F>::max(); }\n};\n#line 2 \"src/data_structure/dual_segment_tree.hpp\"\
+    \n\n#include <bits/stdc++.h>\n\n#line 2 \"algebra/dual_set.hpp\"\n\ntemplate <class\
+    \ F> struct dual_set {\n    using value_type = F;\n    static constexpr F composition(F\
+    \ f, F g) { return f == id() ? g : f; }\n    static constexpr F id() { return\
+    \ std::numeric_limits<F>::max(); }\n};\n#line 2 \"data_structure/dual_segment_tree.hpp\"\
     \n\ntemplate <class Dual> struct dual_segment_tree {\n   public:\n    using F\
     \ = typename Dual::value_type;\n    dual_segment_tree(int n) : dual_segment_tree(std::vector<F>(n,\
     \ Dual::id())) {}\n    dual_segment_tree(const std::vector<F>& v) : _n((int)v.size())\
@@ -58,21 +58,20 @@ data:
     \           std::cin >> i;\n            std::cout << seg[i] << '\\n';\n      \
     \  }\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_D\"\
-    \n\n#include <bits/stdc++.h>\n\n#include \"src/algebra/dual_set.hpp\"\n#include\
-    \ \"src/data_structure/dual_segment_tree.hpp\"\n\nint main() {\n    int N, Q;\n\
-    \    std::cin >> N >> Q;\n    dual_segment_tree<dual_set<int>> seg(N);\n    while\
-    \ (Q--) {\n        int t;\n        std::cin >> t;\n        if (t == 0) {\n   \
-    \         int l, r, x;\n            std::cin >> l >> r >> x;\n            seg.apply(l,\
-    \ r + 1, x);\n        } else {\n            int i;\n            std::cin >> i;\n\
-    \            std::cout << seg[i] << '\\n';\n        }\n    }\n    return 0;\n\
-    }\n"
+    \n\n#include <bits/stdc++.h>\n\n#include \"algebra/dual_set.hpp\"\n#include \"\
+    data_structure/dual_segment_tree.hpp\"\n\nint main() {\n    int N, Q;\n    std::cin\
+    \ >> N >> Q;\n    dual_segment_tree<dual_set<int>> seg(N);\n    while (Q--) {\n\
+    \        int t;\n        std::cin >> t;\n        if (t == 0) {\n            int\
+    \ l, r, x;\n            std::cin >> l >> r >> x;\n            seg.apply(l, r +\
+    \ 1, x);\n        } else {\n            int i;\n            std::cin >> i;\n \
+    \           std::cout << seg[i] << '\\n';\n        }\n    }\n    return 0;\n}\n"
   dependsOn:
-  - src/algebra/dual_set.hpp
-  - src/data_structure/dual_segment_tree.hpp
+  - algebra/dual_set.hpp
+  - data_structure/dual_segment_tree.hpp
   isVerificationFile: true
   path: verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp
   requiredBy: []
-  timestamp: '2022-09-25 06:30:46+09:00'
+  timestamp: '2023-02-06 17:52:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp
