@@ -1,6 +1,6 @@
 ---
 title: 2D Segment Tree (2次元セグメント木)
-documentation_of: ../data_structure/segment_tree_2d.hpp
+documentation_of: ../../data_structure/segment_tree_2d.hpp
 ---
 
 [自分の1次元セグメント木](https://ruthen71.github.io/rcpl/src/data_structure/segment_tree.hpp) をなるべくそのまま2次元に拡張することを意識して設計されている。

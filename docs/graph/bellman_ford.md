@@ -1,6 +1,6 @@
 ---
 title: Bellman-Ford algorithm (ベルマンフォード法)
-documentation_of: ../graph/bellman_ford.hpp
+documentation_of: ../../graph/bellman_ford.hpp
 ---
 
 - 到達できない場合は `INF`

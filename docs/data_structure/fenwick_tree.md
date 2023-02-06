@@ -1,6 +1,6 @@
 ---
 title: Fenwick Tree (Binary Indexed Tree)
-documentation_of: ../data_structure/fenwick_tree.hpp
+documentation_of: ../../data_structure/fenwick_tree.hpp
 ---
 
 - 一点更新区間和取得ができるデータ構造である

@@ -1,6 +1,6 @@
 ---
 title: Knapsack Limitations (個数制限付きナップサック問題)
-documentation_of: ../dp/knapsack_limitations.hpp
+documentation_of: ../../dp/knapsack_limitations.hpp
 ---
 
 - 個数制限付きナップサック問題をスライド最大値のテクニックを使って解く

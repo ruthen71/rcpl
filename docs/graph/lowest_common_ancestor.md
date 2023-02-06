@@ -1,6 +1,6 @@
 ---
 title: Lowest Common Ancestor (最小共通祖先)
-documentation_of: ../graph/lowest_common_ancestor.hpp
+documentation_of: ../../graph/lowest_common_ancestor.hpp
 ---
 
 - `lowest_common_ancestor tq(G, root);` で作成
