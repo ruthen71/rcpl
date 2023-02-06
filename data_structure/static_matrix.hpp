@@ -1,11 +1,11 @@
 #pragma once
 
-template <class T, size_t n, size_t m = n> struct static_matrix {
+template <class T, size_t n, size_t m = n> struct StaticMatrix {
     std::array<std::array<T, m>, n> A;
 
-    static_matrix() : A{{}} {}
+    StaticMatrix() : A{{}} {}
 
-    static_matrix(T val) : A{{}} {
+    StaticMatrix(T val) : A{{}} {
         for (int i = 0; i < (int)n; i++) A[i].fill(val);
     }
 
@@ -19,14 +19,14 @@ template <class T, size_t n, size_t m = n> struct static_matrix {
 
     inline std::array<T, m> &operator[](int i) { return A[i]; }  // write
 
-    static static_matrix E() {
+    static StaticMatrix E() {
         assert(n == m);
-        static_matrix ret;
+        StaticMatrix ret;
         for (int i = 0; i < (int)n; i++) ret[i][i] = T(1);
         return ret;
     }
 
-    static_matrix &operator+=(const static_matrix &B) {
+    StaticMatrix &operator+=(const StaticMatrix &B) {
         int N = row(), M = col();
         assert(N == B.row() && M == B.col());
         for (int i = 0; i < N; i++) {
@@ -37,7 +37,7 @@ template <class T, size_t n, size_t m = n> struct static_matrix {
         return (*this);
     }
 
-    static_matrix &operator-=(const static_matrix &B) {
+    StaticMatrix &operator-=(const StaticMatrix &B) {
         int N = row(), M = col();
         assert(N == B.row() && M == B.col());
         for (int i = 0; i < N; i++) {
@@ -48,10 +48,10 @@ template <class T, size_t n, size_t m = n> struct static_matrix {
         return (*this);
     }
 
-    static_matrix &operator*=(const static_matrix &B) {
+    StaticMatrix &operator*=(const StaticMatrix &B) {
         int N = row(), M = B.col(), L = B.row();
         assert(L == col());
-        static_matrix C;
+        StaticMatrix C;
         for (int i = 0; i < N; i++) {
             for (int k = 0; k < L; k++) {
                 for (int j = 0; j < M; j++) {
@@ -63,9 +63,9 @@ template <class T, size_t n, size_t m = n> struct static_matrix {
         return (*this);
     }
 
-    static_matrix pow(long long k) {
+    StaticMatrix pow(long long k) {
         assert(row() == col());
-        static_matrix B = static_matrix::E(), X = (*this);
+        StaticMatrix B = StaticMatrix::E(), X = (*this);
         while (k) {
             if (k & 1) B *= X;
             X *= X;
@@ -75,13 +75,13 @@ template <class T, size_t n, size_t m = n> struct static_matrix {
         return (*this);
     }
 
-    static_matrix operator+(const static_matrix &B) { return ((*this) += B); }
+    StaticMatrix operator+(const StaticMatrix &B) { return ((*this) += B); }
 
-    static_matrix operator-(const static_matrix &B) { return ((*this) -= B); }
+    StaticMatrix operator-(const StaticMatrix &B) { return ((*this) -= B); }
 
-    static_matrix operator*(const static_matrix &B) { return ((*this) *= B); }
+    StaticMatrix operator*(const StaticMatrix &B) { return ((*this) *= B); }
 
-    friend std::ostream &operator<<(std::ostream &os, static_matrix &A) {
+    friend std::ostream &operator<<(std::ostream &os, StaticMatrix &A) {
         int N = A.row(), M = A.col();
         for (int i = 0; i < N; i++) {
             os << '[';
@@ -90,39 +90,39 @@ template <class T, size_t n, size_t m = n> struct static_matrix {
         return (os);
     }
 
-    static_matrix &operator+=(const T &k) {
+    StaticMatrix &operator+=(const T &k) {
         int N = row(), M = col();
         for (int i = 0; i < N; i++)
             for (int j = 0; j < M; j++) (*this)[i][j] += k;
         return (*this);
     }
 
-    static_matrix &operator-=(const T &k) {
+    StaticMatrix &operator-=(const T &k) {
         int N = row(), M = col();
         for (int i = 0; i < N; i++)
             for (int j = 0; j < M; j++) (*this)[i][j] -= k;
         return (*this);
     }
 
-    static_matrix &operator*=(const T &k) {
+    StaticMatrix &operator*=(const T &k) {
         int N = row(), M = col();
         for (int i = 0; i < N; i++)
             for (int j = 0; j < M; j++) (*this)[i][j] *= k;
         return (*this);
     }
 
-    static_matrix &operator/=(const T &k) {
+    StaticMatrix &operator/=(const T &k) {
         int N = row(), M = col();
         for (int i = 0; i < N; i++)
             for (int j = 0; j < M; j++) (*this)[i][j] /= k;
         return (*this);
     }
 
-    static_matrix operator+(const T &k) { return ((*this) += k); }
+    StaticMatrix operator+(const T &k) { return ((*this) += k); }
 
-    static_matrix operator-(const T &k) { return ((*this) -= k); }
+    StaticMatrix operator-(const T &k) { return ((*this) -= k); }
 
-    static_matrix operator*(const T &k) { return ((*this) *= k); }
+    StaticMatrix operator*(const T &k) { return ((*this) *= k); }
 
-    static_matrix operator/(const T &k) { return ((*this) /= k); }
+    StaticMatrix operator/(const T &k) { return ((*this) /= k); }
 };

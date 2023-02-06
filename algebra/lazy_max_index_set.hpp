@@ -1,6 +1,6 @@
 #pragma once
 
-template <class T, bool left = true> struct lazy_max_index_set {
+template <class T, bool left = true> struct LazyMaxIndexSet {
     using S = std::pair<T, int>;
     using F = T;
     using value_type_S = S;

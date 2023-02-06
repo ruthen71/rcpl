@@ -2,7 +2,7 @@
 
 #include "graph/graph_template.hpp"
 
-template <class T, class Graph> std::pair<T, std::vector<edge<T>>> tree_diameter(Graph &G) {
+template <class T> std::pair<T, std::vector<Edge<T>>> tree_diameter(Graph<T> &G) {
     std::vector<int> to(G.size(), -1);
 
     auto dfs = [&](auto f, int cur, int par) -> std::pair<T, int> {
@@ -23,7 +23,7 @@ template <class T, class Graph> std::pair<T, std::vector<edge<T>>> tree_diameter
     auto t = dfs(dfs, s.second, -1);
 
     int cur = s.second;
-    std::vector<edge<T>> path;
+    std::vector<Edge<T>> path;
     while (cur != t.second) {
         for (auto &e : G[cur]) {
             if (to[cur] == e.to) {

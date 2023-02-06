@@ -1,18 +1,18 @@
 #pragma once
 
-template <class T> struct edge {
+template <class T> struct Edge {
     int from, to;
     T cost;
     int id;
 
-    edge() = default;
-    edge(int from, int to, T cost = 1, int id = -1) : from(from), to(to), cost(cost), id(id) {}
+    Edge() = default;
+    Edge(int from, int to, T cost = 1, int id = -1) : from(from), to(to), cost(cost), id(id) {}
 
-    friend std::ostream &operator<<(std::ostream &os, const edge<T> &e) {
+    friend std::ostream &operator<<(std::ostream &os, const Edge<T> &e) {
         // { id : from -> to, cost }
         return os << "{ " << e.id << " : " << e.from << " -> " << e.to << ", " << e.cost << " }";
     }
 };
 
-template <class T> using edges = std::vector<edge<T>>;
-template <class T> using graph = std::vector<std::vector<edge<T>>>;
+template <class T> using Edges = std::vector<Edge<T>>;
+template <class T> using Graph = std::vector<std::vector<Edge<T>>>;

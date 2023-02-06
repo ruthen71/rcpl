@@ -7,7 +7,7 @@
 int main() {
     std::string T, P;
     std::cin >> T >> P;
-    rolling_hash<modint261> rh;
+    RollingHash<ModInt261> rh;
     auto rht = rh.build(T);
     auto rhp = rh.build(P);
     for (int i = 0; i + P.size() <= T.size(); i++) {

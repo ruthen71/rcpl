@@ -1,9 +1,9 @@
 #pragma once
 
-template <class Mint> struct binomial {
+template <class Mint> struct Binomial {
     std::vector<Mint> f, g;
 
-    binomial(int N = 0) {
+    Binomial(int N = 0) {
         f.resize(1, Mint(1));
         g.resize(1, Mint(1));
         while (N >= (int)f.size()) extend();

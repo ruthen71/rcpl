@@ -1,10 +1,10 @@
 #pragma once
 
-struct osa_k {
+struct Osak {
     int n;
     std::vector<int> min_factor;
 
-    osa_k(int n) : n(n), min_factor(n + 1) {
+    Osak(int n) : n(n), min_factor(n + 1) {
         std::iota(min_factor.begin(), min_factor.end(), 0);
         if (n >= 0) min_factor[0] = -1;
         if (n >= 1) min_factor[1] = -1;

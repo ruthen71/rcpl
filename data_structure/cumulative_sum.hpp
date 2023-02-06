@@ -1,11 +1,11 @@
 #pragma once
 
-template <class T> struct cumulative_sum {
+template <class T> struct CumulativeSum {
     std::vector<T> seg;
     int _n;
 
-    cumulative_sum(int _n) : _n(_n), seg(_n + 1, 0) {}
-    cumulative_sum(std::vector<T> &A) {
+    CumulativeSum(int _n) : _n(_n), seg(_n + 1, 0) {}
+    CumulativeSum(std::vector<T> &A) {
         _n = (int)A.size();
         seg.assign(_n + 1, T(0));
         for (int i = 0; i < _n; i++) seg[i + 1] = seg[i] + A[i];
@@ -45,7 +45,7 @@ template <class T> struct cumulative_sum {
     }
 
     // output
-    friend std::ostream &operator<<(std::ostream &os, const cumulative_sum &A) {
+    friend std::ostream &operator<<(std::ostream &os, const CumulativeSum &A) {
         for (int i = 0; i <= A._n; i++) os << A.seg[i] << " \n"[i == A._n];
         return os;
     }

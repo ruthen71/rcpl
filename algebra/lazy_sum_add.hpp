@@ -1,6 +1,6 @@
 #pragma once
 
-template <class T> struct lazy_sum_add {
+template <class T> struct LazySumAdd {
     using S = std::pair<T, int>;
     using F = T;
     using value_type_S = S;

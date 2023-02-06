@@ -1,12 +1,12 @@
 #pragma once
 
-template <class T> struct cumulative_sum_2d {
+template <class T> struct CumulativeSum2D {
     std::vector<std::vector<T>> cum;
     int H, W;
 
-    cumulative_sum_2d(int W, int H) : H(H), W(W), cum(W + 1, std::vector<T>(H + 1, 0)) {}
+    CumulativeSum2D(int W, int H) : H(H), W(W), cum(W + 1, std::vector<T>(H + 1, 0)) {}
 
-    cumulative_sum_2d(std::vector<std::vector<T>> &A) {
+    CumulativeSum2D(std::vector<std::vector<T>> &A) {
         H = (int)A.size(), W = (int)A[0].size();
         cum.assign(H + 1, std::vector<T>(W + 1, 0));
         for (int i = 0; i < H; i++) {
@@ -74,7 +74,7 @@ template <class T> struct cumulative_sum_2d {
     }
 
     // output
-    friend std::ostream &operator<<(std::ostream &os, const cumulative_sum_2d &A) {
+    friend std::ostream &operator<<(std::ostream &os, const CumulativeSum2D &A) {
         for (int i = 0; i < (int)A.cum.size(); i++) {
             for (int j = 0; j < (int)A.cum[i].size(); j++) {
                 os << A.cum[i][j] << " \n"[j == (int)A.cum[i].size() - 1];

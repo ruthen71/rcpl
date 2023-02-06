@@ -1,16 +1,16 @@
 #pragma once
 
-struct modint261 {
+struct ModInt261 {
     static constexpr uint64_t m = (1ULL << 61) - 1;
     using uint128_t = __uint128_t;
-    using mint = modint261;
+    using mint = ModInt261;
     uint64_t _v;
 
     static constexpr uint64_t mod() { return m; }
 
-    modint261() : _v(0ULL) {}
+    ModInt261() : _v(0ULL) {}
 
-    template <class T> modint261(T v) {
+    template <class T> ModInt261(T v) {
         long long x = (long long)(v % (long long)mod());
         if (x < 0) x += mod();
         _v = x;

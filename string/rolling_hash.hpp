@@ -2,7 +2,7 @@
 
 #include "math/modint261.hpp"
 
-template <class Mint> struct rolling_hash {
+template <class Mint> struct RollingHash {
     std::vector<Mint> pwr;
     const Mint base;
 
@@ -19,7 +19,7 @@ template <class Mint> struct rolling_hash {
         for (int i = n; i < m; i++) pwr[i] = pwr[i - 1] * base;
     }
 
-    rolling_hash(int N = 0, Mint base = generate_base()) : base(base) {
+    RollingHash(int N = 0, Mint base = generate_base()) : base(base) {
         pwr.resize(1, Mint(1));
         while (N >= (int)pwr.size()) extend();
     }

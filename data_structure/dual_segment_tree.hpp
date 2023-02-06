@@ -1,10 +1,10 @@
 #pragma once
 
-template <class Dual> struct dual_segment_tree {
+template <class Dual> struct DualSegmentTree {
    public:
     using F = typename Dual::value_type;
-    dual_segment_tree(int n) : dual_segment_tree(std::vector<F>(n, Dual::id())) {}
-    dual_segment_tree(const std::vector<F>& v) : _n((int)v.size()) {
+    DualSegmentTree(int n) : DualSegmentTree(std::vector<F>(n, Dual::id())) {}
+    DualSegmentTree(const std::vector<F>& v) : _n((int)v.size()) {
         log = 0;
         while ((1U << log) < (unsigned int)(_n)) log++;
         size = 1 << log;

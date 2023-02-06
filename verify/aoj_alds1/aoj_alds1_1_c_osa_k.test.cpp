@@ -2,10 +2,10 @@
 
 #include <bits/stdc++.h>
 
-#include "math/osa_k.hpp"
+#include "math/osak.hpp"
 
 int main() {
-    auto osak = osa_k(100000000);
+    auto osak = Osak(100000000);
     int n;
     std::cin >> n;
     int ans = 0;

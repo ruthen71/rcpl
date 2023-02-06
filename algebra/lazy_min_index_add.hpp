@@ -1,6 +1,6 @@
 #pragma once
 
-template <class T, bool left = true> struct lazy_min_index_add {
+template <class T, bool left = true> struct LazyMinIndexAdd {
     using S = std::pair<T, int>;
     using F = T;
     using value_type_S = S;

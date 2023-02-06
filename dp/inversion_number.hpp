@@ -7,7 +7,7 @@ template <class T> long long inversion_number(std::vector<T>& A) {
     sort(B.begin(), B.end());
     B.erase(unique(B.begin(), B.end()), B.end());
     int N = (int)B.size();
-    fenwick_tree<int> fen(N);
+    FenwickTree<int> fen(N);
     long long ret = 0;
     for (auto& ai : A) {
         int i = lower_bound(B.begin(), B.end(), ai) - B.begin();

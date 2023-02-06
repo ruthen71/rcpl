@@ -1,10 +1,10 @@
 #pragma once
 
-template <class T, int delta = 1> struct cumulative_sum_diag {
+template <class T, int delta = 1> struct CumulativeSumDiag {
     std::vector<std::vector<T>> cum;
     int H, W;
 
-    cumulative_sum_diag(std::vector<std::vector<T>> &A) {
+    CumulativeSumDiag(std::vector<std::vector<T>> &A) {
         assert(A.size() > 0);
         H = (int)A.size(), W = (int)A[0].size();
         cum.assign(H + W, std::vector<T>(W + 1, 0));

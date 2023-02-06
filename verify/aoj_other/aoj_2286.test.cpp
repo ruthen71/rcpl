@@ -7,7 +7,7 @@
 
 int main() {
     auto ttt = totient_table(1000000);
-    cumulative_sum<long long> rui(1000001);
+    CumulativeSum<long long> rui(1000001);
     for (int i = 0; i <= 1000000; i++) rui.add(i, ttt[i]);
     rui.build();
     int tt;

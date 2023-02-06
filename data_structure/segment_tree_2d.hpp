@@ -1,11 +1,11 @@
 #pragma once
 
-template <class Monoid> struct segment_tree_2d {
+template <class Monoid> struct SegmentTree2D {
    public:
     using S = typename Monoid::value_type;
-    segment_tree_2d() : segment_tree_2d(0, 0) {}
-    segment_tree_2d(int h, int w) : segment_tree_2d(std::vector<std::vector<S>>(h, std::vector<S>(w, Monoid::e()))) {}
-    segment_tree_2d(const std::vector<std::vector<S>>& v) : _h((int)v.size()), _w((int)v[0].size()) {
+    SegmentTree2D() : SegmentTree2D(0, 0) {}
+    SegmentTree2D(int h, int w) : SegmentTree2D(std::vector<std::vector<S>>(h, std::vector<S>(w, Monoid::e()))) {}
+    SegmentTree2D(const std::vector<std::vector<S>>& v) : _h((int)v.size()), _w((int)v[0].size()) {
         logh = 0;
         while ((1U << logh) < (unsigned int)(_h)) logh++;
         sizeh = 1 << logh;

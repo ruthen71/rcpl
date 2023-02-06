@@ -9,7 +9,7 @@ int main() {
     std::cin >> N >> Q;
     std::vector<long long> A(N);
     for (int i = 0; i < N; i++) std::cin >> A[i];
-    cumulative_sum<long long> rui(A);
+    CumulativeSum<long long> rui(A);
     while (Q--) {
         int l, r;
         std::cin >> l >> r;

@@ -8,7 +8,7 @@
 int main() {
     int N, Q;
     std::cin >> N >> Q;
-    dual_segment_tree<dual_set<int>> seg(N);
+    DualSegmentTree<DualSet<int>> seg(N);
     while (Q--) {
         int t;
         std::cin >> t;

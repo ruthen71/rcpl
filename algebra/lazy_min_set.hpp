@@ -1,6 +1,6 @@
 #pragma once
 
-template <class S> struct lazy_min_set {
+template <class S> struct LazyMinSet {
     using F = S;
     using value_type_S = S;
     using value_type_F = F;

@@ -2,9 +2,9 @@
 
 #include "graph/graph_template.hpp"
 
-template <class T, class Graph>
+template <class T>
 std::vector<std::vector<T>>  //
-traveling_salesman_problem(Graph &G, const T INF) {
+traveling_salesman_problem(Graph<T> &G, const T INF) {
     int N = (int)G.size();
     int N2 = 1 << N;
 

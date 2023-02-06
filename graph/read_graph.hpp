@@ -2,8 +2,8 @@
 
 #include "graph/graph_template.hpp"
 
-template <class T> graph<T> read_graph(int N, int M, const bool weight = false, const bool directed = false, const int offset = 1) {
-    graph<T> G(N);
+template <class T> Graph<T> read_graph(int N, int M, const bool weight = false, const bool directed = false, const int offset = 1) {
+    Graph<T> G(N);
     for (int i = 0; i < M; i++) {
         int a, b;
         std::cin >> a >> b;
@@ -11,12 +11,12 @@ template <class T> graph<T> read_graph(int N, int M, const bool weight = false, 
         if (weight) {
             T c;
             std::cin >> c;
-            if (!directed) G[b].push_back(edge(b, a, c, i));
-            G[a].push_back(edge(a, b, c, i));
+            if (!directed) G[b].push_back(Edge(b, a, c, i));
+            G[a].push_back(Edge(a, b, c, i));
         } else {
             // c = 1
-            if (!directed) G[b].push_back(edge(b, a, T(1), i));
-            G[a].push_back(edge(a, b, T(1), i));
+            if (!directed) G[b].push_back(Edge(b, a, T(1), i));
+            G[a].push_back(Edge(a, b, T(1), i));
         }
     }
     return G;

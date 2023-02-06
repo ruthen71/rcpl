@@ -4,13 +4,13 @@
 #include "graph/get_edges.hpp"
 #include "graph/graph_template.hpp"
 
-template <class T, class Graph> std::pair<T, edges<T>> kruskal(Graph &G) {
+template <class T> std::pair<T, Edges<T>> kruskal(Graph<T> &G) {
     auto es = get_edges<T>(G);
-    sort(es.begin(), es.end(), [](edge<T> a, edge<T> b) { return a.cost < b.cost; });
+    std::sort(es.begin(), es.end(), [](Edge<T> a, Edge<T> b) { return a.cost < b.cost; });
     int N = (int)G.size();
-    unionfind uf(N);
+    UnionFind uf(N);
     T ret = 0;
-    edges<T> es_ret;
+    Edges<T> es_ret;
     es_ret.reserve(N - 1);
     for (auto &&e : es) {
         if (!uf.same(e.from, e.to)) {
