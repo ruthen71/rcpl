@@ -1,5 +1,5 @@
 ---
-title: ModInt $\pmod{2^{61}} $
+title: ModInt $\pmod{2^{61}-1} $
 documentation_of: //math/modint261.hpp
 ---
 
