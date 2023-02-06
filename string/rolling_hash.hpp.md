@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: math/modint261.hpp
-    title: ModInt $\pmod{2^{61}} $
+    title: ModInt $\pmod{2^{61}-1} $
   _extendedRequiredBy:
   - icon: ':warning:'
     path: algebra/monoid_rolling_hash.hpp

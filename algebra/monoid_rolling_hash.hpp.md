@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: math/modint261.hpp
-    title: ModInt $\pmod{2^{61}} $
+    title: ModInt $\pmod{2^{61}-1} $
   - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
     title: string/rolling_hash.hpp
