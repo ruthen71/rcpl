@@ -2,9 +2,9 @@
 
 #include "graph/graph_template.hpp"
 
-template <class T, class Graph>
+template <class T>
 std::tuple<std::vector<T>, std::vector<int>, std::vector<int>>  //
-bellman_ford(Graph &G, std::vector<int> &s, const T INF) {
+bellman_ford(Graph<T> &G, std::vector<int> &s, const T INF) {
     int N = (int)G.size();
     std::vector<T> dist(N, INF);
     std::vector<int> par(N, -1), root(N, -1);

@@ -1,6 +1,6 @@
 #pragma once
 
-template <class T, bool left = true> struct monoid_max_index {
+template <class T, bool left = true> struct MonoidMaxIndex {
     using S = std::pair<T, int>;
     using value_type = S;
     static constexpr S op(S a, S b) {

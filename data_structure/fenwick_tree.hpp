@@ -1,10 +1,10 @@
 #pragma once
 
-template <class T> struct fenwick_tree {
+template <class T> struct FenwickTree {
     int N;
     std::vector<T> seg;
-    fenwick_tree(int N) : N(N), seg(N + 1, 0) {}
-    fenwick_tree(std::vector<T> &A) {
+    FenwickTree(int N) : N(N), seg(N + 1, 0) {}
+    FenwickTree(std::vector<T> &A) {
         N = (int)A.size();
         seg.resize(N + 1);
         for (int i = 0; i < N; i++) add(i, A[i]);
@@ -35,7 +35,7 @@ template <class T> struct fenwick_tree {
     }
 
     // output
-    friend std::ostream &operator<<(std::ostream &os, const fenwick_tree &A) {
+    friend std::ostream &operator<<(std::ostream &os, const FenwickTree &A) {
         for (int i = 0; i < A.N; i++) os << A.sum(i, i + 1) << " \n"[i == A.N - 1];
         return os;
     }

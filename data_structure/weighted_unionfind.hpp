@@ -1,11 +1,11 @@
 #pragma once
 
-template <class T> struct weighted_unionfind {
+template <class T> struct WeightedUnionFind {
     std::vector<int> parents;
     std::vector<T> diff_weight;
 
-    weighted_unionfind() {}
-    weighted_unionfind(int n) : parents(n, -1), diff_weight(n) {}
+    WeightedUnionFind() {}
+    WeightedUnionFind(int n) : parents(n, -1), diff_weight(n) {}
 
     int leader(int x) {
         if (parents[x] < 0) {

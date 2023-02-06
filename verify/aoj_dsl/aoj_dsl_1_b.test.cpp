@@ -7,7 +7,7 @@
 int main() {
     int N, Q;
     std::cin >> N >> Q;
-    weighted_unionfind<long long> uf(N);
+    WeightedUnionFind<long long> uf(N);
     while (Q--) {
         int t;
         std::cin >> t;

@@ -7,7 +7,7 @@
 int main() {
     int a, b, N;
     std::cin >> a >> b >> N;
-    cumulative_sum<int> rui(1001);
+    CumulativeSum<int> rui(1001);
     for (int i = 0; i < N; i++) {
         int s, f;
         std::cin >> s >> f;

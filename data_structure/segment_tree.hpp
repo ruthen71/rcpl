@@ -1,11 +1,11 @@
 #pragma once
 
-template <class Monoid> struct segment_tree {
+template <class Monoid> struct SegmentTree {
    public:
     using S = typename Monoid::value_type;
-    segment_tree() : segment_tree(0) {}
-    segment_tree(int n) : segment_tree(std::vector<S>(n, Monoid::e())) {}
-    segment_tree(const std::vector<S>& v) : _n((int)v.size()) {
+    SegmentTree() : SegmentTree(0) {}
+    SegmentTree(int n) : SegmentTree(std::vector<S>(n, Monoid::e())) {}
+    SegmentTree(const std::vector<S>& v) : _n((int)v.size()) {
         log = 0;
         while ((1U << log) < (unsigned int)(_n)) log++;
         size = 1 << log;

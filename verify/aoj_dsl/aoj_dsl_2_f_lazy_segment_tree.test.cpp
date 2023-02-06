@@ -8,7 +8,7 @@
 int main() {
     int N, Q;
     std::cin >> N >> Q;
-    lazy_segment_tree<lazy_min_set<int>> seg(N);
+    LazySegmentTree<LazyMinSet<int>> seg(N);
     while (Q--) {
         int t;
         std::cin >> t;

@@ -12,7 +12,7 @@ void solve(int R, int C, int Q) {
             std::cin >> A[i][j];
         }
     }
-    segment_tree_2d<monoid_min<int>> seg(A);
+    SegmentTree2D<MonoidMin<int>> seg(A);
     while (Q--) {
         int r1, c1, r2, c2;
         std::cin >> r1 >> c1 >> r2 >> c2;

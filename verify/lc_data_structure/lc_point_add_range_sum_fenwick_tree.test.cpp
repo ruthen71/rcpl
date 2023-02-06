@@ -10,7 +10,7 @@ int main() {
     cin >> N >> Q;
     std::vector<long long> a(N);
     for (int i = 0; i < N; i++) cin >> a[i];
-    fenwick_tree<long long> fen(a);
+    FenwickTree<long long> fen(a);
     while (Q--) {
         int t;
         cin >> t;

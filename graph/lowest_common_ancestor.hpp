@@ -2,12 +2,12 @@
 
 #include "graph/graph_template.hpp"
 
-template <class Graph> struct lowest_common_ancestor {
+template <class T> struct LowestCommonAncestor {
     std::vector<int> depth;
     std::vector<std::vector<int>> parent;
     int n, LOG;
 
-    lowest_common_ancestor(Graph &G, int root = 0) : n(G.size()), LOG(32 - __builtin_clz(G.size())) {
+    LowestCommonAncestor(Graph<T> &G, int root = 0) : n(G.size()), LOG(32 - __builtin_clz(G.size())) {
         depth.assign(n, 0);
         parent.assign(LOG, std::vector<int>(n));
         auto dfs = [&](auto f, int cur, int par) -> void {

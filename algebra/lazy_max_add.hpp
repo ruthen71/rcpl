@@ -1,6 +1,6 @@
 #pragma once
 
-template <class S> struct lazy_max_add {
+template <class S> struct LazyMaxAdd {
     using F = S;
     using value_type_S = S;
     using value_type_F = F;

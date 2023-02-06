@@ -1,11 +1,11 @@
 #pragma once
 
-template <class Lazy> struct lazy_segment_tree {
+template <class Lazy> struct LazySegmentTree {
    public:
     using S = typename Lazy::value_type_S;
     using F = typename Lazy::value_type_F;
-    lazy_segment_tree(int n) : lazy_segment_tree(std::vector<S>(n, Lazy::e())) {}
-    lazy_segment_tree(const std::vector<S>& v) : _n((int)v.size()) {
+    LazySegmentTree(int n) : LazySegmentTree(std::vector<S>(n, Lazy::e())) {}
+    LazySegmentTree(const std::vector<S>& v) : _n((int)v.size()) {
         log = 0;
         while ((1U << log) < (unsigned int)(_n)) log++;
         size = 1 << log;

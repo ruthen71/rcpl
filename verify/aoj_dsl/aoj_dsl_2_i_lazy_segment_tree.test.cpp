@@ -8,7 +8,7 @@
 int main() {
     int N, Q;
     std::cin >> N >> Q;
-    lazy_segment_tree<lazy_sum_set<long long>> seg(std::vector<std::pair<long long, int>>(N, {0, 1}));
+    LazySegmentTree<LazySumSet<long long>> seg(std::vector<std::pair<long long, int>>(N, {0, 1}));
     while (Q--) {
         int t;
         std::cin >> t;

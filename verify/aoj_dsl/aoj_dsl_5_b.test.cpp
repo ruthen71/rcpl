@@ -9,7 +9,7 @@ int main() {
     int N;
     cin >> N;
     int M = 1000;
-    cumulative_sum_2d<int> rui(M + 1, M + 1);
+    CumulativeSum2D<int> rui(M + 1, M + 1);
     while (N--) {
         int x1, y1, x2, y2;
         cin >> x1 >> y1 >> x2 >> y2;

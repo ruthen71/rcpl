@@ -1,10 +1,10 @@
 #pragma once
 
-struct unionfind {
+struct UnionFind {
     std::vector<int> parents;
 
-    unionfind() {}
-    unionfind(int n) : parents(n, -1) {}
+    UnionFind() {}
+    UnionFind(int n) : parents(n, -1) {}
 
     int leader(int x) { return parents[x] < 0 ? x : parents[x] = leader(parents[x]); }
 

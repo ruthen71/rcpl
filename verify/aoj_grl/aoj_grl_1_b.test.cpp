@@ -8,7 +8,7 @@
 int main() {
     int N, M, r;
     std::cin >> N >> M >> r;
-    graph<int> G = read_graph<int>(N, M, true, true, 0);
+    auto G = read_graph<int>(N, M, true, true, 0);
     std::vector<int> s = {r};
     const int INF = 1 << 30;
     auto [dist, par, root] = bellman_ford(G, s, INF);
