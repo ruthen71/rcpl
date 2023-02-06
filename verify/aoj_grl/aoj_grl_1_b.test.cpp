@@ -2,8 +2,8 @@
 
 #include <bits/stdc++.h>
 
-#include "src/graph/bellman_ford.hpp"
-#include "src/graph/read_graph.hpp"
+#include "graph/bellman_ford.hpp"
+#include "graph/read_graph.hpp"
 
 int main() {
     int N, M, r;

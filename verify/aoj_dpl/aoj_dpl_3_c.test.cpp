@@ -2,7 +2,7 @@
 
 #include <bits/stdc++.h>
 
-#include "src/dp/histogram_largest_rectangle.hpp"
+#include "dp/histogram_largest_rectangle.hpp"
 
 int main() {
     int N;

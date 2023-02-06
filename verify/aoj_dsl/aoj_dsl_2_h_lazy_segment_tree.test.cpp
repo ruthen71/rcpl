@@ -2,8 +2,8 @@
 
 #include <bits/stdc++.h>
 
-#include "src/algebra/lazy_min_add.hpp"
-#include "src/data_structure/lazy_segment_tree.hpp"
+#include "algebra/lazy_min_add.hpp"
+#include "data_structure/lazy_segment_tree.hpp"
 
 int main() {
     int N, Q;

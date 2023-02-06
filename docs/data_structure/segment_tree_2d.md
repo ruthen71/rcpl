@@ -15,7 +15,7 @@
 工夫点は以下。
 
 - 毎回モノイドを書くのはめんどくさい、ということで、モノイド構造体をインクルードすれば済むようになっている
-    - `#include "src/algebra/monoid_max.hpp"` などでインクルードできる
+    - `#include "algebra/monoid_max.hpp"` などでインクルードできる
     - `segment_tree_2d<monoid_max<int>> seg(h, w);` などで2次元RMQが使える
 - `ac-library` の `seg.get(i)` の2次元版に相当する機能を `seg(h, w)` で実現している
 - `seg[h][w] = op(seg[h][w], x)` とする `seg.chset(h, w, x)` を採用

@@ -2,7 +2,7 @@
 
 #include <bits/stdc++.h>
 
-#include "src/math/prime_table.hpp"
+#include "math/prime_table.hpp"
 
 int main() {
     auto pt = prime_table(100000000);

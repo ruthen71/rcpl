@@ -1,6 +1,6 @@
 #pragma once
 
-#include "src/graph/graph_template.hpp"
+#include "graph/graph_template.hpp"
 
 template <class T, class Graph> edges<T> get_edges(Graph &G) {
     int N = (int)G.size(), M = 0;

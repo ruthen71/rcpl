@@ -2,7 +2,7 @@
 
 #include <bits/stdc++.h>
 
-#include "src/math/enumerate_primes.hpp"
+#include "math/enumerate_primes.hpp"
 
 int main() {
     int n, a, b;

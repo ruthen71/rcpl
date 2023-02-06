@@ -2,8 +2,8 @@
 
 #include <bits/stdc++.h>
 
-#include "src/graph/dijkstra.hpp"
-#include "src/graph/read_graph.hpp"
+#include "graph/dijkstra.hpp"
+#include "graph/read_graph.hpp"
 
 int main() {
     int N, M, s, t;

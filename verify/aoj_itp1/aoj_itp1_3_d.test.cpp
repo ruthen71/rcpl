@@ -2,7 +2,7 @@
 
 #include <bits/stdc++.h>
 
-#include "src/math/divisor.hpp"
+#include "math/divisor.hpp"
 
 int main() {
     long long a, b, c;

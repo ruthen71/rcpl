@@ -2,7 +2,7 @@
 
 #include <bits/stdc++.h>
 
-#include "src/dp/knapsack_limitations.hpp"
+#include "dp/knapsack_limitations.hpp"
 
 int main() {
     int N, W;

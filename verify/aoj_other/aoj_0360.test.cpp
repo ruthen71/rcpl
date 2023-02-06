@@ -2,7 +2,7 @@
 
 #include <bits/stdc++.h>
 
-#include "src/data_structure/cumulative_sum.hpp"
+#include "data_structure/cumulative_sum.hpp"
 
 int main() {
     int a, b, N;

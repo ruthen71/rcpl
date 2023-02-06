@@ -3,7 +3,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#include "src/data_structure/unionfind.hpp"
+#include "data_structure/unionfind.hpp"
 
 int main() {
     int N, Q;

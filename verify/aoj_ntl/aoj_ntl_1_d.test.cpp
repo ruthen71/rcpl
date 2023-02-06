@@ -2,7 +2,7 @@
 
 #include <bits/stdc++.h>
 
-#include "src/math/totient.hpp"
+#include "math/totient.hpp"
 
 int main() {
     long long n;

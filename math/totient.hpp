@@ -1,6 +1,6 @@
 #pragma once
 
-#include "src/math/prime_factor.hpp"
+#include "math/prime_factor.hpp"
 
 long long totient(long long n) {
     auto pf = prime_factor(n);

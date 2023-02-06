@@ -1,7 +1,7 @@
 #pragma once
 
-#include "src/math/inv_mod.hpp"
-#include "src/math/pow_mod.hpp"
+#include "math/inv_mod.hpp"
+#include "math/pow_mod.hpp"
 
 // find minimum K s.t. X ^ K = Y (mod M) and K >= lb
 // O(sqrt(M))

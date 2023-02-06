@@ -1,6 +1,6 @@
 #pragma once
 
-#include "src/math/prime_table.hpp"
+#include "math/prime_table.hpp"
 
 std::vector<int> enumerate_primes(int n) {
     auto pt = prime_table(n);

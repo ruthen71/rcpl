@@ -1,6 +1,6 @@
 #pragma once
 
-#include "src/graph/graph_template.hpp"
+#include "graph/graph_template.hpp"
 
 template <class T> graph<T> read_graph(int N, int M, const bool weight = false, const bool directed = false, const int offset = 1) {
     graph<T> G(N);

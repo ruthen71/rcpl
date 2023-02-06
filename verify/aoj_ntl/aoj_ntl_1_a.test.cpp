@@ -2,7 +2,7 @@
 
 #include <bits/stdc++.h>
 
-#include "src/math/prime_factor.hpp"
+#include "math/prime_factor.hpp"
 
 int main() {
     long long n;

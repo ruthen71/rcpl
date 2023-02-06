@@ -1,6 +1,6 @@
 #pragma once
 
-#include "src/graph/graph_template.hpp"
+#include "graph/graph_template.hpp"
 
 template <class T, class Graph> std::pair<T, std::vector<edge<T>>> tree_diameter(Graph &G) {
     std::vector<int> to(G.size(), -1);

@@ -2,7 +2,7 @@
 
 #include <bits/stdc++.h>
 
-#include "src/dp/sliding_window_minimum.hpp"
+#include "dp/sliding_window_minimum.hpp"
 
 int main() {
     int N, L;

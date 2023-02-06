@@ -2,7 +2,7 @@
 
 #include <bits/stdc++.h>
 
-#include "src/dp/inversion_number.hpp"
+#include "dp/inversion_number.hpp"
 
 int main() {
     int N;

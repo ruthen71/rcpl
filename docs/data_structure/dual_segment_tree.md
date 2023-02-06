@@ -18,7 +18,7 @@
 工夫点は以下。
 
 - 毎回モノイドを書くのはめんどくさい、ということで、モノイド構造体をインクルードすれば済むようになっている
-    - `#include "src/algebra/dual_set.hpp"` などでインクルードできる
+    - `#include "algebra/dual_set.hpp"` などでインクルードできる
     - `dual_segment_tree<dual_set<int>> seg(n);` などで RUQ が使える
 - `ac-library` の `seg.get(i)` に相当する機能を `seg[i]` で実現している
 - マクロ不使用

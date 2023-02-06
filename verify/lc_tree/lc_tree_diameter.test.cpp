@@ -2,8 +2,8 @@
 
 #include <bits/stdc++.h>
 
-#include "src/graph/read_graph.hpp"
-#include "src/graph/tree_diameter.hpp"
+#include "graph/read_graph.hpp"
+#include "graph/tree_diameter.hpp"
 
 int main() {
     int N;

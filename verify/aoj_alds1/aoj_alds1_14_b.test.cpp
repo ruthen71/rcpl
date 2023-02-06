@@ -2,7 +2,7 @@
 
 #include <bits/stdc++.h>
 
-#include "src/string/rolling_hash.hpp"
+#include "string/rolling_hash.hpp"
 
 int main() {
     std::string T, P;

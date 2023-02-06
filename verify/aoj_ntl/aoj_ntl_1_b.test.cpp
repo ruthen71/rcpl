@@ -2,7 +2,7 @@
 
 #include <bits/stdc++.h>
 
-#include "src/math/pow_mod.hpp"
+#include "math/pow_mod.hpp"
 
 int main() {
     // a = 0

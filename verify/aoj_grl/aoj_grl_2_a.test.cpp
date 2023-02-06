@@ -2,8 +2,8 @@
 
 #include <bits/stdc++.h>
 
-#include "src/graph/kruskal.hpp"
-#include "src/graph/read_graph.hpp"
+#include "graph/kruskal.hpp"
+#include "graph/read_graph.hpp"
 
 int main() {
     int N, M;

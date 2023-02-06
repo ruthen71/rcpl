@@ -2,7 +2,7 @@
 
 #include <bits/stdc++.h>
 
-#include "src/graph/lowest_common_ancestor.hpp"
+#include "graph/lowest_common_ancestor.hpp"
 
 int main() {
     int N, Q;
