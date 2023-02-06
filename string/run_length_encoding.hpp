@@ -11,7 +11,3 @@ std::vector<std::pair<char, int>> run_length_encoding(std::string &S) {
     }
     return res;
 }
-
-/**
- * @brief Run Length Encoding (ランレングス圧縮)
- */

@@ -11,11 +11,11 @@ template <class T> Graph<T> read_graph(int N, int M, const bool weight = false, 
         if (weight) {
             T c;
             std::cin >> c;
-            if (!directed) G[b].push_back(edge(b, a, c, i));
+            if (!directed) G[b].push_back(Edge(b, a, c, i));
             G[a].push_back(Edge(a, b, c, i));
         } else {
             // c = 1
-            if (!directed) G[b].push_back(edge(b, a, T(1), i));
+            if (!directed) G[b].push_back(Edge(b, a, T(1), i));
             G[a].push_back(Edge(a, b, T(1), i));
         }
     }
