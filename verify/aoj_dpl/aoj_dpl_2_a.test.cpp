@@ -2,8 +2,8 @@
 
 #include <bits/stdc++.h>
 
-#include "src/dp/traveling_salesman_problem.hpp"
-#include "src/graph/read_graph.hpp"
+#include "dp/traveling_salesman_problem.hpp"
+#include "graph/read_graph.hpp"
 
 int main() {
     int N, M;

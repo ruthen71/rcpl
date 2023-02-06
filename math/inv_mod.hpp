@@ -1,6 +1,6 @@
 #pragma once
 
-#include "src/math/ext_gcd.hpp"
+#include "math/ext_gcd.hpp"
 
 long long inv_mod(long long a, long long mod) {
     a %= mod;

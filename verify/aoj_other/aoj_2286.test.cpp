@@ -2,8 +2,8 @@
 
 #include <bits/stdc++.h>
 
-#include "src/data_structure/cumulative_sum.hpp"
-#include "src/math/totient_table.hpp"
+#include "data_structure/cumulative_sum.hpp"
+#include "math/totient_table.hpp"
 
 int main() {
     auto ttt = totient_table(1000000);

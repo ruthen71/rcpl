@@ -1,6 +1,6 @@
 #pragma once
 
-#include "src/graph/graph_template.hpp"
+#include "graph/graph_template.hpp"
 
 template <class Graph> struct lowest_common_ancestor {
     std::vector<int> depth;

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "src/data_structure/unionfind.hpp"
-#include "src/graph/get_edges.hpp"
-#include "src/graph/graph_template.hpp"
+#include "data_structure/unionfind.hpp"
+#include "graph/get_edges.hpp"
+#include "graph/graph_template.hpp"
 
 template <class T, class Graph> std::pair<T, edges<T>> kruskal(Graph &G) {
     auto es = get_edges<T>(G);

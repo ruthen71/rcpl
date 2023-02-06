@@ -11,7 +11,7 @@
 工夫点は以下。
 
 - 毎回モノイドを書くのはめんどくさい、ということで、モノイド構造体をインクルードすれば済むようになっている
-    - `#include "src/algebra/lazy_min_set.hpp"` などでインクルードできる
+    - `#include "algebra/lazy_min_set.hpp"` などでインクルードできる
     - `lazy_segment_tree<lazy_min_set<int>> seg(n);` などで RMQ and RUQ が使える
 - `ac-library` の `seg.get(i)` に相当する機能を `seg[i]` で実現している
 - `seg[p] = op(seg[p], x)` とする `seg.chset(p, x)` を採用

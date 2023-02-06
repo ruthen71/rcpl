@@ -2,7 +2,7 @@
 
 #include <bits/stdc++.h>
 
-#include "src/data_structure/weighted_unionfind.hpp"
+#include "data_structure/weighted_unionfind.hpp"
 
 int main() {
     int N, Q;

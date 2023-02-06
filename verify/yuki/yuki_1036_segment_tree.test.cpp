@@ -2,8 +2,8 @@
 
 #include <bits/stdc++.h>
 
-#include "src/algebra/monoid_gcd.hpp"
-#include "src/data_structure/segment_tree.hpp"
+#include "algebra/monoid_gcd.hpp"
+#include "data_structure/segment_tree.hpp"
 
 int main() {
     int N;

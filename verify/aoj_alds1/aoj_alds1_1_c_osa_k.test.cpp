@@ -2,7 +2,7 @@
 
 #include <bits/stdc++.h>
 
-#include "src/math/osa_k.hpp"
+#include "math/osa_k.hpp"
 
 int main() {
     auto osak = osa_k(100000000);

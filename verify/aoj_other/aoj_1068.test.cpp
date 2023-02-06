@@ -2,8 +2,8 @@
 
 #include <bits/stdc++.h>
 
-#include "src/algebra/monoid_min.hpp"
-#include "src/data_structure/segment_tree_2d.hpp"
+#include "algebra/monoid_min.hpp"
+#include "data_structure/segment_tree_2d.hpp"
 
 void solve(int R, int C, int Q) {
     std::vector<std::vector<int>> A(R, std::vector<int>(C));

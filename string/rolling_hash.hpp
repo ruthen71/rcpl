@@ -1,6 +1,6 @@
 #pragma once
 
-#include "src/math/modint261.hpp"
+#include "math/modint261.hpp"
 
 template <class Mint> struct rolling_hash {
     std::vector<Mint> pwr;

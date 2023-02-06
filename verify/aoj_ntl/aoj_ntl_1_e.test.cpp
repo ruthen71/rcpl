@@ -2,7 +2,7 @@
 
 #include <bits/stdc++.h>
 
-#include "src/math/ext_gcd.hpp"
+#include "math/ext_gcd.hpp"
 
 int main() {
     long long a, b, x, y;

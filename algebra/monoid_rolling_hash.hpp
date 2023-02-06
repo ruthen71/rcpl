@@ -1,6 +1,6 @@
 #pragma once
 
-#include "src/string/rolling_hash.hpp"
+#include "string/rolling_hash.hpp"
 
 rolling_hash<modint261> rh;
 

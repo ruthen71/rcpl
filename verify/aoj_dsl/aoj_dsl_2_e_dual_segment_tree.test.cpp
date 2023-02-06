@@ -2,8 +2,8 @@
 
 #include <bits/stdc++.h>
 
-#include "src/algebra/dual_add.hpp"
-#include "src/data_structure/dual_segment_tree.hpp"
+#include "algebra/dual_add.hpp"
+#include "data_structure/dual_segment_tree.hpp"
 
 int main() {
     int N, Q;
