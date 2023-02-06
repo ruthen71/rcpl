@@ -77,12 +77,8 @@ data:
   - verify/aoj_alds1/aoj_alds1_14_b.test.cpp
 documentation_of: math/modint261.hpp
 layout: document
-title: ModInt ($\bmod 2^{61} $)
+title: ModInt $\pmod{2^{61}} $
 ---
 
 ## 参考文献
 - [安全で爆速なRollingHashの話](https://qiita.com/keymoon/items/11fac5627672a6d6a9f6) `a * b` を `z = a * b` として `(z >> 61) + (z & mod)` でできる理由など
-
-$(\mod 13)$
-
-あ

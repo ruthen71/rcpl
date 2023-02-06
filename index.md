@@ -177,7 +177,7 @@ data:
       title: math/inv_mod.hpp
     - icon: ':heavy_check_mark:'
       path: math/modint261.hpp
-      title: ModInt ($\bmod 2^{61} $)
+      title: ModInt $\pmod{2^{61}} $
     - icon: ':heavy_check_mark:'
       path: math/osa_k.hpp
       title: math/osa_k.hpp
