@@ -50,8 +50,3 @@ template <class T> struct cumulative_sum {
         return os;
     }
 };
-
-/**
- * @brief 累積和
- * @docs docs/data_structure/cumulative_sum.md
- */

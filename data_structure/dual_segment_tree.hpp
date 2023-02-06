@@ -68,8 +68,3 @@ template <class Dual> struct dual_segment_tree {
         lz[k] = Dual::id();
     }
 };
-
-/**
- * @brief Dual Segment Tree (双対セグメント木)
- * @docs docs/data_structure/dual_segment_tree.md
- */

@@ -126,8 +126,3 @@ template <class T, size_t n, size_t m = n> struct static_matrix {
 
     static_matrix operator/(const T &k) { return ((*this) /= k); }
 };
-
-/**
- * @brief Static Matrix (行列, サイズ固定)
- * @docs docs/data_structure/static_matrix.md
- */

@@ -29,8 +29,3 @@ traveling_salesman_problem(Graph &G, const T INF) {
     }
     return dp;
 }
-
-/**
- * @brief Traveling Salesman Problem (巡回セールスマン問題)
- * @docs docs/dp/traveling_salesman_problem.md
- */

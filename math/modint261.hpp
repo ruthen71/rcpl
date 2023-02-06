@@ -67,7 +67,3 @@ struct modint261 {
     friend bool operator==(const mint &lhs, const mint &rhs) { return lhs._v == rhs._v; }
     friend bool operator!=(const mint &lhs, const mint &rhs) { return lhs._v != rhs._v; }
 };
-
-/**
- * @docs docs/math/modint261.md
- */

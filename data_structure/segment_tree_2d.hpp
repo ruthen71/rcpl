@@ -103,8 +103,3 @@ template <class Monoid> struct segment_tree_2d {
     inline void update_bottom(int i, int j) { d[i][j] = Monoid::op(d[(i << 1) | 0][j], d[(i << 1) | 1][j]); }
     inline void update_else(int i, int j) { d[i][j] = Monoid::op(d[i][(j << 1) | 0], d[i][(j << 1) | 1]); }
 };
-
-/**
- * @brief 2D Segment Tree (2次元セグメント木)
- * @docs docs/data_structure/segment_tree_2d.md
- */

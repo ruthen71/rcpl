@@ -1,3 +1,8 @@
+---
+title: ローリングハッシュ
+documentation_of: ../algebra/monoid_rolling_hash.hpp
+---
+
 ## 使用例
 
 - [ABC285 F](https://atcoder.jp/contests/abc285/tasks/abc285_f)

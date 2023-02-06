@@ -44,8 +44,3 @@ template <class T> struct weighted_unionfind {
 
     void init(int n) { parents.assign(n, -1), diff_weight.assign(n, 0); }  // reset
 };
-
-/**
- * @brief Weighted UnionFind (重みつき UnionFind)
- * @docs docs/data_structure/weighted_unionfind.md
- */

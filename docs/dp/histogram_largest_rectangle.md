@@ -1,4 +1,7 @@
-## 概要
+---
+title: Histogram Largest Rectangle (ヒストグラムの最大長方形)
+documentation_of: ../dp/histogram_largest_rectangle.hpp
+---
 
 - ヒストグラムの最大長方形を求める
 - $ O(N) $

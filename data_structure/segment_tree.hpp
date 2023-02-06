@@ -110,8 +110,3 @@ template <class Monoid> struct segment_tree {
     std::vector<S> d;
     inline void update(int k) { d[k] = Monoid::op(d[k << 1], d[(k << 1) | 1]); }
 };
-
-/**
- * @brief Segment Tree (セグメント木)
- * @docs docs/data_structure/segment_tree.md
- */

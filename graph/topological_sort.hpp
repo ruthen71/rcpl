@@ -26,8 +26,3 @@ template <class Graph> std::vector<int> topological_sort(Graph &G) {
     }
     return res;
 }
-
-/**
- * @brief Topological Sort (トポロジカルソート)
- * @docs docs/graph/topological_sort.md
- */

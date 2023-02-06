@@ -47,8 +47,3 @@ std::vector<T> knapsack_limitations(const std::vector<int> &w, const std::vector
     }
     return dp;
 }
-
-/**
- * @brief Knapsack Limitations (個数制限付きナップサック問題)
- * @docs docs/dp/knapsack_limitations.md
- */

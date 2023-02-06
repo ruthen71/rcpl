@@ -1,5 +1,6 @@
-# UnionFind
-
-## 概要
+---
+title: UnionFind
+documentation_of: ../data_structure/unionfind.hpp
+---
 
 UnionFind とは、うにおんふぁいんどのことである。

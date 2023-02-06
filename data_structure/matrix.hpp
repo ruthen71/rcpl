@@ -122,7 +122,3 @@ template <class T> struct matrix {
 
     matrix operator/(const T &k) { return ((*this) /= k); }
 };
-
-/**
- * @brief Matrix (行列)
- */

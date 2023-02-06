@@ -14,8 +14,3 @@ template <class T> std::vector<T> sliding_window_minimum(const std::vector<T> &a
     }
     return res;
 }
-
-/**
- * @brief Sliding Window Minimum (スライド最小値)
- * @docs docs/dp/sliding_window_minimum.md
- */

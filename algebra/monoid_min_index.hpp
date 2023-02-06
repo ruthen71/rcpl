@@ -11,7 +11,3 @@ template <class T, bool left = true> struct monoid_min_index {
     }
     static constexpr S e() { return {std::numeric_limits<T>::max(), -1}; }
 };
-
-/**
- * @docs docs/algebra/monoid_min_index.md
- */

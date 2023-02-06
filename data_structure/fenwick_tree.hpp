@@ -40,8 +40,3 @@ template <class T> struct fenwick_tree {
         return os;
     }
 };
-
-/**
- * @brief Fenwick Tree (Binary Indexed Tree)
- * @docs docs/data_structure/fenwick_tree.md
- */

@@ -176,8 +176,3 @@ template <class Lazy> struct lazy_segment_tree {
         lz[k] = Lazy::id();
     }
 };
-
-/**
- * @brief Lazy Segment Tree (遅延セグメント木)
- * @docs docs/data_structure/lazy_segment_tree.md
- */

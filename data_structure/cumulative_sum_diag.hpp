@@ -49,8 +49,3 @@ template <class T, int delta = 1> struct cumulative_sum_diag {
         }
     }
 };
-
-/**
- * @brief 斜め累積和
- * @docs docs/data_structure/cumulative_sum_diag.md
- */

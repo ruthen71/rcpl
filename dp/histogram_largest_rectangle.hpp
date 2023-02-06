@@ -19,8 +19,3 @@ template <class T> T histogram_largest_rectangle(std::vector<T> &h) {
     for (int i = 0; i < n; i++) res = std::max(res, h[i] * (R[i] - L[i]));
     return res;
 }
-
-/**
- * @brief Histogram Largest Rectangle (ヒストグラムの最大長方形)
- * @docs docs/dp/histogram_largest_rectangle.md
- */

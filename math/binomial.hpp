@@ -52,8 +52,3 @@ template <class Mint> struct binomial {
         return res;
     }
 };
-
-/**
- * @brief Binomial (前計算あり二項係数)
- * @docs docs/math/binomial.md
- */
