@@ -17,8 +17,8 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"data_structure/unionfind.hpp\"\n\nstruct unionfind {\n \
-    \   std::vector<int> parents;\n\n    unionfind() {}\n    unionfind(int n) : parents(n,\
+  bundledCode: "#line 2 \"data_structure/unionfind.hpp\"\n\nstruct UnionFind {\n \
+    \   std::vector<int> parents;\n\n    UnionFind() {}\n    UnionFind(int n) : parents(n,\
     \ -1) {}\n\n    int leader(int x) { return parents[x] < 0 ? x : parents[x] = leader(parents[x]);\
     \ }\n\n    bool merge(int x, int y) {\n        x = leader(x), y = leader(y);\n\
     \        if (x == y) return false;\n        if (parents[x] > parents[y]) std::swap(x,\
@@ -26,21 +26,21 @@ data:
     \ true;\n    }\n\n    bool same(int x, int y) { return leader(x) == leader(y);\
     \ }\n\n    int size(int x) { return -parents[leader(x)]; }\n\n    void init(int\
     \ n) { parents.assign(n, -1); }  // reset\n};\n"
-  code: "#pragma once\n\nstruct unionfind {\n    std::vector<int> parents;\n\n   \
-    \ unionfind() {}\n    unionfind(int n) : parents(n, -1) {}\n\n    int leader(int\
+  code: "#pragma once\n\nstruct UnionFind {\n    std::vector<int> parents;\n\n   \
+    \ UnionFind() {}\n    UnionFind(int n) : parents(n, -1) {}\n\n    int leader(int\
     \ x) { return parents[x] < 0 ? x : parents[x] = leader(parents[x]); }\n\n    bool\
     \ merge(int x, int y) {\n        x = leader(x), y = leader(y);\n        if (x\
     \ == y) return false;\n        if (parents[x] > parents[y]) std::swap(x, y);\n\
     \        parents[x] += parents[y];\n        parents[y] = x;\n        return true;\n\
     \    }\n\n    bool same(int x, int y) { return leader(x) == leader(y); }\n\n \
     \   int size(int x) { return -parents[leader(x)]; }\n\n    void init(int n) {\
-    \ parents.assign(n, -1); }  // reset\n};\n"
+    \ parents.assign(n, -1); }  // reset\n};"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/unionfind.hpp
   requiredBy:
   - graph/kruskal.hpp
-  timestamp: '2023-02-06 19:13:58+09:00'
+  timestamp: '2023-02-06 23:12:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_data_structure/lc_unionfind.test.cpp

@@ -15,12 +15,12 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/dual_segment_tree.hpp\"\n\ntemplate <class\
-    \ Dual> struct dual_segment_tree {\n   public:\n    using F = typename Dual::value_type;\n\
-    \    dual_segment_tree(int n) : dual_segment_tree(std::vector<F>(n, Dual::id()))\
-    \ {}\n    dual_segment_tree(const std::vector<F>& v) : _n((int)v.size()) {\n \
-    \       log = 0;\n        while ((1U << log) < (unsigned int)(_n)) log++;\n  \
-    \      size = 1 << log;\n        lz = std::vector<F>(size << 1, Dual::id());\n\
-    \        for (int i = 0; i < _n; i++) lz[i + size] = v[i];\n    }\n\n    F operator[](int\
+    \ Dual> struct DualSegmentTree {\n   public:\n    using F = typename Dual::value_type;\n\
+    \    DualSegmentTree(int n) : DualSegmentTree(std::vector<F>(n, Dual::id())) {}\n\
+    \    DualSegmentTree(const std::vector<F>& v) : _n((int)v.size()) {\n        log\
+    \ = 0;\n        while ((1U << log) < (unsigned int)(_n)) log++;\n        size\
+    \ = 1 << log;\n        lz = std::vector<F>(size << 1, Dual::id());\n        for\
+    \ (int i = 0; i < _n; i++) lz[i + size] = v[i];\n    }\n\n    F operator[](int\
     \ p) {\n        assert(0 <= p and p < _n);\n        p += size;\n        for (int\
     \ i = log; i >= 1; i--) push(p >> i);  // \u4E0A\u304B\u3089\u4E0B\u3078\u4F1D\
     \u642C\n        return lz[p];\n    }\n\n    F get(int p) {\n        assert(0 <=\
@@ -41,9 +41,9 @@ data:
     \ k, const F& f) { lz[k] = Dual::composition(f, lz[k]); }\n    void push(int k)\
     \ {\n        all_apply(k << 1, lz[k]);\n        all_apply((k << 1) | 1, lz[k]);\n\
     \        lz[k] = Dual::id();\n    }\n};\n"
-  code: "#pragma once\n\ntemplate <class Dual> struct dual_segment_tree {\n   public:\n\
-    \    using F = typename Dual::value_type;\n    dual_segment_tree(int n) : dual_segment_tree(std::vector<F>(n,\
-    \ Dual::id())) {}\n    dual_segment_tree(const std::vector<F>& v) : _n((int)v.size())\
+  code: "#pragma once\n\ntemplate <class Dual> struct DualSegmentTree {\n   public:\n\
+    \    using F = typename Dual::value_type;\n    DualSegmentTree(int n) : DualSegmentTree(std::vector<F>(n,\
+    \ Dual::id())) {}\n    DualSegmentTree(const std::vector<F>& v) : _n((int)v.size())\
     \ {\n        log = 0;\n        while ((1U << log) < (unsigned int)(_n)) log++;\n\
     \        size = 1 << log;\n        lz = std::vector<F>(size << 1, Dual::id());\n\
     \        for (int i = 0; i < _n; i++) lz[i + size] = v[i];\n    }\n\n    F operator[](int\
@@ -66,12 +66,12 @@ data:
     \   private:\n    int _n, log, size;\n    std::vector<F> lz;\n    void all_apply(int\
     \ k, const F& f) { lz[k] = Dual::composition(f, lz[k]); }\n    void push(int k)\
     \ {\n        all_apply(k << 1, lz[k]);\n        all_apply((k << 1) | 1, lz[k]);\n\
-    \        lz[k] = Dual::id();\n    }\n};\n"
+    \        lz[k] = Dual::id();\n    }\n};"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/dual_segment_tree.hpp
   requiredBy: []
-  timestamp: '2023-02-06 19:13:58+09:00'
+  timestamp: '2023-02-06 23:12:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp

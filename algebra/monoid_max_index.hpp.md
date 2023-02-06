@@ -9,12 +9,12 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"algebra/monoid_max_index.hpp\"\n\ntemplate <class T, bool\
-    \ left = true> struct monoid_max_index {\n    using S = std::pair<T, int>;\n \
-    \   using value_type = S;\n    static constexpr S op(S a, S b) {\n        if (a.first\
+    \ left = true> struct MonoidMaxIndex {\n    using S = std::pair<T, int>;\n   \
+    \ using value_type = S;\n    static constexpr S op(S a, S b) {\n        if (a.first\
     \ > b.first) return a;\n        if (a.first < b.first) return b;\n        if (a.second\
     \ > b.second) std::swap(a, b);\n        return (left ? a : b);\n    }\n    static\
     \ constexpr S e() { return {std::numeric_limits<T>::lowest(), -1}; }\n};\n"
-  code: "#pragma once\n\ntemplate <class T, bool left = true> struct monoid_max_index\
+  code: "#pragma once\n\ntemplate <class T, bool left = true> struct MonoidMaxIndex\
     \ {\n    using S = std::pair<T, int>;\n    using value_type = S;\n    static constexpr\
     \ S op(S a, S b) {\n        if (a.first > b.first) return a;\n        if (a.first\
     \ < b.first) return b;\n        if (a.second > b.second) std::swap(a, b);\n  \
@@ -24,7 +24,7 @@ data:
   isVerificationFile: false
   path: algebra/monoid_max_index.hpp
   requiredBy: []
-  timestamp: '2023-02-06 19:40:21+09:00'
+  timestamp: '2023-02-06 23:12:05+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: algebra/monoid_max_index.hpp

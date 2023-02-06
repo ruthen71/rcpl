@@ -20,12 +20,12 @@ data:
   bundledCode: "#line 1 \"verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp\"\n\
     #define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_D\"\
     \n\n#include <bits/stdc++.h>\n\n#line 2 \"algebra/dual_set.hpp\"\n\ntemplate <class\
-    \ F> struct dual_set {\n    using value_type = F;\n    static constexpr F composition(F\
+    \ F> struct DualSet {\n    using value_type = F;\n    static constexpr F composition(F\
     \ f, F g) { return f == id() ? g : f; }\n    static constexpr F id() { return\
     \ std::numeric_limits<F>::max(); }\n};\n#line 2 \"data_structure/dual_segment_tree.hpp\"\
-    \n\ntemplate <class Dual> struct dual_segment_tree {\n   public:\n    using F\
-    \ = typename Dual::value_type;\n    dual_segment_tree(int n) : dual_segment_tree(std::vector<F>(n,\
-    \ Dual::id())) {}\n    dual_segment_tree(const std::vector<F>& v) : _n((int)v.size())\
+    \n\ntemplate <class Dual> struct DualSegmentTree {\n   public:\n    using F =\
+    \ typename Dual::value_type;\n    DualSegmentTree(int n) : DualSegmentTree(std::vector<F>(n,\
+    \ Dual::id())) {}\n    DualSegmentTree(const std::vector<F>& v) : _n((int)v.size())\
     \ {\n        log = 0;\n        while ((1U << log) < (unsigned int)(_n)) log++;\n\
     \        size = 1 << log;\n        lz = std::vector<F>(size << 1, Dual::id());\n\
     \        for (int i = 0; i < _n; i++) lz[i + size] = v[i];\n    }\n\n    F operator[](int\
@@ -49,7 +49,7 @@ data:
     \ k, const F& f) { lz[k] = Dual::composition(f, lz[k]); }\n    void push(int k)\
     \ {\n        all_apply(k << 1, lz[k]);\n        all_apply((k << 1) | 1, lz[k]);\n\
     \        lz[k] = Dual::id();\n    }\n};\n#line 7 \"verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp\"\
-    \n\nint main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    dual_segment_tree<dual_set<int>>\
+    \n\nint main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    DualSegmentTree<DualSet<int>>\
     \ seg(N);\n    while (Q--) {\n        int t;\n        std::cin >> t;\n       \
     \ if (t == 0) {\n            int l, r, x;\n            std::cin >> l >> r >> x;\n\
     \            seg.apply(l, r + 1, x);\n        } else {\n            int i;\n \
@@ -58,8 +58,8 @@ data:
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_D\"\
     \n\n#include <bits/stdc++.h>\n\n#include \"algebra/dual_set.hpp\"\n#include \"\
     data_structure/dual_segment_tree.hpp\"\n\nint main() {\n    int N, Q;\n    std::cin\
-    \ >> N >> Q;\n    dual_segment_tree<dual_set<int>> seg(N);\n    while (Q--) {\n\
-    \        int t;\n        std::cin >> t;\n        if (t == 0) {\n            int\
+    \ >> N >> Q;\n    DualSegmentTree<DualSet<int>> seg(N);\n    while (Q--) {\n \
+    \       int t;\n        std::cin >> t;\n        if (t == 0) {\n            int\
     \ l, r, x;\n            std::cin >> l >> r >> x;\n            seg.apply(l, r +\
     \ 1, x);\n        } else {\n            int i;\n            std::cin >> i;\n \
     \           std::cout << seg[i] << '\\n';\n        }\n    }\n    return 0;\n}\n"
@@ -69,7 +69,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp
   requiredBy: []
-  timestamp: '2023-02-06 19:13:58+09:00'
+  timestamp: '2023-02-06 23:12:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp

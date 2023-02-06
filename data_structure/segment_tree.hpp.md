@@ -18,9 +18,9 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/segment_tree.hpp\"\n\ntemplate <class Monoid>\
-    \ struct segment_tree {\n   public:\n    using S = typename Monoid::value_type;\n\
-    \    segment_tree() : segment_tree(0) {}\n    segment_tree(int n) : segment_tree(std::vector<S>(n,\
-    \ Monoid::e())) {}\n    segment_tree(const std::vector<S>& v) : _n((int)v.size())\
+    \ struct SegmentTree {\n   public:\n    using S = typename Monoid::value_type;\n\
+    \    SegmentTree() : SegmentTree(0) {}\n    SegmentTree(int n) : SegmentTree(std::vector<S>(n,\
+    \ Monoid::e())) {}\n    SegmentTree(const std::vector<S>& v) : _n((int)v.size())\
     \ {\n        log = 0;\n        while ((1U << log) < (unsigned int)(_n)) log++;\n\
     \        size = 1 << log;\n        d = std::vector<S>(size << 1, Monoid::e());\n\
     \        for (int i = 0; i < _n; i++) d[i + size] = v[i];\n        for (int i\
@@ -61,12 +61,12 @@ data:
     \ 0;\n    }\n\n   private:\n    int _n, log, size;\n    std::vector<S> d;\n  \
     \  inline void update(int k) { d[k] = Monoid::op(d[k << 1], d[(k << 1) | 1]);\
     \ }\n};\n"
-  code: "#pragma once\n\ntemplate <class Monoid> struct segment_tree {\n   public:\n\
-    \    using S = typename Monoid::value_type;\n    segment_tree() : segment_tree(0)\
-    \ {}\n    segment_tree(int n) : segment_tree(std::vector<S>(n, Monoid::e())) {}\n\
-    \    segment_tree(const std::vector<S>& v) : _n((int)v.size()) {\n        log\
-    \ = 0;\n        while ((1U << log) < (unsigned int)(_n)) log++;\n        size\
-    \ = 1 << log;\n        d = std::vector<S>(size << 1, Monoid::e());\n        for\
+  code: "#pragma once\n\ntemplate <class Monoid> struct SegmentTree {\n   public:\n\
+    \    using S = typename Monoid::value_type;\n    SegmentTree() : SegmentTree(0)\
+    \ {}\n    SegmentTree(int n) : SegmentTree(std::vector<S>(n, Monoid::e())) {}\n\
+    \    SegmentTree(const std::vector<S>& v) : _n((int)v.size()) {\n        log =\
+    \ 0;\n        while ((1U << log) < (unsigned int)(_n)) log++;\n        size =\
+    \ 1 << log;\n        d = std::vector<S>(size << 1, Monoid::e());\n        for\
     \ (int i = 0; i < _n; i++) d[i + size] = v[i];\n        for (int i = size - 1;\
     \ i >= 1; i--) {\n            update(i);\n        }\n    }\n\n    void set(int\
     \ p, const S& x) {\n        assert(0 <= p and p < _n);\n        p += size;\n \
@@ -104,12 +104,12 @@ data:
     \ r);  // 2\u3079\u304D\u307E\u305F\u306F0\u306E\u3068\u304Dfalse\n        return\
     \ 0;\n    }\n\n   private:\n    int _n, log, size;\n    std::vector<S> d;\n  \
     \  inline void update(int k) { d[k] = Monoid::op(d[k << 1], d[(k << 1) | 1]);\
-    \ }\n};\n"
+    \ }\n};"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/segment_tree.hpp
   requiredBy: []
-  timestamp: '2023-02-06 19:13:58+09:00'
+  timestamp: '2023-02-06 23:12:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp

@@ -12,10 +12,10 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/cumulative_sum_2d.hpp\"\n\ntemplate <class\
-    \ T> struct cumulative_sum_2d {\n    std::vector<std::vector<T>> cum;\n    int\
-    \ H, W;\n\n    cumulative_sum_2d(int W, int H) : H(H), W(W), cum(W + 1, std::vector<T>(H\
-    \ + 1, 0)) {}\n\n    cumulative_sum_2d(std::vector<std::vector<T>> &A) {\n   \
-    \     H = (int)A.size(), W = (int)A[0].size();\n        cum.assign(H + 1, std::vector<T>(W\
+    \ T> struct CumulativeSum2D {\n    std::vector<std::vector<T>> cum;\n    int H,\
+    \ W;\n\n    CumulativeSum2D(int W, int H) : H(H), W(W), cum(W + 1, std::vector<T>(H\
+    \ + 1, 0)) {}\n\n    CumulativeSum2D(std::vector<std::vector<T>> &A) {\n     \
+    \   H = (int)A.size(), W = (int)A[0].size();\n        cum.assign(H + 1, std::vector<T>(W\
     \ + 1, 0));\n        for (int i = 0; i < H; i++) {\n            for (int j = 0;\
     \ j < W; j++) {\n                cum[i + 1][j + 1] = A[i][j];\n            }\n\
     \        }\n        for (int i = 0; i < H + 1; i++) {\n            for (int j\
@@ -40,13 +40,13 @@ data:
     \      }\n        }\n    }\n\n    T operator()(int x, int y) {\n        assert(0\
     \ <= x and x < H and 0 <= y and y < W);\n        return cum[x + 1][y + 1];\n \
     \   }\n\n    // output\n    friend std::ostream &operator<<(std::ostream &os,\
-    \ const cumulative_sum_2d &A) {\n        for (int i = 0; i < (int)A.cum.size();\
+    \ const CumulativeSum2D &A) {\n        for (int i = 0; i < (int)A.cum.size();\
     \ i++) {\n            for (int j = 0; j < (int)A.cum[i].size(); j++) {\n     \
     \           os << A.cum[i][j] << \" \\n\"[j == (int)A.cum[i].size() - 1];\n  \
     \          }\n        }\n        return os;\n    }\n};\n"
-  code: "#pragma once\n\ntemplate <class T> struct cumulative_sum_2d {\n    std::vector<std::vector<T>>\
-    \ cum;\n    int H, W;\n\n    cumulative_sum_2d(int W, int H) : H(H), W(W), cum(W\
-    \ + 1, std::vector<T>(H + 1, 0)) {}\n\n    cumulative_sum_2d(std::vector<std::vector<T>>\
+  code: "#pragma once\n\ntemplate <class T> struct CumulativeSum2D {\n    std::vector<std::vector<T>>\
+    \ cum;\n    int H, W;\n\n    CumulativeSum2D(int W, int H) : H(H), W(W), cum(W\
+    \ + 1, std::vector<T>(H + 1, 0)) {}\n\n    CumulativeSum2D(std::vector<std::vector<T>>\
     \ &A) {\n        H = (int)A.size(), W = (int)A[0].size();\n        cum.assign(H\
     \ + 1, std::vector<T>(W + 1, 0));\n        for (int i = 0; i < H; i++) {\n   \
     \         for (int j = 0; j < W; j++) {\n                cum[i + 1][j + 1] = A[i][j];\n\
@@ -72,15 +72,15 @@ data:
     \      }\n        }\n    }\n\n    T operator()(int x, int y) {\n        assert(0\
     \ <= x and x < H and 0 <= y and y < W);\n        return cum[x + 1][y + 1];\n \
     \   }\n\n    // output\n    friend std::ostream &operator<<(std::ostream &os,\
-    \ const cumulative_sum_2d &A) {\n        for (int i = 0; i < (int)A.cum.size();\
+    \ const CumulativeSum2D &A) {\n        for (int i = 0; i < (int)A.cum.size();\
     \ i++) {\n            for (int j = 0; j < (int)A.cum[i].size(); j++) {\n     \
     \           os << A.cum[i][j] << \" \\n\"[j == (int)A.cum[i].size() - 1];\n  \
-    \          }\n        }\n        return os;\n    }\n};\n"
+    \          }\n        }\n        return os;\n    }\n};"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/cumulative_sum_2d.hpp
   requiredBy: []
-  timestamp: '2023-02-06 19:13:58+09:00'
+  timestamp: '2023-02-06 23:12:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_dsl/aoj_dsl_5_b.test.cpp

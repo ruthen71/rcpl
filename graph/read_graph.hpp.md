@@ -27,37 +27,37 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/read_graph.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
-    \n\ntemplate <class T> struct edge {\n    int from, to;\n    T cost;\n    int\
-    \ id;\n\n    edge() = default;\n    edge(int from, int to, T cost = 1, int id\
+    \n\ntemplate <class T> struct Edge {\n    int from, to;\n    T cost;\n    int\
+    \ id;\n\n    Edge() = default;\n    Edge(int from, int to, T cost = 1, int id\
     \ = -1) : from(from), to(to), cost(cost), id(id) {}\n\n    friend std::ostream\
-    \ &operator<<(std::ostream &os, const edge<T> &e) {\n        // { id : from ->\
+    \ &operator<<(std::ostream &os, const Edge<T> &e) {\n        // { id : from ->\
     \ to, cost }\n        return os << \"{ \" << e.id << \" : \" << e.from << \" ->\
     \ \" << e.to << \", \" << e.cost << \" }\";\n    }\n};\n\ntemplate <class T> using\
-    \ edges = std::vector<edge<T>>;\ntemplate <class T> using graph = std::vector<std::vector<edge<T>>>;\n\
-    #line 4 \"graph/read_graph.hpp\"\n\ntemplate <class T> graph<T> read_graph(int\
+    \ Edges = std::vector<Edge<T>>;\ntemplate <class T> using Graph = std::vector<std::vector<Edge<T>>>;\n\
+    #line 4 \"graph/read_graph.hpp\"\n\ntemplate <class T> Graph<T> read_graph(int\
     \ N, int M, const bool weight = false, const bool directed = false, const int\
-    \ offset = 1) {\n    graph<T> G(N);\n    for (int i = 0; i < M; i++) {\n     \
+    \ offset = 1) {\n    Graph<T> G(N);\n    for (int i = 0; i < M; i++) {\n     \
     \   int a, b;\n        std::cin >> a >> b;\n        a -= offset, b -= offset;\n\
     \        if (weight) {\n            T c;\n            std::cin >> c;\n       \
-    \     if (!directed) G[b].push_back(edge(b, a, c, i));\n            G[a].push_back(edge(a,\
+    \     if (!directed) G[b].push_back(Edge(b, a, c, i));\n            G[a].push_back(Edge(a,\
     \ b, c, i));\n        } else {\n            // c = 1\n            if (!directed)\
-    \ G[b].push_back(edge(b, a, T(1), i));\n            G[a].push_back(edge(a, b,\
+    \ G[b].push_back(Edge(b, a, T(1), i));\n            G[a].push_back(Edge(a, b,\
     \ T(1), i));\n        }\n    }\n    return G;\n}\n"
   code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\ntemplate <class\
-    \ T> graph<T> read_graph(int N, int M, const bool weight = false, const bool directed\
-    \ = false, const int offset = 1) {\n    graph<T> G(N);\n    for (int i = 0; i\
+    \ T> Graph<T> read_graph(int N, int M, const bool weight = false, const bool directed\
+    \ = false, const int offset = 1) {\n    Graph<T> G(N);\n    for (int i = 0; i\
     \ < M; i++) {\n        int a, b;\n        std::cin >> a >> b;\n        a -= offset,\
     \ b -= offset;\n        if (weight) {\n            T c;\n            std::cin\
-    \ >> c;\n            if (!directed) G[b].push_back(edge(b, a, c, i));\n      \
-    \      G[a].push_back(edge(a, b, c, i));\n        } else {\n            // c =\
-    \ 1\n            if (!directed) G[b].push_back(edge(b, a, T(1), i));\n       \
-    \     G[a].push_back(edge(a, b, T(1), i));\n        }\n    }\n    return G;\n}"
+    \ >> c;\n            if (!directed) G[b].push_back(Edge(b, a, c, i));\n      \
+    \      G[a].push_back(Edge(a, b, c, i));\n        } else {\n            // c =\
+    \ 1\n            if (!directed) G[b].push_back(Edge(b, a, T(1), i));\n       \
+    \     G[a].push_back(Edge(a, b, T(1), i));\n        }\n    }\n    return G;\n}"
   dependsOn:
   - graph/graph_template.hpp
   isVerificationFile: false
   path: graph/read_graph.hpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 23:29:04+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_tree/lc_tree_diameter.test.cpp

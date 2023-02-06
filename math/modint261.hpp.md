@@ -17,10 +17,10 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"math/modint261.hpp\"\n\nstruct modint261 {\n    static constexpr\
+  bundledCode: "#line 2 \"math/modint261.hpp\"\n\nstruct ModInt261 {\n    static constexpr\
     \ uint64_t m = (1ULL << 61) - 1;\n    using uint128_t = __uint128_t;\n    using\
-    \ mint = modint261;\n    uint64_t _v;\n\n    static constexpr uint64_t mod() {\
-    \ return m; }\n\n    modint261() : _v(0ULL) {}\n\n    template <class T> modint261(T\
+    \ mint = ModInt261;\n    uint64_t _v;\n\n    static constexpr uint64_t mod() {\
+    \ return m; }\n\n    ModInt261() : _v(0ULL) {}\n\n    template <class T> ModInt261(T\
     \ v) {\n        long long x = (long long)(v % (long long)mod());\n        if (x\
     \ < 0) x += mod();\n        _v = x;\n    }\n\n    uint64_t val() const { return\
     \ _v; }\n\n    mint &operator++() {\n        _v++;\n        if (_v == mod()) _v\
@@ -41,10 +41,10 @@ data:
     \ mint &lhs, const mint &rhs) { return mint(lhs) *= rhs; }\n    friend bool operator==(const\
     \ mint &lhs, const mint &rhs) { return lhs._v == rhs._v; }\n    friend bool operator!=(const\
     \ mint &lhs, const mint &rhs) { return lhs._v != rhs._v; }\n};\n"
-  code: "#pragma once\n\nstruct modint261 {\n    static constexpr uint64_t m = (1ULL\
-    \ << 61) - 1;\n    using uint128_t = __uint128_t;\n    using mint = modint261;\n\
+  code: "#pragma once\n\nstruct ModInt261 {\n    static constexpr uint64_t m = (1ULL\
+    \ << 61) - 1;\n    using uint128_t = __uint128_t;\n    using mint = ModInt261;\n\
     \    uint64_t _v;\n\n    static constexpr uint64_t mod() { return m; }\n\n   \
-    \ modint261() : _v(0ULL) {}\n\n    template <class T> modint261(T v) {\n     \
+    \ ModInt261() : _v(0ULL) {}\n\n    template <class T> ModInt261(T v) {\n     \
     \   long long x = (long long)(v % (long long)mod());\n        if (x < 0) x +=\
     \ mod();\n        _v = x;\n    }\n\n    uint64_t val() const { return _v; }\n\n\
     \    mint &operator++() {\n        _v++;\n        if (_v == mod()) _v = 0;\n \
@@ -71,7 +71,7 @@ data:
   requiredBy:
   - string/rolling_hash.hpp
   - algebra/monoid_rolling_hash.hpp
-  timestamp: '2023-02-06 19:48:41+09:00'
+  timestamp: '2023-02-06 23:12:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_alds1/aoj_alds1_14_b.test.cpp

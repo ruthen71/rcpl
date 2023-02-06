@@ -179,8 +179,8 @@ data:
       path: math/modint261.hpp
       title: ModInt $\pmod{2^{61}-1} $
     - icon: ':heavy_check_mark:'
-      path: math/osa_k.hpp
-      title: math/osa_k.hpp
+      path: math/osak.hpp
+      title: math/osak.hpp
     - icon: ':heavy_check_mark:'
       path: math/pow_mod.hpp
       title: math/pow_mod.hpp

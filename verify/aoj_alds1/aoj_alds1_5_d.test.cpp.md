@@ -20,10 +20,10 @@ data:
   bundledCode: "#line 1 \"verify/aoj_alds1/aoj_alds1_5_d.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_D\"\n\n\
     #include <bits/stdc++.h>\n\n#line 2 \"dp/inversion_number.hpp\"\n\n#line 2 \"\
-    data_structure/fenwick_tree.hpp\"\n\ntemplate <class T> struct fenwick_tree {\n\
-    \    int N;\n    std::vector<T> seg;\n    fenwick_tree(int N) : N(N), seg(N +\
-    \ 1, 0) {}\n    fenwick_tree(std::vector<T> &A) {\n        N = (int)A.size();\n\
-    \        seg.resize(N + 1);\n        for (int i = 0; i < N; i++) add(i, A[i]);\n\
+    data_structure/fenwick_tree.hpp\"\n\ntemplate <class T> struct FenwickTree {\n\
+    \    int N;\n    std::vector<T> seg;\n    FenwickTree(int N) : N(N), seg(N + 1,\
+    \ 0) {}\n    FenwickTree(std::vector<T> &A) {\n        N = (int)A.size();\n  \
+    \      seg.resize(N + 1);\n        for (int i = 0; i < N; i++) add(i, A[i]);\n\
     \    }\n    // A[i] += x\n    void add(int i, T x) {\n        assert(0 <= i and\
     \ i < N);\n        i++;  // 1-indexed\n        while (i <= N) {\n            seg[i]\
     \ += x;\n            i += i & -i;\n        }\n    }\n    // A[0] + ... + A[i -\
@@ -32,12 +32,12 @@ data:
     \ i & -i;\n        }\n        return s;\n    }\n    // A[a] + ... + A[b - 1]\n\
     \    T sum(int a, int b) const {\n        assert(0 <= a and a <= b and b <= N);\n\
     \        return sum(b) - sum(a);\n    }\n\n    // output\n    friend std::ostream\
-    \ &operator<<(std::ostream &os, const fenwick_tree &A) {\n        for (int i =\
+    \ &operator<<(std::ostream &os, const FenwickTree &A) {\n        for (int i =\
     \ 0; i < A.N; i++) os << A.sum(i, i + 1) << \" \\n\"[i == A.N - 1];\n        return\
     \ os;\n    }\n};\n#line 4 \"dp/inversion_number.hpp\"\n\ntemplate <class T> long\
     \ long inversion_number(std::vector<T>& A) {\n    auto B = A;\n    sort(B.begin(),\
     \ B.end());\n    B.erase(unique(B.begin(), B.end()), B.end());\n    int N = (int)B.size();\n\
-    \    fenwick_tree<int> fen(N);\n    long long ret = 0;\n    for (auto& ai : A)\
+    \    FenwickTree<int> fen(N);\n    long long ret = 0;\n    for (auto& ai : A)\
     \ {\n        int i = lower_bound(B.begin(), B.end(), ai) - B.begin();\n      \
     \  ret += fen.sum(i + 1, N);\n        fen.add(i, 1);\n    }\n    return ret;\n\
     }\n#line 6 \"verify/aoj_alds1/aoj_alds1_5_d.test.cpp\"\n\nint main() {\n    int\
@@ -55,7 +55,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_alds1/aoj_alds1_5_d.test.cpp
   requiredBy: []
-  timestamp: '2023-02-06 19:40:21+09:00'
+  timestamp: '2023-02-06 23:12:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_alds1/aoj_alds1_5_d.test.cpp

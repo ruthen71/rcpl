@@ -24,15 +24,15 @@ data:
   bundledCode: "#line 1 \"verify/aoj_grl/aoj_grl_1_b.test.cpp\"\n#define PROBLEM \"\
     https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_B\"\n\n#include\
     \ <bits/stdc++.h>\n\n#line 2 \"graph/bellman_ford.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
-    \n\ntemplate <class T> struct edge {\n    int from, to;\n    T cost;\n    int\
-    \ id;\n\n    edge() = default;\n    edge(int from, int to, T cost = 1, int id\
+    \n\ntemplate <class T> struct Edge {\n    int from, to;\n    T cost;\n    int\
+    \ id;\n\n    Edge() = default;\n    Edge(int from, int to, T cost = 1, int id\
     \ = -1) : from(from), to(to), cost(cost), id(id) {}\n\n    friend std::ostream\
-    \ &operator<<(std::ostream &os, const edge<T> &e) {\n        // { id : from ->\
+    \ &operator<<(std::ostream &os, const Edge<T> &e) {\n        // { id : from ->\
     \ to, cost }\n        return os << \"{ \" << e.id << \" : \" << e.from << \" ->\
     \ \" << e.to << \", \" << e.cost << \" }\";\n    }\n};\n\ntemplate <class T> using\
-    \ edges = std::vector<edge<T>>;\ntemplate <class T> using graph = std::vector<std::vector<edge<T>>>;\n\
-    #line 4 \"graph/bellman_ford.hpp\"\n\ntemplate <class T, class Graph>\nstd::tuple<std::vector<T>,\
-    \ std::vector<int>, std::vector<int>>  //\nbellman_ford(Graph &G, std::vector<int>\
+    \ Edges = std::vector<Edge<T>>;\ntemplate <class T> using Graph = std::vector<std::vector<Edge<T>>>;\n\
+    #line 4 \"graph/bellman_ford.hpp\"\n\ntemplate <class T>\nstd::tuple<std::vector<T>,\
+    \ std::vector<int>, std::vector<int>>  //\nbellman_ford(Graph<T> &G, std::vector<int>\
     \ &s, const T INF) {\n    int N = (int)G.size();\n    std::vector<T> dist(N, INF);\n\
     \    std::vector<int> par(N, -1), root(N, -1);\n\n    for (auto &v : s) {\n  \
     \      dist[v] = 0;\n        root[v] = v;\n    }\n    int loop_count = 0;\n\n\
@@ -44,35 +44,35 @@ data:
     \ = true;\n                    if (loop_count >= N) nd = -INF;\n             \
     \       dist[e.to] = nd;\n                }\n            }\n        }\n      \
     \  if (!update) break;\n    }\n    return {dist, par, root};\n}\n#line 2 \"graph/read_graph.hpp\"\
-    \n\n#line 4 \"graph/read_graph.hpp\"\n\ntemplate <class T> graph<T> read_graph(int\
+    \n\n#line 4 \"graph/read_graph.hpp\"\n\ntemplate <class T> Graph<T> read_graph(int\
     \ N, int M, const bool weight = false, const bool directed = false, const int\
-    \ offset = 1) {\n    graph<T> G(N);\n    for (int i = 0; i < M; i++) {\n     \
+    \ offset = 1) {\n    Graph<T> G(N);\n    for (int i = 0; i < M; i++) {\n     \
     \   int a, b;\n        std::cin >> a >> b;\n        a -= offset, b -= offset;\n\
     \        if (weight) {\n            T c;\n            std::cin >> c;\n       \
-    \     if (!directed) G[b].push_back(edge(b, a, c, i));\n            G[a].push_back(edge(a,\
+    \     if (!directed) G[b].push_back(Edge(b, a, c, i));\n            G[a].push_back(Edge(a,\
     \ b, c, i));\n        } else {\n            // c = 1\n            if (!directed)\
-    \ G[b].push_back(edge(b, a, T(1), i));\n            G[a].push_back(edge(a, b,\
+    \ G[b].push_back(Edge(b, a, T(1), i));\n            G[a].push_back(Edge(a, b,\
     \ T(1), i));\n        }\n    }\n    return G;\n}\n#line 7 \"verify/aoj_grl/aoj_grl_1_b.test.cpp\"\
-    \n\nint main() {\n    int N, M, r;\n    std::cin >> N >> M >> r;\n    graph<int>\
-    \ G = read_graph<int>(N, M, true, true, 0);\n    std::vector<int> s = {r};\n \
-    \   const int INF = 1 << 30;\n    auto [dist, par, root] = bellman_ford(G, s,\
-    \ INF);\n    int ans = *std::min_element(dist.begin(), dist.end());\n    if (ans\
-    \ == -INF) {\n        std::cout << \"NEGATIVE CYCLE\" << '\\n';\n    } else {\n\
-    \        for (int i = 0; i < N; i++) {\n            if (dist[i] == INF) {\n  \
-    \              std::cout << \"INF\" << '\\n';\n            } else {\n        \
-    \        std::cout << dist[i] << '\\n';\n            }\n        }\n    }\n   \
-    \ return 0;\n}\n"
+    \n\nint main() {\n    int N, M, r;\n    std::cin >> N >> M >> r;\n    auto G =\
+    \ read_graph<int>(N, M, true, true, 0);\n    std::vector<int> s = {r};\n    const\
+    \ int INF = 1 << 30;\n    auto [dist, par, root] = bellman_ford(G, s, INF);\n\
+    \    int ans = *std::min_element(dist.begin(), dist.end());\n    if (ans == -INF)\
+    \ {\n        std::cout << \"NEGATIVE CYCLE\" << '\\n';\n    } else {\n       \
+    \ for (int i = 0; i < N; i++) {\n            if (dist[i] == INF) {\n         \
+    \       std::cout << \"INF\" << '\\n';\n            } else {\n               \
+    \ std::cout << dist[i] << '\\n';\n            }\n        }\n    }\n    return\
+    \ 0;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_B\"\
     \n\n#include <bits/stdc++.h>\n\n#include \"graph/bellman_ford.hpp\"\n#include\
     \ \"graph/read_graph.hpp\"\n\nint main() {\n    int N, M, r;\n    std::cin >>\
-    \ N >> M >> r;\n    graph<int> G = read_graph<int>(N, M, true, true, 0);\n   \
-    \ std::vector<int> s = {r};\n    const int INF = 1 << 30;\n    auto [dist, par,\
-    \ root] = bellman_ford(G, s, INF);\n    int ans = *std::min_element(dist.begin(),\
-    \ dist.end());\n    if (ans == -INF) {\n        std::cout << \"NEGATIVE CYCLE\"\
-    \ << '\\n';\n    } else {\n        for (int i = 0; i < N; i++) {\n           \
-    \ if (dist[i] == INF) {\n                std::cout << \"INF\" << '\\n';\n    \
-    \        } else {\n                std::cout << dist[i] << '\\n';\n          \
-    \  }\n        }\n    }\n    return 0;\n}"
+    \ N >> M >> r;\n    auto G = read_graph<int>(N, M, true, true, 0);\n    std::vector<int>\
+    \ s = {r};\n    const int INF = 1 << 30;\n    auto [dist, par, root] = bellman_ford(G,\
+    \ s, INF);\n    int ans = *std::min_element(dist.begin(), dist.end());\n    if\
+    \ (ans == -INF) {\n        std::cout << \"NEGATIVE CYCLE\" << '\\n';\n    } else\
+    \ {\n        for (int i = 0; i < N; i++) {\n            if (dist[i] == INF) {\n\
+    \                std::cout << \"INF\" << '\\n';\n            } else {\n      \
+    \          std::cout << dist[i] << '\\n';\n            }\n        }\n    }\n \
+    \   return 0;\n}"
   dependsOn:
   - graph/bellman_ford.hpp
   - graph/graph_template.hpp
@@ -80,7 +80,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_grl/aoj_grl_1_b.test.cpp
   requiredBy: []
-  timestamp: '2023-02-06 19:40:21+09:00'
+  timestamp: '2023-02-06 23:29:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_grl/aoj_grl_1_b.test.cpp

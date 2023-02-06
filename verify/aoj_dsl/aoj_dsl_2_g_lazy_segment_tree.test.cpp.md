@@ -20,16 +20,16 @@ data:
   bundledCode: "#line 1 \"verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp\"\n\
     #define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G\"\
     \n\n#include <bits/stdc++.h>\n\n#line 2 \"algebra/lazy_sum_add.hpp\"\n\ntemplate\
-    \ <class T> struct lazy_sum_add {\n    using S = std::pair<T, int>;\n    using\
-    \ F = T;\n    using value_type_S = S;\n    using value_type_F = F;\n    static\
-    \ constexpr S op(S a, S b) { return {a.first + b.first, a.second + b.second};\
-    \ }\n    static constexpr S e() { return {0, 0}; }\n    static constexpr S mapping(F\
-    \ f, S x) { return {x.first + f * x.second, x.second}; }\n    static constexpr\
-    \ F composition(F f, F g) { return f + g; }\n    static constexpr F id() { return\
-    \ 0; }\n};\n#line 2 \"data_structure/lazy_segment_tree.hpp\"\n\ntemplate <class\
-    \ Lazy> struct lazy_segment_tree {\n   public:\n    using S = typename Lazy::value_type_S;\n\
-    \    using F = typename Lazy::value_type_F;\n    lazy_segment_tree(int n) : lazy_segment_tree(std::vector<S>(n,\
-    \ Lazy::e())) {}\n    lazy_segment_tree(const std::vector<S>& v) : _n((int)v.size())\
+    \ <class T> struct LazySumAdd {\n    using S = std::pair<T, int>;\n    using F\
+    \ = T;\n    using value_type_S = S;\n    using value_type_F = F;\n    static constexpr\
+    \ S op(S a, S b) { return {a.first + b.first, a.second + b.second}; }\n    static\
+    \ constexpr S e() { return {0, 0}; }\n    static constexpr S mapping(F f, S x)\
+    \ { return {x.first + f * x.second, x.second}; }\n    static constexpr F composition(F\
+    \ f, F g) { return f + g; }\n    static constexpr F id() { return 0; }\n};\n#line\
+    \ 2 \"data_structure/lazy_segment_tree.hpp\"\n\ntemplate <class Lazy> struct LazySegmentTree\
+    \ {\n   public:\n    using S = typename Lazy::value_type_S;\n    using F = typename\
+    \ Lazy::value_type_F;\n    LazySegmentTree(int n) : LazySegmentTree(std::vector<S>(n,\
+    \ Lazy::e())) {}\n    LazySegmentTree(const std::vector<S>& v) : _n((int)v.size())\
     \ {\n        log = 0;\n        while ((1U << log) < (unsigned int)(_n)) log++;\n\
     \        size = 1 << log;\n        d = std::vector<S>(size << 1, Lazy::e());\n\
     \        lz = std::vector<F>(size, Lazy::id());\n        for (int i = 0; i < _n;\
@@ -98,7 +98,7 @@ data:
     \ lz[k] = Lazy::composition(f, lz[k]);\n    }\n    void push(int k) {\n      \
     \  all_apply(k << 1, lz[k]);\n        all_apply((k << 1) | 1, lz[k]);\n      \
     \  lz[k] = Lazy::id();\n    }\n};\n#line 7 \"verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp\"\
-    \n\nint main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    lazy_segment_tree<lazy_sum_add<long\
+    \n\nint main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    LazySegmentTree<LazySumAdd<long\
     \ long>> seg(std::vector<std::pair<long long, int>>(N, {0, 1}));\n    while (Q--)\
     \ {\n        int t;\n        std::cin >> t;\n        if (t == 0) {\n         \
     \   int l, r, x;\n            std::cin >> l >> r >> x;\n            l--;\n   \
@@ -108,7 +108,7 @@ data:
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G\"\
     \n\n#include <bits/stdc++.h>\n\n#include \"algebra/lazy_sum_add.hpp\"\n#include\
     \ \"data_structure/lazy_segment_tree.hpp\"\n\nint main() {\n    int N, Q;\n  \
-    \  std::cin >> N >> Q;\n    lazy_segment_tree<lazy_sum_add<long long>> seg(std::vector<std::pair<long\
+    \  std::cin >> N >> Q;\n    LazySegmentTree<LazySumAdd<long long>> seg(std::vector<std::pair<long\
     \ long, int>>(N, {0, 1}));\n    while (Q--) {\n        int t;\n        std::cin\
     \ >> t;\n        if (t == 0) {\n            int l, r, x;\n            std::cin\
     \ >> l >> r >> x;\n            l--;\n            seg.apply(l, r, x);\n       \
@@ -121,7 +121,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp
   requiredBy: []
-  timestamp: '2023-02-06 19:13:58+09:00'
+  timestamp: '2023-02-06 23:12:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp

@@ -19,13 +19,13 @@ data:
     - https://judge.yosupo.jp/problem/staticrmq
   bundledCode: "#line 1 \"verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/staticrmq\"\n\n#include <bits/stdc++.h>\n\
-    \n#line 2 \"algebra/monoid_min.hpp\"\n\ntemplate <class S> struct monoid_min {\n\
+    \n#line 2 \"algebra/monoid_min.hpp\"\n\ntemplate <class S> struct MonoidMin {\n\
     \    using value_type = S;\n    static constexpr S op(S a, S b) { return std::min(a,\
     \ b); }\n    static constexpr S e() { return std::numeric_limits<S>::max(); }\n\
     };\n#line 2 \"data_structure/segment_tree.hpp\"\n\ntemplate <class Monoid> struct\
-    \ segment_tree {\n   public:\n    using S = typename Monoid::value_type;\n   \
-    \ segment_tree() : segment_tree(0) {}\n    segment_tree(int n) : segment_tree(std::vector<S>(n,\
-    \ Monoid::e())) {}\n    segment_tree(const std::vector<S>& v) : _n((int)v.size())\
+    \ SegmentTree {\n   public:\n    using S = typename Monoid::value_type;\n    SegmentTree()\
+    \ : SegmentTree(0) {}\n    SegmentTree(int n) : SegmentTree(std::vector<S>(n,\
+    \ Monoid::e())) {}\n    SegmentTree(const std::vector<S>& v) : _n((int)v.size())\
     \ {\n        log = 0;\n        while ((1U << log) < (unsigned int)(_n)) log++;\n\
     \        size = 1 << log;\n        d = std::vector<S>(size << 1, Monoid::e());\n\
     \        for (int i = 0; i < _n; i++) d[i + size] = v[i];\n        for (int i\
@@ -67,13 +67,13 @@ data:
     \  inline void update(int k) { d[k] = Monoid::op(d[k << 1], d[(k << 1) | 1]);\
     \ }\n};\n#line 7 \"verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp\"\
     \n\nint main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    std::vector<int>\
-    \ A(N);\n    for (int i = 0; i < N; i++) std::cin >> A[i];\n    segment_tree<monoid_min<int>>\
+    \ A(N);\n    for (int i = 0; i < N; i++) std::cin >> A[i];\n    SegmentTree<MonoidMin<int>>\
     \ seg(A);\n    while (Q--) {\n        int l, r;\n        std::cin >> l >> r;\n\
     \        std::cout << seg.prod(l, r) << '\\n';\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/staticrmq\"\n\n#include\
     \ <bits/stdc++.h>\n\n#include \"algebra/monoid_min.hpp\"\n#include \"data_structure/segment_tree.hpp\"\
     \n\nint main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    std::vector<int>\
-    \ A(N);\n    for (int i = 0; i < N; i++) std::cin >> A[i];\n    segment_tree<monoid_min<int>>\
+    \ A(N);\n    for (int i = 0; i < N; i++) std::cin >> A[i];\n    SegmentTree<MonoidMin<int>>\
     \ seg(A);\n    while (Q--) {\n        int l, r;\n        std::cin >> l >> r;\n\
     \        std::cout << seg.prod(l, r) << '\\n';\n    }\n    return 0;\n}"
   dependsOn:
@@ -82,7 +82,7 @@ data:
   isVerificationFile: true
   path: verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp
   requiredBy: []
-  timestamp: '2023-02-06 19:13:58+09:00'
+  timestamp: '2023-02-06 23:12:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp

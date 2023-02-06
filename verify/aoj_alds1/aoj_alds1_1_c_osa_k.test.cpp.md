@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: math/osa_k.hpp
-    title: math/osa_k.hpp
+    path: math/osak.hpp
+    title: math/osak.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -16,8 +16,8 @@ data:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_C
   bundledCode: "#line 1 \"verify/aoj_alds1/aoj_alds1_1_c_osa_k.test.cpp\"\n#define\
     \ PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_C\"\
-    \n\n#include <bits/stdc++.h>\n\n#line 2 \"math/osa_k.hpp\"\n\nstruct osa_k {\n\
-    \    int n;\n    std::vector<int> min_factor;\n\n    osa_k(int n) : n(n), min_factor(n\
+    \n\n#include <bits/stdc++.h>\n\n#line 2 \"math/osak.hpp\"\n\nstruct Osak {\n \
+    \   int n;\n    std::vector<int> min_factor;\n\n    Osak(int n) : n(n), min_factor(n\
     \ + 1) {\n        std::iota(min_factor.begin(), min_factor.end(), 0);\n      \
     \  if (n >= 0) min_factor[0] = -1;\n        if (n >= 1) min_factor[1] = -1;\n\
     \        for (int p = 2; p * p <= n; p++) {\n            if (min_factor[p] !=\
@@ -28,22 +28,22 @@ data:
     \ prime_factor(int x) {\n        assert(x <= n);\n        std::map<int, int> pf;\n\
     \        while (x > 1) {\n            pf[min_factor[x]]++;\n            x /= min_factor[x];\n\
     \        }\n        return pf;\n    }\n};\n#line 6 \"verify/aoj_alds1/aoj_alds1_1_c_osa_k.test.cpp\"\
-    \n\nint main() {\n    auto osak = osa_k(100000000);\n    int n;\n    std::cin\
-    \ >> n;\n    int ans = 0;\n    for (int i = 0; i < n; i++) {\n        int a;\n\
-    \        std::cin >> a;\n        ans += osak.is_prime(a);\n    }\n    std::cout\
+    \n\nint main() {\n    auto osak = Osak(100000000);\n    int n;\n    std::cin >>\
+    \ n;\n    int ans = 0;\n    for (int i = 0; i < n; i++) {\n        int a;\n  \
+    \      std::cin >> a;\n        ans += osak.is_prime(a);\n    }\n    std::cout\
     \ << ans << '\\n';\n    return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_C\"\
-    \n\n#include <bits/stdc++.h>\n\n#include \"math/osa_k.hpp\"\n\nint main() {\n\
-    \    auto osak = osa_k(100000000);\n    int n;\n    std::cin >> n;\n    int ans\
+    \n\n#include <bits/stdc++.h>\n\n#include \"math/osak.hpp\"\n\nint main() {\n \
+    \   auto osak = Osak(100000000);\n    int n;\n    std::cin >> n;\n    int ans\
     \ = 0;\n    for (int i = 0; i < n; i++) {\n        int a;\n        std::cin >>\
     \ a;\n        ans += osak.is_prime(a);\n    }\n    std::cout << ans << '\\n';\n\
     \    return 0;\n}"
   dependsOn:
-  - math/osa_k.hpp
+  - math/osak.hpp
   isVerificationFile: true
   path: verify/aoj_alds1/aoj_alds1_1_c_osa_k.test.cpp
   requiredBy: []
-  timestamp: '2023-02-06 17:52:27+09:00'
+  timestamp: '2023-02-06 23:12:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_alds1/aoj_alds1_1_c_osa_k.test.cpp

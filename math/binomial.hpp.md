@@ -8,8 +8,8 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"math/binomial.hpp\"\n\ntemplate <class Mint> struct binomial\
-    \ {\n    std::vector<Mint> f, g;\n\n    binomial(int N = 0) {\n        f.resize(1,\
+  bundledCode: "#line 2 \"math/binomial.hpp\"\n\ntemplate <class Mint> struct Binomial\
+    \ {\n    std::vector<Mint> f, g;\n\n    Binomial(int N = 0) {\n        f.resize(1,\
     \ Mint(1));\n        g.resize(1, Mint(1));\n        while (N >= (int)f.size())\
     \ extend();\n    }\n\n    void extend() {\n        int n = (int)f.size();\n  \
     \      int m = n * 2;\n        f.resize(m);\n        g.resize(m);\n        for\
@@ -26,8 +26,8 @@ data:
     \      Mint res = 1;\n        K = min(K, N - K);\n        for (int i = 1; i <=\
     \ K; i++) {\n            res *= N--;\n            res /= i;\n        }\n     \
     \   return res;\n    }\n};\n"
-  code: "#pragma once\n\ntemplate <class Mint> struct binomial {\n    std::vector<Mint>\
-    \ f, g;\n\n    binomial(int N = 0) {\n        f.resize(1, Mint(1));\n        g.resize(1,\
+  code: "#pragma once\n\ntemplate <class Mint> struct Binomial {\n    std::vector<Mint>\
+    \ f, g;\n\n    Binomial(int N = 0) {\n        f.resize(1, Mint(1));\n        g.resize(1,\
     \ Mint(1));\n        while (N >= (int)f.size()) extend();\n    }\n\n    void extend()\
     \ {\n        int n = (int)f.size();\n        int m = n * 2;\n        f.resize(m);\n\
     \        g.resize(m);\n        for (int i = n; i < m; i++) f[i] = f[i - 1] * Mint(i);\n\
@@ -47,7 +47,7 @@ data:
   isVerificationFile: false
   path: math/binomial.hpp
   requiredBy: []
-  timestamp: '2023-02-06 19:48:41+09:00'
+  timestamp: '2023-02-06 23:12:05+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/binomial.hpp

@@ -18,10 +18,10 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"string/rolling_hash.hpp\"\n\n#line 2 \"math/modint261.hpp\"\
-    \n\nstruct modint261 {\n    static constexpr uint64_t m = (1ULL << 61) - 1;\n\
-    \    using uint128_t = __uint128_t;\n    using mint = modint261;\n    uint64_t\
-    \ _v;\n\n    static constexpr uint64_t mod() { return m; }\n\n    modint261()\
-    \ : _v(0ULL) {}\n\n    template <class T> modint261(T v) {\n        long long\
+    \n\nstruct ModInt261 {\n    static constexpr uint64_t m = (1ULL << 61) - 1;\n\
+    \    using uint128_t = __uint128_t;\n    using mint = ModInt261;\n    uint64_t\
+    \ _v;\n\n    static constexpr uint64_t mod() { return m; }\n\n    ModInt261()\
+    \ : _v(0ULL) {}\n\n    template <class T> ModInt261(T v) {\n        long long\
     \ x = (long long)(v % (long long)mod());\n        if (x < 0) x += mod();\n   \
     \     _v = x;\n    }\n\n    uint64_t val() const { return _v; }\n\n    mint &operator++()\
     \ {\n        _v++;\n        if (_v == mod()) _v = 0;\n        return *this;\n\
@@ -42,15 +42,15 @@ data:
     \ mint &rhs) { return mint(lhs) *= rhs; }\n    friend bool operator==(const mint\
     \ &lhs, const mint &rhs) { return lhs._v == rhs._v; }\n    friend bool operator!=(const\
     \ mint &lhs, const mint &rhs) { return lhs._v != rhs._v; }\n};\n#line 4 \"string/rolling_hash.hpp\"\
-    \n\ntemplate <class Mint> struct rolling_hash {\n    std::vector<Mint> pwr;\n\
-    \    const Mint base;\n\n    static inline Mint generate_base() {\n        std::mt19937_64\
+    \n\ntemplate <class Mint> struct RollingHash {\n    std::vector<Mint> pwr;\n \
+    \   const Mint base;\n\n    static inline Mint generate_base() {\n        std::mt19937_64\
     \ mt(std::chrono::steady_clock::now().time_since_epoch().count());\n        std::uniform_int_distribution<uint64_t>\
     \ rand(1, Mint::mod() - 1);\n        return Mint(rand(mt));\n    }\n\n    void\
     \ extend() {\n        int n = pwr.size();\n        int m = n * 2;\n        pwr.resize(m);\n\
     \        for (int i = n; i < m; i++) pwr[i] = pwr[i - 1] * base;\n    }\n\n  \
-    \  rolling_hash(int N = 0, Mint base = generate_base()) : base(base) {\n     \
-    \   pwr.resize(1, Mint(1));\n        while (N >= (int)pwr.size()) extend();\n\
-    \    }\n\n    Mint power(int i) {  // return base ^ i\n        assert(i >= 0);\n\
+    \  RollingHash(int N = 0, Mint base = generate_base()) : base(base) {\n      \
+    \  pwr.resize(1, Mint(1));\n        while (N >= (int)pwr.size()) extend();\n \
+    \   }\n\n    Mint power(int i) {  // return base ^ i\n        assert(i >= 0);\n\
     \        while (i >= (int)pwr.size()) extend();\n        return pwr[i];\n    }\n\
     \n    std::vector<Mint> build(const std::string &s) const {\n        int N = (int)s.size();\n\
     \        std::vector<Mint> res(N + 1);\n        for (int i = 0; i < N; i++) {\n\
@@ -64,12 +64,12 @@ data:
     \ Mint combine(Mint h1, Mint h2, int h2len) { return h1 * power(h2len) + h2; }\n\
     };\n"
   code: "#pragma once\n\n#include \"math/modint261.hpp\"\n\ntemplate <class Mint>\
-    \ struct rolling_hash {\n    std::vector<Mint> pwr;\n    const Mint base;\n\n\
-    \    static inline Mint generate_base() {\n        std::mt19937_64 mt(std::chrono::steady_clock::now().time_since_epoch().count());\n\
+    \ struct RollingHash {\n    std::vector<Mint> pwr;\n    const Mint base;\n\n \
+    \   static inline Mint generate_base() {\n        std::mt19937_64 mt(std::chrono::steady_clock::now().time_since_epoch().count());\n\
     \        std::uniform_int_distribution<uint64_t> rand(1, Mint::mod() - 1);\n \
     \       return Mint(rand(mt));\n    }\n\n    void extend() {\n        int n =\
     \ pwr.size();\n        int m = n * 2;\n        pwr.resize(m);\n        for (int\
-    \ i = n; i < m; i++) pwr[i] = pwr[i - 1] * base;\n    }\n\n    rolling_hash(int\
+    \ i = n; i < m; i++) pwr[i] = pwr[i - 1] * base;\n    }\n\n    RollingHash(int\
     \ N = 0, Mint base = generate_base()) : base(base) {\n        pwr.resize(1, Mint(1));\n\
     \        while (N >= (int)pwr.size()) extend();\n    }\n\n    Mint power(int i)\
     \ {  // return base ^ i\n        assert(i >= 0);\n        while (i >= (int)pwr.size())\
@@ -90,7 +90,7 @@ data:
   path: string/rolling_hash.hpp
   requiredBy:
   - algebra/monoid_rolling_hash.hpp
-  timestamp: '2023-02-06 19:48:41+09:00'
+  timestamp: '2023-02-06 23:12:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_alds1/aoj_alds1_14_b.test.cpp

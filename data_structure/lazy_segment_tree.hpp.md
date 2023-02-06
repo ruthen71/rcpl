@@ -21,9 +21,9 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/lazy_segment_tree.hpp\"\n\ntemplate <class\
-    \ Lazy> struct lazy_segment_tree {\n   public:\n    using S = typename Lazy::value_type_S;\n\
-    \    using F = typename Lazy::value_type_F;\n    lazy_segment_tree(int n) : lazy_segment_tree(std::vector<S>(n,\
-    \ Lazy::e())) {}\n    lazy_segment_tree(const std::vector<S>& v) : _n((int)v.size())\
+    \ Lazy> struct LazySegmentTree {\n   public:\n    using S = typename Lazy::value_type_S;\n\
+    \    using F = typename Lazy::value_type_F;\n    LazySegmentTree(int n) : LazySegmentTree(std::vector<S>(n,\
+    \ Lazy::e())) {}\n    LazySegmentTree(const std::vector<S>& v) : _n((int)v.size())\
     \ {\n        log = 0;\n        while ((1U << log) < (unsigned int)(_n)) log++;\n\
     \        size = 1 << log;\n        d = std::vector<S>(size << 1, Lazy::e());\n\
     \        lz = std::vector<F>(size, Lazy::id());\n        for (int i = 0; i < _n;\
@@ -92,40 +92,40 @@ data:
     \ lz[k] = Lazy::composition(f, lz[k]);\n    }\n    void push(int k) {\n      \
     \  all_apply(k << 1, lz[k]);\n        all_apply((k << 1) | 1, lz[k]);\n      \
     \  lz[k] = Lazy::id();\n    }\n};\n"
-  code: "#pragma once\n\ntemplate <class Lazy> struct lazy_segment_tree {\n   public:\n\
+  code: "#pragma once\n\ntemplate <class Lazy> struct LazySegmentTree {\n   public:\n\
     \    using S = typename Lazy::value_type_S;\n    using F = typename Lazy::value_type_F;\n\
-    \    lazy_segment_tree(int n) : lazy_segment_tree(std::vector<S>(n, Lazy::e()))\
-    \ {}\n    lazy_segment_tree(const std::vector<S>& v) : _n((int)v.size()) {\n \
-    \       log = 0;\n        while ((1U << log) < (unsigned int)(_n)) log++;\n  \
-    \      size = 1 << log;\n        d = std::vector<S>(size << 1, Lazy::e());\n \
-    \       lz = std::vector<F>(size, Lazy::id());\n        for (int i = 0; i < _n;\
-    \ i++) d[i + size] = v[i];\n        for (int i = size - 1; i >= 1; i--) {\n  \
-    \          update(i);\n        }\n    }\n\n    void set(int p, const S& x) {\n\
-    \        assert(0 <= p and p < _n);\n        p += size;\n        for (int i =\
-    \ log; i >= 1; i--) push(p >> i);  // \u4E0A\u304B\u3089\u4E0B\u3078\u4F1D\u642C\
-    \n        d[p] = x;\n        for (int i = 1; i <= log; i++) update(p >> i);  //\
-    \ \u4E0B\u304B\u3089\u4E0A\u306B\u66F4\u65B0\n    }\n\n    void chset(int p, const\
-    \ S& x) {\n        assert(0 <= p and p < _n);\n        p += size;\n        for\
-    \ (int i = log; i >= 1; i--) push(p >> i);  // \u4E0A\u304B\u3089\u4E0B\u3078\u4F1D\
-    \u642C\n        d[p] = Lazy::op(d[p], x);\n        for (int i = 1; i <= log; i++)\
-    \ update(p >> i);  // \u4E0B\u304B\u3089\u4E0A\u306B\u66F4\u65B0\n    }\n\n  \
-    \  S operator[](int p) {\n        assert(0 <= p and p < _n);\n        p += size;\n\
-    \        for (int i = log; i >= 1; i--) push(p >> i);  // \u4E0A\u304B\u3089\u4E0B\
-    \u3078\u4F1D\u642C\n        return d[p];\n    }\n\n    S get(int p) {\n      \
-    \  assert(0 <= p and p < _n);\n        p += size;\n        for (int i = log; i\
-    \ >= 1; i--) push(p >> i);  // \u4E0A\u304B\u3089\u4E0B\u3078\u4F1D\u642C\n  \
-    \      return d[p];\n    }\n\n    S prod(int l, int r) {\n        assert(0 <=\
-    \ l and l <= r and r <= _n);\n        if (l == r) return Lazy::e();\n\n      \
-    \  l += size;\n        r += size;\n\n        for (int i = log; i >= 1; i--) {\n\
-    \            if (((l >> i) << i) != l) push(l >> i);\n            if (((r >> i)\
-    \ << i) != r) push((r - 1) >> i);\n        }\n\n        S sml = Lazy::e(), smr\
-    \ = Lazy::e();\n        while (l < r) {\n            if (l & 1) sml = Lazy::op(sml,\
-    \ d[l++]);\n            if (r & 1) smr = Lazy::op(d[--r], smr);\n            l\
-    \ >>= 1;\n            r >>= 1;\n        }\n        return Lazy::op(sml, smr);\n\
-    \    }\n\n    S all_prod() { return d[1]; }\n\n    void apply(int p, const F&\
-    \ f) {\n        assert(0 <= p and p < _n);\n        p += size;\n        for (int\
-    \ i = log; i >= 1; i--) push(p >> i);\n        d[p] = Lazy::mapping(f, d[p]);\n\
-    \        for (int i = 1; i <= log; i++) update(p >> i);\n    }\n\n    void apply(int\
+    \    LazySegmentTree(int n) : LazySegmentTree(std::vector<S>(n, Lazy::e())) {}\n\
+    \    LazySegmentTree(const std::vector<S>& v) : _n((int)v.size()) {\n        log\
+    \ = 0;\n        while ((1U << log) < (unsigned int)(_n)) log++;\n        size\
+    \ = 1 << log;\n        d = std::vector<S>(size << 1, Lazy::e());\n        lz =\
+    \ std::vector<F>(size, Lazy::id());\n        for (int i = 0; i < _n; i++) d[i\
+    \ + size] = v[i];\n        for (int i = size - 1; i >= 1; i--) {\n           \
+    \ update(i);\n        }\n    }\n\n    void set(int p, const S& x) {\n        assert(0\
+    \ <= p and p < _n);\n        p += size;\n        for (int i = log; i >= 1; i--)\
+    \ push(p >> i);  // \u4E0A\u304B\u3089\u4E0B\u3078\u4F1D\u642C\n        d[p] =\
+    \ x;\n        for (int i = 1; i <= log; i++) update(p >> i);  // \u4E0B\u304B\u3089\
+    \u4E0A\u306B\u66F4\u65B0\n    }\n\n    void chset(int p, const S& x) {\n     \
+    \   assert(0 <= p and p < _n);\n        p += size;\n        for (int i = log;\
+    \ i >= 1; i--) push(p >> i);  // \u4E0A\u304B\u3089\u4E0B\u3078\u4F1D\u642C\n\
+    \        d[p] = Lazy::op(d[p], x);\n        for (int i = 1; i <= log; i++) update(p\
+    \ >> i);  // \u4E0B\u304B\u3089\u4E0A\u306B\u66F4\u65B0\n    }\n\n    S operator[](int\
+    \ p) {\n        assert(0 <= p and p < _n);\n        p += size;\n        for (int\
+    \ i = log; i >= 1; i--) push(p >> i);  // \u4E0A\u304B\u3089\u4E0B\u3078\u4F1D\
+    \u642C\n        return d[p];\n    }\n\n    S get(int p) {\n        assert(0 <=\
+    \ p and p < _n);\n        p += size;\n        for (int i = log; i >= 1; i--) push(p\
+    \ >> i);  // \u4E0A\u304B\u3089\u4E0B\u3078\u4F1D\u642C\n        return d[p];\n\
+    \    }\n\n    S prod(int l, int r) {\n        assert(0 <= l and l <= r and r <=\
+    \ _n);\n        if (l == r) return Lazy::e();\n\n        l += size;\n        r\
+    \ += size;\n\n        for (int i = log; i >= 1; i--) {\n            if (((l >>\
+    \ i) << i) != l) push(l >> i);\n            if (((r >> i) << i) != r) push((r\
+    \ - 1) >> i);\n        }\n\n        S sml = Lazy::e(), smr = Lazy::e();\n    \
+    \    while (l < r) {\n            if (l & 1) sml = Lazy::op(sml, d[l++]);\n  \
+    \          if (r & 1) smr = Lazy::op(d[--r], smr);\n            l >>= 1;\n   \
+    \         r >>= 1;\n        }\n        return Lazy::op(sml, smr);\n    }\n\n \
+    \   S all_prod() { return d[1]; }\n\n    void apply(int p, const F& f) {\n   \
+    \     assert(0 <= p and p < _n);\n        p += size;\n        for (int i = log;\
+    \ i >= 1; i--) push(p >> i);\n        d[p] = Lazy::mapping(f, d[p]);\n       \
+    \ for (int i = 1; i <= log; i++) update(p >> i);\n    }\n\n    void apply(int\
     \ l, int r, const F& f) {\n        assert(0 <= l and l <= r and r <= _n);\n  \
     \      if (l == r) return;\n\n        l += size;\n        r += size;\n\n     \
     \   for (int i = log; i >= 1; i--) {\n            if (((l >> i) << i) != l) push(l\
@@ -163,12 +163,12 @@ data:
     \ const F& f) {\n        d[k] = Lazy::mapping(f, d[k]);\n        if (k < size)\
     \ lz[k] = Lazy::composition(f, lz[k]);\n    }\n    void push(int k) {\n      \
     \  all_apply(k << 1, lz[k]);\n        all_apply((k << 1) | 1, lz[k]);\n      \
-    \  lz[k] = Lazy::id();\n    }\n};\n"
+    \  lz[k] = Lazy::id();\n    }\n};"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/lazy_segment_tree.hpp
   requiredBy: []
-  timestamp: '2023-02-06 19:13:58+09:00'
+  timestamp: '2023-02-06 23:12:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_dsl/aoj_dsl_2_h_lazy_segment_tree.test.cpp

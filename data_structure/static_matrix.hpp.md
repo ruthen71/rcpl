@@ -9,108 +9,108 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/static_matrix.hpp\"\n\ntemplate <class T,\
-    \ size_t n, size_t m = n> struct static_matrix {\n    std::array<std::array<T,\
-    \ m>, n> A;\n\n    static_matrix() : A{{}} {}\n\n    static_matrix(T val) : A{{}}\
+    \ size_t n, size_t m = n> struct StaticMatrix {\n    std::array<std::array<T,\
+    \ m>, n> A;\n\n    StaticMatrix() : A{{}} {}\n\n    StaticMatrix(T val) : A{{}}\
     \ {\n        for (int i = 0; i < (int)n; i++) A[i].fill(val);\n    }\n\n    size_t\
     \ size() const { return n; }\n\n    int row() const { return (int)n; }\n\n   \
     \ int col() const { return (int)m; }\n\n    inline const std::array<T, m> &operator[](int\
     \ i) const { return A[i]; }  // read\n\n    inline std::array<T, m> &operator[](int\
-    \ i) { return A[i]; }  // write\n\n    static static_matrix E() {\n        assert(n\
-    \ == m);\n        static_matrix ret;\n        for (int i = 0; i < (int)n; i++)\
-    \ ret[i][i] = T(1);\n        return ret;\n    }\n\n    static_matrix &operator+=(const\
-    \ static_matrix &B) {\n        int N = row(), M = col();\n        assert(N ==\
-    \ B.row() && M == B.col());\n        for (int i = 0; i < N; i++) {\n         \
-    \   for (int j = 0; j < M; j++) {\n                (*this)[i][j] += B[i][j];\n\
-    \            }\n        }\n        return (*this);\n    }\n\n    static_matrix\
-    \ &operator-=(const static_matrix &B) {\n        int N = row(), M = col();\n \
-    \       assert(N == B.row() && M == B.col());\n        for (int i = 0; i < N;\
-    \ i++) {\n            for (int j = 0; j < M; j++) {\n                (*this)[i][j]\
-    \ -= B[i][j];\n            }\n        }\n        return (*this);\n    }\n\n  \
-    \  static_matrix &operator*=(const static_matrix &B) {\n        int N = row(),\
-    \ M = B.col(), L = B.row();\n        assert(L == col());\n        static_matrix\
-    \ C;\n        for (int i = 0; i < N; i++) {\n            for (int k = 0; k < L;\
-    \ k++) {\n                for (int j = 0; j < M; j++) {\n                    C[i][j]\
-    \ += (*this)[i][k] * B[k][j];\n                }\n            }\n        }\n \
-    \       A.swap(C.A);\n        return (*this);\n    }\n\n    static_matrix pow(long\
-    \ long k) {\n        assert(row() == col());\n        static_matrix B = static_matrix::E(),\
-    \ X = (*this);\n        while (k) {\n            if (k & 1) B *= X;\n        \
-    \    X *= X;\n            k >>= 1;\n        }\n        A.swap(B.A);\n        return\
-    \ (*this);\n    }\n\n    static_matrix operator+(const static_matrix &B) { return\
-    \ ((*this) += B); }\n\n    static_matrix operator-(const static_matrix &B) { return\
-    \ ((*this) -= B); }\n\n    static_matrix operator*(const static_matrix &B) { return\
-    \ ((*this) *= B); }\n\n    friend std::ostream &operator<<(std::ostream &os, static_matrix\
+    \ i) { return A[i]; }  // write\n\n    static StaticMatrix E() {\n        assert(n\
+    \ == m);\n        StaticMatrix ret;\n        for (int i = 0; i < (int)n; i++)\
+    \ ret[i][i] = T(1);\n        return ret;\n    }\n\n    StaticMatrix &operator+=(const\
+    \ StaticMatrix &B) {\n        int N = row(), M = col();\n        assert(N == B.row()\
+    \ && M == B.col());\n        for (int i = 0; i < N; i++) {\n            for (int\
+    \ j = 0; j < M; j++) {\n                (*this)[i][j] += B[i][j];\n          \
+    \  }\n        }\n        return (*this);\n    }\n\n    StaticMatrix &operator-=(const\
+    \ StaticMatrix &B) {\n        int N = row(), M = col();\n        assert(N == B.row()\
+    \ && M == B.col());\n        for (int i = 0; i < N; i++) {\n            for (int\
+    \ j = 0; j < M; j++) {\n                (*this)[i][j] -= B[i][j];\n          \
+    \  }\n        }\n        return (*this);\n    }\n\n    StaticMatrix &operator*=(const\
+    \ StaticMatrix &B) {\n        int N = row(), M = B.col(), L = B.row();\n     \
+    \   assert(L == col());\n        StaticMatrix C;\n        for (int i = 0; i <\
+    \ N; i++) {\n            for (int k = 0; k < L; k++) {\n                for (int\
+    \ j = 0; j < M; j++) {\n                    C[i][j] += (*this)[i][k] * B[k][j];\n\
+    \                }\n            }\n        }\n        A.swap(C.A);\n        return\
+    \ (*this);\n    }\n\n    StaticMatrix pow(long long k) {\n        assert(row()\
+    \ == col());\n        StaticMatrix B = StaticMatrix::E(), X = (*this);\n     \
+    \   while (k) {\n            if (k & 1) B *= X;\n            X *= X;\n       \
+    \     k >>= 1;\n        }\n        A.swap(B.A);\n        return (*this);\n   \
+    \ }\n\n    StaticMatrix operator+(const StaticMatrix &B) { return ((*this) +=\
+    \ B); }\n\n    StaticMatrix operator-(const StaticMatrix &B) { return ((*this)\
+    \ -= B); }\n\n    StaticMatrix operator*(const StaticMatrix &B) { return ((*this)\
+    \ *= B); }\n\n    friend std::ostream &operator<<(std::ostream &os, StaticMatrix\
     \ &A) {\n        int N = A.row(), M = A.col();\n        for (int i = 0; i < N;\
     \ i++) {\n            os << '[';\n            for (int j = 0; j < M; j++) os <<\
     \ A[i][j] << \" \\n\"[j == M - 1];\n        }\n        return (os);\n    }\n\n\
-    \    static_matrix &operator+=(const T &k) {\n        int N = row(), M = col();\n\
+    \    StaticMatrix &operator+=(const T &k) {\n        int N = row(), M = col();\n\
     \        for (int i = 0; i < N; i++)\n            for (int j = 0; j < M; j++)\
-    \ (*this)[i][j] += k;\n        return (*this);\n    }\n\n    static_matrix &operator-=(const\
+    \ (*this)[i][j] += k;\n        return (*this);\n    }\n\n    StaticMatrix &operator-=(const\
     \ T &k) {\n        int N = row(), M = col();\n        for (int i = 0; i < N; i++)\n\
     \            for (int j = 0; j < M; j++) (*this)[i][j] -= k;\n        return (*this);\n\
-    \    }\n\n    static_matrix &operator*=(const T &k) {\n        int N = row(),\
-    \ M = col();\n        for (int i = 0; i < N; i++)\n            for (int j = 0;\
-    \ j < M; j++) (*this)[i][j] *= k;\n        return (*this);\n    }\n\n    static_matrix\
+    \    }\n\n    StaticMatrix &operator*=(const T &k) {\n        int N = row(), M\
+    \ = col();\n        for (int i = 0; i < N; i++)\n            for (int j = 0; j\
+    \ < M; j++) (*this)[i][j] *= k;\n        return (*this);\n    }\n\n    StaticMatrix\
     \ &operator/=(const T &k) {\n        int N = row(), M = col();\n        for (int\
     \ i = 0; i < N; i++)\n            for (int j = 0; j < M; j++) (*this)[i][j] /=\
-    \ k;\n        return (*this);\n    }\n\n    static_matrix operator+(const T &k)\
-    \ { return ((*this) += k); }\n\n    static_matrix operator-(const T &k) { return\
-    \ ((*this) -= k); }\n\n    static_matrix operator*(const T &k) { return ((*this)\
-    \ *= k); }\n\n    static_matrix operator/(const T &k) { return ((*this) /= k);\
+    \ k;\n        return (*this);\n    }\n\n    StaticMatrix operator+(const T &k)\
+    \ { return ((*this) += k); }\n\n    StaticMatrix operator-(const T &k) { return\
+    \ ((*this) -= k); }\n\n    StaticMatrix operator*(const T &k) { return ((*this)\
+    \ *= k); }\n\n    StaticMatrix operator/(const T &k) { return ((*this) /= k);\
     \ }\n};\n"
-  code: "#pragma once\n\ntemplate <class T, size_t n, size_t m = n> struct static_matrix\
-    \ {\n    std::array<std::array<T, m>, n> A;\n\n    static_matrix() : A{{}} {}\n\
-    \n    static_matrix(T val) : A{{}} {\n        for (int i = 0; i < (int)n; i++)\
+  code: "#pragma once\n\ntemplate <class T, size_t n, size_t m = n> struct StaticMatrix\
+    \ {\n    std::array<std::array<T, m>, n> A;\n\n    StaticMatrix() : A{{}} {}\n\
+    \n    StaticMatrix(T val) : A{{}} {\n        for (int i = 0; i < (int)n; i++)\
     \ A[i].fill(val);\n    }\n\n    size_t size() const { return n; }\n\n    int row()\
     \ const { return (int)n; }\n\n    int col() const { return (int)m; }\n\n    inline\
     \ const std::array<T, m> &operator[](int i) const { return A[i]; }  // read\n\n\
     \    inline std::array<T, m> &operator[](int i) { return A[i]; }  // write\n\n\
-    \    static static_matrix E() {\n        assert(n == m);\n        static_matrix\
+    \    static StaticMatrix E() {\n        assert(n == m);\n        StaticMatrix\
     \ ret;\n        for (int i = 0; i < (int)n; i++) ret[i][i] = T(1);\n        return\
-    \ ret;\n    }\n\n    static_matrix &operator+=(const static_matrix &B) {\n   \
-    \     int N = row(), M = col();\n        assert(N == B.row() && M == B.col());\n\
+    \ ret;\n    }\n\n    StaticMatrix &operator+=(const StaticMatrix &B) {\n     \
+    \   int N = row(), M = col();\n        assert(N == B.row() && M == B.col());\n\
     \        for (int i = 0; i < N; i++) {\n            for (int j = 0; j < M; j++)\
     \ {\n                (*this)[i][j] += B[i][j];\n            }\n        }\n   \
-    \     return (*this);\n    }\n\n    static_matrix &operator-=(const static_matrix\
+    \     return (*this);\n    }\n\n    StaticMatrix &operator-=(const StaticMatrix\
     \ &B) {\n        int N = row(), M = col();\n        assert(N == B.row() && M ==\
     \ B.col());\n        for (int i = 0; i < N; i++) {\n            for (int j = 0;\
     \ j < M; j++) {\n                (*this)[i][j] -= B[i][j];\n            }\n  \
-    \      }\n        return (*this);\n    }\n\n    static_matrix &operator*=(const\
-    \ static_matrix &B) {\n        int N = row(), M = B.col(), L = B.row();\n    \
-    \    assert(L == col());\n        static_matrix C;\n        for (int i = 0; i\
-    \ < N; i++) {\n            for (int k = 0; k < L; k++) {\n                for\
-    \ (int j = 0; j < M; j++) {\n                    C[i][j] += (*this)[i][k] * B[k][j];\n\
+    \      }\n        return (*this);\n    }\n\n    StaticMatrix &operator*=(const\
+    \ StaticMatrix &B) {\n        int N = row(), M = B.col(), L = B.row();\n     \
+    \   assert(L == col());\n        StaticMatrix C;\n        for (int i = 0; i <\
+    \ N; i++) {\n            for (int k = 0; k < L; k++) {\n                for (int\
+    \ j = 0; j < M; j++) {\n                    C[i][j] += (*this)[i][k] * B[k][j];\n\
     \                }\n            }\n        }\n        A.swap(C.A);\n        return\
-    \ (*this);\n    }\n\n    static_matrix pow(long long k) {\n        assert(row()\
-    \ == col());\n        static_matrix B = static_matrix::E(), X = (*this);\n   \
-    \     while (k) {\n            if (k & 1) B *= X;\n            X *= X;\n     \
-    \       k >>= 1;\n        }\n        A.swap(B.A);\n        return (*this);\n \
-    \   }\n\n    static_matrix operator+(const static_matrix &B) { return ((*this)\
-    \ += B); }\n\n    static_matrix operator-(const static_matrix &B) { return ((*this)\
-    \ -= B); }\n\n    static_matrix operator*(const static_matrix &B) { return ((*this)\
-    \ *= B); }\n\n    friend std::ostream &operator<<(std::ostream &os, static_matrix\
+    \ (*this);\n    }\n\n    StaticMatrix pow(long long k) {\n        assert(row()\
+    \ == col());\n        StaticMatrix B = StaticMatrix::E(), X = (*this);\n     \
+    \   while (k) {\n            if (k & 1) B *= X;\n            X *= X;\n       \
+    \     k >>= 1;\n        }\n        A.swap(B.A);\n        return (*this);\n   \
+    \ }\n\n    StaticMatrix operator+(const StaticMatrix &B) { return ((*this) +=\
+    \ B); }\n\n    StaticMatrix operator-(const StaticMatrix &B) { return ((*this)\
+    \ -= B); }\n\n    StaticMatrix operator*(const StaticMatrix &B) { return ((*this)\
+    \ *= B); }\n\n    friend std::ostream &operator<<(std::ostream &os, StaticMatrix\
     \ &A) {\n        int N = A.row(), M = A.col();\n        for (int i = 0; i < N;\
     \ i++) {\n            os << '[';\n            for (int j = 0; j < M; j++) os <<\
     \ A[i][j] << \" \\n\"[j == M - 1];\n        }\n        return (os);\n    }\n\n\
-    \    static_matrix &operator+=(const T &k) {\n        int N = row(), M = col();\n\
+    \    StaticMatrix &operator+=(const T &k) {\n        int N = row(), M = col();\n\
     \        for (int i = 0; i < N; i++)\n            for (int j = 0; j < M; j++)\
-    \ (*this)[i][j] += k;\n        return (*this);\n    }\n\n    static_matrix &operator-=(const\
+    \ (*this)[i][j] += k;\n        return (*this);\n    }\n\n    StaticMatrix &operator-=(const\
     \ T &k) {\n        int N = row(), M = col();\n        for (int i = 0; i < N; i++)\n\
     \            for (int j = 0; j < M; j++) (*this)[i][j] -= k;\n        return (*this);\n\
-    \    }\n\n    static_matrix &operator*=(const T &k) {\n        int N = row(),\
-    \ M = col();\n        for (int i = 0; i < N; i++)\n            for (int j = 0;\
-    \ j < M; j++) (*this)[i][j] *= k;\n        return (*this);\n    }\n\n    static_matrix\
+    \    }\n\n    StaticMatrix &operator*=(const T &k) {\n        int N = row(), M\
+    \ = col();\n        for (int i = 0; i < N; i++)\n            for (int j = 0; j\
+    \ < M; j++) (*this)[i][j] *= k;\n        return (*this);\n    }\n\n    StaticMatrix\
     \ &operator/=(const T &k) {\n        int N = row(), M = col();\n        for (int\
     \ i = 0; i < N; i++)\n            for (int j = 0; j < M; j++) (*this)[i][j] /=\
-    \ k;\n        return (*this);\n    }\n\n    static_matrix operator+(const T &k)\
-    \ { return ((*this) += k); }\n\n    static_matrix operator-(const T &k) { return\
-    \ ((*this) -= k); }\n\n    static_matrix operator*(const T &k) { return ((*this)\
-    \ *= k); }\n\n    static_matrix operator/(const T &k) { return ((*this) /= k);\
-    \ }\n};\n"
+    \ k;\n        return (*this);\n    }\n\n    StaticMatrix operator+(const T &k)\
+    \ { return ((*this) += k); }\n\n    StaticMatrix operator-(const T &k) { return\
+    \ ((*this) -= k); }\n\n    StaticMatrix operator*(const T &k) { return ((*this)\
+    \ *= k); }\n\n    StaticMatrix operator/(const T &k) { return ((*this) /= k);\
+    \ }\n};"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/static_matrix.hpp
   requiredBy: []
-  timestamp: '2023-02-06 19:13:58+09:00'
+  timestamp: '2023-02-06 23:12:05+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: data_structure/static_matrix.hpp
