@@ -17,7 +17,7 @@ int main() {
     rui.build();
     int ans = 0;
     for (int i = 0; i < M; i++)
-        for (int j = 0; j < M; j++) ans = max(ans, rui(i, j));
+        for (int j = 0; j < M; j++) ans = std::max(ans, rui(i, j));
     std::cout << ans << '\n';
     return 0;
 }
