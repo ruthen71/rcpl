@@ -1,6 +1,6 @@
 ---
 title: Dijkstra's algorithm (ダイクストラ法)
-documentation_of: ./graph/dijkstra.hpp
+documentation_of: //graph/dijkstra.hpp
 ---
 
 - 多始点スタートに対応

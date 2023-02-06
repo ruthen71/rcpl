@@ -1,6 +1,6 @@
 ---
 title: ModInt ($ \mod = 2^{61} $)
-documentation_of: ./math/modint261.hpp
+documentation_of: //math/modint261.hpp
 ---
 
 ## 参考文献

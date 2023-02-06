@@ -1,6 +1,6 @@
 ---
 title: 累積和
-documentation_of: ./data_structure/cumulative_sum.hpp
+documentation_of: //data_structure/cumulative_sum.hpp
 ---
 
 

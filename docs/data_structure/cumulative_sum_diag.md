@@ -1,6 +1,6 @@
 ---
 title: 斜め累積和
-documentation_of: ./data_structure/cumulative_sum_diag.hpp
+documentation_of: //data_structure/cumulative_sum_diag.hpp
 ---
 
 - 閉区間なので注意
