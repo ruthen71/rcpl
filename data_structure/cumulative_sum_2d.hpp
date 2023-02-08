@@ -1,14 +1,14 @@
 #pragma once
 
 template <class T> struct CumulativeSum2D {
-    std::vector<std::vector<T>> cum;
-    int H, W;
+   public:
+    CumulativeSum2D() = default;
 
-    CumulativeSum2D(int W, int H) : H(H), W(W), cum(W + 1, std::vector<T>(H + 1, 0)) {}
+    CumulativeSum2D(int W, int H) : H(H), W(W), cum(W + 1, std::vector<T>(H + 1, T(0))) {}
 
     CumulativeSum2D(std::vector<std::vector<T>> &A) {
         H = (int)A.size(), W = (int)A[0].size();
-        cum.assign(H + 1, std::vector<T>(W + 1, 0));
+        cum.assign(H + 1, std::vector<T>(W + 1, T(0)));
         for (int i = 0; i < H; i++) {
             for (int j = 0; j < W; j++) {
                 cum[i + 1][j + 1] = A[i][j];
@@ -48,7 +48,7 @@ template <class T> struct CumulativeSum2D {
     }
 
     // (i, j) \in [lx, ly) x [rx, ry) cum[i][j] += z;
-    void imos(int lx, int ly, int rx, int ry, T z = 1) {
+    void imos(int lx, int ly, int rx, int ry, T z = T(1)) {
         add(lx, ly, z);
         add(lx, ry, -z);
         add(rx, ly, -z);
@@ -68,6 +68,11 @@ template <class T> struct CumulativeSum2D {
         }
     }
 
+    T get(int x, int y) {
+        assert(0 <= x and x < H and 0 <= y and y < W);
+        return cum[x + 1][y + 1];
+    }
+
     T operator()(int x, int y) {
         assert(0 <= x and x < H and 0 <= y and y < W);
         return cum[x + 1][y + 1];
@@ -77,9 +82,13 @@ template <class T> struct CumulativeSum2D {
     friend std::ostream &operator<<(std::ostream &os, const CumulativeSum2D &A) {
         for (int i = 0; i < (int)A.cum.size(); i++) {
             for (int j = 0; j < (int)A.cum[i].size(); j++) {
-                os << A.cum[i][j] << " \n"[j == (int)A.cum[i].size() - 1];
+                os << A.cum[i][j] << " \n"[j + 1 == (int)A.cum[i].size()];
             }
         }
         return os;
     }
+
+   private:
+    int H, W;
+    std::vector<std::vector<T>> cum;
 };
