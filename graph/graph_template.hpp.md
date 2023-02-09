@@ -63,17 +63,18 @@ data:
     \ Edge {\n    int from, to;\n    T cost;\n    int id;\n\n    Edge() = default;\n\
     \    Edge(int from, int to, T cost = 1, int id = -1) : from(from), to(to), cost(cost),\
     \ id(id) {}\n\n    friend std::ostream &operator<<(std::ostream &os, const Edge<T>\
-    \ &e) {\n        // { id : from -> to, cost }\n        return os << \"{ \" <<\
-    \ e.id << \" : \" << e.from << \" -> \" << e.to << \", \" << e.cost << \" }\"\
-    ;\n    }\n};\n\ntemplate <class T> using Edges = std::vector<Edge<T>>;\ntemplate\
-    \ <class T> using Graph = std::vector<std::vector<Edge<T>>>;\n"
+    \ &e) {\n        // output format: \"{ id : from -> to, cost }\"\n        return\
+    \ os << \"{ \" << e.id << \" : \" << e.from << \" -> \" << e.to << \", \" << e.cost\
+    \ << \" }\";\n    }\n};\n\ntemplate <class T> using Edges = std::vector<Edge<T>>;\n\
+    template <class T> using Graph = std::vector<std::vector<Edge<T>>>;\n"
   code: "#pragma once\n\ntemplate <class T> struct Edge {\n    int from, to;\n   \
     \ T cost;\n    int id;\n\n    Edge() = default;\n    Edge(int from, int to, T\
     \ cost = 1, int id = -1) : from(from), to(to), cost(cost), id(id) {}\n\n    friend\
-    \ std::ostream &operator<<(std::ostream &os, const Edge<T> &e) {\n        // {\
-    \ id : from -> to, cost }\n        return os << \"{ \" << e.id << \" : \" << e.from\
-    \ << \" -> \" << e.to << \", \" << e.cost << \" }\";\n    }\n};\n\ntemplate <class\
-    \ T> using Edges = std::vector<Edge<T>>;\ntemplate <class T> using Graph = std::vector<std::vector<Edge<T>>>;\n"
+    \ std::ostream &operator<<(std::ostream &os, const Edge<T> &e) {\n        // output\
+    \ format: \"{ id : from -> to, cost }\"\n        return os << \"{ \" << e.id <<\
+    \ \" : \" << e.from << \" -> \" << e.to << \", \" << e.cost << \" }\";\n    }\n\
+    };\n\ntemplate <class T> using Edges = std::vector<Edge<T>>;\ntemplate <class\
+    \ T> using Graph = std::vector<std::vector<Edge<T>>>;\n"
   dependsOn: []
   isVerificationFile: false
   path: graph/graph_template.hpp
@@ -88,7 +89,7 @@ data:
   - graph/bfs01.hpp
   - graph/read_graph.hpp
   - dp/traveling_salesman_problem.hpp
-  timestamp: '2023-02-06 23:12:05+09:00'
+  timestamp: '2023-02-10 01:10:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_tree/lc_lowest_common_ancestor.test.cpp

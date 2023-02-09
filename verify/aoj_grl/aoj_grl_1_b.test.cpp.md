@@ -27,24 +27,25 @@ data:
     \n\ntemplate <class T> struct Edge {\n    int from, to;\n    T cost;\n    int\
     \ id;\n\n    Edge() = default;\n    Edge(int from, int to, T cost = 1, int id\
     \ = -1) : from(from), to(to), cost(cost), id(id) {}\n\n    friend std::ostream\
-    \ &operator<<(std::ostream &os, const Edge<T> &e) {\n        // { id : from ->\
-    \ to, cost }\n        return os << \"{ \" << e.id << \" : \" << e.from << \" ->\
-    \ \" << e.to << \", \" << e.cost << \" }\";\n    }\n};\n\ntemplate <class T> using\
-    \ Edges = std::vector<Edge<T>>;\ntemplate <class T> using Graph = std::vector<std::vector<Edge<T>>>;\n\
-    #line 4 \"graph/bellman_ford.hpp\"\n\ntemplate <class T>\nstd::tuple<std::vector<T>,\
-    \ std::vector<int>, std::vector<int>>  //\nbellman_ford(Graph<T> &G, std::vector<int>\
-    \ &s, const T INF) {\n    int N = (int)G.size();\n    std::vector<T> dist(N, INF);\n\
-    \    std::vector<int> par(N, -1), root(N, -1);\n\n    for (auto &v : s) {\n  \
-    \      dist[v] = 0;\n        root[v] = v;\n    }\n    int loop_count = 0;\n\n\
-    \    while (true) {\n        loop_count++;\n        bool update = false;\n   \
-    \     for (int cur = 0; cur < N; cur++) {\n            if (dist[cur] == INF) continue;\n\
-    \            for (auto &e : G[cur]) {\n                T nd = std::max(-INF, dist[cur]\
-    \ + e.cost);\n                if (dist[e.to] > nd) {\n                    par[e.to]\
-    \ = cur;\n                    root[e.to] = root[cur];\n                    update\
-    \ = true;\n                    if (loop_count >= N) nd = -INF;\n             \
-    \       dist[e.to] = nd;\n                }\n            }\n        }\n      \
-    \  if (!update) break;\n    }\n    return {dist, par, root};\n}\n#line 2 \"graph/read_graph.hpp\"\
-    \n\n#line 4 \"graph/read_graph.hpp\"\n\ntemplate <class T> Graph<T> read_graph(int\
+    \ &operator<<(std::ostream &os, const Edge<T> &e) {\n        // output format:\
+    \ \"{ id : from -> to, cost }\"\n        return os << \"{ \" << e.id << \" : \"\
+    \ << e.from << \" -> \" << e.to << \", \" << e.cost << \" }\";\n    }\n};\n\n\
+    template <class T> using Edges = std::vector<Edge<T>>;\ntemplate <class T> using\
+    \ Graph = std::vector<std::vector<Edge<T>>>;\n#line 4 \"graph/bellman_ford.hpp\"\
+    \n\ntemplate <class T>\nstd::tuple<std::vector<T>, std::vector<int>, std::vector<int>>\
+    \  //\nbellman_ford(Graph<T> &G, std::vector<int> &s, const T INF) {\n    int\
+    \ N = (int)G.size();\n    std::vector<T> dist(N, INF);\n    std::vector<int> par(N,\
+    \ -1), root(N, -1);\n\n    for (auto &v : s) {\n        dist[v] = 0;\n       \
+    \ root[v] = v;\n    }\n    int loop_count = 0;\n\n    while (true) {\n       \
+    \ loop_count++;\n        bool update = false;\n        for (int cur = 0; cur <\
+    \ N; cur++) {\n            if (dist[cur] == INF) continue;\n            for (auto\
+    \ &e : G[cur]) {\n                T nd = std::max(-INF, dist[cur] + e.cost);\n\
+    \                if (dist[e.to] > nd) {\n                    par[e.to] = cur;\n\
+    \                    root[e.to] = root[cur];\n                    update = true;\n\
+    \                    if (loop_count >= N) nd = -INF;\n                    dist[e.to]\
+    \ = nd;\n                }\n            }\n        }\n        if (!update) break;\n\
+    \    }\n    return {dist, par, root};\n}\n#line 2 \"graph/read_graph.hpp\"\n\n\
+    #line 4 \"graph/read_graph.hpp\"\n\ntemplate <class T> Graph<T> read_graph(int\
     \ N, int M, const bool weight = false, const bool directed = false, const int\
     \ offset = 1) {\n    Graph<T> G(N);\n    for (int i = 0; i < M; i++) {\n     \
     \   int a, b;\n        std::cin >> a >> b;\n        a -= offset, b -= offset;\n\
@@ -80,7 +81,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_grl/aoj_grl_1_b.test.cpp
   requiredBy: []
-  timestamp: '2023-02-06 23:29:04+09:00'
+  timestamp: '2023-02-10 01:10:41+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_grl/aoj_grl_1_b.test.cpp
