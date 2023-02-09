@@ -9,7 +9,7 @@ template <class T> struct Edge {
     Edge(int from, int to, T cost = 1, int id = -1) : from(from), to(to), cost(cost), id(id) {}
 
     friend std::ostream &operator<<(std::ostream &os, const Edge<T> &e) {
-        // { id : from -> to, cost }
+        // output format: "{ id : from -> to, cost }"
         return os << "{ " << e.id << " : " << e.from << " -> " << e.to << ", " << e.cost << " }";
     }
 };
