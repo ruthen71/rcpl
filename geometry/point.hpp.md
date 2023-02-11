@@ -8,6 +8,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/ccw.hpp
     title: geometry/ccw.hpp
+  - icon: ':warning:'
+    path: geometry/circle.hpp
+    title: geometry/circle.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/is_orthogonal.hpp
     title: geometry/is_orthogonal.hpp
@@ -80,6 +83,7 @@ data:
   - geometry/is_orthogonal.hpp
   - geometry/reflection.hpp
   - geometry/projection.hpp
+  - geometry/circle.hpp
   - geometry/ccw.hpp
   - geometry/is_parallel.hpp
   timestamp: '2023-02-11 13:48:05+09:00'
