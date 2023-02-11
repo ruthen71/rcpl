@@ -124,6 +124,9 @@ data:
   - name: geometry
     pages:
     - icon: ':heavy_check_mark:'
+      path: geometry/ccw.hpp
+      title: geometry/ccw.hpp
+    - icon: ':heavy_check_mark:'
       path: geometry/geometry_template.hpp
       title: geometry/geometry_template.hpp
     - icon: ':heavy_check_mark:'
@@ -135,6 +138,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: geometry/projection.hpp
       title: geometry/projection.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/reflection.hpp
+      title: geometry/reflection.hpp
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
@@ -239,6 +245,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_cgl/aoj_cgl_1_a.test.cpp
       title: verify/aoj_cgl/aoj_cgl_1_a.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_cgl/aoj_cgl_1_b.test.cpp
+      title: verify/aoj_cgl/aoj_cgl_1_b.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_cgl/aoj_cgl_1_c.test.cpp
+      title: verify/aoj_cgl/aoj_cgl_1_c.test.cpp
   - name: verify/aoj_dpl
     pages:
     - icon: ':heavy_check_mark:'

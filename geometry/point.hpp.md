@@ -6,15 +6,27 @@ data:
     title: geometry/geometry_template.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: geometry/ccw.hpp
+    title: geometry/ccw.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/projection.hpp
     title: geometry/projection.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/reflection.hpp
+    title: geometry/reflection.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_1_a.test.cpp
     title: verify/aoj_cgl/aoj_cgl_1_a.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_1_b.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_1_b.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_1_c.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_1_c.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -56,10 +68,14 @@ data:
   path: geometry/point.hpp
   requiredBy:
   - geometry/line.hpp
+  - geometry/reflection.hpp
   - geometry/projection.hpp
+  - geometry/ccw.hpp
   timestamp: '2023-02-11 13:48:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/aoj_cgl/aoj_cgl_1_c.test.cpp
+  - verify/aoj_cgl/aoj_cgl_1_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_1_a.test.cpp
 documentation_of: geometry/point.hpp
 layout: document
