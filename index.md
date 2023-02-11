@@ -121,6 +121,11 @@ data:
       path: dp/traveling_salesman_problem.hpp
       title: "Traveling Salesman Problem (\u5DE1\u56DE\u30BB\u30FC\u30EB\u30B9\u30DE\
         \u30F3\u554F\u984C)"
+  - name: geometry
+    pages:
+    - icon: ':warning:'
+      path: geometry/geometry_template.hpp
+      title: geometry/geometry_template.hpp
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
