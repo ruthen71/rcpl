@@ -123,16 +123,16 @@ data:
         \u30F3\u554F\u984C)"
   - name: geometry
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: geometry/geometry_template.hpp
       title: geometry/geometry_template.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: geometry/line.hpp
       title: geometry/line.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: geometry/point.hpp
       title: geometry/point.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: geometry/projection.hpp
       title: geometry/projection.hpp
   - name: graph
@@ -236,7 +236,7 @@ data:
       title: verify/aoj_alds1/aoj_alds1_5_d.test.cpp
   - name: verify/aoj_cgl
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj_cgl/aoj_cgl_1_a.test.cpp
       title: verify/aoj_cgl/aoj_cgl_1_a.test.cpp
   - name: verify/aoj_dpl

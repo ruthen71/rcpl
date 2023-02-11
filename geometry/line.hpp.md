@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: geometry/geometry_template.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: geometry/point.hpp
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/projection.hpp
     title: geometry/projection.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_1_a.test.cpp
     title: verify/aoj_cgl/aoj_cgl_1_a.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/line.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n\
@@ -68,7 +68,7 @@ data:
   requiredBy:
   - geometry/projection.hpp
   timestamp: '2023-02-11 13:48:05+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_1_a.test.cpp
 documentation_of: geometry/line.hpp
