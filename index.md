@@ -130,6 +130,12 @@ data:
       path: geometry/geometry_template.hpp
       title: geometry/geometry_template.hpp
     - icon: ':heavy_check_mark:'
+      path: geometry/is_orthogonal.hpp
+      title: geometry/is_orthogonal.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/is_parallel.hpp
+      title: geometry/is_parallel.hpp
+    - icon: ':heavy_check_mark:'
       path: geometry/line.hpp
       title: geometry/line.hpp
     - icon: ':heavy_check_mark:'
@@ -251,6 +257,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_cgl/aoj_cgl_1_c.test.cpp
       title: verify/aoj_cgl/aoj_cgl_1_c.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_cgl/aoj_cgl_2_a.test.cpp
+      title: verify/aoj_cgl/aoj_cgl_2_a.test.cpp
   - name: verify/aoj_dpl
     pages:
     - icon: ':heavy_check_mark:'

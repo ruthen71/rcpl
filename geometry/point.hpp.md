@@ -9,6 +9,12 @@ data:
     path: geometry/ccw.hpp
     title: geometry/ccw.hpp
   - icon: ':heavy_check_mark:'
+    path: geometry/is_orthogonal.hpp
+    title: geometry/is_orthogonal.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/is_parallel.hpp
+    title: geometry/is_parallel.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
   - icon: ':heavy_check_mark:'
@@ -27,6 +33,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_1_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_1_c.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_2_a.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_2_a.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -68,12 +77,15 @@ data:
   path: geometry/point.hpp
   requiredBy:
   - geometry/line.hpp
+  - geometry/is_orthogonal.hpp
   - geometry/reflection.hpp
   - geometry/projection.hpp
   - geometry/ccw.hpp
+  - geometry/is_parallel.hpp
   timestamp: '2023-02-11 13:48:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/aoj_cgl/aoj_cgl_2_a.test.cpp
   - verify/aoj_cgl/aoj_cgl_1_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_1_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_1_a.test.cpp
