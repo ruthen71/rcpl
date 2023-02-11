@@ -123,9 +123,18 @@ data:
         \u30F3\u554F\u984C)"
   - name: geometry
     pages:
-    - icon: ':warning:'
+    - icon: ':x:'
       path: geometry/geometry_template.hpp
       title: geometry/geometry_template.hpp
+    - icon: ':x:'
+      path: geometry/line.hpp
+      title: geometry/line.hpp
+    - icon: ':x:'
+      path: geometry/point.hpp
+      title: geometry/point.hpp
+    - icon: ':x:'
+      path: geometry/projection.hpp
+      title: geometry/projection.hpp
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
@@ -225,6 +234,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_alds1/aoj_alds1_5_d.test.cpp
       title: verify/aoj_alds1/aoj_alds1_5_d.test.cpp
+  - name: verify/aoj_cgl
+    pages:
+    - icon: ':x:'
+      path: verify/aoj_cgl/aoj_cgl_1_a.test.cpp
+      title: verify/aoj_cgl/aoj_cgl_1_a.test.cpp
   - name: verify/aoj_dpl
     pages:
     - icon: ':heavy_check_mark:'

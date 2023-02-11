@@ -1,11 +1,23 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedRequiredBy:
+  - icon: ':x:'
+    path: geometry/line.hpp
+    title: geometry/line.hpp
+  - icon: ':x:'
+    path: geometry/point.hpp
+    title: geometry/point.hpp
+  - icon: ':x:'
+    path: geometry/projection.hpp
+    title: geometry/projection.hpp
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify/aoj_cgl/aoj_cgl_1_a.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_1_a.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: '#line 2 "geometry/geometry_template.hpp"
@@ -53,10 +65,14 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: geometry/geometry_template.hpp
-  requiredBy: []
+  requiredBy:
+  - geometry/line.hpp
+  - geometry/point.hpp
+  - geometry/projection.hpp
   timestamp: '2023-02-11 12:18:28+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - verify/aoj_cgl/aoj_cgl_1_a.test.cpp
 documentation_of: geometry/geometry_template.hpp
 layout: document
 redirect_from:
