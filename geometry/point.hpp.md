@@ -26,6 +26,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/reflection.hpp
     title: geometry/reflection.hpp
+  - icon: ':warning:'
+    path: geometry/segment.hpp
+    title: geometry/segment.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_1_a.test.cpp
@@ -81,6 +84,7 @@ data:
   requiredBy:
   - geometry/line.hpp
   - geometry/is_orthogonal.hpp
+  - geometry/segment.hpp
   - geometry/reflection.hpp
   - geometry/projection.hpp
   - geometry/circle.hpp

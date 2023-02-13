@@ -150,6 +150,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: geometry/reflection.hpp
       title: geometry/reflection.hpp
+    - icon: ':warning:'
+      path: geometry/segment.hpp
+      title: geometry/segment.hpp
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
