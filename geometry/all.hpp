@@ -9,3 +9,4 @@
 #include "geometry/ccw.hpp"
 #include "geometry/is_orthogonal.hpp"
 #include "geometry/is_parallel.hpp"
+#include "geometry/is_intersect_ss.hpp"
