@@ -14,10 +14,16 @@ data:
   - icon: ':warning:'
     path: geometry/all.hpp
     title: geometry/all.hpp
-  _extendedVerifiedWith: []
+  - icon: ':heavy_check_mark:'
+    path: geometry/is_intersect_ss.hpp
+    title: geometry/is_intersect_ss.hpp
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_2_b.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_2_b.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/segment.hpp\"\n\n#line 2 \"geometry/line.hpp\"\n\
@@ -61,10 +67,12 @@ data:
   isVerificationFile: false
   path: geometry/segment.hpp
   requiredBy:
+  - geometry/is_intersect_ss.hpp
   - geometry/all.hpp
   timestamp: '2023-02-14 01:16:47+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
 documentation_of: geometry/segment.hpp
 layout: document
 redirect_from:

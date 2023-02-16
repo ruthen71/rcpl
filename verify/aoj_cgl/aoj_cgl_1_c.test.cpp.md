@@ -47,8 +47,8 @@ data:
     \ int ON_SEGMENT = 0;         // a-c-b line\nint ccw(const Point &a, Point b,\
     \ Point c) {\n    b = b - a, c = c - a;\n    if (sign(cross(b, c)) == 1) return\
     \ COUNTER_CLOCKWISE;\n    if (sign(cross(b, c)) == -1) return CLOCKWISE;\n   \
-    \ if (sign(dot(b, c)) == -1) return ONLINE_BACK;\n    if (norm(b) < norm(c)) return\
-    \ ONLINE_FRONT;\n    return ON_SEGMENT;\n}\n#line 6 \"verify/aoj_cgl/aoj_cgl_1_c.test.cpp\"\
+    \ if (sign(dot(b, c)) == -1) return ONLINE_BACK;\n    if (std::norm(b) < std::norm(c))\
+    \ return ONLINE_FRONT;\n    return ON_SEGMENT;\n}\n#line 6 \"verify/aoj_cgl/aoj_cgl_1_c.test.cpp\"\
     \n\nint main() {\n    Point P1, P2;\n    std::cin >> P1 >> P2;\n    int Q;\n \
     \   std::cin >> Q;\n    while (Q--) {\n        Point P3;\n        std::cin >>\
     \ P3;\n        auto ans = ccw(P1, P2, P3);\n        if (ans == COUNTER_CLOCKWISE)\
@@ -75,7 +75,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_1_c.test.cpp
   requiredBy: []
-  timestamp: '2023-02-11 14:20:38+09:00'
+  timestamp: '2023-02-17 08:10:51+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_1_c.test.cpp

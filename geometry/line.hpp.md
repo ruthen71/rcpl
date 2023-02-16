@@ -12,6 +12,9 @@ data:
     path: geometry/all.hpp
     title: geometry/all.hpp
   - icon: ':heavy_check_mark:'
+    path: geometry/is_intersect_ss.hpp
+    title: geometry/is_intersect_ss.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/is_orthogonal.hpp
     title: geometry/is_orthogonal.hpp
   - icon: ':heavy_check_mark:'
@@ -23,7 +26,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/reflection.hpp
     title: geometry/reflection.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: geometry/segment.hpp
     title: geometry/segment.hpp
   _extendedVerifiedWith:
@@ -36,6 +39,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_2_a.test.cpp
     title: verify/aoj_cgl/aoj_cgl_2_a.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_2_b.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_2_b.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -91,6 +97,7 @@ data:
   - geometry/segment.hpp
   - geometry/reflection.hpp
   - geometry/projection.hpp
+  - geometry/is_intersect_ss.hpp
   - geometry/all.hpp
   - geometry/is_parallel.hpp
   timestamp: '2023-02-11 13:48:05+09:00'
@@ -98,6 +105,7 @@ data:
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_2_a.test.cpp
   - verify/aoj_cgl/aoj_cgl_1_b.test.cpp
+  - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_1_a.test.cpp
 documentation_of: geometry/line.hpp
 layout: document

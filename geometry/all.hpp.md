@@ -11,6 +11,9 @@ data:
     path: geometry/geometry_template.hpp
     title: geometry/geometry_template.hpp
   - icon: ':heavy_check_mark:'
+    path: geometry/is_intersect_ss.hpp
+    title: geometry/is_intersect_ss.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/is_orthogonal.hpp
     title: geometry/is_orthogonal.hpp
   - icon: ':heavy_check_mark:'
@@ -28,7 +31,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/reflection.hpp
     title: geometry/reflection.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: geometry/segment.hpp
     title: geometry/segment.hpp
   _extendedRequiredBy: []
@@ -88,14 +91,18 @@ data:
     \ int ON_SEGMENT = 0;         // a-c-b line\nint ccw(const Point &a, Point b,\
     \ Point c) {\n    b = b - a, c = c - a;\n    if (sign(cross(b, c)) == 1) return\
     \ COUNTER_CLOCKWISE;\n    if (sign(cross(b, c)) == -1) return CLOCKWISE;\n   \
-    \ if (sign(dot(b, c)) == -1) return ONLINE_BACK;\n    if (norm(b) < norm(c)) return\
-    \ ONLINE_FRONT;\n    return ON_SEGMENT;\n}\n#line 2 \"geometry/is_orthogonal.hpp\"\
+    \ if (sign(dot(b, c)) == -1) return ONLINE_BACK;\n    if (std::norm(b) < std::norm(c))\
+    \ return ONLINE_FRONT;\n    return ON_SEGMENT;\n}\n#line 2 \"geometry/is_orthogonal.hpp\"\
     \n\n#line 4 \"geometry/is_orthogonal.hpp\"\n\n// orthogonal\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A\n\
     bool is_orthogonal(const Line &l1, const Line &l2) { return sign(dot(l1.b - l1.a,\
     \ l2.b - l2.a)) == 0; }\n#line 2 \"geometry/is_parallel.hpp\"\n\n#line 4 \"geometry/is_parallel.hpp\"\
     \n\n// parallel\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A\n\
     bool is_parallel(const Line &l1, const Line &l2) { return sign(cross(l1.b - l1.a,\
-    \ l2.b - l2.a)) == 0; }\n#line 12 \"geometry/all.hpp\"\n"
+    \ l2.b - l2.a)) == 0; }\n#line 2 \"geometry/is_intersect_ss.hpp\"\n\n#line 5 \"\
+    geometry/is_intersect_ss.hpp\"\n\n// intersection (segment and segment)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_B\n\
+    bool is_intersect_ss(const Segment &s1, const Segment &s2) { return (ccw(s1.a,\
+    \ s1.b, s2.a) * ccw(s1.a, s1.b, s2.b) <= 0 and ccw(s2.a, s2.b, s1.a) * ccw(s2.a,\
+    \ s2.b, s1.b) <= 0); }\n#line 13 \"geometry/all.hpp\"\n"
   code: '#pragma once
 
     #include "geometry/geometry_template.hpp"
@@ -118,7 +125,7 @@ data:
 
     #include "geometry/is_parallel.hpp"
 
-    '
+    #include "geometry/is_intersect_ss.hpp"'
   dependsOn:
   - geometry/geometry_template.hpp
   - geometry/point.hpp
@@ -130,10 +137,11 @@ data:
   - geometry/ccw.hpp
   - geometry/is_orthogonal.hpp
   - geometry/is_parallel.hpp
+  - geometry/is_intersect_ss.hpp
   isVerificationFile: false
   path: geometry/all.hpp
   requiredBy: []
-  timestamp: '2023-02-16 23:51:50+09:00'
+  timestamp: '2023-02-17 08:10:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/all.hpp

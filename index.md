@@ -136,6 +136,9 @@ data:
       path: geometry/geometry_template.hpp
       title: geometry/geometry_template.hpp
     - icon: ':heavy_check_mark:'
+      path: geometry/is_intersect_ss.hpp
+      title: geometry/is_intersect_ss.hpp
+    - icon: ':heavy_check_mark:'
       path: geometry/is_orthogonal.hpp
       title: geometry/is_orthogonal.hpp
     - icon: ':heavy_check_mark:'
@@ -153,7 +156,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: geometry/reflection.hpp
       title: geometry/reflection.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: geometry/segment.hpp
       title: geometry/segment.hpp
   - name: graph
@@ -269,6 +272,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_cgl/aoj_cgl_2_a.test.cpp
       title: verify/aoj_cgl/aoj_cgl_2_a.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_cgl/aoj_cgl_2_b.test.cpp
+      title: verify/aoj_cgl/aoj_cgl_2_b.test.cpp
   - name: verify/aoj_dpl
     pages:
     - icon: ':heavy_check_mark:'
