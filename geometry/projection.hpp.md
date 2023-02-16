@@ -11,6 +11,9 @@ data:
     path: geometry/point.hpp
     title: geometry/point.hpp
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: geometry/all.hpp
+    title: geometry/all.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/reflection.hpp
     title: geometry/reflection.hpp
@@ -71,6 +74,7 @@ data:
   path: geometry/projection.hpp
   requiredBy:
   - geometry/reflection.hpp
+  - geometry/all.hpp
   timestamp: '2023-02-11 13:48:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

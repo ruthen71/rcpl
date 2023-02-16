@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: geometry/all.hpp
+    title: geometry/all.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/ccw.hpp
     title: geometry/ccw.hpp
@@ -101,6 +104,7 @@ data:
   - geometry/projection.hpp
   - geometry/circle.hpp
   - geometry/ccw.hpp
+  - geometry/all.hpp
   - geometry/is_parallel.hpp
   timestamp: '2023-02-11 12:18:28+09:00'
   verificationStatus: LIBRARY_ALL_AC

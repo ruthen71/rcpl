@@ -123,6 +123,9 @@ data:
         \u30F3\u554F\u984C)"
   - name: geometry
     pages:
+    - icon: ':warning:'
+      path: geometry/all.hpp
+      title: geometry/all.hpp
     - icon: ':heavy_check_mark:'
       path: geometry/ccw.hpp
       title: geometry/ccw.hpp

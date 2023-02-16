@@ -8,6 +8,9 @@ data:
     path: geometry/point.hpp
     title: geometry/point.hpp
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: geometry/all.hpp
+    title: geometry/all.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/is_orthogonal.hpp
     title: geometry/is_orthogonal.hpp
@@ -88,6 +91,7 @@ data:
   - geometry/segment.hpp
   - geometry/reflection.hpp
   - geometry/projection.hpp
+  - geometry/all.hpp
   - geometry/is_parallel.hpp
   timestamp: '2023-02-11 13:48:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
