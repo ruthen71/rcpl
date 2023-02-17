@@ -2,9 +2,10 @@
 
 #include "geometry/polygon.hpp"
 // area of polygon
+// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A
 Double area(const Polygon &p) {
     int n = (int)p.size();
-    assert(n >= 3);
+    assert(n >= 2);
     Double ret = Double(0);
     for (int i = 0; i < n - 1; i++) {
         ret += cross(p[i], p[i + 1]);
