@@ -1,4 +1,5 @@
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_D"
+#define ERROR 0.000001
 
 #include <bits/stdc++.h>
 
