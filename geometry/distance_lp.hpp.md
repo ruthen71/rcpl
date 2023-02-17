@@ -13,7 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/projection.hpp
     title: geometry/projection.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: geometry/all.hpp
+    title: geometry/all.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -74,7 +77,8 @@ data:
   - geometry/projection.hpp
   isVerificationFile: false
   path: geometry/distance_lp.hpp
-  requiredBy: []
+  requiredBy:
+  - geometry/all.hpp
   timestamp: '2023-02-17 12:58:29+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

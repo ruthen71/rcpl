@@ -10,7 +10,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: geometry/all.hpp
+    title: geometry/all.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_3_a.test.cpp
@@ -45,25 +48,23 @@ data:
     \ os;\n}\n#line 4 \"geometry/area.hpp\"\n// area of polygon\nDouble area(const\
     \ Polygon &p) {\n    int n = (int)p.size();\n    assert(n >= 3);\n    Double ret\
     \ = Double(0);\n    for (int i = 0; i < n - 1; i++) {\n        ret += cross(p[i],\
-    \ p[i + 1]);\n    }\n    ret += cross(p[n - 1], p[0]);\n    // \u70B9\u304C\u53CD\
-    \u6642\u8A08\u56DE\u308A\u306B\u4E26\u3093\u3067\u3044\u305F\u5834\u5408\u306F\
-    ret>0\u3067\u3001\u6642\u8A08\u56DE\u308A\u306B\u4E26\u3093\u3067\u3044\u305F\u5834\
-    \u5408\u306Fret<0\n    return std::abs(ret) / 2;\n}\n"
+    \ p[i + 1]);\n    }\n    ret += cross(p[n - 1], p[0]);\n    // counter clockwise:\
+    \ ret > 0\n    // clockwise: ret < 0\n    return std::abs(ret) / 2;\n}\n"
   code: "#pragma once\n\n#include \"geometry/polygon.hpp\"\n// area of polygon\nDouble\
     \ area(const Polygon &p) {\n    int n = (int)p.size();\n    assert(n >= 3);\n\
     \    Double ret = Double(0);\n    for (int i = 0; i < n - 1; i++) {\n        ret\
     \ += cross(p[i], p[i + 1]);\n    }\n    ret += cross(p[n - 1], p[0]);\n    //\
-    \ \u70B9\u304C\u53CD\u6642\u8A08\u56DE\u308A\u306B\u4E26\u3093\u3067\u3044\u305F\
-    \u5834\u5408\u306Fret>0\u3067\u3001\u6642\u8A08\u56DE\u308A\u306B\u4E26\u3093\u3067\
-    \u3044\u305F\u5834\u5408\u306Fret<0\n    return std::abs(ret) / 2;\n}"
+    \ counter clockwise: ret > 0\n    // clockwise: ret < 0\n    return std::abs(ret)\
+    \ / 2;\n}"
   dependsOn:
   - geometry/polygon.hpp
   - geometry/point.hpp
   - geometry/geometry_template.hpp
   isVerificationFile: false
   path: geometry/area.hpp
-  requiredBy: []
-  timestamp: '2023-02-17 13:25:17+09:00'
+  requiredBy:
+  - geometry/all.hpp
+  timestamp: '2023-02-17 13:47:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_3_a.test.cpp

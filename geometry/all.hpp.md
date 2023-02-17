@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: geometry/area.hpp
+    title: geometry/area.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/ccw.hpp
     title: geometry/ccw.hpp
   - icon: ':warning:'
@@ -13,6 +16,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/cross_point_ss.hpp
     title: geometry/cross_point_ss.hpp
+  - icon: ':warning:'
+    path: geometry/distance_lp.hpp
+    title: geometry/distance_lp.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/distance_sp.hpp
+    title: geometry/distance_sp.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/distance_ss.hpp
+    title: geometry/distance_ss.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: geometry/geometry_template.hpp
@@ -46,6 +58,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: geometry/point.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/polygon.hpp
+    title: geometry/polygon.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/projection.hpp
     title: geometry/projection.hpp
@@ -101,15 +116,19 @@ data:
     \  Circle(Point o, Double r) : o(o), r(r) {}\n\n    friend std::ostream &operator<<(std::ostream\
     \ &os, const Circle &c) { return os << c.o << ' ' << c.r; }\n    friend std::istream\
     \ &operator>>(std::istream &is, Circle &c) { return is >> c.o >> c.r; }  // format\
-    \ : x y r\n};\n#line 8 \"geometry/all.hpp\"\n\n#line 2 \"geometry/projection.hpp\"\
-    \n\n#line 5 \"geometry/projection.hpp\"\n\n// projection\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A\n\
-    Point projection(const Line &l, const Point &p) {\n    Double t = dot(p - l.a,\
-    \ l.b - l.a) / std::norm(l.b - l.a);\n    return l.a + t * (l.b - l.a);\n}\n#line\
-    \ 2 \"geometry/reflection.hpp\"\n\n#line 6 \"geometry/reflection.hpp\"\n\n// reflection\n\
-    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_B\nPoint reflection(const\
-    \ Line &l, const Point &p) { return p + (projection(l, p) - p) * Double(2.0);\
-    \ }\n#line 2 \"geometry/ccw.hpp\"\n\n#line 4 \"geometry/ccw.hpp\"\n\n// counter\
-    \ clockwise\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C\n\
+    \ : x y r\n};\n#line 2 \"geometry/polygon.hpp\"\n\n#line 4 \"geometry/polygon.hpp\"\
+    \n// polygon\nusing Polygon = std::vector<Point>;\nstd::istream &operator>>(std::istream\
+    \ &is, Polygon &p) {\n    for (auto &&pi : p) is >> pi;\n    return is;\n}\nstd::ostream\
+    \ &operator<<(std::ostream &os, Polygon &p) {\n    for (auto &&pi : p) os << pi\
+    \ << \" -> \";\n    return os;\n}\n#line 9 \"geometry/all.hpp\"\n\n#line 2 \"\
+    geometry/projection.hpp\"\n\n#line 5 \"geometry/projection.hpp\"\n\n// projection\n\
+    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A\nPoint projection(const\
+    \ Line &l, const Point &p) {\n    Double t = dot(p - l.a, l.b - l.a) / std::norm(l.b\
+    \ - l.a);\n    return l.a + t * (l.b - l.a);\n}\n#line 2 \"geometry/reflection.hpp\"\
+    \n\n#line 6 \"geometry/reflection.hpp\"\n\n// reflection\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_B\n\
+    Point reflection(const Line &l, const Point &p) { return p + (projection(l, p)\
+    \ - p) * Double(2.0); }\n#line 2 \"geometry/ccw.hpp\"\n\n#line 4 \"geometry/ccw.hpp\"\
+    \n\n// counter clockwise\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C\n\
     constexpr int COUNTER_CLOCKWISE = 1;  // a-b-c counter clockwise\nconstexpr int\
     \ CLOCKWISE = -1;         // a-b-c clockwise\nconstexpr int ONLINE_BACK = 2; \
     \       // c-a-b line\nconstexpr int ONLINE_FRONT = -2;      // a-b-c line\nconstexpr\
@@ -123,7 +142,7 @@ data:
     \ l2.b - l2.a)) == 0; }\n#line 2 \"geometry/is_parallel.hpp\"\n\n#line 4 \"geometry/is_parallel.hpp\"\
     \n\n// parallel\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A\n\
     bool is_parallel(const Line &l1, const Line &l2) { return sign(cross(l1.b - l1.a,\
-    \ l2.b - l2.a)) == 0; }\n#line 14 \"geometry/all.hpp\"\n\n#line 2 \"geometry/is_intersect_ll.hpp\"\
+    \ l2.b - l2.a)) == 0; }\n#line 15 \"geometry/all.hpp\"\n\n#line 2 \"geometry/is_intersect_ll.hpp\"\
     \n\n#line 4 \"geometry/is_intersect_ll.hpp\"\n\n// intersection (line and line)\n\
     bool is_intersect_ll(const Line &l1, const Line &l2) {\n    Point base = l1.b\
     \ - l1.a;\n    Double d12 = cross(base, l2.b - l2.a);\n    Double d1 = cross(base,\
@@ -153,7 +172,7 @@ data:
     \ = tangent_number_cc(c1, c2);\n    return 1 <= num and num <= 3;\n}\n#line 2\
     \ \"geometry/is_intersect_cp.hpp\"\n\n#line 5 \"geometry/is_intersect_cp.hpp\"\
     \n// intersection (circle and point)\nbool is_intersect_cp(const Circle &c, const\
-    \ Point &p) { return equal(std::abs(p - c.o), c.r); }\n#line 22 \"geometry/all.hpp\"\
+    \ Point &p) { return equal(std::abs(p - c.o), c.r); }\n#line 23 \"geometry/all.hpp\"\
     \n\n#line 2 \"geometry/cross_point_ll.hpp\"\n\n#line 4 \"geometry/cross_point_ll.hpp\"\
     \n\n// cross point (line and line)\nPoint cross_point_ll(const Line &l1, const\
     \ Line &l2) {\n    Point base = l1.b - l1.a;\n    Double d12 = cross(base, l2.b\
@@ -172,7 +191,25 @@ data:
     \ if (is_intersect_sp(s2, s1.a)) return s1.a;\n            assert(is_intersect_sp(s2,\
     \ s1.b));\n            return s1.b;\n        } else {\n            // excepted\
     \ by is_intersect_ss(s1, s2)\n            assert(0);\n        }\n    }\n    return\
-    \ s2.a + (s2.b - s2.a) * (d1 / d12);\n}\n#line 25 \"geometry/all.hpp\"\n"
+    \ s2.a + (s2.b - s2.a) * (d1 / d12);\n}\n#line 26 \"geometry/all.hpp\"\n\n#line\
+    \ 2 \"geometry/distance_lp.hpp\"\n\n#line 6 \"geometry/distance_lp.hpp\"\n// distance\
+    \ (line and point)\nDouble distance_lp(const Line &l, const Point &p) { return\
+    \ std::abs(p - projection(l, p)); }\n#line 2 \"geometry/distance_sp.hpp\"\n\n\
+    #line 7 \"geometry/distance_sp.hpp\"\n// distance (segment and point)\nDouble\
+    \ distance_sp(const Segment &s, const Point &p) {\n    Point r = projection(s,\
+    \ p);\n    if (is_intersect_sp(s, r)) {\n        return std::abs(r - p);\n   \
+    \ }\n    return std::min(std::abs(s.a - p), std::abs(s.b - p));\n}\n#line 2 \"\
+    geometry/distance_ss.hpp\"\n\n#line 6 \"geometry/distance_ss.hpp\"\n// distance\
+    \ (segment and segment)\nDouble distance_ss(const Segment &s1, const Segment &s2)\
+    \ {\n    if (is_intersect_ss(s1, s2)) return Double(0);\n    return std::min({distance_sp(s1,\
+    \ s2.a), distance_sp(s1, s2.b), distance_sp(s2, s1.a), distance_sp(s2, s1.b)});\n\
+    }\n#line 30 \"geometry/all.hpp\"\n\n#line 2 \"geometry/area.hpp\"\n\n#line 4 \"\
+    geometry/area.hpp\"\n// area of polygon\nDouble area(const Polygon &p) {\n   \
+    \ int n = (int)p.size();\n    assert(n >= 3);\n    Double ret = Double(0);\n \
+    \   for (int i = 0; i < n - 1; i++) {\n        ret += cross(p[i], p[i + 1]);\n\
+    \    }\n    ret += cross(p[n - 1], p[0]);\n    // counter clockwise: ret > 0\n\
+    \    // clockwise: ret < 0\n    return std::abs(ret) / 2;\n}\n#line 32 \"geometry/all.hpp\"\
+    \n"
   code: '#pragma once
 
     #include "geometry/geometry_template.hpp"
@@ -185,6 +222,8 @@ data:
     #include "geometry/segment.hpp"
 
     #include "geometry/circle.hpp"
+
+    #include "geometry/polygon.hpp"
 
 
     #include "geometry/projection.hpp"
@@ -217,13 +256,22 @@ data:
 
     #include "geometry/cross_point_ss.hpp"
 
-    '
+
+    #include "geometry/distance_lp.hpp"
+
+    #include "geometry/distance_sp.hpp"
+
+    #include "geometry/distance_ss.hpp"
+
+
+    #include "geometry/area.hpp"'
   dependsOn:
   - geometry/geometry_template.hpp
   - geometry/point.hpp
   - geometry/line.hpp
   - geometry/segment.hpp
   - geometry/circle.hpp
+  - geometry/polygon.hpp
   - geometry/projection.hpp
   - geometry/reflection.hpp
   - geometry/ccw.hpp
@@ -238,10 +286,14 @@ data:
   - geometry/is_intersect_cp.hpp
   - geometry/cross_point_ll.hpp
   - geometry/cross_point_ss.hpp
+  - geometry/distance_lp.hpp
+  - geometry/distance_sp.hpp
+  - geometry/distance_ss.hpp
+  - geometry/area.hpp
   isVerificationFile: false
   path: geometry/all.hpp
   requiredBy: []
-  timestamp: '2023-02-17 12:54:40+09:00'
+  timestamp: '2023-02-17 13:47:00+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/all.hpp

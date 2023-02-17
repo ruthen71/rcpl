@@ -23,6 +23,9 @@ data:
     path: geometry/segment.hpp
     title: geometry/segment.hpp
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: geometry/all.hpp
+    title: geometry/all.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/distance_ss.hpp
     title: geometry/distance_ss.hpp
@@ -104,6 +107,7 @@ data:
   path: geometry/distance_sp.hpp
   requiredBy:
   - geometry/distance_ss.hpp
+  - geometry/all.hpp
   timestamp: '2023-02-17 12:58:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

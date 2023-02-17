@@ -8,6 +8,9 @@ data:
     path: geometry/point.hpp
     title: geometry/point.hpp
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: geometry/all.hpp
+    title: geometry/all.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/area.hpp
     title: geometry/area.hpp
@@ -55,6 +58,7 @@ data:
   path: geometry/polygon.hpp
   requiredBy:
   - geometry/area.hpp
+  - geometry/all.hpp
   timestamp: '2023-02-17 13:25:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

@@ -52,10 +52,8 @@ data:
     }\n#line 4 \"geometry/area.hpp\"\n// area of polygon\nDouble area(const Polygon\
     \ &p) {\n    int n = (int)p.size();\n    assert(n >= 3);\n    Double ret = Double(0);\n\
     \    for (int i = 0; i < n - 1; i++) {\n        ret += cross(p[i], p[i + 1]);\n\
-    \    }\n    ret += cross(p[n - 1], p[0]);\n    // \u70B9\u304C\u53CD\u6642\u8A08\
-    \u56DE\u308A\u306B\u4E26\u3093\u3067\u3044\u305F\u5834\u5408\u306Fret>0\u3067\u3001\
-    \u6642\u8A08\u56DE\u308A\u306B\u4E26\u3093\u3067\u3044\u305F\u5834\u5408\u306F\
-    ret<0\n    return std::abs(ret) / 2;\n}\n#line 7 \"verify/aoj_cgl/aoj_cgl_3_a.test.cpp\"\
+    \    }\n    ret += cross(p[n - 1], p[0]);\n    // counter clockwise: ret > 0\n\
+    \    // clockwise: ret < 0\n    return std::abs(ret) / 2;\n}\n#line 7 \"verify/aoj_cgl/aoj_cgl_3_a.test.cpp\"\
     \n\nint main() {\n    int N;\n    std::cin >> N;\n    Polygon P(N);\n    std::cin\
     \ >> P;\n    std::cout << std::fixed << std::setprecision(15) << area(P) << '\\\
     n';\n    return 0;\n}\n"
@@ -72,7 +70,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_3_a.test.cpp
   requiredBy: []
-  timestamp: '2023-02-17 13:25:17+09:00'
+  timestamp: '2023-02-17 13:47:00+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_3_a.test.cpp
