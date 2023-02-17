@@ -4,9 +4,9 @@
 int tangent_number_cc(Circle c1, Circle c2) {
     if (c1.r < c2.r) std::swap(c1, c2);
     Double d = std::abs(c1.o - c2.o);
-    if (c1.r + c2.r < d) return 4;
-    if (equal(c1.r + c2.r, d)) return 3;
-    if (c1.r - c2.r < d) return 2;
-    if (equal(c1.r - c2.r, d)) return 1;
+    if (sign(d - c1.r - c2.r) == 1) return 4;  // d > c1.r + c2.r
+    if (sign(d - c1.r - c2.r) == 0) return 3;  // d = c1.r + c2.r
+    if (sign(d - c1.r + c2.r) == 1) return 2;  // d > c1.r - c2.r
+    if (sign(d - c1.r + c2.r) == 0) return 1;  // d = c1.r - c2.r
     return 0;
 }
