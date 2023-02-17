@@ -29,3 +29,5 @@
 #include "geometry/distance_ss.hpp"
 
 #include "geometry/area.hpp"
+#include "geometry/is_convex.hpp"
+#include "geometry/contain.hpp"
