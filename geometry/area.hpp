@@ -10,6 +10,7 @@ Double area(const Polygon &p) {
         ret += cross(p[i], p[i + 1]);
     }
     ret += cross(p[n - 1], p[0]);
-    // 点が反時計回りに並んでいた場合はret>0で、時計回りに並んでいた場合はret<0
+    // counter clockwise: ret > 0
+    // clockwise: ret < 0
     return std::abs(ret) / 2;
 }

@@ -5,6 +5,7 @@
 #include "geometry/line.hpp"
 #include "geometry/segment.hpp"
 #include "geometry/circle.hpp"
+#include "geometry/polygon.hpp"
 
 #include "geometry/projection.hpp"
 #include "geometry/reflection.hpp"
@@ -22,3 +23,9 @@
 
 #include "geometry/cross_point_ll.hpp"
 #include "geometry/cross_point_ss.hpp"
+
+#include "geometry/distance_lp.hpp"
+#include "geometry/distance_sp.hpp"
+#include "geometry/distance_ss.hpp"
+
+#include "geometry/area.hpp"
