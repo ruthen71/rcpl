@@ -1,29 +1,38 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/geometry_template.hpp
     title: geometry/geometry_template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/point.hpp
     title: geometry/point.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
     path: geometry/all.hpp
     title: geometry/all.hpp
+  - icon: ':x:'
+    path: geometry/cross_point_cl.hpp
+    title: geometry/cross_point_cl.hpp
   - icon: ':warning:'
     path: geometry/is_intersect_cc.hpp
     title: geometry/is_intersect_cc.hpp
+  - icon: ':x:'
+    path: geometry/is_intersect_cl.hpp
+    title: geometry/is_intersect_cl.hpp
   - icon: ':warning:'
     path: geometry/is_intersect_cp.hpp
     title: geometry/is_intersect_cp.hpp
   - icon: ':warning:'
     path: geometry/tangent_number_cc.hpp
     title: geometry/tangent_number_cc.hpp
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/circle.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\
@@ -63,11 +72,14 @@ data:
   requiredBy:
   - geometry/is_intersect_cc.hpp
   - geometry/tangent_number_cc.hpp
+  - geometry/is_intersect_cl.hpp
+  - geometry/cross_point_cl.hpp
   - geometry/is_intersect_cp.hpp
   - geometry/all.hpp
   timestamp: '2023-02-12 02:42:00+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - verify/aoj_cgl/aoj_cgl_7_d.test.cpp
 documentation_of: geometry/circle.hpp
 layout: document
 redirect_from:

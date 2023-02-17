@@ -7,19 +7,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/ccw.hpp
     title: geometry/ccw.hpp
-  - icon: ':warning:'
+  - icon: ':x:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/contain.hpp
     title: geometry/contain.hpp
+  - icon: ':x:'
+    path: geometry/cross_point_cl.hpp
+    title: geometry/cross_point_cl.hpp
   - icon: ':warning:'
     path: geometry/cross_point_ll.hpp
     title: geometry/cross_point_ll.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/cross_point_ss.hpp
     title: geometry/cross_point_ss.hpp
-  - icon: ':warning:'
+  - icon: ':x:'
     path: geometry/distance_lp.hpp
     title: geometry/distance_lp.hpp
   - icon: ':heavy_check_mark:'
@@ -28,7 +31,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/distance_ss.hpp
     title: geometry/distance_ss.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/geometry_template.hpp
     title: geometry/geometry_template.hpp
   - icon: ':heavy_check_mark:'
@@ -37,6 +40,9 @@ data:
   - icon: ':warning:'
     path: geometry/is_intersect_cc.hpp
     title: geometry/is_intersect_cc.hpp
+  - icon: ':x:'
+    path: geometry/is_intersect_cl.hpp
+    title: geometry/is_intersect_cl.hpp
   - icon: ':warning:'
     path: geometry/is_intersect_cp.hpp
     title: geometry/is_intersect_cp.hpp
@@ -58,16 +64,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/is_parallel.hpp
     title: geometry/is_parallel.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/point.hpp
     title: geometry/point.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/projection.hpp
     title: geometry/projection.hpp
   - icon: ':heavy_check_mark:'
@@ -198,19 +204,27 @@ data:
     \ if (is_intersect_sp(s2, s1.a)) return s1.a;\n            assert(is_intersect_sp(s2,\
     \ s1.b));\n            return s1.b;\n        } else {\n            // excepted\
     \ by is_intersect_ss(s1, s2)\n            assert(0);\n        }\n    }\n    return\
-    \ s2.a + (s2.b - s2.a) * (d1 / d12);\n}\n#line 26 \"geometry/all.hpp\"\n\n#line\
-    \ 2 \"geometry/distance_lp.hpp\"\n\n#line 6 \"geometry/distance_lp.hpp\"\n// distance\
-    \ (line and point)\nDouble distance_lp(const Line &l, const Point &p) { return\
-    \ std::abs(p - projection(l, p)); }\n#line 2 \"geometry/distance_sp.hpp\"\n\n\
-    #line 7 \"geometry/distance_sp.hpp\"\n// distance (segment and point)\nDouble\
-    \ distance_sp(const Segment &s, const Point &p) {\n    Point r = projection(s,\
-    \ p);\n    if (is_intersect_sp(s, r)) {\n        return std::abs(r - p);\n   \
-    \ }\n    return std::min(std::abs(s.a - p), std::abs(s.b - p));\n}\n#line 2 \"\
-    geometry/distance_ss.hpp\"\n\n#line 6 \"geometry/distance_ss.hpp\"\n// distance\
-    \ (segment and segment)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_D\n\
+    \ s2.a + (s2.b - s2.a) * (d1 / d12);\n}\n#line 2 \"geometry/cross_point_cl.hpp\"\
+    \n\n#line 2 \"geometry/is_intersect_cl.hpp\"\n\n#line 2 \"geometry/distance_lp.hpp\"\
+    \n\n#line 6 \"geometry/distance_lp.hpp\"\n// distance (line and point)\nDouble\
+    \ distance_lp(const Line &l, const Point &p) { return std::abs(p - projection(l,\
+    \ p)); }\n#line 5 \"geometry/is_intersect_cl.hpp\"\n\n// intersection (circle\
+    \ and line)\nbool is_intersect_cl(const Circle &c, const Line &l) { return sign(c.r\
+    \ - distance_lp(l, c.o)) >= 0; }\n#line 5 \"geometry/cross_point_cl.hpp\"\n\n\
+    // cross point (circle and line)\n// // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_D\n\
+    std::vector<Point> cross_point_cl(const Circle &c, const Line &l) {\n    assert(is_intersect_cl(c,\
+    \ l));\n    auto pr = projection(l, c.o);\n    if (equal(std::abs(pr - c.o), c.r))\
+    \ return {pr};\n    Point e = (l.b - l.a) / abs(l.b - l.a);\n    auto k = sqrt(std::norm(c.r)\
+    \ - std::norm(pr - c.o));\n    return {pr - e * k, pr + e * k};\n}\n#line 27 \"\
+    geometry/all.hpp\"\n\n#line 2 \"geometry/distance_sp.hpp\"\n\n#line 7 \"geometry/distance_sp.hpp\"\
+    \n// distance (segment and point)\nDouble distance_sp(const Segment &s, const\
+    \ Point &p) {\n    Point r = projection(s, p);\n    if (is_intersect_sp(s, r))\
+    \ {\n        return std::abs(r - p);\n    }\n    return std::min(std::abs(s.a\
+    \ - p), std::abs(s.b - p));\n}\n#line 2 \"geometry/distance_ss.hpp\"\n\n#line\
+    \ 6 \"geometry/distance_ss.hpp\"\n// distance (segment and segment)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_D\n\
     Double distance_ss(const Segment &s1, const Segment &s2) {\n    if (is_intersect_ss(s1,\
     \ s2)) return Double(0);\n    return std::min({distance_sp(s1, s2.a), distance_sp(s1,\
-    \ s2.b), distance_sp(s2, s1.a), distance_sp(s2, s1.b)});\n}\n#line 30 \"geometry/all.hpp\"\
+    \ s2.b), distance_sp(s2, s1.a), distance_sp(s2, s1.b)});\n}\n#line 31 \"geometry/all.hpp\"\
     \n\n#line 2 \"geometry/area.hpp\"\n\n#line 4 \"geometry/area.hpp\"\n// area of\
     \ polygon\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\n\
     Double area(const Polygon &p) {\n    int n = (int)p.size();\n    assert(n >= 2);\n\
@@ -243,7 +257,7 @@ data:
     \        if (is_intersect_sp(Segment(q[n - 1], q[0]), p)) return ON;\n       \
     \ Point a = q[n - 1] - p, b = q[0] - p;\n        if (a.imag() > b.imag()) std::swap(a,\
     \ b);\n        if (sign(a.imag()) <= 0 and sign(b.imag()) > 0 and sign(cross(a,\
-    \ b)) > 0) x = !x;\n    }\n    return (x ? IN : OUT);\n}\n#line 34 \"geometry/all.hpp\"\
+    \ b)) > 0) x = !x;\n    }\n    return (x ? IN : OUT);\n}\n#line 35 \"geometry/all.hpp\"\
     \n"
   code: '#pragma once
 
@@ -291,6 +305,8 @@ data:
 
     #include "geometry/cross_point_ss.hpp"
 
+    #include "geometry/cross_point_cl.hpp"
+
 
     #include "geometry/distance_lp.hpp"
 
@@ -325,6 +341,8 @@ data:
   - geometry/is_intersect_cp.hpp
   - geometry/cross_point_ll.hpp
   - geometry/cross_point_ss.hpp
+  - geometry/cross_point_cl.hpp
+  - geometry/is_intersect_cl.hpp
   - geometry/distance_lp.hpp
   - geometry/distance_sp.hpp
   - geometry/distance_ss.hpp
@@ -334,7 +352,7 @@ data:
   isVerificationFile: false
   path: geometry/all.hpp
   requiredBy: []
-  timestamp: '2023-02-17 15:36:39+09:00'
+  timestamp: '2023-02-17 16:47:01+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/all.hpp

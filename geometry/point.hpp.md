@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/geometry_template.hpp
     title: geometry/geometry_template.hpp
   _extendedRequiredBy:
@@ -14,19 +14,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/ccw.hpp
     title: geometry/ccw.hpp
-  - icon: ':warning:'
+  - icon: ':x:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/contain.hpp
     title: geometry/contain.hpp
+  - icon: ':x:'
+    path: geometry/cross_point_cl.hpp
+    title: geometry/cross_point_cl.hpp
   - icon: ':warning:'
     path: geometry/cross_point_ll.hpp
     title: geometry/cross_point_ll.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/cross_point_ss.hpp
     title: geometry/cross_point_ss.hpp
-  - icon: ':warning:'
+  - icon: ':x:'
     path: geometry/distance_lp.hpp
     title: geometry/distance_lp.hpp
   - icon: ':heavy_check_mark:'
@@ -41,6 +44,9 @@ data:
   - icon: ':warning:'
     path: geometry/is_intersect_cc.hpp
     title: geometry/is_intersect_cc.hpp
+  - icon: ':x:'
+    path: geometry/is_intersect_cl.hpp
+    title: geometry/is_intersect_cl.hpp
   - icon: ':warning:'
     path: geometry/is_intersect_cp.hpp
     title: geometry/is_intersect_cp.hpp
@@ -62,13 +68,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/is_parallel.hpp
     title: geometry/is_parallel.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/line.hpp
     title: geometry/line.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/projection.hpp
     title: geometry/projection.hpp
   - icon: ':heavy_check_mark:'
@@ -111,9 +117,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/point.hpp\"\n\n#line 2 \"geometry/geometry_template.hpp\"\
@@ -165,10 +174,12 @@ data:
   - geometry/is_intersect_ll.hpp
   - geometry/is_convex.hpp
   - geometry/is_intersect_ss.hpp
+  - geometry/is_intersect_cl.hpp
   - geometry/circle.hpp
   - geometry/is_intersect_lp.hpp
   - geometry/is_intersect_sp.hpp
   - geometry/polygon.hpp
+  - geometry/cross_point_cl.hpp
   - geometry/distance_ss.hpp
   - geometry/ccw.hpp
   - geometry/distance_lp.hpp
@@ -177,7 +188,7 @@ data:
   - geometry/all.hpp
   - geometry/is_parallel.hpp
   timestamp: '2023-02-11 13:48:05+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_3_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_d.test.cpp
@@ -187,6 +198,7 @@ data:
   - verify/aoj_cgl/aoj_cgl_1_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_3_c.test.cpp
+  - verify/aoj_cgl/aoj_cgl_7_d.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_1_a.test.cpp
 documentation_of: geometry/point.hpp
