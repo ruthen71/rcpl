@@ -15,6 +15,9 @@ data:
     path: geometry/all.hpp
     title: geometry/all.hpp
   - icon: ':heavy_check_mark:'
+    path: geometry/contain.hpp
+    title: geometry/contain.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point_ss.hpp
     title: geometry/cross_point_ss.hpp
   - icon: ':heavy_check_mark:'
@@ -39,6 +42,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_2_d.test.cpp
     title: verify/aoj_cgl/aoj_cgl_2_d.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -90,12 +96,14 @@ data:
   - geometry/is_intersect_ss.hpp
   - geometry/is_intersect_sp.hpp
   - geometry/distance_ss.hpp
+  - geometry/contain.hpp
   - geometry/all.hpp
   timestamp: '2023-02-14 01:16:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_2_d.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
+  - verify/aoj_cgl/aoj_cgl_3_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_c.test.cpp
 documentation_of: geometry/segment.hpp
 layout: document

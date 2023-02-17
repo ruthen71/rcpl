@@ -17,6 +17,9 @@ data:
   - icon: ':warning:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/contain.hpp
+    title: geometry/contain.hpp
   - icon: ':warning:'
     path: geometry/cross_point_ll.hpp
     title: geometry/cross_point_ll.hpp
@@ -32,6 +35,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/distance_ss.hpp
     title: geometry/distance_ss.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/is_convex.hpp
+    title: geometry/is_convex.hpp
   - icon: ':warning:'
     path: geometry/is_intersect_cc.hpp
     title: geometry/is_intersect_cc.hpp
@@ -99,6 +105,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_3_a.test.cpp
     title: verify/aoj_cgl/aoj_cgl_3_a.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_3_b.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_3_b.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -151,6 +163,7 @@ data:
   - geometry/projection.hpp
   - geometry/cross_point_ll.hpp
   - geometry/is_intersect_ll.hpp
+  - geometry/is_convex.hpp
   - geometry/is_intersect_ss.hpp
   - geometry/circle.hpp
   - geometry/is_intersect_lp.hpp
@@ -159,18 +172,21 @@ data:
   - geometry/distance_ss.hpp
   - geometry/ccw.hpp
   - geometry/distance_lp.hpp
+  - geometry/contain.hpp
   - geometry/is_intersect_cp.hpp
   - geometry/all.hpp
   - geometry/is_parallel.hpp
   timestamp: '2023-02-11 13:48:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/aoj_cgl/aoj_cgl_3_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_d.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_a.test.cpp
   - verify/aoj_cgl/aoj_cgl_3_a.test.cpp
   - verify/aoj_cgl/aoj_cgl_1_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_1_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
+  - verify/aoj_cgl/aoj_cgl_3_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_1_a.test.cpp
 documentation_of: geometry/point.hpp

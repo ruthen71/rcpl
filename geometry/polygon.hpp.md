@@ -14,10 +14,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/area.hpp
     title: geometry/area.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/contain.hpp
+    title: geometry/contain.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/is_convex.hpp
+    title: geometry/is_convex.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_3_a.test.cpp
     title: verify/aoj_cgl/aoj_cgl_3_a.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_3_b.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_3_b.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -58,11 +70,15 @@ data:
   path: geometry/polygon.hpp
   requiredBy:
   - geometry/area.hpp
+  - geometry/is_convex.hpp
+  - geometry/contain.hpp
   - geometry/all.hpp
   timestamp: '2023-02-17 13:25:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/aoj_cgl/aoj_cgl_3_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_3_a.test.cpp
+  - verify/aoj_cgl/aoj_cgl_3_c.test.cpp
 documentation_of: geometry/polygon.hpp
 layout: document
 redirect_from:

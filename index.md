@@ -135,6 +135,9 @@ data:
     - icon: ':warning:'
       path: geometry/circle.hpp
       title: geometry/circle.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/contain.hpp
+      title: geometry/contain.hpp
     - icon: ':warning:'
       path: geometry/cross_point_ll.hpp
       title: geometry/cross_point_ll.hpp
@@ -153,6 +156,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: geometry/geometry_template.hpp
       title: geometry/geometry_template.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/is_convex.hpp
+      title: geometry/is_convex.hpp
     - icon: ':warning:'
       path: geometry/is_intersect_cc.hpp
       title: geometry/is_intersect_cc.hpp
@@ -323,6 +329,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_cgl/aoj_cgl_3_a.test.cpp
       title: verify/aoj_cgl/aoj_cgl_3_a.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_cgl/aoj_cgl_3_b.test.cpp
+      title: verify/aoj_cgl/aoj_cgl_3_b.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
+      title: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
   - name: verify/aoj_dpl
     pages:
     - icon: ':heavy_check_mark:'

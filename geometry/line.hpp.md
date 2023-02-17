@@ -11,6 +11,9 @@ data:
   - icon: ':warning:'
     path: geometry/all.hpp
     title: geometry/all.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/contain.hpp
+    title: geometry/contain.hpp
   - icon: ':warning:'
     path: geometry/cross_point_ll.hpp
     title: geometry/cross_point_ll.hpp
@@ -72,6 +75,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_2_d.test.cpp
     title: verify/aoj_cgl/aoj_cgl_2_d.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -136,6 +142,7 @@ data:
   - geometry/is_intersect_sp.hpp
   - geometry/distance_ss.hpp
   - geometry/distance_lp.hpp
+  - geometry/contain.hpp
   - geometry/all.hpp
   - geometry/is_parallel.hpp
   timestamp: '2023-02-11 13:48:05+09:00'
@@ -145,6 +152,7 @@ data:
   - verify/aoj_cgl/aoj_cgl_2_a.test.cpp
   - verify/aoj_cgl/aoj_cgl_1_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
+  - verify/aoj_cgl/aoj_cgl_3_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_1_a.test.cpp
 documentation_of: geometry/line.hpp

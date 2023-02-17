@@ -84,7 +84,8 @@ data:
     \ s2.b, s1.b) <= 0); }\n#line 2 \"geometry/is_intersect_sp.hpp\"\n\n#line 5 \"\
     geometry/is_intersect_sp.hpp\"\n\n// intersection (segment and point)\n// ccw(a,\
     \ b, c) == ON_SEGMENT -> a - c - b\nbool is_intersect_sp(const Segment &s, const\
-    \ Point &p) { return ccw(s.a, s.b, p) == ON_SEGMENT; }\n#line 6 \"geometry/cross_point_ss.hpp\"\
+    \ Point &p) { return ccw(s.a, s.b, p) == ON_SEGMENT or sign(std::abs(s.a - p))\
+    \ == 0 or sign(std::abs(s.b - p)) == 0; }\n#line 6 \"geometry/cross_point_ss.hpp\"\
     \n\n// cross point (segment and segment)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_C\n\
     Point cross_point_ss(const Segment &s1, const Segment &s2) {\n    // check intersection\
     \ s1 and s2\n    assert(is_intersect_ss(s1, s2));\n    Point base = s1.b - s1.a;\n\
@@ -121,7 +122,7 @@ data:
   path: geometry/cross_point_ss.hpp
   requiredBy:
   - geometry/all.hpp
-  timestamp: '2023-02-17 09:16:37+09:00'
+  timestamp: '2023-02-17 15:36:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_2_c.test.cpp

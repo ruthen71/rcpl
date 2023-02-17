@@ -96,11 +96,12 @@ data:
     \ 2 \"geometry/is_intersect_sp.hpp\"\n\n#line 5 \"geometry/is_intersect_sp.hpp\"\
     \n\n// intersection (segment and point)\n// ccw(a, b, c) == ON_SEGMENT -> a -\
     \ c - b\nbool is_intersect_sp(const Segment &s, const Point &p) { return ccw(s.a,\
-    \ s.b, p) == ON_SEGMENT; }\n#line 7 \"geometry/distance_sp.hpp\"\n// distance\
-    \ (segment and point)\nDouble distance_sp(const Segment &s, const Point &p) {\n\
-    \    Point r = projection(s, p);\n    if (is_intersect_sp(s, r)) {\n        return\
-    \ std::abs(r - p);\n    }\n    return std::min(std::abs(s.a - p), std::abs(s.b\
-    \ - p));\n}\n#line 6 \"geometry/distance_ss.hpp\"\n// distance (segment and segment)\n\
+    \ s.b, p) == ON_SEGMENT or sign(std::abs(s.a - p)) == 0 or sign(std::abs(s.b -\
+    \ p)) == 0; }\n#line 7 \"geometry/distance_sp.hpp\"\n// distance (segment and\
+    \ point)\nDouble distance_sp(const Segment &s, const Point &p) {\n    Point r\
+    \ = projection(s, p);\n    if (is_intersect_sp(s, r)) {\n        return std::abs(r\
+    \ - p);\n    }\n    return std::min(std::abs(s.a - p), std::abs(s.b - p));\n}\n\
+    #line 6 \"geometry/distance_ss.hpp\"\n// distance (segment and segment)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_D\n\
     Double distance_ss(const Segment &s1, const Segment &s2) {\n    if (is_intersect_ss(s1,\
     \ s2)) return Double(0);\n    return std::min({distance_sp(s1, s2.a), distance_sp(s1,\
     \ s2.b), distance_sp(s2, s1.a), distance_sp(s2, s1.b)});\n}\n#line 7 \"verify/aoj_cgl/aoj_cgl_2_d.test.cpp\"\
@@ -128,7 +129,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_2_d.test.cpp
   requiredBy: []
-  timestamp: '2023-02-17 12:58:29+09:00'
+  timestamp: '2023-02-17 15:36:39+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_2_d.test.cpp

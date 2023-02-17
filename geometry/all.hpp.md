@@ -10,6 +10,9 @@ data:
   - icon: ':warning:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/contain.hpp
+    title: geometry/contain.hpp
   - icon: ':warning:'
     path: geometry/cross_point_ll.hpp
     title: geometry/cross_point_ll.hpp
@@ -28,6 +31,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: geometry/geometry_template.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/is_convex.hpp
+    title: geometry/is_convex.hpp
   - icon: ':warning:'
     path: geometry/is_intersect_cc.hpp
     title: geometry/is_intersect_cc.hpp
@@ -161,12 +167,13 @@ data:
     #line 2 \"geometry/is_intersect_sp.hpp\"\n\n#line 5 \"geometry/is_intersect_sp.hpp\"\
     \n\n// intersection (segment and point)\n// ccw(a, b, c) == ON_SEGMENT -> a -\
     \ c - b\nbool is_intersect_sp(const Segment &s, const Point &p) { return ccw(s.a,\
-    \ s.b, p) == ON_SEGMENT; }\n#line 3 \"geometry/tangent_number_cc.hpp\"\n// return\
-    \ the number of tangent\nint tangent_number_cc(Circle c1, Circle c2) {\n    if\
-    \ (c1.r < c2.r) std::swap(c1, c2);\n    Double d = std::abs(c1.o - c2.o);\n  \
-    \  if (c1.r + c2.r < d) return 4;\n    if (equal(c1.r + c2.r, d)) return 3;\n\
-    \    if (c1.r - c2.r < d) return 2;\n    if (equal(c1.r - c2.r, d)) return 1;\n\
-    \    return 0;\n}\n#line 2 \"geometry/is_intersect_cc.hpp\"\n\n#line 5 \"geometry/is_intersect_cc.hpp\"\
+    \ s.b, p) == ON_SEGMENT or sign(std::abs(s.a - p)) == 0 or sign(std::abs(s.b -\
+    \ p)) == 0; }\n#line 3 \"geometry/tangent_number_cc.hpp\"\n// return the number\
+    \ of tangent\nint tangent_number_cc(Circle c1, Circle c2) {\n    if (c1.r < c2.r)\
+    \ std::swap(c1, c2);\n    Double d = std::abs(c1.o - c2.o);\n    if (c1.r + c2.r\
+    \ < d) return 4;\n    if (equal(c1.r + c2.r, d)) return 3;\n    if (c1.r - c2.r\
+    \ < d) return 2;\n    if (equal(c1.r - c2.r, d)) return 1;\n    return 0;\n}\n\
+    #line 2 \"geometry/is_intersect_cc.hpp\"\n\n#line 5 \"geometry/is_intersect_cc.hpp\"\
     \n// intersection (circle and circle)\n// intersect = number of tangent is 1,\
     \ 2, 3\nbool is_intersect_cc(const Circle &c1, const Circle &c2) {\n    int num\
     \ = tangent_number_cc(c1, c2);\n    return 1 <= num and num <= 3;\n}\n#line 2\
@@ -200,15 +207,43 @@ data:
     \ p);\n    if (is_intersect_sp(s, r)) {\n        return std::abs(r - p);\n   \
     \ }\n    return std::min(std::abs(s.a - p), std::abs(s.b - p));\n}\n#line 2 \"\
     geometry/distance_ss.hpp\"\n\n#line 6 \"geometry/distance_ss.hpp\"\n// distance\
-    \ (segment and segment)\nDouble distance_ss(const Segment &s1, const Segment &s2)\
-    \ {\n    if (is_intersect_ss(s1, s2)) return Double(0);\n    return std::min({distance_sp(s1,\
-    \ s2.a), distance_sp(s1, s2.b), distance_sp(s2, s1.a), distance_sp(s2, s1.b)});\n\
-    }\n#line 30 \"geometry/all.hpp\"\n\n#line 2 \"geometry/area.hpp\"\n\n#line 4 \"\
-    geometry/area.hpp\"\n// area of polygon\nDouble area(const Polygon &p) {\n   \
-    \ int n = (int)p.size();\n    assert(n >= 3);\n    Double ret = Double(0);\n \
-    \   for (int i = 0; i < n - 1; i++) {\n        ret += cross(p[i], p[i + 1]);\n\
-    \    }\n    ret += cross(p[n - 1], p[0]);\n    // counter clockwise: ret > 0\n\
-    \    // clockwise: ret < 0\n    return std::abs(ret) / 2;\n}\n#line 32 \"geometry/all.hpp\"\
+    \ (segment and segment)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_D\n\
+    Double distance_ss(const Segment &s1, const Segment &s2) {\n    if (is_intersect_ss(s1,\
+    \ s2)) return Double(0);\n    return std::min({distance_sp(s1, s2.a), distance_sp(s1,\
+    \ s2.b), distance_sp(s2, s1.a), distance_sp(s2, s1.b)});\n}\n#line 30 \"geometry/all.hpp\"\
+    \n\n#line 2 \"geometry/area.hpp\"\n\n#line 4 \"geometry/area.hpp\"\n// area of\
+    \ polygon\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\n\
+    Double area(const Polygon &p) {\n    int n = (int)p.size();\n    assert(n >= 2);\n\
+    \    Double ret = Double(0);\n    for (int i = 0; i < n - 1; i++) {\n        ret\
+    \ += cross(p[i], p[i + 1]);\n    }\n    ret += cross(p[n - 1], p[0]);\n    //\
+    \ counter clockwise: ret > 0\n    // clockwise: ret < 0\n    return std::abs(ret)\
+    \ / 2;\n}\n#line 2 \"geometry/is_convex.hpp\"\n\n#line 5 \"geometry/is_convex.hpp\"\
+    \n\n// check polygon is convex (not strictly, 0 <= angle <= 180 degrees)\n// angle\
+    \ = 180 degrees -> ON_SEGMENT\n// angle = 0 degrees -> ONLINE_FRONT or ONLINE_BACK\n\
+    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B\nbool is_convex(const\
+    \ Polygon &p) {\n    int n = (int)p.size();\n    assert(n >= 3);\n    bool okccw\
+    \ = true, okcw = true;\n    for (int i = 0; i < n - 2; i++) {\n        int res\
+    \ = ccw(p[i], p[i + 1], p[i + 2]);\n        if (res == CLOCKWISE) okccw = false;\n\
+    \        if (res == COUNTER_CLOCKWISE) okcw = false;\n        if (!okccw and !okcw)\
+    \ return false;\n    }\n    {\n        int res = ccw(p[n - 2], p[n - 1], p[0]);\n\
+    \        if (res == CLOCKWISE) okccw = false;\n        if (res == COUNTER_CLOCKWISE)\
+    \ okcw = false;\n        if (!okccw and !okcw) return false;\n    }\n    {\n \
+    \       int res = ccw(p[n - 1], p[0], p[1]);\n        if (res == CLOCKWISE) okccw\
+    \ = false;\n        if (res == COUNTER_CLOCKWISE) okcw = false;\n        if (!okccw\
+    \ and !okcw) return false;\n    }\n    return true;\n}\n#line 2 \"geometry/contain.hpp\"\
+    \n\n#line 5 \"geometry/contain.hpp\"\n\nconstexpr int IN = 2;\nconstexpr int ON\
+    \ = 1;\nconstexpr int OUT = 0;\n// polygon contain point -> 2 (IN)\n// polygon\
+    \ cross point -> 1 (ON)\n// otherwise -> 0 (OUT)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C\n\
+    int contain(const Polygon &q, const Point &p) {\n    bool x = false;\n    int\
+    \ n = (int)q.size();\n    for (int i = 0; i < n - 1; i++) {\n        if (is_intersect_sp(Segment(q[i],\
+    \ q[i + 1]), p)) return ON;\n        Point a = q[i] - p, b = q[i + 1] - p;\n \
+    \       if (a.imag() > b.imag()) std::swap(a, b);\n        // a.y < b.y\n    \
+    \    // check each point's y is 0 at most 1 times\n        if (sign(a.imag())\
+    \ <= 0 and sign(b.imag()) > 0 and sign(cross(a, b)) > 0) x = !x;\n    }\n    {\n\
+    \        if (is_intersect_sp(Segment(q[n - 1], q[0]), p)) return ON;\n       \
+    \ Point a = q[n - 1] - p, b = q[0] - p;\n        if (a.imag() > b.imag()) std::swap(a,\
+    \ b);\n        if (sign(a.imag()) <= 0 and sign(b.imag()) > 0 and sign(cross(a,\
+    \ b)) > 0) x = !x;\n    }\n    return (x ? IN : OUT);\n}\n#line 34 \"geometry/all.hpp\"\
     \n"
   code: '#pragma once
 
@@ -264,7 +299,11 @@ data:
     #include "geometry/distance_ss.hpp"
 
 
-    #include "geometry/area.hpp"'
+    #include "geometry/area.hpp"
+
+    #include "geometry/is_convex.hpp"
+
+    #include "geometry/contain.hpp"'
   dependsOn:
   - geometry/geometry_template.hpp
   - geometry/point.hpp
@@ -290,10 +329,12 @@ data:
   - geometry/distance_sp.hpp
   - geometry/distance_ss.hpp
   - geometry/area.hpp
+  - geometry/is_convex.hpp
+  - geometry/contain.hpp
   isVerificationFile: false
   path: geometry/all.hpp
   requiredBy: []
-  timestamp: '2023-02-17 13:47:00+09:00'
+  timestamp: '2023-02-17 15:36:39+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/all.hpp
