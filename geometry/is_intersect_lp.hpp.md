@@ -63,13 +63,13 @@ data:
     \ return ONLINE_FRONT;\n    return ON_SEGMENT;\n}\n#line 5 \"geometry/is_intersect_lp.hpp\"\
     \n\n// intersection (line and point)\n// ccw(a, b, c) == ON_SEGMENT or ONLINE_BACK\
     \ or ONLINE_FRONT\nbool is_intersect_lp(const Line &l, const Point &p) {\n   \
-    \ int res = ccw(l.a, l.b, p);\n    return (res == ONLINE_BACK || res == ONLINE_FRONT\
-    \ || res == ON_SEGMENT);\n}\n"
+    \ int res = ccw(l.a, l.b, p);\n    return (res == ONLINE_BACK or res == ONLINE_FRONT\
+    \ or res == ON_SEGMENT);\n}\n"
   code: "#pragma once\n\n#include \"geometry/line.hpp\"\n#include \"geometry/ccw.hpp\"\
     \n\n// intersection (line and point)\n// ccw(a, b, c) == ON_SEGMENT or ONLINE_BACK\
     \ or ONLINE_FRONT\nbool is_intersect_lp(const Line &l, const Point &p) {\n   \
-    \ int res = ccw(l.a, l.b, p);\n    return (res == ONLINE_BACK || res == ONLINE_FRONT\
-    \ || res == ON_SEGMENT);\n}"
+    \ int res = ccw(l.a, l.b, p);\n    return (res == ONLINE_BACK or res == ONLINE_FRONT\
+    \ or res == ON_SEGMENT);\n}"
   dependsOn:
   - geometry/line.hpp
   - geometry/point.hpp
@@ -79,7 +79,7 @@ data:
   path: geometry/is_intersect_lp.hpp
   requiredBy:
   - geometry/all.hpp
-  timestamp: '2023-02-17 09:16:37+09:00'
+  timestamp: '2023-02-17 12:54:40+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/is_intersect_lp.hpp

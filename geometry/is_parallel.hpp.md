@@ -14,9 +14,6 @@ data:
   - icon: ':warning:'
     path: geometry/all.hpp
     title: geometry/all.hpp
-  - icon: ':warning:'
-    path: geometry/is_intersect_ll.hpp
-    title: geometry/is_intersect_ll.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_2_a.test.cpp
@@ -78,7 +75,6 @@ data:
   isVerificationFile: false
   path: geometry/is_parallel.hpp
   requiredBy:
-  - geometry/is_intersect_ll.hpp
   - geometry/all.hpp
   timestamp: '2023-02-11 14:39:26+09:00'
   verificationStatus: LIBRARY_ALL_AC

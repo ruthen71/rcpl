@@ -127,6 +127,9 @@ data:
       path: geometry/all.hpp
       title: geometry/all.hpp
     - icon: ':heavy_check_mark:'
+      path: geometry/area.hpp
+      title: geometry/area.hpp
+    - icon: ':heavy_check_mark:'
       path: geometry/ccw.hpp
       title: geometry/ccw.hpp
     - icon: ':warning:'
@@ -138,6 +141,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: geometry/cross_point_ss.hpp
       title: geometry/cross_point_ss.hpp
+    - icon: ':warning:'
+      path: geometry/distance_lp.hpp
+      title: geometry/distance_lp.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/distance_sp.hpp
+      title: geometry/distance_sp.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/distance_ss.hpp
+      title: geometry/distance_ss.hpp
     - icon: ':heavy_check_mark:'
       path: geometry/geometry_template.hpp
       title: geometry/geometry_template.hpp
@@ -171,6 +183,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: geometry/point.hpp
       title: geometry/point.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/polygon.hpp
+      title: geometry/polygon.hpp
     - icon: ':heavy_check_mark:'
       path: geometry/projection.hpp
       title: geometry/projection.hpp
@@ -302,6 +317,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_cgl/aoj_cgl_2_c.test.cpp
       title: verify/aoj_cgl/aoj_cgl_2_c.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_cgl/aoj_cgl_2_d.test.cpp
+      title: verify/aoj_cgl/aoj_cgl_2_d.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_cgl/aoj_cgl_3_a.test.cpp
+      title: verify/aoj_cgl/aoj_cgl_3_a.test.cpp
   - name: verify/aoj_dpl
     pages:
     - icon: ':heavy_check_mark:'

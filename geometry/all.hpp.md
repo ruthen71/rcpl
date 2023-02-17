@@ -124,7 +124,7 @@ data:
     \n\n// parallel\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A\n\
     bool is_parallel(const Line &l1, const Line &l2) { return sign(cross(l1.b - l1.a,\
     \ l2.b - l2.a)) == 0; }\n#line 14 \"geometry/all.hpp\"\n\n#line 2 \"geometry/is_intersect_ll.hpp\"\
-    \n\n#line 5 \"geometry/is_intersect_ll.hpp\"\n\n// intersection (line and line)\n\
+    \n\n#line 4 \"geometry/is_intersect_ll.hpp\"\n\n// intersection (line and line)\n\
     bool is_intersect_ll(const Line &l1, const Line &l2) {\n    Point base = l1.b\
     \ - l1.a;\n    Double d12 = cross(base, l2.b - l2.a);\n    Double d1 = cross(base,\
     \ l1.b - l2.a);\n    if (sign(d12) == 0) {\n        // parallel\n        if (sign(d1)\
@@ -133,8 +133,8 @@ data:
     \ true;\n}\n#line 2 \"geometry/is_intersect_lp.hpp\"\n\n#line 5 \"geometry/is_intersect_lp.hpp\"\
     \n\n// intersection (line and point)\n// ccw(a, b, c) == ON_SEGMENT or ONLINE_BACK\
     \ or ONLINE_FRONT\nbool is_intersect_lp(const Line &l, const Point &p) {\n   \
-    \ int res = ccw(l.a, l.b, p);\n    return (res == ONLINE_BACK || res == ONLINE_FRONT\
-    \ || res == ON_SEGMENT);\n}\n#line 2 \"geometry/is_intersect_ss.hpp\"\n\n#line\
+    \ int res = ccw(l.a, l.b, p);\n    return (res == ONLINE_BACK or res == ONLINE_FRONT\
+    \ or res == ON_SEGMENT);\n}\n#line 2 \"geometry/is_intersect_ss.hpp\"\n\n#line\
     \ 5 \"geometry/is_intersect_ss.hpp\"\n\n// intersection (segment and segment)\n\
     // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_B\nbool is_intersect_ss(const\
     \ Segment &s1, const Segment &s2) { return (ccw(s1.a, s1.b, s2.a) * ccw(s1.a,\
@@ -148,31 +148,31 @@ data:
     \  if (c1.r + c2.r < d) return 4;\n    if (equal(c1.r + c2.r, d)) return 3;\n\
     \    if (c1.r - c2.r < d) return 2;\n    if (equal(c1.r - c2.r, d)) return 1;\n\
     \    return 0;\n}\n#line 2 \"geometry/is_intersect_cc.hpp\"\n\n#line 5 \"geometry/is_intersect_cc.hpp\"\
-    \n// intersect = number of tangent is 1, 2, 3\nbool is_intersect_cc(const Circle\
-    \ &c1, const Circle &c2) {\n    int num = tangent_number_cc(c1, c2);\n    return\
-    \ 1 <= num and num <= 3;\n}\n#line 2 \"geometry/is_intersect_cp.hpp\"\n\n#line\
-    \ 5 \"geometry/is_intersect_cp.hpp\"\n// intersection (circle and point)\nbool\
-    \ is_intersect_cp(const Circle &c, const Point &p) { return equal(std::abs(p -\
-    \ c.o), c.r); }\n#line 22 \"geometry/all.hpp\"\n\n#line 2 \"geometry/cross_point_ll.hpp\"\
-    \n\n#line 4 \"geometry/cross_point_ll.hpp\"\n\n// cross point (line and line)\n\
-    Point cross_point_ll(const Line &l1, const Line &l2) {\n    Point base = l1.b\
-    \ - l1.a;\n    Double d12 = cross(base, l2.b - l2.a);\n    Double d1 = cross(base,\
-    \ l1.b - l2.a);\n    if (sign(d12) == 0) {\n        // parallel\n        if (sign(d1)\
-    \ == 0) {\n            // cross\n            return l2.a;\n        } else {\n\
-    \            // not cross\n            assert(false);\n        }\n    }\n    return\
-    \ l2.a + (l2.b - l2.a) * (d1 / d12);\n}\n#line 2 \"geometry/cross_point_ss.hpp\"\
-    \n\n#line 6 \"geometry/cross_point_ss.hpp\"\n\n// cross point (segment and segment)\n\
-    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_C\nPoint cross_point_ss(const\
-    \ Segment &s1, const Segment &s2) {\n    // check intersection s1 and s2\n   \
-    \ assert(is_intersect_ss(s1, s2));\n    Point base = s1.b - s1.a;\n    Double\
-    \ d12 = cross(base, s2.b - s2.a);\n    Double d1 = cross(base, s1.b - s2.a);\n\
-    \    if (sign(d12) == 0) {\n        // parallel\n        if (sign(d1) == 0) {\n\
-    \            // equal\n            if (is_intersect_sp(s1, s2.a)) return s2.a;\n\
-    \            if (is_intersect_sp(s1, s2.b)) return s2.b;\n            if (is_intersect_sp(s2,\
-    \ s1.a)) return s1.a;\n            assert(is_intersect_sp(s2, s1.b));\n      \
-    \      return s1.b;\n        } else {\n            // excepted by is_intersect_ss(s1,\
-    \ s2)\n            assert(0);\n        }\n    }\n    return s2.a + (s2.b - s2.a)\
-    \ * (d1 / d12);\n}\n#line 25 \"geometry/all.hpp\"\n"
+    \n// intersection (circle and circle)\n// intersect = number of tangent is 1,\
+    \ 2, 3\nbool is_intersect_cc(const Circle &c1, const Circle &c2) {\n    int num\
+    \ = tangent_number_cc(c1, c2);\n    return 1 <= num and num <= 3;\n}\n#line 2\
+    \ \"geometry/is_intersect_cp.hpp\"\n\n#line 5 \"geometry/is_intersect_cp.hpp\"\
+    \n// intersection (circle and point)\nbool is_intersect_cp(const Circle &c, const\
+    \ Point &p) { return equal(std::abs(p - c.o), c.r); }\n#line 22 \"geometry/all.hpp\"\
+    \n\n#line 2 \"geometry/cross_point_ll.hpp\"\n\n#line 4 \"geometry/cross_point_ll.hpp\"\
+    \n\n// cross point (line and line)\nPoint cross_point_ll(const Line &l1, const\
+    \ Line &l2) {\n    Point base = l1.b - l1.a;\n    Double d12 = cross(base, l2.b\
+    \ - l2.a);\n    Double d1 = cross(base, l1.b - l2.a);\n    if (sign(d12) == 0)\
+    \ {\n        // parallel\n        if (sign(d1) == 0) {\n            // cross\n\
+    \            return l2.a;\n        } else {\n            // not cross\n      \
+    \      assert(false);\n        }\n    }\n    return l2.a + (l2.b - l2.a) * (d1\
+    \ / d12);\n}\n#line 2 \"geometry/cross_point_ss.hpp\"\n\n#line 6 \"geometry/cross_point_ss.hpp\"\
+    \n\n// cross point (segment and segment)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_C\n\
+    Point cross_point_ss(const Segment &s1, const Segment &s2) {\n    // check intersection\
+    \ s1 and s2\n    assert(is_intersect_ss(s1, s2));\n    Point base = s1.b - s1.a;\n\
+    \    Double d12 = cross(base, s2.b - s2.a);\n    Double d1 = cross(base, s1.b\
+    \ - s2.a);\n    if (sign(d12) == 0) {\n        // parallel\n        if (sign(d1)\
+    \ == 0) {\n            // equal\n            if (is_intersect_sp(s1, s2.a)) return\
+    \ s2.a;\n            if (is_intersect_sp(s1, s2.b)) return s2.b;\n           \
+    \ if (is_intersect_sp(s2, s1.a)) return s1.a;\n            assert(is_intersect_sp(s2,\
+    \ s1.b));\n            return s1.b;\n        } else {\n            // excepted\
+    \ by is_intersect_ss(s1, s2)\n            assert(0);\n        }\n    }\n    return\
+    \ s2.a + (s2.b - s2.a) * (d1 / d12);\n}\n#line 25 \"geometry/all.hpp\"\n"
   code: '#pragma once
 
     #include "geometry/geometry_template.hpp"
@@ -241,7 +241,7 @@ data:
   isVerificationFile: false
   path: geometry/all.hpp
   requiredBy: []
-  timestamp: '2023-02-17 09:50:28+09:00'
+  timestamp: '2023-02-17 12:54:40+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/all.hpp

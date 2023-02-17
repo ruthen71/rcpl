@@ -14,6 +14,15 @@ data:
   - icon: ':warning:'
     path: geometry/all.hpp
     title: geometry/all.hpp
+  - icon: ':warning:'
+    path: geometry/distance_lp.hpp
+    title: geometry/distance_lp.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/distance_sp.hpp
+    title: geometry/distance_sp.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/distance_ss.hpp
+    title: geometry/distance_ss.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/reflection.hpp
     title: geometry/reflection.hpp
@@ -24,6 +33,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_1_b.test.cpp
     title: verify/aoj_cgl/aoj_cgl_1_b.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_2_d.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_2_d.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -73,11 +85,15 @@ data:
   isVerificationFile: false
   path: geometry/projection.hpp
   requiredBy:
+  - geometry/distance_sp.hpp
   - geometry/reflection.hpp
+  - geometry/distance_ss.hpp
+  - geometry/distance_lp.hpp
   - geometry/all.hpp
   timestamp: '2023-02-11 13:48:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/aoj_cgl/aoj_cgl_2_d.test.cpp
   - verify/aoj_cgl/aoj_cgl_1_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_1_a.test.cpp
 documentation_of: geometry/projection.hpp

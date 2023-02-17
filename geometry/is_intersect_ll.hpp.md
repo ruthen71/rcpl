@@ -5,9 +5,6 @@ data:
     path: geometry/geometry_template.hpp
     title: geometry/geometry_template.hpp
   - icon: ':heavy_check_mark:'
-    path: geometry/is_parallel.hpp
-    title: geometry/is_parallel.hpp
-  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
   - icon: ':heavy_check_mark:'
@@ -51,33 +48,29 @@ data:
     \    } else {\n            a = Point(0, C / B), b = Point(C / A, 0);\n       \
     \ }\n    }\n\n    friend std::istream &operator>>(std::istream &is, Line &p) {\
     \ return is >> p.a >> p.b; }\n    friend std::ostream &operator<<(std::ostream\
-    \ &os, const Line &p) { return os << p.a << \"->\" << p.b; }\n};\n#line 2 \"geometry/is_parallel.hpp\"\
-    \n\n#line 4 \"geometry/is_parallel.hpp\"\n\n// parallel\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A\n\
-    bool is_parallel(const Line &l1, const Line &l2) { return sign(cross(l1.b - l1.a,\
-    \ l2.b - l2.a)) == 0; }\n#line 5 \"geometry/is_intersect_ll.hpp\"\n\n// intersection\
-    \ (line and line)\nbool is_intersect_ll(const Line &l1, const Line &l2) {\n  \
-    \  Point base = l1.b - l1.a;\n    Double d12 = cross(base, l2.b - l2.a);\n   \
-    \ Double d1 = cross(base, l1.b - l2.a);\n    if (sign(d12) == 0) {\n        //\
-    \ parallel\n        if (sign(d1) == 0) {\n            // cross\n            return\
-    \ true;\n        } else {\n            // not cross\n            return false;\n\
-    \        }\n    }\n    return true;\n}\n"
-  code: "#pragma once\n\n#include \"geometry/line.hpp\"\n#include \"geometry/is_parallel.hpp\"\
+    \ &os, const Line &p) { return os << p.a << \"->\" << p.b; }\n};\n#line 4 \"geometry/is_intersect_ll.hpp\"\
     \n\n// intersection (line and line)\nbool is_intersect_ll(const Line &l1, const\
     \ Line &l2) {\n    Point base = l1.b - l1.a;\n    Double d12 = cross(base, l2.b\
     \ - l2.a);\n    Double d1 = cross(base, l1.b - l2.a);\n    if (sign(d12) == 0)\
     \ {\n        // parallel\n        if (sign(d1) == 0) {\n            // cross\n\
     \            return true;\n        } else {\n            // not cross\n      \
-    \      return false;\n        }\n    }\n    return true;\n}"
+    \      return false;\n        }\n    }\n    return true;\n}\n"
+  code: "#pragma once\n\n#include \"geometry/line.hpp\"\n\n// intersection (line and\
+    \ line)\nbool is_intersect_ll(const Line &l1, const Line &l2) {\n    Point base\
+    \ = l1.b - l1.a;\n    Double d12 = cross(base, l2.b - l2.a);\n    Double d1 =\
+    \ cross(base, l1.b - l2.a);\n    if (sign(d12) == 0) {\n        // parallel\n\
+    \        if (sign(d1) == 0) {\n            // cross\n            return true;\n\
+    \        } else {\n            // not cross\n            return false;\n     \
+    \   }\n    }\n    return true;\n}"
   dependsOn:
   - geometry/line.hpp
   - geometry/point.hpp
   - geometry/geometry_template.hpp
-  - geometry/is_parallel.hpp
   isVerificationFile: false
   path: geometry/is_intersect_ll.hpp
   requiredBy:
   - geometry/all.hpp
-  timestamp: '2023-02-17 09:50:28+09:00'
+  timestamp: '2023-02-17 12:54:40+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/is_intersect_ll.hpp

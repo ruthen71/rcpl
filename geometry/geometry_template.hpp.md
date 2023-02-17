@@ -6,6 +6,9 @@ data:
     path: geometry/all.hpp
     title: geometry/all.hpp
   - icon: ':heavy_check_mark:'
+    path: geometry/area.hpp
+    title: geometry/area.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/ccw.hpp
     title: geometry/ccw.hpp
   - icon: ':warning:'
@@ -17,6 +20,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/cross_point_ss.hpp
     title: geometry/cross_point_ss.hpp
+  - icon: ':warning:'
+    path: geometry/distance_lp.hpp
+    title: geometry/distance_lp.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/distance_sp.hpp
+    title: geometry/distance_sp.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/distance_ss.hpp
+    title: geometry/distance_ss.hpp
   - icon: ':warning:'
     path: geometry/is_intersect_cc.hpp
     title: geometry/is_intersect_cc.hpp
@@ -48,6 +60,9 @@ data:
     path: geometry/point.hpp
     title: geometry/point.hpp
   - icon: ':heavy_check_mark:'
+    path: geometry/polygon.hpp
+    title: geometry/polygon.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/projection.hpp
     title: geometry/projection.hpp
   - icon: ':heavy_check_mark:'
@@ -78,6 +93,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_2_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_2_c.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_2_d.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_2_d.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_3_a.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_3_a.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -131,9 +152,11 @@ data:
   requiredBy:
   - geometry/line.hpp
   - geometry/point.hpp
+  - geometry/area.hpp
   - geometry/cross_point_ss.hpp
   - geometry/is_orthogonal.hpp
   - geometry/segment.hpp
+  - geometry/distance_sp.hpp
   - geometry/is_intersect_cc.hpp
   - geometry/tangent_number_cc.hpp
   - geometry/reflection.hpp
@@ -144,14 +167,19 @@ data:
   - geometry/circle.hpp
   - geometry/is_intersect_lp.hpp
   - geometry/is_intersect_sp.hpp
+  - geometry/polygon.hpp
+  - geometry/distance_ss.hpp
   - geometry/ccw.hpp
+  - geometry/distance_lp.hpp
   - geometry/is_intersect_cp.hpp
   - geometry/all.hpp
   - geometry/is_parallel.hpp
   timestamp: '2023-02-11 12:18:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/aoj_cgl/aoj_cgl_2_d.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_a.test.cpp
+  - verify/aoj_cgl/aoj_cgl_3_a.test.cpp
   - verify/aoj_cgl/aoj_cgl_1_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_1_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_b.test.cpp

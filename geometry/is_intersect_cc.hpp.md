@@ -51,13 +51,14 @@ data:
     \ std::swap(c1, c2);\n    Double d = std::abs(c1.o - c2.o);\n    if (c1.r + c2.r\
     \ < d) return 4;\n    if (equal(c1.r + c2.r, d)) return 3;\n    if (c1.r - c2.r\
     \ < d) return 2;\n    if (equal(c1.r - c2.r, d)) return 1;\n    return 0;\n}\n\
-    #line 5 \"geometry/is_intersect_cc.hpp\"\n// intersect = number of tangent is\
-    \ 1, 2, 3\nbool is_intersect_cc(const Circle &c1, const Circle &c2) {\n    int\
-    \ num = tangent_number_cc(c1, c2);\n    return 1 <= num and num <= 3;\n}\n"
-  code: "#pragma once\n\n#include \"geometry/circle.hpp\"\n#include \"geometry/tangent_number_cc.hpp\"\
-    \n// intersect = number of tangent is 1, 2, 3\nbool is_intersect_cc(const Circle\
+    #line 5 \"geometry/is_intersect_cc.hpp\"\n// intersection (circle and circle)\n\
+    // intersect = number of tangent is 1, 2, 3\nbool is_intersect_cc(const Circle\
     \ &c1, const Circle &c2) {\n    int num = tangent_number_cc(c1, c2);\n    return\
-    \ 1 <= num and num <= 3;\n}"
+    \ 1 <= num and num <= 3;\n}\n"
+  code: "#pragma once\n\n#include \"geometry/circle.hpp\"\n#include \"geometry/tangent_number_cc.hpp\"\
+    \n// intersection (circle and circle)\n// intersect = number of tangent is 1,\
+    \ 2, 3\nbool is_intersect_cc(const Circle &c1, const Circle &c2) {\n    int num\
+    \ = tangent_number_cc(c1, c2);\n    return 1 <= num and num <= 3;\n}"
   dependsOn:
   - geometry/circle.hpp
   - geometry/point.hpp
@@ -67,7 +68,7 @@ data:
   path: geometry/is_intersect_cc.hpp
   requiredBy:
   - geometry/all.hpp
-  timestamp: '2023-02-17 09:43:32+09:00'
+  timestamp: '2023-02-17 12:54:40+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/is_intersect_cc.hpp
