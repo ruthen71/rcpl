@@ -11,9 +11,21 @@ data:
   - icon: ':warning:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
+  - icon: ':warning:'
+    path: geometry/cross_point_ll.hpp
+    title: geometry/cross_point_ll.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/cross_point_ss.hpp
     title: geometry/cross_point_ss.hpp
+  - icon: ':warning:'
+    path: geometry/is_intersect_cc.hpp
+    title: geometry/is_intersect_cc.hpp
+  - icon: ':warning:'
+    path: geometry/is_intersect_cp.hpp
+    title: geometry/is_intersect_cp.hpp
+  - icon: ':warning:'
+    path: geometry/is_intersect_ll.hpp
+    title: geometry/is_intersect_ll.hpp
   - icon: ':warning:'
     path: geometry/is_intersect_lp.hpp
     title: geometry/is_intersect_lp.hpp
@@ -44,6 +56,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/segment.hpp
     title: geometry/segment.hpp
+  - icon: ':warning:'
+    path: geometry/tangent_number_cc.hpp
+    title: geometry/tangent_number_cc.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_1_a.test.cpp
@@ -119,13 +134,18 @@ data:
   - geometry/cross_point_ss.hpp
   - geometry/is_orthogonal.hpp
   - geometry/segment.hpp
+  - geometry/is_intersect_cc.hpp
+  - geometry/tangent_number_cc.hpp
   - geometry/reflection.hpp
   - geometry/projection.hpp
+  - geometry/cross_point_ll.hpp
+  - geometry/is_intersect_ll.hpp
   - geometry/is_intersect_ss.hpp
   - geometry/circle.hpp
   - geometry/is_intersect_lp.hpp
   - geometry/is_intersect_sp.hpp
   - geometry/ccw.hpp
+  - geometry/is_intersect_cp.hpp
   - geometry/all.hpp
   - geometry/is_parallel.hpp
   timestamp: '2023-02-11 12:18:28+09:00'

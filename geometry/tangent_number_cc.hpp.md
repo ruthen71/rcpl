@@ -1,6 +1,9 @@
 ---
 data:
   _extendedDependsOn:
+  - icon: ':warning:'
+    path: geometry/circle.hpp
+    title: geometry/circle.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: geometry/geometry_template.hpp
@@ -9,17 +12,8 @@ data:
     title: geometry/point.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
-    path: geometry/all.hpp
-    title: geometry/all.hpp
-  - icon: ':warning:'
     path: geometry/is_intersect_cc.hpp
     title: geometry/is_intersect_cc.hpp
-  - icon: ':warning:'
-    path: geometry/is_intersect_cp.hpp
-    title: geometry/is_intersect_cp.hpp
-  - icon: ':warning:'
-    path: geometry/tangent_number_cc.hpp
-    title: geometry/tangent_number_cc.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -48,30 +42,32 @@ data:
     \    Double r;\n\n    Circle() = default;\n\n    Circle(Point o, Double r) : o(o),\
     \ r(r) {}\n\n    friend std::ostream &operator<<(std::ostream &os, const Circle\
     \ &c) { return os << c.o << ' ' << c.r; }\n    friend std::istream &operator>>(std::istream\
-    \ &is, Circle &c) { return is >> c.o >> c.r; }  // format : x y r\n};\n"
-  code: "#pragma once\n\n#include \"geometry/point.hpp\"\n\n// circle\nstruct Circle\
-    \ {\n    Point o;\n    Double r;\n\n    Circle() = default;\n\n    Circle(Point\
-    \ o, Double r) : o(o), r(r) {}\n\n    friend std::ostream &operator<<(std::ostream\
-    \ &os, const Circle &c) { return os << c.o << ' ' << c.r; }\n    friend std::istream\
-    \ &operator>>(std::istream &is, Circle &c) { return is >> c.o >> c.r; }  // format\
-    \ : x y r\n};"
+    \ &is, Circle &c) { return is >> c.o >> c.r; }  // format : x y r\n};\n#line 3\
+    \ \"geometry/tangent_number_cc.hpp\"\n// return the number of tangent\nint tangent_number_cc(Circle\
+    \ c1, Circle c2) {\n    if (c1.r < c2.r) std::swap(c1, c2);\n    Double d = std::abs(c1.o\
+    \ - c2.o);\n    if (c1.r + c2.r < d) return 4;\n    if (equal(c1.r + c2.r, d))\
+    \ return 3;\n    if (c1.r - c2.r < d) return 2;\n    if (equal(c1.r - c2.r, d))\
+    \ return 1;\n    return 0;\n}\n"
+  code: "#pragma once\n#include \"geometry/circle.hpp\"\n// return the number of tangent\n\
+    int tangent_number_cc(Circle c1, Circle c2) {\n    if (c1.r < c2.r) std::swap(c1,\
+    \ c2);\n    Double d = std::abs(c1.o - c2.o);\n    if (c1.r + c2.r < d) return\
+    \ 4;\n    if (equal(c1.r + c2.r, d)) return 3;\n    if (c1.r - c2.r < d) return\
+    \ 2;\n    if (equal(c1.r - c2.r, d)) return 1;\n    return 0;\n}"
   dependsOn:
+  - geometry/circle.hpp
   - geometry/point.hpp
   - geometry/geometry_template.hpp
   isVerificationFile: false
-  path: geometry/circle.hpp
+  path: geometry/tangent_number_cc.hpp
   requiredBy:
   - geometry/is_intersect_cc.hpp
-  - geometry/tangent_number_cc.hpp
-  - geometry/is_intersect_cp.hpp
-  - geometry/all.hpp
-  timestamp: '2023-02-12 02:42:00+09:00'
+  timestamp: '2023-02-17 09:43:32+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: geometry/circle.hpp
+documentation_of: geometry/tangent_number_cc.hpp
 layout: document
 redirect_from:
-- /library/geometry/circle.hpp
-- /library/geometry/circle.hpp.html
-title: geometry/circle.hpp
+- /library/geometry/tangent_number_cc.hpp
+- /library/geometry/tangent_number_cc.hpp.html
+title: geometry/tangent_number_cc.hpp
 ---

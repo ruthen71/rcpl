@@ -1,0 +1,73 @@
+---
+data:
+  _extendedDependsOn:
+  - icon: ':warning:'
+    path: geometry/circle.hpp
+    title: geometry/circle.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/geometry_template.hpp
+    title: geometry/geometry_template.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/point.hpp
+    title: geometry/point.hpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
+  _pathExtension: hpp
+  _verificationStatusIcon: ':warning:'
+  attributes:
+    links: []
+  bundledCode: "#line 2 \"geometry/is_intersect_cp.hpp\"\n\n#line 2 \"geometry/point.hpp\"\
+    \n\n#line 2 \"geometry/geometry_template.hpp\"\n\n// template\nusing Double =\
+    \ double;\nconst Double EPS = 1e-8;\nconst Double PI = std::acos(-1);\ninline\
+    \ int sign(const Double &x) { return x <= -EPS ? -1 : (x >= EPS ? 1 : 0); }\n\
+    inline bool equal(const Double &a, const Double &b) { return sign(a - b) == 0;\
+    \ }\nDouble radian_to_degree(const Double &r) { return r * 180.0 / PI; }\nDouble\
+    \ degree_to_radian(const Double &d) { return d * PI / 180.0; }\n#line 4 \"geometry/point.hpp\"\
+    \n\n// point\nusing Point = std::complex<Double>;\nstd::istream &operator>>(std::istream\
+    \ &is, Point &p) {\n    Double x, y;\n    is >> x >> y;\n    p = Point(x, y);\n\
+    \    return is;\n}\nstd::ostream &operator<<(std::ostream &os, Point &p) {\n \
+    \   os << std::fixed << std::setprecision(15);\n    return os << p.real() << '\
+    \ ' << p.imag();\n}\n\nnamespace std {\nbool operator<(const Point &a, const Point\
+    \ &b) { return a.real() != b.real() ? a.real() < b.real() : a.imag() < b.imag();\
+    \ }\n}  // namespace std\n\n// inner product\nDouble dot(const Point &a, const\
+    \ Point &b) { return a.real() * b.real() + a.imag() * b.imag(); }\n// outer product\n\
+    Double cross(const Point &a, const Point &b) { return a.real() * b.imag() - a.imag()\
+    \ * b.real(); }\n// rotate Point p counterclockwise by theta radian\nPoint rotate(const\
+    \ Point &p, const Double &theta) { return p * Point(cos(theta), sin(theta)); }\n\
+    #line 2 \"geometry/circle.hpp\"\n\n#line 4 \"geometry/circle.hpp\"\n\n// circle\n\
+    struct Circle {\n    Point o;\n    Double r;\n\n    Circle() = default;\n\n  \
+    \  Circle(Point o, Double r) : o(o), r(r) {}\n\n    friend std::ostream &operator<<(std::ostream\
+    \ &os, const Circle &c) { return os << c.o << ' ' << c.r; }\n    friend std::istream\
+    \ &operator>>(std::istream &is, Circle &c) { return is >> c.o >> c.r; }  // format\
+    \ : x y r\n};\n#line 5 \"geometry/is_intersect_cp.hpp\"\n// intersection (circle\
+    \ and point)\nbool is_intersect_cp(const Circle &c, const Point &p) { return equal(std::abs(p\
+    \ - c.o), c.r); }\n"
+  code: '#pragma once
+
+
+    #include "geometry/point.hpp"
+
+    #include "geometry/circle.hpp"
+
+    // intersection (circle and point)
+
+    bool is_intersect_cp(const Circle &c, const Point &p) { return equal(std::abs(p
+    - c.o), c.r); }'
+  dependsOn:
+  - geometry/point.hpp
+  - geometry/geometry_template.hpp
+  - geometry/circle.hpp
+  isVerificationFile: false
+  path: geometry/is_intersect_cp.hpp
+  requiredBy: []
+  timestamp: '2023-02-17 09:43:32+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
+documentation_of: geometry/is_intersect_cp.hpp
+layout: document
+redirect_from:
+- /library/geometry/is_intersect_cp.hpp
+- /library/geometry/is_intersect_cp.hpp.html
+title: geometry/is_intersect_cp.hpp
+---

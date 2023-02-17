@@ -10,24 +10,14 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: geometry/point.hpp
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: geometry/all.hpp
-    title: geometry/all.hpp
-  - icon: ':warning:'
-    path: geometry/is_intersect_ll.hpp
-    title: geometry/is_intersect_ll.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj_cgl/aoj_cgl_2_a.test.cpp
-    title: verify/aoj_cgl/aoj_cgl_2_a.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
-    links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A
-  bundledCode: "#line 2 \"geometry/is_parallel.hpp\"\n\n#line 2 \"geometry/line.hpp\"\
+    links: []
+  bundledCode: "#line 2 \"geometry/cross_point_ll.hpp\"\n\n#line 2 \"geometry/line.hpp\"\
     \n\n#line 2 \"geometry/point.hpp\"\n\n#line 2 \"geometry/geometry_template.hpp\"\
     \n\n// template\nusing Double = double;\nconst Double EPS = 1e-8;\nconst Double\
     \ PI = std::acos(-1);\ninline int sign(const Double &x) { return x <= -EPS ? -1\
@@ -55,39 +45,39 @@ data:
     \    } else {\n            a = Point(0, C / B), b = Point(C / A, 0);\n       \
     \ }\n    }\n\n    friend std::istream &operator>>(std::istream &is, Line &p) {\
     \ return is >> p.a >> p.b; }\n    friend std::ostream &operator<<(std::ostream\
-    \ &os, const Line &p) { return os << p.a << \"->\" << p.b; }\n};\n#line 4 \"geometry/is_parallel.hpp\"\
-    \n\n// parallel\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A\n\
-    bool is_parallel(const Line &l1, const Line &l2) { return sign(cross(l1.b - l1.a,\
-    \ l2.b - l2.a)) == 0; }\n"
-  code: '#pragma once
-
-
-    #include "geometry/line.hpp"
-
-
-    // parallel
-
-    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A
-
-    bool is_parallel(const Line &l1, const Line &l2) { return sign(cross(l1.b - l1.a,
-    l2.b - l2.a)) == 0; }'
+    \ &os, const Line &p) { return os << p.a << \"->\" << p.b; }\n};\n#line 4 \"geometry/cross_point_ll.hpp\"\
+    \n\n// cross point (line and line)\nPoint cross_point_ll(const Line &l1, const\
+    \ Line &l2) {\n    Point base = l1.b - l1.a;\n    Double d12 = cross(base, l2.b\
+    \ - l2.a);\n    Double d1 = cross(base, l1.b - l2.a);\n    // \u4E00\u81F4(sign(d12)\
+    \ == 0 \u306F is_parallel\u3068\u672C\u8CEA\u7684\u306B\u540C\u3058, sign(d1)\
+    \ == 0\u306F\u91CD\u306A\u3063\u3066\u3044\u308B\u304B)\n    if (sign(d12) ==\
+    \ 0) {\n        // parallel\n        if (sign(d1) == 0) {\n            // cross\n\
+    \            return l2.a;\n        } else {\n            // not cross\n      \
+    \      assert(false);\n        }\n    }\n    return l2.a + (l2.b - l2.a) * (d1\
+    \ / d12);\n}\n"
+  code: "#pragma once\n\n#include \"geometry/line.hpp\"\n\n// cross point (line and\
+    \ line)\nPoint cross_point_ll(const Line &l1, const Line &l2) {\n    Point base\
+    \ = l1.b - l1.a;\n    Double d12 = cross(base, l2.b - l2.a);\n    Double d1 =\
+    \ cross(base, l1.b - l2.a);\n    // \u4E00\u81F4(sign(d12) == 0 \u306F is_parallel\u3068\
+    \u672C\u8CEA\u7684\u306B\u540C\u3058, sign(d1) == 0\u306F\u91CD\u306A\u3063\u3066\
+    \u3044\u308B\u304B)\n    if (sign(d12) == 0) {\n        // parallel\n        if\
+    \ (sign(d1) == 0) {\n            // cross\n            return l2.a;\n        }\
+    \ else {\n            // not cross\n            assert(false);\n        }\n  \
+    \  }\n    return l2.a + (l2.b - l2.a) * (d1 / d12);\n}"
   dependsOn:
   - geometry/line.hpp
   - geometry/point.hpp
   - geometry/geometry_template.hpp
   isVerificationFile: false
-  path: geometry/is_parallel.hpp
-  requiredBy:
-  - geometry/is_intersect_ll.hpp
-  - geometry/all.hpp
-  timestamp: '2023-02-11 14:39:26+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/aoj_cgl/aoj_cgl_2_a.test.cpp
-documentation_of: geometry/is_parallel.hpp
+  path: geometry/cross_point_ll.hpp
+  requiredBy: []
+  timestamp: '2023-02-17 09:26:15+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
+documentation_of: geometry/cross_point_ll.hpp
 layout: document
 redirect_from:
-- /library/geometry/is_parallel.hpp
-- /library/geometry/is_parallel.hpp.html
-title: geometry/is_parallel.hpp
+- /library/geometry/cross_point_ll.hpp
+- /library/geometry/cross_point_ll.hpp.html
+title: geometry/cross_point_ll.hpp
 ---

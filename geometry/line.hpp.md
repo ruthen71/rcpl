@@ -11,9 +11,15 @@ data:
   - icon: ':warning:'
     path: geometry/all.hpp
     title: geometry/all.hpp
+  - icon: ':warning:'
+    path: geometry/cross_point_ll.hpp
+    title: geometry/cross_point_ll.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/cross_point_ss.hpp
     title: geometry/cross_point_ss.hpp
+  - icon: ':warning:'
+    path: geometry/is_intersect_ll.hpp
+    title: geometry/is_intersect_ll.hpp
   - icon: ':warning:'
     path: geometry/is_intersect_lp.hpp
     title: geometry/is_intersect_lp.hpp
@@ -110,6 +116,8 @@ data:
   - geometry/segment.hpp
   - geometry/reflection.hpp
   - geometry/projection.hpp
+  - geometry/cross_point_ll.hpp
+  - geometry/is_intersect_ll.hpp
   - geometry/is_intersect_ss.hpp
   - geometry/is_intersect_lp.hpp
   - geometry/is_intersect_sp.hpp
