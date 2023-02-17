@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
   - icon: ':x:'

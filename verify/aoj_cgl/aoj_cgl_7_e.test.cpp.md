@@ -1,0 +1,103 @@
+---
+data:
+  _extendedDependsOn:
+  - icon: ':question:'
+    path: geometry/circle.hpp
+    title: geometry/circle.hpp
+  - icon: ':x:'
+    path: geometry/cross_point_cc.hpp
+    title: geometry/cross_point_cc.hpp
+  - icon: ':question:'
+    path: geometry/geometry_template.hpp
+    title: geometry/geometry_template.hpp
+  - icon: ':x:'
+    path: geometry/is_intersect_cc.hpp
+    title: geometry/is_intersect_cc.hpp
+  - icon: ':question:'
+    path: geometry/point.hpp
+    title: geometry/point.hpp
+  - icon: ':question:'
+    path: geometry/tangent_number_cc.hpp
+    title: geometry/tangent_number_cc.hpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
+  _isVerificationFailed: true
+  _pathExtension: cpp
+  _verificationStatusIcon: ':x:'
+  attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_E
+    links:
+    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_E
+  bundledCode: "#line 1 \"verify/aoj_cgl/aoj_cgl_7_e.test.cpp\"\n#define PROBLEM \"\
+    http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_E\"\n\n#include\
+    \ <bits/stdc++.h>\n\n#line 2 \"geometry/cross_point_cc.hpp\"\n\n#line 2 \"geometry/is_intersect_cc.hpp\"\
+    \n\n#line 2 \"geometry/circle.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n#line\
+    \ 2 \"geometry/geometry_template.hpp\"\n\n// template\nusing Double = double;\n\
+    const Double EPS = 1e-8;\nconst Double PI = std::acos(-1);\ninline int sign(const\
+    \ Double &x) { return x <= -EPS ? -1 : (x >= EPS ? 1 : 0); }\ninline bool equal(const\
+    \ Double &a, const Double &b) { return sign(a - b) == 0; }\nDouble radian_to_degree(const\
+    \ Double &r) { return r * 180.0 / PI; }\nDouble degree_to_radian(const Double\
+    \ &d) { return d * PI / 180.0; }\n#line 4 \"geometry/point.hpp\"\n\n// point\n\
+    using Point = std::complex<Double>;\nstd::istream &operator>>(std::istream &is,\
+    \ Point &p) {\n    Double x, y;\n    is >> x >> y;\n    p = Point(x, y);\n   \
+    \ return is;\n}\nstd::ostream &operator<<(std::ostream &os, Point &p) {\n    os\
+    \ << std::fixed << std::setprecision(15);\n    return os << p.real() << ' ' <<\
+    \ p.imag();\n}\n\nnamespace std {\nbool operator<(const Point &a, const Point\
+    \ &b) { return a.real() != b.real() ? a.real() < b.real() : a.imag() < b.imag();\
+    \ }\n}  // namespace std\n\n// inner product\nDouble dot(const Point &a, const\
+    \ Point &b) { return a.real() * b.real() + a.imag() * b.imag(); }\n// outer product\n\
+    Double cross(const Point &a, const Point &b) { return a.real() * b.imag() - a.imag()\
+    \ * b.real(); }\n// rotate Point p counterclockwise by theta radian\nPoint rotate(const\
+    \ Point &p, const Double &theta) { return p * Point(cos(theta), sin(theta)); }\n\
+    #line 4 \"geometry/circle.hpp\"\n\n// circle\nstruct Circle {\n    Point o;\n\
+    \    Double r;\n\n    Circle() = default;\n\n    Circle(Point o, Double r) : o(o),\
+    \ r(r) {}\n\n    friend std::ostream &operator<<(std::ostream &os, const Circle\
+    \ &c) { return os << c.o << ' ' << c.r; }\n    friend std::istream &operator>>(std::istream\
+    \ &is, Circle &c) { return is >> c.o >> c.r; }  // format : x y r\n};\n#line 3\
+    \ \"geometry/tangent_number_cc.hpp\"\n// return the number of tangent\nint tangent_number_cc(Circle\
+    \ c1, Circle c2) {\n    if (c1.r < c2.r) std::swap(c1, c2);\n    Double d = std::abs(c1.o\
+    \ - c2.o);\n    if (sign(d - c1.r - c2.r) == 1) return 4;  // d > c1.r + c2.r\n\
+    \    if (sign(d - c1.r - c2.r) == 0) return 3;  // d = c1.r + c2.r\n    if (sign(d\
+    \ - c1.r + c2.r) == 1) return 2;  // d > c1.r - c2.r\n    if (sign(d - c1.r +\
+    \ c2.r) == 0) return 1;  // d = c1.r - c2.r\n    return 0;\n}\n#line 5 \"geometry/is_intersect_cc.hpp\"\
+    \n// intersection (circle and circle)\n// intersect = number of tangent is 1,\
+    \ 2, 3\nbool is_intersect_cc(const Circle &c1, const Circle &c2) {\n    int num\
+    \ = tangent_number_cc(c1, c2);\n    return 1 <= num and num <= 3;\n}\n#line 4\
+    \ \"geometry/cross_point_cc.hpp\"\n\n// cross point (circle and circle)\n// //\
+    \ http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_E\nstd::vector<Point>\
+    \ cross_point_cc(const Circle &c1, const Circle &c2) {\n    if (!is_intersect_cc(c1,\
+    \ c2)) return {};\n    Double d = std::abs(c1.o - c2.o);\n    Double a = acos((std::norm(c1.r)\
+    \ - std::norm(c2.r) + std::norm(d)) / (2 * c1.r * d));\n    Double t = std::arg(c2.o\
+    \ - c1.o);\n    Point p = c1.o + std::polar(c1.r, t + a);\n    Point q = c1.o\
+    \ + std::polar(c1.r, t - a);\n    if (equal(p.real(), q.real()) and equal(p.imag(),\
+    \ q.imag())) return {p};\n    return {p, q};\n}\n#line 6 \"verify/aoj_cgl/aoj_cgl_7_e.test.cpp\"\
+    \n\nint main() {\n    Circle C1, C2;\n    std::cin >> C1 >> C2;\n    auto res\
+    \ = cross_point_cc(C1, C2);\n    std::sort(res.begin(), res.end());\n    if (res.size()\
+    \ == 1) res.push_back(res[0]);\n    std::cout << res[0] << ' ' << res[1] << '\\\
+    n';\n    return 0;\n}\n"
+  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_E\"\
+    \n\n#include <bits/stdc++.h>\n\n#include \"geometry/cross_point_cc.hpp\"\n\nint\
+    \ main() {\n    Circle C1, C2;\n    std::cin >> C1 >> C2;\n    auto res = cross_point_cc(C1,\
+    \ C2);\n    std::sort(res.begin(), res.end());\n    if (res.size() == 1) res.push_back(res[0]);\n\
+    \    std::cout << res[0] << ' ' << res[1] << '\\n';\n    return 0;\n}"
+  dependsOn:
+  - geometry/cross_point_cc.hpp
+  - geometry/is_intersect_cc.hpp
+  - geometry/circle.hpp
+  - geometry/point.hpp
+  - geometry/geometry_template.hpp
+  - geometry/tangent_number_cc.hpp
+  isVerificationFile: true
+  path: verify/aoj_cgl/aoj_cgl_7_e.test.cpp
+  requiredBy: []
+  timestamp: '2023-02-17 17:27:32+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
+  verifiedWith: []
+documentation_of: verify/aoj_cgl/aoj_cgl_7_e.test.cpp
+layout: document
+redirect_from:
+- /verify/verify/aoj_cgl/aoj_cgl_7_e.test.cpp
+- /verify/verify/aoj_cgl/aoj_cgl_7_e.test.cpp.html
+title: verify/aoj_cgl/aoj_cgl_7_e.test.cpp
+---

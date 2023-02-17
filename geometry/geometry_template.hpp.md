@@ -11,12 +11,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/ccw.hpp
     title: geometry/ccw.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/contain.hpp
     title: geometry/contain.hpp
+  - icon: ':x:'
+    path: geometry/cross_point_cc.hpp
+    title: geometry/cross_point_cc.hpp
   - icon: ':x:'
     path: geometry/cross_point_cl.hpp
     title: geometry/cross_point_cl.hpp
@@ -38,7 +41,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/is_convex.hpp
     title: geometry/is_convex.hpp
-  - icon: ':warning:'
+  - icon: ':x:'
     path: geometry/is_intersect_cc.hpp
     title: geometry/is_intersect_cc.hpp
   - icon: ':x:'
@@ -83,7 +86,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/segment.hpp
     title: geometry/segment.hpp
-  - icon: ':warning:'
+  - icon: ':question:'
     path: geometry/tangent_number_cc.hpp
     title: geometry/tangent_number_cc.hpp
   _extendedVerifiedWith:
@@ -117,9 +120,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_7_a.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_7_a.test.cpp
   - icon: ':x:'
     path: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
+  - icon: ':x:'
+    path: verify/aoj_cgl/aoj_cgl_7_e.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_7_e.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
   _verificationStatusIcon: ':question:'
@@ -177,6 +186,7 @@ data:
   - geometry/cross_point_ss.hpp
   - geometry/is_orthogonal.hpp
   - geometry/segment.hpp
+  - geometry/cross_point_cc.hpp
   - geometry/distance_sp.hpp
   - geometry/is_intersect_cc.hpp
   - geometry/tangent_number_cc.hpp
@@ -205,11 +215,13 @@ data:
   - verify/aoj_cgl/aoj_cgl_3_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_d.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_a.test.cpp
+  - verify/aoj_cgl/aoj_cgl_7_e.test.cpp
   - verify/aoj_cgl/aoj_cgl_3_a.test.cpp
   - verify/aoj_cgl/aoj_cgl_1_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_1_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_3_c.test.cpp
+  - verify/aoj_cgl/aoj_cgl_7_a.test.cpp
   - verify/aoj_cgl/aoj_cgl_7_d.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_1_a.test.cpp

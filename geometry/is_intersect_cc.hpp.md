@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
   - icon: ':question:'
@@ -10,17 +10,23 @@ data:
   - icon: ':question:'
     path: geometry/point.hpp
     title: geometry/point.hpp
-  - icon: ':warning:'
+  - icon: ':question:'
     path: geometry/tangent_number_cc.hpp
     title: geometry/tangent_number_cc.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
     path: geometry/all.hpp
     title: geometry/all.hpp
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: geometry/cross_point_cc.hpp
+    title: geometry/cross_point_cc.hpp
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify/aoj_cgl/aoj_cgl_7_e.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_7_e.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/is_intersect_cc.hpp\"\n\n#line 2 \"geometry/circle.hpp\"\
@@ -48,13 +54,14 @@ data:
     \ &operator>>(std::istream &is, Circle &c) { return is >> c.o >> c.r; }  // format\
     \ : x y r\n};\n#line 3 \"geometry/tangent_number_cc.hpp\"\n// return the number\
     \ of tangent\nint tangent_number_cc(Circle c1, Circle c2) {\n    if (c1.r < c2.r)\
-    \ std::swap(c1, c2);\n    Double d = std::abs(c1.o - c2.o);\n    if (c1.r + c2.r\
-    \ < d) return 4;\n    if (equal(c1.r + c2.r, d)) return 3;\n    if (c1.r - c2.r\
-    \ < d) return 2;\n    if (equal(c1.r - c2.r, d)) return 1;\n    return 0;\n}\n\
-    #line 5 \"geometry/is_intersect_cc.hpp\"\n// intersection (circle and circle)\n\
-    // intersect = number of tangent is 1, 2, 3\nbool is_intersect_cc(const Circle\
-    \ &c1, const Circle &c2) {\n    int num = tangent_number_cc(c1, c2);\n    return\
-    \ 1 <= num and num <= 3;\n}\n"
+    \ std::swap(c1, c2);\n    Double d = std::abs(c1.o - c2.o);\n    if (sign(d -\
+    \ c1.r - c2.r) == 1) return 4;  // d > c1.r + c2.r\n    if (sign(d - c1.r - c2.r)\
+    \ == 0) return 3;  // d = c1.r + c2.r\n    if (sign(d - c1.r + c2.r) == 1) return\
+    \ 2;  // d > c1.r - c2.r\n    if (sign(d - c1.r + c2.r) == 0) return 1;  // d\
+    \ = c1.r - c2.r\n    return 0;\n}\n#line 5 \"geometry/is_intersect_cc.hpp\"\n\
+    // intersection (circle and circle)\n// intersect = number of tangent is 1, 2,\
+    \ 3\nbool is_intersect_cc(const Circle &c1, const Circle &c2) {\n    int num =\
+    \ tangent_number_cc(c1, c2);\n    return 1 <= num and num <= 3;\n}\n"
   code: "#pragma once\n\n#include \"geometry/circle.hpp\"\n#include \"geometry/tangent_number_cc.hpp\"\
     \n// intersection (circle and circle)\n// intersect = number of tangent is 1,\
     \ 2, 3\nbool is_intersect_cc(const Circle &c1, const Circle &c2) {\n    int num\
@@ -67,10 +74,12 @@ data:
   isVerificationFile: false
   path: geometry/is_intersect_cc.hpp
   requiredBy:
+  - geometry/cross_point_cc.hpp
   - geometry/all.hpp
-  timestamp: '2023-02-17 12:54:40+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2023-02-17 17:11:31+09:00'
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - verify/aoj_cgl/aoj_cgl_7_e.test.cpp
 documentation_of: geometry/is_intersect_cc.hpp
 layout: document
 redirect_from:

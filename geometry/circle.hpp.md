@@ -12,9 +12,12 @@ data:
     path: geometry/all.hpp
     title: geometry/all.hpp
   - icon: ':x:'
+    path: geometry/cross_point_cc.hpp
+    title: geometry/cross_point_cc.hpp
+  - icon: ':x:'
     path: geometry/cross_point_cl.hpp
     title: geometry/cross_point_cl.hpp
-  - icon: ':warning:'
+  - icon: ':x:'
     path: geometry/is_intersect_cc.hpp
     title: geometry/is_intersect_cc.hpp
   - icon: ':x:'
@@ -23,16 +26,22 @@ data:
   - icon: ':warning:'
     path: geometry/is_intersect_cp.hpp
     title: geometry/is_intersect_cp.hpp
-  - icon: ':warning:'
+  - icon: ':question:'
     path: geometry/tangent_number_cc.hpp
     title: geometry/tangent_number_cc.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_7_a.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_7_a.test.cpp
   - icon: ':x:'
     path: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
+  - icon: ':x:'
+    path: verify/aoj_cgl/aoj_cgl_7_e.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_7_e.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/circle.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\
@@ -70,6 +79,7 @@ data:
   isVerificationFile: false
   path: geometry/circle.hpp
   requiredBy:
+  - geometry/cross_point_cc.hpp
   - geometry/is_intersect_cc.hpp
   - geometry/tangent_number_cc.hpp
   - geometry/is_intersect_cl.hpp
@@ -77,8 +87,10 @@ data:
   - geometry/is_intersect_cp.hpp
   - geometry/all.hpp
   timestamp: '2023-02-12 02:42:00+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/aoj_cgl/aoj_cgl_7_e.test.cpp
+  - verify/aoj_cgl/aoj_cgl_7_a.test.cpp
   - verify/aoj_cgl/aoj_cgl_7_d.test.cpp
 documentation_of: geometry/circle.hpp
 layout: document
