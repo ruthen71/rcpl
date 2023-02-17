@@ -2,55 +2,25 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: geometry/ccw.hpp
+    title: geometry/ccw.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: geometry/geometry_template.hpp
   - icon: ':heavy_check_mark:'
+    path: geometry/line.hpp
+    title: geometry/line.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: geometry/point.hpp
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: geometry/all.hpp
-    title: geometry/all.hpp
-  - icon: ':heavy_check_mark:'
-    path: geometry/cross_point_ss.hpp
-    title: geometry/cross_point_ss.hpp
-  - icon: ':warning:'
-    path: geometry/is_intersect_lp.hpp
-    title: geometry/is_intersect_lp.hpp
-  - icon: ':heavy_check_mark:'
-    path: geometry/is_intersect_sp.hpp
-    title: geometry/is_intersect_sp.hpp
-  - icon: ':heavy_check_mark:'
-    path: geometry/is_intersect_ss.hpp
-    title: geometry/is_intersect_ss.hpp
-  - icon: ':heavy_check_mark:'
-    path: geometry/is_orthogonal.hpp
-    title: geometry/is_orthogonal.hpp
-  - icon: ':heavy_check_mark:'
-    path: geometry/is_parallel.hpp
-    title: geometry/is_parallel.hpp
-  - icon: ':heavy_check_mark:'
-    path: geometry/projection.hpp
-    title: geometry/projection.hpp
-  - icon: ':heavy_check_mark:'
-    path: geometry/reflection.hpp
-    title: geometry/reflection.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/segment.hpp
     title: geometry/segment.hpp
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: geometry/cross_point_ss.hpp
+    title: geometry/cross_point_ss.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj_cgl/aoj_cgl_1_a.test.cpp
-    title: verify/aoj_cgl/aoj_cgl_1_a.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj_cgl/aoj_cgl_1_b.test.cpp
-    title: verify/aoj_cgl/aoj_cgl_1_b.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj_cgl/aoj_cgl_2_a.test.cpp
-    title: verify/aoj_cgl/aoj_cgl_2_a.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj_cgl/aoj_cgl_2_b.test.cpp
-    title: verify/aoj_cgl/aoj_cgl_2_b.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_2_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_2_c.test.cpp
@@ -59,8 +29,9 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"geometry/line.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n\
-    #line 2 \"geometry/geometry_template.hpp\"\n\n// template\nusing Double = double;\n\
+  bundledCode: "#line 2 \"geometry/is_intersect_sp.hpp\"\n\n#line 2 \"geometry/segment.hpp\"\
+    \n\n#line 2 \"geometry/line.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n#line 2\
+    \ \"geometry/geometry_template.hpp\"\n\n// template\nusing Double = double;\n\
     const Double EPS = 1e-8;\nconst Double PI = std::acos(-1);\ninline int sign(const\
     \ Double &x) { return x <= -EPS ? -1 : (x >= EPS ? 1 : 0); }\ninline bool equal(const\
     \ Double &a, const Double &b) { return sign(a - b) == 0; }\nDouble radian_to_degree(const\
@@ -87,46 +58,53 @@ data:
     \     a = Point(0, C / B), b = Point(C / A, 0);\n        }\n    }\n\n    friend\
     \ std::istream &operator>>(std::istream &is, Line &p) { return is >> p.a >> p.b;\
     \ }\n    friend std::ostream &operator<<(std::ostream &os, const Line &p) { return\
-    \ os << p.a << \"->\" << p.b; }\n};\n"
-  code: "#pragma once\n\n#include \"geometry/point.hpp\"\n\n// line\nstruct Line {\n\
-    \    Point a, b;\n\n    Line() = default;\n\n    Line(Point a, Point b) : a(a),\
-    \ b(b) {}\n\n    // Ax + By = C\n    Line(Double A, Double B, Double C) {\n  \
-    \      assert(equal(A, 0) and equal(B, 0));\n        if (equal(A, 0)) {\n    \
-    \        a = Point(0, C / B), b = Point(1, C / B);\n        } else if (equal(B,\
-    \ 0)) {\n            a = Point(C / A, 0), b = Point(C / A, 1);\n        } else\
-    \ if (equal(C, 0)) {\n            a = Point(0, 0), b = Point(1, B / A);\n    \
-    \    } else {\n            a = Point(0, C / B), b = Point(C / A, 0);\n       \
-    \ }\n    }\n\n    friend std::istream &operator>>(std::istream &is, Line &p) {\
-    \ return is >> p.a >> p.b; }\n    friend std::ostream &operator<<(std::ostream\
-    \ &os, const Line &p) { return os << p.a << \"->\" << p.b; }\n};"
+    \ os << p.a << \"->\" << p.b; }\n};\n#line 4 \"geometry/segment.hpp\"\n\n// segment\n\
+    struct Segment : Line {\n    Segment() = default;\n\n    Segment(Point a, Point\
+    \ b) : Line(a, b) {}\n};\n#line 2 \"geometry/ccw.hpp\"\n\n#line 4 \"geometry/ccw.hpp\"\
+    \n\n// counter clockwise\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C\n\
+    constexpr int COUNTER_CLOCKWISE = 1;  // a-b-c counter clockwise\nconstexpr int\
+    \ CLOCKWISE = -1;         // a-b-c clockwise\nconstexpr int ONLINE_BACK = 2; \
+    \       // c-a-b line\nconstexpr int ONLINE_FRONT = -2;      // a-b-c line\nconstexpr\
+    \ int ON_SEGMENT = 0;         // a-c-b line\nint ccw(const Point &a, Point b,\
+    \ Point c) {\n    b = b - a, c = c - a;\n    if (sign(cross(b, c)) == 1) return\
+    \ COUNTER_CLOCKWISE;\n    if (sign(cross(b, c)) == -1) return CLOCKWISE;\n   \
+    \ if (sign(dot(b, c)) == -1) return ONLINE_BACK;\n    if (std::norm(b) < std::norm(c))\
+    \ return ONLINE_FRONT;\n    return ON_SEGMENT;\n}\n#line 5 \"geometry/is_intersect_sp.hpp\"\
+    \n\n// intersection (segment and point)\n// ccw(a, b, c) == ON_SEGMENT -> a -\
+    \ c - b\nbool is_intersect_sp(const Segment &s, const Point &p) { return ccw(s.a,\
+    \ s.b, p) == ON_SEGMENT; }\n"
+  code: '#pragma once
+
+
+    #include "geometry/segment.hpp"
+
+    #include "geometry/ccw.hpp"
+
+
+    // intersection (segment and point)
+
+    // ccw(a, b, c) == ON_SEGMENT -> a - c - b
+
+    bool is_intersect_sp(const Segment &s, const Point &p) { return ccw(s.a, s.b,
+    p) == ON_SEGMENT; }'
   dependsOn:
+  - geometry/segment.hpp
+  - geometry/line.hpp
   - geometry/point.hpp
   - geometry/geometry_template.hpp
+  - geometry/ccw.hpp
   isVerificationFile: false
-  path: geometry/line.hpp
+  path: geometry/is_intersect_sp.hpp
   requiredBy:
   - geometry/cross_point_ss.hpp
-  - geometry/is_orthogonal.hpp
-  - geometry/segment.hpp
-  - geometry/reflection.hpp
-  - geometry/projection.hpp
-  - geometry/is_intersect_ss.hpp
-  - geometry/is_intersect_lp.hpp
-  - geometry/is_intersect_sp.hpp
-  - geometry/all.hpp
-  - geometry/is_parallel.hpp
-  timestamp: '2023-02-11 13:48:05+09:00'
+  timestamp: '2023-02-17 09:16:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj_cgl/aoj_cgl_2_a.test.cpp
-  - verify/aoj_cgl/aoj_cgl_1_b.test.cpp
-  - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_c.test.cpp
-  - verify/aoj_cgl/aoj_cgl_1_a.test.cpp
-documentation_of: geometry/line.hpp
+documentation_of: geometry/is_intersect_sp.hpp
 layout: document
 redirect_from:
-- /library/geometry/line.hpp
-- /library/geometry/line.hpp.html
-title: geometry/line.hpp
+- /library/geometry/is_intersect_sp.hpp
+- /library/geometry/is_intersect_sp.hpp.html
+title: geometry/is_intersect_sp.hpp
 ---

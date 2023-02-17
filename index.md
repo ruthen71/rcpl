@@ -133,8 +133,17 @@ data:
       path: geometry/circle.hpp
       title: geometry/circle.hpp
     - icon: ':heavy_check_mark:'
+      path: geometry/cross_point_ss.hpp
+      title: geometry/cross_point_ss.hpp
+    - icon: ':heavy_check_mark:'
       path: geometry/geometry_template.hpp
       title: geometry/geometry_template.hpp
+    - icon: ':warning:'
+      path: geometry/is_intersect_lp.hpp
+      title: geometry/is_intersect_lp.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/is_intersect_sp.hpp
+      title: geometry/is_intersect_sp.hpp
     - icon: ':heavy_check_mark:'
       path: geometry/is_intersect_ss.hpp
       title: geometry/is_intersect_ss.hpp
@@ -275,6 +284,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_cgl/aoj_cgl_2_b.test.cpp
       title: verify/aoj_cgl/aoj_cgl_2_b.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_cgl/aoj_cgl_2_c.test.cpp
+      title: verify/aoj_cgl/aoj_cgl_2_c.test.cpp
   - name: verify/aoj_dpl
     pages:
     - icon: ':heavy_check_mark:'

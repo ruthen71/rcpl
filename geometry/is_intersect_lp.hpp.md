@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: geometry/ccw.hpp
+    title: geometry/ccw.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: geometry/geometry_template.hpp
   - icon: ':heavy_check_mark:'
@@ -10,33 +13,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: geometry/point.hpp
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: geometry/all.hpp
-    title: geometry/all.hpp
-  - icon: ':heavy_check_mark:'
-    path: geometry/cross_point_ss.hpp
-    title: geometry/cross_point_ss.hpp
-  - icon: ':heavy_check_mark:'
-    path: geometry/is_intersect_sp.hpp
-    title: geometry/is_intersect_sp.hpp
-  - icon: ':heavy_check_mark:'
-    path: geometry/is_intersect_ss.hpp
-    title: geometry/is_intersect_ss.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj_cgl/aoj_cgl_2_b.test.cpp
-    title: verify/aoj_cgl/aoj_cgl_2_b.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj_cgl/aoj_cgl_2_c.test.cpp
-    title: verify/aoj_cgl/aoj_cgl_2_c.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"geometry/segment.hpp\"\n\n#line 2 \"geometry/line.hpp\"\n\
-    \n#line 2 \"geometry/point.hpp\"\n\n#line 2 \"geometry/geometry_template.hpp\"\
+  bundledCode: "#line 2 \"geometry/is_intersect_lp.hpp\"\n\n#line 2 \"geometry/line.hpp\"\
+    \n\n#line 2 \"geometry/point.hpp\"\n\n#line 2 \"geometry/geometry_template.hpp\"\
     \n\n// template\nusing Double = double;\nconst Double EPS = 1e-8;\nconst Double\
     \ PI = std::acos(-1);\ninline int sign(const Double &x) { return x <= -EPS ? -1\
     \ : (x >= EPS ? 1 : 0); }\ninline bool equal(const Double &a, const Double &b)\
@@ -63,32 +48,40 @@ data:
     \    } else {\n            a = Point(0, C / B), b = Point(C / A, 0);\n       \
     \ }\n    }\n\n    friend std::istream &operator>>(std::istream &is, Line &p) {\
     \ return is >> p.a >> p.b; }\n    friend std::ostream &operator<<(std::ostream\
-    \ &os, const Line &p) { return os << p.a << \"->\" << p.b; }\n};\n#line 4 \"geometry/segment.hpp\"\
-    \n\n// segment\nstruct Segment : Line {\n    Segment() = default;\n\n    Segment(Point\
-    \ a, Point b) : Line(a, b) {}\n};\n"
-  code: "#pragma once\n\n#include \"geometry/line.hpp\"\n\n// segment\nstruct Segment\
-    \ : Line {\n    Segment() = default;\n\n    Segment(Point a, Point b) : Line(a,\
-    \ b) {}\n};"
+    \ &os, const Line &p) { return os << p.a << \"->\" << p.b; }\n};\n#line 2 \"geometry/ccw.hpp\"\
+    \n\n#line 4 \"geometry/ccw.hpp\"\n\n// counter clockwise\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C\n\
+    constexpr int COUNTER_CLOCKWISE = 1;  // a-b-c counter clockwise\nconstexpr int\
+    \ CLOCKWISE = -1;         // a-b-c clockwise\nconstexpr int ONLINE_BACK = 2; \
+    \       // c-a-b line\nconstexpr int ONLINE_FRONT = -2;      // a-b-c line\nconstexpr\
+    \ int ON_SEGMENT = 0;         // a-c-b line\nint ccw(const Point &a, Point b,\
+    \ Point c) {\n    b = b - a, c = c - a;\n    if (sign(cross(b, c)) == 1) return\
+    \ COUNTER_CLOCKWISE;\n    if (sign(cross(b, c)) == -1) return CLOCKWISE;\n   \
+    \ if (sign(dot(b, c)) == -1) return ONLINE_BACK;\n    if (std::norm(b) < std::norm(c))\
+    \ return ONLINE_FRONT;\n    return ON_SEGMENT;\n}\n#line 5 \"geometry/is_intersect_lp.hpp\"\
+    \n\n// intersection (line and point)\n// ccw(a, b, c) == ON_SEGMENT or ONLINE_BACK\
+    \ or ONLINE_FRONT\nbool is_intersect_lp(const Line &l, const Point &p) {\n   \
+    \ int res = ccw(l.a, l.b, p);\n    return (res == ONLINE_BACK || res == ONLINE_FRONT\
+    \ || res == ON_SEGMENT);\n}\n"
+  code: "#pragma once\n\n#include \"geometry/line.hpp\"\n#include \"geometry/ccw.hpp\"\
+    \n\n// intersection (line and point)\n// ccw(a, b, c) == ON_SEGMENT or ONLINE_BACK\
+    \ or ONLINE_FRONT\nbool is_intersect_lp(const Line &l, const Point &p) {\n   \
+    \ int res = ccw(l.a, l.b, p);\n    return (res == ONLINE_BACK || res == ONLINE_FRONT\
+    \ || res == ON_SEGMENT);\n}"
   dependsOn:
   - geometry/line.hpp
   - geometry/point.hpp
   - geometry/geometry_template.hpp
+  - geometry/ccw.hpp
   isVerificationFile: false
-  path: geometry/segment.hpp
-  requiredBy:
-  - geometry/cross_point_ss.hpp
-  - geometry/is_intersect_ss.hpp
-  - geometry/is_intersect_sp.hpp
-  - geometry/all.hpp
-  timestamp: '2023-02-14 01:16:47+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
-  - verify/aoj_cgl/aoj_cgl_2_c.test.cpp
-documentation_of: geometry/segment.hpp
+  path: geometry/is_intersect_lp.hpp
+  requiredBy: []
+  timestamp: '2023-02-17 09:16:37+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
+documentation_of: geometry/is_intersect_lp.hpp
 layout: document
 redirect_from:
-- /library/geometry/segment.hpp
-- /library/geometry/segment.hpp.html
-title: geometry/segment.hpp
+- /library/geometry/is_intersect_lp.hpp
+- /library/geometry/is_intersect_lp.hpp.html
+title: geometry/is_intersect_lp.hpp
 ---

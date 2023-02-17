@@ -20,10 +20,16 @@ data:
   - icon: ':warning:'
     path: geometry/all.hpp
     title: geometry/all.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/cross_point_ss.hpp
+    title: geometry/cross_point_ss.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_2_b.test.cpp
     title: verify/aoj_cgl/aoj_cgl_2_b.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_2_c.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_2_c.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -99,11 +105,13 @@ data:
   isVerificationFile: false
   path: geometry/is_intersect_ss.hpp
   requiredBy:
+  - geometry/cross_point_ss.hpp
   - geometry/all.hpp
   timestamp: '2023-02-17 08:10:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
+  - verify/aoj_cgl/aoj_cgl_2_c.test.cpp
 documentation_of: geometry/is_intersect_ss.hpp
 layout: document
 redirect_from:
