@@ -10,7 +10,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: geometry/point.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: geometry/all.hpp
+    title: geometry/all.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -60,7 +63,8 @@ data:
   - geometry/circle.hpp
   isVerificationFile: false
   path: geometry/is_intersect_cp.hpp
-  requiredBy: []
+  requiredBy:
+  - geometry/all.hpp
   timestamp: '2023-02-17 09:43:32+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

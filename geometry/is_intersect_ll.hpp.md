@@ -13,7 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: geometry/point.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: geometry/all.hpp
+    title: geometry/all.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -54,19 +57,15 @@ data:
     \ l2.b - l2.a)) == 0; }\n#line 5 \"geometry/is_intersect_ll.hpp\"\n\n// intersection\
     \ (line and line)\nbool is_intersect_ll(const Line &l1, const Line &l2) {\n  \
     \  Point base = l1.b - l1.a;\n    Double d12 = cross(base, l2.b - l2.a);\n   \
-    \ Double d1 = cross(base, l1.b - l2.a);\n    // \u4E00\u81F4(sign(d12) == 0 \u306F\
-    \ is_parallel\u3068\u672C\u8CEA\u7684\u306B\u540C\u3058, sign(d1) == 0\u306F\u91CD\
-    \u306A\u3063\u3066\u3044\u308B\u304B)\n    if (sign(d12) == 0) {\n        // parallel\n\
-    \        if (sign(d1) == 0) {\n            // cross\n            return true;\n\
-    \        } else {\n            // not cross\n            return false;\n     \
-    \   }\n    }\n    return true;\n}\n"
+    \ Double d1 = cross(base, l1.b - l2.a);\n    if (sign(d12) == 0) {\n        //\
+    \ parallel\n        if (sign(d1) == 0) {\n            // cross\n            return\
+    \ true;\n        } else {\n            // not cross\n            return false;\n\
+    \        }\n    }\n    return true;\n}\n"
   code: "#pragma once\n\n#include \"geometry/line.hpp\"\n#include \"geometry/is_parallel.hpp\"\
     \n\n// intersection (line and line)\nbool is_intersect_ll(const Line &l1, const\
     \ Line &l2) {\n    Point base = l1.b - l1.a;\n    Double d12 = cross(base, l2.b\
-    \ - l2.a);\n    Double d1 = cross(base, l1.b - l2.a);\n    // \u4E00\u81F4(sign(d12)\
-    \ == 0 \u306F is_parallel\u3068\u672C\u8CEA\u7684\u306B\u540C\u3058, sign(d1)\
-    \ == 0\u306F\u91CD\u306A\u3063\u3066\u3044\u308B\u304B)\n    if (sign(d12) ==\
-    \ 0) {\n        // parallel\n        if (sign(d1) == 0) {\n            // cross\n\
+    \ - l2.a);\n    Double d1 = cross(base, l1.b - l2.a);\n    if (sign(d12) == 0)\
+    \ {\n        // parallel\n        if (sign(d1) == 0) {\n            // cross\n\
     \            return true;\n        } else {\n            // not cross\n      \
     \      return false;\n        }\n    }\n    return true;\n}"
   dependsOn:
@@ -76,8 +75,9 @@ data:
   - geometry/is_parallel.hpp
   isVerificationFile: false
   path: geometry/is_intersect_ll.hpp
-  requiredBy: []
-  timestamp: '2023-02-17 09:26:15+09:00'
+  requiredBy:
+  - geometry/all.hpp
+  timestamp: '2023-02-17 09:50:28+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/is_intersect_ll.hpp

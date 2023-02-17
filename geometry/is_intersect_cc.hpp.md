@@ -13,7 +13,10 @@ data:
   - icon: ':warning:'
     path: geometry/tangent_number_cc.hpp
     title: geometry/tangent_number_cc.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: geometry/all.hpp
+    title: geometry/all.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -62,7 +65,8 @@ data:
   - geometry/tangent_number_cc.hpp
   isVerificationFile: false
   path: geometry/is_intersect_cc.hpp
-  requiredBy: []
+  requiredBy:
+  - geometry/all.hpp
   timestamp: '2023-02-17 09:43:32+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

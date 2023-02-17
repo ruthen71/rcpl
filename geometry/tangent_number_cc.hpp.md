@@ -12,6 +12,9 @@ data:
     title: geometry/point.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
+    path: geometry/all.hpp
+    title: geometry/all.hpp
+  - icon: ':warning:'
     path: geometry/is_intersect_cc.hpp
     title: geometry/is_intersect_cc.hpp
   _extendedVerifiedWith: []
@@ -61,6 +64,7 @@ data:
   path: geometry/tangent_number_cc.hpp
   requiredBy:
   - geometry/is_intersect_cc.hpp
+  - geometry/all.hpp
   timestamp: '2023-02-17 09:43:32+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

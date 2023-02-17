@@ -22,7 +22,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/segment.hpp
     title: geometry/segment.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: geometry/all.hpp
+    title: geometry/all.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_2_c.test.cpp
@@ -116,7 +119,8 @@ data:
   - geometry/is_intersect_sp.hpp
   isVerificationFile: false
   path: geometry/cross_point_ss.hpp
-  requiredBy: []
+  requiredBy:
+  - geometry/all.hpp
   timestamp: '2023-02-17 09:16:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
