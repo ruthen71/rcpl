@@ -23,6 +23,7 @@
 
 #include "geometry/cross_point_ll.hpp"
 #include "geometry/cross_point_ss.hpp"
+#include "geometry/cross_point_cl.hpp"
 
 #include "geometry/distance_lp.hpp"
 #include "geometry/distance_sp.hpp"
