@@ -1,7 +1,6 @@
 #pragma once
 
 #include "geometry/line.hpp"
-#include "geometry/is_parallel.hpp"
 
 // intersection (line and line)
 bool is_intersect_ll(const Line &l1, const Line &l2) {
