@@ -2,16 +2,16 @@
 
 #include <bits/stdc++.h>
 
-#include "geometry/is_convex.hpp"
+#include "geometry/polygon_is_convex.hpp"
 
 int main() {
     int N;
     std::cin >> N;
     Polygon P(N);
     std::cin >> P;
-    bool ans = is_convex(P);
+    bool ans = polygon_is_convex(P);
     std::reverse(P.begin(), P.end());
-    assert(ans == is_convex(P));
+    assert(ans == polygon_is_convex(P));
     std::cout << ans << '\n';
     return 0;
 }

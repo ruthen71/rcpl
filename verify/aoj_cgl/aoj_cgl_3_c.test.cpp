@@ -2,7 +2,7 @@
 
 #include <bits/stdc++.h>
 
-#include "geometry/contain.hpp"
+#include "geometry/polygon_contain.hpp"
 
 int main() {
     int N;
@@ -14,7 +14,7 @@ int main() {
     while (Q--) {
         Point p;
         std::cin >> p;
-        std::cout << contain(P, p) << '\n';
+        std::cout << polygon_contain(P, p) << '\n';
     }
     return 0;
 }

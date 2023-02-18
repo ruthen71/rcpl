@@ -10,7 +10,7 @@ constexpr int OUT = 0;
 // polygon cross point -> 1 (ON)
 // otherwise -> 0 (OUT)
 // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C
-int contain(const Polygon &q, const Point &p) {
+int polygon_contain(const Polygon &q, const Point &p) {
     bool x = false;
     int n = (int)q.size();
     for (int i = 0; i < n - 1; i++) {

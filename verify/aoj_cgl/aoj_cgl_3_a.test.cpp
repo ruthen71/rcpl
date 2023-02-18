@@ -3,13 +3,13 @@
 
 #include <bits/stdc++.h>
 
-#include "geometry/area.hpp"
+#include "geometry/polygon_area.hpp"
 
 int main() {
     int N;
     std::cin >> N;
     Polygon P(N);
     std::cin >> P;
-    std::cout << std::fixed << std::setprecision(15) << area(P) << '\n';
+    std::cout << std::fixed << std::setprecision(15) << polygon_area(P) << '\n';
     return 0;
 }

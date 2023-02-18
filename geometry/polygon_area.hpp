@@ -3,7 +3,7 @@
 #include "geometry/polygon.hpp"
 // area of polygon
 // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A
-Double area(const Polygon &p) {
+Double polygon_area(const Polygon &p) {
     int n = (int)p.size();
     assert(n >= 2);
     Double ret = Double(0);
