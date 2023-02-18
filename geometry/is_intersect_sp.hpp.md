@@ -21,9 +21,6 @@ data:
     path: geometry/all.hpp
     title: geometry/all.hpp
   - icon: ':heavy_check_mark:'
-    path: geometry/contain.hpp
-    title: geometry/contain.hpp
-  - icon: ':heavy_check_mark:'
     path: geometry/cross_point_ss.hpp
     title: geometry/cross_point_ss.hpp
   - icon: ':heavy_check_mark:'
@@ -32,6 +29,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/distance_ss.hpp
     title: geometry/distance_ss.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/polygon_contain.hpp
+    title: geometry/polygon_contain.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_2_c.test.cpp
@@ -122,7 +122,7 @@ data:
   requiredBy:
   - geometry/distance_sp.hpp
   - geometry/distance_ss.hpp
-  - geometry/contain.hpp
+  - geometry/polygon_contain.hpp
   - geometry/cross_point_ss.hpp
   - geometry/all.hpp
   timestamp: '2023-02-18 13:26:59+09:00'

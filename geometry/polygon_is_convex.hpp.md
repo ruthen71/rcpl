@@ -27,7 +27,7 @@ data:
   attributes:
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B
-  bundledCode: "#line 2 \"geometry/is_convex.hpp\"\n\n#line 2 \"geometry/polygon.hpp\"\
+  bundledCode: "#line 2 \"geometry/polygon_is_convex.hpp\"\n\n#line 2 \"geometry/polygon.hpp\"\
     \n\n#line 2 \"geometry/point.hpp\"\n\n#line 2 \"geometry/geometry_template.hpp\"\
     \n\n// template\nusing Double = double;\nconst Double EPS = 1e-8;\nconst Double\
     \ PI = std::acos(-1);\ninline int sign(const Double &x) { return x <= -EPS ? -1\
@@ -62,10 +62,10 @@ data:
     \ Point c) {\n    b = b - a, c = c - a;\n    if (sign(cross(b, c)) == 1) return\
     \ COUNTER_CLOCKWISE;\n    if (sign(cross(b, c)) == -1) return CLOCKWISE;\n   \
     \ if (sign(dot(b, c)) == -1) return ONLINE_BACK;\n    if (std::norm(b) < std::norm(c))\
-    \ return ONLINE_FRONT;\n    return ON_SEGMENT;\n}\n#line 5 \"geometry/is_convex.hpp\"\
+    \ return ONLINE_FRONT;\n    return ON_SEGMENT;\n}\n#line 5 \"geometry/polygon_is_convex.hpp\"\
     \n\n// check polygon is convex (not strictly, 0 <= angle <= 180 degrees)\n// angle\
     \ = 180 degrees -> ON_SEGMENT\n// angle = 0 degrees -> ONLINE_FRONT or ONLINE_BACK\n\
-    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B\nbool is_convex(const\
+    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B\nbool polygon_is_convex(const\
     \ Polygon &p) {\n    int n = (int)p.size();\n    assert(n >= 3);\n    bool okccw\
     \ = true, okcw = true;\n    for (int i = 0; i < n - 2; i++) {\n        int res\
     \ = ccw(p[i], p[i + 1], p[i + 2]);\n        if (res == CLOCKWISE) okccw = false;\n\
@@ -79,7 +79,7 @@ data:
   code: "#pragma once\n\n#include \"geometry/polygon.hpp\"\n#include \"geometry/ccw.hpp\"\
     \n\n// check polygon is convex (not strictly, 0 <= angle <= 180 degrees)\n// angle\
     \ = 180 degrees -> ON_SEGMENT\n// angle = 0 degrees -> ONLINE_FRONT or ONLINE_BACK\n\
-    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B\nbool is_convex(const\
+    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B\nbool polygon_is_convex(const\
     \ Polygon &p) {\n    int n = (int)p.size();\n    assert(n >= 3);\n    bool okccw\
     \ = true, okcw = true;\n    for (int i = 0; i < n - 2; i++) {\n        int res\
     \ = ccw(p[i], p[i + 1], p[i + 2]);\n        if (res == CLOCKWISE) okccw = false;\n\
@@ -96,17 +96,17 @@ data:
   - geometry/geometry_template.hpp
   - geometry/ccw.hpp
   isVerificationFile: false
-  path: geometry/is_convex.hpp
+  path: geometry/polygon_is_convex.hpp
   requiredBy:
   - geometry/all.hpp
-  timestamp: '2023-02-18 13:26:59+09:00'
+  timestamp: '2023-02-18 17:31:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_3_b.test.cpp
-documentation_of: geometry/is_convex.hpp
+documentation_of: geometry/polygon_is_convex.hpp
 layout: document
 redirect_from:
-- /library/geometry/is_convex.hpp
-- /library/geometry/is_convex.hpp.html
-title: geometry/is_convex.hpp
+- /library/geometry/polygon_is_convex.hpp
+- /library/geometry/polygon_is_convex.hpp.html
+title: geometry/polygon_is_convex.hpp
 ---

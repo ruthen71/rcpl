@@ -36,7 +36,7 @@ data:
   attributes:
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C
-  bundledCode: "#line 2 \"geometry/contain.hpp\"\n\n#line 2 \"geometry/polygon.hpp\"\
+  bundledCode: "#line 2 \"geometry/polygon_contain.hpp\"\n\n#line 2 \"geometry/polygon.hpp\"\
     \n\n#line 2 \"geometry/point.hpp\"\n\n#line 2 \"geometry/geometry_template.hpp\"\
     \n\n// template\nusing Double = double;\nconst Double EPS = 1e-8;\nconst Double\
     \ PI = std::acos(-1);\ninline int sign(const Double &x) { return x <= -EPS ? -1\
@@ -88,33 +88,34 @@ data:
     \n\n// intersection (segment and point)\n// ccw(a, b, c) == ON_SEGMENT -> a -\
     \ c - b\nbool is_intersect_sp(const Segment &s, const Point &p) { return ccw(s.a,\
     \ s.b, p) == ON_SEGMENT or sign(std::abs(s.a - p)) == 0 or sign(std::abs(s.b -\
-    \ p)) == 0; }\n#line 5 \"geometry/contain.hpp\"\n\nconstexpr int IN = 2;\nconstexpr\
-    \ int ON = 1;\nconstexpr int OUT = 0;\n// polygon contain point -> 2 (IN)\n//\
-    \ polygon cross point -> 1 (ON)\n// otherwise -> 0 (OUT)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C\n\
-    int contain(const Polygon &q, const Point &p) {\n    bool x = false;\n    int\
-    \ n = (int)q.size();\n    for (int i = 0; i < n - 1; i++) {\n        if (is_intersect_sp(Segment(q[i],\
-    \ q[i + 1]), p)) return ON;\n        Point a = q[i] - p, b = q[i + 1] - p;\n \
-    \       if (a.imag() > b.imag()) std::swap(a, b);\n        // a.y < b.y\n    \
-    \    // check each point's y is 0 at most 1 times\n        if (sign(a.imag())\
-    \ <= 0 and sign(b.imag()) > 0 and sign(cross(a, b)) > 0) x = !x;\n    }\n    {\n\
-    \        if (is_intersect_sp(Segment(q[n - 1], q[0]), p)) return ON;\n       \
-    \ Point a = q[n - 1] - p, b = q[0] - p;\n        if (a.imag() > b.imag()) std::swap(a,\
-    \ b);\n        if (sign(a.imag()) <= 0 and sign(b.imag()) > 0 and sign(cross(a,\
-    \ b)) > 0) x = !x;\n    }\n    return (x ? IN : OUT);\n}\n"
+    \ p)) == 0; }\n#line 5 \"geometry/polygon_contain.hpp\"\n\nconstexpr int IN =\
+    \ 2;\nconstexpr int ON = 1;\nconstexpr int OUT = 0;\n// polygon contain point\
+    \ -> 2 (IN)\n// polygon cross point -> 1 (ON)\n// otherwise -> 0 (OUT)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C\n\
+    int polygon_contain(const Polygon &q, const Point &p) {\n    bool x = false;\n\
+    \    int n = (int)q.size();\n    for (int i = 0; i < n - 1; i++) {\n        if\
+    \ (is_intersect_sp(Segment(q[i], q[i + 1]), p)) return ON;\n        Point a =\
+    \ q[i] - p, b = q[i + 1] - p;\n        if (a.imag() > b.imag()) std::swap(a, b);\n\
+    \        // a.y < b.y\n        // check each point's y is 0 at most 1 times\n\
+    \        if (sign(a.imag()) <= 0 and sign(b.imag()) > 0 and sign(cross(a, b))\
+    \ > 0) x = !x;\n    }\n    {\n        if (is_intersect_sp(Segment(q[n - 1], q[0]),\
+    \ p)) return ON;\n        Point a = q[n - 1] - p, b = q[0] - p;\n        if (a.imag()\
+    \ > b.imag()) std::swap(a, b);\n        if (sign(a.imag()) <= 0 and sign(b.imag())\
+    \ > 0 and sign(cross(a, b)) > 0) x = !x;\n    }\n    return (x ? IN : OUT);\n\
+    }\n"
   code: "#pragma once\n\n#include \"geometry/polygon.hpp\"\n#include \"geometry/is_intersect_sp.hpp\"\
     \n\nconstexpr int IN = 2;\nconstexpr int ON = 1;\nconstexpr int OUT = 0;\n// polygon\
     \ contain point -> 2 (IN)\n// polygon cross point -> 1 (ON)\n// otherwise -> 0\
     \ (OUT)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C\n\
-    int contain(const Polygon &q, const Point &p) {\n    bool x = false;\n    int\
-    \ n = (int)q.size();\n    for (int i = 0; i < n - 1; i++) {\n        if (is_intersect_sp(Segment(q[i],\
-    \ q[i + 1]), p)) return ON;\n        Point a = q[i] - p, b = q[i + 1] - p;\n \
-    \       if (a.imag() > b.imag()) std::swap(a, b);\n        // a.y < b.y\n    \
-    \    // check each point's y is 0 at most 1 times\n        if (sign(a.imag())\
-    \ <= 0 and sign(b.imag()) > 0 and sign(cross(a, b)) > 0) x = !x;\n    }\n    {\n\
-    \        if (is_intersect_sp(Segment(q[n - 1], q[0]), p)) return ON;\n       \
-    \ Point a = q[n - 1] - p, b = q[0] - p;\n        if (a.imag() > b.imag()) std::swap(a,\
-    \ b);\n        if (sign(a.imag()) <= 0 and sign(b.imag()) > 0 and sign(cross(a,\
-    \ b)) > 0) x = !x;\n    }\n    return (x ? IN : OUT);\n}"
+    int polygon_contain(const Polygon &q, const Point &p) {\n    bool x = false;\n\
+    \    int n = (int)q.size();\n    for (int i = 0; i < n - 1; i++) {\n        if\
+    \ (is_intersect_sp(Segment(q[i], q[i + 1]), p)) return ON;\n        Point a =\
+    \ q[i] - p, b = q[i + 1] - p;\n        if (a.imag() > b.imag()) std::swap(a, b);\n\
+    \        // a.y < b.y\n        // check each point's y is 0 at most 1 times\n\
+    \        if (sign(a.imag()) <= 0 and sign(b.imag()) > 0 and sign(cross(a, b))\
+    \ > 0) x = !x;\n    }\n    {\n        if (is_intersect_sp(Segment(q[n - 1], q[0]),\
+    \ p)) return ON;\n        Point a = q[n - 1] - p, b = q[0] - p;\n        if (a.imag()\
+    \ > b.imag()) std::swap(a, b);\n        if (sign(a.imag()) <= 0 and sign(b.imag())\
+    \ > 0 and sign(cross(a, b)) > 0) x = !x;\n    }\n    return (x ? IN : OUT);\n}"
   dependsOn:
   - geometry/polygon.hpp
   - geometry/point.hpp
@@ -124,17 +125,17 @@ data:
   - geometry/line.hpp
   - geometry/ccw.hpp
   isVerificationFile: false
-  path: geometry/contain.hpp
+  path: geometry/polygon_contain.hpp
   requiredBy:
   - geometry/all.hpp
-  timestamp: '2023-02-18 13:26:59+09:00'
+  timestamp: '2023-02-18 17:31:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_3_c.test.cpp
-documentation_of: geometry/contain.hpp
+documentation_of: geometry/polygon_contain.hpp
 layout: document
 redirect_from:
-- /library/geometry/contain.hpp
-- /library/geometry/contain.hpp.html
-title: geometry/contain.hpp
+- /library/geometry/polygon_contain.hpp
+- /library/geometry/polygon_contain.hpp.html
+title: geometry/polygon_contain.hpp
 ---

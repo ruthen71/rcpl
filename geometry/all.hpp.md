@@ -2,17 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: geometry/area.hpp
-    title: geometry/area.hpp
-  - icon: ':heavy_check_mark:'
     path: geometry/ccw.hpp
     title: geometry/ccw.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
-  - icon: ':heavy_check_mark:'
-    path: geometry/contain.hpp
-    title: geometry/contain.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/cross_point_cc.hpp
     title: geometry/cross_point_cc.hpp
@@ -37,9 +31,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: geometry/geometry_template.hpp
-  - icon: ':heavy_check_mark:'
-    path: geometry/is_convex.hpp
-    title: geometry/is_convex.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/is_intersect_cc.hpp
     title: geometry/is_intersect_cc.hpp
@@ -79,6 +70,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/polygon_area.hpp
+    title: geometry/polygon_area.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/polygon_contain.hpp
+    title: geometry/polygon_contain.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/polygon_is_convex.hpp
+    title: geometry/polygon_is_convex.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/projection.hpp
     title: geometry/projection.hpp
@@ -245,16 +245,16 @@ data:
     Double distance_ss(const Segment &s1, const Segment &s2) {\n    if (is_intersect_ss(s1,\
     \ s2)) return Double(0);\n    return std::min({distance_sp(s1, s2.a), distance_sp(s1,\
     \ s2.b), distance_sp(s2, s1.a), distance_sp(s2, s1.b)});\n}\n#line 33 \"geometry/all.hpp\"\
-    \n\n#line 2 \"geometry/area.hpp\"\n\n#line 4 \"geometry/area.hpp\"\n// area of\
-    \ polygon\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\n\
-    Double area(const Polygon &p) {\n    int n = (int)p.size();\n    assert(n >= 2);\n\
-    \    Double ret = Double(0);\n    for (int i = 0; i < n - 1; i++) {\n        ret\
-    \ += cross(p[i], p[i + 1]);\n    }\n    ret += cross(p[n - 1], p[0]);\n    //\
-    \ counter clockwise: ret > 0\n    // clockwise: ret < 0\n    return std::abs(ret)\
-    \ / 2;\n}\n#line 2 \"geometry/is_convex.hpp\"\n\n#line 5 \"geometry/is_convex.hpp\"\
+    \n\n#line 2 \"geometry/polygon_area.hpp\"\n\n#line 4 \"geometry/polygon_area.hpp\"\
+    \n// area of polygon\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\n\
+    Double polygon_area(const Polygon &p) {\n    int n = (int)p.size();\n    assert(n\
+    \ >= 2);\n    Double ret = Double(0);\n    for (int i = 0; i < n - 1; i++) {\n\
+    \        ret += cross(p[i], p[i + 1]);\n    }\n    ret += cross(p[n - 1], p[0]);\n\
+    \    // counter clockwise: ret > 0\n    // clockwise: ret < 0\n    return std::abs(ret)\
+    \ / 2;\n}\n#line 2 \"geometry/polygon_is_convex.hpp\"\n\n#line 5 \"geometry/polygon_is_convex.hpp\"\
     \n\n// check polygon is convex (not strictly, 0 <= angle <= 180 degrees)\n// angle\
     \ = 180 degrees -> ON_SEGMENT\n// angle = 0 degrees -> ONLINE_FRONT or ONLINE_BACK\n\
-    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B\nbool is_convex(const\
+    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B\nbool polygon_is_convex(const\
     \ Polygon &p) {\n    int n = (int)p.size();\n    assert(n >= 3);\n    bool okccw\
     \ = true, okcw = true;\n    for (int i = 0; i < n - 2; i++) {\n        int res\
     \ = ccw(p[i], p[i + 1], p[i + 2]);\n        if (res == CLOCKWISE) okccw = false;\n\
@@ -264,36 +264,37 @@ data:
     \ okcw = false;\n        if (!okccw and !okcw) return false;\n    }\n    {\n \
     \       int res = ccw(p[n - 1], p[0], p[1]);\n        if (res == CLOCKWISE) okccw\
     \ = false;\n        if (res == COUNTER_CLOCKWISE) okcw = false;\n        if (!okccw\
-    \ and !okcw) return false;\n    }\n    return true;\n}\n#line 2 \"geometry/contain.hpp\"\
-    \n\n#line 5 \"geometry/contain.hpp\"\n\nconstexpr int IN = 2;\nconstexpr int ON\
-    \ = 1;\nconstexpr int OUT = 0;\n// polygon contain point -> 2 (IN)\n// polygon\
-    \ cross point -> 1 (ON)\n// otherwise -> 0 (OUT)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C\n\
-    int contain(const Polygon &q, const Point &p) {\n    bool x = false;\n    int\
-    \ n = (int)q.size();\n    for (int i = 0; i < n - 1; i++) {\n        if (is_intersect_sp(Segment(q[i],\
-    \ q[i + 1]), p)) return ON;\n        Point a = q[i] - p, b = q[i + 1] - p;\n \
-    \       if (a.imag() > b.imag()) std::swap(a, b);\n        // a.y < b.y\n    \
-    \    // check each point's y is 0 at most 1 times\n        if (sign(a.imag())\
-    \ <= 0 and sign(b.imag()) > 0 and sign(cross(a, b)) > 0) x = !x;\n    }\n    {\n\
-    \        if (is_intersect_sp(Segment(q[n - 1], q[0]), p)) return ON;\n       \
-    \ Point a = q[n - 1] - p, b = q[0] - p;\n        if (a.imag() > b.imag()) std::swap(a,\
-    \ b);\n        if (sign(a.imag()) <= 0 and sign(b.imag()) > 0 and sign(cross(a,\
-    \ b)) > 0) x = !x;\n    }\n    return (x ? IN : OUT);\n}\n#line 2 \"geometry/monotone_chain.hpp\"\
-    \n\n#line 5 \"geometry/monotone_chain.hpp\"\n\n// convex hull (Andrew's monotone\
-    \ chain convex hull algorithm)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A\n\
+    \ and !okcw) return false;\n    }\n    return true;\n}\n#line 2 \"geometry/polygon_contain.hpp\"\
+    \n\n#line 5 \"geometry/polygon_contain.hpp\"\n\nconstexpr int IN = 2;\nconstexpr\
+    \ int ON = 1;\nconstexpr int OUT = 0;\n// polygon contain point -> 2 (IN)\n//\
+    \ polygon cross point -> 1 (ON)\n// otherwise -> 0 (OUT)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C\n\
+    int polygon_contain(const Polygon &q, const Point &p) {\n    bool x = false;\n\
+    \    int n = (int)q.size();\n    for (int i = 0; i < n - 1; i++) {\n        if\
+    \ (is_intersect_sp(Segment(q[i], q[i + 1]), p)) return ON;\n        Point a =\
+    \ q[i] - p, b = q[i + 1] - p;\n        if (a.imag() > b.imag()) std::swap(a, b);\n\
+    \        // a.y < b.y\n        // check each point's y is 0 at most 1 times\n\
+    \        if (sign(a.imag()) <= 0 and sign(b.imag()) > 0 and sign(cross(a, b))\
+    \ > 0) x = !x;\n    }\n    {\n        if (is_intersect_sp(Segment(q[n - 1], q[0]),\
+    \ p)) return ON;\n        Point a = q[n - 1] - p, b = q[0] - p;\n        if (a.imag()\
+    \ > b.imag()) std::swap(a, b);\n        if (sign(a.imag()) <= 0 and sign(b.imag())\
+    \ > 0 and sign(cross(a, b)) > 0) x = !x;\n    }\n    return (x ? IN : OUT);\n\
+    }\n#line 2 \"geometry/monotone_chain.hpp\"\n\n#line 5 \"geometry/monotone_chain.hpp\"\
+    \n\n// convex hull (Andrew's monotone chain convex hull algorithm)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A\n\
     // sort (x, y) by lexicographical order, use stack, calculate upper convex hull\
     \ and lower convex hull\n// counter clockwise order\n// assume the return value\
     \ of ccw is not ONLINE_BACK or ONLINE_FRONT (lexicographical order)\n// strict\
     \ is true : points on the edges of the convex hull are not included (the number\
-    \ of points is minimized)\nPolygon monotone_chain(Polygon &p, bool strict = true)\
-    \ {\n    int n = (int)p.size();\n    if (n <= 2) return p;\n    std::sort(p.begin(),\
-    \ p.end(), compare_x);\n    Polygon r;\n    r.reserve(n * 2);\n    if (strict)\
-    \ {\n        for (int i = 0; i < n; i++) {\n            while (r.size() >= 2 and\
-    \ ccw(r[r.size() - 2], r[r.size() - 1], p[i]) != CLOCKWISE) {\n              \
-    \  r.pop_back();\n            }\n            r.push_back(p[i]);\n        }\n \
-    \       int t = r.size() + 1;\n        for (int i = n - 2; i >= 0; i--) {\n  \
-    \          while (r.size() >= t and ccw(r[r.size() - 2], r[r.size() - 1], p[i])\
-    \ != CLOCKWISE) {\n                r.pop_back();\n            }\n            r.push_back(p[i]);\n\
-    \        }\n    } else {\n        for (int i = 0; i < n; i++) {\n            while\
+    \ of points is minimized)\n// complexity: O(n \\log n) (n: the number of points)\n\
+    Polygon monotone_chain(Polygon &p, bool strict = true) {\n    int n = (int)p.size();\n\
+    \    if (n <= 2) return p;\n    std::sort(p.begin(), p.end(), compare_x);\n  \
+    \  Polygon r;\n    r.reserve(n * 2);\n    if (strict) {\n        for (int i =\
+    \ 0; i < n; i++) {\n            while (r.size() >= 2 and ccw(r[r.size() - 2],\
+    \ r[r.size() - 1], p[i]) != CLOCKWISE) {\n                r.pop_back();\n    \
+    \        }\n            r.push_back(p[i]);\n        }\n        int t = r.size()\
+    \ + 1;\n        for (int i = n - 2; i >= 0; i--) {\n            while (r.size()\
+    \ >= t and ccw(r[r.size() - 2], r[r.size() - 1], p[i]) != CLOCKWISE) {\n     \
+    \           r.pop_back();\n            }\n            r.push_back(p[i]);\n   \
+    \     }\n    } else {\n        for (int i = 0; i < n; i++) {\n            while\
     \ (r.size() >= 2 and ccw(r[r.size() - 2], r[r.size() - 1], p[i]) == COUNTER_CLOCKWISE)\
     \ {\n                r.pop_back();\n            }\n            r.push_back(p[i]);\n\
     \        }\n        int t = r.size() + 1;\n        for (int i = n - 2; i >= 0;\
@@ -362,11 +363,11 @@ data:
     #include "geometry/distance_ss.hpp"
 
 
-    #include "geometry/area.hpp"
+    #include "geometry/polygon_area.hpp"
 
-    #include "geometry/is_convex.hpp"
+    #include "geometry/polygon_is_convex.hpp"
 
-    #include "geometry/contain.hpp"
+    #include "geometry/polygon_contain.hpp"
 
     #include "geometry/monotone_chain.hpp"'
   dependsOn:
@@ -396,14 +397,14 @@ data:
   - geometry/cross_point_cc.hpp
   - geometry/distance_sp.hpp
   - geometry/distance_ss.hpp
-  - geometry/area.hpp
-  - geometry/is_convex.hpp
-  - geometry/contain.hpp
+  - geometry/polygon_area.hpp
+  - geometry/polygon_is_convex.hpp
+  - geometry/polygon_contain.hpp
   - geometry/monotone_chain.hpp
   isVerificationFile: false
   path: geometry/all.hpp
   requiredBy: []
-  timestamp: '2023-02-18 13:26:59+09:00'
+  timestamp: '2023-02-18 17:31:50+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/all.hpp

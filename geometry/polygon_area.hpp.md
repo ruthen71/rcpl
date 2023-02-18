@@ -27,8 +27,8 @@ data:
   attributes:
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A
-  bundledCode: "#line 2 \"geometry/area.hpp\"\n\n#line 2 \"geometry/polygon.hpp\"\n\
-    \n#line 2 \"geometry/point.hpp\"\n\n#line 2 \"geometry/geometry_template.hpp\"\
+  bundledCode: "#line 2 \"geometry/polygon_area.hpp\"\n\n#line 2 \"geometry/polygon.hpp\"\
+    \n\n#line 2 \"geometry/point.hpp\"\n\n#line 2 \"geometry/geometry_template.hpp\"\
     \n\n// template\nusing Double = double;\nconst Double EPS = 1e-8;\nconst Double\
     \ PI = std::acos(-1);\ninline int sign(const Double &x) { return x <= -EPS ? -1\
     \ : (x >= EPS ? 1 : 0); }\ninline bool equal(const Double &a, const Double &b)\
@@ -53,14 +53,15 @@ data:
     using Polygon = std::vector<Point>;\nstd::istream &operator>>(std::istream &is,\
     \ Polygon &p) {\n    for (auto &&pi : p) is >> pi;\n    return is;\n}\nstd::ostream\
     \ &operator<<(std::ostream &os, Polygon &p) {\n    for (auto &&pi : p) os << pi\
-    \ << \" -> \";\n    return os;\n}\n#line 4 \"geometry/area.hpp\"\n// area of polygon\n\
-    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\nDouble area(const\
-    \ Polygon &p) {\n    int n = (int)p.size();\n    assert(n >= 2);\n    Double ret\
-    \ = Double(0);\n    for (int i = 0; i < n - 1; i++) {\n        ret += cross(p[i],\
-    \ p[i + 1]);\n    }\n    ret += cross(p[n - 1], p[0]);\n    // counter clockwise:\
-    \ ret > 0\n    // clockwise: ret < 0\n    return std::abs(ret) / 2;\n}\n"
+    \ << \" -> \";\n    return os;\n}\n#line 4 \"geometry/polygon_area.hpp\"\n// area\
+    \ of polygon\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\n\
+    Double polygon_area(const Polygon &p) {\n    int n = (int)p.size();\n    assert(n\
+    \ >= 2);\n    Double ret = Double(0);\n    for (int i = 0; i < n - 1; i++) {\n\
+    \        ret += cross(p[i], p[i + 1]);\n    }\n    ret += cross(p[n - 1], p[0]);\n\
+    \    // counter clockwise: ret > 0\n    // clockwise: ret < 0\n    return std::abs(ret)\
+    \ / 2;\n}\n"
   code: "#pragma once\n\n#include \"geometry/polygon.hpp\"\n// area of polygon\n//\
-    \ http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\nDouble area(const\
+    \ http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\nDouble polygon_area(const\
     \ Polygon &p) {\n    int n = (int)p.size();\n    assert(n >= 2);\n    Double ret\
     \ = Double(0);\n    for (int i = 0; i < n - 1; i++) {\n        ret += cross(p[i],\
     \ p[i + 1]);\n    }\n    ret += cross(p[n - 1], p[0]);\n    // counter clockwise:\
@@ -70,18 +71,18 @@ data:
   - geometry/point.hpp
   - geometry/geometry_template.hpp
   isVerificationFile: false
-  path: geometry/area.hpp
+  path: geometry/polygon_area.hpp
   requiredBy:
   - geometry/all.hpp
-  timestamp: '2023-02-18 13:26:59+09:00'
+  timestamp: '2023-02-18 17:31:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_3_a.test.cpp
   - verify/aoj_cgl/aoj_cgl_4_c.test.cpp
-documentation_of: geometry/area.hpp
+documentation_of: geometry/polygon_area.hpp
 layout: document
 redirect_from:
-- /library/geometry/area.hpp
-- /library/geometry/area.hpp.html
-title: geometry/area.hpp
+- /library/geometry/polygon_area.hpp
+- /library/geometry/polygon_area.hpp.html
+title: geometry/polygon_area.hpp
 ---

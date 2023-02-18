@@ -8,14 +8,14 @@ data:
     path: geometry/geometry_template.hpp
     title: geometry/geometry_template.hpp
   - icon: ':heavy_check_mark:'
-    path: geometry/is_convex.hpp
-    title: geometry/is_convex.hpp
-  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: geometry/point.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/polygon_is_convex.hpp
+    title: geometry/polygon_is_convex.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -28,8 +28,8 @@ data:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B
   bundledCode: "#line 1 \"verify/aoj_cgl/aoj_cgl_3_b.test.cpp\"\n#define PROBLEM \"\
     http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B\"\n\n#include\
-    \ <bits/stdc++.h>\n\n#line 2 \"geometry/is_convex.hpp\"\n\n#line 2 \"geometry/polygon.hpp\"\
-    \n\n#line 2 \"geometry/point.hpp\"\n\n#line 2 \"geometry/geometry_template.hpp\"\
+    \ <bits/stdc++.h>\n\n#line 2 \"geometry/polygon_is_convex.hpp\"\n\n#line 2 \"\
+    geometry/polygon.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n#line 2 \"geometry/geometry_template.hpp\"\
     \n\n// template\nusing Double = double;\nconst Double EPS = 1e-8;\nconst Double\
     \ PI = std::acos(-1);\ninline int sign(const Double &x) { return x <= -EPS ? -1\
     \ : (x >= EPS ? 1 : 0); }\ninline bool equal(const Double &a, const Double &b)\
@@ -63,10 +63,10 @@ data:
     \ Point c) {\n    b = b - a, c = c - a;\n    if (sign(cross(b, c)) == 1) return\
     \ COUNTER_CLOCKWISE;\n    if (sign(cross(b, c)) == -1) return CLOCKWISE;\n   \
     \ if (sign(dot(b, c)) == -1) return ONLINE_BACK;\n    if (std::norm(b) < std::norm(c))\
-    \ return ONLINE_FRONT;\n    return ON_SEGMENT;\n}\n#line 5 \"geometry/is_convex.hpp\"\
+    \ return ONLINE_FRONT;\n    return ON_SEGMENT;\n}\n#line 5 \"geometry/polygon_is_convex.hpp\"\
     \n\n// check polygon is convex (not strictly, 0 <= angle <= 180 degrees)\n// angle\
     \ = 180 degrees -> ON_SEGMENT\n// angle = 0 degrees -> ONLINE_FRONT or ONLINE_BACK\n\
-    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B\nbool is_convex(const\
+    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B\nbool polygon_is_convex(const\
     \ Polygon &p) {\n    int n = (int)p.size();\n    assert(n >= 3);\n    bool okccw\
     \ = true, okcw = true;\n    for (int i = 0; i < n - 2; i++) {\n        int res\
     \ = ccw(p[i], p[i + 1], p[i + 2]);\n        if (res == CLOCKWISE) okccw = false;\n\
@@ -78,16 +78,17 @@ data:
     \ = false;\n        if (res == COUNTER_CLOCKWISE) okcw = false;\n        if (!okccw\
     \ and !okcw) return false;\n    }\n    return true;\n}\n#line 6 \"verify/aoj_cgl/aoj_cgl_3_b.test.cpp\"\
     \n\nint main() {\n    int N;\n    std::cin >> N;\n    Polygon P(N);\n    std::cin\
-    \ >> P;\n    bool ans = is_convex(P);\n    std::reverse(P.begin(), P.end());\n\
-    \    assert(ans == is_convex(P));\n    std::cout << ans << '\\n';\n    return\
-    \ 0;\n}\n"
+    \ >> P;\n    bool ans = polygon_is_convex(P);\n    std::reverse(P.begin(), P.end());\n\
+    \    assert(ans == polygon_is_convex(P));\n    std::cout << ans << '\\n';\n  \
+    \  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B\"\
-    \n\n#include <bits/stdc++.h>\n\n#include \"geometry/is_convex.hpp\"\n\nint main()\
-    \ {\n    int N;\n    std::cin >> N;\n    Polygon P(N);\n    std::cin >> P;\n \
-    \   bool ans = is_convex(P);\n    std::reverse(P.begin(), P.end());\n    assert(ans\
-    \ == is_convex(P));\n    std::cout << ans << '\\n';\n    return 0;\n}"
+    \n\n#include <bits/stdc++.h>\n\n#include \"geometry/polygon_is_convex.hpp\"\n\n\
+    int main() {\n    int N;\n    std::cin >> N;\n    Polygon P(N);\n    std::cin\
+    \ >> P;\n    bool ans = polygon_is_convex(P);\n    std::reverse(P.begin(), P.end());\n\
+    \    assert(ans == polygon_is_convex(P));\n    std::cout << ans << '\\n';\n  \
+    \  return 0;\n}"
   dependsOn:
-  - geometry/is_convex.hpp
+  - geometry/polygon_is_convex.hpp
   - geometry/polygon.hpp
   - geometry/point.hpp
   - geometry/geometry_template.hpp
@@ -95,7 +96,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_3_b.test.cpp
   requiredBy: []
-  timestamp: '2023-02-18 13:26:59+09:00'
+  timestamp: '2023-02-18 17:31:50+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_3_b.test.cpp
