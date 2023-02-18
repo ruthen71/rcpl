@@ -139,12 +139,15 @@ data:
       path: geometry/contain.hpp
       title: geometry/contain.hpp
     - icon: ':heavy_check_mark:'
+      path: geometry/convex_polygon_cut.hpp
+      title: geometry/convex_polygon_cut.hpp
+    - icon: ':heavy_check_mark:'
       path: geometry/cross_point_cc.hpp
       title: geometry/cross_point_cc.hpp
     - icon: ':heavy_check_mark:'
       path: geometry/cross_point_cl.hpp
       title: geometry/cross_point_cl.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: geometry/cross_point_ll.hpp
       title: geometry/cross_point_ll.hpp
     - icon: ':heavy_check_mark:'
@@ -195,6 +198,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: geometry/line.hpp
       title: geometry/line.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/monotone_chain.hpp
+      title: geometry/monotone_chain.hpp
     - icon: ':heavy_check_mark:'
       path: geometry/point.hpp
       title: geometry/point.hpp
@@ -344,6 +350,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
       title: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_cgl/aoj_cgl_4_a.test.cpp
+      title: verify/aoj_cgl/aoj_cgl_4_a.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
+      title: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj_cgl/aoj_cgl_7_a.test.cpp
       title: verify/aoj_cgl/aoj_cgl_7_a.test.cpp

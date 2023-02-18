@@ -21,12 +21,15 @@ data:
     path: geometry/contain.hpp
     title: geometry/contain.hpp
   - icon: ':heavy_check_mark:'
+    path: geometry/convex_polygon_cut.hpp
+    title: geometry/convex_polygon_cut.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point_cc.hpp
     title: geometry/cross_point_cc.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/cross_point_cl.hpp
     title: geometry/cross_point_cl.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point_ll.hpp
     title: geometry/cross_point_ll.hpp
   - icon: ':heavy_check_mark:'
@@ -75,6 +78,9 @@ data:
     path: geometry/line.hpp
     title: geometry/line.hpp
   - icon: ':heavy_check_mark:'
+    path: geometry/monotone_chain.hpp
+    title: geometry/monotone_chain.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
   - icon: ':heavy_check_mark:'
@@ -121,6 +127,12 @@ data:
     path: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_4_a.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_4_a.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_a.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_a.test.cpp
   - icon: ':heavy_check_mark:'
@@ -151,7 +163,11 @@ data:
     \ }\n// outer product\nDouble cross(const Point &a, const Point &b) { return a.real()\
     \ * b.imag() - a.imag() * b.real(); }\n// rotate Point p counterclockwise by theta\
     \ radian\nPoint rotate(const Point &p, const Double &theta) { return p * Point(cos(theta),\
-    \ sin(theta)); }\n"
+    \ sin(theta)); }\n// compare (x, y)\nbool compare_x(const Point &a, const Point\
+    \ &b) { return equal(a.real(), b.real()) ? sign(a.imag() - b.imag()) < 0 : sign(a.real()\
+    \ - b.real()) < 0; }\n// compare (y, x)\nbool compare_y(const Point &a, const\
+    \ Point &b) { return equal(a.imag(), b.imag()) ? sign(a.real() - b.real()) < 0\
+    \ : sign(a.imag() - b.imag()) < 0; }\n"
   code: "#pragma once\n\n#include \"geometry/geometry_template.hpp\"\n\n// point\n\
     using Point = std::complex<Double>;\nstd::istream &operator>>(std::istream &is,\
     \ Point &p) {\n    Double x, y;\n    is >> x >> y;\n    p = Point(x, y);\n   \
@@ -163,56 +179,64 @@ data:
     \ Point &b) { return a.real() * b.real() + a.imag() * b.imag(); }\n// outer product\n\
     Double cross(const Point &a, const Point &b) { return a.real() * b.imag() - a.imag()\
     \ * b.real(); }\n// rotate Point p counterclockwise by theta radian\nPoint rotate(const\
-    \ Point &p, const Double &theta) { return p * Point(cos(theta), sin(theta)); }"
+    \ Point &p, const Double &theta) { return p * Point(cos(theta), sin(theta)); }\n\
+    // compare (x, y)\nbool compare_x(const Point &a, const Point &b) { return equal(a.real(),\
+    \ b.real()) ? sign(a.imag() - b.imag()) < 0 : sign(a.real() - b.real()) < 0; }\n\
+    // compare (y, x)\nbool compare_y(const Point &a, const Point &b) { return equal(a.imag(),\
+    \ b.imag()) ? sign(a.real() - b.real()) < 0 : sign(a.imag() - b.imag()) < 0; }"
   dependsOn:
   - geometry/geometry_template.hpp
   isVerificationFile: false
   path: geometry/point.hpp
   requiredBy:
   - geometry/line.hpp
-  - geometry/area.hpp
-  - geometry/cross_point_ss.hpp
-  - geometry/is_orthogonal.hpp
-  - geometry/segment.hpp
-  - geometry/cross_point_cc.hpp
   - geometry/distance_sp.hpp
-  - geometry/is_intersect_cc.hpp
-  - geometry/tangent_number_cc.hpp
-  - geometry/reflection.hpp
-  - geometry/projection.hpp
-  - geometry/cross_point_ll.hpp
-  - geometry/is_intersect_ll.hpp
-  - geometry/is_convex.hpp
   - geometry/is_intersect_ss.hpp
-  - geometry/is_intersect_cl.hpp
-  - geometry/circle.hpp
-  - geometry/is_intersect_lp.hpp
-  - geometry/is_intersect_sp.hpp
-  - geometry/polygon.hpp
+  - geometry/segment.hpp
   - geometry/cross_point_cl.hpp
   - geometry/distance_ss.hpp
-  - geometry/ccw.hpp
-  - geometry/distance_lp.hpp
   - geometry/contain.hpp
-  - geometry/is_intersect_cp.hpp
-  - geometry/all.hpp
   - geometry/is_parallel.hpp
-  timestamp: '2023-02-11 13:48:05+09:00'
+  - geometry/is_convex.hpp
+  - geometry/is_intersect_cp.hpp
+  - geometry/polygon.hpp
+  - geometry/area.hpp
+  - geometry/projection.hpp
+  - geometry/cross_point_ss.hpp
+  - geometry/circle.hpp
+  - geometry/tangent_number_cc.hpp
+  - geometry/is_intersect_sp.hpp
+  - geometry/is_intersect_cl.hpp
+  - geometry/convex_polygon_cut.hpp
+  - geometry/distance_lp.hpp
+  - geometry/cross_point_cc.hpp
+  - geometry/is_intersect_cc.hpp
+  - geometry/ccw.hpp
+  - geometry/reflection.hpp
+  - geometry/monotone_chain.hpp
+  - geometry/is_orthogonal.hpp
+  - geometry/is_intersect_lp.hpp
+  - geometry/all.hpp
+  - geometry/is_intersect_ll.hpp
+  - geometry/cross_point_ll.hpp
+  timestamp: '2023-02-18 13:26:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj_cgl/aoj_cgl_3_b.test.cpp
-  - verify/aoj_cgl/aoj_cgl_2_d.test.cpp
-  - verify/aoj_cgl/aoj_cgl_2_a.test.cpp
-  - verify/aoj_cgl/aoj_cgl_7_e.test.cpp
-  - verify/aoj_cgl/aoj_cgl_3_a.test.cpp
-  - verify/aoj_cgl/aoj_cgl_1_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_1_b.test.cpp
-  - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
-  - verify/aoj_cgl/aoj_cgl_3_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_7_a.test.cpp
   - verify/aoj_cgl/aoj_cgl_7_d.test.cpp
+  - verify/aoj_cgl/aoj_cgl_1_c.test.cpp
+  - verify/aoj_cgl/aoj_cgl_4_a.test.cpp
+  - verify/aoj_cgl/aoj_cgl_3_a.test.cpp
+  - verify/aoj_cgl/aoj_cgl_3_b.test.cpp
+  - verify/aoj_cgl/aoj_cgl_4_c.test.cpp
+  - verify/aoj_cgl/aoj_cgl_3_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_c.test.cpp
+  - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
+  - verify/aoj_cgl/aoj_cgl_2_d.test.cpp
+  - verify/aoj_cgl/aoj_cgl_7_e.test.cpp
   - verify/aoj_cgl/aoj_cgl_1_a.test.cpp
+  - verify/aoj_cgl/aoj_cgl_2_a.test.cpp
 documentation_of: geometry/point.hpp
 layout: document
 redirect_from:

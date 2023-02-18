@@ -18,6 +18,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_3_a.test.cpp
     title: verify/aoj_cgl/aoj_cgl_3_a.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -42,16 +45,20 @@ data:
     \ }\n// outer product\nDouble cross(const Point &a, const Point &b) { return a.real()\
     \ * b.imag() - a.imag() * b.real(); }\n// rotate Point p counterclockwise by theta\
     \ radian\nPoint rotate(const Point &p, const Double &theta) { return p * Point(cos(theta),\
-    \ sin(theta)); }\n#line 4 \"geometry/polygon.hpp\"\n// polygon\nusing Polygon\
-    \ = std::vector<Point>;\nstd::istream &operator>>(std::istream &is, Polygon &p)\
-    \ {\n    for (auto &&pi : p) is >> pi;\n    return is;\n}\nstd::ostream &operator<<(std::ostream\
-    \ &os, Polygon &p) {\n    for (auto &&pi : p) os << pi << \" -> \";\n    return\
-    \ os;\n}\n#line 4 \"geometry/area.hpp\"\n// area of polygon\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\n\
-    Double area(const Polygon &p) {\n    int n = (int)p.size();\n    assert(n >= 2);\n\
-    \    Double ret = Double(0);\n    for (int i = 0; i < n - 1; i++) {\n        ret\
-    \ += cross(p[i], p[i + 1]);\n    }\n    ret += cross(p[n - 1], p[0]);\n    //\
-    \ counter clockwise: ret > 0\n    // clockwise: ret < 0\n    return std::abs(ret)\
-    \ / 2;\n}\n"
+    \ sin(theta)); }\n// compare (x, y)\nbool compare_x(const Point &a, const Point\
+    \ &b) { return equal(a.real(), b.real()) ? sign(a.imag() - b.imag()) < 0 : sign(a.real()\
+    \ - b.real()) < 0; }\n// compare (y, x)\nbool compare_y(const Point &a, const\
+    \ Point &b) { return equal(a.imag(), b.imag()) ? sign(a.real() - b.real()) < 0\
+    \ : sign(a.imag() - b.imag()) < 0; }\n#line 4 \"geometry/polygon.hpp\"\n\n// polygon\n\
+    using Polygon = std::vector<Point>;\nstd::istream &operator>>(std::istream &is,\
+    \ Polygon &p) {\n    for (auto &&pi : p) is >> pi;\n    return is;\n}\nstd::ostream\
+    \ &operator<<(std::ostream &os, Polygon &p) {\n    for (auto &&pi : p) os << pi\
+    \ << \" -> \";\n    return os;\n}\n#line 4 \"geometry/area.hpp\"\n// area of polygon\n\
+    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\nDouble area(const\
+    \ Polygon &p) {\n    int n = (int)p.size();\n    assert(n >= 2);\n    Double ret\
+    \ = Double(0);\n    for (int i = 0; i < n - 1; i++) {\n        ret += cross(p[i],\
+    \ p[i + 1]);\n    }\n    ret += cross(p[n - 1], p[0]);\n    // counter clockwise:\
+    \ ret > 0\n    // clockwise: ret < 0\n    return std::abs(ret) / 2;\n}\n"
   code: "#pragma once\n\n#include \"geometry/polygon.hpp\"\n// area of polygon\n//\
     \ http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\nDouble area(const\
     \ Polygon &p) {\n    int n = (int)p.size();\n    assert(n >= 2);\n    Double ret\
@@ -66,10 +73,11 @@ data:
   path: geometry/area.hpp
   requiredBy:
   - geometry/all.hpp
-  timestamp: '2023-02-17 15:14:02+09:00'
+  timestamp: '2023-02-18 13:26:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_3_a.test.cpp
+  - verify/aoj_cgl/aoj_cgl_4_c.test.cpp
 documentation_of: geometry/area.hpp
 layout: document
 redirect_from:

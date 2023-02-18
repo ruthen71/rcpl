@@ -46,12 +46,16 @@ data:
     \ }\n// outer product\nDouble cross(const Point &a, const Point &b) { return a.real()\
     \ * b.imag() - a.imag() * b.real(); }\n// rotate Point p counterclockwise by theta\
     \ radian\nPoint rotate(const Point &p, const Double &theta) { return p * Point(cos(theta),\
-    \ sin(theta)); }\n#line 4 \"geometry/polygon.hpp\"\n// polygon\nusing Polygon\
-    \ = std::vector<Point>;\nstd::istream &operator>>(std::istream &is, Polygon &p)\
-    \ {\n    for (auto &&pi : p) is >> pi;\n    return is;\n}\nstd::ostream &operator<<(std::ostream\
-    \ &os, Polygon &p) {\n    for (auto &&pi : p) os << pi << \" -> \";\n    return\
-    \ os;\n}\n#line 2 \"geometry/ccw.hpp\"\n\n#line 4 \"geometry/ccw.hpp\"\n\n// counter\
-    \ clockwise\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C\n\
+    \ sin(theta)); }\n// compare (x, y)\nbool compare_x(const Point &a, const Point\
+    \ &b) { return equal(a.real(), b.real()) ? sign(a.imag() - b.imag()) < 0 : sign(a.real()\
+    \ - b.real()) < 0; }\n// compare (y, x)\nbool compare_y(const Point &a, const\
+    \ Point &b) { return equal(a.imag(), b.imag()) ? sign(a.real() - b.real()) < 0\
+    \ : sign(a.imag() - b.imag()) < 0; }\n#line 4 \"geometry/polygon.hpp\"\n\n// polygon\n\
+    using Polygon = std::vector<Point>;\nstd::istream &operator>>(std::istream &is,\
+    \ Polygon &p) {\n    for (auto &&pi : p) is >> pi;\n    return is;\n}\nstd::ostream\
+    \ &operator<<(std::ostream &os, Polygon &p) {\n    for (auto &&pi : p) os << pi\
+    \ << \" -> \";\n    return os;\n}\n#line 2 \"geometry/ccw.hpp\"\n\n#line 4 \"\
+    geometry/ccw.hpp\"\n\n// counter clockwise\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C\n\
     constexpr int COUNTER_CLOCKWISE = 1;  // a-b-c counter clockwise\nconstexpr int\
     \ CLOCKWISE = -1;         // a-b-c clockwise\nconstexpr int ONLINE_BACK = 2; \
     \       // c-a-b line\nconstexpr int ONLINE_FRONT = -2;      // a-b-c line\nconstexpr\
@@ -91,7 +95,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_3_b.test.cpp
   requiredBy: []
-  timestamp: '2023-02-17 15:14:02+09:00'
+  timestamp: '2023-02-18 13:26:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_3_b.test.cpp

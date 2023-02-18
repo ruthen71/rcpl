@@ -15,9 +15,12 @@ data:
     path: geometry/contain.hpp
     title: geometry/contain.hpp
   - icon: ':heavy_check_mark:'
+    path: geometry/convex_polygon_cut.hpp
+    title: geometry/convex_polygon_cut.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point_cl.hpp
     title: geometry/cross_point_cl.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point_ll.hpp
     title: geometry/cross_point_ll.hpp
   - icon: ':heavy_check_mark:'
@@ -85,6 +88,9 @@ data:
     path: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
   _isVerificationFailed: false
@@ -110,6 +116,10 @@ data:
     Double cross(const Point &a, const Point &b) { return a.real() * b.imag() - a.imag()\
     \ * b.real(); }\n// rotate Point p counterclockwise by theta radian\nPoint rotate(const\
     \ Point &p, const Double &theta) { return p * Point(cos(theta), sin(theta)); }\n\
+    // compare (x, y)\nbool compare_x(const Point &a, const Point &b) { return equal(a.real(),\
+    \ b.real()) ? sign(a.imag() - b.imag()) < 0 : sign(a.real() - b.real()) < 0; }\n\
+    // compare (y, x)\nbool compare_y(const Point &a, const Point &b) { return equal(a.imag(),\
+    \ b.imag()) ? sign(a.real() - b.real()) < 0 : sign(a.imag() - b.imag()) < 0; }\n\
     #line 4 \"geometry/line.hpp\"\n\n// line\nstruct Line {\n    Point a, b;\n\n \
     \   Line() = default;\n\n    Line(Point a, Point b) : a(a), b(b) {}\n\n    //\
     \ Ax + By = C\n    Line(Double A, Double B, Double C) {\n        assert(equal(A,\
@@ -138,35 +148,37 @@ data:
   isVerificationFile: false
   path: geometry/line.hpp
   requiredBy:
-  - geometry/cross_point_ss.hpp
-  - geometry/is_orthogonal.hpp
-  - geometry/segment.hpp
   - geometry/distance_sp.hpp
-  - geometry/reflection.hpp
-  - geometry/projection.hpp
-  - geometry/cross_point_ll.hpp
-  - geometry/is_intersect_ll.hpp
   - geometry/is_intersect_ss.hpp
-  - geometry/is_intersect_cl.hpp
-  - geometry/is_intersect_lp.hpp
-  - geometry/is_intersect_sp.hpp
+  - geometry/segment.hpp
   - geometry/cross_point_cl.hpp
   - geometry/distance_ss.hpp
-  - geometry/distance_lp.hpp
   - geometry/contain.hpp
-  - geometry/all.hpp
   - geometry/is_parallel.hpp
-  timestamp: '2023-02-11 13:48:05+09:00'
+  - geometry/projection.hpp
+  - geometry/cross_point_ss.hpp
+  - geometry/is_intersect_sp.hpp
+  - geometry/is_intersect_cl.hpp
+  - geometry/convex_polygon_cut.hpp
+  - geometry/distance_lp.hpp
+  - geometry/reflection.hpp
+  - geometry/is_orthogonal.hpp
+  - geometry/is_intersect_lp.hpp
+  - geometry/all.hpp
+  - geometry/is_intersect_ll.hpp
+  - geometry/cross_point_ll.hpp
+  timestamp: '2023-02-18 13:26:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj_cgl/aoj_cgl_2_d.test.cpp
-  - verify/aoj_cgl/aoj_cgl_2_a.test.cpp
   - verify/aoj_cgl/aoj_cgl_1_b.test.cpp
-  - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
-  - verify/aoj_cgl/aoj_cgl_3_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_7_d.test.cpp
+  - verify/aoj_cgl/aoj_cgl_4_c.test.cpp
+  - verify/aoj_cgl/aoj_cgl_3_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_c.test.cpp
+  - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
+  - verify/aoj_cgl/aoj_cgl_2_d.test.cpp
   - verify/aoj_cgl/aoj_cgl_1_a.test.cpp
+  - verify/aoj_cgl/aoj_cgl_2_a.test.cpp
 documentation_of: geometry/line.hpp
 layout: document
 redirect_from:

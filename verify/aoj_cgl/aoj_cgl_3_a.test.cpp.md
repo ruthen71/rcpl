@@ -45,7 +45,11 @@ data:
     Double cross(const Point &a, const Point &b) { return a.real() * b.imag() - a.imag()\
     \ * b.real(); }\n// rotate Point p counterclockwise by theta radian\nPoint rotate(const\
     \ Point &p, const Double &theta) { return p * Point(cos(theta), sin(theta)); }\n\
-    #line 4 \"geometry/polygon.hpp\"\n// polygon\nusing Polygon = std::vector<Point>;\n\
+    // compare (x, y)\nbool compare_x(const Point &a, const Point &b) { return equal(a.real(),\
+    \ b.real()) ? sign(a.imag() - b.imag()) < 0 : sign(a.real() - b.real()) < 0; }\n\
+    // compare (y, x)\nbool compare_y(const Point &a, const Point &b) { return equal(a.imag(),\
+    \ b.imag()) ? sign(a.real() - b.real()) < 0 : sign(a.imag() - b.imag()) < 0; }\n\
+    #line 4 \"geometry/polygon.hpp\"\n\n// polygon\nusing Polygon = std::vector<Point>;\n\
     std::istream &operator>>(std::istream &is, Polygon &p) {\n    for (auto &&pi :\
     \ p) is >> pi;\n    return is;\n}\nstd::ostream &operator<<(std::ostream &os,\
     \ Polygon &p) {\n    for (auto &&pi : p) os << pi << \" -> \";\n    return os;\n\
@@ -71,7 +75,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_3_a.test.cpp
   requiredBy: []
-  timestamp: '2023-02-17 15:14:02+09:00'
+  timestamp: '2023-02-18 13:26:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_3_a.test.cpp

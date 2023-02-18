@@ -51,9 +51,13 @@ data:
     \ }\n// outer product\nDouble cross(const Point &a, const Point &b) { return a.real()\
     \ * b.imag() - a.imag() * b.real(); }\n// rotate Point p counterclockwise by theta\
     \ radian\nPoint rotate(const Point &p, const Double &theta) { return p * Point(cos(theta),\
-    \ sin(theta)); }\n#line 4 \"geometry/circle.hpp\"\n\n// circle\nstruct Circle\
-    \ {\n    Point o;\n    Double r;\n\n    Circle() = default;\n\n    Circle(Point\
-    \ o, Double r) : o(o), r(r) {}\n\n    friend std::ostream &operator<<(std::ostream\
+    \ sin(theta)); }\n// compare (x, y)\nbool compare_x(const Point &a, const Point\
+    \ &b) { return equal(a.real(), b.real()) ? sign(a.imag() - b.imag()) < 0 : sign(a.real()\
+    \ - b.real()) < 0; }\n// compare (y, x)\nbool compare_y(const Point &a, const\
+    \ Point &b) { return equal(a.imag(), b.imag()) ? sign(a.real() - b.real()) < 0\
+    \ : sign(a.imag() - b.imag()) < 0; }\n#line 4 \"geometry/circle.hpp\"\n\n// circle\n\
+    struct Circle {\n    Point o;\n    Double r;\n\n    Circle() = default;\n\n  \
+    \  Circle(Point o, Double r) : o(o), r(r) {}\n\n    friend std::ostream &operator<<(std::ostream\
     \ &os, const Circle &c) { return os << c.o << ' ' << c.r; }\n    friend std::istream\
     \ &operator>>(std::istream &is, Circle &c) { return is >> c.o >> c.r; }  // format\
     \ : x y r\n};\n#line 3 \"geometry/tangent_number_cc.hpp\"\n// return the number\
@@ -93,7 +97,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_7_e.test.cpp
   requiredBy: []
-  timestamp: '2023-02-17 17:31:01+09:00'
+  timestamp: '2023-02-18 13:26:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_7_e.test.cpp

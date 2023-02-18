@@ -16,7 +16,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/tangent_number_cc.hpp
     title: geometry/tangent_number_cc.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: geometry/all.hpp
+    title: geometry/all.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_e.test.cpp
@@ -46,6 +49,10 @@ data:
     Double cross(const Point &a, const Point &b) { return a.real() * b.imag() - a.imag()\
     \ * b.real(); }\n// rotate Point p counterclockwise by theta radian\nPoint rotate(const\
     \ Point &p, const Double &theta) { return p * Point(cos(theta), sin(theta)); }\n\
+    // compare (x, y)\nbool compare_x(const Point &a, const Point &b) { return equal(a.real(),\
+    \ b.real()) ? sign(a.imag() - b.imag()) < 0 : sign(a.real() - b.real()) < 0; }\n\
+    // compare (y, x)\nbool compare_y(const Point &a, const Point &b) { return equal(a.imag(),\
+    \ b.imag()) ? sign(a.real() - b.real()) < 0 : sign(a.imag() - b.imag()) < 0; }\n\
     #line 4 \"geometry/circle.hpp\"\n\n// circle\nstruct Circle {\n    Point o;\n\
     \    Double r;\n\n    Circle() = default;\n\n    Circle(Point o, Double r) : o(o),\
     \ r(r) {}\n\n    friend std::ostream &operator<<(std::ostream &os, const Circle\
@@ -84,8 +91,9 @@ data:
   - geometry/tangent_number_cc.hpp
   isVerificationFile: false
   path: geometry/cross_point_cc.hpp
-  requiredBy: []
-  timestamp: '2023-02-17 17:27:32+09:00'
+  requiredBy:
+  - geometry/all.hpp
+  timestamp: '2023-02-18 13:26:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_7_e.test.cpp

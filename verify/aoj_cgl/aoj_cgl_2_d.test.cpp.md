@@ -63,16 +63,20 @@ data:
     \ }\n// outer product\nDouble cross(const Point &a, const Point &b) { return a.real()\
     \ * b.imag() - a.imag() * b.real(); }\n// rotate Point p counterclockwise by theta\
     \ radian\nPoint rotate(const Point &p, const Double &theta) { return p * Point(cos(theta),\
-    \ sin(theta)); }\n#line 4 \"geometry/line.hpp\"\n\n// line\nstruct Line {\n  \
-    \  Point a, b;\n\n    Line() = default;\n\n    Line(Point a, Point b) : a(a),\
-    \ b(b) {}\n\n    // Ax + By = C\n    Line(Double A, Double B, Double C) {\n  \
-    \      assert(equal(A, 0) and equal(B, 0));\n        if (equal(A, 0)) {\n    \
-    \        a = Point(0, C / B), b = Point(1, C / B);\n        } else if (equal(B,\
-    \ 0)) {\n            a = Point(C / A, 0), b = Point(C / A, 1);\n        } else\
-    \ if (equal(C, 0)) {\n            a = Point(0, 0), b = Point(1, B / A);\n    \
-    \    } else {\n            a = Point(0, C / B), b = Point(C / A, 0);\n       \
-    \ }\n    }\n\n    friend std::istream &operator>>(std::istream &is, Line &p) {\
-    \ return is >> p.a >> p.b; }\n    friend std::ostream &operator<<(std::ostream\
+    \ sin(theta)); }\n// compare (x, y)\nbool compare_x(const Point &a, const Point\
+    \ &b) { return equal(a.real(), b.real()) ? sign(a.imag() - b.imag()) < 0 : sign(a.real()\
+    \ - b.real()) < 0; }\n// compare (y, x)\nbool compare_y(const Point &a, const\
+    \ Point &b) { return equal(a.imag(), b.imag()) ? sign(a.real() - b.real()) < 0\
+    \ : sign(a.imag() - b.imag()) < 0; }\n#line 4 \"geometry/line.hpp\"\n\n// line\n\
+    struct Line {\n    Point a, b;\n\n    Line() = default;\n\n    Line(Point a, Point\
+    \ b) : a(a), b(b) {}\n\n    // Ax + By = C\n    Line(Double A, Double B, Double\
+    \ C) {\n        assert(equal(A, 0) and equal(B, 0));\n        if (equal(A, 0))\
+    \ {\n            a = Point(0, C / B), b = Point(1, C / B);\n        } else if\
+    \ (equal(B, 0)) {\n            a = Point(C / A, 0), b = Point(C / A, 1);\n   \
+    \     } else if (equal(C, 0)) {\n            a = Point(0, 0), b = Point(1, B /\
+    \ A);\n        } else {\n            a = Point(0, C / B), b = Point(C / A, 0);\n\
+    \        }\n    }\n\n    friend std::istream &operator>>(std::istream &is, Line\
+    \ &p) { return is >> p.a >> p.b; }\n    friend std::ostream &operator<<(std::ostream\
     \ &os, const Line &p) { return os << p.a << \"->\" << p.b; }\n};\n#line 4 \"geometry/segment.hpp\"\
     \n\n// segment\nstruct Segment : Line {\n    Segment() = default;\n\n    Segment(Point\
     \ a, Point b) : Line(a, b) {}\n};\n#line 2 \"geometry/is_intersect_ss.hpp\"\n\n\
@@ -129,7 +133,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_2_d.test.cpp
   requiredBy: []
-  timestamp: '2023-02-17 15:36:39+09:00'
+  timestamp: '2023-02-18 13:26:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_2_d.test.cpp

@@ -35,6 +35,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/is_intersect_ss.hpp
     title: geometry/is_intersect_ss.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/monotone_chain.hpp
+    title: geometry/monotone_chain.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_1_c.test.cpp
@@ -54,6 +57,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_4_a.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_4_a.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -78,6 +84,10 @@ data:
     Double cross(const Point &a, const Point &b) { return a.real() * b.imag() - a.imag()\
     \ * b.real(); }\n// rotate Point p counterclockwise by theta radian\nPoint rotate(const\
     \ Point &p, const Double &theta) { return p * Point(cos(theta), sin(theta)); }\n\
+    // compare (x, y)\nbool compare_x(const Point &a, const Point &b) { return equal(a.real(),\
+    \ b.real()) ? sign(a.imag() - b.imag()) < 0 : sign(a.real() - b.real()) < 0; }\n\
+    // compare (y, x)\nbool compare_y(const Point &a, const Point &b) { return equal(a.imag(),\
+    \ b.imag()) ? sign(a.real() - b.real()) < 0 : sign(a.imag() - b.imag()) < 0; }\n\
     #line 4 \"geometry/ccw.hpp\"\n\n// counter clockwise\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C\n\
     constexpr int COUNTER_CLOCKWISE = 1;  // a-b-c counter clockwise\nconstexpr int\
     \ CLOCKWISE = -1;         // a-b-c clockwise\nconstexpr int ONLINE_BACK = 2; \
@@ -103,24 +113,26 @@ data:
   isVerificationFile: false
   path: geometry/ccw.hpp
   requiredBy:
-  - geometry/cross_point_ss.hpp
   - geometry/distance_sp.hpp
-  - geometry/is_convex.hpp
   - geometry/is_intersect_ss.hpp
-  - geometry/is_intersect_lp.hpp
-  - geometry/is_intersect_sp.hpp
   - geometry/distance_ss.hpp
   - geometry/contain.hpp
+  - geometry/is_convex.hpp
+  - geometry/cross_point_ss.hpp
+  - geometry/is_intersect_sp.hpp
+  - geometry/monotone_chain.hpp
+  - geometry/is_intersect_lp.hpp
   - geometry/all.hpp
-  timestamp: '2023-02-17 08:10:51+09:00'
+  timestamp: '2023-02-18 13:26:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj_cgl/aoj_cgl_3_b.test.cpp
-  - verify/aoj_cgl/aoj_cgl_2_d.test.cpp
   - verify/aoj_cgl/aoj_cgl_1_c.test.cpp
-  - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
+  - verify/aoj_cgl/aoj_cgl_4_a.test.cpp
+  - verify/aoj_cgl/aoj_cgl_3_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_3_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_c.test.cpp
+  - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
+  - verify/aoj_cgl/aoj_cgl_2_d.test.cpp
 documentation_of: geometry/ccw.hpp
 layout: document
 redirect_from:
