@@ -8,6 +8,12 @@ data:
     path: geometry/circle.hpp
     title: geometry/circle.hpp
   - icon: ':heavy_check_mark:'
+    path: geometry/convex_polygon_cut.hpp
+    title: geometry/convex_polygon_cut.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/convex_polygon_diameter.hpp
+    title: geometry/convex_polygon_diameter.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point_cc.hpp
     title: geometry/cross_point_cc.hpp
   - icon: ':heavy_check_mark:'
@@ -301,8 +307,44 @@ data:
     \ i--) {\n            while (r.size() >= t and ccw(r[r.size() - 2], r[r.size()\
     \ - 1], p[i]) == COUNTER_CLOCKWISE) {\n                r.pop_back();\n       \
     \     }\n            r.push_back(p[i]);\n        }\n    }\n    r.pop_back();\n\
-    \    std::reverse(r.begin(), r.end());\n    return r;\n}\n#line 38 \"geometry/all.hpp\"\
-    \n"
+    \    std::reverse(r.begin(), r.end());\n    return r;\n}\n#line 2 \"geometry/convex_polygon_cut.hpp\"\
+    \n\n#line 5 \"geometry/convex_polygon_cut.hpp\"\n\n// cut convex polygon p by\
+    \ line l\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_C\n\
+    // return {left polygon, right polygon}\n// whether each point is included is\
+    \ determined by the sign of the outer product of the two vectors to the endpoints\
+    \ of the line\nstd::pair<Polygon, Polygon> convex_polygon_cut(const Polygon &p,\
+    \ const Line &l) {\n    int n = (int)p.size();\n    assert(n >= 3);\n    Polygon\
+    \ pl, pr;\n    for (int i = 0; i < n - 1; i++) {\n        int s1 = sign(cross(l.a\
+    \ - p[i], l.b - p[i]));\n        int s2 = sign(cross(l.a - p[i + 1], l.b - p[i\
+    \ + 1]));\n        if (s1 >= 0) {\n            pl.push_back(p[i]);\n        }\n\
+    \        if (s1 <= 0) {\n            pr.push_back(p[i]);\n        }\n        if\
+    \ (s1 * s2 < 0) {\n            // don't use \"<=\", use \"<\" to exclude endpoints\n\
+    \            auto pc = cross_point_ll(Line(p[i], p[i + 1]), l);\n            pl.push_back(pc);\n\
+    \            pr.push_back(pc);\n        }\n    }\n    {\n        int s1 = sign(cross(l.a\
+    \ - p[n - 1], l.b - p[n - 1]));\n        int s2 = sign(cross(l.a - p[0], l.b -\
+    \ p[0]));\n        if (s1 >= 0) {\n            pl.push_back(p[n - 1]);\n     \
+    \   }\n        if (s1 <= 0) {\n            pr.push_back(p[n - 1]);\n        }\n\
+    \        if (s1 * s2 < 0) {\n            // don't use \"<=\", use \"<\" to exclude\
+    \ endpoints\n            auto pc = cross_point_ll(Line(p[n - 1], p[0]), l);\n\
+    \            pl.push_back(pc);\n            pr.push_back(pc);\n        }\n   \
+    \ }\n    return {pl, pr};\n}\n#line 2 \"geometry/convex_polygon_diameter.hpp\"\
+    \n\n#line 5 \"geometry/convex_polygon_diameter.hpp\"\n\n// convex polygon diameter\n\
+    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B\n// return\
+    \ {index1, index2, diameter}\n// using the method of rotating calipers (https://en.wikipedia.org/wiki/Rotating_calipers)\n\
+    // complexity: O(n)\nstd::tuple<int, int, Double> convex_polygon_diameter(const\
+    \ Polygon &p) {\n    assert(polygon_is_convex(p));\n    int n = (int)p.size();\n\
+    \    assert(n >= 2);\n    if (n == 2) {\n        return {0, 1, std::abs(p[0] -\
+    \ p[1])};\n    }\n    auto [it_min, it_max] = std::minmax_element(p.begin(), p.end(),\
+    \ compare_x);\n    int idx_min = it_min - p.begin();\n    int idx_max = it_max\
+    \ - p.begin();\n\n    Double maxdis = std::norm(p[idx_max] - p[idx_min]);\n  \
+    \  int maxi = idx_min, i = idx_min, maxj = idx_max, j = idx_max;\n    do {\n \
+    \       int ni = (i + 1 == n ? 0 : i + 1), nj = (j + 1 == n ? 0 : j + 1);\n  \
+    \      if (sign(cross(p[ni] - p[i], p[nj] - p[j])) < 0) {\n            i = ni;\n\
+    \        } else {\n            j = nj;\n        }\n        if (std::norm(p[i]\
+    \ - p[j]) > maxdis) {\n            maxdis = std::norm(p[i] - p[j]);\n        \
+    \    maxi = i;\n            maxj = j;\n        }\n    } while (i != idx_min ||\
+    \ j != idx_max);\n    return {maxi, maxj, std::abs(p[maxi] - p[maxj])};\n}\n#line\
+    \ 40 \"geometry/all.hpp\"\n"
   code: '#pragma once
 
     #include "geometry/geometry_template.hpp"
@@ -369,7 +411,11 @@ data:
 
     #include "geometry/polygon_contain.hpp"
 
-    #include "geometry/monotone_chain.hpp"'
+    #include "geometry/monotone_chain.hpp"
+
+    #include "geometry/convex_polygon_cut.hpp"
+
+    #include "geometry/convex_polygon_diameter.hpp"'
   dependsOn:
   - geometry/geometry_template.hpp
   - geometry/point.hpp
@@ -401,10 +447,12 @@ data:
   - geometry/polygon_is_convex.hpp
   - geometry/polygon_contain.hpp
   - geometry/monotone_chain.hpp
+  - geometry/convex_polygon_cut.hpp
+  - geometry/convex_polygon_diameter.hpp
   isVerificationFile: false
   path: geometry/all.hpp
   requiredBy: []
-  timestamp: '2023-02-18 17:31:50+09:00'
+  timestamp: '2023-02-18 18:58:07+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/all.hpp

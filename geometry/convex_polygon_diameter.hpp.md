@@ -16,7 +16,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/polygon_is_convex.hpp
     title: geometry/polygon_is_convex.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: geometry/all.hpp
+    title: geometry/all.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_4_b.test.cpp
@@ -117,7 +120,8 @@ data:
   - geometry/ccw.hpp
   isVerificationFile: false
   path: geometry/convex_polygon_diameter.hpp
-  requiredBy: []
+  requiredBy:
+  - geometry/all.hpp
   timestamp: '2023-02-18 18:47:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
