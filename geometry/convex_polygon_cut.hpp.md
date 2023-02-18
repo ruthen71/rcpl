@@ -73,7 +73,7 @@ data:
     \      assert(false);\n        }\n    }\n    return l2.a + (l2.b - l2.a) * (d1\
     \ / d12);\n}\n#line 5 \"geometry/convex_polygon_cut.hpp\"\n\n// cut convex polygon\
     \ p by line l\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_C\n\
-    // return {left polygon, right polygon}\n// Whether each point is included is\
+    // return {left polygon, right polygon}\n// whether each point is included is\
     \ determined by the sign of the outer product of the two vectors to the endpoints\
     \ of the line\nstd::pair<Polygon, Polygon> convex_polygon_cut(const Polygon &p,\
     \ const Line &l) {\n    int n = (int)p.size();\n    assert(n >= 3);\n    Polygon\
@@ -93,7 +93,7 @@ data:
     \ }\n    return {pl, pr};\n}\n"
   code: "#pragma once\n\n#include \"geometry/polygon.hpp\"\n#include \"geometry/cross_point_ll.hpp\"\
     \n\n// cut convex polygon p by line l\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_C\n\
-    // return {left polygon, right polygon}\n// Whether each point is included is\
+    // return {left polygon, right polygon}\n// whether each point is included is\
     \ determined by the sign of the outer product of the two vectors to the endpoints\
     \ of the line\nstd::pair<Polygon, Polygon> convex_polygon_cut(const Polygon &p,\
     \ const Line &l) {\n    int n = (int)p.size();\n    assert(n >= 3);\n    Polygon\
@@ -120,7 +120,7 @@ data:
   isVerificationFile: false
   path: geometry/convex_polygon_cut.hpp
   requiredBy: []
-  timestamp: '2023-02-18 15:33:33+09:00'
+  timestamp: '2023-02-18 18:47:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_4_c.test.cpp

@@ -15,6 +15,9 @@ data:
     path: geometry/convex_polygon_cut.hpp
     title: geometry/convex_polygon_cut.hpp
   - icon: ':heavy_check_mark:'
+    path: geometry/convex_polygon_diameter.hpp
+    title: geometry/convex_polygon_diameter.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/monotone_chain.hpp
     title: geometry/monotone_chain.hpp
   - icon: ':heavy_check_mark:'
@@ -39,6 +42,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_4_a.test.cpp
     title: verify/aoj_cgl/aoj_cgl_4_a.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_4_b.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_4_b.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
@@ -85,6 +91,7 @@ data:
   isVerificationFile: false
   path: geometry/polygon.hpp
   requiredBy:
+  - geometry/convex_polygon_diameter.hpp
   - geometry/polygon_contain.hpp
   - geometry/convex_polygon_cut.hpp
   - geometry/polygon_is_convex.hpp
@@ -98,6 +105,7 @@ data:
   - verify/aoj_cgl/aoj_cgl_3_a.test.cpp
   - verify/aoj_cgl/aoj_cgl_3_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_4_c.test.cpp
+  - verify/aoj_cgl/aoj_cgl_4_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_3_c.test.cpp
 documentation_of: geometry/polygon.hpp
 layout: document

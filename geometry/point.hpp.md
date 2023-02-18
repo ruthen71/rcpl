@@ -18,6 +18,9 @@ data:
     path: geometry/convex_polygon_cut.hpp
     title: geometry/convex_polygon_cut.hpp
   - icon: ':heavy_check_mark:'
+    path: geometry/convex_polygon_diameter.hpp
+    title: geometry/convex_polygon_diameter.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point_cc.hpp
     title: geometry/cross_point_cc.hpp
   - icon: ':heavy_check_mark:'
@@ -130,6 +133,9 @@ data:
     path: verify/aoj_cgl/aoj_cgl_4_a.test.cpp
     title: verify/aoj_cgl/aoj_cgl_4_a.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_4_b.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_4_b.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
   - icon: ':heavy_check_mark:'
@@ -189,6 +195,7 @@ data:
   isVerificationFile: false
   path: geometry/point.hpp
   requiredBy:
+  - geometry/convex_polygon_diameter.hpp
   - geometry/line.hpp
   - geometry/distance_sp.hpp
   - geometry/is_intersect_ss.hpp
@@ -230,6 +237,7 @@ data:
   - verify/aoj_cgl/aoj_cgl_3_a.test.cpp
   - verify/aoj_cgl/aoj_cgl_3_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_4_c.test.cpp
+  - verify/aoj_cgl/aoj_cgl_4_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_3_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
