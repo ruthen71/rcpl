@@ -35,3 +35,5 @@
 #include "geometry/polygon_is_convex.hpp"
 #include "geometry/polygon_contain.hpp"
 #include "geometry/monotone_chain.hpp"
+#include "geometry/convex_polygon_cut.hpp"
+#include "geometry/convex_polygon_diameter.hpp"
