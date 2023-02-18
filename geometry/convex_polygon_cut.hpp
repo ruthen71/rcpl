@@ -6,7 +6,7 @@
 // cut convex polygon p by line l
 // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_C
 // return {left polygon, right polygon}
-// Whether each point is included is determined by the sign of the outer product of the two vectors to the endpoints of the line
+// whether each point is included is determined by the sign of the outer product of the two vectors to the endpoints of the line
 std::pair<Polygon, Polygon> convex_polygon_cut(const Polygon &p, const Line &l) {
     int n = (int)p.size();
     assert(n >= 3);
