@@ -1,6 +1,7 @@
 #pragma once
 
 #include "geometry/point.hpp"
+
 // polygon
 using Polygon = std::vector<Point>;
 std::istream &operator>>(std::istream &is, Polygon &p) {

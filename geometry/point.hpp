@@ -25,3 +25,7 @@ Double dot(const Point &a, const Point &b) { return a.real() * b.real() + a.imag
 Double cross(const Point &a, const Point &b) { return a.real() * b.imag() - a.imag() * b.real(); }
 // rotate Point p counterclockwise by theta radian
 Point rotate(const Point &p, const Double &theta) { return p * Point(cos(theta), sin(theta)); }
+// compare (x, y)
+bool compare_x(const Point &a, const Point &b) { return equal(a.real(), b.real()) ? sign(a.imag() - b.imag()) < 0 : sign(a.real() - b.real()) < 0; }
+// compare (y, x)
+bool compare_y(const Point &a, const Point &b) { return equal(a.imag(), b.imag()) ? sign(a.real() - b.real()) < 0 : sign(a.imag() - b.imag()) < 0; }

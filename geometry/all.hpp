@@ -20,10 +20,12 @@
 #include "geometry/tangent_number_cc.hpp"
 #include "geometry/is_intersect_cc.hpp"
 #include "geometry/is_intersect_cp.hpp"
+#include "geometry/is_intersect_cl.hpp"
 
 #include "geometry/cross_point_ll.hpp"
 #include "geometry/cross_point_ss.hpp"
 #include "geometry/cross_point_cl.hpp"
+#include "geometry/cross_point_cc.hpp"
 
 #include "geometry/distance_lp.hpp"
 #include "geometry/distance_sp.hpp"
@@ -32,3 +34,4 @@
 #include "geometry/area.hpp"
 #include "geometry/is_convex.hpp"
 #include "geometry/contain.hpp"
+#include "geometry/monotone_chain.hpp"
