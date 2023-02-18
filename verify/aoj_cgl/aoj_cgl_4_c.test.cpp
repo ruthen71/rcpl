@@ -1,0 +1,32 @@
+#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_C"
+#define ERROR 0.00001
+
+#include <bits/stdc++.h>
+
+#include "geometry/convex_polygon_cut.hpp"
+#include "geometry/area.hpp"
+
+int main() {
+    int N;
+    std::cin >> N;
+    Polygon P(N);
+    std::cin >> P;
+    int Q;
+    std::cin >> Q;
+    while (Q--) {
+        Line L1;
+        std::cin >> L1;
+        Line L2(L1.b, L1.a);
+        auto [rl1, rr1] = convex_polygon_cut(P, L1);
+        auto [rl2, rr2] = convex_polygon_cut(P, L2);
+        if (rl1.size() >= 2) {
+            assert(equal(area(rl1), area(rr2)));
+        }
+        if (rr1.size() >= 2) {
+            assert(equal(area(rl2), area(rr1)));
+        }
+        Double ans = (rl1.size() >= 2 ? area(rl1) : 0);
+        std::cout << std::fixed << std::setprecision(15) << ans << '\n';
+    }
+    return 0;
+}
