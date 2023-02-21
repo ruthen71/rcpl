@@ -187,9 +187,9 @@ data:
     inline bool equal(const Double &a, const Double &b) { return sign(a - b) == 0;
     }
 
-    Double radian_to_degree(const Double &r) { return r * 180.0 / PI; }
+    inline Double radian_to_degree(const Double &r) { return r * 180.0 / PI; }
 
-    Double degree_to_radian(const Double &d) { return d * PI / 180.0; }
+    inline Double degree_to_radian(const Double &d) { return d * PI / 180.0; }
 
     '
   code: '#pragma once
@@ -209,9 +209,9 @@ data:
     inline bool equal(const Double &a, const Double &b) { return sign(a - b) == 0;
     }
 
-    Double radian_to_degree(const Double &r) { return r * 180.0 / PI; }
+    inline Double radian_to_degree(const Double &r) { return r * 180.0 / PI; }
 
-    Double degree_to_radian(const Double &d) { return d * PI / 180.0; }'
+    inline Double degree_to_radian(const Double &d) { return d * PI / 180.0; }'
   dependsOn: []
   isVerificationFile: false
   path: geometry/geometry_template.hpp
@@ -251,7 +251,7 @@ data:
   - geometry/all.hpp
   - geometry/is_intersect_ll.hpp
   - geometry/cross_point_ll.hpp
-  timestamp: '2023-02-11 12:18:28+09:00'
+  timestamp: '2023-02-21 22:24:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_1_b.test.cpp

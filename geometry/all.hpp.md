@@ -117,53 +117,55 @@ data:
     \ = double;\nconst Double EPS = 1e-8;\nconst Double PI = std::acos(-1);\ninline\
     \ int sign(const Double &x) { return x <= -EPS ? -1 : (x >= EPS ? 1 : 0); }\n\
     inline bool equal(const Double &a, const Double &b) { return sign(a - b) == 0;\
-    \ }\nDouble radian_to_degree(const Double &r) { return r * 180.0 / PI; }\nDouble\
-    \ degree_to_radian(const Double &d) { return d * PI / 180.0; }\n#line 3 \"geometry/all.hpp\"\
-    \n\n#line 2 \"geometry/point.hpp\"\n\n#line 4 \"geometry/point.hpp\"\n\n// point\n\
-    using Point = std::complex<Double>;\nstd::istream &operator>>(std::istream &is,\
-    \ Point &p) {\n    Double x, y;\n    is >> x >> y;\n    p = Point(x, y);\n   \
-    \ return is;\n}\nstd::ostream &operator<<(std::ostream &os, Point &p) {\n    os\
-    \ << std::fixed << std::setprecision(15);\n    return os << p.real() << ' ' <<\
-    \ p.imag();\n}\n\nnamespace std {\nbool operator<(const Point &a, const Point\
-    \ &b) { return a.real() != b.real() ? a.real() < b.real() : a.imag() < b.imag();\
-    \ }\n}  // namespace std\n\nPoint operator*(const Point &p, const Double &k) {\
-    \ return Point(p.real() * k, p.imag() * k); }\nPoint operator/(const Point &p,\
-    \ const Double &k) { return Point(p.real() / k, p.imag() / k); }\n// equal (point\
-    \ and point)\ninline bool equal(const Point &a, const Point &b) { return equal(a.real(),\
-    \ b.real()) and equal(a.imag(), b.imag()); }\n// inner product\ninline Double\
-    \ dot(const Point &a, const Point &b) { return a.real() * b.real() + a.imag()\
-    \ * b.imag(); }\n// outer product\ninline Double cross(const Point &a, const Point\
-    \ &b) { return a.real() * b.imag() - a.imag() * b.real(); }\n// rotate Point p\
-    \ counterclockwise by theta radian\ninline Point rotate(const Point &p, const\
-    \ Double &theta) { return p * Point(cos(theta), sin(theta)); }\n// compare (x,\
-    \ y)\ninline bool compare_x(const Point &a, const Point &b) { return equal(a.real(),\
-    \ b.real()) ? sign(a.imag() - b.imag()) < 0 : sign(a.real() - b.real()) < 0; }\n\
-    // compare (y, x)\ninline bool compare_y(const Point &a, const Point &b) { return\
-    \ equal(a.imag(), b.imag()) ? sign(a.real() - b.real()) < 0 : sign(a.imag() -\
-    \ b.imag()) < 0; }\n#line 2 \"geometry/line.hpp\"\n\n#line 4 \"geometry/line.hpp\"\
-    \n\n// line\nstruct Line {\n    Point a, b;\n\n    Line() = default;\n\n    Line(Point\
-    \ a, Point b) : a(a), b(b) {}\n\n    // Ax + By = C\n    Line(Double A, Double\
-    \ B, Double C) {\n        assert(equal(A, 0) and equal(B, 0));\n        if (equal(A,\
-    \ 0)) {\n            a = Point(0, C / B), b = Point(1, C / B);\n        } else\
-    \ if (equal(B, 0)) {\n            a = Point(C / A, 0), b = Point(C / A, 1);\n\
-    \        } else if (equal(C, 0)) {\n            a = Point(0, 0), b = Point(1,\
-    \ B / A);\n        } else {\n            a = Point(0, C / B), b = Point(C / A,\
-    \ 0);\n        }\n    }\n\n    friend std::istream &operator>>(std::istream &is,\
-    \ Line &p) { return is >> p.a >> p.b; }\n    friend std::ostream &operator<<(std::ostream\
+    \ }\ninline Double radian_to_degree(const Double &r) { return r * 180.0 / PI;\
+    \ }\ninline Double degree_to_radian(const Double &d) { return d * PI / 180.0;\
+    \ }\n#line 3 \"geometry/all.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n#line 4\
+    \ \"geometry/point.hpp\"\n\n// point\nusing Point = std::complex<Double>;\nstd::istream\
+    \ &operator>>(std::istream &is, Point &p) {\n    Double x, y;\n    is >> x >>\
+    \ y;\n    p = Point(x, y);\n    return is;\n}\nstd::ostream &operator<<(std::ostream\
+    \ &os, const Point &p) {\n    os << std::fixed << std::setprecision(15);\n   \
+    \ return os << p.real() << ' ' << p.imag();\n}\n\nnamespace std {\nbool operator<(const\
+    \ Point &a, const Point &b) { return a.real() != b.real() ? a.real() < b.real()\
+    \ : a.imag() < b.imag(); }\n}  // namespace std\n\nPoint operator*(const Point\
+    \ &p, const Double &k) { return Point(p.real() * k, p.imag() * k); }\nPoint operator/(const\
+    \ Point &p, const Double &k) { return Point(p.real() / k, p.imag() / k); }\n//\
+    \ equal (point and point)\ninline bool equal(const Point &a, const Point &b) {\
+    \ return equal(a.real(), b.real()) and equal(a.imag(), b.imag()); }\n// inner\
+    \ product\ninline Double dot(const Point &a, const Point &b) { return a.real()\
+    \ * b.real() + a.imag() * b.imag(); }\n// outer product\ninline Double cross(const\
+    \ Point &a, const Point &b) { return a.real() * b.imag() - a.imag() * b.real();\
+    \ }\n// rotate Point p counterclockwise by theta radian\ninline Point rotate(const\
+    \ Point &p, const Double &theta) { return p * Point(cos(theta), sin(theta)); }\n\
+    // compare (x, y)\ninline bool compare_x(const Point &a, const Point &b) { return\
+    \ equal(a.real(), b.real()) ? sign(a.imag() - b.imag()) < 0 : sign(a.real() -\
+    \ b.real()) < 0; }\n// compare (y, x)\ninline bool compare_y(const Point &a, const\
+    \ Point &b) { return equal(a.imag(), b.imag()) ? sign(a.real() - b.real()) < 0\
+    \ : sign(a.imag() - b.imag()) < 0; }\n#line 2 \"geometry/line.hpp\"\n\n#line 4\
+    \ \"geometry/line.hpp\"\n\n// line\nstruct Line {\n    Point a, b;\n\n    Line()\
+    \ = default;\n\n    Line(const Point &a, const Point &b) : a(a), b(b) {}\n\n \
+    \   // Ax + By = C\n    Line(const Double &A, const Double &B, const Double &C)\
+    \ {\n        assert(equal(A, 0) and equal(B, 0));\n        if (equal(A, 0)) {\n\
+    \            a = Point(0, C / B), b = Point(1, C / B);\n        } else if (equal(B,\
+    \ 0)) {\n            a = Point(C / A, 0), b = Point(C / A, 1);\n        } else\
+    \ if (equal(C, 0)) {\n            a = Point(0, 0), b = Point(1, B / A);\n    \
+    \    } else {\n            a = Point(0, C / B), b = Point(C / A, 0);\n       \
+    \ }\n    }\n\n    friend std::istream &operator>>(std::istream &is, Line &p) {\
+    \ return is >> p.a >> p.b; }\n    friend std::ostream &operator<<(std::ostream\
     \ &os, const Line &p) { return os << p.a << \"->\" << p.b; }\n};\n#line 2 \"geometry/segment.hpp\"\
     \n\n#line 4 \"geometry/segment.hpp\"\n\n// segment\nstruct Segment : Line {\n\
-    \    Segment() = default;\n\n    Segment(Point a, Point b) : Line(a, b) {}\n};\n\
-    #line 2 \"geometry/circle.hpp\"\n\n#line 4 \"geometry/circle.hpp\"\n\n// circle\n\
-    struct Circle {\n    Point o;\n    Double r;\n\n    Circle() = default;\n\n  \
-    \  Circle(Point o, Double r) : o(o), r(r) {}\n\n    friend std::ostream &operator<<(std::ostream\
-    \ &os, const Circle &c) { return os << c.o << ' ' << c.r; }\n    friend std::istream\
-    \ &operator>>(std::istream &is, Circle &c) { return is >> c.o >> c.r; }  // format\
-    \ : x y r\n};\n#line 2 \"geometry/polygon.hpp\"\n\n#line 4 \"geometry/polygon.hpp\"\
-    \n\n// polygon\nusing Polygon = std::vector<Point>;\nstd::istream &operator>>(std::istream\
-    \ &is, Polygon &p) {\n    for (auto &&pi : p) is >> pi;\n    return is;\n}\nstd::ostream\
-    \ &operator<<(std::ostream &os, Polygon &p) {\n    for (auto &&pi : p) os << pi\
-    \ << \" -> \";\n    return os;\n}\n#line 9 \"geometry/all.hpp\"\n\n#line 2 \"\
-    geometry/projection.hpp\"\n\n#line 5 \"geometry/projection.hpp\"\n\n// projection\n\
+    \    Segment() = default;\n\n    Segment(const Point &a, const Point &b) : Line(a,\
+    \ b) {}\n};\n#line 2 \"geometry/circle.hpp\"\n\n#line 4 \"geometry/circle.hpp\"\
+    \n\n// circle\nstruct Circle {\n    Point o;\n    Double r;\n\n    Circle() =\
+    \ default;\n\n    Circle(const Point &o, const Double &r) : o(o), r(r) {}\n\n\
+    \    friend std::ostream &operator<<(std::ostream &os, const Circle &c) { return\
+    \ os << c.o << ' ' << c.r; }\n    friend std::istream &operator>>(std::istream\
+    \ &is, Circle &c) { return is >> c.o >> c.r; }  // format : x y r\n};\n#line 2\
+    \ \"geometry/polygon.hpp\"\n\n#line 4 \"geometry/polygon.hpp\"\n\n// polygon\n\
+    using Polygon = std::vector<Point>;\nstd::istream &operator>>(std::istream &is,\
+    \ Polygon &p) {\n    for (auto &&pi : p) is >> pi;\n    return is;\n}\nstd::ostream\
+    \ &operator<<(std::ostream &os, const Polygon &p) {\n    for (auto &&pi : p) os\
+    \ << pi << \" -> \";\n    return os;\n}\n#line 9 \"geometry/all.hpp\"\n\n#line\
+    \ 2 \"geometry/projection.hpp\"\n\n#line 5 \"geometry/projection.hpp\"\n\n// projection\n\
     // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A\nPoint projection(const\
     \ Line &l, const Point &p) {\n    Double t = dot(p - l.a, l.b - l.a) / std::norm(l.b\
     \ - l.a);\n    return l.a + t * (l.b - l.a);\n}\n#line 2 \"geometry/reflection.hpp\"\
@@ -180,11 +182,11 @@ data:
     \ if (sign(dot(b, c)) == -1) return ONLINE_BACK;\n    if (std::norm(b) < std::norm(c))\
     \ return ONLINE_FRONT;\n    return ON_SEGMENT;\n}\n#line 2 \"geometry/is_orthogonal.hpp\"\
     \n\n#line 4 \"geometry/is_orthogonal.hpp\"\n\n// orthogonal\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A\n\
-    bool is_orthogonal(const Line &l1, const Line &l2) { return sign(dot(l1.b - l1.a,\
-    \ l2.b - l2.a)) == 0; }\n#line 2 \"geometry/is_parallel.hpp\"\n\n#line 4 \"geometry/is_parallel.hpp\"\
-    \n\n// parallel\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A\n\
-    bool is_parallel(const Line &l1, const Line &l2) { return sign(cross(l1.b - l1.a,\
-    \ l2.b - l2.a)) == 0; }\n#line 15 \"geometry/all.hpp\"\n\n#line 2 \"geometry/is_intersect_ll.hpp\"\
+    inline bool is_orthogonal(const Line &l1, const Line &l2) { return sign(dot(l1.b\
+    \ - l1.a, l2.b - l2.a)) == 0; }\n#line 2 \"geometry/is_parallel.hpp\"\n\n#line\
+    \ 4 \"geometry/is_parallel.hpp\"\n\n// parallel\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A\n\
+    inline bool is_parallel(const Line &l1, const Line &l2) { return sign(cross(l1.b\
+    \ - l1.a, l2.b - l2.a)) == 0; }\n#line 15 \"geometry/all.hpp\"\n\n#line 2 \"geometry/is_intersect_ll.hpp\"\
     \n\n#line 4 \"geometry/is_intersect_ll.hpp\"\n\n// intersection (line and line)\n\
     bool is_intersect_ll(const Line &l1, const Line &l2) {\n    Point base = l1.b\
     \ - l1.a;\n    Double d12 = cross(base, l2.b - l2.a);\n    Double d1 = cross(base,\
@@ -193,46 +195,46 @@ data:
     \            // not cross\n            return false;\n        }\n    }\n    return\
     \ true;\n}\n#line 2 \"geometry/is_intersect_lp.hpp\"\n\n#line 5 \"geometry/is_intersect_lp.hpp\"\
     \n\n// intersection (line and point)\n// ccw(a, b, c) == ON_SEGMENT or ONLINE_BACK\
-    \ or ONLINE_FRONT\nbool is_intersect_lp(const Line &l, const Point &p) {\n   \
-    \ int res = ccw(l.a, l.b, p);\n    return (res == ONLINE_BACK or res == ONLINE_FRONT\
-    \ or res == ON_SEGMENT);\n}\n#line 2 \"geometry/is_intersect_ss.hpp\"\n\n#line\
-    \ 5 \"geometry/is_intersect_ss.hpp\"\n\n// intersection (segment and segment)\n\
-    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_B\nbool is_intersect_ss(const\
-    \ Segment &s1, const Segment &s2) { return (ccw(s1.a, s1.b, s2.a) * ccw(s1.a,\
-    \ s1.b, s2.b) <= 0 and ccw(s2.a, s2.b, s1.a) * ccw(s2.a, s2.b, s1.b) <= 0); }\n\
-    #line 2 \"geometry/is_intersect_sp.hpp\"\n\n#line 5 \"geometry/is_intersect_sp.hpp\"\
+    \ or ONLINE_FRONT\ninline bool is_intersect_lp(const Line &l, const Point &p)\
+    \ {\n    int res = ccw(l.a, l.b, p);\n    return (res == ONLINE_BACK or res ==\
+    \ ONLINE_FRONT or res == ON_SEGMENT);\n}\n#line 2 \"geometry/is_intersect_ss.hpp\"\
+    \n\n#line 5 \"geometry/is_intersect_ss.hpp\"\n\n// intersection (segment and segment)\n\
+    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_B\ninline bool\
+    \ is_intersect_ss(const Segment &s1, const Segment &s2) { return (ccw(s1.a, s1.b,\
+    \ s2.a) * ccw(s1.a, s1.b, s2.b) <= 0 and ccw(s2.a, s2.b, s1.a) * ccw(s2.a, s2.b,\
+    \ s1.b) <= 0); }\n#line 2 \"geometry/is_intersect_sp.hpp\"\n\n#line 5 \"geometry/is_intersect_sp.hpp\"\
     \n\n// intersection (segment and point)\n// ccw(a, b, c) == ON_SEGMENT -> a -\
-    \ c - b\nbool is_intersect_sp(const Segment &s, const Point &p) { return ccw(s.a,\
-    \ s.b, p) == ON_SEGMENT or sign(std::abs(s.a - p)) == 0 or sign(std::abs(s.b -\
-    \ p)) == 0; }\n#line 3 \"geometry/tangent_number_cc.hpp\"\n\n// return the number\
+    \ c - b\ninline bool is_intersect_sp(const Segment &s, const Point &p) { return\
+    \ ccw(s.a, s.b, p) == ON_SEGMENT or sign(std::abs(s.a - p)) == 0 or sign(std::abs(s.b\
+    \ - p)) == 0; }\n#line 3 \"geometry/tangent_number_cc.hpp\"\n\n// return the number\
     \ of tangent\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A\n\
     int tangent_number_cc(Circle c1, Circle c2) {\n    if (c1.r < c2.r) std::swap(c1,\
-    \ c2);\n    Double d = std::abs(c1.o - c2.o);\n    if (sign(d - c1.r - c2.r) ==\
-    \ 1) return 4;  // d > c1.r + c2.r\n    if (sign(d - c1.r - c2.r) == 0) return\
+    \ c2);\n    const Double d = std::abs(c1.o - c2.o);\n    if (sign(d - c1.r - c2.r)\
+    \ == 1) return 4;  // d > c1.r + c2.r\n    if (sign(d - c1.r - c2.r) == 0) return\
     \ 3;  // d = c1.r + c2.r\n    if (sign(d - c1.r + c2.r) == 1) return 2;  // d\
     \ > c1.r - c2.r\n    if (sign(d - c1.r + c2.r) == 0) return 1;  // d = c1.r -\
     \ c2.r\n    return 0;\n}\n#line 2 \"geometry/is_intersect_cc.hpp\"\n\n#line 5\
     \ \"geometry/is_intersect_cc.hpp\"\n\n// intersection (circle and circle)\n//\
-    \ intersect = number of tangent is 1, 2, 3\nbool is_intersect_cc(const Circle\
-    \ &c1, const Circle &c2) {\n    int num = tangent_number_cc(c1, c2);\n    return\
-    \ 1 <= num and num <= 3;\n}\n#line 2 \"geometry/is_intersect_cp.hpp\"\n\n#line\
-    \ 5 \"geometry/is_intersect_cp.hpp\"\n// intersection (circle and point)\nbool\
-    \ is_intersect_cp(const Circle &c, const Point &p) { return equal(std::abs(p -\
-    \ c.o), c.r); }\n#line 2 \"geometry/is_intersect_cl.hpp\"\n\n#line 2 \"geometry/distance_lp.hpp\"\
+    \ intersect = number of tangent is 1, 2, 3\ninline bool is_intersect_cc(const\
+    \ Circle &c1, const Circle &c2) {\n    int num = tangent_number_cc(c1, c2);\n\
+    \    return 1 <= num and num <= 3;\n}\n#line 2 \"geometry/is_intersect_cp.hpp\"\
+    \n\n#line 5 \"geometry/is_intersect_cp.hpp\"\n// intersection (circle and point)\n\
+    inline bool is_intersect_cp(const Circle &c, const Point &p) { return equal(std::abs(p\
+    \ - c.o), c.r); }\n#line 2 \"geometry/is_intersect_cl.hpp\"\n\n#line 2 \"geometry/distance_lp.hpp\"\
     \n\n#line 6 \"geometry/distance_lp.hpp\"\n\n// distance (line and point)\nDouble\
     \ distance_lp(const Line &l, const Point &p) { return std::abs(p - projection(l,\
     \ p)); }\n#line 5 \"geometry/is_intersect_cl.hpp\"\n\n// intersection (circle\
-    \ and line)\nbool is_intersect_cl(const Circle &c, const Line &l) { return sign(c.r\
-    \ - distance_lp(l, c.o)) >= 0; }\n#line 24 \"geometry/all.hpp\"\n\n#line 2 \"\
-    geometry/cross_point_ll.hpp\"\n\n#line 4 \"geometry/cross_point_ll.hpp\"\n\n//\
-    \ cross point (line and line)\nPoint cross_point_ll(const Line &l1, const Line\
-    \ &l2) {\n    Point base = l1.b - l1.a;\n    Double d12 = cross(base, l2.b - l2.a);\n\
-    \    Double d1 = cross(base, l1.b - l2.a);\n    if (sign(d12) == 0) {\n      \
-    \  // parallel\n        if (sign(d1) == 0) {\n            // cross\n         \
-    \   return l2.a;\n        } else {\n            // not cross\n            assert(false);\n\
-    \        }\n    }\n    return l2.a + (l2.b - l2.a) * d1 / d12;\n}\n#line 2 \"\
-    geometry/cross_point_ss.hpp\"\n\n#line 6 \"geometry/cross_point_ss.hpp\"\n\n//\
-    \ cross point (segment and segment)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_C\n\
+    \ and line)\ninline bool is_intersect_cl(const Circle &c, const Line &l) { return\
+    \ sign(c.r - distance_lp(l, c.o)) >= 0; }\n#line 24 \"geometry/all.hpp\"\n\n#line\
+    \ 2 \"geometry/cross_point_ll.hpp\"\n\n#line 4 \"geometry/cross_point_ll.hpp\"\
+    \n\n// cross point (line and line)\nPoint cross_point_ll(const Line &l1, const\
+    \ Line &l2) {\n    Point base = l1.b - l1.a;\n    Double d12 = cross(base, l2.b\
+    \ - l2.a);\n    Double d1 = cross(base, l1.b - l2.a);\n    if (sign(d12) == 0)\
+    \ {\n        // parallel\n        if (sign(d1) == 0) {\n            // cross\n\
+    \            return l2.a;\n        } else {\n            // not cross\n      \
+    \      assert(false);\n        }\n    }\n    return l2.a + (l2.b - l2.a) * d1\
+    \ / d12;\n}\n#line 2 \"geometry/cross_point_ss.hpp\"\n\n#line 6 \"geometry/cross_point_ss.hpp\"\
+    \n\n// cross point (segment and segment)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_C\n\
     Point cross_point_ss(const Segment &s1, const Segment &s2) {\n    // check intersection\
     \ s1 and s2\n    assert(is_intersect_ss(s1, s2));\n    Point base = s1.b - s1.a;\n\
     \    Double d12 = cross(base, s2.b - s2.a);\n    Double d1 = cross(base, s1.b\
@@ -495,7 +497,7 @@ data:
   isVerificationFile: false
   path: geometry/all.hpp
   requiredBy: []
-  timestamp: '2023-02-21 22:00:19+09:00'
+  timestamp: '2023-02-21 22:24:50+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/all.hpp

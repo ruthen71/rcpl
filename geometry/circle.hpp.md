@@ -66,15 +66,15 @@ data:
     \n#line 2 \"geometry/geometry_template.hpp\"\n\n// template\nusing Double = double;\n\
     const Double EPS = 1e-8;\nconst Double PI = std::acos(-1);\ninline int sign(const\
     \ Double &x) { return x <= -EPS ? -1 : (x >= EPS ? 1 : 0); }\ninline bool equal(const\
-    \ Double &a, const Double &b) { return sign(a - b) == 0; }\nDouble radian_to_degree(const\
-    \ Double &r) { return r * 180.0 / PI; }\nDouble degree_to_radian(const Double\
-    \ &d) { return d * PI / 180.0; }\n#line 4 \"geometry/point.hpp\"\n\n// point\n\
-    using Point = std::complex<Double>;\nstd::istream &operator>>(std::istream &is,\
-    \ Point &p) {\n    Double x, y;\n    is >> x >> y;\n    p = Point(x, y);\n   \
-    \ return is;\n}\nstd::ostream &operator<<(std::ostream &os, Point &p) {\n    os\
-    \ << std::fixed << std::setprecision(15);\n    return os << p.real() << ' ' <<\
-    \ p.imag();\n}\n\nnamespace std {\nbool operator<(const Point &a, const Point\
-    \ &b) { return a.real() != b.real() ? a.real() < b.real() : a.imag() < b.imag();\
+    \ Double &a, const Double &b) { return sign(a - b) == 0; }\ninline Double radian_to_degree(const\
+    \ Double &r) { return r * 180.0 / PI; }\ninline Double degree_to_radian(const\
+    \ Double &d) { return d * PI / 180.0; }\n#line 4 \"geometry/point.hpp\"\n\n//\
+    \ point\nusing Point = std::complex<Double>;\nstd::istream &operator>>(std::istream\
+    \ &is, Point &p) {\n    Double x, y;\n    is >> x >> y;\n    p = Point(x, y);\n\
+    \    return is;\n}\nstd::ostream &operator<<(std::ostream &os, const Point &p)\
+    \ {\n    os << std::fixed << std::setprecision(15);\n    return os << p.real()\
+    \ << ' ' << p.imag();\n}\n\nnamespace std {\nbool operator<(const Point &a, const\
+    \ Point &b) { return a.real() != b.real() ? a.real() < b.real() : a.imag() < b.imag();\
     \ }\n}  // namespace std\n\nPoint operator*(const Point &p, const Double &k) {\
     \ return Point(p.real() * k, p.imag() * k); }\nPoint operator/(const Point &p,\
     \ const Double &k) { return Point(p.real() / k, p.imag() / k); }\n// equal (point\
@@ -90,14 +90,14 @@ data:
     // compare (y, x)\ninline bool compare_y(const Point &a, const Point &b) { return\
     \ equal(a.imag(), b.imag()) ? sign(a.real() - b.real()) < 0 : sign(a.imag() -\
     \ b.imag()) < 0; }\n#line 4 \"geometry/circle.hpp\"\n\n// circle\nstruct Circle\
-    \ {\n    Point o;\n    Double r;\n\n    Circle() = default;\n\n    Circle(Point\
-    \ o, Double r) : o(o), r(r) {}\n\n    friend std::ostream &operator<<(std::ostream\
+    \ {\n    Point o;\n    Double r;\n\n    Circle() = default;\n\n    Circle(const\
+    \ Point &o, const Double &r) : o(o), r(r) {}\n\n    friend std::ostream &operator<<(std::ostream\
     \ &os, const Circle &c) { return os << c.o << ' ' << c.r; }\n    friend std::istream\
     \ &operator>>(std::istream &is, Circle &c) { return is >> c.o >> c.r; }  // format\
     \ : x y r\n};\n"
   code: "#pragma once\n\n#include \"geometry/point.hpp\"\n\n// circle\nstruct Circle\
-    \ {\n    Point o;\n    Double r;\n\n    Circle() = default;\n\n    Circle(Point\
-    \ o, Double r) : o(o), r(r) {}\n\n    friend std::ostream &operator<<(std::ostream\
+    \ {\n    Point o;\n    Double r;\n\n    Circle() = default;\n\n    Circle(const\
+    \ Point &o, const Double &r) : o(o), r(r) {}\n\n    friend std::ostream &operator<<(std::ostream\
     \ &os, const Circle &c) { return os << c.o << ' ' << c.r; }\n    friend std::istream\
     \ &operator>>(std::istream &is, Circle &c) { return is >> c.o >> c.r; }  // format\
     \ : x y r\n};"
@@ -117,7 +117,7 @@ data:
   - geometry/cross_point_cc.hpp
   - geometry/is_intersect_cc.hpp
   - geometry/all.hpp
-  timestamp: '2023-02-21 21:25:04+09:00'
+  timestamp: '2023-02-21 22:24:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_7_a.test.cpp
