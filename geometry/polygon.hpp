@@ -8,7 +8,7 @@ std::istream &operator>>(std::istream &is, Polygon &p) {
     for (auto &&pi : p) is >> pi;
     return is;
 }
-std::ostream &operator<<(std::ostream &os, Polygon &p) {
+std::ostream &operator<<(std::ostream &os, const Polygon &p) {
     for (auto &&pi : p) os << pi << " -> ";
     return os;
 }

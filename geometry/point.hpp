@@ -10,7 +10,7 @@ std::istream &operator>>(std::istream &is, Point &p) {
     p = Point(x, y);
     return is;
 }
-std::ostream &operator<<(std::ostream &os, Point &p) {
+std::ostream &operator<<(std::ostream &os, const Point &p) {
     os << std::fixed << std::setprecision(15);
     return os << p.real() << ' ' << p.imag();
 }

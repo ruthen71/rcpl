@@ -6,5 +6,5 @@
 struct Segment : Line {
     Segment() = default;
 
-    Segment(Point a, Point b) : Line(a, b) {}
+    Segment(const Point &a, const Point &b) : Line(a, b) {}
 };

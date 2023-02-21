@@ -8,10 +8,10 @@ struct Line {
 
     Line() = default;
 
-    Line(Point a, Point b) : a(a), b(b) {}
+    Line(const Point &a, const Point &b) : a(a), b(b) {}
 
     // Ax + By = C
-    Line(Double A, Double B, Double C) {
+    Line(const Double &A, const Double &B, const Double &C) {
         assert(equal(A, 0) and equal(B, 0));
         if (equal(A, 0)) {
             a = Point(0, C / B), b = Point(1, C / B);
