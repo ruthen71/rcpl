@@ -19,13 +19,15 @@ namespace std {
 bool operator<(const Point &a, const Point &b) { return a.real() != b.real() ? a.real() < b.real() : a.imag() < b.imag(); }
 }  // namespace std
 
+// equal (point and point)
+inline bool equal(const Point &a, const Point &b) { return equal(a.real(), b.real()) and equal(a.imag(), b.imag()); }
 // inner product
-Double dot(const Point &a, const Point &b) { return a.real() * b.real() + a.imag() * b.imag(); }
+inline Double dot(const Point &a, const Point &b) { return a.real() * b.real() + a.imag() * b.imag(); }
 // outer product
-Double cross(const Point &a, const Point &b) { return a.real() * b.imag() - a.imag() * b.real(); }
+inline Double cross(const Point &a, const Point &b) { return a.real() * b.imag() - a.imag() * b.real(); }
 // rotate Point p counterclockwise by theta radian
-Point rotate(const Point &p, const Double &theta) { return p * Point(cos(theta), sin(theta)); }
+inline Point rotate(const Point &p, const Double &theta) { return p * Point(cos(theta), sin(theta)); }
 // compare (x, y)
-bool compare_x(const Point &a, const Point &b) { return equal(a.real(), b.real()) ? sign(a.imag() - b.imag()) < 0 : sign(a.real() - b.real()) < 0; }
+inline bool compare_x(const Point &a, const Point &b) { return equal(a.real(), b.real()) ? sign(a.imag() - b.imag()) < 0 : sign(a.real() - b.real()) < 0; }
 // compare (y, x)
-bool compare_y(const Point &a, const Point &b) { return equal(a.imag(), b.imag()) ? sign(a.real() - b.real()) < 0 : sign(a.imag() - b.imag()) < 0; }
+inline bool compare_y(const Point &a, const Point &b) { return equal(a.imag(), b.imag()) ? sign(a.real() - b.real()) < 0 : sign(a.imag() - b.imag()) < 0; }

@@ -31,6 +31,8 @@
 #include "geometry/distance_sp.hpp"
 #include "geometry/distance_ss.hpp"
 
+#include "geometry/tangent_point_cp.hpp"
+
 #include "geometry/polygon_area.hpp"
 #include "geometry/polygon_is_convex.hpp"
 #include "geometry/polygon_contain.hpp"
