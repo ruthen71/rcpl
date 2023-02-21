@@ -12,6 +12,9 @@ data:
     path: geometry/circle.hpp
     title: geometry/circle.hpp
   - icon: ':heavy_check_mark:'
+    path: geometry/circumscribed_circle.hpp
+    title: geometry/circumscribed_circle.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_cut.hpp
     title: geometry/convex_polygon_cut.hpp
   - icon: ':heavy_check_mark:'
@@ -151,6 +154,9 @@ data:
     path: verify/aoj_cgl/aoj_cgl_7_b.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_b.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_7_c.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_7_c.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
   - icon: ':heavy_check_mark:'
@@ -225,6 +231,7 @@ data:
   - geometry/polygon_contain.hpp
   - geometry/polygon.hpp
   - geometry/projection.hpp
+  - geometry/circumscribed_circle.hpp
   - geometry/cross_point_ss.hpp
   - geometry/circle.hpp
   - geometry/tangent_number_cc.hpp
@@ -252,6 +259,7 @@ data:
   - verify/aoj_cgl/aoj_cgl_7_d.test.cpp
   - verify/aoj_cgl/aoj_cgl_1_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_4_a.test.cpp
+  - verify/aoj_cgl/aoj_cgl_7_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_3_a.test.cpp
   - verify/aoj_cgl/aoj_cgl_3_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_4_c.test.cpp

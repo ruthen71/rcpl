@@ -15,6 +15,9 @@ data:
     path: geometry/circle.hpp
     title: geometry/circle.hpp
   - icon: ':heavy_check_mark:'
+    path: geometry/circumscribed_circle.hpp
+    title: geometry/circumscribed_circle.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_cut.hpp
     title: geometry/convex_polygon_cut.hpp
   - icon: ':heavy_check_mark:'
@@ -151,6 +154,9 @@ data:
     path: verify/aoj_cgl/aoj_cgl_7_b.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_b.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_7_c.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_7_c.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
   - icon: ':heavy_check_mark:'
@@ -176,18 +182,21 @@ data:
     \ &os, Point &p) {\n    os << std::fixed << std::setprecision(15);\n    return\
     \ os << p.real() << ' ' << p.imag();\n}\n\nnamespace std {\nbool operator<(const\
     \ Point &a, const Point &b) { return a.real() != b.real() ? a.real() < b.real()\
-    \ : a.imag() < b.imag(); }\n}  // namespace std\n\n// equal (point and point)\n\
-    inline bool equal(const Point &a, const Point &b) { return equal(a.real(), b.real())\
-    \ and equal(a.imag(), b.imag()); }\n// inner product\ninline Double dot(const\
-    \ Point &a, const Point &b) { return a.real() * b.real() + a.imag() * b.imag();\
-    \ }\n// outer product\ninline Double cross(const Point &a, const Point &b) { return\
-    \ a.real() * b.imag() - a.imag() * b.real(); }\n// rotate Point p counterclockwise\
-    \ by theta radian\ninline Point rotate(const Point &p, const Double &theta) {\
-    \ return p * Point(cos(theta), sin(theta)); }\n// compare (x, y)\ninline bool\
-    \ compare_x(const Point &a, const Point &b) { return equal(a.real(), b.real())\
-    \ ? sign(a.imag() - b.imag()) < 0 : sign(a.real() - b.real()) < 0; }\n// compare\
-    \ (y, x)\ninline bool compare_y(const Point &a, const Point &b) { return equal(a.imag(),\
-    \ b.imag()) ? sign(a.real() - b.real()) < 0 : sign(a.imag() - b.imag()) < 0; }\n"
+    \ : a.imag() < b.imag(); }\n}  // namespace std\n\nPoint operator*(const Point\
+    \ &p, const Double &k) { return Point(p.real() * k, p.imag() * k); }\nPoint operator/(const\
+    \ Point &p, const Double &k) { return Point(p.real() / k, p.imag() / k); }\n//\
+    \ equal (point and point)\ninline bool equal(const Point &a, const Point &b) {\
+    \ return equal(a.real(), b.real()) and equal(a.imag(), b.imag()); }\n// inner\
+    \ product\ninline Double dot(const Point &a, const Point &b) { return a.real()\
+    \ * b.real() + a.imag() * b.imag(); }\n// outer product\ninline Double cross(const\
+    \ Point &a, const Point &b) { return a.real() * b.imag() - a.imag() * b.real();\
+    \ }\n// rotate Point p counterclockwise by theta radian\ninline Point rotate(const\
+    \ Point &p, const Double &theta) { return p * Point(cos(theta), sin(theta)); }\n\
+    // compare (x, y)\ninline bool compare_x(const Point &a, const Point &b) { return\
+    \ equal(a.real(), b.real()) ? sign(a.imag() - b.imag()) < 0 : sign(a.real() -\
+    \ b.real()) < 0; }\n// compare (y, x)\ninline bool compare_y(const Point &a, const\
+    \ Point &b) { return equal(a.imag(), b.imag()) ? sign(a.real() - b.real()) < 0\
+    \ : sign(a.imag() - b.imag()) < 0; }\n"
   code: "#pragma once\n\n#include \"geometry/geometry_template.hpp\"\n\n// point\n\
     using Point = std::complex<Double>;\nstd::istream &operator>>(std::istream &is,\
     \ Point &p) {\n    Double x, y;\n    is >> x >> y;\n    p = Point(x, y);\n   \
@@ -195,18 +204,21 @@ data:
     \ << std::fixed << std::setprecision(15);\n    return os << p.real() << ' ' <<\
     \ p.imag();\n}\n\nnamespace std {\nbool operator<(const Point &a, const Point\
     \ &b) { return a.real() != b.real() ? a.real() < b.real() : a.imag() < b.imag();\
-    \ }\n}  // namespace std\n\n// equal (point and point)\ninline bool equal(const\
-    \ Point &a, const Point &b) { return equal(a.real(), b.real()) and equal(a.imag(),\
-    \ b.imag()); }\n// inner product\ninline Double dot(const Point &a, const Point\
-    \ &b) { return a.real() * b.real() + a.imag() * b.imag(); }\n// outer product\n\
-    inline Double cross(const Point &a, const Point &b) { return a.real() * b.imag()\
-    \ - a.imag() * b.real(); }\n// rotate Point p counterclockwise by theta radian\n\
-    inline Point rotate(const Point &p, const Double &theta) { return p * Point(cos(theta),\
-    \ sin(theta)); }\n// compare (x, y)\ninline bool compare_x(const Point &a, const\
-    \ Point &b) { return equal(a.real(), b.real()) ? sign(a.imag() - b.imag()) < 0\
-    \ : sign(a.real() - b.real()) < 0; }\n// compare (y, x)\ninline bool compare_y(const\
-    \ Point &a, const Point &b) { return equal(a.imag(), b.imag()) ? sign(a.real()\
-    \ - b.real()) < 0 : sign(a.imag() - b.imag()) < 0; }"
+    \ }\n}  // namespace std\n\nPoint operator*(const Point &p, const Double &k) {\
+    \ return Point(p.real() * k, p.imag() * k); }\nPoint operator/(const Point &p,\
+    \ const Double &k) { return Point(p.real() / k, p.imag() / k); }\n// equal (point\
+    \ and point)\ninline bool equal(const Point &a, const Point &b) { return equal(a.real(),\
+    \ b.real()) and equal(a.imag(), b.imag()); }\n// inner product\ninline Double\
+    \ dot(const Point &a, const Point &b) { return a.real() * b.real() + a.imag()\
+    \ * b.imag(); }\n// outer product\ninline Double cross(const Point &a, const Point\
+    \ &b) { return a.real() * b.imag() - a.imag() * b.real(); }\n// rotate Point p\
+    \ counterclockwise by theta radian\ninline Point rotate(const Point &p, const\
+    \ Double &theta) { return p * Point(cos(theta), sin(theta)); }\n// compare (x,\
+    \ y)\ninline bool compare_x(const Point &a, const Point &b) { return equal(a.real(),\
+    \ b.real()) ? sign(a.imag() - b.imag()) < 0 : sign(a.real() - b.real()) < 0; }\n\
+    // compare (y, x)\ninline bool compare_y(const Point &a, const Point &b) { return\
+    \ equal(a.imag(), b.imag()) ? sign(a.real() - b.real()) < 0 : sign(a.imag() -\
+    \ b.imag()) < 0; }"
   dependsOn:
   - geometry/geometry_template.hpp
   isVerificationFile: false
@@ -226,6 +238,7 @@ data:
   - geometry/polygon_contain.hpp
   - geometry/polygon.hpp
   - geometry/projection.hpp
+  - geometry/circumscribed_circle.hpp
   - geometry/cross_point_ss.hpp
   - geometry/circle.hpp
   - geometry/tangent_number_cc.hpp
@@ -245,7 +258,7 @@ data:
   - geometry/all.hpp
   - geometry/is_intersect_ll.hpp
   - geometry/cross_point_ll.hpp
-  timestamp: '2023-02-21 18:01:28+09:00'
+  timestamp: '2023-02-21 21:25:04+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_1_b.test.cpp
@@ -253,6 +266,7 @@ data:
   - verify/aoj_cgl/aoj_cgl_7_d.test.cpp
   - verify/aoj_cgl/aoj_cgl_1_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_4_a.test.cpp
+  - verify/aoj_cgl/aoj_cgl_7_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_3_a.test.cpp
   - verify/aoj_cgl/aoj_cgl_3_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_4_c.test.cpp

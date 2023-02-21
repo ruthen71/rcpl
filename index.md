@@ -133,6 +133,9 @@ data:
       path: geometry/circle.hpp
       title: geometry/circle.hpp
     - icon: ':heavy_check_mark:'
+      path: geometry/circumscribed_circle.hpp
+      title: geometry/circumscribed_circle.hpp
+    - icon: ':heavy_check_mark:'
       path: geometry/convex_polygon_cut.hpp
       title: geometry/convex_polygon_cut.hpp
     - icon: ':heavy_check_mark:'
@@ -374,6 +377,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_cgl/aoj_cgl_7_b.test.cpp
       title: verify/aoj_cgl/aoj_cgl_7_b.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_cgl/aoj_cgl_7_c.test.cpp
+      title: verify/aoj_cgl/aoj_cgl_7_c.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
       title: verify/aoj_cgl/aoj_cgl_7_d.test.cpp

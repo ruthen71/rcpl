@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: geometry/circumscribed_circle.hpp
+    title: geometry/circumscribed_circle.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/cross_point_ll.hpp
+    title: geometry/cross_point_ll.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: geometry/geometry_template.hpp
   - icon: ':heavy_check_mark:'
@@ -10,9 +16,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: geometry/point.hpp
-  - icon: ':heavy_check_mark:'
-    path: geometry/projection.hpp
-    title: geometry/projection.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -20,13 +23,14 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    ERROR: '0.00000001'
-    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A
+    ERROR: '0.00001'
+    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C
     links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A
-  bundledCode: "#line 1 \"verify/aoj_cgl/aoj_cgl_1_a.test.cpp\"\n#define PROBLEM \"\
-    http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A\"\n#define ERROR\
-    \ 0.00000001\n\n#include <bits/stdc++.h>\n\n#line 2 \"geometry/projection.hpp\"\
+    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C
+  bundledCode: "#line 1 \"verify/aoj_cgl/aoj_cgl_7_c.test.cpp\"\n#define PROBLEM \"\
+    http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C\"\n#define ERROR\
+    \ 0.00001\n// The original ERROR is 0.000001\n\n#include <bits/stdc++.h>\n\n#line\
+    \ 2 \"geometry/circumscribed_circle.hpp\"\n\n#line 2 \"geometry/cross_point_ll.hpp\"\
     \n\n#line 2 \"geometry/line.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n#line 2\
     \ \"geometry/geometry_template.hpp\"\n\n// template\nusing Double = double;\n\
     const Double EPS = 1e-8;\nconst Double PI = std::acos(-1);\ninline int sign(const\
@@ -64,35 +68,44 @@ data:
     \    } else {\n            a = Point(0, C / B), b = Point(C / A, 0);\n       \
     \ }\n    }\n\n    friend std::istream &operator>>(std::istream &is, Line &p) {\
     \ return is >> p.a >> p.b; }\n    friend std::ostream &operator<<(std::ostream\
-    \ &os, const Line &p) { return os << p.a << \"->\" << p.b; }\n};\n#line 5 \"geometry/projection.hpp\"\
-    \n\n// projection\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A\n\
-    Point projection(const Line &l, const Point &p) {\n    Double t = dot(p - l.a,\
-    \ l.b - l.a) / std::norm(l.b - l.a);\n    return l.a + t * (l.b - l.a);\n}\n#line\
-    \ 7 \"verify/aoj_cgl/aoj_cgl_1_a.test.cpp\"\n\nint main() {\n    Line L;\n   \
-    \ std::cin >> L;\n    int Q;\n    std::cin >> Q;\n    while (Q--) {\n        Point\
-    \ P;\n        std::cin >> P;\n        auto ans = projection(L, P);\n        std::cout\
-    \ << ans << '\\n';\n    }\n    return 0;\n}\n"
-  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A\"\
-    \n#define ERROR 0.00000001\n\n#include <bits/stdc++.h>\n\n#include \"geometry/projection.hpp\"\
-    \n\nint main() {\n    Line L;\n    std::cin >> L;\n    int Q;\n    std::cin >>\
-    \ Q;\n    while (Q--) {\n        Point P;\n        std::cin >> P;\n        auto\
-    \ ans = projection(L, P);\n        std::cout << ans << '\\n';\n    }\n    return\
-    \ 0;\n}"
+    \ &os, const Line &p) { return os << p.a << \"->\" << p.b; }\n};\n#line 4 \"geometry/cross_point_ll.hpp\"\
+    \n\n// cross point (line and line)\nPoint cross_point_ll(const Line &l1, const\
+    \ Line &l2) {\n    Point base = l1.b - l1.a;\n    Double d12 = cross(base, l2.b\
+    \ - l2.a);\n    Double d1 = cross(base, l1.b - l2.a);\n    if (sign(d12) == 0)\
+    \ {\n        // parallel\n        if (sign(d1) == 0) {\n            // cross\n\
+    \            return l2.a;\n        } else {\n            // not cross\n      \
+    \      assert(false);\n        }\n    }\n    return l2.a + (l2.b - l2.a) * d1\
+    \ / d12;\n}\n#line 4 \"geometry/circumscribed_circle.hpp\"\n\n// circumscribed\
+    \ circle of a triangle\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C\n\
+    // https://drken1215.hatenablog.com/entry/2020/10/16/074400\nstd::pair<Point,\
+    \ Double> circumscribed_circle(const Point &a, const Point &b, const Point &c)\
+    \ {\n    Line l1((a + b) / 2, (a + b) / 2 + rotate(b - a, PI / 2)), l2((b + c)\
+    \ / 2, (b + c) / 2 + rotate(c - b, PI / 2));\n    auto o = cross_point_ll(l1,\
+    \ l2);\n    auto r = std::abs(o - a);\n    return {o, r};\n}\n#line 8 \"verify/aoj_cgl/aoj_cgl_7_c.test.cpp\"\
+    \n\nint main() {\n    Point a, b, c;\n    std::cin >> a >> b >> c;\n    auto [p,\
+    \ r] = circumscribed_circle(a, b, c);\n    std::cout << p << ' ' << r << '\\n';\n\
+    \    return 0;\n}\n"
+  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C\"\
+    \n#define ERROR 0.00001\n// The original ERROR is 0.000001\n\n#include <bits/stdc++.h>\n\
+    \n#include \"geometry/circumscribed_circle.hpp\"\n\nint main() {\n    Point a,\
+    \ b, c;\n    std::cin >> a >> b >> c;\n    auto [p, r] = circumscribed_circle(a,\
+    \ b, c);\n    std::cout << p << ' ' << r << '\\n';\n    return 0;\n}"
   dependsOn:
-  - geometry/projection.hpp
+  - geometry/circumscribed_circle.hpp
+  - geometry/cross_point_ll.hpp
   - geometry/line.hpp
   - geometry/point.hpp
   - geometry/geometry_template.hpp
   isVerificationFile: true
-  path: verify/aoj_cgl/aoj_cgl_1_a.test.cpp
+  path: verify/aoj_cgl/aoj_cgl_7_c.test.cpp
   requiredBy: []
   timestamp: '2023-02-21 21:25:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/aoj_cgl/aoj_cgl_1_a.test.cpp
+documentation_of: verify/aoj_cgl/aoj_cgl_7_c.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/aoj_cgl/aoj_cgl_1_a.test.cpp
-- /verify/verify/aoj_cgl/aoj_cgl_1_a.test.cpp.html
-title: verify/aoj_cgl/aoj_cgl_1_a.test.cpp
+- /verify/verify/aoj_cgl/aoj_cgl_7_c.test.cpp
+- /verify/verify/aoj_cgl/aoj_cgl_7_c.test.cpp.html
+title: verify/aoj_cgl/aoj_cgl_7_c.test.cpp
 ---
