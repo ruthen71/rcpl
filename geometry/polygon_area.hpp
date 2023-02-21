@@ -1,6 +1,7 @@
 #pragma once
 
 #include "geometry/polygon.hpp"
+
 // area of polygon
 // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A
 Double polygon_area(const Polygon &p) {

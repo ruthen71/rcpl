@@ -1,6 +1,8 @@
 #pragma once
 #include "geometry/circle.hpp"
+
 // return the number of tangent
+// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A
 int tangent_number_cc(Circle c1, Circle c2) {
     if (c1.r < c2.r) std::swap(c1, c2);
     Double d = std::abs(c1.o - c2.o);
