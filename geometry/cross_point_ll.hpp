@@ -17,5 +17,5 @@ Point cross_point_ll(const Line &l1, const Line &l2) {
             assert(false);
         }
     }
-    return l2.a + (l2.b - l2.a) * (d1 / d12);
+    return l2.a + (l2.b - l2.a) * d1 / d12;
 }
