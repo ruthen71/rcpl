@@ -53,7 +53,7 @@ data:
     std::istream &operator>>(std::istream &is, Polygon &p) {\n    for (auto &&pi :\
     \ p) is >> pi;\n    return is;\n}\nstd::ostream &operator<<(std::ostream &os,\
     \ Polygon &p) {\n    for (auto &&pi : p) os << pi << \" -> \";\n    return os;\n\
-    }\n#line 4 \"geometry/polygon_area.hpp\"\n// area of polygon\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\n\
+    }\n#line 4 \"geometry/polygon_area.hpp\"\n\n// area of polygon\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\n\
     Double polygon_area(const Polygon &p) {\n    int n = (int)p.size();\n    assert(n\
     \ >= 2);\n    Double ret = Double(0);\n    for (int i = 0; i < n - 1; i++) {\n\
     \        ret += cross(p[i], p[i + 1]);\n    }\n    ret += cross(p[n - 1], p[0]);\n\
@@ -75,7 +75,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_3_a.test.cpp
   requiredBy: []
-  timestamp: '2023-02-18 17:31:50+09:00'
+  timestamp: '2023-02-21 09:00:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_3_a.test.cpp

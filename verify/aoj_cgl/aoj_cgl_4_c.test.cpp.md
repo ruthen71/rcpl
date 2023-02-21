@@ -99,7 +99,7 @@ data:
     \ endpoints\n            auto pc = cross_point_ll(Line(p[n - 1], p[0]), l);\n\
     \            pl.push_back(pc);\n            pr.push_back(pc);\n        }\n   \
     \ }\n    return {pl, pr};\n}\n#line 2 \"geometry/polygon_area.hpp\"\n\n#line 4\
-    \ \"geometry/polygon_area.hpp\"\n// area of polygon\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\n\
+    \ \"geometry/polygon_area.hpp\"\n\n// area of polygon\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\n\
     Double polygon_area(const Polygon &p) {\n    int n = (int)p.size();\n    assert(n\
     \ >= 2);\n    Double ret = Double(0);\n    for (int i = 0; i < n - 1; i++) {\n\
     \        ret += cross(p[i], p[i + 1]);\n    }\n    ret += cross(p[n - 1], p[0]);\n\
@@ -137,7 +137,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
   requiredBy: []
-  timestamp: '2023-02-18 18:47:54+09:00'
+  timestamp: '2023-02-21 09:00:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_4_c.test.cpp

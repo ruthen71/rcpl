@@ -31,7 +31,8 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
+    links:
+    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A
   bundledCode: "#line 2 \"geometry/circle.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\
     \n#line 2 \"geometry/geometry_template.hpp\"\n\n// template\nusing Double = double;\n\
     const Double EPS = 1e-8;\nconst Double PI = std::acos(-1);\ninline int sign(const\
@@ -59,13 +60,15 @@ data:
     \ r(r) {}\n\n    friend std::ostream &operator<<(std::ostream &os, const Circle\
     \ &c) { return os << c.o << ' ' << c.r; }\n    friend std::istream &operator>>(std::istream\
     \ &is, Circle &c) { return is >> c.o >> c.r; }  // format : x y r\n};\n#line 3\
-    \ \"geometry/tangent_number_cc.hpp\"\n// return the number of tangent\nint tangent_number_cc(Circle\
-    \ c1, Circle c2) {\n    if (c1.r < c2.r) std::swap(c1, c2);\n    Double d = std::abs(c1.o\
-    \ - c2.o);\n    if (sign(d - c1.r - c2.r) == 1) return 4;  // d > c1.r + c2.r\n\
-    \    if (sign(d - c1.r - c2.r) == 0) return 3;  // d = c1.r + c2.r\n    if (sign(d\
-    \ - c1.r + c2.r) == 1) return 2;  // d > c1.r - c2.r\n    if (sign(d - c1.r +\
-    \ c2.r) == 0) return 1;  // d = c1.r - c2.r\n    return 0;\n}\n"
-  code: "#pragma once\n#include \"geometry/circle.hpp\"\n// return the number of tangent\n\
+    \ \"geometry/tangent_number_cc.hpp\"\n\n// return the number of tangent\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A\n\
+    int tangent_number_cc(Circle c1, Circle c2) {\n    if (c1.r < c2.r) std::swap(c1,\
+    \ c2);\n    Double d = std::abs(c1.o - c2.o);\n    if (sign(d - c1.r - c2.r) ==\
+    \ 1) return 4;  // d > c1.r + c2.r\n    if (sign(d - c1.r - c2.r) == 0) return\
+    \ 3;  // d = c1.r + c2.r\n    if (sign(d - c1.r + c2.r) == 1) return 2;  // d\
+    \ > c1.r - c2.r\n    if (sign(d - c1.r + c2.r) == 0) return 1;  // d = c1.r -\
+    \ c2.r\n    return 0;\n}\n"
+  code: "#pragma once\n#include \"geometry/circle.hpp\"\n\n// return the number of\
+    \ tangent\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A\n\
     int tangent_number_cc(Circle c1, Circle c2) {\n    if (c1.r < c2.r) std::swap(c1,\
     \ c2);\n    Double d = std::abs(c1.o - c2.o);\n    if (sign(d - c1.r - c2.r) ==\
     \ 1) return 4;  // d > c1.r + c2.r\n    if (sign(d - c1.r - c2.r) == 0) return\
@@ -82,7 +85,7 @@ data:
   - geometry/cross_point_cc.hpp
   - geometry/is_intersect_cc.hpp
   - geometry/all.hpp
-  timestamp: '2023-02-18 13:26:59+09:00'
+  timestamp: '2023-02-21 09:00:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_7_a.test.cpp

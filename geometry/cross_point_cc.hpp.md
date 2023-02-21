@@ -58,23 +58,23 @@ data:
     \ r(r) {}\n\n    friend std::ostream &operator<<(std::ostream &os, const Circle\
     \ &c) { return os << c.o << ' ' << c.r; }\n    friend std::istream &operator>>(std::istream\
     \ &is, Circle &c) { return is >> c.o >> c.r; }  // format : x y r\n};\n#line 3\
-    \ \"geometry/tangent_number_cc.hpp\"\n// return the number of tangent\nint tangent_number_cc(Circle\
-    \ c1, Circle c2) {\n    if (c1.r < c2.r) std::swap(c1, c2);\n    Double d = std::abs(c1.o\
-    \ - c2.o);\n    if (sign(d - c1.r - c2.r) == 1) return 4;  // d > c1.r + c2.r\n\
-    \    if (sign(d - c1.r - c2.r) == 0) return 3;  // d = c1.r + c2.r\n    if (sign(d\
-    \ - c1.r + c2.r) == 1) return 2;  // d > c1.r - c2.r\n    if (sign(d - c1.r +\
-    \ c2.r) == 0) return 1;  // d = c1.r - c2.r\n    return 0;\n}\n#line 5 \"geometry/is_intersect_cc.hpp\"\
-    \n// intersection (circle and circle)\n// intersect = number of tangent is 1,\
-    \ 2, 3\nbool is_intersect_cc(const Circle &c1, const Circle &c2) {\n    int num\
-    \ = tangent_number_cc(c1, c2);\n    return 1 <= num and num <= 3;\n}\n#line 4\
-    \ \"geometry/cross_point_cc.hpp\"\n\n// cross point (circle and circle)\n// //\
-    \ http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_E\nstd::vector<Point>\
-    \ cross_point_cc(const Circle &c1, const Circle &c2) {\n    if (!is_intersect_cc(c1,\
-    \ c2)) return {};\n    Double d = std::abs(c1.o - c2.o);\n    Double a = acos((std::norm(c1.r)\
-    \ - std::norm(c2.r) + std::norm(d)) / (2 * c1.r * d));\n    Double t = std::arg(c2.o\
-    \ - c1.o);\n    Point p = c1.o + std::polar(c1.r, t + a);\n    Point q = c1.o\
-    \ + std::polar(c1.r, t - a);\n    if (equal(p.real(), q.real()) and equal(p.imag(),\
-    \ q.imag())) return {p};\n    return {p, q};\n}\n"
+    \ \"geometry/tangent_number_cc.hpp\"\n\n// return the number of tangent\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A\n\
+    int tangent_number_cc(Circle c1, Circle c2) {\n    if (c1.r < c2.r) std::swap(c1,\
+    \ c2);\n    Double d = std::abs(c1.o - c2.o);\n    if (sign(d - c1.r - c2.r) ==\
+    \ 1) return 4;  // d > c1.r + c2.r\n    if (sign(d - c1.r - c2.r) == 0) return\
+    \ 3;  // d = c1.r + c2.r\n    if (sign(d - c1.r + c2.r) == 1) return 2;  // d\
+    \ > c1.r - c2.r\n    if (sign(d - c1.r + c2.r) == 0) return 1;  // d = c1.r -\
+    \ c2.r\n    return 0;\n}\n#line 5 \"geometry/is_intersect_cc.hpp\"\n// intersection\
+    \ (circle and circle)\n// intersect = number of tangent is 1, 2, 3\nbool is_intersect_cc(const\
+    \ Circle &c1, const Circle &c2) {\n    int num = tangent_number_cc(c1, c2);\n\
+    \    return 1 <= num and num <= 3;\n}\n#line 4 \"geometry/cross_point_cc.hpp\"\
+    \n\n// cross point (circle and circle)\n// // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_E\n\
+    std::vector<Point> cross_point_cc(const Circle &c1, const Circle &c2) {\n    if\
+    \ (!is_intersect_cc(c1, c2)) return {};\n    Double d = std::abs(c1.o - c2.o);\n\
+    \    Double a = acos((std::norm(c1.r) - std::norm(c2.r) + std::norm(d)) / (2 *\
+    \ c1.r * d));\n    Double t = std::arg(c2.o - c1.o);\n    Point p = c1.o + std::polar(c1.r,\
+    \ t + a);\n    Point q = c1.o + std::polar(c1.r, t - a);\n    if (equal(p.real(),\
+    \ q.real()) and equal(p.imag(), q.imag())) return {p};\n    return {p, q};\n}\n"
   code: "#pragma once\n\n#include \"geometry/is_intersect_cc.hpp\"\n\n// cross point\
     \ (circle and circle)\n// // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_E\n\
     std::vector<Point> cross_point_cc(const Circle &c1, const Circle &c2) {\n    if\
@@ -93,7 +93,7 @@ data:
   path: geometry/cross_point_cc.hpp
   requiredBy:
   - geometry/all.hpp
-  timestamp: '2023-02-18 13:26:59+09:00'
+  timestamp: '2023-02-21 09:00:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_7_e.test.cpp

@@ -190,34 +190,34 @@ data:
     \n\n// intersection (segment and point)\n// ccw(a, b, c) == ON_SEGMENT -> a -\
     \ c - b\nbool is_intersect_sp(const Segment &s, const Point &p) { return ccw(s.a,\
     \ s.b, p) == ON_SEGMENT or sign(std::abs(s.a - p)) == 0 or sign(std::abs(s.b -\
-    \ p)) == 0; }\n#line 3 \"geometry/tangent_number_cc.hpp\"\n// return the number\
-    \ of tangent\nint tangent_number_cc(Circle c1, Circle c2) {\n    if (c1.r < c2.r)\
-    \ std::swap(c1, c2);\n    Double d = std::abs(c1.o - c2.o);\n    if (sign(d -\
-    \ c1.r - c2.r) == 1) return 4;  // d > c1.r + c2.r\n    if (sign(d - c1.r - c2.r)\
-    \ == 0) return 3;  // d = c1.r + c2.r\n    if (sign(d - c1.r + c2.r) == 1) return\
-    \ 2;  // d > c1.r - c2.r\n    if (sign(d - c1.r + c2.r) == 0) return 1;  // d\
-    \ = c1.r - c2.r\n    return 0;\n}\n#line 2 \"geometry/is_intersect_cc.hpp\"\n\n\
-    #line 5 \"geometry/is_intersect_cc.hpp\"\n// intersection (circle and circle)\n\
-    // intersect = number of tangent is 1, 2, 3\nbool is_intersect_cc(const Circle\
-    \ &c1, const Circle &c2) {\n    int num = tangent_number_cc(c1, c2);\n    return\
-    \ 1 <= num and num <= 3;\n}\n#line 2 \"geometry/is_intersect_cp.hpp\"\n\n#line\
-    \ 5 \"geometry/is_intersect_cp.hpp\"\n// intersection (circle and point)\nbool\
-    \ is_intersect_cp(const Circle &c, const Point &p) { return equal(std::abs(p -\
-    \ c.o), c.r); }\n#line 2 \"geometry/is_intersect_cl.hpp\"\n\n#line 2 \"geometry/distance_lp.hpp\"\
-    \n\n#line 6 \"geometry/distance_lp.hpp\"\n// distance (line and point)\nDouble\
-    \ distance_lp(const Line &l, const Point &p) { return std::abs(p - projection(l,\
-    \ p)); }\n#line 5 \"geometry/is_intersect_cl.hpp\"\n\n// intersection (circle\
-    \ and line)\nbool is_intersect_cl(const Circle &c, const Line &l) { return sign(c.r\
-    \ - distance_lp(l, c.o)) >= 0; }\n#line 24 \"geometry/all.hpp\"\n\n#line 2 \"\
-    geometry/cross_point_ll.hpp\"\n\n#line 4 \"geometry/cross_point_ll.hpp\"\n\n//\
-    \ cross point (line and line)\nPoint cross_point_ll(const Line &l1, const Line\
-    \ &l2) {\n    Point base = l1.b - l1.a;\n    Double d12 = cross(base, l2.b - l2.a);\n\
-    \    Double d1 = cross(base, l1.b - l2.a);\n    if (sign(d12) == 0) {\n      \
-    \  // parallel\n        if (sign(d1) == 0) {\n            // cross\n         \
-    \   return l2.a;\n        } else {\n            // not cross\n            assert(false);\n\
-    \        }\n    }\n    return l2.a + (l2.b - l2.a) * (d1 / d12);\n}\n#line 2 \"\
-    geometry/cross_point_ss.hpp\"\n\n#line 6 \"geometry/cross_point_ss.hpp\"\n\n//\
-    \ cross point (segment and segment)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_C\n\
+    \ p)) == 0; }\n#line 3 \"geometry/tangent_number_cc.hpp\"\n\n// return the number\
+    \ of tangent\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A\n\
+    int tangent_number_cc(Circle c1, Circle c2) {\n    if (c1.r < c2.r) std::swap(c1,\
+    \ c2);\n    Double d = std::abs(c1.o - c2.o);\n    if (sign(d - c1.r - c2.r) ==\
+    \ 1) return 4;  // d > c1.r + c2.r\n    if (sign(d - c1.r - c2.r) == 0) return\
+    \ 3;  // d = c1.r + c2.r\n    if (sign(d - c1.r + c2.r) == 1) return 2;  // d\
+    \ > c1.r - c2.r\n    if (sign(d - c1.r + c2.r) == 0) return 1;  // d = c1.r -\
+    \ c2.r\n    return 0;\n}\n#line 2 \"geometry/is_intersect_cc.hpp\"\n\n#line 5\
+    \ \"geometry/is_intersect_cc.hpp\"\n// intersection (circle and circle)\n// intersect\
+    \ = number of tangent is 1, 2, 3\nbool is_intersect_cc(const Circle &c1, const\
+    \ Circle &c2) {\n    int num = tangent_number_cc(c1, c2);\n    return 1 <= num\
+    \ and num <= 3;\n}\n#line 2 \"geometry/is_intersect_cp.hpp\"\n\n#line 5 \"geometry/is_intersect_cp.hpp\"\
+    \n// intersection (circle and point)\nbool is_intersect_cp(const Circle &c, const\
+    \ Point &p) { return equal(std::abs(p - c.o), c.r); }\n#line 2 \"geometry/is_intersect_cl.hpp\"\
+    \n\n#line 2 \"geometry/distance_lp.hpp\"\n\n#line 6 \"geometry/distance_lp.hpp\"\
+    \n// distance (line and point)\nDouble distance_lp(const Line &l, const Point\
+    \ &p) { return std::abs(p - projection(l, p)); }\n#line 5 \"geometry/is_intersect_cl.hpp\"\
+    \n\n// intersection (circle and line)\nbool is_intersect_cl(const Circle &c, const\
+    \ Line &l) { return sign(c.r - distance_lp(l, c.o)) >= 0; }\n#line 24 \"geometry/all.hpp\"\
+    \n\n#line 2 \"geometry/cross_point_ll.hpp\"\n\n#line 4 \"geometry/cross_point_ll.hpp\"\
+    \n\n// cross point (line and line)\nPoint cross_point_ll(const Line &l1, const\
+    \ Line &l2) {\n    Point base = l1.b - l1.a;\n    Double d12 = cross(base, l2.b\
+    \ - l2.a);\n    Double d1 = cross(base, l1.b - l2.a);\n    if (sign(d12) == 0)\
+    \ {\n        // parallel\n        if (sign(d1) == 0) {\n            // cross\n\
+    \            return l2.a;\n        } else {\n            // not cross\n      \
+    \      assert(false);\n        }\n    }\n    return l2.a + (l2.b - l2.a) * (d1\
+    \ / d12);\n}\n#line 2 \"geometry/cross_point_ss.hpp\"\n\n#line 6 \"geometry/cross_point_ss.hpp\"\
+    \n\n// cross point (segment and segment)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_C\n\
     Point cross_point_ss(const Segment &s1, const Segment &s2) {\n    // check intersection\
     \ s1 and s2\n    assert(is_intersect_ss(s1, s2));\n    Point base = s1.b - s1.a;\n\
     \    Double d12 = cross(base, s2.b - s2.a);\n    Double d1 = cross(base, s1.b\
@@ -252,7 +252,7 @@ data:
     \ s2)) return Double(0);\n    return std::min({distance_sp(s1, s2.a), distance_sp(s1,\
     \ s2.b), distance_sp(s2, s1.a), distance_sp(s2, s1.b)});\n}\n#line 33 \"geometry/all.hpp\"\
     \n\n#line 2 \"geometry/polygon_area.hpp\"\n\n#line 4 \"geometry/polygon_area.hpp\"\
-    \n// area of polygon\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\n\
+    \n\n// area of polygon\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\n\
     Double polygon_area(const Polygon &p) {\n    int n = (int)p.size();\n    assert(n\
     \ >= 2);\n    Double ret = Double(0);\n    for (int i = 0; i < n - 1; i++) {\n\
     \        ret += cross(p[i], p[i + 1]);\n    }\n    ret += cross(p[n - 1], p[0]);\n\
@@ -307,9 +307,25 @@ data:
     \ i--) {\n            while (r.size() >= t and ccw(r[r.size() - 2], r[r.size()\
     \ - 1], p[i]) == COUNTER_CLOCKWISE) {\n                r.pop_back();\n       \
     \     }\n            r.push_back(p[i]);\n        }\n    }\n    r.pop_back();\n\
-    \    std::reverse(r.begin(), r.end());\n    return r;\n}\n#line 2 \"geometry/convex_polygon_cut.hpp\"\
-    \n\n#line 5 \"geometry/convex_polygon_cut.hpp\"\n\n// cut convex polygon p by\
-    \ line l\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_C\n\
+    \    std::reverse(r.begin(), r.end());\n    return r;\n}\n#line 2 \"geometry/convex_polygon_diameter.hpp\"\
+    \n\n#line 5 \"geometry/convex_polygon_diameter.hpp\"\n\n// convex polygon diameter\n\
+    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B\n// return\
+    \ {index1, index2, diameter}\n// using the method of rotating calipers (https://en.wikipedia.org/wiki/Rotating_calipers)\n\
+    // complexity: O(n)\nstd::tuple<int, int, Double> convex_polygon_diameter(const\
+    \ Polygon &p) {\n    assert(polygon_is_convex(p));\n    int n = (int)p.size();\n\
+    \    assert(n >= 2);\n    if (n == 2) {\n        return {0, 1, std::abs(p[0] -\
+    \ p[1])};\n    }\n    auto [it_min, it_max] = std::minmax_element(p.begin(), p.end(),\
+    \ compare_x);\n    int idx_min = it_min - p.begin();\n    int idx_max = it_max\
+    \ - p.begin();\n\n    Double maxdis = std::norm(p[idx_max] - p[idx_min]);\n  \
+    \  int maxi = idx_min, i = idx_min, maxj = idx_max, j = idx_max;\n    do {\n \
+    \       int ni = (i + 1 == n ? 0 : i + 1), nj = (j + 1 == n ? 0 : j + 1);\n  \
+    \      if (sign(cross(p[ni] - p[i], p[nj] - p[j])) < 0) {\n            i = ni;\n\
+    \        } else {\n            j = nj;\n        }\n        if (std::norm(p[i]\
+    \ - p[j]) > maxdis) {\n            maxdis = std::norm(p[i] - p[j]);\n        \
+    \    maxi = i;\n            maxj = j;\n        }\n    } while (i != idx_min ||\
+    \ j != idx_max);\n    return {maxi, maxj, std::abs(p[maxi] - p[maxj])};\n}\n#line\
+    \ 2 \"geometry/convex_polygon_cut.hpp\"\n\n#line 5 \"geometry/convex_polygon_cut.hpp\"\
+    \n\n// cut convex polygon p by line l\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_C\n\
     // return {left polygon, right polygon}\n// whether each point is included is\
     \ determined by the sign of the outer product of the two vectors to the endpoints\
     \ of the line\nstd::pair<Polygon, Polygon> convex_polygon_cut(const Polygon &p,\
@@ -327,24 +343,7 @@ data:
     \        if (s1 * s2 < 0) {\n            // don't use \"<=\", use \"<\" to exclude\
     \ endpoints\n            auto pc = cross_point_ll(Line(p[n - 1], p[0]), l);\n\
     \            pl.push_back(pc);\n            pr.push_back(pc);\n        }\n   \
-    \ }\n    return {pl, pr};\n}\n#line 2 \"geometry/convex_polygon_diameter.hpp\"\
-    \n\n#line 5 \"geometry/convex_polygon_diameter.hpp\"\n\n// convex polygon diameter\n\
-    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B\n// return\
-    \ {index1, index2, diameter}\n// using the method of rotating calipers (https://en.wikipedia.org/wiki/Rotating_calipers)\n\
-    // complexity: O(n)\nstd::tuple<int, int, Double> convex_polygon_diameter(const\
-    \ Polygon &p) {\n    assert(polygon_is_convex(p));\n    int n = (int)p.size();\n\
-    \    assert(n >= 2);\n    if (n == 2) {\n        return {0, 1, std::abs(p[0] -\
-    \ p[1])};\n    }\n    auto [it_min, it_max] = std::minmax_element(p.begin(), p.end(),\
-    \ compare_x);\n    int idx_min = it_min - p.begin();\n    int idx_max = it_max\
-    \ - p.begin();\n\n    Double maxdis = std::norm(p[idx_max] - p[idx_min]);\n  \
-    \  int maxi = idx_min, i = idx_min, maxj = idx_max, j = idx_max;\n    do {\n \
-    \       int ni = (i + 1 == n ? 0 : i + 1), nj = (j + 1 == n ? 0 : j + 1);\n  \
-    \      if (sign(cross(p[ni] - p[i], p[nj] - p[j])) < 0) {\n            i = ni;\n\
-    \        } else {\n            j = nj;\n        }\n        if (std::norm(p[i]\
-    \ - p[j]) > maxdis) {\n            maxdis = std::norm(p[i] - p[j]);\n        \
-    \    maxi = i;\n            maxj = j;\n        }\n    } while (i != idx_min ||\
-    \ j != idx_max);\n    return {maxi, maxj, std::abs(p[maxi] - p[maxj])};\n}\n#line\
-    \ 40 \"geometry/all.hpp\"\n"
+    \ }\n    return {pl, pr};\n}\n#line 40 \"geometry/all.hpp\"\n"
   code: '#pragma once
 
     #include "geometry/geometry_template.hpp"
@@ -413,9 +412,9 @@ data:
 
     #include "geometry/monotone_chain.hpp"
 
-    #include "geometry/convex_polygon_cut.hpp"
+    #include "geometry/convex_polygon_diameter.hpp"
 
-    #include "geometry/convex_polygon_diameter.hpp"'
+    #include "geometry/convex_polygon_cut.hpp"'
   dependsOn:
   - geometry/geometry_template.hpp
   - geometry/point.hpp
@@ -447,12 +446,12 @@ data:
   - geometry/polygon_is_convex.hpp
   - geometry/polygon_contain.hpp
   - geometry/monotone_chain.hpp
-  - geometry/convex_polygon_cut.hpp
   - geometry/convex_polygon_diameter.hpp
+  - geometry/convex_polygon_cut.hpp
   isVerificationFile: false
   path: geometry/all.hpp
   requiredBy: []
-  timestamp: '2023-02-18 18:58:07+09:00'
+  timestamp: '2023-02-21 09:00:03+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/all.hpp

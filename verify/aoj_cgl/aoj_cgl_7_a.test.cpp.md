@@ -52,14 +52,15 @@ data:
     \ r(r) {}\n\n    friend std::ostream &operator<<(std::ostream &os, const Circle\
     \ &c) { return os << c.o << ' ' << c.r; }\n    friend std::istream &operator>>(std::istream\
     \ &is, Circle &c) { return is >> c.o >> c.r; }  // format : x y r\n};\n#line 3\
-    \ \"geometry/tangent_number_cc.hpp\"\n// return the number of tangent\nint tangent_number_cc(Circle\
-    \ c1, Circle c2) {\n    if (c1.r < c2.r) std::swap(c1, c2);\n    Double d = std::abs(c1.o\
-    \ - c2.o);\n    if (sign(d - c1.r - c2.r) == 1) return 4;  // d > c1.r + c2.r\n\
-    \    if (sign(d - c1.r - c2.r) == 0) return 3;  // d = c1.r + c2.r\n    if (sign(d\
-    \ - c1.r + c2.r) == 1) return 2;  // d > c1.r - c2.r\n    if (sign(d - c1.r +\
-    \ c2.r) == 0) return 1;  // d = c1.r - c2.r\n    return 0;\n}\n#line 6 \"verify/aoj_cgl/aoj_cgl_7_a.test.cpp\"\
-    \n\nint main() {\n    Circle C1, C2;\n    std::cin >> C1 >> C2;\n    std::cout\
-    \ << tangent_number_cc(C1, C2) << '\\n';\n    return 0;\n}\n"
+    \ \"geometry/tangent_number_cc.hpp\"\n\n// return the number of tangent\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A\n\
+    int tangent_number_cc(Circle c1, Circle c2) {\n    if (c1.r < c2.r) std::swap(c1,\
+    \ c2);\n    Double d = std::abs(c1.o - c2.o);\n    if (sign(d - c1.r - c2.r) ==\
+    \ 1) return 4;  // d > c1.r + c2.r\n    if (sign(d - c1.r - c2.r) == 0) return\
+    \ 3;  // d = c1.r + c2.r\n    if (sign(d - c1.r + c2.r) == 1) return 2;  // d\
+    \ > c1.r - c2.r\n    if (sign(d - c1.r + c2.r) == 0) return 1;  // d = c1.r -\
+    \ c2.r\n    return 0;\n}\n#line 6 \"verify/aoj_cgl/aoj_cgl_7_a.test.cpp\"\n\n\
+    int main() {\n    Circle C1, C2;\n    std::cin >> C1 >> C2;\n    std::cout <<\
+    \ tangent_number_cc(C1, C2) << '\\n';\n    return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A\"\
     \n\n#include <bits/stdc++.h>\n\n#include \"geometry/tangent_number_cc.hpp\"\n\n\
     int main() {\n    Circle C1, C2;\n    std::cin >> C1 >> C2;\n    std::cout <<\
@@ -72,7 +73,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_7_a.test.cpp
   requiredBy: []
-  timestamp: '2023-02-18 13:26:59+09:00'
+  timestamp: '2023-02-21 09:00:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_7_a.test.cpp
