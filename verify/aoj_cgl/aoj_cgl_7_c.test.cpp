@@ -9,7 +9,7 @@
 int main() {
     Point a, b, c;
     std::cin >> a >> b >> c;
-    auto [p, r] = circumscribed_circle(a, b, c);
-    std::cout << p << ' ' << r << '\n';
+    auto cir = circumscribed_circle(a, b, c);
+    std::cout << cir.o << ' ' << cir.r << '\n';
     return 0;
 }

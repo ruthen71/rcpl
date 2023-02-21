@@ -8,7 +8,7 @@
 int main() {
     Point a, b, c;
     std::cin >> a >> b >> c;
-    auto [p, r] = incircle(a, b, c);
-    std::cout << p << ' ' << r << '\n';
+    auto cir = incircle(a, b, c);
+    std::cout << cir.o << ' ' << cir.r << '\n';
     return 0;
 }
