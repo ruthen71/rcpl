@@ -29,6 +29,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/tangent_number_cc.hpp
     title: geometry/tangent_number_cc.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/tangent_point_cp.hpp
+    title: geometry/tangent_point_cp.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_a.test.cpp
@@ -39,6 +42,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_e.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_e.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_7_f.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_7_f.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -84,6 +90,7 @@ data:
   path: geometry/circle.hpp
   requiredBy:
   - geometry/cross_point_cl.hpp
+  - geometry/tangent_point_cp.hpp
   - geometry/is_intersect_cp.hpp
   - geometry/tangent_number_cc.hpp
   - geometry/is_intersect_cl.hpp
@@ -95,6 +102,7 @@ data:
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_7_a.test.cpp
   - verify/aoj_cgl/aoj_cgl_7_d.test.cpp
+  - verify/aoj_cgl/aoj_cgl_7_f.test.cpp
   - verify/aoj_cgl/aoj_cgl_7_e.test.cpp
 documentation_of: geometry/circle.hpp
 layout: document

@@ -98,6 +98,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/tangent_number_cc.hpp
     title: geometry/tangent_number_cc.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/tangent_point_cp.hpp
+    title: geometry/tangent_point_cp.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_1_a.test.cpp
@@ -147,6 +150,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_e.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_e.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_7_f.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_7_f.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -203,6 +209,7 @@ data:
   - geometry/cross_point_cl.hpp
   - geometry/distance_ss.hpp
   - geometry/is_parallel.hpp
+  - geometry/tangent_point_cp.hpp
   - geometry/is_intersect_cp.hpp
   - geometry/polygon_contain.hpp
   - geometry/polygon.hpp
@@ -241,6 +248,7 @@ data:
   - verify/aoj_cgl/aoj_cgl_3_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
+  - verify/aoj_cgl/aoj_cgl_7_f.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_d.test.cpp
   - verify/aoj_cgl/aoj_cgl_7_e.test.cpp
   - verify/aoj_cgl/aoj_cgl_1_a.test.cpp

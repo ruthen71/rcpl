@@ -20,19 +20,17 @@ data:
     path: geometry/tangent_number_cc.hpp
     title: geometry/tangent_number_cc.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_7_f.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_7_f.test.cpp
   _isVerificationFailed: false
-  _pathExtension: cpp
+  _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    ERROR: '0.000001'
-    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_E
     links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_E
-  bundledCode: "#line 1 \"verify/aoj_cgl/aoj_cgl_7_e.test.cpp\"\n#define PROBLEM \"\
-    http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_E\"\n#define ERROR\
-    \ 0.000001\n\n#include <bits/stdc++.h>\n\n#line 2 \"geometry/cross_point_cc.hpp\"\
+    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_F
+  bundledCode: "#line 2 \"geometry/tangent_point_cp.hpp\"\n\n#line 2 \"geometry/cross_point_cc.hpp\"\
     \n\n#line 2 \"geometry/is_intersect_cc.hpp\"\n\n#line 2 \"geometry/circle.hpp\"\
     \n\n#line 2 \"geometry/point.hpp\"\n\n#line 2 \"geometry/geometry_template.hpp\"\
     \n\n// template\nusing Double = double;\nconst Double EPS = 1e-8;\nconst Double\
@@ -78,16 +76,17 @@ data:
     \ c1.r * d));\n    Double t = std::arg(c2.o - c1.o);\n    Point p = c1.o + std::polar(c1.r,\
     \ t + a);\n    Point q = c1.o + std::polar(c1.r, t - a);\n    if (equal(p.real(),\
     \ q.real()) and equal(p.imag(), q.imag())) return {p};\n    return {p, q};\n}\n\
-    #line 7 \"verify/aoj_cgl/aoj_cgl_7_e.test.cpp\"\n\nint main() {\n    Circle C1,\
-    \ C2;\n    std::cin >> C1 >> C2;\n    auto res = cross_point_cc(C1, C2);\n   \
-    \ std::sort(res.begin(), res.end());\n    if (res.size() == 1) res.push_back(res[0]);\n\
-    \    std::cout << res[0] << ' ' << res[1] << '\\n';\n    return 0;\n}\n"
-  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_E\"\
-    \n#define ERROR 0.000001\n\n#include <bits/stdc++.h>\n\n#include \"geometry/cross_point_cc.hpp\"\
-    \n\nint main() {\n    Circle C1, C2;\n    std::cin >> C1 >> C2;\n    auto res\
-    \ = cross_point_cc(C1, C2);\n    std::sort(res.begin(), res.end());\n    if (res.size()\
-    \ == 1) res.push_back(res[0]);\n    std::cout << res[0] << ' ' << res[1] << '\\\
-    n';\n    return 0;\n}"
+    #line 4 \"geometry/tangent_point_cp.hpp\"\n\n// tangent point (circle and point)\n\
+    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_F\nstd::pair<Point,\
+    \ Point> tangent_point_cp(const Circle &c, const Point &p) {\n    assert(sign(std::abs(c.o\
+    \ - p) - c.r) == 1);\n    auto res = cross_point_cc(c, Circle(p, sqrt(std::norm(c.o\
+    \ - p) - std::norm(c.r))));\n    return {res[0], res[1]};\n}\n"
+  code: "#pragma once\n\n#include \"geometry/cross_point_cc.hpp\"\n\n// tangent point\
+    \ (circle and point)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_F\n\
+    std::pair<Point, Point> tangent_point_cp(const Circle &c, const Point &p) {\n\
+    \    assert(sign(std::abs(c.o - p) - c.r) == 1);\n    auto res = cross_point_cc(c,\
+    \ Circle(p, sqrt(std::norm(c.o - p) - std::norm(c.r))));\n    return {res[0],\
+    \ res[1]};\n}"
   dependsOn:
   - geometry/cross_point_cc.hpp
   - geometry/is_intersect_cc.hpp
@@ -95,16 +94,17 @@ data:
   - geometry/point.hpp
   - geometry/geometry_template.hpp
   - geometry/tangent_number_cc.hpp
-  isVerificationFile: true
-  path: verify/aoj_cgl/aoj_cgl_7_e.test.cpp
+  isVerificationFile: false
+  path: geometry/tangent_point_cp.hpp
   requiredBy: []
   timestamp: '2023-02-21 15:45:18+09:00'
-  verificationStatus: TEST_ACCEPTED
-  verifiedWith: []
-documentation_of: verify/aoj_cgl/aoj_cgl_7_e.test.cpp
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/aoj_cgl/aoj_cgl_7_f.test.cpp
+documentation_of: geometry/tangent_point_cp.hpp
 layout: document
 redirect_from:
-- /verify/verify/aoj_cgl/aoj_cgl_7_e.test.cpp
-- /verify/verify/aoj_cgl/aoj_cgl_7_e.test.cpp.html
-title: verify/aoj_cgl/aoj_cgl_7_e.test.cpp
+- /library/geometry/tangent_point_cp.hpp
+- /library/geometry/tangent_point_cp.hpp.html
+title: geometry/tangent_point_cp.hpp
 ---

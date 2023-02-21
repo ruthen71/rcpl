@@ -222,6 +222,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: geometry/tangent_number_cc.hpp
       title: geometry/tangent_number_cc.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/tangent_point_cp.hpp
+      title: geometry/tangent_point_cp.hpp
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
@@ -371,6 +374,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_cgl/aoj_cgl_7_e.test.cpp
       title: verify/aoj_cgl/aoj_cgl_7_e.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_cgl/aoj_cgl_7_f.test.cpp
+      title: verify/aoj_cgl/aoj_cgl_7_f.test.cpp
   - name: verify/aoj_dpl
     pages:
     - icon: ':heavy_check_mark:'

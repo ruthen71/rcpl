@@ -235,7 +235,7 @@ data:
     \ return {pr};\n    Point e = (l.b - l.a) / abs(l.b - l.a);\n    auto k = sqrt(std::norm(c.r)\
     \ - std::norm(pr - c.o));\n    return {pr - e * k, pr + e * k};\n}\n#line 2 \"\
     geometry/cross_point_cc.hpp\"\n\n#line 4 \"geometry/cross_point_cc.hpp\"\n\n//\
-    \ cross point (circle and circle)\n// // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_E\n\
+    \ cross point (circle and circle)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_E\n\
     std::vector<Point> cross_point_cc(const Circle &c1, const Circle &c2) {\n    if\
     \ (!is_intersect_cc(c1, c2)) return {};\n    Double d = std::abs(c1.o - c2.o);\n\
     \    Double a = acos((std::norm(c1.r) - std::norm(c2.r) + std::norm(d)) / (2 *\
@@ -451,7 +451,7 @@ data:
   isVerificationFile: false
   path: geometry/all.hpp
   requiredBy: []
-  timestamp: '2023-02-21 09:00:03+09:00'
+  timestamp: '2023-02-21 15:45:18+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/all.hpp

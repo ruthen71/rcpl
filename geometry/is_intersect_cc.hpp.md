@@ -20,10 +20,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/cross_point_cc.hpp
     title: geometry/cross_point_cc.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/tangent_point_cp.hpp
+    title: geometry/tangent_point_cp.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_e.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_e.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_7_f.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_7_f.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -79,11 +85,13 @@ data:
   isVerificationFile: false
   path: geometry/is_intersect_cc.hpp
   requiredBy:
+  - geometry/tangent_point_cp.hpp
   - geometry/cross_point_cc.hpp
   - geometry/all.hpp
   timestamp: '2023-02-21 09:00:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/aoj_cgl/aoj_cgl_7_f.test.cpp
   - verify/aoj_cgl/aoj_cgl_7_e.test.cpp
 documentation_of: geometry/is_intersect_cc.hpp
 layout: document
