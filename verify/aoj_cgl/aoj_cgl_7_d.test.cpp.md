@@ -90,7 +90,7 @@ data:
     \ : x y r\n};\n#line 5 \"geometry/is_intersect_cl.hpp\"\n\n// intersection (circle\
     \ and line)\nbool is_intersect_cl(const Circle &c, const Line &l) { return sign(c.r\
     \ - distance_lp(l, c.o)) >= 0; }\n#line 5 \"geometry/cross_point_cl.hpp\"\n\n\
-    // cross point (circle and line)\n// // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_D\n\
+    // cross point (circle and line)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_D\n\
     std::vector<Point> cross_point_cl(const Circle &c, const Line &l) {\n    assert(is_intersect_cl(c,\
     \ l));\n    auto pr = projection(l, c.o);\n    if (equal(std::abs(pr - c.o), c.r))\
     \ return {pr};\n    Point e = (l.b - l.a) / abs(l.b - l.a);\n    auto k = sqrt(std::norm(c.r)\
@@ -119,7 +119,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
   requiredBy: []
-  timestamp: '2023-02-21 21:25:04+09:00'
+  timestamp: '2023-02-21 22:00:19+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_7_d.test.cpp

@@ -244,7 +244,7 @@ data:
     \ by is_intersect_ss(s1, s2)\n            assert(0);\n        }\n    }\n    return\
     \ s2.a + (s2.b - s2.a) * (d1 / d12);\n}\n#line 2 \"geometry/cross_point_cl.hpp\"\
     \n\n#line 5 \"geometry/cross_point_cl.hpp\"\n\n// cross point (circle and line)\n\
-    // // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_D\nstd::vector<Point>\
+    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_D\nstd::vector<Point>\
     \ cross_point_cl(const Circle &c, const Line &l) {\n    assert(is_intersect_cl(c,\
     \ l));\n    auto pr = projection(l, c.o);\n    if (equal(std::abs(pr - c.o), c.r))\
     \ return {pr};\n    Point e = (l.b - l.a) / abs(l.b - l.a);\n    auto k = sqrt(std::norm(c.r)\
@@ -495,7 +495,7 @@ data:
   isVerificationFile: false
   path: geometry/all.hpp
   requiredBy: []
-  timestamp: '2023-02-21 21:48:09+09:00'
+  timestamp: '2023-02-21 22:00:19+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/all.hpp

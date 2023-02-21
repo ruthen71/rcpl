@@ -26,14 +26,14 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    ERROR: '0.00001'
+    ERROR: '0.000001'
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C
   bundledCode: "#line 1 \"verify/aoj_cgl/aoj_cgl_7_c.test.cpp\"\n#define PROBLEM \"\
     http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C\"\n#define ERROR\
-    \ 0.00001\n// The original ERROR is 0.000001\n\n#include <bits/stdc++.h>\n\n#line\
-    \ 2 \"geometry/circumscribed_circle.hpp\"\n\n#line 2 \"geometry/cross_point_ll.hpp\"\
+    \ 0.000001\n// The original ERROR is 0.000001 (absolute error)\n\n#include <bits/stdc++.h>\n\
+    \n#line 2 \"geometry/circumscribed_circle.hpp\"\n\n#line 2 \"geometry/cross_point_ll.hpp\"\
     \n\n#line 2 \"geometry/line.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n#line 2\
     \ \"geometry/geometry_template.hpp\"\n\n// template\nusing Double = double;\n\
     const Double EPS = 1e-8;\nconst Double PI = std::acos(-1);\ninline int sign(const\
@@ -94,10 +94,11 @@ data:
     \ = circumscribed_circle(a, b, c);\n    std::cout << cir.o << ' ' << cir.r <<\
     \ '\\n';\n    return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C\"\
-    \n#define ERROR 0.00001\n// The original ERROR is 0.000001\n\n#include <bits/stdc++.h>\n\
-    \n#include \"geometry/circumscribed_circle.hpp\"\n\nint main() {\n    Point a,\
-    \ b, c;\n    std::cin >> a >> b >> c;\n    auto cir = circumscribed_circle(a,\
-    \ b, c);\n    std::cout << cir.o << ' ' << cir.r << '\\n';\n    return 0;\n}"
+    \n#define ERROR 0.000001\n// The original ERROR is 0.000001 (absolute error)\n\
+    \n#include <bits/stdc++.h>\n\n#include \"geometry/circumscribed_circle.hpp\"\n\
+    \nint main() {\n    Point a, b, c;\n    std::cin >> a >> b >> c;\n    auto cir\
+    \ = circumscribed_circle(a, b, c);\n    std::cout << cir.o << ' ' << cir.r <<\
+    \ '\\n';\n    return 0;\n}"
   dependsOn:
   - geometry/circumscribed_circle.hpp
   - geometry/cross_point_ll.hpp
@@ -108,7 +109,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_7_c.test.cpp
   requiredBy: []
-  timestamp: '2023-02-21 21:48:09+09:00'
+  timestamp: '2023-02-21 22:00:19+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_7_c.test.cpp
