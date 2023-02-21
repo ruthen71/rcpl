@@ -3,7 +3,7 @@
 #include "geometry/is_intersect_cc.hpp"
 
 // cross point (circle and circle)
-// // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_E
+// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_E
 std::vector<Point> cross_point_cc(const Circle &c1, const Circle &c2) {
     if (!is_intersect_cc(c1, c2)) return {};
     Double d = std::abs(c1.o - c2.o);
