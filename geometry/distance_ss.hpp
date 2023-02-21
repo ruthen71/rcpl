@@ -3,6 +3,7 @@
 #include "geometry/segment.hpp"
 #include "geometry/is_intersect_ss.hpp"
 #include "geometry/distance_sp.hpp"
+
 // distance (segment and segment)
 // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_D
 Double distance_ss(const Segment &s1, const Segment &s2) {

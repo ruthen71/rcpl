@@ -4,6 +4,7 @@
 #include "geometry/segment.hpp"
 #include "geometry/projection.hpp"
 #include "geometry/is_intersect_sp.hpp"
+
 // distance (segment and point)
 Double distance_sp(const Segment &s, const Point &p) {
     Point r = projection(s, p);
