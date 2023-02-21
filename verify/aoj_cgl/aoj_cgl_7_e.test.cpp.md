@@ -46,41 +46,43 @@ data:
     \ &os, Point &p) {\n    os << std::fixed << std::setprecision(15);\n    return\
     \ os << p.real() << ' ' << p.imag();\n}\n\nnamespace std {\nbool operator<(const\
     \ Point &a, const Point &b) { return a.real() != b.real() ? a.real() < b.real()\
-    \ : a.imag() < b.imag(); }\n}  // namespace std\n\n// inner product\nDouble dot(const\
+    \ : a.imag() < b.imag(); }\n}  // namespace std\n\n// equal (point and point)\n\
+    inline bool equal(const Point &a, const Point &b) { return equal(a.real(), b.real())\
+    \ and equal(a.imag(), b.imag()); }\n// inner product\ninline Double dot(const\
     \ Point &a, const Point &b) { return a.real() * b.real() + a.imag() * b.imag();\
-    \ }\n// outer product\nDouble cross(const Point &a, const Point &b) { return a.real()\
-    \ * b.imag() - a.imag() * b.real(); }\n// rotate Point p counterclockwise by theta\
-    \ radian\nPoint rotate(const Point &p, const Double &theta) { return p * Point(cos(theta),\
-    \ sin(theta)); }\n// compare (x, y)\nbool compare_x(const Point &a, const Point\
-    \ &b) { return equal(a.real(), b.real()) ? sign(a.imag() - b.imag()) < 0 : sign(a.real()\
-    \ - b.real()) < 0; }\n// compare (y, x)\nbool compare_y(const Point &a, const\
-    \ Point &b) { return equal(a.imag(), b.imag()) ? sign(a.real() - b.real()) < 0\
-    \ : sign(a.imag() - b.imag()) < 0; }\n#line 4 \"geometry/circle.hpp\"\n\n// circle\n\
-    struct Circle {\n    Point o;\n    Double r;\n\n    Circle() = default;\n\n  \
-    \  Circle(Point o, Double r) : o(o), r(r) {}\n\n    friend std::ostream &operator<<(std::ostream\
-    \ &os, const Circle &c) { return os << c.o << ' ' << c.r; }\n    friend std::istream\
-    \ &operator>>(std::istream &is, Circle &c) { return is >> c.o >> c.r; }  // format\
-    \ : x y r\n};\n#line 3 \"geometry/tangent_number_cc.hpp\"\n\n// return the number\
-    \ of tangent\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A\n\
+    \ }\n// outer product\ninline Double cross(const Point &a, const Point &b) { return\
+    \ a.real() * b.imag() - a.imag() * b.real(); }\n// rotate Point p counterclockwise\
+    \ by theta radian\ninline Point rotate(const Point &p, const Double &theta) {\
+    \ return p * Point(cos(theta), sin(theta)); }\n// compare (x, y)\ninline bool\
+    \ compare_x(const Point &a, const Point &b) { return equal(a.real(), b.real())\
+    \ ? sign(a.imag() - b.imag()) < 0 : sign(a.real() - b.real()) < 0; }\n// compare\
+    \ (y, x)\ninline bool compare_y(const Point &a, const Point &b) { return equal(a.imag(),\
+    \ b.imag()) ? sign(a.real() - b.real()) < 0 : sign(a.imag() - b.imag()) < 0; }\n\
+    #line 4 \"geometry/circle.hpp\"\n\n// circle\nstruct Circle {\n    Point o;\n\
+    \    Double r;\n\n    Circle() = default;\n\n    Circle(Point o, Double r) : o(o),\
+    \ r(r) {}\n\n    friend std::ostream &operator<<(std::ostream &os, const Circle\
+    \ &c) { return os << c.o << ' ' << c.r; }\n    friend std::istream &operator>>(std::istream\
+    \ &is, Circle &c) { return is >> c.o >> c.r; }  // format : x y r\n};\n#line 3\
+    \ \"geometry/tangent_number_cc.hpp\"\n\n// return the number of tangent\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A\n\
     int tangent_number_cc(Circle c1, Circle c2) {\n    if (c1.r < c2.r) std::swap(c1,\
     \ c2);\n    Double d = std::abs(c1.o - c2.o);\n    if (sign(d - c1.r - c2.r) ==\
     \ 1) return 4;  // d > c1.r + c2.r\n    if (sign(d - c1.r - c2.r) == 0) return\
     \ 3;  // d = c1.r + c2.r\n    if (sign(d - c1.r + c2.r) == 1) return 2;  // d\
     \ > c1.r - c2.r\n    if (sign(d - c1.r + c2.r) == 0) return 1;  // d = c1.r -\
-    \ c2.r\n    return 0;\n}\n#line 5 \"geometry/is_intersect_cc.hpp\"\n// intersection\
+    \ c2.r\n    return 0;\n}\n#line 5 \"geometry/is_intersect_cc.hpp\"\n\n// intersection\
     \ (circle and circle)\n// intersect = number of tangent is 1, 2, 3\nbool is_intersect_cc(const\
     \ Circle &c1, const Circle &c2) {\n    int num = tangent_number_cc(c1, c2);\n\
     \    return 1 <= num and num <= 3;\n}\n#line 4 \"geometry/cross_point_cc.hpp\"\
     \n\n// cross point (circle and circle)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_E\n\
     std::vector<Point> cross_point_cc(const Circle &c1, const Circle &c2) {\n    if\
     \ (!is_intersect_cc(c1, c2)) return {};\n    Double d = std::abs(c1.o - c2.o);\n\
-    \    Double a = acos((std::norm(c1.r) - std::norm(c2.r) + std::norm(d)) / (2 *\
-    \ c1.r * d));\n    Double t = std::arg(c2.o - c1.o);\n    Point p = c1.o + std::polar(c1.r,\
-    \ t + a);\n    Point q = c1.o + std::polar(c1.r, t - a);\n    if (equal(p.real(),\
-    \ q.real()) and equal(p.imag(), q.imag())) return {p};\n    return {p, q};\n}\n\
-    #line 7 \"verify/aoj_cgl/aoj_cgl_7_e.test.cpp\"\n\nint main() {\n    Circle C1,\
-    \ C2;\n    std::cin >> C1 >> C2;\n    auto res = cross_point_cc(C1, C2);\n   \
-    \ std::sort(res.begin(), res.end());\n    if (res.size() == 1) res.push_back(res[0]);\n\
+    \    Double a = std::acos((std::norm(c1.r) - std::norm(c2.r) + std::norm(d)) /\
+    \ (2 * c1.r * d));\n    Double t = std::arg(c2.o - c1.o);\n    Point p = c1.o\
+    \ + std::polar(c1.r, t + a);\n    Point q = c1.o + std::polar(c1.r, t - a);\n\
+    \    if (equal(p.real(), q.real()) and equal(p.imag(), q.imag())) return {p};\n\
+    \    return {p, q};\n}\n#line 7 \"verify/aoj_cgl/aoj_cgl_7_e.test.cpp\"\n\nint\
+    \ main() {\n    Circle C1, C2;\n    std::cin >> C1 >> C2;\n    auto res = cross_point_cc(C1,\
+    \ C2);\n    std::sort(res.begin(), res.end());\n    if (res.size() == 1) res.push_back(res[0]);\n\
     \    std::cout << res[0] << ' ' << res[1] << '\\n';\n    return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_E\"\
     \n#define ERROR 0.000001\n\n#include <bits/stdc++.h>\n\n#include \"geometry/cross_point_cc.hpp\"\
@@ -98,7 +100,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_7_e.test.cpp
   requiredBy: []
-  timestamp: '2023-02-21 15:45:18+09:00'
+  timestamp: '2023-02-21 18:01:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_7_e.test.cpp

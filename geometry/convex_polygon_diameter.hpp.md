@@ -44,32 +44,34 @@ data:
     \ &os, Point &p) {\n    os << std::fixed << std::setprecision(15);\n    return\
     \ os << p.real() << ' ' << p.imag();\n}\n\nnamespace std {\nbool operator<(const\
     \ Point &a, const Point &b) { return a.real() != b.real() ? a.real() < b.real()\
-    \ : a.imag() < b.imag(); }\n}  // namespace std\n\n// inner product\nDouble dot(const\
+    \ : a.imag() < b.imag(); }\n}  // namespace std\n\n// equal (point and point)\n\
+    inline bool equal(const Point &a, const Point &b) { return equal(a.real(), b.real())\
+    \ and equal(a.imag(), b.imag()); }\n// inner product\ninline Double dot(const\
     \ Point &a, const Point &b) { return a.real() * b.real() + a.imag() * b.imag();\
-    \ }\n// outer product\nDouble cross(const Point &a, const Point &b) { return a.real()\
-    \ * b.imag() - a.imag() * b.real(); }\n// rotate Point p counterclockwise by theta\
-    \ radian\nPoint rotate(const Point &p, const Double &theta) { return p * Point(cos(theta),\
-    \ sin(theta)); }\n// compare (x, y)\nbool compare_x(const Point &a, const Point\
-    \ &b) { return equal(a.real(), b.real()) ? sign(a.imag() - b.imag()) < 0 : sign(a.real()\
-    \ - b.real()) < 0; }\n// compare (y, x)\nbool compare_y(const Point &a, const\
-    \ Point &b) { return equal(a.imag(), b.imag()) ? sign(a.real() - b.real()) < 0\
-    \ : sign(a.imag() - b.imag()) < 0; }\n#line 4 \"geometry/polygon.hpp\"\n\n// polygon\n\
-    using Polygon = std::vector<Point>;\nstd::istream &operator>>(std::istream &is,\
-    \ Polygon &p) {\n    for (auto &&pi : p) is >> pi;\n    return is;\n}\nstd::ostream\
-    \ &operator<<(std::ostream &os, Polygon &p) {\n    for (auto &&pi : p) os << pi\
-    \ << \" -> \";\n    return os;\n}\n#line 2 \"geometry/polygon_is_convex.hpp\"\n\
-    \n#line 2 \"geometry/ccw.hpp\"\n\n#line 4 \"geometry/ccw.hpp\"\n\n// counter clockwise\n\
-    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C\nconstexpr\
-    \ int COUNTER_CLOCKWISE = 1;  // a-b-c counter clockwise\nconstexpr int CLOCKWISE\
-    \ = -1;         // a-b-c clockwise\nconstexpr int ONLINE_BACK = 2;        // c-a-b\
-    \ line\nconstexpr int ONLINE_FRONT = -2;      // a-b-c line\nconstexpr int ON_SEGMENT\
-    \ = 0;         // a-c-b line\nint ccw(const Point &a, Point b, Point c) {\n  \
-    \  b = b - a, c = c - a;\n    if (sign(cross(b, c)) == 1) return COUNTER_CLOCKWISE;\n\
-    \    if (sign(cross(b, c)) == -1) return CLOCKWISE;\n    if (sign(dot(b, c)) ==\
-    \ -1) return ONLINE_BACK;\n    if (std::norm(b) < std::norm(c)) return ONLINE_FRONT;\n\
-    \    return ON_SEGMENT;\n}\n#line 5 \"geometry/polygon_is_convex.hpp\"\n\n// check\
-    \ polygon is convex (not strictly, 0 <= angle <= 180 degrees)\n// angle = 180\
-    \ degrees -> ON_SEGMENT\n// angle = 0 degrees -> ONLINE_FRONT or ONLINE_BACK\n\
+    \ }\n// outer product\ninline Double cross(const Point &a, const Point &b) { return\
+    \ a.real() * b.imag() - a.imag() * b.real(); }\n// rotate Point p counterclockwise\
+    \ by theta radian\ninline Point rotate(const Point &p, const Double &theta) {\
+    \ return p * Point(cos(theta), sin(theta)); }\n// compare (x, y)\ninline bool\
+    \ compare_x(const Point &a, const Point &b) { return equal(a.real(), b.real())\
+    \ ? sign(a.imag() - b.imag()) < 0 : sign(a.real() - b.real()) < 0; }\n// compare\
+    \ (y, x)\ninline bool compare_y(const Point &a, const Point &b) { return equal(a.imag(),\
+    \ b.imag()) ? sign(a.real() - b.real()) < 0 : sign(a.imag() - b.imag()) < 0; }\n\
+    #line 4 \"geometry/polygon.hpp\"\n\n// polygon\nusing Polygon = std::vector<Point>;\n\
+    std::istream &operator>>(std::istream &is, Polygon &p) {\n    for (auto &&pi :\
+    \ p) is >> pi;\n    return is;\n}\nstd::ostream &operator<<(std::ostream &os,\
+    \ Polygon &p) {\n    for (auto &&pi : p) os << pi << \" -> \";\n    return os;\n\
+    }\n#line 2 \"geometry/polygon_is_convex.hpp\"\n\n#line 2 \"geometry/ccw.hpp\"\n\
+    \n#line 4 \"geometry/ccw.hpp\"\n\n// counter clockwise\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C\n\
+    constexpr int COUNTER_CLOCKWISE = 1;  // a-b-c counter clockwise\nconstexpr int\
+    \ CLOCKWISE = -1;         // a-b-c clockwise\nconstexpr int ONLINE_BACK = 2; \
+    \       // c-a-b line\nconstexpr int ONLINE_FRONT = -2;      // a-b-c line\nconstexpr\
+    \ int ON_SEGMENT = 0;         // a-c-b line\nint ccw(const Point &a, Point b,\
+    \ Point c) {\n    b = b - a, c = c - a;\n    if (sign(cross(b, c)) == 1) return\
+    \ COUNTER_CLOCKWISE;\n    if (sign(cross(b, c)) == -1) return CLOCKWISE;\n   \
+    \ if (sign(dot(b, c)) == -1) return ONLINE_BACK;\n    if (std::norm(b) < std::norm(c))\
+    \ return ONLINE_FRONT;\n    return ON_SEGMENT;\n}\n#line 5 \"geometry/polygon_is_convex.hpp\"\
+    \n\n// check polygon is convex (not strictly, 0 <= angle <= 180 degrees)\n// angle\
+    \ = 180 degrees -> ON_SEGMENT\n// angle = 0 degrees -> ONLINE_FRONT or ONLINE_BACK\n\
     // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B\nbool polygon_is_convex(const\
     \ Polygon &p) {\n    int n = (int)p.size();\n    assert(n >= 3);\n    bool okccw\
     \ = true, okcw = true;\n    for (int i = 0; i < n - 2; i++) {\n        int res\
@@ -122,7 +124,7 @@ data:
   path: geometry/convex_polygon_diameter.hpp
   requiredBy:
   - geometry/all.hpp
-  timestamp: '2023-02-18 18:47:54+09:00'
+  timestamp: '2023-02-21 18:01:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_4_b.test.cpp
