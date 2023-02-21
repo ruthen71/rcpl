@@ -1,6 +1,6 @@
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C"
-#define ERROR 0.00001
-// The original ERROR is 0.000001
+#define ERROR 0.000001
+// The original ERROR is 0.000001 (absolute error)
 
 #include <bits/stdc++.h>
 
