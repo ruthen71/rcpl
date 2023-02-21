@@ -211,7 +211,7 @@ data:
     \ 5 \"geometry/is_intersect_cp.hpp\"\n// intersection (circle and point)\nbool\
     \ is_intersect_cp(const Circle &c, const Point &p) { return equal(std::abs(p -\
     \ c.o), c.r); }\n#line 2 \"geometry/is_intersect_cl.hpp\"\n\n#line 2 \"geometry/distance_lp.hpp\"\
-    \n\n#line 6 \"geometry/distance_lp.hpp\"\n// distance (line and point)\nDouble\
+    \n\n#line 6 \"geometry/distance_lp.hpp\"\n\n// distance (line and point)\nDouble\
     \ distance_lp(const Line &l, const Point &p) { return std::abs(p - projection(l,\
     \ p)); }\n#line 5 \"geometry/is_intersect_cl.hpp\"\n\n// intersection (circle\
     \ and line)\nbool is_intersect_cl(const Circle &c, const Line &l) { return sign(c.r\
@@ -250,11 +250,11 @@ data:
     \ + std::polar(c1.r, t + a);\n    Point q = c1.o + std::polar(c1.r, t - a);\n\
     \    if (equal(p.real(), q.real()) and equal(p.imag(), q.imag())) return {p};\n\
     \    return {p, q};\n}\n#line 29 \"geometry/all.hpp\"\n\n#line 2 \"geometry/distance_sp.hpp\"\
-    \n\n#line 7 \"geometry/distance_sp.hpp\"\n// distance (segment and point)\nDouble\
-    \ distance_sp(const Segment &s, const Point &p) {\n    Point r = projection(s,\
+    \n\n#line 7 \"geometry/distance_sp.hpp\"\n\n// distance (segment and point)\n\
+    Double distance_sp(const Segment &s, const Point &p) {\n    Point r = projection(s,\
     \ p);\n    if (is_intersect_sp(s, r)) {\n        return std::abs(r - p);\n   \
     \ }\n    return std::min(std::abs(s.a - p), std::abs(s.b - p));\n}\n#line 2 \"\
-    geometry/distance_ss.hpp\"\n\n#line 6 \"geometry/distance_ss.hpp\"\n// distance\
+    geometry/distance_ss.hpp\"\n\n#line 6 \"geometry/distance_ss.hpp\"\n\n// distance\
     \ (segment and segment)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_D\n\
     Double distance_ss(const Segment &s1, const Segment &s2) {\n    if (is_intersect_ss(s1,\
     \ s2)) return Double(0);\n    return std::min({distance_sp(s1, s2.a), distance_sp(s1,\
@@ -468,7 +468,7 @@ data:
   isVerificationFile: false
   path: geometry/all.hpp
   requiredBy: []
-  timestamp: '2023-02-21 18:01:28+09:00'
+  timestamp: '2023-02-21 18:42:42+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/all.hpp

@@ -163,6 +163,9 @@ data:
       path: geometry/geometry_template.hpp
       title: geometry/geometry_template.hpp
     - icon: ':heavy_check_mark:'
+      path: geometry/incircle.hpp
+      title: geometry/incircle.hpp
+    - icon: ':heavy_check_mark:'
       path: geometry/is_intersect_cc.hpp
       title: geometry/is_intersect_cc.hpp
     - icon: ':heavy_check_mark:'
@@ -368,6 +371,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_cgl/aoj_cgl_7_a.test.cpp
       title: verify/aoj_cgl/aoj_cgl_7_a.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_cgl/aoj_cgl_7_b.test.cpp
+      title: verify/aoj_cgl/aoj_cgl_7_b.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
       title: verify/aoj_cgl/aoj_cgl_7_d.test.cpp

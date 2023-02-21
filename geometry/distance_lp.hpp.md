@@ -21,9 +21,15 @@ data:
     path: geometry/cross_point_cl.hpp
     title: geometry/cross_point_cl.hpp
   - icon: ':heavy_check_mark:'
+    path: geometry/incircle.hpp
+    title: geometry/incircle.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/is_intersect_cl.hpp
     title: geometry/is_intersect_cl.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_7_b.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_7_b.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
@@ -71,7 +77,7 @@ data:
     \ 5 \"geometry/projection.hpp\"\n\n// projection\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A\n\
     Point projection(const Line &l, const Point &p) {\n    Double t = dot(p - l.a,\
     \ l.b - l.a) / std::norm(l.b - l.a);\n    return l.a + t * (l.b - l.a);\n}\n#line\
-    \ 6 \"geometry/distance_lp.hpp\"\n// distance (line and point)\nDouble distance_lp(const\
+    \ 6 \"geometry/distance_lp.hpp\"\n\n// distance (line and point)\nDouble distance_lp(const\
     \ Line &l, const Point &p) { return std::abs(p - projection(l, p)); }\n"
   code: '#pragma once
 
@@ -81,6 +87,7 @@ data:
     #include "geometry/line.hpp"
 
     #include "geometry/projection.hpp"
+
 
     // distance (line and point)
 
@@ -94,13 +101,15 @@ data:
   isVerificationFile: false
   path: geometry/distance_lp.hpp
   requiredBy:
+  - geometry/incircle.hpp
   - geometry/cross_point_cl.hpp
   - geometry/is_intersect_cl.hpp
   - geometry/all.hpp
-  timestamp: '2023-02-21 18:01:28+09:00'
+  timestamp: '2023-02-21 18:42:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_7_d.test.cpp
+  - verify/aoj_cgl/aoj_cgl_7_b.test.cpp
 documentation_of: geometry/distance_lp.hpp
 layout: document
 redirect_from:

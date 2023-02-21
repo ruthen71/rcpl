@@ -101,17 +101,18 @@ data:
     \n\n// intersection (segment and point)\n// ccw(a, b, c) == ON_SEGMENT -> a -\
     \ c - b\nbool is_intersect_sp(const Segment &s, const Point &p) { return ccw(s.a,\
     \ s.b, p) == ON_SEGMENT or sign(std::abs(s.a - p)) == 0 or sign(std::abs(s.b -\
-    \ p)) == 0; }\n#line 7 \"geometry/distance_sp.hpp\"\n// distance (segment and\
+    \ p)) == 0; }\n#line 7 \"geometry/distance_sp.hpp\"\n\n// distance (segment and\
     \ point)\nDouble distance_sp(const Segment &s, const Point &p) {\n    Point r\
     \ = projection(s, p);\n    if (is_intersect_sp(s, r)) {\n        return std::abs(r\
     \ - p);\n    }\n    return std::min(std::abs(s.a - p), std::abs(s.b - p));\n}\n\
-    #line 6 \"geometry/distance_ss.hpp\"\n// distance (segment and segment)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_D\n\
-    Double distance_ss(const Segment &s1, const Segment &s2) {\n    if (is_intersect_ss(s1,\
-    \ s2)) return Double(0);\n    return std::min({distance_sp(s1, s2.a), distance_sp(s1,\
-    \ s2.b), distance_sp(s2, s1.a), distance_sp(s2, s1.b)});\n}\n"
-  code: "#pragma once\n\n#include \"geometry/segment.hpp\"\n#include \"geometry/is_intersect_ss.hpp\"\
-    \n#include \"geometry/distance_sp.hpp\"\n// distance (segment and segment)\n//\
+    #line 6 \"geometry/distance_ss.hpp\"\n\n// distance (segment and segment)\n//\
     \ http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_D\nDouble distance_ss(const\
+    \ Segment &s1, const Segment &s2) {\n    if (is_intersect_ss(s1, s2)) return Double(0);\n\
+    \    return std::min({distance_sp(s1, s2.a), distance_sp(s1, s2.b), distance_sp(s2,\
+    \ s1.a), distance_sp(s2, s1.b)});\n}\n"
+  code: "#pragma once\n\n#include \"geometry/segment.hpp\"\n#include \"geometry/is_intersect_ss.hpp\"\
+    \n#include \"geometry/distance_sp.hpp\"\n\n// distance (segment and segment)\n\
+    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_D\nDouble distance_ss(const\
     \ Segment &s1, const Segment &s2) {\n    if (is_intersect_ss(s1, s2)) return Double(0);\n\
     \    return std::min({distance_sp(s1, s2.a), distance_sp(s1, s2.b), distance_sp(s2,\
     \ s1.a), distance_sp(s2, s1.b)});\n}"
@@ -129,7 +130,7 @@ data:
   path: geometry/distance_ss.hpp
   requiredBy:
   - geometry/all.hpp
-  timestamp: '2023-02-21 18:01:28+09:00'
+  timestamp: '2023-02-21 18:42:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_2_d.test.cpp

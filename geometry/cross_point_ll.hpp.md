@@ -17,10 +17,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_cut.hpp
     title: geometry/convex_polygon_cut.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/incircle.hpp
+    title: geometry/incircle.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_7_b.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_7_b.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -82,12 +88,14 @@ data:
   isVerificationFile: false
   path: geometry/cross_point_ll.hpp
   requiredBy:
+  - geometry/incircle.hpp
   - geometry/convex_polygon_cut.hpp
   - geometry/all.hpp
   timestamp: '2023-02-21 18:01:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_4_c.test.cpp
+  - verify/aoj_cgl/aoj_cgl_7_b.test.cpp
 documentation_of: geometry/cross_point_ll.hpp
 layout: document
 redirect_from:

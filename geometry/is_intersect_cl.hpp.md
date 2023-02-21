@@ -74,7 +74,7 @@ data:
     \n\n#line 5 \"geometry/projection.hpp\"\n\n// projection\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A\n\
     Point projection(const Line &l, const Point &p) {\n    Double t = dot(p - l.a,\
     \ l.b - l.a) / std::norm(l.b - l.a);\n    return l.a + t * (l.b - l.a);\n}\n#line\
-    \ 6 \"geometry/distance_lp.hpp\"\n// distance (line and point)\nDouble distance_lp(const\
+    \ 6 \"geometry/distance_lp.hpp\"\n\n// distance (line and point)\nDouble distance_lp(const\
     \ Line &l, const Point &p) { return std::abs(p - projection(l, p)); }\n#line 2\
     \ \"geometry/circle.hpp\"\n\n#line 4 \"geometry/circle.hpp\"\n\n// circle\nstruct\
     \ Circle {\n    Point o;\n    Double r;\n\n    Circle() = default;\n\n    Circle(Point\
@@ -108,7 +108,7 @@ data:
   requiredBy:
   - geometry/cross_point_cl.hpp
   - geometry/all.hpp
-  timestamp: '2023-02-21 18:01:28+09:00'
+  timestamp: '2023-02-21 18:42:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_7_d.test.cpp

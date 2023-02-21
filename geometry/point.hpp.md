@@ -42,6 +42,9 @@ data:
     path: geometry/distance_ss.hpp
     title: geometry/distance_ss.hpp
   - icon: ':heavy_check_mark:'
+    path: geometry/incircle.hpp
+    title: geometry/incircle.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/is_intersect_cc.hpp
     title: geometry/is_intersect_cc.hpp
   - icon: ':heavy_check_mark:'
@@ -145,6 +148,9 @@ data:
     path: verify/aoj_cgl/aoj_cgl_7_a.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_a.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_7_b.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_7_b.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
   - icon: ':heavy_check_mark:'
@@ -207,6 +213,7 @@ data:
   path: geometry/point.hpp
   requiredBy:
   - geometry/convex_polygon_diameter.hpp
+  - geometry/incircle.hpp
   - geometry/line.hpp
   - geometry/distance_sp.hpp
   - geometry/is_intersect_ss.hpp
@@ -254,6 +261,7 @@ data:
   - verify/aoj_cgl/aoj_cgl_2_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_7_f.test.cpp
+  - verify/aoj_cgl/aoj_cgl_7_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_d.test.cpp
   - verify/aoj_cgl/aoj_cgl_7_e.test.cpp
   - verify/aoj_cgl/aoj_cgl_1_a.test.cpp
