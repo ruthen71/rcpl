@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: geometry/circle.hpp
+    title: geometry/circle.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point_ll.hpp
     title: geometry/cross_point_ll.hpp
   - icon: ':heavy_check_mark:'
@@ -13,7 +16,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: geometry/point.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: geometry/all.hpp
+    title: geometry/all.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_c.test.cpp
@@ -70,29 +76,36 @@ data:
     \ {\n        // parallel\n        if (sign(d1) == 0) {\n            // cross\n\
     \            return l2.a;\n        } else {\n            // not cross\n      \
     \      assert(false);\n        }\n    }\n    return l2.a + (l2.b - l2.a) * d1\
-    \ / d12;\n}\n#line 4 \"geometry/circumscribed_circle.hpp\"\n\n// circumscribed\
-    \ circle of a triangle\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C\n\
-    // https://drken1215.hatenablog.com/entry/2020/10/16/074400\nstd::pair<Point,\
-    \ Double> circumscribed_circle(const Point &a, const Point &b, const Point &c)\
-    \ {\n    Line l1((a + b) / 2, (a + b) / 2 + rotate(b - a, PI / 2)), l2((b + c)\
-    \ / 2, (b + c) / 2 + rotate(c - b, PI / 2));\n    auto o = cross_point_ll(l1,\
-    \ l2);\n    auto r = std::abs(o - a);\n    return {o, r};\n}\n"
-  code: "#pragma once\n\n#include \"geometry/cross_point_ll.hpp\"\n\n// circumscribed\
-    \ circle of a triangle\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C\n\
-    // https://drken1215.hatenablog.com/entry/2020/10/16/074400\nstd::pair<Point,\
-    \ Double> circumscribed_circle(const Point &a, const Point &b, const Point &c)\
-    \ {\n    Line l1((a + b) / 2, (a + b) / 2 + rotate(b - a, PI / 2)), l2((b + c)\
-    \ / 2, (b + c) / 2 + rotate(c - b, PI / 2));\n    auto o = cross_point_ll(l1,\
-    \ l2);\n    auto r = std::abs(o - a);\n    return {o, r};\n}"
+    \ / d12;\n}\n#line 2 \"geometry/circle.hpp\"\n\n#line 4 \"geometry/circle.hpp\"\
+    \n\n// circle\nstruct Circle {\n    Point o;\n    Double r;\n\n    Circle() =\
+    \ default;\n\n    Circle(Point o, Double r) : o(o), r(r) {}\n\n    friend std::ostream\
+    \ &operator<<(std::ostream &os, const Circle &c) { return os << c.o << ' ' <<\
+    \ c.r; }\n    friend std::istream &operator>>(std::istream &is, Circle &c) { return\
+    \ is >> c.o >> c.r; }  // format : x y r\n};\n#line 5 \"geometry/circumscribed_circle.hpp\"\
+    \n\n// circumscribed circle of a triangle\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C\n\
+    // https://drken1215.hatenablog.com/entry/2020/10/16/074400\nCircle circumscribed_circle(const\
+    \ Point &a, const Point &b, const Point &c) {\n    Line l1((a + b) / 2, (a + b)\
+    \ / 2 + rotate(b - a, PI / 2)), l2((b + c) / 2, (b + c) / 2 + rotate(c - b, PI\
+    \ / 2));\n    auto o = cross_point_ll(l1, l2);\n    auto r = std::abs(o - a);\n\
+    \    return Circle(o, r);\n}\n"
+  code: "#pragma once\n\n#include \"geometry/cross_point_ll.hpp\"\n#include \"geometry/circle.hpp\"\
+    \n\n// circumscribed circle of a triangle\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C\n\
+    // https://drken1215.hatenablog.com/entry/2020/10/16/074400\nCircle circumscribed_circle(const\
+    \ Point &a, const Point &b, const Point &c) {\n    Line l1((a + b) / 2, (a + b)\
+    \ / 2 + rotate(b - a, PI / 2)), l2((b + c) / 2, (b + c) / 2 + rotate(c - b, PI\
+    \ / 2));\n    auto o = cross_point_ll(l1, l2);\n    auto r = std::abs(o - a);\n\
+    \    return Circle(o, r);\n}"
   dependsOn:
   - geometry/cross_point_ll.hpp
   - geometry/line.hpp
   - geometry/point.hpp
   - geometry/geometry_template.hpp
+  - geometry/circle.hpp
   isVerificationFile: false
   path: geometry/circumscribed_circle.hpp
-  requiredBy: []
-  timestamp: '2023-02-21 21:25:04+09:00'
+  requiredBy:
+  - geometry/all.hpp
+  timestamp: '2023-02-21 21:48:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_7_c.test.cpp

@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: geometry/circle.hpp
+    title: geometry/circle.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point_ll.hpp
     title: geometry/cross_point_ll.hpp
   - icon: ':heavy_check_mark:'
@@ -85,21 +88,26 @@ data:
     Point projection(const Line &l, const Point &p) {\n    Double t = dot(p - l.a,\
     \ l.b - l.a) / std::norm(l.b - l.a);\n    return l.a + t * (l.b - l.a);\n}\n#line\
     \ 6 \"geometry/distance_lp.hpp\"\n\n// distance (line and point)\nDouble distance_lp(const\
-    \ Line &l, const Point &p) { return std::abs(p - projection(l, p)); }\n#line 5\
-    \ \"geometry/incircle.hpp\"\n\n// incircle of a triangle\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_B\n\
-    // https://drken1215.hatenablog.com/entry/2020/10/16/073700\nstd::pair<Point,\
-    \ Double> incircle(const Point &a, const Point &b, const Point &c) {\n    Double\
+    \ Line &l, const Point &p) { return std::abs(p - projection(l, p)); }\n#line 2\
+    \ \"geometry/circle.hpp\"\n\n#line 4 \"geometry/circle.hpp\"\n\n// circle\nstruct\
+    \ Circle {\n    Point o;\n    Double r;\n\n    Circle() = default;\n\n    Circle(Point\
+    \ o, Double r) : o(o), r(r) {}\n\n    friend std::ostream &operator<<(std::ostream\
+    \ &os, const Circle &c) { return os << c.o << ' ' << c.r; }\n    friend std::istream\
+    \ &operator>>(std::istream &is, Circle &c) { return is >> c.o >> c.r; }  // format\
+    \ : x y r\n};\n#line 6 \"geometry/incircle.hpp\"\n\n// incircle of a triangle\n\
+    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_B\n// https://drken1215.hatenablog.com/entry/2020/10/16/073700\n\
+    Circle incircle(const Point &a, const Point &b, const Point &c) {\n    Double\
     \ A = std::arg((c - a) / (b - a)), B = std::arg((a - b) / (c - b));\n    Line\
     \ l1(a, a + rotate(b - a, A / 2)), l2(b, b + rotate(c - b, B / 2));\n    auto\
     \ o = cross_point_ll(l1, l2);\n    auto r = distance_lp(Line(a, b), o);\n    return\
-    \ {o, r};\n}\n#line 7 \"verify/aoj_cgl/aoj_cgl_7_b.test.cpp\"\n\nint main() {\n\
-    \    Point a, b, c;\n    std::cin >> a >> b >> c;\n    auto [p, r] = incircle(a,\
-    \ b, c);\n    std::cout << p << ' ' << r << '\\n';\n    return 0;\n}\n"
+    \ Circle(o, r);\n}\n#line 7 \"verify/aoj_cgl/aoj_cgl_7_b.test.cpp\"\n\nint main()\
+    \ {\n    Point a, b, c;\n    std::cin >> a >> b >> c;\n    auto cir = incircle(a,\
+    \ b, c);\n    std::cout << cir.o << ' ' << cir.r << '\\n';\n    return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_B\"\
     \n#define ERROR 0.000001\n\n#include <bits/stdc++.h>\n\n#include \"geometry/incircle.hpp\"\
-    \n\nint main() {\n    Point a, b, c;\n    std::cin >> a >> b >> c;\n    auto [p,\
-    \ r] = incircle(a, b, c);\n    std::cout << p << ' ' << r << '\\n';\n    return\
-    \ 0;\n}"
+    \n\nint main() {\n    Point a, b, c;\n    std::cin >> a >> b >> c;\n    auto cir\
+    \ = incircle(a, b, c);\n    std::cout << cir.o << ' ' << cir.r << '\\n';\n   \
+    \ return 0;\n}"
   dependsOn:
   - geometry/incircle.hpp
   - geometry/cross_point_ll.hpp
@@ -108,10 +116,11 @@ data:
   - geometry/geometry_template.hpp
   - geometry/distance_lp.hpp
   - geometry/projection.hpp
+  - geometry/circle.hpp
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_7_b.test.cpp
   requiredBy: []
-  timestamp: '2023-02-21 21:25:04+09:00'
+  timestamp: '2023-02-21 21:48:09+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_7_b.test.cpp

@@ -8,6 +8,9 @@ data:
     path: geometry/circle.hpp
     title: geometry/circle.hpp
   - icon: ':heavy_check_mark:'
+    path: geometry/circumscribed_circle.hpp
+    title: geometry/circumscribed_circle.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_cut.hpp
     title: geometry/convex_polygon_cut.hpp
   - icon: ':heavy_check_mark:'
@@ -37,6 +40,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: geometry/geometry_template.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/incircle.hpp
+    title: geometry/incircle.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/is_intersect_cc.hpp
     title: geometry/is_intersect_cc.hpp
@@ -266,7 +272,20 @@ data:
     std::pair<Point, Point> tangent_point_cp(const Circle &c, const Point &p) {\n\
     \    assert(sign(std::abs(c.o - p) - c.r) == 1);\n    auto res = cross_point_cc(c,\
     \ Circle(p, sqrt(std::norm(c.o - p) - std::norm(c.r))));\n    return {res[0],\
-    \ res[1]};\n}\n#line 35 \"geometry/all.hpp\"\n\n#line 2 \"geometry/polygon_area.hpp\"\
+    \ res[1]};\n}\n#line 2 \"geometry/incircle.hpp\"\n\n#line 6 \"geometry/incircle.hpp\"\
+    \n\n// incircle of a triangle\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_B\n\
+    // https://drken1215.hatenablog.com/entry/2020/10/16/073700\nCircle incircle(const\
+    \ Point &a, const Point &b, const Point &c) {\n    Double A = std::arg((c - a)\
+    \ / (b - a)), B = std::arg((a - b) / (c - b));\n    Line l1(a, a + rotate(b -\
+    \ a, A / 2)), l2(b, b + rotate(c - b, B / 2));\n    auto o = cross_point_ll(l1,\
+    \ l2);\n    auto r = distance_lp(Line(a, b), o);\n    return Circle(o, r);\n}\n\
+    #line 2 \"geometry/circumscribed_circle.hpp\"\n\n#line 5 \"geometry/circumscribed_circle.hpp\"\
+    \n\n// circumscribed circle of a triangle\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C\n\
+    // https://drken1215.hatenablog.com/entry/2020/10/16/074400\nCircle circumscribed_circle(const\
+    \ Point &a, const Point &b, const Point &c) {\n    Line l1((a + b) / 2, (a + b)\
+    \ / 2 + rotate(b - a, PI / 2)), l2((b + c) / 2, (b + c) / 2 + rotate(c - b, PI\
+    \ / 2));\n    auto o = cross_point_ll(l1, l2);\n    auto r = std::abs(o - a);\n\
+    \    return Circle(o, r);\n}\n#line 37 \"geometry/all.hpp\"\n\n#line 2 \"geometry/polygon_area.hpp\"\
     \n\n#line 4 \"geometry/polygon_area.hpp\"\n\n// area of polygon\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\n\
     Double polygon_area(const Polygon &p) {\n    int n = (int)p.size();\n    assert(n\
     \ >= 2);\n    Double ret = Double(0);\n    for (int i = 0; i < n - 1; i++) {\n\
@@ -358,7 +377,7 @@ data:
     \        if (s1 * s2 < 0) {\n            // don't use \"<=\", use \"<\" to exclude\
     \ endpoints\n            auto pc = cross_point_ll(Line(p[n - 1], p[0]), l);\n\
     \            pl.push_back(pc);\n            pr.push_back(pc);\n        }\n   \
-    \ }\n    return {pl, pr};\n}\n#line 42 \"geometry/all.hpp\"\n"
+    \ }\n    return {pl, pr};\n}\n#line 44 \"geometry/all.hpp\"\n"
   code: '#pragma once
 
     #include "geometry/geometry_template.hpp"
@@ -421,6 +440,10 @@ data:
 
     #include "geometry/tangent_point_cp.hpp"
 
+    #include "geometry/incircle.hpp"
+
+    #include "geometry/circumscribed_circle.hpp"
+
 
     #include "geometry/polygon_area.hpp"
 
@@ -461,6 +484,8 @@ data:
   - geometry/distance_sp.hpp
   - geometry/distance_ss.hpp
   - geometry/tangent_point_cp.hpp
+  - geometry/incircle.hpp
+  - geometry/circumscribed_circle.hpp
   - geometry/polygon_area.hpp
   - geometry/polygon_is_convex.hpp
   - geometry/polygon_contain.hpp
@@ -470,7 +495,7 @@ data:
   isVerificationFile: false
   path: geometry/all.hpp
   requiredBy: []
-  timestamp: '2023-02-21 21:25:04+09:00'
+  timestamp: '2023-02-21 21:48:09+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/all.hpp

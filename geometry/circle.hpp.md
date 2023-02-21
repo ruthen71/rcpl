@@ -12,11 +12,17 @@ data:
     path: geometry/all.hpp
     title: geometry/all.hpp
   - icon: ':heavy_check_mark:'
+    path: geometry/circumscribed_circle.hpp
+    title: geometry/circumscribed_circle.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point_cc.hpp
     title: geometry/cross_point_cc.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/cross_point_cl.hpp
     title: geometry/cross_point_cl.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/incircle.hpp
+    title: geometry/incircle.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/is_intersect_cc.hpp
     title: geometry/is_intersect_cc.hpp
@@ -36,6 +42,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_a.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_a.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_7_b.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_7_b.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_7_c.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_7_c.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
@@ -95,9 +107,11 @@ data:
   isVerificationFile: false
   path: geometry/circle.hpp
   requiredBy:
+  - geometry/incircle.hpp
   - geometry/cross_point_cl.hpp
   - geometry/tangent_point_cp.hpp
   - geometry/is_intersect_cp.hpp
+  - geometry/circumscribed_circle.hpp
   - geometry/tangent_number_cc.hpp
   - geometry/is_intersect_cl.hpp
   - geometry/cross_point_cc.hpp
@@ -108,7 +122,9 @@ data:
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_7_a.test.cpp
   - verify/aoj_cgl/aoj_cgl_7_d.test.cpp
+  - verify/aoj_cgl/aoj_cgl_7_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_7_f.test.cpp
+  - verify/aoj_cgl/aoj_cgl_7_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_7_e.test.cpp
 documentation_of: geometry/circle.hpp
 layout: document
