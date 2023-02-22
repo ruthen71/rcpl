@@ -15,6 +15,9 @@ data:
     path: geometry/circumscribed_circle.hpp
     title: geometry/circumscribed_circle.hpp
   - icon: ':heavy_check_mark:'
+    path: geometry/closest_pair.hpp
+    title: geometry/closest_pair.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_cut.hpp
     title: geometry/convex_polygon_cut.hpp
   - icon: ':heavy_check_mark:'
@@ -148,6 +151,9 @@ data:
     path: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/aoj_cgl/aoj_cgl_5_a.test.cpp
+    title: verify/aoj_cgl/aoj_cgl_5_a.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_a.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_a.test.cpp
   - icon: ':heavy_check_mark:'
@@ -248,6 +254,7 @@ data:
   - geometry/monotone_chain.hpp
   - geometry/is_orthogonal.hpp
   - geometry/is_intersect_lp.hpp
+  - geometry/closest_pair.hpp
   - geometry/all.hpp
   - geometry/is_intersect_ll.hpp
   - geometry/cross_point_ll.hpp
@@ -273,6 +280,7 @@ data:
   - verify/aoj_cgl/aoj_cgl_7_e.test.cpp
   - verify/aoj_cgl/aoj_cgl_1_a.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_a.test.cpp
+  - verify/aoj_cgl/aoj_cgl_5_a.test.cpp
 documentation_of: geometry/geometry_template.hpp
 layout: document
 redirect_from:

@@ -83,23 +83,24 @@ data:
     \ &is, Point &p) {\n    Double x, y;\n    is >> x >> y;\n    p = Point(x, y);\n\
     \    return is;\n}\nstd::ostream &operator<<(std::ostream &os, const Point &p)\
     \ {\n    os << std::fixed << std::setprecision(15);\n    return os << p.real()\
-    \ << ' ' << p.imag();\n}\n\nnamespace std {\nbool operator<(const Point &a, const\
-    \ Point &b) { return a.real() != b.real() ? a.real() < b.real() : a.imag() < b.imag();\
-    \ }\n}  // namespace std\n\nPoint operator*(const Point &p, const Double &k) {\
-    \ return Point(p.real() * k, p.imag() * k); }\nPoint operator/(const Point &p,\
-    \ const Double &k) { return Point(p.real() / k, p.imag() / k); }\n// equal (point\
-    \ and point)\ninline bool equal(const Point &a, const Point &b) { return equal(a.real(),\
-    \ b.real()) and equal(a.imag(), b.imag()); }\n// inner product\ninline Double\
-    \ dot(const Point &a, const Point &b) { return a.real() * b.real() + a.imag()\
-    \ * b.imag(); }\n// outer product\ninline Double cross(const Point &a, const Point\
-    \ &b) { return a.real() * b.imag() - a.imag() * b.real(); }\n// rotate Point p\
-    \ counterclockwise by theta radian\ninline Point rotate(const Point &p, const\
-    \ Double &theta) { return p * Point(cos(theta), sin(theta)); }\n// compare (x,\
-    \ y)\ninline bool compare_x(const Point &a, const Point &b) { return equal(a.real(),\
-    \ b.real()) ? sign(a.imag() - b.imag()) < 0 : sign(a.real() - b.real()) < 0; }\n\
-    // compare (y, x)\ninline bool compare_y(const Point &a, const Point &b) { return\
-    \ equal(a.imag(), b.imag()) ? sign(a.real() - b.real()) < 0 : sign(a.imag() -\
-    \ b.imag()) < 0; }\n#line 4 \"geometry/ccw.hpp\"\n\n// counter clockwise\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C\n\
+    \ << ' ' << p.imag();\n}\n\n// for std::set, std::map, ...\nnamespace std {\n\
+    inline bool operator<(const Point &a, const Point &b) { return a.real() != b.real()\
+    \ ? a.real() < b.real() : a.imag() < b.imag(); }\n}  // namespace std\n\ninline\
+    \ Point operator*(const Point &p, const Double &k) { return Point(p.real() * k,\
+    \ p.imag() * k); }\ninline Point operator/(const Point &p, const Double &k) {\
+    \ return Point(p.real() / k, p.imag() / k); }\n// equal (point and point)\ninline\
+    \ bool equal(const Point &a, const Point &b) { return equal(a.real(), b.real())\
+    \ and equal(a.imag(), b.imag()); }\n// inner product\ninline Double dot(const\
+    \ Point &a, const Point &b) { return a.real() * b.real() + a.imag() * b.imag();\
+    \ }\n// outer product\ninline Double cross(const Point &a, const Point &b) { return\
+    \ a.real() * b.imag() - a.imag() * b.real(); }\n// rotate Point p counterclockwise\
+    \ by theta radian\ninline Point rotate(const Point &p, const Double &theta) {\
+    \ return p * Point(cos(theta), sin(theta)); }\n// compare (x, y)\ninline bool\
+    \ compare_x(const Point &a, const Point &b) { return equal(a.real(), b.real())\
+    \ ? sign(a.imag() - b.imag()) < 0 : sign(a.real() - b.real()) < 0; }\n// compare\
+    \ (y, x)\ninline bool compare_y(const Point &a, const Point &b) { return equal(a.imag(),\
+    \ b.imag()) ? sign(a.real() - b.real()) < 0 : sign(a.imag() - b.imag()) < 0; }\n\
+    #line 4 \"geometry/ccw.hpp\"\n\n// counter clockwise\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C\n\
     constexpr int COUNTER_CLOCKWISE = 1;  // a-b-c counter clockwise\nconstexpr int\
     \ CLOCKWISE = -1;         // a-b-c clockwise\nconstexpr int ONLINE_BACK = 2; \
     \       // c-a-b line\nconstexpr int ONLINE_FRONT = -2;      // a-b-c line\nconstexpr\
@@ -135,7 +136,7 @@ data:
   - geometry/monotone_chain.hpp
   - geometry/is_intersect_lp.hpp
   - geometry/all.hpp
-  timestamp: '2023-02-21 22:24:50+09:00'
+  timestamp: '2023-02-22 12:02:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_1_c.test.cpp
