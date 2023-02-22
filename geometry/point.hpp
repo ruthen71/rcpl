@@ -15,12 +15,13 @@ std::ostream &operator<<(std::ostream &os, const Point &p) {
     return os << p.real() << ' ' << p.imag();
 }
 
+// for std::set, std::map, ...
 namespace std {
-bool operator<(const Point &a, const Point &b) { return a.real() != b.real() ? a.real() < b.real() : a.imag() < b.imag(); }
+inline bool operator<(const Point &a, const Point &b) { return a.real() != b.real() ? a.real() < b.real() : a.imag() < b.imag(); }
 }  // namespace std
 
-Point operator*(const Point &p, const Double &k) { return Point(p.real() * k, p.imag() * k); }
-Point operator/(const Point &p, const Double &k) { return Point(p.real() / k, p.imag() / k); }
+inline Point operator*(const Point &p, const Double &k) { return Point(p.real() * k, p.imag() * k); }
+inline Point operator/(const Point &p, const Double &k) { return Point(p.real() / k, p.imag() / k); }
 // equal (point and point)
 inline bool equal(const Point &a, const Point &b) { return equal(a.real(), b.real()) and equal(a.imag(), b.imag()); }
 // inner product
