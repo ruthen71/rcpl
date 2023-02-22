@@ -17,6 +17,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_diameter.hpp
     title: geometry/convex_polygon_diameter.hpp
+  - icon: ':warning:'
+    path: geometry/farthest_pair.hpp
+    title: "\u6700\u9060\u70B9\u5BFE"
   - icon: ':heavy_check_mark:'
     path: geometry/monotone_chain.hpp
     title: geometry/monotone_chain.hpp
@@ -99,6 +102,7 @@ data:
   requiredBy:
   - geometry/convex_polygon_diameter.hpp
   - geometry/polygon_contain.hpp
+  - geometry/farthest_pair.hpp
   - geometry/convex_polygon_cut.hpp
   - geometry/polygon_is_convex.hpp
   - geometry/polygon_area.hpp

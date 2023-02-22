@@ -115,8 +115,9 @@ data:
   - verify/aoj_cgl/aoj_cgl_5_a.test.cpp
 documentation_of: geometry/closest_pair.hpp
 layout: document
-redirect_from:
-- /library/geometry/closest_pair.hpp
-- /library/geometry/closest_pair.hpp.html
-title: geometry/closest_pair.hpp
+title: "\u6700\u8FD1\u70B9\u5BFE"
 ---
+
+## 使用例
+
+- [ABC022 D](https://atcoder.jp/contests/abc022/submissions/39101609)

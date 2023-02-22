@@ -137,7 +137,7 @@ data:
       title: geometry/circumscribed_circle.hpp
     - icon: ':heavy_check_mark:'
       path: geometry/closest_pair.hpp
-      title: geometry/closest_pair.hpp
+      title: "\u6700\u8FD1\u70B9\u5BFE"
     - icon: ':heavy_check_mark:'
       path: geometry/convex_polygon_cut.hpp
       title: geometry/convex_polygon_cut.hpp
@@ -165,6 +165,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: geometry/distance_ss.hpp
       title: geometry/distance_ss.hpp
+    - icon: ':warning:'
+      path: geometry/farthest_pair.hpp
+      title: "\u6700\u9060\u70B9\u5BFE"
     - icon: ':heavy_check_mark:'
       path: geometry/geometry_template.hpp
       title: geometry/geometry_template.hpp

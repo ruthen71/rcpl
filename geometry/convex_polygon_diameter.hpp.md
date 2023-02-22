@@ -20,6 +20,9 @@ data:
   - icon: ':warning:'
     path: geometry/all.hpp
     title: geometry/all.hpp
+  - icon: ':warning:'
+    path: geometry/farthest_pair.hpp
+    title: "\u6700\u9060\u70B9\u5BFE"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_4_b.test.cpp
@@ -127,6 +130,7 @@ data:
   isVerificationFile: false
   path: geometry/convex_polygon_diameter.hpp
   requiredBy:
+  - geometry/farthest_pair.hpp
   - geometry/all.hpp
   timestamp: '2023-02-22 12:02:50+09:00'
   verificationStatus: LIBRARY_ALL_AC

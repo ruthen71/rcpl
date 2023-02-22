@@ -24,6 +24,9 @@ data:
     path: geometry/distance_ss.hpp
     title: geometry/distance_ss.hpp
   - icon: ':warning:'
+    path: geometry/farthest_pair.hpp
+    title: "\u6700\u9060\u70B9\u5BFE"
+  - icon: ':warning:'
     path: geometry/is_intersect_lp.hpp
     title: geometry/is_intersect_lp.hpp
   - icon: ':heavy_check_mark:'
@@ -130,6 +133,7 @@ data:
   - geometry/is_intersect_ss.hpp
   - geometry/distance_ss.hpp
   - geometry/polygon_contain.hpp
+  - geometry/farthest_pair.hpp
   - geometry/cross_point_ss.hpp
   - geometry/is_intersect_sp.hpp
   - geometry/polygon_is_convex.hpp

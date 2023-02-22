@@ -327,12 +327,12 @@ data:
     \ of ccw is not ONLINE_BACK or ONLINE_FRONT (lexicographical order)\n// strict\
     \ is true : points on the edges of the convex hull are not included (the number\
     \ of points is minimized)\n// complexity: O(n \\log n) (n: the number of points)\n\
-    Polygon monotone_chain(Polygon &p, bool strict = true) {\n    int n = (int)p.size();\n\
-    \    if (n <= 2) return p;\n    std::sort(p.begin(), p.end(), compare_x);\n  \
-    \  Polygon r;\n    r.reserve(n * 2);\n    if (strict) {\n        for (int i =\
-    \ 0; i < n; i++) {\n            while (r.size() >= 2 and ccw(r[r.size() - 2],\
-    \ r[r.size() - 1], p[i]) != CLOCKWISE) {\n                r.pop_back();\n    \
-    \        }\n            r.push_back(p[i]);\n        }\n        int t = r.size()\
+    Polygon monotone_chain(std::vector<Point> &p, bool strict = true) {\n    int n\
+    \ = (int)p.size();\n    if (n <= 2) return p;\n    std::sort(p.begin(), p.end(),\
+    \ compare_x);\n    Polygon r;\n    r.reserve(n * 2);\n    if (strict) {\n    \
+    \    for (int i = 0; i < n; i++) {\n            while (r.size() >= 2 and ccw(r[r.size()\
+    \ - 2], r[r.size() - 1], p[i]) != CLOCKWISE) {\n                r.pop_back();\n\
+    \            }\n            r.push_back(p[i]);\n        }\n        int t = r.size()\
     \ + 1;\n        for (int i = n - 2; i >= 0; i--) {\n            while (r.size()\
     \ >= t and ccw(r[r.size() - 2], r[r.size() - 1], p[i]) != CLOCKWISE) {\n     \
     \           r.pop_back();\n            }\n            r.push_back(p[i]);\n   \
@@ -497,7 +497,7 @@ data:
   isVerificationFile: false
   path: geometry/all.hpp
   requiredBy: []
-  timestamp: '2023-02-22 12:02:50+09:00'
+  timestamp: '2023-02-22 12:49:28+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/all.hpp

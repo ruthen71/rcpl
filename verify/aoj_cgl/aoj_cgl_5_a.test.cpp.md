@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: geometry/closest_pair.hpp
-    title: geometry/closest_pair.hpp
+    title: "\u6700\u8FD1\u70B9\u5BFE"
   - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: geometry/geometry_template.hpp
