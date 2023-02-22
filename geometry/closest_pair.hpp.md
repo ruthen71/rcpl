@@ -120,4 +120,4 @@ title: "\u6700\u8FD1\u70B9\u5BFE"
 
 ## 使用例
 
-- [ABC022 D](https://atcoder.jp/contests/abc022/submissions/39101609)
+- [ABC022 D](https://atcoder.jp/contests/abc022/submissions/39102044)
