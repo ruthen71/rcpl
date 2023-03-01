@@ -36,6 +36,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: algebra/lazy_sum_add.hpp
       title: algebra/lazy_sum_add.hpp
+    - icon: ':warning:'
+      path: algebra/lazy_sum_affine.hpp
+      title: algebra/lazy_sum_affine.hpp
     - icon: ':heavy_check_mark:'
       path: algebra/lazy_sum_set.hpp
       title: algebra/lazy_sum_set.hpp
