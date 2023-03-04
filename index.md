@@ -246,9 +246,6 @@ data:
       path: graph/bellman_ford.hpp
       title: "Bellman-Ford algorithm (\u30D9\u30EB\u30DE\u30F3\u30D5\u30A9\u30FC\u30C9\
         \u6CD5)"
-    - icon: ':warning:'
-      path: graph/bfs01.hpp
-      title: 01-BFS
     - icon: ':heavy_check_mark:'
       path: graph/dijkstra.hpp
       title: "Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
@@ -274,6 +271,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/tree_diameter.hpp
       title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"
+    - icon: ':warning:'
+      path: graph/zero_one_bfs.hpp
+      title: graph/zero_one_bfs.hpp
   - name: math
     pages:
     - icon: ':warning:'

@@ -10,9 +10,6 @@ data:
     path: graph/bellman_ford.hpp
     title: "Bellman-Ford algorithm (\u30D9\u30EB\u30DE\u30F3\u30D5\u30A9\u30FC\u30C9\
       \u6CD5)"
-  - icon: ':warning:'
-    path: graph/bfs01.hpp
-    title: 01-BFS
   - icon: ':heavy_check_mark:'
     path: graph/dijkstra.hpp
     title: "Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
@@ -35,6 +32,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/tree_diameter.hpp
     title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"
+  - icon: ':warning:'
+    path: graph/zero_one_bfs.hpp
+    title: graph/zero_one_bfs.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_dpl/aoj_dpl_2_a.test.cpp
@@ -81,13 +81,13 @@ data:
   requiredBy:
   - dp/traveling_salesman_problem.hpp
   - graph/dijkstra.hpp
+  - graph/zero_one_bfs.hpp
   - graph/tree_diameter.hpp
   - graph/read_graph.hpp
   - graph/bellman_ford.hpp
   - graph/lowest_common_ancestor.hpp
   - graph/get_edges.hpp
   - graph/topological_sort.hpp
-  - graph/bfs01.hpp
   - graph/kruskal.hpp
   timestamp: '2023-02-10 01:10:41+09:00'
   verificationStatus: LIBRARY_ALL_AC

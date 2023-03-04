@@ -11,7 +11,7 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"graph/bfs01.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
+  bundledCode: "#line 2 \"graph/zero_one_bfs.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
     \n\ntemplate <class T> struct Edge {\n    int from, to;\n    T cost;\n    int\
     \ id;\n\n    Edge() = default;\n    Edge(int from, int to, T cost = 1, int id\
     \ = -1) : from(from), to(to), cost(cost), id(id) {}\n\n    friend std::ostream\
@@ -19,8 +19,8 @@ data:
     \ \"{ id : from -> to, cost }\"\n        return os << \"{ \" << e.id << \" : \"\
     \ << e.from << \" -> \" << e.to << \", \" << e.cost << \" }\";\n    }\n};\n\n\
     template <class T> using Edges = std::vector<Edge<T>>;\ntemplate <class T> using\
-    \ Graph = std::vector<std::vector<Edge<T>>>;\n#line 4 \"graph/bfs01.hpp\"\n\n\
-    template <class T>\nstd::tuple<std::vector<T>, std::vector<int>, std::vector<int>>\
+    \ Graph = std::vector<std::vector<Edge<T>>>;\n#line 4 \"graph/zero_one_bfs.hpp\"\
+    \n\ntemplate <class T>\nstd::tuple<std::vector<T>, std::vector<int>, std::vector<int>>\
     \  //\nzero_one_bfs(Graph<T> &G, std::vector<int> &s, const T INF) {\n    int\
     \ N = (int)G.size();\n    std::vector<T> dist(N, INF);\n    std::vector<int> par(N,\
     \ -1), root(N, -1);\n\n    std::deque<int> que;\n\n    for (auto &v : s) {\n \
@@ -47,12 +47,15 @@ data:
   dependsOn:
   - graph/graph_template.hpp
   isVerificationFile: false
-  path: graph/bfs01.hpp
+  path: graph/zero_one_bfs.hpp
   requiredBy: []
-  timestamp: '2023-02-10 01:10:41+09:00'
+  timestamp: '2023-03-05 01:18:04+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: graph/bfs01.hpp
+documentation_of: graph/zero_one_bfs.hpp
 layout: document
-title: 01-BFS
+redirect_from:
+- /library/graph/zero_one_bfs.hpp
+- /library/graph/zero_one_bfs.hpp.html
+title: graph/zero_one_bfs.hpp
 ---
