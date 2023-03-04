@@ -4,13 +4,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/ccw.hpp
     title: geometry/ccw.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: geometry/geometry_template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: geometry/point.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
   - icon: ':heavy_check_mark:'
@@ -30,7 +30,7 @@ data:
     http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B\"\n\n#include\
     \ <bits/stdc++.h>\n\n#line 2 \"geometry/polygon_is_convex.hpp\"\n\n#line 2 \"\
     geometry/polygon.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n#line 2 \"geometry/geometry_template.hpp\"\
-    \n\n// template\nusing Double = double;\nconst Double EPS = 1e-10;\nconst Double\
+    \n\n// template\nusing Double = double;\nconst Double EPS = 1e-8;\nconst Double\
     \ PI = std::acos(Double(-1));\ninline int sign(const Double &x) { return x <=\
     \ -EPS ? -1 : (x >= EPS ? 1 : 0); }\ninline bool equal(const Double &a, const\
     \ Double &b) { return sign(a - b) == 0; }\ninline Double radian_to_degree(const\
@@ -103,7 +103,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_3_b.test.cpp
   requiredBy: []
-  timestamp: '2023-03-05 00:14:21+09:00'
+  timestamp: '2023-03-05 01:44:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_3_b.test.cpp

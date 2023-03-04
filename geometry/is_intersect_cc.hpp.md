@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: geometry/geometry_template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: geometry/point.hpp
   - icon: ':heavy_check_mark:'
@@ -37,7 +37,7 @@ data:
     links: []
   bundledCode: "#line 2 \"geometry/is_intersect_cc.hpp\"\n\n#line 2 \"geometry/circle.hpp\"\
     \n\n#line 2 \"geometry/point.hpp\"\n\n#line 2 \"geometry/geometry_template.hpp\"\
-    \n\n// template\nusing Double = double;\nconst Double EPS = 1e-10;\nconst Double\
+    \n\n// template\nusing Double = double;\nconst Double EPS = 1e-8;\nconst Double\
     \ PI = std::acos(Double(-1));\ninline int sign(const Double &x) { return x <=\
     \ -EPS ? -1 : (x >= EPS ? 1 : 0); }\ninline bool equal(const Double &a, const\
     \ Double &b) { return sign(a - b) == 0; }\ninline Double radian_to_degree(const\
@@ -95,7 +95,7 @@ data:
   - geometry/tangent_point_cp.hpp
   - geometry/cross_point_cc.hpp
   - geometry/all.hpp
-  timestamp: '2023-03-05 00:14:21+09:00'
+  timestamp: '2023-03-05 01:44:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_7_f.test.cpp

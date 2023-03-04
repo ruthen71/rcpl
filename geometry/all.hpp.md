@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/circumscribed_circle.hpp
     title: geometry/circumscribed_circle.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_cut.hpp
     title: geometry/convex_polygon_cut.hpp
   - icon: ':heavy_check_mark:'
@@ -22,7 +22,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/cross_point_cl.hpp
     title: geometry/cross_point_cl.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point_ll.hpp
     title: geometry/cross_point_ll.hpp
   - icon: ':heavy_check_mark:'
@@ -37,7 +37,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/distance_ss.hpp
     title: geometry/distance_ss.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: geometry/geometry_template.hpp
   - icon: ':heavy_check_mark:'
@@ -70,19 +70,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/is_parallel.hpp
     title: geometry/is_parallel.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/monotone_chain.hpp
     title: geometry/monotone_chain.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: geometry/point.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon_area.hpp
     title: geometry/polygon_area.hpp
   - icon: ':heavy_check_mark:'
@@ -114,7 +114,7 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/geometry_template.hpp\"\n\n// template\nusing Double\
-    \ = double;\nconst Double EPS = 1e-10;\nconst Double PI = std::acos(Double(-1));\n\
+    \ = double;\nconst Double EPS = 1e-8;\nconst Double PI = std::acos(Double(-1));\n\
     inline int sign(const Double &x) { return x <= -EPS ? -1 : (x >= EPS ? 1 : 0);\
     \ }\ninline bool equal(const Double &a, const Double &b) { return sign(a - b)\
     \ == 0; }\ninline Double radian_to_degree(const Double &r) { return r * 180.0\
@@ -497,7 +497,7 @@ data:
   isVerificationFile: false
   path: geometry/all.hpp
   requiredBy: []
-  timestamp: '2023-03-05 00:14:21+09:00'
+  timestamp: '2023-03-05 01:44:59+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/all.hpp

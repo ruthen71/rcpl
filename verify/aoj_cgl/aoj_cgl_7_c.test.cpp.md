@@ -7,16 +7,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/circumscribed_circle.hpp
     title: geometry/circumscribed_circle.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point_ll.hpp
     title: geometry/cross_point_ll.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: geometry/geometry_template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: geometry/point.hpp
   _extendedRequiredBy: []
@@ -36,7 +36,7 @@ data:
     \n#line 2 \"geometry/circumscribed_circle.hpp\"\n\n#line 2 \"geometry/cross_point_ll.hpp\"\
     \n\n#line 2 \"geometry/line.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n#line 2\
     \ \"geometry/geometry_template.hpp\"\n\n// template\nusing Double = double;\n\
-    const Double EPS = 1e-10;\nconst Double PI = std::acos(Double(-1));\ninline int\
+    const Double EPS = 1e-8;\nconst Double PI = std::acos(Double(-1));\ninline int\
     \ sign(const Double &x) { return x <= -EPS ? -1 : (x >= EPS ? 1 : 0); }\ninline\
     \ bool equal(const Double &a, const Double &b) { return sign(a - b) == 0; }\n\
     inline Double radian_to_degree(const Double &r) { return r * 180.0 / PI; }\ninline\
@@ -110,7 +110,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_7_c.test.cpp
   requiredBy: []
-  timestamp: '2023-03-05 00:14:21+09:00'
+  timestamp: '2023-03-05 01:44:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_7_c.test.cpp

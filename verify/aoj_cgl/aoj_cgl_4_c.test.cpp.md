@@ -1,32 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_cut.hpp
     title: geometry/convex_polygon_cut.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point_ll.hpp
     title: geometry/cross_point_ll.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: geometry/geometry_template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: geometry/point.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon_area.hpp
     title: geometry/polygon_area.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: '0.00001'
@@ -38,7 +38,7 @@ data:
     \ 0.00001\n\n#include <bits/stdc++.h>\n\n#line 2 \"geometry/convex_polygon_cut.hpp\"\
     \n\n#line 2 \"geometry/polygon.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n#line\
     \ 2 \"geometry/geometry_template.hpp\"\n\n// template\nusing Double = double;\n\
-    const Double EPS = 1e-10;\nconst Double PI = std::acos(Double(-1));\ninline int\
+    const Double EPS = 1e-8;\nconst Double PI = std::acos(Double(-1));\ninline int\
     \ sign(const Double &x) { return x <= -EPS ? -1 : (x >= EPS ? 1 : 0); }\ninline\
     \ bool equal(const Double &a, const Double &b) { return sign(a - b) == 0; }\n\
     inline Double radian_to_degree(const Double &r) { return r * 180.0 / PI; }\ninline\
@@ -144,8 +144,8 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
   requiredBy: []
-  timestamp: '2023-03-05 00:14:21+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-03-05 01:44:59+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
 layout: document
