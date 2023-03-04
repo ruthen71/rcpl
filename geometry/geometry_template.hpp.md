@@ -17,7 +17,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/closest_pair.hpp
     title: "\u6700\u8FD1\u70B9\u5BFE"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/convex_polygon_cut.hpp
     title: geometry/convex_polygon_cut.hpp
   - icon: ':heavy_check_mark:'
@@ -29,7 +29,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/cross_point_cl.hpp
     title: geometry/cross_point_cl.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/cross_point_ll.hpp
     title: geometry/cross_point_ll.hpp
   - icon: ':heavy_check_mark:'
@@ -77,19 +77,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/is_parallel.hpp
     title: geometry/is_parallel.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/line.hpp
     title: geometry/line.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/monotone_chain.hpp
     title: geometry/monotone_chain.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/point.hpp
     title: geometry/point.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/polygon_area.hpp
     title: geometry/polygon_area.hpp
   - icon: ':heavy_check_mark:'
@@ -150,7 +150,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_4_b.test.cpp
     title: verify/aoj_cgl/aoj_cgl_4_b.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
   - icon: ':heavy_check_mark:'
@@ -174,9 +174,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_f.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_f.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 2 "geometry/geometry_template.hpp"
@@ -186,9 +186,9 @@ data:
 
     using Double = double;
 
-    const Double EPS = 1e-8;
+    const Double EPS = 1e-10;
 
-    const Double PI = std::acos(-1);
+    const Double PI = std::acos(Double(-1));
 
     inline int sign(const Double &x) { return x <= -EPS ? -1 : (x >= EPS ? 1 : 0);
     }
@@ -208,9 +208,9 @@ data:
 
     using Double = double;
 
-    const Double EPS = 1e-8;
+    const Double EPS = 1e-10;
 
-    const Double PI = std::acos(-1);
+    const Double PI = std::acos(Double(-1));
 
     inline int sign(const Double &x) { return x <= -EPS ? -1 : (x >= EPS ? 1 : 0);
     }
@@ -262,8 +262,8 @@ data:
   - geometry/all.hpp
   - geometry/is_intersect_ll.hpp
   - geometry/cross_point_ll.hpp
-  timestamp: '2023-02-21 22:24:50+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-03-05 00:14:21+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_1_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_7_a.test.cpp

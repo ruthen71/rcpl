@@ -141,7 +141,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: geometry/closest_pair.hpp
       title: "\u6700\u8FD1\u70B9\u5BFE"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: geometry/convex_polygon_cut.hpp
       title: geometry/convex_polygon_cut.hpp
     - icon: ':heavy_check_mark:'
@@ -153,7 +153,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: geometry/cross_point_cl.hpp
       title: geometry/cross_point_cl.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: geometry/cross_point_ll.hpp
       title: geometry/cross_point_ll.hpp
     - icon: ':heavy_check_mark:'
@@ -171,7 +171,7 @@ data:
     - icon: ':warning:'
       path: geometry/farthest_pair.hpp
       title: "\u6700\u9060\u70B9\u5BFE"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: geometry/geometry_template.hpp
       title: geometry/geometry_template.hpp
     - icon: ':heavy_check_mark:'
@@ -204,19 +204,19 @@ data:
     - icon: ':heavy_check_mark:'
       path: geometry/is_parallel.hpp
       title: geometry/is_parallel.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: geometry/line.hpp
       title: geometry/line.hpp
     - icon: ':heavy_check_mark:'
       path: geometry/monotone_chain.hpp
       title: geometry/monotone_chain.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: geometry/point.hpp
       title: geometry/point.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: geometry/polygon.hpp
       title: geometry/polygon.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: geometry/polygon_area.hpp
       title: geometry/polygon_area.hpp
     - icon: ':heavy_check_mark:'
@@ -377,7 +377,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_cgl/aoj_cgl_4_b.test.cpp
       title: verify/aoj_cgl/aoj_cgl_4_b.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
       title: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
     - icon: ':heavy_check_mark:'
