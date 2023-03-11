@@ -11,6 +11,9 @@ data:
     path: geometry/circumscribed_circle.hpp
     title: geometry/circumscribed_circle.hpp
   - icon: ':heavy_check_mark:'
+    path: geometry/closest_pair.hpp
+    title: "\u6700\u8FD1\u70B9\u5BFE"
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_cut.hpp
     title: geometry/convex_polygon_cut.hpp
   - icon: ':heavy_check_mark:'
@@ -37,6 +40,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/distance_ss.hpp
     title: geometry/distance_ss.hpp
+  - icon: ':warning:'
+    path: geometry/farthest_pair.hpp
+    title: "\u6700\u9060\u70B9\u5BFE"
   - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: geometry/geometry_template.hpp
@@ -114,11 +120,12 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/geometry_template.hpp\"\n\n// template\nusing Double\
-    \ = double;\nconst Double EPS = 1e-8;\nconst Double PI = std::acos(Double(-1));\n\
-    inline int sign(const Double &x) { return x <= -EPS ? -1 : (x >= EPS ? 1 : 0);\
-    \ }\ninline bool equal(const Double &a, const Double &b) { return sign(a - b)\
-    \ == 0; }\ninline Double radian_to_degree(const Double &r) { return r * 180.0\
-    \ / PI; }\ninline Double degree_to_radian(const Double &d) { return d * PI / 180.0;\
+    \ = double;    // double or long double\nconst Double EPS = 1e-8;  // change the\
+    \ value depending on the problem\nconst Double PI = std::acos(Double(-1));\ninline\
+    \ int sign(const Double &x) { return x <= -EPS ? -1 : (x >= EPS ? 1 : 0); }\n\
+    inline bool equal(const Double &a, const Double &b) { return sign(a - b) == 0;\
+    \ }\ninline Double radian_to_degree(const Double &r) { return r * 180.0 / PI;\
+    \ }\ninline Double degree_to_radian(const Double &d) { return d * PI / 180.0;\
     \ }\n#line 3 \"geometry/all.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n#line 4\
     \ \"geometry/point.hpp\"\n\n// point\nusing Point = std::complex<Double>;\nstd::istream\
     \ &operator>>(std::istream &is, Point &p) {\n    Double x, y;\n    is >> x >>\
@@ -379,7 +386,47 @@ data:
     \        if (s1 * s2 < 0) {\n            // don't use \"<=\", use \"<\" to exclude\
     \ endpoints\n            auto pc = cross_point_ll(Line(p[n - 1], p[0]), l);\n\
     \            pl.push_back(pc);\n            pr.push_back(pc);\n        }\n   \
-    \ }\n    return {pl, pr};\n}\n#line 44 \"geometry/all.hpp\"\n"
+    \ }\n    return {pl, pr};\n}\n#line 44 \"geometry/all.hpp\"\n\n#line 2 \"geometry/closest_pair.hpp\"\
+    \n\n#line 4 \"geometry/closest_pair.hpp\"\n\n// closest pair\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_5_A\n\
+    // return {index1, index2, distance}\n// using divide-and-conquer algorithm\n\
+    // complexity: O(n \\log n) (n: the number of points)\nstd::tuple<int, int, Double>\
+    \ closest_pair(const std::vector<Point> &p) {\n    int n = int(p.size());\n  \
+    \  assert(n >= 2);\n    if (n == 2) {\n        return {0, 1, std::abs(p[0] - p[1])};\n\
+    \    }\n    // may not be efficient due to indirect references ...\n    std::vector<int>\
+    \ ind(n);\n    std::iota(ind.begin(), ind.end(), 0);\n    std::sort(ind.begin(),\
+    \ ind.end(), [&](int i, int j) { return compare_x(p[i], p[j]); });\n    auto divide_and_conquer\
+    \ = [&](auto f, int l, int r) -> std::tuple<int, int, Double> {\n        if (r\
+    \ - l <= 1) return {-1, -1, std::numeric_limits<Double>::max()};\n        int\
+    \ md = (l + r) / 2;\n        Double x = p[ind[md]].real();\n        // divide\
+    \ and conquer\n        auto [i1l, i2l, dl] = f(f, l, md);\n        auto [i1r,\
+    \ i2r, dr] = f(f, md, r);\n        int i1, i2;\n        Double d;\n        if\
+    \ (dl < dr) {\n            d = dl, i1 = i1l, i2 = i2l;\n        } else {\n   \
+    \         d = dr, i1 = i1r, i2 = i2r;\n        }\n        std::inplace_merge(ind.begin()\
+    \ + l, ind.begin() + md, ind.begin() + r, [&](int i, int j) { return compare_y(p[i],\
+    \ p[j]); });\n        // ind are sorted by y\n        std::vector<int> near_x;\
+    \  // index of vertices whose distance from the line x is less than d\n      \
+    \  for (int i = l; i < r; i++) {\n            if (sign(std::abs(p[ind[i]].real()\
+    \ - x) - d) >= 0) continue;  // std::abs(p[ind[i]].real() - x) >= d\n        \
+    \    int sz = int(near_x.size());\n            // iterate from the end until the\
+    \ distance in y-coordinates is greater than or equal to d\n            for (int\
+    \ j = sz - 1; j >= 0; j--) {\n                Point cp = p[ind[i]] - p[near_x[j]];\n\
+    \                if (sign(cp.imag() - d) >= 0) break;  // cp.imag() >= d\n   \
+    \             Double cd = std::abs(cp);\n                if (cd < d) {\n     \
+    \               d = cd, i1 = ind[i], i2 = near_x[j];\n                }\n    \
+    \        }\n            near_x.push_back(ind[i]);\n        }\n        return {i1,\
+    \ i2, d};\n    };\n    return divide_and_conquer(divide_and_conquer, 0, n);\n\
+    }\n#line 2 \"geometry/farthest_pair.hpp\"\n\n#line 5 \"geometry/farthest_pair.hpp\"\
+    \n\n// farthest pair\n// return {index1, index2, distance}\n// using monotone\
+    \ chain (convex hull) and convex polygon diameter\n// complexity: O(n \\log n)\
+    \ (n: the number of points)\nstd::tuple<int, int, Double> farthest_pair(const\
+    \ std::vector<Point> &p) {\n    int n = int(p.size());\n    assert(n >= 2);\n\
+    \    if (n == 2) {\n        return {0, 1, std::abs(p[0] - p[1])};\n    }\n   \
+    \ auto q = p;\n    auto ch = monotone_chain(q);                   // O(n \\log\
+    \ n)\n    auto [i, j, d] = convex_polygon_diameter(ch);  // O(|ch|)\n    int resi,\
+    \ resj;\n    for (int k = 0; k < n; k++) {\n        if (p[k] == ch[i]) {\n   \
+    \         resi = k;\n        }\n        if (p[k] == ch[j]) {\n            resj\
+    \ = k;\n        }\n    }\n    return {resi, resj, d};\n}\n#line 47 \"geometry/all.hpp\"\
+    \n"
   code: '#pragma once
 
     #include "geometry/geometry_template.hpp"
@@ -457,7 +504,14 @@ data:
 
     #include "geometry/convex_polygon_diameter.hpp"
 
-    #include "geometry/convex_polygon_cut.hpp"'
+    #include "geometry/convex_polygon_cut.hpp"
+
+
+    #include "geometry/closest_pair.hpp"
+
+    #include "geometry/farthest_pair.hpp"
+
+    '
   dependsOn:
   - geometry/geometry_template.hpp
   - geometry/point.hpp
@@ -494,10 +548,12 @@ data:
   - geometry/monotone_chain.hpp
   - geometry/convex_polygon_diameter.hpp
   - geometry/convex_polygon_cut.hpp
+  - geometry/closest_pair.hpp
+  - geometry/farthest_pair.hpp
   isVerificationFile: false
   path: geometry/all.hpp
   requiredBy: []
-  timestamp: '2023-03-05 01:44:59+09:00'
+  timestamp: '2023-03-12 06:40:52+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/all.hpp

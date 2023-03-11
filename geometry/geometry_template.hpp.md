@@ -184,9 +184,9 @@ data:
 
     // template
 
-    using Double = double;
+    using Double = double;    // double or long double
 
-    const Double EPS = 1e-8;
+    const Double EPS = 1e-8;  // change the value depending on the problem
 
     const Double PI = std::acos(Double(-1));
 
@@ -206,9 +206,9 @@ data:
 
     // template
 
-    using Double = double;
+    using Double = double;    // double or long double
 
-    const Double EPS = 1e-8;
+    const Double EPS = 1e-8;  // change the value depending on the problem
 
     const Double PI = std::acos(Double(-1));
 
@@ -262,7 +262,7 @@ data:
   - geometry/is_intersect_cp.hpp
   - geometry/distance_lp.hpp
   - geometry/distance_sp.hpp
-  timestamp: '2023-03-05 01:44:59+09:00'
+  timestamp: '2023-03-12 06:40:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
