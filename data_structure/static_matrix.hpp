@@ -3,17 +3,19 @@
 template <class T, size_t n, size_t m = n> struct StaticMatrix {
     std::array<std::array<T, m>, n> A;
 
+    // why "A{{}}" ?
+    // std::array<int, 5> arr3{1, 2}; -> arr3 = {1, 2, 0, 0, 0}
     StaticMatrix() : A{{}} {}
 
     StaticMatrix(T val) : A{{}} {
         for (int i = 0; i < (int)n; i++) A[i].fill(val);
     }
 
-    size_t size() const { return n; }
+    inline size_t size() const { return n; }
 
-    int row() const { return (int)n; }
+    inline int row() const { return (int)n; }
 
-    int col() const { return (int)m; }
+    inline int col() const { return (int)m; }
 
     inline const std::array<T, m> &operator[](int i) const { return A[i]; }  // read
 
@@ -28,7 +30,7 @@ template <class T, size_t n, size_t m = n> struct StaticMatrix {
 
     StaticMatrix &operator+=(const StaticMatrix &B) {
         int N = row(), M = col();
-        assert(N == B.row() && M == B.col());
+        assert(N == B.row() and M == B.col());
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
                 (*this)[i][j] += B[i][j];
@@ -39,7 +41,7 @@ template <class T, size_t n, size_t m = n> struct StaticMatrix {
 
     StaticMatrix &operator-=(const StaticMatrix &B) {
         int N = row(), M = col();
-        assert(N == B.row() && M == B.col());
+        assert(N == B.row() and M == B.col());
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
                 (*this)[i][j] -= B[i][j];
@@ -63,6 +65,7 @@ template <class T, size_t n, size_t m = n> struct StaticMatrix {
         return (*this);
     }
 
+    // A ^= k
     StaticMatrix pow(long long k) {
         assert(row() == col());
         StaticMatrix B = StaticMatrix::E(), X = (*this);

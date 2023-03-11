@@ -6,11 +6,11 @@ template <class T> struct Matrix {
     Matrix(int N) : A(N, std::vector<T>(N, T(0))) {}
     Matrix(int N, int M, T val = T(0)) : A(N, std::vector<T>(M, val)) {}
 
-    size_t size() const { return A.size(); }
+    inline size_t size() const { return A.size(); }
 
-    int row() const { return (int)A.size(); }
+    inline int row() const { return (int)A.size(); }
 
-    int col() const { return (int)A[0].size(); }
+    inline int col() const { return (int)A[0].size(); }
 
     inline const std::vector<T> &operator[](int i) const { return A[i]; }  // read
 
@@ -24,7 +24,7 @@ template <class T> struct Matrix {
 
     Matrix &operator+=(const Matrix &B) {
         int N = row(), M = col();
-        assert(N == B.row() && M == B.col());
+        assert(N == B.row() and M == B.col());
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
                 (*this)[i][j] += B[i][j];
@@ -35,7 +35,7 @@ template <class T> struct Matrix {
 
     Matrix &operator-=(const Matrix &B) {
         int N = row(), M = col();
-        assert(N == B.row() && M == B.col());
+        assert(N == B.row() and M == B.col());
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
                 (*this)[i][j] -= B[i][j];
@@ -59,13 +59,14 @@ template <class T> struct Matrix {
         return (*this);
     }
 
-    Matrix pow(long long n) {
+    // A ^= k
+    Matrix pow(long long k) {
         assert(row() == col());
         Matrix B = Matrix::E(row()), X = (*this);
-        while (n) {
-            if (n & 1) B *= X;
+        while (k) {
+            if (k & 1) B *= X;
             X *= X;
-            n >>= 1;
+            k >>= 1;
         }
         A.swap(B.A);
         return (*this);
