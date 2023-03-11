@@ -21,7 +21,7 @@ void mo(const int &n, const std::vector<int> &l, const std::vector<int> &r,     
         if (lbs[i] != lbs[j]) return l[i] < l[j];
         return (lbs[i] & 1) ? r[i] > r[j] : r[i] < r[j];
     });
-    int now_l = 0, now_r = 0;
+    int now_l = l[ind[0]], now_r = now_l;
     for (auto &&i : ind) {
         while (now_l > l[i]) add_left(--now_l);
         while (now_r < r[i]) add_right(now_r++);
