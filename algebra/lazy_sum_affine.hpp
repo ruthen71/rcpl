@@ -1,5 +1,6 @@
 #pragma once
 
+// https://atcoder.jp/contests/practice2/tasks/practice2_k
 template <class T> struct LazySumAffine {
     using S = std::pair<T, int>;
     using F = std::pair<T, T>;  // a * x + b -> {a, b}
