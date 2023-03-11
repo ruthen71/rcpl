@@ -33,14 +33,14 @@ data:
     \ (int i = 0; i < q; i++) lbs[i] = l[i] / bucket_size;\n    std::iota(ind.begin(),\
     \ ind.end(), 0);\n    std::sort(ind.begin(), ind.end(), [&](int i, int j) {\n\
     \        if (lbs[i] != lbs[j]) return l[i] < l[j];\n        return (lbs[i] & 1)\
-    \ ? r[i] > r[j] : r[i] < r[j];\n    });\n    int now_l = 0, now_r = 0;\n    for\
-    \ (auto &&i : ind) {\n        while (now_l > l[i]) add_left(--now_l);\n      \
-    \  while (now_r < r[i]) add_right(now_r++);\n        while (now_l < l[i]) del_left(now_l++);\n\
-    \        while (now_r > r[i]) del_right(--now_r);\n        out(i);\n    }\n}\n\
-    \ntemplate <class Add, class Del, class Out>                                 \
-    \ //\nvoid mo(const int n, const std::vector<int> &l, const std::vector<int> &r,\
-    \  //\n        const Add &add, const Del &del, const Out &out) {\n    mo(n, l,\
-    \ r, add, add, del, del, out);\n}\n#line 2 \"data_structure/fenwick_tree.hpp\"\
+    \ ? r[i] > r[j] : r[i] < r[j];\n    });\n    int now_l = l[ind[0]], now_r = now_l;\n\
+    \    for (auto &&i : ind) {\n        while (now_l > l[i]) add_left(--now_l);\n\
+    \        while (now_r < r[i]) add_right(now_r++);\n        while (now_l < l[i])\
+    \ del_left(now_l++);\n        while (now_r > r[i]) del_right(--now_r);\n     \
+    \   out(i);\n    }\n}\n\ntemplate <class Add, class Del, class Out>          \
+    \                        //\nvoid mo(const int n, const std::vector<int> &l, const\
+    \ std::vector<int> &r,  //\n        const Add &add, const Del &del, const Out\
+    \ &out) {\n    mo(n, l, r, add, add, del, del, out);\n}\n#line 2 \"data_structure/fenwick_tree.hpp\"\
     \n\ntemplate <class T> struct FenwickTree {\n    int N;\n    std::vector<T> seg;\n\
     \    FenwickTree(int N) : N(N), seg(N + 1, 0) {}\n    FenwickTree(std::vector<T>\
     \ &A) {\n        N = (int)A.size();\n        seg.resize(N + 1);\n        for (int\
@@ -94,7 +94,7 @@ data:
   isVerificationFile: true
   path: verify/lc_data_structure/lc_static_range_inversions_query.test.cpp
   requiredBy: []
-  timestamp: '2023-03-12 06:20:03+09:00'
+  timestamp: '2023-03-12 07:07:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_data_structure/lc_static_range_inversions_query.test.cpp
