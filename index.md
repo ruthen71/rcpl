@@ -318,6 +318,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/totient_table.hpp
       title: math/totient_table.hpp
+  - name: misc
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: misc/mo.hpp
+      title: Mo's Algorithm
   - name: string
     pages:
     - icon: ':heavy_check_mark:'
@@ -490,6 +495,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
       title: verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/lc_data_structure/lc_static_range_inversions_query.test.cpp
+      title: verify/lc_data_structure/lc_static_range_inversions_query.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/lc_data_structure/lc_static_range_sum.test.cpp
       title: verify/lc_data_structure/lc_static_range_sum.test.cpp
