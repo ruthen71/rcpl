@@ -1,8 +1,8 @@
 #pragma once
 
 // template
-using Double = double;
-const Double EPS = 1e-8;
+using Double = double;    // double or long double
+const Double EPS = 1e-8;  // change the value depending on the problem
 const Double PI = std::acos(Double(-1));
 inline int sign(const Double &x) { return x <= -EPS ? -1 : (x >= EPS ? 1 : 0); }
 inline bool equal(const Double &a, const Double &b) { return sign(a - b) == 0; }

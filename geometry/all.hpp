@@ -41,3 +41,6 @@
 #include "geometry/monotone_chain.hpp"
 #include "geometry/convex_polygon_diameter.hpp"
 #include "geometry/convex_polygon_cut.hpp"
+
+#include "geometry/closest_pair.hpp"
+#include "geometry/farthest_pair.hpp"
