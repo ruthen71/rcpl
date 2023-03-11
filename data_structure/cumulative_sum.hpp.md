@@ -57,9 +57,9 @@ data:
   timestamp: '2023-02-06 23:12:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/lc_data_structure/lc_static_range_sum.test.cpp
   - verify/aoj_other/aoj_2286.test.cpp
   - verify/aoj_other/aoj_0360.test.cpp
-  - verify/lc_data_structure/lc_static_range_sum.test.cpp
 documentation_of: data_structure/cumulative_sum.hpp
 layout: document
 title: "\u7D2F\u7A4D\u548C"

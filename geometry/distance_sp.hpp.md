@@ -117,8 +117,8 @@ data:
   isVerificationFile: false
   path: geometry/distance_sp.hpp
   requiredBy:
-  - geometry/distance_ss.hpp
   - geometry/all.hpp
+  - geometry/distance_ss.hpp
   timestamp: '2023-03-05 01:44:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

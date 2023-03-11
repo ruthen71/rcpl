@@ -108,25 +108,25 @@ data:
   isVerificationFile: false
   path: geometry/circle.hpp
   requiredBy:
+  - geometry/all.hpp
+  - geometry/cross_point_cc.hpp
+  - geometry/tangent_point_cp.hpp
+  - geometry/is_intersect_cc.hpp
+  - geometry/tangent_number_cc.hpp
   - geometry/incircle.hpp
   - geometry/cross_point_cl.hpp
-  - geometry/tangent_point_cp.hpp
-  - geometry/is_intersect_cp.hpp
-  - geometry/circumscribed_circle.hpp
-  - geometry/tangent_number_cc.hpp
   - geometry/is_intersect_cl.hpp
-  - geometry/cross_point_cc.hpp
-  - geometry/is_intersect_cc.hpp
-  - geometry/all.hpp
+  - geometry/circumscribed_circle.hpp
+  - geometry/is_intersect_cp.hpp
   timestamp: '2023-03-05 01:44:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/aoj_cgl/aoj_cgl_7_f.test.cpp
   - verify/aoj_cgl/aoj_cgl_7_a.test.cpp
   - verify/aoj_cgl/aoj_cgl_7_d.test.cpp
-  - verify/aoj_cgl/aoj_cgl_7_c.test.cpp
-  - verify/aoj_cgl/aoj_cgl_7_f.test.cpp
-  - verify/aoj_cgl/aoj_cgl_7_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_7_e.test.cpp
+  - verify/aoj_cgl/aoj_cgl_7_b.test.cpp
+  - verify/aoj_cgl/aoj_cgl_7_c.test.cpp
 documentation_of: geometry/circle.hpp
 layout: document
 redirect_from:

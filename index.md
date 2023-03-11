@@ -10,6 +10,9 @@ data:
       path: algebra/dual_set.hpp
       title: algebra/dual_set.hpp
     - icon: ':warning:'
+      path: algebra/lazy_inversion_flip.hpp
+      title: algebra/lazy_inversion_flip.hpp
+    - icon: ':warning:'
       path: algebra/lazy_max_add.hpp
       title: algebra/lazy_max_add.hpp
     - icon: ':warning:'

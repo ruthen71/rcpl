@@ -107,8 +107,8 @@ data:
   isVerificationFile: false
   path: geometry/cross_point_cc.hpp
   requiredBy:
-  - geometry/tangent_point_cp.hpp
   - geometry/all.hpp
+  - geometry/tangent_point_cp.hpp
   timestamp: '2023-03-05 01:44:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

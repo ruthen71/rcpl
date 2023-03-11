@@ -114,9 +114,9 @@ data:
   isVerificationFile: false
   path: geometry/polygon_is_convex.hpp
   requiredBy:
-  - geometry/convex_polygon_diameter.hpp
   - geometry/farthest_pair.hpp
   - geometry/all.hpp
+  - geometry/convex_polygon_diameter.hpp
   timestamp: '2023-03-05 01:44:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

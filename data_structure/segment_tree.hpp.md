@@ -113,8 +113,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yuki/yuki_1036_segment_tree.test.cpp
-  - verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp
   - verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
+  - verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp
 documentation_of: data_structure/segment_tree.hpp
 layout: document
 title: "Segment Tree (\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
