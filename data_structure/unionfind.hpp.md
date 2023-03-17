@@ -43,8 +43,8 @@ data:
   timestamp: '2023-02-06 23:12:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/lc_data_structure/lc_unionfind.test.cpp
   - verify/aoj_grl/aoj_grl_2_a.test.cpp
+  - verify/lc_data_structure/lc_unionfind.test.cpp
 documentation_of: data_structure/unionfind.hpp
 layout: document
 title: UnionFind

@@ -106,14 +106,14 @@ data:
   path: geometry/distance_lp.hpp
   requiredBy:
   - geometry/all.hpp
+  - geometry/is_intersect_cl.hpp
   - geometry/incircle.hpp
   - geometry/cross_point_cl.hpp
-  - geometry/is_intersect_cl.hpp
   timestamp: '2023-03-12 06:40:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj_cgl/aoj_cgl_7_d.test.cpp
   - verify/aoj_cgl/aoj_cgl_7_b.test.cpp
+  - verify/aoj_cgl/aoj_cgl_7_d.test.cpp
 documentation_of: geometry/distance_lp.hpp
 layout: document
 redirect_from:

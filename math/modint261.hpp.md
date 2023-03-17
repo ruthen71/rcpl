@@ -69,8 +69,8 @@ data:
   isVerificationFile: false
   path: math/modint261.hpp
   requiredBy:
-  - algebra/monoid_rolling_hash.hpp
   - string/rolling_hash.hpp
+  - algebra/monoid_rolling_hash.hpp
   timestamp: '2023-02-06 23:12:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
