@@ -7,9 +7,9 @@
 
 int main() {
     auto ttt = totient_table(1000000);
-    CumulativeSum<long long> rui(1000001);
-    for (int i = 0; i <= 1000000; i++) rui.add(i, ttt[i]);
-    rui.build();
+    std::vector<long long> tl(ttt.size());
+    for (int i = 0; i < (int)ttt.size(); i++) tl[i] = ttt[i];
+    CumulativeSum<long long> rui(tl);
     int tt;
     std::cin >> tt;
     while (tt--) {

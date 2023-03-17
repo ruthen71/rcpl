@@ -7,7 +7,7 @@
 int main() {
     int a, b, N;
     std::cin >> a >> b >> N;
-    CumulativeSum<int> rui(1001);
+    CumulativeSum<int> rui(1000);
     for (int i = 0; i < N; i++) {
         int s, f;
         std::cin >> s >> f;
@@ -16,7 +16,7 @@ int main() {
     rui.build();
     bool ok = false;
     for (int i = a; i < b; i++) {
-        if (rui[i]) ok = true;
+        if (rui.get(i)) ok = true;
     }
     std::cout << ok << '\n';
     return 0;

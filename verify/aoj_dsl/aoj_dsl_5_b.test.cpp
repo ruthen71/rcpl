@@ -8,7 +8,7 @@ int main() {
     int N;
     std::cin >> N;
     int M = 1000;
-    CumulativeSum2D<int> rui(M + 1, M + 1);
+    CumulativeSum2D<int> rui(M, M);
     while (N--) {
         int x1, y1, x2, y2;
         std::cin >> x1 >> y1 >> x2 >> y2;
@@ -16,8 +16,11 @@ int main() {
     }
     rui.build();
     int ans = 0;
-    for (int i = 0; i < M; i++)
-        for (int j = 0; j < M; j++) ans = std::max(ans, rui(i, j));
+    for (int i = 0; i < M; i++) {
+        for (int j = 0; j < M; j++) {
+            ans = std::max(ans, rui.get(i, j));
+        }
+    }
     std::cout << ans << '\n';
     return 0;
 }

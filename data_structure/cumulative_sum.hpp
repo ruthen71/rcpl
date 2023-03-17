@@ -1,52 +1,46 @@
 #pragma once
 
 template <class T> struct CumulativeSum {
+    int n;
     std::vector<T> seg;
-    int _n;
 
-    CumulativeSum(int _n) : _n(_n), seg(_n + 1, 0) {}
-    CumulativeSum(std::vector<T> &A) {
-        _n = (int)A.size();
-        seg.assign(_n + 1, T(0));
-        for (int i = 0; i < _n; i++) seg[i + 1] = seg[i] + A[i];
+    CumulativeSum() = default;
+
+    CumulativeSum(int n) : n(n), seg(n + 1, T(0)) {}
+
+    CumulativeSum(std::vector<T> &a) {
+        n = (int)a.size();
+        seg.assign(n + 1, T(0));
+        for (int i = 0; i < n; i++) seg[i + 1] = seg[i] + a[i];
     }
 
     // [l, r)
     T sum(int l, int r) const {
-        assert(0 <= l and l <= r and r <= _n);
+        assert(0 <= l and l <= r and r <= n);
         return seg[r] - seg[l];
-    }
-
-    // A[p] = x
-    void set(int p, T x) {
-        assert(0 <= p and p < _n);
-        seg[p + 1] = x;
-    }
-
-    // A[p] += x
-    void add(int p, T x) {
-        assert(0 <= p and p < _n);
-        seg[p + 1] += x;
     }
 
     // A[l] += x, A[l + 1] += x, ... , A[r - 1] += x
     void imos(int l, int r, T x = T(1)) {
-        add(l, x);
-        add(r, -x);
+        assert(0 <= l and l <= r and r <= n);
+        seg[l] += x;
+        seg[r] -= x;
     }
 
     void build() {
-        for (int i = 0; i < _n; i++) seg[i + 1] += seg[i];
+        for (int i = 0; i < n; i++) seg[i + 1] += seg[i];
     }
 
-    T operator[](int p) const {
-        assert(0 <= p and p < _n);
-        return seg[p + 1];
+    // return A[p]
+    T get(int p) const {
+        assert(0 <= p and p < n);
+        return seg[p];
     }
 
     // output
     friend std::ostream &operator<<(std::ostream &os, const CumulativeSum &A) {
-        for (int i = 0; i <= A._n; i++) os << A.seg[i] << " \n"[i == A._n];
+        os << "n = " << A.n << "\n";
+        for (int i = 0; i <= A.n; i++) os << A.seg[i] << " \n"[i == A.n];
         return os;
     }
 };
