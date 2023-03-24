@@ -2,6 +2,8 @@
 
 #include "graph/graph_template.hpp"
 
+// Euler Tour
+// complexity: O(N + M)
 // N = 5
 // edges = [{0, 1}, {0, 2}, {2, 3}, {2, 4}]
 //   0
@@ -23,7 +25,7 @@ euler_tour(Graph<T> &G, int root = 0) {
     int n = (int)G.size();
     std::vector<int> vertices, edges;
     std::vector<std::pair<int, int>> vertex_id(n), edge_id(n - 1);
-    vertices.reserve(2 * (n - 1));
+    vertices.reserve(2 * n - 1);
     edges.reserve(2 * (n - 1));
 
     auto dfs = [&](auto f, int cur, int par) -> void {
