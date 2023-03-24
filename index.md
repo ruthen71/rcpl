@@ -254,7 +254,7 @@ data:
       title: "Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
     - icon: ':warning:'
       path: graph/euler_tour.hpp
-      title: graph/euler_tour.hpp
+      title: "Euler Tour (\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
     - icon: ':heavy_check_mark:'
       path: graph/get_edges.hpp
       title: graph/get_edges.hpp
