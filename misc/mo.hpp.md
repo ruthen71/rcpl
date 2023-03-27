@@ -19,19 +19,21 @@ data:
     void mo(const int &n, const std::vector<int> &l, const std::vector<int> &r,  \
     \       //\n        const AddLeft &add_left, const AddRight &add_right,      \
     \                   //\n        const DelLeft &del_left, const DelRight &del_right,\
-    \ const Out &out) {\n    const int q = (int)l.size();\n    // normal\n    // const\
-    \ int bucket_size = n / std::min(n, (int)sqrt(q));\n    // speed up by https://nyaannyaan.github.io/library/misc/mo.hpp\n\
-    \    const int bucket_size = n / std::min(n, (int)sqrt(2.0 * q / 3.0));\n    std::vector<int>\
-    \ ind(q), lbs(q);\n    // reduce the number of divisions by memoization\n    for\
-    \ (int i = 0; i < q; i++) lbs[i] = l[i] / bucket_size;\n    std::iota(ind.begin(),\
-    \ ind.end(), 0);\n    std::sort(ind.begin(), ind.end(), [&](int i, int j) {\n\
-    \        if (lbs[i] != lbs[j]) return l[i] < l[j];\n        return (lbs[i] & 1)\
-    \ ? r[i] > r[j] : r[i] < r[j];\n    });\n    int now_l = l[ind[0]], now_r = now_l;\n\
-    \    for (auto &&i : ind) {\n        while (now_l > l[i]) add_left(--now_l);\n\
+    \ const Out &out) {\n    const int q = (int)l.size();\n    if (q == 0) return;\n\
+    \    // normal\n    // const int bucket_size = std::max(1.0, n / std::max(1.0,\
+    \ sqrt(q)));\n    // speed up by https://nyaannyaan.github.io/library/misc/mo.hpp\n\
+    \    const int bucket_size = std::max(1.0, n / std::max(1.0, sqrt(2.0 * q / 3.0)));\n\
+    \    std::vector<int> ind(q), lbs(q);\n    // reduce the number of divisions by\
+    \ memoization\n    for (int i = 0; i < q; i++) lbs[i] = l[i] / bucket_size;\n\
+    \    std::iota(ind.begin(), ind.end(), 0);\n    std::sort(ind.begin(), ind.end(),\
+    \ [&](int i, int j) {\n        if (lbs[i] != lbs[j]) return l[i] < l[j];\n   \
+    \     return (lbs[i] & 1) ? r[i] > r[j] : r[i] < r[j];\n    });\n    // initialize\
+    \ with [ l[ind[0]], l[ind[0]] ) instead of [0, 0)\n    int now_l = l[ind[0]],\
+    \ now_r = now_l;\n    for (auto &&i : ind) {\n        while (now_l > l[i]) add_left(--now_l);\n\
     \        while (now_r < r[i]) add_right(now_r++);\n        while (now_l < l[i])\
     \ del_left(now_l++);\n        while (now_r > r[i]) del_right(--now_r);\n     \
-    \   out(i);\n    }\n}\n\ntemplate <class Add, class Del, class Out>          \
-    \                        //\nvoid mo(const int n, const std::vector<int> &l, const\
+    \   out(i);\n    }\n}\ntemplate <class Add, class Del, class Out>            \
+    \                      //\nvoid mo(const int n, const std::vector<int> &l, const\
     \ std::vector<int> &r,  //\n        const Add &add, const Del &del, const Out\
     \ &out) {\n    mo(n, l, r, add, add, del, del, out);\n}\n"
   code: "#pragma once\n\n// Mo's Algorithm\n// https://snuke.hatenablog.com/entry/2016/07/01/000000\n\
@@ -40,26 +42,28 @@ data:
     void mo(const int &n, const std::vector<int> &l, const std::vector<int> &r,  \
     \       //\n        const AddLeft &add_left, const AddRight &add_right,      \
     \                   //\n        const DelLeft &del_left, const DelRight &del_right,\
-    \ const Out &out) {\n    const int q = (int)l.size();\n    // normal\n    // const\
-    \ int bucket_size = n / std::min(n, (int)sqrt(q));\n    // speed up by https://nyaannyaan.github.io/library/misc/mo.hpp\n\
-    \    const int bucket_size = n / std::min(n, (int)sqrt(2.0 * q / 3.0));\n    std::vector<int>\
-    \ ind(q), lbs(q);\n    // reduce the number of divisions by memoization\n    for\
-    \ (int i = 0; i < q; i++) lbs[i] = l[i] / bucket_size;\n    std::iota(ind.begin(),\
-    \ ind.end(), 0);\n    std::sort(ind.begin(), ind.end(), [&](int i, int j) {\n\
-    \        if (lbs[i] != lbs[j]) return l[i] < l[j];\n        return (lbs[i] & 1)\
-    \ ? r[i] > r[j] : r[i] < r[j];\n    });\n    int now_l = l[ind[0]], now_r = now_l;\n\
-    \    for (auto &&i : ind) {\n        while (now_l > l[i]) add_left(--now_l);\n\
+    \ const Out &out) {\n    const int q = (int)l.size();\n    if (q == 0) return;\n\
+    \    // normal\n    // const int bucket_size = std::max(1.0, n / std::max(1.0,\
+    \ sqrt(q)));\n    // speed up by https://nyaannyaan.github.io/library/misc/mo.hpp\n\
+    \    const int bucket_size = std::max(1.0, n / std::max(1.0, sqrt(2.0 * q / 3.0)));\n\
+    \    std::vector<int> ind(q), lbs(q);\n    // reduce the number of divisions by\
+    \ memoization\n    for (int i = 0; i < q; i++) lbs[i] = l[i] / bucket_size;\n\
+    \    std::iota(ind.begin(), ind.end(), 0);\n    std::sort(ind.begin(), ind.end(),\
+    \ [&](int i, int j) {\n        if (lbs[i] != lbs[j]) return l[i] < l[j];\n   \
+    \     return (lbs[i] & 1) ? r[i] > r[j] : r[i] < r[j];\n    });\n    // initialize\
+    \ with [ l[ind[0]], l[ind[0]] ) instead of [0, 0)\n    int now_l = l[ind[0]],\
+    \ now_r = now_l;\n    for (auto &&i : ind) {\n        while (now_l > l[i]) add_left(--now_l);\n\
     \        while (now_r < r[i]) add_right(now_r++);\n        while (now_l < l[i])\
     \ del_left(now_l++);\n        while (now_r > r[i]) del_right(--now_r);\n     \
-    \   out(i);\n    }\n}\n\ntemplate <class Add, class Del, class Out>          \
-    \                        //\nvoid mo(const int n, const std::vector<int> &l, const\
+    \   out(i);\n    }\n}\ntemplate <class Add, class Del, class Out>            \
+    \                      //\nvoid mo(const int n, const std::vector<int> &l, const\
     \ std::vector<int> &r,  //\n        const Add &add, const Del &del, const Out\
     \ &out) {\n    mo(n, l, r, add, add, del, del, out);\n}"
   dependsOn: []
   isVerificationFile: false
   path: misc/mo.hpp
   requiredBy: []
-  timestamp: '2023-03-12 07:07:21+09:00'
+  timestamp: '2023-03-28 00:22:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_data_structure/lc_static_range_inversions_query.test.cpp

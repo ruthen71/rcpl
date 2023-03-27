@@ -26,44 +26,45 @@ data:
     \ const std::vector<int> &l, const std::vector<int> &r,         //\n        const\
     \ AddLeft &add_left, const AddRight &add_right,                         //\n \
     \       const DelLeft &del_left, const DelRight &del_right, const Out &out) {\n\
-    \    const int q = (int)l.size();\n    // normal\n    // const int bucket_size\
-    \ = n / std::min(n, (int)sqrt(q));\n    // speed up by https://nyaannyaan.github.io/library/misc/mo.hpp\n\
-    \    const int bucket_size = n / std::min(n, (int)sqrt(2.0 * q / 3.0));\n    std::vector<int>\
+    \    const int q = (int)l.size();\n    if (q == 0) return;\n    // normal\n  \
+    \  // const int bucket_size = std::max(1.0, n / std::max(1.0, sqrt(q)));\n   \
+    \ // speed up by https://nyaannyaan.github.io/library/misc/mo.hpp\n    const int\
+    \ bucket_size = std::max(1.0, n / std::max(1.0, sqrt(2.0 * q / 3.0)));\n    std::vector<int>\
     \ ind(q), lbs(q);\n    // reduce the number of divisions by memoization\n    for\
     \ (int i = 0; i < q; i++) lbs[i] = l[i] / bucket_size;\n    std::iota(ind.begin(),\
     \ ind.end(), 0);\n    std::sort(ind.begin(), ind.end(), [&](int i, int j) {\n\
     \        if (lbs[i] != lbs[j]) return l[i] < l[j];\n        return (lbs[i] & 1)\
-    \ ? r[i] > r[j] : r[i] < r[j];\n    });\n    int now_l = l[ind[0]], now_r = now_l;\n\
-    \    for (auto &&i : ind) {\n        while (now_l > l[i]) add_left(--now_l);\n\
-    \        while (now_r < r[i]) add_right(now_r++);\n        while (now_l < l[i])\
-    \ del_left(now_l++);\n        while (now_r > r[i]) del_right(--now_r);\n     \
-    \   out(i);\n    }\n}\n\ntemplate <class Add, class Del, class Out>          \
-    \                        //\nvoid mo(const int n, const std::vector<int> &l, const\
-    \ std::vector<int> &r,  //\n        const Add &add, const Del &del, const Out\
-    \ &out) {\n    mo(n, l, r, add, add, del, del, out);\n}\n#line 2 \"data_structure/fenwick_tree.hpp\"\
-    \n\ntemplate <class T> struct FenwickTree {\n    int N;\n    std::vector<T> seg;\n\
-    \    FenwickTree(int N) : N(N), seg(N + 1, 0) {}\n    FenwickTree(std::vector<T>\
-    \ &A) {\n        N = (int)A.size();\n        seg.resize(N + 1);\n        for (int\
-    \ i = 0; i < N; i++) add(i, A[i]);\n    }\n    // A[i] += x\n    void add(int\
-    \ i, T x) {\n        assert(0 <= i and i < N);\n        i++;  // 1-indexed\n \
-    \       while (i <= N) {\n            seg[i] += x;\n            i += i & -i;\n\
-    \        }\n    }\n    // A[0] + ... + A[i - 1]\n    T sum(int i) const {\n  \
-    \      assert(0 <= i and i <= N);\n        T s = 0;\n        while (i > 0) {\n\
-    \            s += seg[i];\n            i -= i & -i;\n        }\n        return\
-    \ s;\n    }\n    // A[a] + ... + A[b - 1]\n    T sum(int a, int b) const {\n \
-    \       assert(0 <= a and a <= b and b <= N);\n        return sum(b) - sum(a);\n\
-    \    }\n\n    // output\n    friend std::ostream &operator<<(std::ostream &os,\
-    \ const FenwickTree &A) {\n        for (int i = 0; i < A.N; i++) os << A.sum(i,\
-    \ i + 1) << \" \\n\"[i == A.N - 1];\n        return os;\n    }\n};\n#line 7 \"\
-    verify/lc_data_structure/lc_static_range_inversions_query.test.cpp\"\n\nint main()\
-    \ {\n    int N, Q;\n    std::cin >> N >> Q;\n    std::vector<int> A(N);\n    for\
-    \ (int i = 0; i < N; i++) std::cin >> A[i];\n    std::vector<int> L(Q), R(Q);\n\
-    \    for (int i = 0; i < Q; i++) std::cin >> L[i] >> R[i];\n\n    auto B = A;\n\
-    \    std::sort(B.begin(), B.end());\n    B.erase(std::unique(B.begin(), B.end()),\
-    \ B.end());\n    for (auto &&e : A) e = std::lower_bound(B.begin(), B.end(), e)\
-    \ - B.begin();\n\n    const int M = (int)B.size();\n    FenwickTree<long long>\
-    \ fen(M);\n    std::vector<long long> ans(Q);\n    long long cur = 0;\n    auto\
-    \ add_left = [&](int i) {\n        cur += fen.sum(A[i]);\n        fen.add(A[i],\
+    \ ? r[i] > r[j] : r[i] < r[j];\n    });\n    // initialize with [ l[ind[0]], l[ind[0]]\
+    \ ) instead of [0, 0)\n    int now_l = l[ind[0]], now_r = now_l;\n    for (auto\
+    \ &&i : ind) {\n        while (now_l > l[i]) add_left(--now_l);\n        while\
+    \ (now_r < r[i]) add_right(now_r++);\n        while (now_l < l[i]) del_left(now_l++);\n\
+    \        while (now_r > r[i]) del_right(--now_r);\n        out(i);\n    }\n}\n\
+    template <class Add, class Del, class Out>                                  //\n\
+    void mo(const int n, const std::vector<int> &l, const std::vector<int> &r,  //\n\
+    \        const Add &add, const Del &del, const Out &out) {\n    mo(n, l, r, add,\
+    \ add, del, del, out);\n}\n#line 2 \"data_structure/fenwick_tree.hpp\"\n\ntemplate\
+    \ <class T> struct FenwickTree {\n    int N;\n    std::vector<T> seg;\n    FenwickTree(int\
+    \ N) : N(N), seg(N + 1, 0) {}\n    FenwickTree(std::vector<T> &A) {\n        N\
+    \ = (int)A.size();\n        seg.resize(N + 1);\n        for (int i = 0; i < N;\
+    \ i++) add(i, A[i]);\n    }\n    // A[i] += x\n    void add(int i, T x) {\n  \
+    \      assert(0 <= i and i < N);\n        i++;  // 1-indexed\n        while (i\
+    \ <= N) {\n            seg[i] += x;\n            i += i & -i;\n        }\n   \
+    \ }\n    // A[0] + ... + A[i - 1]\n    T sum(int i) const {\n        assert(0\
+    \ <= i and i <= N);\n        T s = 0;\n        while (i > 0) {\n            s\
+    \ += seg[i];\n            i -= i & -i;\n        }\n        return s;\n    }\n\
+    \    // A[a] + ... + A[b - 1]\n    T sum(int a, int b) const {\n        assert(0\
+    \ <= a and a <= b and b <= N);\n        return sum(b) - sum(a);\n    }\n\n   \
+    \ // output\n    friend std::ostream &operator<<(std::ostream &os, const FenwickTree\
+    \ &A) {\n        for (int i = 0; i < A.N; i++) os << A.sum(i, i + 1) << \" \\\
+    n\"[i == A.N - 1];\n        return os;\n    }\n};\n#line 7 \"verify/lc_data_structure/lc_static_range_inversions_query.test.cpp\"\
+    \n\nint main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    std::vector<int>\
+    \ A(N);\n    for (int i = 0; i < N; i++) std::cin >> A[i];\n    std::vector<int>\
+    \ L(Q), R(Q);\n    for (int i = 0; i < Q; i++) std::cin >> L[i] >> R[i];\n\n \
+    \   auto B = A;\n    std::sort(B.begin(), B.end());\n    B.erase(std::unique(B.begin(),\
+    \ B.end()), B.end());\n    for (auto &&e : A) e = std::lower_bound(B.begin(),\
+    \ B.end(), e) - B.begin();\n\n    const int M = (int)B.size();\n    FenwickTree<long\
+    \ long> fen(M);\n    std::vector<long long> ans(Q);\n    long long cur = 0;\n\
+    \    auto add_left = [&](int i) {\n        cur += fen.sum(A[i]);\n        fen.add(A[i],\
     \ 1);\n    };\n    auto add_right = [&](int i) {\n        cur += fen.sum(A[i]\
     \ + 1, M);\n        fen.add(A[i], 1);\n    };\n    auto del_left = [&](int i)\
     \ {\n        cur -= fen.sum(A[i]);\n        fen.add(A[i], -1);\n    };\n    auto\
@@ -94,7 +95,7 @@ data:
   isVerificationFile: true
   path: verify/lc_data_structure/lc_static_range_inversions_query.test.cpp
   requiredBy: []
-  timestamp: '2023-03-12 07:07:21+09:00'
+  timestamp: '2023-03-28 00:22:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_data_structure/lc_static_range_inversions_query.test.cpp
