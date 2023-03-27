@@ -9,10 +9,11 @@ void mo(const int &n, const std::vector<int> &l, const std::vector<int> &r,     
         const AddLeft &add_left, const AddRight &add_right,                         //
         const DelLeft &del_left, const DelRight &del_right, const Out &out) {
     const int q = (int)l.size();
+    if (q == 0) return;
     // normal
-    // const int bucket_size = n / std::min(n, (int)sqrt(q));
+    // const int bucket_size = std::max(1.0, n / std::max(1.0, sqrt(q)));
     // speed up by https://nyaannyaan.github.io/library/misc/mo.hpp
-    const int bucket_size = n / std::min(n, (int)sqrt(2.0 * q / 3.0));
+    const int bucket_size = std::max(1.0, n / std::max(1.0, sqrt(2.0 * q / 3.0)));
     std::vector<int> ind(q), lbs(q);
     // reduce the number of divisions by memoization
     for (int i = 0; i < q; i++) lbs[i] = l[i] / bucket_size;
@@ -21,6 +22,7 @@ void mo(const int &n, const std::vector<int> &l, const std::vector<int> &r,     
         if (lbs[i] != lbs[j]) return l[i] < l[j];
         return (lbs[i] & 1) ? r[i] > r[j] : r[i] < r[j];
     });
+    // initialize with [ l[ind[0]], l[ind[0]] ) instead of [0, 0)
     int now_l = l[ind[0]], now_r = now_l;
     for (auto &&i : ind) {
         while (now_l > l[i]) add_left(--now_l);
@@ -30,7 +32,6 @@ void mo(const int &n, const std::vector<int> &l, const std::vector<int> &r,     
         out(i);
     }
 }
-
 template <class Add, class Del, class Out>                                  //
 void mo(const int n, const std::vector<int> &l, const std::vector<int> &r,  //
         const Add &add, const Del &del, const Out &out) {
