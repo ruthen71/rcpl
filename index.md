@@ -323,6 +323,9 @@ data:
       title: math/totient_table.hpp
   - name: misc
     pages:
+    - icon: ':warning:'
+      path: misc/custom_hash.hpp
+      title: misc/custom_hash.hpp
     - icon: ':heavy_check_mark:'
       path: misc/mo.hpp
       title: Mo's Algorithm
