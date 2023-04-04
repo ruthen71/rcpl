@@ -11,7 +11,7 @@ int main() {
     std::vector<Point> P(N);
     for (int i = 0; i < N; i++) std::cin >> P[i];
     auto [i, j, d] = closest_pair(P);
-    assert(equal(d, std::abs(P[i] - P[j])));
-    std::cout << std::fixed << std::setprecision(15) << std::abs(P[i] - P[j]) << '\n';
+    assert(equal(d, abs(P[i] - P[j])));
+    std::cout << std::fixed << std::setprecision(15) << abs(P[i] - P[j]) << '\n';
     return 0;
 }

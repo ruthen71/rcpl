@@ -18,6 +18,6 @@ int main() {
     }
     std::rotate(res.begin(), res.begin() + minidx, res.end());
     std::cout << res.size() << '\n';
-    for (int i = 0; i < res.size(); i++) std::cout << std::fixed << std::setprecision(0) << res[i].real() << ' ' << res[i].imag() << '\n';
+    for (int i = 0; i < res.size(); i++) std::cout << std::fixed << std::setprecision(0) << res[i].x << ' ' << res[i].y << '\n';
     return 0;
 }
