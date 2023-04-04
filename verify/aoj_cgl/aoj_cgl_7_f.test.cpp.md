@@ -1,32 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point_cc.hpp
     title: geometry/cross_point_cc.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: geometry/geometry_template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/is_intersect_cc.hpp
     title: geometry/is_intersect_cc.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: geometry/point.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/tangent_number_cc.hpp
     title: geometry/tangent_number_cc.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/tangent_point_cp.hpp
     title: geometry/tangent_point_cp.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: '0.00001'
@@ -117,7 +117,7 @@ data:
     \ {p, q};\n}\n#line 4 \"geometry/tangent_point_cp.hpp\"\n\n// tangent point (circle\
     \ and point)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_F\n\
     std::pair<Point, Point> tangent_point_cp(const Circle &c, const Point &p) {\n\
-    \    assert(sign(std::abs(c.o - p) - c.r) == 1);\n    auto res = cross_point_cc(c,\
+    \    assert(sign(abs(c.o - p) - c.r) == 1);\n    auto res = cross_point_cc(c,\
     \ Circle(p, sqrt(norm(c.o - p) - norm(c.r))));\n    return {res[0], res[1]};\n\
     }\n#line 7 \"verify/aoj_cgl/aoj_cgl_7_f.test.cpp\"\n\nint main() {\n    Point\
     \ P;\n    Circle C;\n    std::cin >> P >> C;\n    auto [p, q] = tangent_point_cp(C,\
@@ -139,8 +139,8 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_7_f.test.cpp
   requiredBy: []
-  timestamp: '2023-04-04 18:39:50+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-04-04 18:52:35+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_7_f.test.cpp
 layout: document

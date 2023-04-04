@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point_cc.hpp
     title: geometry/cross_point_cc.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: geometry/geometry_template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/is_intersect_cc.hpp
     title: geometry/is_intersect_cc.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: geometry/point.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/tangent_number_cc.hpp
     title: geometry/tangent_number_cc.hpp
   _extendedRequiredBy:
@@ -24,12 +24,12 @@ data:
     path: geometry/all.hpp
     title: geometry/all.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_f.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_f.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_F
@@ -115,13 +115,13 @@ data:
     \ {p, q};\n}\n#line 4 \"geometry/tangent_point_cp.hpp\"\n\n// tangent point (circle\
     \ and point)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_F\n\
     std::pair<Point, Point> tangent_point_cp(const Circle &c, const Point &p) {\n\
-    \    assert(sign(std::abs(c.o - p) - c.r) == 1);\n    auto res = cross_point_cc(c,\
+    \    assert(sign(abs(c.o - p) - c.r) == 1);\n    auto res = cross_point_cc(c,\
     \ Circle(p, sqrt(norm(c.o - p) - norm(c.r))));\n    return {res[0], res[1]};\n\
     }\n"
   code: "#pragma once\n\n#include \"geometry/cross_point_cc.hpp\"\n\n// tangent point\
     \ (circle and point)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_F\n\
     std::pair<Point, Point> tangent_point_cp(const Circle &c, const Point &p) {\n\
-    \    assert(sign(std::abs(c.o - p) - c.r) == 1);\n    auto res = cross_point_cc(c,\
+    \    assert(sign(abs(c.o - p) - c.r) == 1);\n    auto res = cross_point_cc(c,\
     \ Circle(p, sqrt(norm(c.o - p) - norm(c.r))));\n    return {res[0], res[1]};\n\
     }"
   dependsOn:
@@ -135,8 +135,8 @@ data:
   path: geometry/tangent_point_cp.hpp
   requiredBy:
   - geometry/all.hpp
-  timestamp: '2023-04-04 18:39:50+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-04-04 18:52:35+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_7_f.test.cpp
 documentation_of: geometry/tangent_point_cp.hpp

@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/closest_pair.hpp
     title: "\u6700\u8FD1\u70B9\u5BFE"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: geometry/geometry_template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: geometry/point.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: '0.000001'
@@ -105,15 +105,15 @@ data:
     \  };\n    return divide_and_conquer(divide_and_conquer, 0, n);\n}\n#line 7 \"\
     verify/aoj_cgl/aoj_cgl_5_a.test.cpp\"\n\nint main() {\n    int N;\n    std::cin\
     \ >> N;\n    std::vector<Point> P(N);\n    for (int i = 0; i < N; i++) std::cin\
-    \ >> P[i];\n    auto [i, j, d] = closest_pair(P);\n    assert(equal(d, std::abs(P[i]\
-    \ - P[j])));\n    std::cout << std::fixed << std::setprecision(15) << std::abs(P[i]\
+    \ >> P[i];\n    auto [i, j, d] = closest_pair(P);\n    assert(equal(d, abs(P[i]\
+    \ - P[j])));\n    std::cout << std::fixed << std::setprecision(15) << abs(P[i]\
     \ - P[j]) << '\\n';\n    return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_5_A\"\
     \n#define ERROR 0.000001\n\n#include <bits/stdc++.h>\n\n#include \"geometry/closest_pair.hpp\"\
     \n\nint main() {\n    int N;\n    std::cin >> N;\n    std::vector<Point> P(N);\n\
     \    for (int i = 0; i < N; i++) std::cin >> P[i];\n    auto [i, j, d] = closest_pair(P);\n\
-    \    assert(equal(d, std::abs(P[i] - P[j])));\n    std::cout << std::fixed <<\
-    \ std::setprecision(15) << std::abs(P[i] - P[j]) << '\\n';\n    return 0;\n}"
+    \    assert(equal(d, abs(P[i] - P[j])));\n    std::cout << std::fixed << std::setprecision(15)\
+    \ << abs(P[i] - P[j]) << '\\n';\n    return 0;\n}"
   dependsOn:
   - geometry/closest_pair.hpp
   - geometry/point.hpp
@@ -121,8 +121,8 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_5_a.test.cpp
   requiredBy: []
-  timestamp: '2023-04-04 18:39:50+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-04-04 18:52:35+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_5_a.test.cpp
 layout: document

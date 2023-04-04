@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/ccw.hpp
     title: geometry/ccw.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: geometry/geometry_template.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/monotone_chain.hpp
     title: geometry/monotone_chain.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: geometry/point.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A
@@ -122,7 +122,7 @@ data:
     \ {\n            minidx = i;\n        }\n    }\n    std::rotate(res.begin(), res.begin()\
     \ + minidx, res.end());\n    std::cout << res.size() << '\\n';\n    for (int i\
     \ = 0; i < res.size(); i++) std::cout << std::fixed << std::setprecision(0) <<\
-    \ res[i].real() << ' ' << res[i].imag() << '\\n';\n    return 0;\n}\n"
+    \ res[i].x << ' ' << res[i].y << '\\n';\n    return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A\"\
     \n\n#include <bits/stdc++.h>\n\n#include \"geometry/monotone_chain.hpp\"\n\nint\
     \ main() {\n    int N;\n    std::cin >> N;\n    Polygon P(N);\n    std::cin >>\
@@ -131,7 +131,7 @@ data:
     \            minidx = i;\n        }\n    }\n    std::rotate(res.begin(), res.begin()\
     \ + minidx, res.end());\n    std::cout << res.size() << '\\n';\n    for (int i\
     \ = 0; i < res.size(); i++) std::cout << std::fixed << std::setprecision(0) <<\
-    \ res[i].real() << ' ' << res[i].imag() << '\\n';\n    return 0;\n}"
+    \ res[i].x << ' ' << res[i].y << '\\n';\n    return 0;\n}"
   dependsOn:
   - geometry/monotone_chain.hpp
   - geometry/polygon.hpp
@@ -141,8 +141,8 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_4_a.test.cpp
   requiredBy: []
-  timestamp: '2023-04-04 18:39:50+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-04-04 18:52:35+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_4_a.test.cpp
 layout: document
