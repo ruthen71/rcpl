@@ -14,6 +14,6 @@ int ccw(const Point &a, Point b, Point c) {
     if (sign(cross(b, c)) == 1) return COUNTER_CLOCKWISE;
     if (sign(cross(b, c)) == -1) return CLOCKWISE;
     if (sign(dot(b, c)) == -1) return ONLINE_BACK;
-    if (std::norm(b) < std::norm(c)) return ONLINE_FRONT;
+    if (norm(b) < norm(c)) return ONLINE_FRONT;
     return ON_SEGMENT;
 }

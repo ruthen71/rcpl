@@ -9,6 +9,6 @@
 Circle circumscribed_circle(const Point &a, const Point &b, const Point &c) {
     Line l1((a + b) / 2, (a + b) / 2 + rotate(b - a, PI / 2)), l2((b + c) / 2, (b + c) / 2 + rotate(c - b, PI / 2));
     auto o = cross_point_ll(l1, l2);
-    auto r = std::abs(o - a);
+    auto r = abs(o - a);
     return Circle(o, r);
 }

@@ -4,4 +4,4 @@
 #include "geometry/circle.hpp"
 
 // intersection (circle and line)
-inline bool is_intersect_cl(const Circle &c, const Line &l) { return sign(c.r - distance_lp(l, c.o)) >= 0; }
+inline bool is_intersect_cl(const Circle &c, const Line &l) { return sign(c.r * c.r - distance2_lp(l, c.o)) >= 0; }
