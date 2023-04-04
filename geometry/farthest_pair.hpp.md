@@ -1,25 +1,25 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/ccw.hpp
     title: geometry/ccw.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/convex_polygon_diameter.hpp
     title: geometry/convex_polygon_diameter.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/geometry_template.hpp
     title: geometry/geometry_template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/monotone_chain.hpp
     title: geometry/monotone_chain.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/point.hpp
     title: geometry/point.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/polygon_is_convex.hpp
     title: geometry/polygon_is_convex.hpp
   _extendedRequiredBy:
@@ -34,52 +34,69 @@ data:
     links: []
   bundledCode: "#line 2 \"geometry/farthest_pair.hpp\"\n\n#line 2 \"geometry/monotone_chain.hpp\"\
     \n\n#line 2 \"geometry/polygon.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n#line\
-    \ 2 \"geometry/geometry_template.hpp\"\n\n// template\nusing Double = double;\
-    \    // double or long double\nconst Double EPS = 1e-8;  // change the value depending\
-    \ on the problem\nconst Double PI = std::acos(Double(-1));\ninline int sign(const\
-    \ Double &x) { return x <= -EPS ? -1 : (x >= EPS ? 1 : 0); }\ninline bool equal(const\
-    \ Double &a, const Double &b) { return sign(a - b) == 0; }\ninline Double radian_to_degree(const\
-    \ Double &r) { return r * 180.0 / PI; }\ninline Double degree_to_radian(const\
-    \ Double &d) { return d * PI / 180.0; }\nconstexpr int IN = 2;\nconstexpr int\
-    \ ON = 1;\nconstexpr int OUT = 0;\n#line 4 \"geometry/point.hpp\"\n\n// point\n\
-    using Point = std::complex<Double>;\nstd::istream &operator>>(std::istream &is,\
-    \ Point &p) {\n    Double x, y;\n    is >> x >> y;\n    p = Point(x, y);\n   \
-    \ return is;\n}\nstd::ostream &operator<<(std::ostream &os, const Point &p) {\n\
-    \    os << std::fixed << std::setprecision(15);\n    return os << p.real() <<\
-    \ ' ' << p.imag();\n}\n\n// for std::set, std::map, ...\nnamespace std {\ninline\
-    \ bool operator<(const Point &a, const Point &b) { return a.real() != b.real()\
-    \ ? a.real() < b.real() : a.imag() < b.imag(); }\n}  // namespace std\n\ninline\
-    \ Point operator*(const Point &p, const Double &k) { return Point(p.real() * k,\
-    \ p.imag() * k); }\ninline Point operator/(const Point &p, const Double &k) {\
-    \ return Point(p.real() / k, p.imag() / k); }\n// equal (point and point)\ninline\
-    \ bool equal(const Point &a, const Point &b) { return equal(a.real(), b.real())\
-    \ and equal(a.imag(), b.imag()); }\n// inner product\ninline Double dot(const\
-    \ Point &a, const Point &b) { return a.real() * b.real() + a.imag() * b.imag();\
-    \ }\n// outer product\ninline Double cross(const Point &a, const Point &b) { return\
-    \ a.real() * b.imag() - a.imag() * b.real(); }\n// rotate Point p counterclockwise\
-    \ by theta radian\ninline Point rotate(const Point &p, const Double &theta) {\
-    \ return p * Point(cos(theta), sin(theta)); }\n// compare (x, y)\ninline bool\
-    \ compare_x(const Point &a, const Point &b) { return equal(a.real(), b.real())\
-    \ ? sign(a.imag() - b.imag()) < 0 : sign(a.real() - b.real()) < 0; }\n// compare\
-    \ (y, x)\ninline bool compare_y(const Point &a, const Point &b) { return equal(a.imag(),\
-    \ b.imag()) ? sign(a.real() - b.real()) < 0 : sign(a.imag() - b.imag()) < 0; }\n\
-    // compare by arg\ninline bool compare_arg(const Point &a, const Point &b) {\n\
-    \    // https://ngtkana.hatenablog.com/entry/2021/11/13/202103\n    return (Point(0,\
-    \ 0) < a) == (Point(0, 0) < b) ? a.real() * b.imag() > a.imag() * b.real() : a\
-    \ < b;\n}\n#line 4 \"geometry/polygon.hpp\"\n\n// polygon\nusing Polygon = std::vector<Point>;\n\
-    std::istream &operator>>(std::istream &is, Polygon &p) {\n    for (auto &&pi :\
-    \ p) is >> pi;\n    return is;\n}\nstd::ostream &operator<<(std::ostream &os,\
-    \ const Polygon &p) {\n    for (auto &&pi : p) os << pi << \" -> \";\n    return\
-    \ os;\n}\n#line 2 \"geometry/ccw.hpp\"\n\n#line 4 \"geometry/ccw.hpp\"\n\n// counter\
-    \ clockwise\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C\n\
+    \ 2 \"geometry/geometry_template.hpp\"\n\n// template\nusing Double = double;\n\
+    const Double EPS = 1e-8;\n// using Double = long double;\n// const Double EPS\
+    \ = 1e-10;\n// using Double = long long;\n// const Double EPS = 0;\n// using Double\
+    \ = __int128_t;\n// const Double EPS = 0;\nconst Double PI = std::acos(Double(-1));\n\
+    inline int sign(const Double &x) { return x <= -EPS ? -1 : (x >= EPS ? 1 : 0);\
+    \ }\ninline bool equal(const Double &a, const Double &b) { return sign(a - b)\
+    \ == 0; }\ninline Double radian_to_degree(const Double &r) { return r * 180.0\
+    \ / PI; }\ninline Double degree_to_radian(const Double &d) { return d * PI / 180.0;\
+    \ }\nconstexpr int IN = 2;\nconstexpr int ON = 1;\nconstexpr int OUT = 0;\n#line\
+    \ 4 \"geometry/point.hpp\"\n\n// point\nstruct Point {\n    Double x, y;\n   \
+    \ Point(const Double x = Double(0), const Double y = Double(0)) : x(x), y(y) {}\n\
+    \    Point &operator+=(const Point &p) {\n        x += p.x;\n        y += p.y;\n\
+    \        return *this;\n    }\n    Point &operator-=(const Point &p) {\n     \
+    \   x -= p.x;\n        y -= p.y;\n        return *this;\n    }\n    Point &operator*=(const\
+    \ Point &p) { return *this = Point(x * p.x - y * p.y, x * p.y + y * p.x); }\n\
+    \    Point &operator*=(const Double &k) {\n        x *= k;\n        y *= k;\n\
+    \        return *this;\n    }\n    Point &operator/=(const Point &p) { return\
+    \ *this = Point(x * p.x + y * p.y, -x * p.y + y * p.x) / norm(p); }\n    Point\
+    \ &operator/=(const Double &k) {\n        x /= k;\n        y /= k;\n        return\
+    \ *this;\n    }\n\n    Point operator+() const { return *this; }\n    Point operator-()\
+    \ const { return Point(-x, -y); }\n\n    friend Point operator+(const Point &a,\
+    \ const Point &b) { return Point(a) += b; }\n    friend Point operator-(const\
+    \ Point &a, const Point &b) { return Point(a) -= b; }\n    friend Point operator*(const\
+    \ Point &a, const Point &b) { return Point(a) *= b; }\n    friend Point operator*(const\
+    \ Point &p, const Double &k) { return Point(p) *= k; }\n    friend Point operator/(const\
+    \ Point &a, const Point &b) { return Point(a) /= b; }\n    friend Point operator/(const\
+    \ Point &p, const Double &k) { return Point(p) /= k; }\n};\n\n// using Point =\
+    \ std::complex<Double>;\nstd::istream &operator>>(std::istream &is, Point &p)\
+    \ { return is >> p.x >> p.y; }\nstd::ostream &operator<<(std::ostream &os, const\
+    \ Point &p) { return os << std::fixed << std::setprecision(15) << p.x << ' ' <<\
+    \ p.y; }\n\n// for std::set, std::map, compare_arg, ...\nnamespace std {\ninline\
+    \ bool operator<(const Point &a, const Point &b) { return a.x != b.x ? a.x < b.x\
+    \ : a.y < b.y; }\n}  // namespace std\n\n// equal (point and point)\ninline bool\
+    \ equal(const Point &a, const Point &b) { return equal(a.x, b.x) and equal(a.y,\
+    \ b.y); }\n// inner product\ninline Double dot(const Point &a, const Point &b)\
+    \ { return a.x * b.x + a.y * b.y; }\n// outer product\ninline Double cross(const\
+    \ Point &a, const Point &b) { return a.x * b.y - a.y * b.x; }\n// rotate Point\
+    \ p counterclockwise by theta radian\ninline Point rotate(const Point &p, const\
+    \ Double &theta) { return p * Point(cos(theta), sin(theta)); }\n// compare (x,\
+    \ y)\ninline bool compare_x(const Point &a, const Point &b) { return equal(a.x,\
+    \ b.x) ? sign(a.y - b.y) < 0 : sign(a.x - b.x) < 0; }\n// compare (y, x)\ninline\
+    \ bool compare_y(const Point &a, const Point &b) { return equal(a.y, b.y) ? sign(a.x\
+    \ - b.x) < 0 : sign(a.y - b.y) < 0; }\n// compare by arg (start from 90.0000000001~)\n\
+    inline bool compare_arg(const Point &a, const Point &b) {\n    // https://ngtkana.hatenablog.com/entry/2021/11/13/202103\n\
+    \    return (Point(0, 0) < a) == (Point(0, 0) < b) ? a.x * b.y > a.y * b.x : a\
+    \ < b;\n}\n// |p| ^ 2\ninline Double norm(const Point &p) { return p.x * p.x +\
+    \ p.y * p.y; }\n// |p|\ninline Double abs(const Point &p) { return sqrt(norm(p));\
+    \ }\n// arg\ninline Double arg(const Point &p) { return std::atan2(p.y, p.x);\
+    \ }\n// polar\ninline Point polar(const Double &rho, const Double &theta = Double(0))\
+    \ { return rotate(Point(rho, 0), theta); }\n#line 4 \"geometry/polygon.hpp\"\n\
+    \n// polygon\nusing Polygon = std::vector<Point>;\nstd::istream &operator>>(std::istream\
+    \ &is, Polygon &p) {\n    for (auto &&pi : p) is >> pi;\n    return is;\n}\nstd::ostream\
+    \ &operator<<(std::ostream &os, const Polygon &p) {\n    for (auto &&pi : p) os\
+    \ << pi << \" -> \";\n    return os;\n}\n#line 2 \"geometry/ccw.hpp\"\n\n#line\
+    \ 4 \"geometry/ccw.hpp\"\n\n// counter clockwise\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C\n\
     constexpr int COUNTER_CLOCKWISE = 1;  // a-b-c counter clockwise\nconstexpr int\
     \ CLOCKWISE = -1;         // a-b-c clockwise\nconstexpr int ONLINE_BACK = 2; \
     \       // c-a-b line\nconstexpr int ONLINE_FRONT = -2;      // a-b-c line\nconstexpr\
     \ int ON_SEGMENT = 0;         // a-c-b line\nint ccw(const Point &a, Point b,\
     \ Point c) {\n    b = b - a, c = c - a;\n    if (sign(cross(b, c)) == 1) return\
     \ COUNTER_CLOCKWISE;\n    if (sign(cross(b, c)) == -1) return CLOCKWISE;\n   \
-    \ if (sign(dot(b, c)) == -1) return ONLINE_BACK;\n    if (std::norm(b) < std::norm(c))\
-    \ return ONLINE_FRONT;\n    return ON_SEGMENT;\n}\n#line 5 \"geometry/monotone_chain.hpp\"\
+    \ if (sign(dot(b, c)) == -1) return ONLINE_BACK;\n    if (norm(b) < norm(c)) return\
+    \ ONLINE_FRONT;\n    return ON_SEGMENT;\n}\n#line 5 \"geometry/monotone_chain.hpp\"\
     \n\n// convex hull (Andrew's monotone chain convex hull algorithm)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A\n\
     // sort (x, y) by lexicographical order, use stack, calculate upper convex hull\
     \ and lower convex hull\n// counter clockwise order\n// assume the return value\
@@ -122,27 +139,26 @@ data:
     \ (https://en.wikipedia.org/wiki/Rotating_calipers)\n// complexity: O(n)\nstd::tuple<int,\
     \ int, Double> convex_polygon_diameter(const Polygon &p) {\n    assert(polygon_is_convex(p));\n\
     \    int n = (int)p.size();\n    assert(n >= 2);\n    if (n == 2) {\n        return\
-    \ {0, 1, std::abs(p[0] - p[1])};\n    }\n    auto [it_min, it_max] = std::minmax_element(p.begin(),\
+    \ {0, 1, abs(p[0] - p[1])};\n    }\n    auto [it_min, it_max] = std::minmax_element(p.begin(),\
     \ p.end(), compare_x);\n    int idx_min = it_min - p.begin();\n    int idx_max\
-    \ = it_max - p.begin();\n\n    Double maxdis = std::norm(p[idx_max] - p[idx_min]);\n\
+    \ = it_max - p.begin();\n\n    Double maxdis = norm(p[idx_max] - p[idx_min]);\n\
     \    int maxi = idx_min, i = idx_min, maxj = idx_max, j = idx_max;\n    do {\n\
     \        int ni = (i + 1 == n ? 0 : i + 1), nj = (j + 1 == n ? 0 : j + 1);\n \
     \       if (sign(cross(p[ni] - p[i], p[nj] - p[j])) < 0) {\n            i = ni;\n\
-    \        } else {\n            j = nj;\n        }\n        if (std::norm(p[i]\
-    \ - p[j]) > maxdis) {\n            maxdis = std::norm(p[i] - p[j]);\n        \
-    \    maxi = i;\n            maxj = j;\n        }\n    } while (i != idx_min ||\
-    \ j != idx_max);\n    return {maxi, maxj, std::abs(p[maxi] - p[maxj])};\n}\n#line\
-    \ 5 \"geometry/farthest_pair.hpp\"\n\n// farthest pair\n// return {index1, index2,\
-    \ distance}\n// using monotone chain (convex hull) and convex polygon diameter\n\
-    // complexity: O(n \\log n) (n: the number of points)\nstd::tuple<int, int, Double>\
-    \ farthest_pair(const std::vector<Point> &p) {\n    int n = int(p.size());\n \
-    \   assert(n >= 2);\n    if (n == 2) {\n        return {0, 1, std::abs(p[0] -\
-    \ p[1])};\n    }\n    auto q = p;\n    auto ch = monotone_chain(q);          \
-    \         // O(n \\log n)\n    auto [i, j, d] = convex_polygon_diameter(ch); \
-    \ // O(|ch|)\n    int resi, resj;\n    for (int k = 0; k < n; k++) {\n       \
-    \ if (p[k] == ch[i]) {\n            resi = k;\n        }\n        if (p[k] ==\
-    \ ch[j]) {\n            resj = k;\n        }\n    }\n    return {resi, resj, d};\n\
-    }\n"
+    \        } else {\n            j = nj;\n        }\n        if (norm(p[i] - p[j])\
+    \ > maxdis) {\n            maxdis = norm(p[i] - p[j]);\n            maxi = i;\n\
+    \            maxj = j;\n        }\n    } while (i != idx_min || j != idx_max);\n\
+    \    return {maxi, maxj, abs(p[maxi] - p[maxj])};\n}\n#line 5 \"geometry/farthest_pair.hpp\"\
+    \n\n// farthest pair\n// return {index1, index2, distance}\n// using monotone\
+    \ chain (convex hull) and convex polygon diameter\n// complexity: O(n \\log n)\
+    \ (n: the number of points)\nstd::tuple<int, int, Double> farthest_pair(const\
+    \ std::vector<Point> &p) {\n    int n = int(p.size());\n    assert(n >= 2);\n\
+    \    if (n == 2) {\n        return {0, 1, std::abs(p[0] - p[1])};\n    }\n   \
+    \ auto q = p;\n    auto ch = monotone_chain(q);                   // O(n \\log\
+    \ n)\n    auto [i, j, d] = convex_polygon_diameter(ch);  // O(|ch|)\n    int resi,\
+    \ resj;\n    for (int k = 0; k < n; k++) {\n        if (p[k] == ch[i]) {\n   \
+    \         resi = k;\n        }\n        if (p[k] == ch[j]) {\n            resj\
+    \ = k;\n        }\n    }\n    return {resi, resj, d};\n}\n"
   code: "#pragma once\n\n#include \"geometry/monotone_chain.hpp\"\n#include \"geometry/convex_polygon_diameter.hpp\"\
     \n\n// farthest pair\n// return {index1, index2, distance}\n// using monotone\
     \ chain (convex hull) and convex polygon diameter\n// complexity: O(n \\log n)\
@@ -166,7 +182,7 @@ data:
   path: geometry/farthest_pair.hpp
   requiredBy:
   - geometry/all.hpp
-  timestamp: '2023-04-04 15:57:49+09:00'
+  timestamp: '2023-04-04 18:27:06+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/farthest_pair.hpp
