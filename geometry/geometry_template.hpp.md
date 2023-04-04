@@ -200,6 +200,12 @@ data:
 
     inline Double degree_to_radian(const Double &d) { return d * PI / 180.0; }
 
+    constexpr int IN = 2;
+
+    constexpr int ON = 1;
+
+    constexpr int OUT = 0;
+
     '
   code: '#pragma once
 
@@ -220,7 +226,13 @@ data:
 
     inline Double radian_to_degree(const Double &r) { return r * 180.0 / PI; }
 
-    inline Double degree_to_radian(const Double &d) { return d * PI / 180.0; }'
+    inline Double degree_to_radian(const Double &d) { return d * PI / 180.0; }
+
+    constexpr int IN = 2;
+
+    constexpr int ON = 1;
+
+    constexpr int OUT = 0;'
   dependsOn: []
   isVerificationFile: false
   path: geometry/geometry_template.hpp
@@ -262,7 +274,7 @@ data:
   - geometry/cross_point_cl.hpp
   - geometry/ccw.hpp
   - geometry/distance_lp.hpp
-  timestamp: '2023-03-12 06:40:52+09:00'
+  timestamp: '2023-04-04 15:57:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_7_b.test.cpp

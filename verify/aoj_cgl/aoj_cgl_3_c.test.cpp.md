@@ -45,33 +45,36 @@ data:
     \ ? -1 : (x >= EPS ? 1 : 0); }\ninline bool equal(const Double &a, const Double\
     \ &b) { return sign(a - b) == 0; }\ninline Double radian_to_degree(const Double\
     \ &r) { return r * 180.0 / PI; }\ninline Double degree_to_radian(const Double\
-    \ &d) { return d * PI / 180.0; }\n#line 4 \"geometry/point.hpp\"\n\n// point\n\
-    using Point = std::complex<Double>;\nstd::istream &operator>>(std::istream &is,\
-    \ Point &p) {\n    Double x, y;\n    is >> x >> y;\n    p = Point(x, y);\n   \
-    \ return is;\n}\nstd::ostream &operator<<(std::ostream &os, const Point &p) {\n\
-    \    os << std::fixed << std::setprecision(15);\n    return os << p.real() <<\
-    \ ' ' << p.imag();\n}\n\n// for std::set, std::map, ...\nnamespace std {\ninline\
-    \ bool operator<(const Point &a, const Point &b) { return a.real() != b.real()\
-    \ ? a.real() < b.real() : a.imag() < b.imag(); }\n}  // namespace std\n\ninline\
-    \ Point operator*(const Point &p, const Double &k) { return Point(p.real() * k,\
-    \ p.imag() * k); }\ninline Point operator/(const Point &p, const Double &k) {\
-    \ return Point(p.real() / k, p.imag() / k); }\n// equal (point and point)\ninline\
-    \ bool equal(const Point &a, const Point &b) { return equal(a.real(), b.real())\
-    \ and equal(a.imag(), b.imag()); }\n// inner product\ninline Double dot(const\
-    \ Point &a, const Point &b) { return a.real() * b.real() + a.imag() * b.imag();\
-    \ }\n// outer product\ninline Double cross(const Point &a, const Point &b) { return\
-    \ a.real() * b.imag() - a.imag() * b.real(); }\n// rotate Point p counterclockwise\
-    \ by theta radian\ninline Point rotate(const Point &p, const Double &theta) {\
-    \ return p * Point(cos(theta), sin(theta)); }\n// compare (x, y)\ninline bool\
-    \ compare_x(const Point &a, const Point &b) { return equal(a.real(), b.real())\
-    \ ? sign(a.imag() - b.imag()) < 0 : sign(a.real() - b.real()) < 0; }\n// compare\
-    \ (y, x)\ninline bool compare_y(const Point &a, const Point &b) { return equal(a.imag(),\
-    \ b.imag()) ? sign(a.real() - b.real()) < 0 : sign(a.imag() - b.imag()) < 0; }\n\
-    #line 4 \"geometry/polygon.hpp\"\n\n// polygon\nusing Polygon = std::vector<Point>;\n\
-    std::istream &operator>>(std::istream &is, Polygon &p) {\n    for (auto &&pi :\
-    \ p) is >> pi;\n    return is;\n}\nstd::ostream &operator<<(std::ostream &os,\
-    \ const Polygon &p) {\n    for (auto &&pi : p) os << pi << \" -> \";\n    return\
-    \ os;\n}\n#line 2 \"geometry/is_intersect_sp.hpp\"\n\n#line 2 \"geometry/segment.hpp\"\
+    \ &d) { return d * PI / 180.0; }\nconstexpr int IN = 2;\nconstexpr int ON = 1;\n\
+    constexpr int OUT = 0;\n#line 4 \"geometry/point.hpp\"\n\n// point\nusing Point\
+    \ = std::complex<Double>;\nstd::istream &operator>>(std::istream &is, Point &p)\
+    \ {\n    Double x, y;\n    is >> x >> y;\n    p = Point(x, y);\n    return is;\n\
+    }\nstd::ostream &operator<<(std::ostream &os, const Point &p) {\n    os << std::fixed\
+    \ << std::setprecision(15);\n    return os << p.real() << ' ' << p.imag();\n}\n\
+    \n// for std::set, std::map, ...\nnamespace std {\ninline bool operator<(const\
+    \ Point &a, const Point &b) { return a.real() != b.real() ? a.real() < b.real()\
+    \ : a.imag() < b.imag(); }\n}  // namespace std\n\ninline Point operator*(const\
+    \ Point &p, const Double &k) { return Point(p.real() * k, p.imag() * k); }\ninline\
+    \ Point operator/(const Point &p, const Double &k) { return Point(p.real() / k,\
+    \ p.imag() / k); }\n// equal (point and point)\ninline bool equal(const Point\
+    \ &a, const Point &b) { return equal(a.real(), b.real()) and equal(a.imag(), b.imag());\
+    \ }\n// inner product\ninline Double dot(const Point &a, const Point &b) { return\
+    \ a.real() * b.real() + a.imag() * b.imag(); }\n// outer product\ninline Double\
+    \ cross(const Point &a, const Point &b) { return a.real() * b.imag() - a.imag()\
+    \ * b.real(); }\n// rotate Point p counterclockwise by theta radian\ninline Point\
+    \ rotate(const Point &p, const Double &theta) { return p * Point(cos(theta), sin(theta));\
+    \ }\n// compare (x, y)\ninline bool compare_x(const Point &a, const Point &b)\
+    \ { return equal(a.real(), b.real()) ? sign(a.imag() - b.imag()) < 0 : sign(a.real()\
+    \ - b.real()) < 0; }\n// compare (y, x)\ninline bool compare_y(const Point &a,\
+    \ const Point &b) { return equal(a.imag(), b.imag()) ? sign(a.real() - b.real())\
+    \ < 0 : sign(a.imag() - b.imag()) < 0; }\n// compare by arg\ninline bool compare_arg(const\
+    \ Point &a, const Point &b) {\n    // https://ngtkana.hatenablog.com/entry/2021/11/13/202103\n\
+    \    return (Point(0, 0) < a) == (Point(0, 0) < b) ? a.real() * b.imag() > a.imag()\
+    \ * b.real() : a < b;\n}\n#line 4 \"geometry/polygon.hpp\"\n\n// polygon\nusing\
+    \ Polygon = std::vector<Point>;\nstd::istream &operator>>(std::istream &is, Polygon\
+    \ &p) {\n    for (auto &&pi : p) is >> pi;\n    return is;\n}\nstd::ostream &operator<<(std::ostream\
+    \ &os, const Polygon &p) {\n    for (auto &&pi : p) os << pi << \" -> \";\n  \
+    \  return os;\n}\n#line 2 \"geometry/is_intersect_sp.hpp\"\n\n#line 2 \"geometry/segment.hpp\"\
     \n\n#line 2 \"geometry/line.hpp\"\n\n#line 4 \"geometry/line.hpp\"\n\n// line\n\
     struct Line {\n    Point a, b;\n\n    Line() = default;\n\n    Line(const Point\
     \ &a, const Point &b) : a(a), b(b) {}\n\n    // Ax + By = C\n    Line(const Double\
@@ -97,23 +100,23 @@ data:
     \n\n// intersection (segment and point)\n// ccw(a, b, c) == ON_SEGMENT -> a -\
     \ c - b\ninline bool is_intersect_sp(const Segment &s, const Point &p) { return\
     \ ccw(s.a, s.b, p) == ON_SEGMENT or sign(std::abs(s.a - p)) == 0 or sign(std::abs(s.b\
-    \ - p)) == 0; }\n#line 5 \"geometry/polygon_contain.hpp\"\n\nconstexpr int IN\
-    \ = 2;\nconstexpr int ON = 1;\nconstexpr int OUT = 0;\n// polygon contain point\
-    \ -> 2 (IN)\n// polygon cross point -> 1 (ON)\n// otherwise -> 0 (OUT)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C\n\
-    int polygon_contain(const Polygon &q, const Point &p) {\n    bool x = false;\n\
-    \    int n = (int)q.size();\n    for (int i = 0; i < n - 1; i++) {\n        if\
-    \ (is_intersect_sp(Segment(q[i], q[i + 1]), p)) return ON;\n        Point a =\
-    \ q[i] - p, b = q[i + 1] - p;\n        if (a.imag() > b.imag()) std::swap(a, b);\n\
-    \        // a.y < b.y\n        // check each point's y is 0 at most 1 times\n\
-    \        if (sign(a.imag()) <= 0 and sign(b.imag()) > 0 and sign(cross(a, b))\
-    \ > 0) x = !x;\n    }\n    {\n        if (is_intersect_sp(Segment(q[n - 1], q[0]),\
-    \ p)) return ON;\n        Point a = q[n - 1] - p, b = q[0] - p;\n        if (a.imag()\
-    \ > b.imag()) std::swap(a, b);\n        if (sign(a.imag()) <= 0 and sign(b.imag())\
-    \ > 0 and sign(cross(a, b)) > 0) x = !x;\n    }\n    return (x ? IN : OUT);\n\
-    }\n#line 6 \"verify/aoj_cgl/aoj_cgl_3_c.test.cpp\"\n\nint main() {\n    int N;\n\
-    \    std::cin >> N;\n    Polygon P(N);\n    std::cin >> P;\n    int Q;\n    std::cin\
-    \ >> Q;\n    while (Q--) {\n        Point p;\n        std::cin >> p;\n       \
-    \ std::cout << polygon_contain(P, p) << '\\n';\n    }\n    return 0;\n}\n"
+    \ - p)) == 0; }\n#line 5 \"geometry/polygon_contain.hpp\"\n\n// polygon contain\
+    \ point -> 2 (IN)\n// polygon cross point -> 1 (ON)\n// otherwise -> 0 (OUT)\n\
+    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C\nint polygon_contain(const\
+    \ Polygon &q, const Point &p) {\n    bool x = false;\n    int n = (int)q.size();\n\
+    \    for (int i = 0; i < n - 1; i++) {\n        if (is_intersect_sp(Segment(q[i],\
+    \ q[i + 1]), p)) return ON;\n        Point a = q[i] - p, b = q[i + 1] - p;\n \
+    \       if (a.imag() > b.imag()) std::swap(a, b);\n        // a.y < b.y\n    \
+    \    // check each point's y is 0 at most 1 times\n        if (sign(a.imag())\
+    \ <= 0 and sign(b.imag()) > 0 and sign(cross(a, b)) > 0) x = !x;\n    }\n    {\n\
+    \        if (is_intersect_sp(Segment(q[n - 1], q[0]), p)) return ON;\n       \
+    \ Point a = q[n - 1] - p, b = q[0] - p;\n        if (a.imag() > b.imag()) std::swap(a,\
+    \ b);\n        if (sign(a.imag()) <= 0 and sign(b.imag()) > 0 and sign(cross(a,\
+    \ b)) > 0) x = !x;\n    }\n    return (x ? IN : OUT);\n}\n#line 6 \"verify/aoj_cgl/aoj_cgl_3_c.test.cpp\"\
+    \n\nint main() {\n    int N;\n    std::cin >> N;\n    Polygon P(N);\n    std::cin\
+    \ >> P;\n    int Q;\n    std::cin >> Q;\n    while (Q--) {\n        Point p;\n\
+    \        std::cin >> p;\n        std::cout << polygon_contain(P, p) << '\\n';\n\
+    \    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C\"\
     \n\n#include <bits/stdc++.h>\n\n#include \"geometry/polygon_contain.hpp\"\n\n\
     int main() {\n    int N;\n    std::cin >> N;\n    Polygon P(N);\n    std::cin\
@@ -132,7 +135,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
   requiredBy: []
-  timestamp: '2023-03-12 06:40:52+09:00'
+  timestamp: '2023-04-04 15:57:49+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_3_c.test.cpp

@@ -82,13 +82,14 @@ data:
     \ Double &x) { return x <= -EPS ? -1 : (x >= EPS ? 1 : 0); }\ninline bool equal(const\
     \ Double &a, const Double &b) { return sign(a - b) == 0; }\ninline Double radian_to_degree(const\
     \ Double &r) { return r * 180.0 / PI; }\ninline Double degree_to_radian(const\
-    \ Double &d) { return d * PI / 180.0; }\n#line 4 \"geometry/point.hpp\"\n\n//\
-    \ point\nusing Point = std::complex<Double>;\nstd::istream &operator>>(std::istream\
-    \ &is, Point &p) {\n    Double x, y;\n    is >> x >> y;\n    p = Point(x, y);\n\
-    \    return is;\n}\nstd::ostream &operator<<(std::ostream &os, const Point &p)\
-    \ {\n    os << std::fixed << std::setprecision(15);\n    return os << p.real()\
-    \ << ' ' << p.imag();\n}\n\n// for std::set, std::map, ...\nnamespace std {\n\
-    inline bool operator<(const Point &a, const Point &b) { return a.real() != b.real()\
+    \ Double &d) { return d * PI / 180.0; }\nconstexpr int IN = 2;\nconstexpr int\
+    \ ON = 1;\nconstexpr int OUT = 0;\n#line 4 \"geometry/point.hpp\"\n\n// point\n\
+    using Point = std::complex<Double>;\nstd::istream &operator>>(std::istream &is,\
+    \ Point &p) {\n    Double x, y;\n    is >> x >> y;\n    p = Point(x, y);\n   \
+    \ return is;\n}\nstd::ostream &operator<<(std::ostream &os, const Point &p) {\n\
+    \    os << std::fixed << std::setprecision(15);\n    return os << p.real() <<\
+    \ ' ' << p.imag();\n}\n\n// for std::set, std::map, ...\nnamespace std {\ninline\
+    \ bool operator<(const Point &a, const Point &b) { return a.real() != b.real()\
     \ ? a.real() < b.real() : a.imag() < b.imag(); }\n}  // namespace std\n\ninline\
     \ Point operator*(const Point &p, const Double &k) { return Point(p.real() * k,\
     \ p.imag() * k); }\ninline Point operator/(const Point &p, const Double &k) {\
@@ -104,7 +105,10 @@ data:
     \ ? sign(a.imag() - b.imag()) < 0 : sign(a.real() - b.real()) < 0; }\n// compare\
     \ (y, x)\ninline bool compare_y(const Point &a, const Point &b) { return equal(a.imag(),\
     \ b.imag()) ? sign(a.real() - b.real()) < 0 : sign(a.imag() - b.imag()) < 0; }\n\
-    #line 4 \"geometry/ccw.hpp\"\n\n// counter clockwise\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C\n\
+    // compare by arg\ninline bool compare_arg(const Point &a, const Point &b) {\n\
+    \    // https://ngtkana.hatenablog.com/entry/2021/11/13/202103\n    return (Point(0,\
+    \ 0) < a) == (Point(0, 0) < b) ? a.real() * b.imag() > a.imag() * b.real() : a\
+    \ < b;\n}\n#line 4 \"geometry/ccw.hpp\"\n\n// counter clockwise\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C\n\
     constexpr int COUNTER_CLOCKWISE = 1;  // a-b-c counter clockwise\nconstexpr int\
     \ CLOCKWISE = -1;         // a-b-c clockwise\nconstexpr int ONLINE_BACK = 2; \
     \       // c-a-b line\nconstexpr int ONLINE_FRONT = -2;      // a-b-c line\nconstexpr\
@@ -141,7 +145,7 @@ data:
   - geometry/is_intersect_lp.hpp
   - geometry/distance_sp.hpp
   - geometry/convex_polygon_diameter.hpp
-  timestamp: '2023-03-12 06:40:52+09:00'
+  timestamp: '2023-04-04 15:57:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_4_b.test.cpp
