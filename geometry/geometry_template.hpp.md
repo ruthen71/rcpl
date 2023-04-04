@@ -202,8 +202,7 @@ data:
 
     const Double PI = std::acos(Double(-1));
 
-    inline int sign(const Double &x) { return x <= -EPS ? -1 : (x >= EPS ? 1 : 0);
-    }
+    inline int sign(const Double &x) { return x < -EPS ? -1 : (x > EPS ? 1 : 0); }
 
     inline bool equal(const Double &a, const Double &b) { return sign(a - b) == 0;
     }
@@ -242,8 +241,7 @@ data:
 
     const Double PI = std::acos(Double(-1));
 
-    inline int sign(const Double &x) { return x <= -EPS ? -1 : (x >= EPS ? 1 : 0);
-    }
+    inline int sign(const Double &x) { return x < -EPS ? -1 : (x > EPS ? 1 : 0); }
 
     inline bool equal(const Double &a, const Double &b) { return sign(a - b) == 0;
     }
@@ -298,7 +296,7 @@ data:
   - geometry/cross_point_cl.hpp
   - geometry/ccw.hpp
   - geometry/distance_lp.hpp
-  timestamp: '2023-04-04 18:27:06+09:00'
+  timestamp: '2023-04-04 19:34:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_7_b.test.cpp

@@ -38,10 +38,10 @@ data:
     const Double EPS = 1e-8;\n// using Double = long double;\n// const Double EPS\
     \ = 1e-10;\n// using Double = long long;\n// const Double EPS = 0;\n// using Double\
     \ = __int128_t;\n// const Double EPS = 0;\nconst Double PI = std::acos(Double(-1));\n\
-    inline int sign(const Double &x) { return x <= -EPS ? -1 : (x >= EPS ? 1 : 0);\
-    \ }\ninline bool equal(const Double &a, const Double &b) { return sign(a - b)\
-    \ == 0; }\ninline Double radian_to_degree(const Double &r) { return r * 180.0\
-    \ / PI; }\ninline Double degree_to_radian(const Double &d) { return d * PI / 180.0;\
+    inline int sign(const Double &x) { return x < -EPS ? -1 : (x > EPS ? 1 : 0); }\n\
+    inline bool equal(const Double &a, const Double &b) { return sign(a - b) == 0;\
+    \ }\ninline Double radian_to_degree(const Double &r) { return r * 180.0 / PI;\
+    \ }\ninline Double degree_to_radian(const Double &d) { return d * PI / 180.0;\
     \ }\nconstexpr int IN = 2;\nconstexpr int ON = 1;\nconstexpr int OUT = 0;\n#line\
     \ 4 \"geometry/point.hpp\"\n\n// point\nstruct Point {\n    Double x, y;\n   \
     \ Point(const Double x = Double(0), const Double y = Double(0)) : x(x), y(y) {}\n\
@@ -182,7 +182,7 @@ data:
   path: geometry/farthest_pair.hpp
   requiredBy:
   - geometry/all.hpp
-  timestamp: '2023-04-04 18:39:50+09:00'
+  timestamp: '2023-04-04 19:34:48+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/farthest_pair.hpp
