@@ -22,7 +22,7 @@ struct Point {
         y *= k;
         return *this;
     }
-    Point &operator/=(const Point &p) { return *this = Point(x * p.x + y * p.y, -x * p.y + y * p.x) / norm(p); }
+    Point &operator/=(const Point &p) { return *this = Point(x * p.x + y * p.y, -x * p.y + y * p.x) / (p.x * p.x + p.y * p.y); }
     Point &operator/=(const Double &k) {
         x /= k;
         y /= k;
@@ -38,16 +38,13 @@ struct Point {
     friend Point operator*(const Point &p, const Double &k) { return Point(p) *= k; }
     friend Point operator/(const Point &a, const Point &b) { return Point(a) /= b; }
     friend Point operator/(const Point &p, const Double &k) { return Point(p) /= k; }
+    // for std::set, std::map, compare_arg, ...
+    friend bool operator<(const Point &a, const Point &b) { return a.x == b.x ? a.y < b.y : a.x < b.x; }
 };
 
 // using Point = std::complex<Double>;
 std::istream &operator>>(std::istream &is, Point &p) { return is >> p.x >> p.y; }
 std::ostream &operator<<(std::ostream &os, const Point &p) { return os << std::fixed << std::setprecision(15) << p.x << ' ' << p.y; }
-
-// for std::set, std::map, compare_arg, ...
-namespace std {
-inline bool operator<(const Point &a, const Point &b) { return a.x != b.x ? a.x < b.x : a.y < b.y; }
-}  // namespace std
 
 // equal (point and point)
 inline bool equal(const Point &a, const Point &b) { return equal(a.x, b.x) and equal(a.y, b.y); }
