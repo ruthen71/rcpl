@@ -1,57 +1,57 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: geometry/geometry_template.hpp
     title: geometry/geometry_template.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: geometry/point.hpp
     title: geometry/point.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
     path: geometry/all.hpp
     title: geometry/all.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/circumscribed_circle.hpp
     title: geometry/circumscribed_circle.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: geometry/cross_point_cc.hpp
     title: geometry/cross_point_cc.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point_cl.hpp
     title: geometry/cross_point_cl.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/incircle.hpp
     title: geometry/incircle.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: geometry/is_intersect_cc.hpp
     title: geometry/is_intersect_cc.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/is_intersect_cl.hpp
     title: geometry/is_intersect_cl.hpp
   - icon: ':warning:'
     path: geometry/is_intersect_cp.hpp
     title: geometry/is_intersect_cp.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: geometry/tangent_number_cc.hpp
     title: geometry/tangent_number_cc.hpp
   - icon: ':x:'
     path: geometry/tangent_point_cp.hpp
     title: geometry/tangent_point_cp.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_a.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_a.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_b.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_b.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_c.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_e.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_e.test.cpp
   - icon: ':x:'
@@ -59,7 +59,7 @@ data:
     title: verify/aoj_cgl/aoj_cgl_7_f.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/circle.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\
@@ -80,41 +80,41 @@ data:
     \ Point &p) { return *this = Point(x * p.x - y * p.y, x * p.y + y * p.x); }\n\
     \    Point &operator*=(const Double &k) {\n        x *= k;\n        y *= k;\n\
     \        return *this;\n    }\n    Point &operator/=(const Point &p) { return\
-    \ *this = Point(x * p.x + y * p.y, -x * p.y + y * p.x) / norm(p); }\n    Point\
-    \ &operator/=(const Double &k) {\n        x /= k;\n        y /= k;\n        return\
-    \ *this;\n    }\n\n    Point operator+() const { return *this; }\n    Point operator-()\
-    \ const { return Point(-x, -y); }\n\n    friend Point operator+(const Point &a,\
-    \ const Point &b) { return Point(a) += b; }\n    friend Point operator-(const\
+    \ *this = Point(x * p.x + y * p.y, -x * p.y + y * p.x) / (p.x * p.x + p.y * p.y);\
+    \ }\n    Point &operator/=(const Double &k) {\n        x /= k;\n        y /= k;\n\
+    \        return *this;\n    }\n\n    Point operator+() const { return *this; }\n\
+    \    Point operator-() const { return Point(-x, -y); }\n\n    friend Point operator+(const\
+    \ Point &a, const Point &b) { return Point(a) += b; }\n    friend Point operator-(const\
     \ Point &a, const Point &b) { return Point(a) -= b; }\n    friend Point operator*(const\
     \ Point &a, const Point &b) { return Point(a) *= b; }\n    friend Point operator*(const\
     \ Point &p, const Double &k) { return Point(p) *= k; }\n    friend Point operator/(const\
     \ Point &a, const Point &b) { return Point(a) /= b; }\n    friend Point operator/(const\
-    \ Point &p, const Double &k) { return Point(p) /= k; }\n};\n\n// using Point =\
-    \ std::complex<Double>;\nstd::istream &operator>>(std::istream &is, Point &p)\
-    \ { return is >> p.x >> p.y; }\nstd::ostream &operator<<(std::ostream &os, const\
-    \ Point &p) { return os << std::fixed << std::setprecision(15) << p.x << ' ' <<\
-    \ p.y; }\n\n// for std::set, std::map, compare_arg, ...\nnamespace std {\ninline\
-    \ bool operator<(const Point &a, const Point &b) { return a.x != b.x ? a.x < b.x\
-    \ : a.y < b.y; }\n}  // namespace std\n\n// equal (point and point)\ninline bool\
-    \ equal(const Point &a, const Point &b) { return equal(a.x, b.x) and equal(a.y,\
-    \ b.y); }\n// inner product\ninline Double dot(const Point &a, const Point &b)\
-    \ { return a.x * b.x + a.y * b.y; }\n// outer product\ninline Double cross(const\
-    \ Point &a, const Point &b) { return a.x * b.y - a.y * b.x; }\n// rotate Point\
-    \ p counterclockwise by theta radian\ninline Point rotate(const Point &p, const\
-    \ Double &theta) { return p * Point(cos(theta), sin(theta)); }\n// compare (x,\
-    \ y)\ninline bool compare_x(const Point &a, const Point &b) { return equal(a.x,\
-    \ b.x) ? sign(a.y - b.y) < 0 : sign(a.x - b.x) < 0; }\n// compare (y, x)\ninline\
-    \ bool compare_y(const Point &a, const Point &b) { return equal(a.y, b.y) ? sign(a.x\
-    \ - b.x) < 0 : sign(a.y - b.y) < 0; }\n// compare by arg (start from 90.0000000001~)\n\
-    inline bool compare_arg(const Point &a, const Point &b) {\n    // https://ngtkana.hatenablog.com/entry/2021/11/13/202103\n\
-    \    return (Point(0, 0) < a) == (Point(0, 0) < b) ? a.x * b.y > a.y * b.x : a\
-    \ < b;\n}\n// |p| ^ 2\ninline Double norm(const Point &p) { return p.x * p.x +\
-    \ p.y * p.y; }\n// |p|\ninline Double abs(const Point &p) { return sqrt(norm(p));\
-    \ }\n// arg\ninline Double arg(const Point &p) { return std::atan2(p.y, p.x);\
-    \ }\n// polar\ninline Point polar(const Double &rho, const Double &theta = Double(0))\
-    \ { return rotate(Point(rho, 0), theta); }\n#line 4 \"geometry/circle.hpp\"\n\n\
-    // circle\nstruct Circle {\n    Point o;\n    Double r;\n\n    Circle() = default;\n\
-    \n    Circle(const Point &o, const Double &r) : o(o), r(r) {}\n\n    friend std::ostream\
+    \ Point &p, const Double &k) { return Point(p) /= k; }\n    // for std::set, std::map,\
+    \ compare_arg, ...\n    friend bool operator<(const Point &a, const Point &b)\
+    \ { return a.x == b.x ? a.y < b.y : a.x < b.x; }\n};\n\n// using Point = std::complex<Double>;\n\
+    std::istream &operator>>(std::istream &is, Point &p) { return is >> p.x >> p.y;\
+    \ }\nstd::ostream &operator<<(std::ostream &os, const Point &p) { return os <<\
+    \ std::fixed << std::setprecision(15) << p.x << ' ' << p.y; }\n\n// equal (point\
+    \ and point)\ninline bool equal(const Point &a, const Point &b) { return equal(a.x,\
+    \ b.x) and equal(a.y, b.y); }\n// inner product\ninline Double dot(const Point\
+    \ &a, const Point &b) { return a.x * b.x + a.y * b.y; }\n// outer product\ninline\
+    \ Double cross(const Point &a, const Point &b) { return a.x * b.y - a.y * b.x;\
+    \ }\n// rotate Point p counterclockwise by theta radian\ninline Point rotate(const\
+    \ Point &p, const Double &theta) { return p * Point(cos(theta), sin(theta)); }\n\
+    // compare (x, y)\ninline bool compare_x(const Point &a, const Point &b) { return\
+    \ equal(a.x, b.x) ? sign(a.y - b.y) < 0 : sign(a.x - b.x) < 0; }\n// compare (y,\
+    \ x)\ninline bool compare_y(const Point &a, const Point &b) { return equal(a.y,\
+    \ b.y) ? sign(a.x - b.x) < 0 : sign(a.y - b.y) < 0; }\n// compare by arg (start\
+    \ from 90.0000000001~)\ninline bool compare_arg(const Point &a, const Point &b)\
+    \ {\n    // https://ngtkana.hatenablog.com/entry/2021/11/13/202103\n    return\
+    \ (Point(0, 0) < a) == (Point(0, 0) < b) ? a.x * b.y > a.y * b.x : a < b;\n}\n\
+    // |p| ^ 2\ninline Double norm(const Point &p) { return p.x * p.x + p.y * p.y;\
+    \ }\n// |p|\ninline Double abs(const Point &p) { return sqrt(norm(p)); }\n// arg\n\
+    inline Double arg(const Point &p) { return std::atan2(p.y, p.x); }\n// polar\n\
+    inline Point polar(const Double &rho, const Double &theta = Double(0)) { return\
+    \ rotate(Point(rho, 0), theta); }\n#line 4 \"geometry/circle.hpp\"\n\n// circle\n\
+    struct Circle {\n    Point o;\n    Double r;\n\n    Circle() = default;\n\n  \
+    \  Circle(const Point &o, const Double &r) : o(o), r(r) {}\n\n    friend std::ostream\
     \ &operator<<(std::ostream &os, const Circle &c) { return os << c.o << ' ' <<\
     \ c.r; }\n    friend std::istream &operator>>(std::istream &is, Circle &c) { return\
     \ is >> c.o >> c.r; }  // format : x y r\n};\n"
@@ -140,8 +140,8 @@ data:
   - geometry/incircle.hpp
   - geometry/cross_point_cc.hpp
   - geometry/cross_point_cl.hpp
-  timestamp: '2023-04-04 18:27:06+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-04-04 18:39:50+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_7_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_7_a.test.cpp
