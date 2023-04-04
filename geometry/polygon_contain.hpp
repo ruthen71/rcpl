@@ -3,9 +3,6 @@
 #include "geometry/polygon.hpp"
 #include "geometry/is_intersect_sp.hpp"
 
-constexpr int IN = 2;
-constexpr int ON = 1;
-constexpr int OUT = 0;
 // polygon contain point -> 2 (IN)
 // polygon cross point -> 1 (ON)
 // otherwise -> 0 (OUT)

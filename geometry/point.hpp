@@ -34,3 +34,8 @@ inline Point rotate(const Point &p, const Double &theta) { return p * Point(cos(
 inline bool compare_x(const Point &a, const Point &b) { return equal(a.real(), b.real()) ? sign(a.imag() - b.imag()) < 0 : sign(a.real() - b.real()) < 0; }
 // compare (y, x)
 inline bool compare_y(const Point &a, const Point &b) { return equal(a.imag(), b.imag()) ? sign(a.real() - b.real()) < 0 : sign(a.imag() - b.imag()) < 0; }
+// compare by arg
+inline bool compare_arg(const Point &a, const Point &b) {
+    // https://ngtkana.hatenablog.com/entry/2021/11/13/202103
+    return (Point(0, 0) < a) == (Point(0, 0) < b) ? a.real() * b.imag() > a.imag() * b.real() : a < b;
+}
