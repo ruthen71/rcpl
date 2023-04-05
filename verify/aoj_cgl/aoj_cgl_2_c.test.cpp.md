@@ -4,13 +4,13 @@ data:
   - icon: ':question:'
     path: geometry/ccw.hpp
     title: geometry/ccw.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point_ss.hpp
     title: geometry/cross_point_ss.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/is_intersect_sp.hpp
     title: geometry/is_intersect_sp.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/is_intersect_ss.hpp
     title: geometry/is_intersect_ss.hpp
   - icon: ':question:'
@@ -19,14 +19,14 @@ data:
   - icon: ':question:'
     path: geometry/point.hpp
     title: geometry/point.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/segment.hpp
     title: geometry/segment.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: '0.00000001'
@@ -138,14 +138,14 @@ data:
     \ s2.a + (s2.b - s2.a) * (d1 / d12);\n}\n#line 7 \"verify/aoj_cgl/aoj_cgl_2_c.test.cpp\"\
     \n\nint main() {\n    int Q;\n    std::cin >> Q;\n    while (Q--) {\n        Segment<double>\
     \ S1, S2;\n        std::cin >> S1 >> S2;\n        auto p = cross_point_ss(S1,\
-    \ S2);\n        std::cout << p.x << ' ' << p.y << '\\n';\n    }\n    return 0;\n\
-    }\n"
+    \ S2);\n        std::cout << std::fixed << std::setprecision(15) << p.x << ' '\
+    \ << p.y << '\\n';\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_C\"\
     \n#define ERROR 0.00000001\n\n#include <bits/stdc++.h>\n\n#include \"geometry/cross_point_ss.hpp\"\
     \n\nint main() {\n    int Q;\n    std::cin >> Q;\n    while (Q--) {\n        Segment<double>\
     \ S1, S2;\n        std::cin >> S1 >> S2;\n        auto p = cross_point_ss(S1,\
-    \ S2);\n        std::cout << p.x << ' ' << p.y << '\\n';\n    }\n    return 0;\n\
-    }"
+    \ S2);\n        std::cout << std::fixed << std::setprecision(15) << p.x << ' '\
+    \ << p.y << '\\n';\n    }\n    return 0;\n}"
   dependsOn:
   - geometry/cross_point_ss.hpp
   - geometry/segment.hpp
@@ -157,8 +157,8 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_2_c.test.cpp
   requiredBy: []
-  timestamp: '2023-04-05 19:46:31+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-04-05 20:08:32+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_2_c.test.cpp
 layout: document

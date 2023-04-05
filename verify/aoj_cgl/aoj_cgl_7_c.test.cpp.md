@@ -117,15 +117,16 @@ data:
     \ / 2)), l2((b + c) / 2, (b + c) / 2 + rotate(c - b, Point<T>::PI / 2));\n   \
     \ auto o = cross_point_ll(l1, l2);\n    auto r = abs(o - a);\n    return Circle(o,\
     \ r);\n}\n#line 8 \"verify/aoj_cgl/aoj_cgl_7_c.test.cpp\"\n\nint main() {\n  \
-    \  Point<double> a, b, c;\n    std::cin >> a >> b >> c;\n    auto cir = circumscribed_circle(a,\
+    \  Point<long double> a, b, c;\n    std::cin >> a >> b >> c;\n    auto cir = circumscribed_circle(a,\
     \ b, c);\n    std::cout << std::fixed << std::setprecision(15) << cir.o.x << '\
     \ ' << cir.o.y << ' ' << cir.r << '\\n';\n    return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C\"\
     \n#define ERROR 0.000001\n// The original ERROR is 0.000001 (absolute error)\n\
     \n#include <bits/stdc++.h>\n\n#include \"geometry/circumscribed_circle.hpp\"\n\
-    \nint main() {\n    Point<double> a, b, c;\n    std::cin >> a >> b >> c;\n   \
-    \ auto cir = circumscribed_circle(a, b, c);\n    std::cout << std::fixed << std::setprecision(15)\
-    \ << cir.o.x << ' ' << cir.o.y << ' ' << cir.r << '\\n';\n    return 0;\n}"
+    \nint main() {\n    Point<long double> a, b, c;\n    std::cin >> a >> b >> c;\n\
+    \    auto cir = circumscribed_circle(a, b, c);\n    std::cout << std::fixed <<\
+    \ std::setprecision(15) << cir.o.x << ' ' << cir.o.y << ' ' << cir.r << '\\n';\n\
+    \    return 0;\n}"
   dependsOn:
   - geometry/circumscribed_circle.hpp
   - geometry/cross_point_ll.hpp
@@ -135,7 +136,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_7_c.test.cpp
   requiredBy: []
-  timestamp: '2023-04-05 19:46:31+09:00'
+  timestamp: '2023-04-05 20:08:32+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_7_c.test.cpp

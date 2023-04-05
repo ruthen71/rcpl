@@ -11,10 +11,10 @@ data:
   - icon: ':warning:'
     path: geometry/all.hpp
     title: geometry/all.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point_cl.hpp
     title: geometry/cross_point_cl.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/distance_lp.hpp
     title: geometry/distance_lp.hpp
   - icon: ':heavy_check_mark:'
@@ -26,17 +26,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/incircle.hpp
     title: geometry/incircle.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/is_intersect_cl.hpp
     title: geometry/is_intersect_cl.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/reflection.hpp
     title: geometry/reflection.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_1_a.test.cpp
     title: verify/aoj_cgl/aoj_cgl_1_a.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_1_b.test.cpp
     title: verify/aoj_cgl/aoj_cgl_1_b.test.cpp
   - icon: ':heavy_check_mark:'
@@ -45,12 +45,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_b.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_b.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A
@@ -146,7 +146,7 @@ data:
   - geometry/cross_point_cl.hpp
   - geometry/distance_lp.hpp
   timestamp: '2023-04-05 19:46:31+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_7_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_d.test.cpp

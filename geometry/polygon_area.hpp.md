@@ -15,12 +15,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_3_a.test.cpp
     title: verify/aoj_cgl/aoj_cgl_3_a.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A
@@ -91,16 +91,16 @@ data:
     \ int n = (int)p.size();\n    assert(n >= 2);\n    T ret = T(0);\n    for (int\
     \ i = 0; i < n - 1; i++) {\n        ret += cross(p[i], p[i + 1]);\n    }\n   \
     \ ret += cross(p[n - 1], p[0]);\n    // counter clockwise: ret > 0\n    // clockwise:\
-    \ ret < 0\n    return std::abs(ret);\n}\ntemplate <typename T> T polygon_area(const\
-    \ Polygon<T> &p) { return polygon_area2(p) / T(2); }\n"
+    \ ret < 0\n    return ret;\n}\ntemplate <typename T> T polygon_area(const Polygon<T>\
+    \ &p) { return polygon_area2(p) / T(2); }\n"
   code: "#pragma once\n\n#include \"geometry/polygon.hpp\"\n\n// area of polygon\n\
     // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\n// return\
     \ area * 2\ntemplate <typename T> T polygon_area2(const Polygon<T> &p) {\n   \
     \ int n = (int)p.size();\n    assert(n >= 2);\n    T ret = T(0);\n    for (int\
     \ i = 0; i < n - 1; i++) {\n        ret += cross(p[i], p[i + 1]);\n    }\n   \
     \ ret += cross(p[n - 1], p[0]);\n    // counter clockwise: ret > 0\n    // clockwise:\
-    \ ret < 0\n    return std::abs(ret);\n}\ntemplate <typename T> T polygon_area(const\
-    \ Polygon<T> &p) { return polygon_area2(p) / T(2); }"
+    \ ret < 0\n    return ret;\n}\ntemplate <typename T> T polygon_area(const Polygon<T>\
+    \ &p) { return polygon_area2(p) / T(2); }"
   dependsOn:
   - geometry/polygon.hpp
   - geometry/point.hpp
@@ -108,8 +108,8 @@ data:
   path: geometry/polygon_area.hpp
   requiredBy:
   - geometry/all.hpp
-  timestamp: '2023-04-05 19:46:31+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2023-04-05 20:08:32+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_3_a.test.cpp
   - verify/aoj_cgl/aoj_cgl_4_c.test.cpp

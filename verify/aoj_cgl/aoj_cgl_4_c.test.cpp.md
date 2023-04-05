@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_cut.hpp
     title: geometry/convex_polygon_cut.hpp
   - icon: ':question:'
@@ -16,14 +16,14 @@ data:
   - icon: ':question:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon_area.hpp
     title: geometry/polygon_area.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: '0.00001'
@@ -132,20 +132,9 @@ data:
     \ {\n    int n = (int)p.size();\n    assert(n >= 2);\n    T ret = T(0);\n    for\
     \ (int i = 0; i < n - 1; i++) {\n        ret += cross(p[i], p[i + 1]);\n    }\n\
     \    ret += cross(p[n - 1], p[0]);\n    // counter clockwise: ret > 0\n    //\
-    \ clockwise: ret < 0\n    return std::abs(ret);\n}\ntemplate <typename T> T polygon_area(const\
+    \ clockwise: ret < 0\n    return ret;\n}\ntemplate <typename T> T polygon_area(const\
     \ Polygon<T> &p) { return polygon_area2(p) / T(2); }\n#line 8 \"verify/aoj_cgl/aoj_cgl_4_c.test.cpp\"\
-    \n\nint main() {\n    int N;\n    std::cin >> N;\n    Polygon<double> P(N);\n\
-    \    std::cin >> P;\n    int Q;\n    std::cin >> Q;\n    while (Q--) {\n     \
-    \   Line<double> L1;\n        std::cin >> L1;\n        Line<double> L2(L1.b, L1.a);\n\
-    \        auto [rl1, rr1] = convex_polygon_cut(P, L1);\n        auto [rl2, rr2]\
-    \ = convex_polygon_cut(P, L2);\n        if (rl1.size() >= 2) {\n            assert(equal(polygon_area(rl1),\
-    \ polygon_area(rr2)));\n        }\n        if (rr1.size() >= 2) {\n          \
-    \  assert(equal(polygon_area(rl2), polygon_area(rr1)));\n        }\n        double\
-    \ ans = (rl1.size() >= 2 ? polygon_area(rl1) : 0);\n        std::cout << std::fixed\
-    \ << std::setprecision(15) << ans << '\\n';\n    }\n    return 0;\n}\n"
-  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_C\"\
-    \n#define ERROR 0.00001\n\n#include <bits/stdc++.h>\n\n#include \"geometry/convex_polygon_cut.hpp\"\
-    \n#include \"geometry/polygon_area.hpp\"\n\nint main() {\n    int N;\n    std::cin\
+    \n\nint main() {\n    Point<double>::set_eps(1e-8);\n    int N;\n    std::cin\
     \ >> N;\n    Polygon<double> P(N);\n    std::cin >> P;\n    int Q;\n    std::cin\
     \ >> Q;\n    while (Q--) {\n        Line<double> L1;\n        std::cin >> L1;\n\
     \        Line<double> L2(L1.b, L1.a);\n        auto [rl1, rr1] = convex_polygon_cut(P,\
@@ -154,7 +143,19 @@ data:
     \        }\n        if (rr1.size() >= 2) {\n            assert(equal(polygon_area(rl2),\
     \ polygon_area(rr1)));\n        }\n        double ans = (rl1.size() >= 2 ? polygon_area(rl1)\
     \ : 0);\n        std::cout << std::fixed << std::setprecision(15) << ans << '\\\
-    n';\n    }\n    return 0;\n}"
+    n';\n    }\n    return 0;\n}\n"
+  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_C\"\
+    \n#define ERROR 0.00001\n\n#include <bits/stdc++.h>\n\n#include \"geometry/convex_polygon_cut.hpp\"\
+    \n#include \"geometry/polygon_area.hpp\"\n\nint main() {\n    Point<double>::set_eps(1e-8);\n\
+    \    int N;\n    std::cin >> N;\n    Polygon<double> P(N);\n    std::cin >> P;\n\
+    \    int Q;\n    std::cin >> Q;\n    while (Q--) {\n        Line<double> L1;\n\
+    \        std::cin >> L1;\n        Line<double> L2(L1.b, L1.a);\n        auto [rl1,\
+    \ rr1] = convex_polygon_cut(P, L1);\n        auto [rl2, rr2] = convex_polygon_cut(P,\
+    \ L2);\n        if (rl1.size() >= 2) {\n            assert(equal(polygon_area(rl1),\
+    \ polygon_area(rr2)));\n        }\n        if (rr1.size() >= 2) {\n          \
+    \  assert(equal(polygon_area(rl2), polygon_area(rr1)));\n        }\n        double\
+    \ ans = (rl1.size() >= 2 ? polygon_area(rl1) : 0);\n        std::cout << std::fixed\
+    \ << std::setprecision(15) << ans << '\\n';\n    }\n    return 0;\n}"
   dependsOn:
   - geometry/convex_polygon_cut.hpp
   - geometry/polygon.hpp
@@ -165,8 +166,8 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
   requiredBy: []
-  timestamp: '2023-04-05 19:46:31+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-04-05 20:08:32+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
 layout: document

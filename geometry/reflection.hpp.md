@@ -7,7 +7,7 @@ data:
   - icon: ':question:'
     path: geometry/point.hpp
     title: geometry/point.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/projection.hpp
     title: geometry/projection.hpp
   _extendedRequiredBy:
@@ -15,12 +15,12 @@ data:
     path: geometry/all.hpp
     title: geometry/all.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_1_b.test.cpp
     title: verify/aoj_cgl/aoj_cgl_1_b.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_B
@@ -124,7 +124,7 @@ data:
   requiredBy:
   - geometry/all.hpp
   timestamp: '2023-04-05 19:46:31+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_1_b.test.cpp
 documentation_of: geometry/reflection.hpp

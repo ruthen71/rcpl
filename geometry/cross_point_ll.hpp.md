@@ -14,14 +14,14 @@ data:
   - icon: ':x:'
     path: geometry/circumscribed_circle.hpp
     title: geometry/circumscribed_circle.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_cut.hpp
     title: geometry/convex_polygon_cut.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/incircle.hpp
     title: geometry/incircle.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
   - icon: ':heavy_check_mark:'

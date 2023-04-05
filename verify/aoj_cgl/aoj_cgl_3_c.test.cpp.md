@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: geometry/ccw.hpp
     title: geometry/ccw.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/is_intersect_sp.hpp
     title: geometry/is_intersect_sp.hpp
   - icon: ':question:'
@@ -19,7 +19,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/polygon_contain.hpp
     title: geometry/polygon_contain.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/segment.hpp
     title: geometry/segment.hpp
   _extendedRequiredBy: []

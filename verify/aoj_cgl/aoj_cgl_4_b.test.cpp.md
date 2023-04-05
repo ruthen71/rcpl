@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: geometry/ccw.hpp
     title: geometry/ccw.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_diameter.hpp
     title: geometry/convex_polygon_diameter.hpp
   - icon: ':question:'
@@ -13,14 +13,14 @@ data:
   - icon: ':question:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon_is_convex.hpp
     title: geometry/polygon_is_convex.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: '0.000001'
@@ -120,7 +120,7 @@ data:
     \ <typename T> std::tuple<int, int, T> convex_polygon_diameter(const Polygon<T>\
     \ &p) {\n    assert(polygon_is_convex(p));\n    int n = (int)p.size();\n    assert(n\
     \ >= 2);\n    if (n == 2) {\n        return {0, 1, abs(p[0] - p[1])};\n    }\n\
-    \    auto [it_min, it_max] = std::minmax_element(p.begin(), p.end(), compare_x);\n\
+    \    auto [it_min, it_max] = std::minmax_element(p.begin(), p.end(), compare_x<T>);\n\
     \    int idx_min = it_min - p.begin();\n    int idx_max = it_max - p.begin();\n\
     \n    T maxdis = norm(p[idx_max] - p[idx_min]);\n    int maxi = idx_min, i = idx_min,\
     \ maxj = idx_max, j = idx_max;\n    do {\n        int ni = (i + 1 == n ? 0 : i\
@@ -147,8 +147,8 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_4_b.test.cpp
   requiredBy: []
-  timestamp: '2023-04-05 19:46:31+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-04-05 20:08:32+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_4_b.test.cpp
 layout: document

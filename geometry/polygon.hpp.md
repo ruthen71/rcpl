@@ -8,10 +8,10 @@ data:
   - icon: ':warning:'
     path: geometry/all.hpp
     title: geometry/all.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_cut.hpp
     title: geometry/convex_polygon_cut.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_diameter.hpp
     title: geometry/convex_polygon_diameter.hpp
   - icon: ':warning:'
@@ -20,13 +20,13 @@ data:
   - icon: ':x:'
     path: geometry/monotone_chain.hpp
     title: geometry/monotone_chain.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon_area.hpp
     title: geometry/polygon_area.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/polygon_contain.hpp
     title: geometry/polygon_contain.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon_is_convex.hpp
     title: geometry/polygon_is_convex.hpp
   _extendedVerifiedWith:
@@ -42,10 +42,10 @@ data:
   - icon: ':x:'
     path: verify/aoj_cgl/aoj_cgl_4_a.test.cpp
     title: verify/aoj_cgl/aoj_cgl_4_a.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_4_b.test.cpp
     title: verify/aoj_cgl/aoj_cgl_4_b.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
   _isVerificationFailed: true

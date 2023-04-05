@@ -14,7 +14,7 @@ data:
   - icon: ':warning:'
     path: geometry/all.hpp
     title: geometry/all.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_diameter.hpp
     title: geometry/convex_polygon_diameter.hpp
   - icon: ':warning:'
@@ -24,12 +24,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_3_b.test.cpp
     title: verify/aoj_cgl/aoj_cgl_3_b.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_4_b.test.cpp
     title: verify/aoj_cgl/aoj_cgl_4_b.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B
@@ -144,7 +144,7 @@ data:
   - geometry/all.hpp
   - geometry/convex_polygon_diameter.hpp
   timestamp: '2023-04-05 19:46:31+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_4_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_3_b.test.cpp

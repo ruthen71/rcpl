@@ -10,7 +10,7 @@ data:
   - icon: ':question:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon_is_convex.hpp
     title: geometry/polygon_is_convex.hpp
   _extendedRequiredBy: []

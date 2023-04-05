@@ -7,17 +7,17 @@ data:
   - icon: ':question:'
     path: geometry/point.hpp
     title: geometry/point.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/projection.hpp
     title: geometry/projection.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/reflection.hpp
     title: geometry/reflection.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: '0.00000001'
@@ -103,14 +103,14 @@ data:
     \ p) - p) * T(2); }\n#line 7 \"verify/aoj_cgl/aoj_cgl_1_b.test.cpp\"\n\nint main()\
     \ {\n    Line<double> L;\n    std::cin >> L;\n    int Q;\n    std::cin >> Q;\n\
     \    while (Q--) {\n        Point<double> P;\n        std::cin >> P;\n       \
-    \ auto ans = reflection(L, P);\n        std::cout << ans.x << ' ' << ans.y <<\
-    \ '\\n';\n    }\n    return 0;\n}\n"
+    \ auto ans = reflection(L, P);\n        std::cout << std::fixed << std::setprecision(15)\
+    \ << ans.x << ' ' << ans.y << '\\n';\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_B\"\
     \n#define ERROR 0.00000001\n\n#include <bits/stdc++.h>\n\n#include \"geometry/reflection.hpp\"\
     \n\nint main() {\n    Line<double> L;\n    std::cin >> L;\n    int Q;\n    std::cin\
     \ >> Q;\n    while (Q--) {\n        Point<double> P;\n        std::cin >> P;\n\
-    \        auto ans = reflection(L, P);\n        std::cout << ans.x << ' ' << ans.y\
-    \ << '\\n';\n    }\n    return 0;\n}"
+    \        auto ans = reflection(L, P);\n        std::cout << std::fixed << std::setprecision(15)\
+    \ << ans.x << ' ' << ans.y << '\\n';\n    }\n    return 0;\n}"
   dependsOn:
   - geometry/reflection.hpp
   - geometry/line.hpp
@@ -119,8 +119,8 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_1_b.test.cpp
   requiredBy: []
-  timestamp: '2023-04-05 19:46:31+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-04-05 20:08:32+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_1_b.test.cpp
 layout: document

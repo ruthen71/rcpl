@@ -13,25 +13,25 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/closest_pair.hpp
     title: "\u6700\u8FD1\u70B9\u5BFE"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_cut.hpp
     title: geometry/convex_polygon_cut.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_diameter.hpp
     title: geometry/convex_polygon_diameter.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/cross_point_cc.hpp
     title: geometry/cross_point_cc.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point_cl.hpp
     title: geometry/cross_point_cl.hpp
   - icon: ':question:'
     path: geometry/cross_point_ll.hpp
     title: geometry/cross_point_ll.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point_ss.hpp
     title: geometry/cross_point_ss.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/distance_lp.hpp
     title: geometry/distance_lp.hpp
   - icon: ':heavy_check_mark:'
@@ -49,7 +49,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/is_intersect_cc.hpp
     title: geometry/is_intersect_cc.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/is_intersect_cl.hpp
     title: geometry/is_intersect_cl.hpp
   - icon: ':warning:'
@@ -61,10 +61,10 @@ data:
   - icon: ':warning:'
     path: geometry/is_intersect_lp.hpp
     title: geometry/is_intersect_lp.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/is_intersect_sp.hpp
     title: geometry/is_intersect_sp.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/is_intersect_ss.hpp
     title: geometry/is_intersect_ss.hpp
   - icon: ':heavy_check_mark:'
@@ -85,22 +85,22 @@ data:
   - icon: ':question:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon_area.hpp
     title: geometry/polygon_area.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/polygon_contain.hpp
     title: geometry/polygon_contain.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon_is_convex.hpp
     title: geometry/polygon_is_convex.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/projection.hpp
     title: geometry/projection.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/reflection.hpp
     title: geometry/reflection.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/segment.hpp
     title: geometry/segment.hpp
   - icon: ':heavy_check_mark:'
@@ -293,7 +293,7 @@ data:
     \ <typename T> std::vector<Point<T>> cross_point_cl(const Circle<T> &c, const\
     \ Line<T> &l) {\n    assert(is_intersect_cl(c, l));\n    auto pr = projection(l,\
     \ c.o);\n    if (equal(norm(pr - c.o), c.r * c.r)) return {pr};\n    Point<T>\
-    \ e = (l.b - l.a) * (T(1) / abs(l.b - l.a));\n    auto k = sqrt(norm(c.r) - norm(pr\
+    \ e = (l.b - l.a) * (T(1) / abs(l.b - l.a));\n    auto k = sqrt(c.r * c.r - norm(pr\
     \ - c.o));\n    return {pr - e * k, pr + e * k};\n}\n#line 2 \"geometry/cross_point_cc.hpp\"\
     \n\n#line 4 \"geometry/cross_point_cc.hpp\"\n\n// cross point (circle and circle)\n\
     // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_E\ntemplate\
@@ -339,7 +339,7 @@ data:
     \ {\n    int n = (int)p.size();\n    assert(n >= 2);\n    T ret = T(0);\n    for\
     \ (int i = 0; i < n - 1; i++) {\n        ret += cross(p[i], p[i + 1]);\n    }\n\
     \    ret += cross(p[n - 1], p[0]);\n    // counter clockwise: ret > 0\n    //\
-    \ clockwise: ret < 0\n    return std::abs(ret);\n}\ntemplate <typename T> T polygon_area(const\
+    \ clockwise: ret < 0\n    return ret;\n}\ntemplate <typename T> T polygon_area(const\
     \ Polygon<T> &p) { return polygon_area2(p) / T(2); }\n#line 2 \"geometry/polygon_is_convex.hpp\"\
     \n\n#line 5 \"geometry/polygon_is_convex.hpp\"\n\n// check polygon is convex (not\
     \ strictly, 0 <= angle <= 180 degrees)\n// angle = 180 degrees -> ON_SEGMENT\n\
@@ -398,7 +398,7 @@ data:
     \ <typename T> std::tuple<int, int, T> convex_polygon_diameter(const Polygon<T>\
     \ &p) {\n    assert(polygon_is_convex(p));\n    int n = (int)p.size();\n    assert(n\
     \ >= 2);\n    if (n == 2) {\n        return {0, 1, abs(p[0] - p[1])};\n    }\n\
-    \    auto [it_min, it_max] = std::minmax_element(p.begin(), p.end(), compare_x);\n\
+    \    auto [it_min, it_max] = std::minmax_element(p.begin(), p.end(), compare_x<T>);\n\
     \    int idx_min = it_min - p.begin();\n    int idx_max = it_max - p.begin();\n\
     \n    T maxdis = norm(p[idx_max] - p[idx_min]);\n    int maxi = idx_min, i = idx_min,\
     \ maxj = idx_max, j = idx_max;\n    do {\n        int ni = (i + 1 == n ? 0 : i\
@@ -584,7 +584,7 @@ data:
   isVerificationFile: false
   path: geometry/all.hpp
   requiredBy: []
-  timestamp: '2023-04-05 19:46:31+09:00'
+  timestamp: '2023-04-05 20:08:32+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/all.hpp

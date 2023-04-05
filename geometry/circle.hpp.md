@@ -14,7 +14,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/cross_point_cc.hpp
     title: geometry/cross_point_cc.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point_cl.hpp
     title: geometry/cross_point_cl.hpp
   - icon: ':heavy_check_mark:'
@@ -23,7 +23,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/is_intersect_cc.hpp
     title: geometry/is_intersect_cc.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/is_intersect_cl.hpp
     title: geometry/is_intersect_cl.hpp
   - icon: ':warning:'
@@ -45,7 +45,7 @@ data:
   - icon: ':x:'
     path: verify/aoj_cgl/aoj_cgl_7_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_c.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
   - icon: ':heavy_check_mark:'

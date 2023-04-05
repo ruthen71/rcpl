@@ -7,7 +7,7 @@ data:
   - icon: ':question:'
     path: geometry/cross_point_ll.hpp
     title: geometry/cross_point_ll.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/distance_lp.hpp
     title: geometry/distance_lp.hpp
   - icon: ':heavy_check_mark:'
@@ -19,7 +19,7 @@ data:
   - icon: ':question:'
     path: geometry/point.hpp
     title: geometry/point.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/projection.hpp
     title: geometry/projection.hpp
   _extendedRequiredBy: []

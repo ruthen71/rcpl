@@ -125,8 +125,8 @@ data:
     \ i = 0; i < res.size(); i++) {\n        if (compare_y(res[i], res[minidx])) {\n\
     \            minidx = i;\n        }\n    }\n    std::rotate(res.begin(), res.begin()\
     \ + minidx, res.end());\n    std::cout << res.size() << '\\n';\n    for (int i\
-    \ = 0; i < res.size(); i++) std::cout << res[i].x << ' ' << res[i].y << '\\n';\n\
-    \    return 0;\n}\n"
+    \ = 0; i < res.size(); i++) std::cout << std::fixed << std::setprecision(15) <<\
+    \ res[i].x << ' ' << res[i].y << '\\n';\n    return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A\"\
     \n\n#include <bits/stdc++.h>\n\n#include \"geometry/monotone_chain.hpp\"\n\nint\
     \ main() {\n    int N;\n    std::cin >> N;\n    Polygon<double> P(N);\n    std::cin\
@@ -134,8 +134,8 @@ data:
     \ (int i = 0; i < res.size(); i++) {\n        if (compare_y(res[i], res[minidx]))\
     \ {\n            minidx = i;\n        }\n    }\n    std::rotate(res.begin(), res.begin()\
     \ + minidx, res.end());\n    std::cout << res.size() << '\\n';\n    for (int i\
-    \ = 0; i < res.size(); i++) std::cout << res[i].x << ' ' << res[i].y << '\\n';\n\
-    \    return 0;\n}"
+    \ = 0; i < res.size(); i++) std::cout << std::fixed << std::setprecision(15) <<\
+    \ res[i].x << ' ' << res[i].y << '\\n';\n    return 0;\n}"
   dependsOn:
   - geometry/monotone_chain.hpp
   - geometry/polygon.hpp
@@ -144,7 +144,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_4_a.test.cpp
   requiredBy: []
-  timestamp: '2023-04-05 19:46:31+09:00'
+  timestamp: '2023-04-05 20:08:32+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_4_a.test.cpp
