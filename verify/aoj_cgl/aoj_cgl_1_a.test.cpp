@@ -14,7 +14,7 @@ int main() {
         Point<double> P;
         std::cin >> P;
         auto ans = projection(L, P);
-        std::cout << ans.x << ' ' << ans.y << '\n';
+        std::cout << std::fixed << std::setprecision(15) << ans.x << ' ' << ans.y << '\n';
     }
     return 0;
 }

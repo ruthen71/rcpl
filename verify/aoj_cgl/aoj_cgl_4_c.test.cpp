@@ -7,6 +7,7 @@
 #include "geometry/polygon_area.hpp"
 
 int main() {
+    Point<double>::set_eps(1e-8);
     int N;
     std::cin >> N;
     Polygon<double> P(N);

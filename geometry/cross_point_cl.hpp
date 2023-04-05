@@ -10,6 +10,6 @@ template <typename T> std::vector<Point<T>> cross_point_cl(const Circle<T> &c, c
     auto pr = projection(l, c.o);
     if (equal(norm(pr - c.o), c.r * c.r)) return {pr};
     Point<T> e = (l.b - l.a) * (T(1) / abs(l.b - l.a));
-    auto k = sqrt(norm(c.r) - norm(pr - c.o));
+    auto k = sqrt(c.r * c.r - norm(pr - c.o));
     return {pr - e * k, pr + e * k};
 }

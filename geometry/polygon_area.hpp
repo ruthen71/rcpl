@@ -15,6 +15,6 @@ template <typename T> T polygon_area2(const Polygon<T> &p) {
     ret += cross(p[n - 1], p[0]);
     // counter clockwise: ret > 0
     // clockwise: ret < 0
-    return std::abs(ret);
+    return ret;
 }
 template <typename T> T polygon_area(const Polygon<T> &p) { return polygon_area2(p) / T(2); }

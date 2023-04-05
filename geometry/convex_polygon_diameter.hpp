@@ -15,7 +15,7 @@ template <typename T> std::tuple<int, int, T> convex_polygon_diameter(const Poly
     if (n == 2) {
         return {0, 1, abs(p[0] - p[1])};
     }
-    auto [it_min, it_max] = std::minmax_element(p.begin(), p.end(), compare_x);
+    auto [it_min, it_max] = std::minmax_element(p.begin(), p.end(), compare_x<T>);
     int idx_min = it_min - p.begin();
     int idx_max = it_max - p.begin();
 

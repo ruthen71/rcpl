@@ -7,7 +7,7 @@
 #include "geometry/circumscribed_circle.hpp"
 
 int main() {
-    Point<double> a, b, c;
+    Point<long double> a, b, c;
     std::cin >> a >> b >> c;
     auto cir = circumscribed_circle(a, b, c);
     std::cout << std::fixed << std::setprecision(15) << cir.o.x << ' ' << cir.o.y << ' ' << cir.r << '\n';

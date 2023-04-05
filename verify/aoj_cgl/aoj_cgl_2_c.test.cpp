@@ -12,7 +12,7 @@ int main() {
         Segment<double> S1, S2;
         std::cin >> S1 >> S2;
         auto p = cross_point_ss(S1, S2);
-        std::cout << p.x << ' ' << p.y << '\n';
+        std::cout << std::fixed << std::setprecision(15) << p.x << ' ' << p.y << '\n';
     }
     return 0;
 }
