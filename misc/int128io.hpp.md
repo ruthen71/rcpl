@@ -8,7 +8,7 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"misc/int128.hpp\"\n\nstd::istream &operator>>(std::istream\
+  bundledCode: "#line 2 \"misc/int128io.hpp\"\n\nstd::istream &operator>>(std::istream\
     \ &is, __int128_t &x) {\n    std::string s;\n    is >> s;\n    x = 0;\n    int\
     \ i = s[0] == '-' ? 1 : 0;\n    while (i < (int)s.size()) {\n        x = 10 *\
     \ x + s[i] - '0';\n        i++;\n    }\n    if (s[0] == '-') x = -x;\n    return\
@@ -28,15 +28,15 @@ data:
     \    return os << res;\n}"
   dependsOn: []
   isVerificationFile: false
-  path: misc/int128.hpp
+  path: misc/int128io.hpp
   requiredBy: []
-  timestamp: '2023-04-04 19:34:48+09:00'
+  timestamp: '2023-04-05 19:46:31+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: misc/int128.hpp
+documentation_of: misc/int128io.hpp
 layout: document
 redirect_from:
-- /library/misc/int128.hpp
-- /library/misc/int128.hpp.html
-title: misc/int128.hpp
+- /library/misc/int128io.hpp
+- /library/misc/int128io.hpp.html
+title: misc/int128io.hpp
 ---
