@@ -3,8 +3,8 @@
 #include "geometry/line.hpp"
 
 // segment
-struct Segment : Line {
+template <typename T> struct Segment : Line<T> {
     Segment() = default;
 
-    Segment(const Point &a, const Point &b) : Line(a, b) {}
+    Segment(const Point<T> &a, const Point<T> &b) : Line<T>(a, b) {}
 };

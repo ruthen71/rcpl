@@ -8,7 +8,7 @@
 int main() {
     int N;
     std::cin >> N;
-    Polygon P(N);
+    Polygon<double> P(N);
     std::cin >> P;
     auto [i, j, d] = convex_polygon_diameter(P);
     std::cout << std::fixed << std::setprecision(15) << d << '\n';

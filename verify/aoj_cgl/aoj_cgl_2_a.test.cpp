@@ -9,7 +9,7 @@ int main() {
     int Q;
     std::cin >> Q;
     while (Q--) {
-        Line L1, L2;
+        Line<double> L1, L2;
         std::cin >> L1 >> L2;
         if (is_parallel(L1, L2)) {
             std::cout << 2 << '\n';

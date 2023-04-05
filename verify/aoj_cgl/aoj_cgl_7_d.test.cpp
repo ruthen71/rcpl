@@ -6,17 +6,17 @@
 #include "geometry/cross_point_cl.hpp"
 
 int main() {
-    Circle C;
+    Circle<double> C;
     std::cin >> C;
     int Q;
     std::cin >> Q;
     while (Q--) {
-        Line L;
+        Line<double> L;
         std::cin >> L;
         auto res = cross_point_cl(C, L);
         std::sort(res.begin(), res.end());
         if (res.size() == 1) res.push_back(res[0]);
-        std::cout << res[0] << ' ' << res[1] << '\n';
+        std::cout << std::fixed << std::setprecision(15) << res[0].x << ' ' << res[0].y << ' ' << res[1].x << ' ' << res[1].y << '\n';
     }
     return 0;
 }

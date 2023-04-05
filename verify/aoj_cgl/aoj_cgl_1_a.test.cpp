@@ -6,15 +6,15 @@
 #include "geometry/projection.hpp"
 
 int main() {
-    Line L;
+    Line<double> L;
     std::cin >> L;
     int Q;
     std::cin >> Q;
     while (Q--) {
-        Point P;
+        Point<double> P;
         std::cin >> P;
         auto ans = projection(L, P);
-        std::cout << ans << '\n';
+        std::cout << ans.x << ' ' << ans.y << '\n';
     }
     return 0;
 }

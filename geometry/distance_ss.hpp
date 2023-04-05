@@ -6,7 +6,7 @@
 
 // distance (segment and segment)
 // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_D
-Double distance_ss(const Segment &s1, const Segment &s2) {
-    if (is_intersect_ss(s1, s2)) return Double(0);
+template <typename T> T distance_ss(const Segment<T> &s1, const Segment<T> &s2) {
+    if (is_intersect_ss(s1, s2)) return T(0);
     return std::min({distance_sp(s1, s2.a), distance_sp(s1, s2.b), distance_sp(s2, s1.a), distance_sp(s2, s1.b)});
 }

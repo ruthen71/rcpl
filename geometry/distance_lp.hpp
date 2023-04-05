@@ -5,5 +5,5 @@
 #include "geometry/projection.hpp"
 
 // distance (line and point) (Double = double or long)
-Double distance_lp(const Line &l, const Point &p) { return abs(p - projection(l, p)); }
-Double distance2_lp(const Line &l, const Point &p) { return norm(p - projection(l, p)); }
+template <typename T> T distance_lp(const Line<T> &l, const Point<T> &p) { return abs(p - projection(l, p)); }
+template <typename T> T distance2_lp(const Line<T> &l, const Point<T> &p) { return norm(p - projection(l, p)); }

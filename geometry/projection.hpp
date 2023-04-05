@@ -5,7 +5,7 @@
 
 // projection
 // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A
-Point projection(const Line &l, const Point &p) {
-    Double t = dot(p - l.a, l.b - l.a) / norm(l.b - l.a);
+template <typename T> Point<T> projection(const Line<T> &l, const Point<T> &p) {
+    T t = dot(p - l.a, l.b - l.a) / norm(l.b - l.a);
     return l.a + t * (l.b - l.a);
 }

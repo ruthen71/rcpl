@@ -3,24 +3,24 @@
 #include "geometry/point.hpp"
 
 // line
-struct Line {
-    Point a, b;
+template <typename T> struct Line {
+    Point<T> a, b;
 
     Line() = default;
 
-    Line(const Point &a, const Point &b) : a(a), b(b) {}
+    Line(const Point<T> &a, const Point<T> &b) : a(a), b(b) {}
 
     // Ax + By = C
-    Line(const Double &A, const Double &B, const Double &C) {
+    Line(const T &A, const T &B, const T &C) {
         assert(equal(A, 0) and equal(B, 0));
         if (equal(A, 0)) {
-            a = Point(0, C / B), b = Point(1, C / B);
+            a = Point<T>(0, C / B), b = Point<T>(1, C / B);
         } else if (equal(B, 0)) {
-            a = Point(C / A, 0), b = Point(C / A, 1);
+            a = Point<T>(C / A, 0), b = Point<T>(C / A, 1);
         } else if (equal(C, 0)) {
-            a = Point(0, 0), b = Point(1, B / A);
+            a = Point<T>(0, 0), b = Point<T>(1, B / A);
         } else {
-            a = Point(0, C / B), b = Point(C / A, 0);
+            a = Point<T>(0, C / B), b = Point<T>(C / A, 0);
         }
     }
 

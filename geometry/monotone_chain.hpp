@@ -10,11 +10,11 @@
 // assume the return value of ccw is not ONLINE_BACK or ONLINE_FRONT (lexicographical order)
 // strict is true : points on the edges of the convex hull are not included (the number of points is minimized)
 // complexity: O(n \log n) (n: the number of points)
-Polygon monotone_chain(std::vector<Point> &p, bool strict = true) {
+template <typename T> Polygon<T> monotone_chain(std::vector<Point<T>> &p, bool strict = true) {
     int n = (int)p.size();
     if (n <= 2) return p;
     std::sort(p.begin(), p.end(), compare_x);
-    Polygon r;
+    Polygon<T> r;
     r.reserve(n * 2);
     if (strict) {
         for (int i = 0; i < n; i++) {

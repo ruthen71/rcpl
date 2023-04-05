@@ -7,7 +7,7 @@
 // return {index1, index2, distance}
 // using divide-and-conquer algorithm
 // complexity: O(n \log n) (n: the number of points)
-std::tuple<int, int, Double> closest_pair(const std::vector<Point> &p) {
+template <typename T> std::tuple<int, int, T> closest_pair(const std::vector<Point<T>> &p) {
     int n = int(p.size());
     assert(n >= 2);
     if (n == 2) {
@@ -17,15 +17,15 @@ std::tuple<int, int, Double> closest_pair(const std::vector<Point> &p) {
     std::vector<int> ind(n);
     std::iota(ind.begin(), ind.end(), 0);
     std::sort(ind.begin(), ind.end(), [&](int i, int j) { return compare_x(p[i], p[j]); });
-    auto divide_and_conquer = [&](auto f, int l, int r) -> std::tuple<int, int, Double> {
-        if (r - l <= 1) return {-1, -1, std::numeric_limits<Double>::max()};
+    auto divide_and_conquer = [&](auto f, int l, int r) -> std::tuple<int, int, T> {
+        if (r - l <= 1) return {-1, -1, std::numeric_limits<T>::max()};
         int md = (l + r) / 2;
-        Double x = p[ind[md]].x;
+        T x = p[ind[md]].x;
         // divide and conquer
         auto [i1l, i2l, dl] = f(f, l, md);
         auto [i1r, i2r, dr] = f(f, md, r);
         int i1, i2;
-        Double d;
+        T d;
         if (dl < dr) {
             d = dl, i1 = i1l, i2 = i2l;
         } else {
@@ -41,7 +41,7 @@ std::tuple<int, int, Double> closest_pair(const std::vector<Point> &p) {
             for (int j = sz - 1; j >= 0; j--) {
                 Point cp = p[ind[i]] - p[near_x[j]];
                 if (sign(cp.y - d) >= 0) break;  // cp.y >= d
-                Double cd = abs(cp);
+                T cd = abs(cp);
                 if (cd < d) {
                     d = cd, i1 = ind[i], i2 = near_x[j];
                 }

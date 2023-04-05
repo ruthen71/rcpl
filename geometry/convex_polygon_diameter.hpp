@@ -8,7 +8,7 @@
 // return {index1, index2, diameter}
 // using the method of rotating calipers (https://en.wikipedia.org/wiki/Rotating_calipers)
 // complexity: O(n)
-std::tuple<int, int, Double> convex_polygon_diameter(const Polygon &p) {
+template <typename T> std::tuple<int, int, T> convex_polygon_diameter(const Polygon<T> &p) {
     assert(polygon_is_convex(p));
     int n = (int)p.size();
     assert(n >= 2);
@@ -19,7 +19,7 @@ std::tuple<int, int, Double> convex_polygon_diameter(const Polygon &p) {
     int idx_min = it_min - p.begin();
     int idx_max = it_max - p.begin();
 
-    Double maxdis = norm(p[idx_max] - p[idx_min]);
+    T maxdis = norm(p[idx_max] - p[idx_min]);
     int maxi = idx_min, i = idx_min, maxj = idx_max, j = idx_max;
     do {
         int ni = (i + 1 == n ? 0 : i + 1), nj = (j + 1 == n ? 0 : j + 1);

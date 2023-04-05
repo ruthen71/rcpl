@@ -7,7 +7,7 @@
 int main() {
     int N;
     std::cin >> N;
-    Polygon P(N);
+    Polygon<double> P(N);
     std::cin >> P;
     bool ans = polygon_is_convex(P);
     std::reverse(P.begin(), P.end());

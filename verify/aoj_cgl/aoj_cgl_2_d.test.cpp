@@ -9,7 +9,7 @@ int main() {
     int Q;
     std::cin >> Q;
     while (Q--) {
-        Segment S1, S2;
+        Segment<double> S1, S2;
         std::cin >> S1 >> S2;
         auto d = distance_ss(S1, S2);
         std::cout << std::fixed << std::setprecision(15) << d << '\n';

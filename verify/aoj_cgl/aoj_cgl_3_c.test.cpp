@@ -7,12 +7,12 @@
 int main() {
     int N;
     std::cin >> N;
-    Polygon P(N);
+    Polygon<double> P(N);
     std::cin >> P;
     int Q;
     std::cin >> Q;
     while (Q--) {
-        Point p;
+        Point<double> p;
         std::cin >> p;
         std::cout << polygon_contain(P, p) << '\n';
     }

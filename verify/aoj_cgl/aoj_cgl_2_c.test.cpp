@@ -9,10 +9,10 @@ int main() {
     int Q;
     std::cin >> Q;
     while (Q--) {
-        Segment S1, S2;
+        Segment<double> S1, S2;
         std::cin >> S1 >> S2;
         auto p = cross_point_ss(S1, S2);
-        std::cout << p << '\n';
+        std::cout << p.x << ' ' << p.y << '\n';
     }
     return 0;
 }

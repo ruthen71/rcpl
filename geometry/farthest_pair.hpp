@@ -7,11 +7,11 @@
 // return {index1, index2, distance}
 // using monotone chain (convex hull) and convex polygon diameter
 // complexity: O(n \log n) (n: the number of points)
-std::tuple<int, int, Double> farthest_pair(const std::vector<Point> &p) {
+template <typename T> std::tuple<int, int, T> farthest_pair(const std::vector<Point<T>> &p) {
     int n = int(p.size());
     assert(n >= 2);
     if (n == 2) {
-        return {0, 1, std::abs(p[0] - p[1])};
+        return {0, 1, abs(p[0] - p[1])};
     }
     auto q = p;
     auto ch = monotone_chain(q);                   // O(n \log n)

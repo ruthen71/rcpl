@@ -9,14 +9,14 @@
 int main() {
     int N;
     std::cin >> N;
-    Polygon P(N);
+    Polygon<double> P(N);
     std::cin >> P;
     int Q;
     std::cin >> Q;
     while (Q--) {
-        Line L1;
+        Line<double> L1;
         std::cin >> L1;
-        Line L2(L1.b, L1.a);
+        Line<double> L2(L1.b, L1.a);
         auto [rl1, rr1] = convex_polygon_cut(P, L1);
         auto [rl2, rr2] = convex_polygon_cut(P, L2);
         if (rl1.size() >= 2) {
@@ -25,7 +25,7 @@ int main() {
         if (rr1.size() >= 2) {
             assert(equal(polygon_area(rl2), polygon_area(rr1)));
         }
-        Double ans = (rl1.size() >= 2 ? polygon_area(rl1) : 0);
+        double ans = (rl1.size() >= 2 ? polygon_area(rl1) : 0);
         std::cout << std::fixed << std::setprecision(15) << ans << '\n';
     }
     return 0;

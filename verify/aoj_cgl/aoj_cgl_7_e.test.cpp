@@ -6,11 +6,11 @@
 #include "geometry/cross_point_cc.hpp"
 
 int main() {
-    Circle C1, C2;
+    Circle<double> C1, C2;
     std::cin >> C1 >> C2;
     auto res = cross_point_cc(C1, C2);
     std::sort(res.begin(), res.end());
     if (res.size() == 1) res.push_back(res[0]);
-    std::cout << res[0] << ' ' << res[1] << '\n';
+    std::cout << std::fixed << std::setprecision(15) << res[0].x << ' ' << res[0].y << ' ' << res[1].x << ' ' << res[1].y << '\n';
     return 0;
 }

@@ -1,5 +1,4 @@
 #pragma once
-#include "geometry/geometry_template.hpp"
 
 #include "geometry/point.hpp"
 #include "geometry/line.hpp"

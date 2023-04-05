@@ -7,7 +7,7 @@
 // angle = 180 degrees -> ON_SEGMENT
 // angle = 0 degrees -> ONLINE_FRONT or ONLINE_BACK
 // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B
-bool polygon_is_convex(const Polygon &p) {
+template <typename T> bool polygon_is_convex(const Polygon<T> &p) {
     int n = (int)p.size();
     assert(n >= 3);
     bool okccw = true, okcw = true;

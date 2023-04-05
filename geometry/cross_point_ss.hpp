@@ -6,12 +6,12 @@
 
 // cross point (segment and segment)
 // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_C
-Point cross_point_ss(const Segment &s1, const Segment &s2) {
+template <typename T> Point<T> cross_point_ss(const Segment<T> &s1, const Segment<T> &s2) {
     // check intersection s1 and s2
     assert(is_intersect_ss(s1, s2));
-    Point base = s1.b - s1.a;
-    Double d12 = cross(base, s2.b - s2.a);
-    Double d1 = cross(base, s1.b - s2.a);
+    Point<T> base = s1.b - s1.a;
+    T d12 = cross(base, s2.b - s2.a);
+    T d1 = cross(base, s1.b - s2.a);
     if (sign(d12) == 0) {
         // parallel
         if (sign(d1) == 0) {

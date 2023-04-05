@@ -8,10 +8,10 @@
 int main() {
     int N;
     std::cin >> N;
-    std::vector<Point> P(N);
+    std::vector<Point<double>> P(N);
     for (int i = 0; i < N; i++) std::cin >> P[i];
     auto [i, j, d] = closest_pair(P);
     assert(equal(d, abs(P[i] - P[j])));
-    std::cout << std::fixed << std::setprecision(15) << abs(P[i] - P[j]) << '\n';
+    std::cout << std::fixed << std::setprecision(15) << d << '\n';
     return 0;
 }

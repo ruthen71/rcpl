@@ -5,12 +5,12 @@
 #include "geometry/ccw.hpp"
 
 int main() {
-    Point P1, P2;
+    Point<double> P1, P2;
     std::cin >> P1 >> P2;
     int Q;
     std::cin >> Q;
     while (Q--) {
-        Point P3;
+        Point<double> P3;
         std::cin >> P3;
         auto ans = ccw(P1, P2, P3);
         if (ans == COUNTER_CLOCKWISE) {

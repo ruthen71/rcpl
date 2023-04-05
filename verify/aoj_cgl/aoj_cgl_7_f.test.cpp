@@ -6,12 +6,12 @@
 #include "geometry/tangent_point_cp.hpp"
 
 int main() {
-    Point P;
-    Circle C;
+    Point<double> P;
+    Circle<double> C;
     std::cin >> P >> C;
     auto [p, q] = tangent_point_cp(C, P);
     if (!compare_x(p, q)) std::swap(p, q);
-    std::cout << p << '\n';
-    std::cout << q << '\n';
+    std::cout << std::fixed << std::setprecision(15) << p.x << ' ' << p.y << '\n';
+    std::cout << std::fixed << std::setprecision(15) << q.x << ' ' << q.y << '\n';
     return 0;
 }
