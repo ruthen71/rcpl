@@ -32,8 +32,8 @@ data:
   bundledCode: "#line 2 \"geometry/farthest_pair.hpp\"\n\n#line 2 \"geometry/monotone_chain.hpp\"\
     \n\n#line 2 \"geometry/polygon.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n// point\n\
     template <typename T> struct Point {\n    static T EPS;\n    static constexpr\
-    \ T PI = 3.1415926535'8979323846'2643383279'5028841971;\n    static void set_eps(const\
-    \ T &e) { EPS = e; }\n    T x, y;\n    Point(const T x = T(0), const T y = T(0))\
+    \ T PI = 3.1415926535'8979323846'2643383279L;\n    static void set_eps(const T\
+    \ &e) { EPS = e; }\n    T x, y;\n    Point(const T x = T(0), const T y = T(0))\
     \ : x(x), y(y) {}\n    Point &operator+=(const Point &p) {\n        x += p.x;\n\
     \        y += p.y;\n        return *this;\n    }\n    Point &operator-=(const\
     \ Point &p) {\n        x -= p.x;\n        y -= p.y;\n        return *this;\n \
@@ -188,7 +188,7 @@ data:
   path: geometry/farthest_pair.hpp
   requiredBy:
   - geometry/all.hpp
-  timestamp: '2023-04-06 10:02:29+09:00'
+  timestamp: '2023-04-06 10:28:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/farthest_pair.hpp

@@ -33,7 +33,7 @@ data:
     - https://en.wikipedia.org/wiki/Rotating_calipers)
   bundledCode: "#line 2 \"geometry/convex_polygon_diameter.hpp\"\n\n#line 2 \"geometry/polygon.hpp\"\
     \n\n#line 2 \"geometry/point.hpp\"\n\n// point\ntemplate <typename T> struct Point\
-    \ {\n    static T EPS;\n    static constexpr T PI = 3.1415926535'8979323846'2643383279'5028841971;\n\
+    \ {\n    static T EPS;\n    static constexpr T PI = 3.1415926535'8979323846'2643383279L;\n\
     \    static void set_eps(const T &e) { EPS = e; }\n    T x, y;\n    Point(const\
     \ T x = T(0), const T y = T(0)) : x(x), y(y) {}\n    Point &operator+=(const Point\
     \ &p) {\n        x += p.x;\n        y += p.y;\n        return *this;\n    }\n\
@@ -159,7 +159,7 @@ data:
   requiredBy:
   - geometry/farthest_pair.hpp
   - geometry/all.hpp
-  timestamp: '2023-04-06 10:02:29+09:00'
+  timestamp: '2023-04-06 10:28:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_4_b.test.cpp

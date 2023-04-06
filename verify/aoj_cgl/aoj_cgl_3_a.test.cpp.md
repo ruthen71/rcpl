@@ -24,7 +24,7 @@ data:
     http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\"\n\n#include\
     \ <bits/stdc++.h>\n\n#line 2 \"geometry/polygon_area.hpp\"\n\n#line 2 \"geometry/polygon.hpp\"\
     \n\n#line 2 \"geometry/point.hpp\"\n\n// point\ntemplate <typename T> struct Point\
-    \ {\n    static T EPS;\n    static constexpr T PI = 3.1415926535'8979323846'2643383279'5028841971;\n\
+    \ {\n    static T EPS;\n    static constexpr T PI = 3.1415926535'8979323846'2643383279L;\n\
     \    static void set_eps(const T &e) { EPS = e; }\n    T x, y;\n    Point(const\
     \ T x = T(0), const T y = T(0)) : x(x), y(y) {}\n    Point &operator+=(const Point\
     \ &p) {\n        x += p.x;\n        y += p.y;\n        return *this;\n    }\n\
@@ -106,7 +106,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_3_a.test.cpp
   requiredBy: []
-  timestamp: '2023-04-06 10:02:29+09:00'
+  timestamp: '2023-04-06 10:28:51+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_3_a.test.cpp

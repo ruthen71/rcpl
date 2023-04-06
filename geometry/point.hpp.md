@@ -178,7 +178,7 @@ data:
     links:
     - https://ngtkana.hatenablog.com/entry/2021/11/13/202103
   bundledCode: "#line 2 \"geometry/point.hpp\"\n\n// point\ntemplate <typename T>\
-    \ struct Point {\n    static T EPS;\n    static constexpr T PI = 3.1415926535'8979323846'2643383279'5028841971;\n\
+    \ struct Point {\n    static T EPS;\n    static constexpr T PI = 3.1415926535'8979323846'2643383279L;\n\
     \    static void set_eps(const T &e) { EPS = e; }\n    T x, y;\n    Point(const\
     \ T x = T(0), const T y = T(0)) : x(x), y(y) {}\n    Point &operator+=(const Point\
     \ &p) {\n        x += p.x;\n        y += p.y;\n        return *this;\n    }\n\
@@ -234,8 +234,8 @@ data:
     \ = 0;\n// change EPS\n// using Double = double;\n// using Pt = Point<Double>;\n\
     // Point<Double>::set_eps(new_eps);\n"
   code: "#pragma once\n\n// point\ntemplate <typename T> struct Point {\n    static\
-    \ T EPS;\n    static constexpr T PI = 3.1415926535'8979323846'2643383279'5028841971;\n\
-    \    static void set_eps(const T &e) { EPS = e; }\n    T x, y;\n    Point(const\
+    \ T EPS;\n    static constexpr T PI = 3.1415926535'8979323846'2643383279L;\n \
+    \   static void set_eps(const T &e) { EPS = e; }\n    T x, y;\n    Point(const\
     \ T x = T(0), const T y = T(0)) : x(x), y(y) {}\n    Point &operator+=(const Point\
     \ &p) {\n        x += p.x;\n        y += p.y;\n        return *this;\n    }\n\
     \    Point &operator-=(const Point &p) {\n        x -= p.x;\n        y -= p.y;\n\
@@ -329,7 +329,7 @@ data:
   - geometry/cross_point_cl.hpp
   - geometry/ccw.hpp
   - geometry/distance_lp.hpp
-  timestamp: '2023-04-06 10:02:29+09:00'
+  timestamp: '2023-04-06 10:28:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_7_b.test.cpp
