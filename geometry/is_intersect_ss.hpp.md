@@ -1,52 +1,52 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':x:'
     path: geometry/ccw.hpp
     title: geometry/ccw.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: geometry/point.hpp
     title: geometry/point.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/segment.hpp
     title: geometry/segment.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
     path: geometry/all.hpp
     title: geometry/all.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/cross_point_ss.hpp
     title: geometry/cross_point_ss.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/distance_ss.hpp
     title: geometry/distance_ss.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj_cgl/aoj_cgl_2_b.test.cpp
     title: verify/aoj_cgl/aoj_cgl_2_b.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj_cgl/aoj_cgl_2_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_2_c.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj_cgl/aoj_cgl_2_d.test.cpp
     title: verify/aoj_cgl/aoj_cgl_2_d.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_B
   bundledCode: "#line 2 \"geometry/is_intersect_ss.hpp\"\n\n#line 2 \"geometry/segment.hpp\"\
     \n\n#line 2 \"geometry/line.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n// point\n\
-    template <typename T> struct Point {\n    static T EPS;\n    static constexpr\
-    \ T PI = std::acos(T(-1));\n    static void set_eps(const T &e) { EPS = e; }\n\
-    \    T x, y;\n    Point(const T x = T(0), const T y = T(0)) : x(x), y(y) {}\n\
-    \    Point &operator+=(const Point &p) {\n        x += p.x;\n        y += p.y;\n\
-    \        return *this;\n    }\n    Point &operator-=(const Point &p) {\n     \
-    \   x -= p.x;\n        y -= p.y;\n        return *this;\n    }\n    Point &operator*=(const\
+    template <typename T> struct Point {\n    static T EPS;\n    static const T PI\
+    \ = std::acos(T(-1));\n    static void set_eps(const T &e) { EPS = e; }\n    T\
+    \ x, y;\n    Point(const T x = T(0), const T y = T(0)) : x(x), y(y) {}\n    Point\
+    \ &operator+=(const Point &p) {\n        x += p.x;\n        y += p.y;\n      \
+    \  return *this;\n    }\n    Point &operator-=(const Point &p) {\n        x -=\
+    \ p.x;\n        y -= p.y;\n        return *this;\n    }\n    Point &operator*=(const\
     \ Point &p) { return *this = Point(x * p.x - y * p.y, x * p.y + y * p.x); }\n\
     \    Point &operator*=(const T &k) {\n        x *= k;\n        y *= k;\n     \
     \   return *this;\n    }\n    Point &operator/=(const Point &p) { return *this\
@@ -149,8 +149,8 @@ data:
   - geometry/distance_ss.hpp
   - geometry/cross_point_ss.hpp
   - geometry/all.hpp
-  timestamp: '2023-04-05 19:46:31+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-04-06 09:06:24+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_2_d.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_b.test.cpp

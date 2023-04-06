@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':x:'
     path: geometry/ccw.hpp
     title: geometry/ccw.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/convex_polygon_diameter.hpp
     title: geometry/convex_polygon_diameter.hpp
   - icon: ':x:'
     path: geometry/monotone_chain.hpp
     title: geometry/monotone_chain.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: geometry/point.hpp
     title: geometry/point.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/polygon_is_convex.hpp
     title: geometry/polygon_is_convex.hpp
   _extendedRequiredBy:
@@ -31,12 +31,12 @@ data:
     links: []
   bundledCode: "#line 2 \"geometry/farthest_pair.hpp\"\n\n#line 2 \"geometry/monotone_chain.hpp\"\
     \n\n#line 2 \"geometry/polygon.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n// point\n\
-    template <typename T> struct Point {\n    static T EPS;\n    static constexpr\
-    \ T PI = std::acos(T(-1));\n    static void set_eps(const T &e) { EPS = e; }\n\
-    \    T x, y;\n    Point(const T x = T(0), const T y = T(0)) : x(x), y(y) {}\n\
-    \    Point &operator+=(const Point &p) {\n        x += p.x;\n        y += p.y;\n\
-    \        return *this;\n    }\n    Point &operator-=(const Point &p) {\n     \
-    \   x -= p.x;\n        y -= p.y;\n        return *this;\n    }\n    Point &operator*=(const\
+    template <typename T> struct Point {\n    static T EPS;\n    static const T PI\
+    \ = std::acos(T(-1));\n    static void set_eps(const T &e) { EPS = e; }\n    T\
+    \ x, y;\n    Point(const T x = T(0), const T y = T(0)) : x(x), y(y) {}\n    Point\
+    \ &operator+=(const Point &p) {\n        x += p.x;\n        y += p.y;\n      \
+    \  return *this;\n    }\n    Point &operator-=(const Point &p) {\n        x -=\
+    \ p.x;\n        y -= p.y;\n        return *this;\n    }\n    Point &operator*=(const\
     \ Point &p) { return *this = Point(x * p.x - y * p.y, x * p.y + y * p.x); }\n\
     \    Point &operator*=(const T &k) {\n        x *= k;\n        y *= k;\n     \
     \   return *this;\n    }\n    Point &operator/=(const Point &p) { return *this\
@@ -108,7 +108,7 @@ data:
     \ of points is minimized)\n// complexity: O(n \\log n) (n: the number of points)\n\
     template <typename T> Polygon<T> monotone_chain(std::vector<Point<T>> &p, bool\
     \ strict = true) {\n    int n = (int)p.size();\n    if (n <= 2) return p;\n  \
-    \  std::sort(p.begin(), p.end(), compare_x);\n    Polygon<T> r;\n    r.reserve(n\
+    \  std::sort(p.begin(), p.end(), compare_x<T>);\n    Polygon<T> r;\n    r.reserve(n\
     \ * 2);\n    if (strict) {\n        for (int i = 0; i < n; i++) {\n          \
     \  while (r.size() >= 2 and ccw(r[r.size() - 2], r[r.size() - 1], p[i]) != CLOCKWISE)\
     \ {\n                r.pop_back();\n            }\n            r.push_back(p[i]);\n\
@@ -187,7 +187,7 @@ data:
   path: geometry/farthest_pair.hpp
   requiredBy:
   - geometry/all.hpp
-  timestamp: '2023-04-05 20:08:32+09:00'
+  timestamp: '2023-04-06 09:06:24+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/farthest_pair.hpp

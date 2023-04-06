@@ -1,32 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':x:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/cross_point_cl.hpp
     title: geometry/cross_point_cl.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/distance_lp.hpp
     title: geometry/distance_lp.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/is_intersect_cl.hpp
     title: geometry/is_intersect_cl.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: geometry/point.hpp
     title: geometry/point.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/projection.hpp
     title: geometry/projection.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: '0.000001'
@@ -38,7 +38,7 @@ data:
     \ 0.000001\n\n#include <bits/stdc++.h>\n\n#line 2 \"geometry/cross_point_cl.hpp\"\
     \n\n#line 2 \"geometry/is_intersect_cl.hpp\"\n\n#line 2 \"geometry/distance_lp.hpp\"\
     \n\n#line 2 \"geometry/point.hpp\"\n\n// point\ntemplate <typename T> struct Point\
-    \ {\n    static T EPS;\n    static constexpr T PI = std::acos(T(-1));\n    static\
+    \ {\n    static T EPS;\n    static const T PI = std::acos(T(-1));\n    static\
     \ void set_eps(const T &e) { EPS = e; }\n    T x, y;\n    Point(const T x = T(0),\
     \ const T y = T(0)) : x(x), y(y) {}\n    Point &operator+=(const Point &p) {\n\
     \        x += p.x;\n        y += p.y;\n        return *this;\n    }\n    Point\
@@ -151,8 +151,8 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
   requiredBy: []
-  timestamp: '2023-04-05 20:08:32+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-04-06 09:06:24+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
 layout: document

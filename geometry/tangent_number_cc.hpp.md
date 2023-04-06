@@ -1,45 +1,45 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':x:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: geometry/point.hpp
     title: geometry/point.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
     path: geometry/all.hpp
     title: geometry/all.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/cross_point_cc.hpp
     title: geometry/cross_point_cc.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/is_intersect_cc.hpp
     title: geometry/is_intersect_cc.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/tangent_point_cp.hpp
     title: geometry/tangent_point_cp.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj_cgl/aoj_cgl_7_a.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_a.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj_cgl/aoj_cgl_7_e.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_e.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj_cgl/aoj_cgl_7_f.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_f.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A
   bundledCode: "#line 2 \"geometry/circle.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\
     \n// point\ntemplate <typename T> struct Point {\n    static T EPS;\n    static\
-    \ constexpr T PI = std::acos(T(-1));\n    static void set_eps(const T &e) { EPS\
-    \ = e; }\n    T x, y;\n    Point(const T x = T(0), const T y = T(0)) : x(x), y(y)\
+    \ const T PI = std::acos(T(-1));\n    static void set_eps(const T &e) { EPS =\
+    \ e; }\n    T x, y;\n    Point(const T x = T(0), const T y = T(0)) : x(x), y(y)\
     \ {}\n    Point &operator+=(const Point &p) {\n        x += p.x;\n        y +=\
     \ p.y;\n        return *this;\n    }\n    Point &operator-=(const Point &p) {\n\
     \        x -= p.x;\n        y -= p.y;\n        return *this;\n    }\n    Point\
@@ -131,8 +131,8 @@ data:
   - geometry/tangent_point_cp.hpp
   - geometry/all.hpp
   - geometry/cross_point_cc.hpp
-  timestamp: '2023-04-05 19:46:31+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-04-06 09:06:24+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_7_a.test.cpp
   - verify/aoj_cgl/aoj_cgl_7_e.test.cpp

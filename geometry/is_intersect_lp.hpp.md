@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':x:'
     path: geometry/ccw.hpp
     title: geometry/ccw.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: geometry/point.hpp
     title: geometry/point.hpp
   _extendedRequiredBy:
@@ -22,7 +22,7 @@ data:
     links: []
   bundledCode: "#line 2 \"geometry/is_intersect_lp.hpp\"\n\n#line 2 \"geometry/line.hpp\"\
     \n\n#line 2 \"geometry/point.hpp\"\n\n// point\ntemplate <typename T> struct Point\
-    \ {\n    static T EPS;\n    static constexpr T PI = std::acos(T(-1));\n    static\
+    \ {\n    static T EPS;\n    static const T PI = std::acos(T(-1));\n    static\
     \ void set_eps(const T &e) { EPS = e; }\n    T x, y;\n    Point(const T x = T(0),\
     \ const T y = T(0)) : x(x), y(y) {}\n    Point &operator+=(const Point &p) {\n\
     \        x += p.x;\n        y += p.y;\n        return *this;\n    }\n    Point\
@@ -114,7 +114,7 @@ data:
   path: geometry/is_intersect_lp.hpp
   requiredBy:
   - geometry/all.hpp
-  timestamp: '2023-04-05 19:46:31+09:00'
+  timestamp: '2023-04-06 09:06:24+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/is_intersect_lp.hpp

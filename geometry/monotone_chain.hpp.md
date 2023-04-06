@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':x:'
     path: geometry/ccw.hpp
     title: geometry/ccw.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: geometry/point.hpp
     title: geometry/point.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
   _extendedRequiredBy:
@@ -29,7 +29,7 @@ data:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A
   bundledCode: "#line 2 \"geometry/monotone_chain.hpp\"\n\n#line 2 \"geometry/polygon.hpp\"\
     \n\n#line 2 \"geometry/point.hpp\"\n\n// point\ntemplate <typename T> struct Point\
-    \ {\n    static T EPS;\n    static constexpr T PI = std::acos(T(-1));\n    static\
+    \ {\n    static T EPS;\n    static const T PI = std::acos(T(-1));\n    static\
     \ void set_eps(const T &e) { EPS = e; }\n    T x, y;\n    Point(const T x = T(0),\
     \ const T y = T(0)) : x(x), y(y) {}\n    Point &operator+=(const Point &p) {\n\
     \        x += p.x;\n        y += p.y;\n        return *this;\n    }\n    Point\
@@ -106,7 +106,7 @@ data:
     \ of points is minimized)\n// complexity: O(n \\log n) (n: the number of points)\n\
     template <typename T> Polygon<T> monotone_chain(std::vector<Point<T>> &p, bool\
     \ strict = true) {\n    int n = (int)p.size();\n    if (n <= 2) return p;\n  \
-    \  std::sort(p.begin(), p.end(), compare_x);\n    Polygon<T> r;\n    r.reserve(n\
+    \  std::sort(p.begin(), p.end(), compare_x<T>);\n    Polygon<T> r;\n    r.reserve(n\
     \ * 2);\n    if (strict) {\n        for (int i = 0; i < n; i++) {\n          \
     \  while (r.size() >= 2 and ccw(r[r.size() - 2], r[r.size() - 1], p[i]) != CLOCKWISE)\
     \ {\n                r.pop_back();\n            }\n            r.push_back(p[i]);\n\
@@ -131,7 +131,7 @@ data:
     \ of points is minimized)\n// complexity: O(n \\log n) (n: the number of points)\n\
     template <typename T> Polygon<T> monotone_chain(std::vector<Point<T>> &p, bool\
     \ strict = true) {\n    int n = (int)p.size();\n    if (n <= 2) return p;\n  \
-    \  std::sort(p.begin(), p.end(), compare_x);\n    Polygon<T> r;\n    r.reserve(n\
+    \  std::sort(p.begin(), p.end(), compare_x<T>);\n    Polygon<T> r;\n    r.reserve(n\
     \ * 2);\n    if (strict) {\n        for (int i = 0; i < n; i++) {\n          \
     \  while (r.size() >= 2 and ccw(r[r.size() - 2], r[r.size() - 1], p[i]) != CLOCKWISE)\
     \ {\n                r.pop_back();\n            }\n            r.push_back(p[i]);\n\
@@ -156,7 +156,7 @@ data:
   requiredBy:
   - geometry/farthest_pair.hpp
   - geometry/all.hpp
-  timestamp: '2023-04-05 19:46:31+09:00'
+  timestamp: '2023-04-06 09:06:24+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_4_a.test.cpp

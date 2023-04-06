@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':x:'
     path: geometry/ccw.hpp
     title: geometry/ccw.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/is_intersect_sp.hpp
     title: geometry/is_intersect_sp.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: geometry/point.hpp
     title: geometry/point.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/segment.hpp
     title: geometry/segment.hpp
   _extendedRequiredBy:
@@ -24,18 +24,18 @@ data:
     path: geometry/all.hpp
     title: geometry/all.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C
   bundledCode: "#line 2 \"geometry/polygon_contain.hpp\"\n\n#line 2 \"geometry/polygon.hpp\"\
     \n\n#line 2 \"geometry/point.hpp\"\n\n// point\ntemplate <typename T> struct Point\
-    \ {\n    static T EPS;\n    static constexpr T PI = std::acos(T(-1));\n    static\
+    \ {\n    static T EPS;\n    static const T PI = std::acos(T(-1));\n    static\
     \ void set_eps(const T &e) { EPS = e; }\n    T x, y;\n    Point(const T x = T(0),\
     \ const T y = T(0)) : x(x), y(y) {}\n    Point &operator+=(const Point &p) {\n\
     \        x += p.x;\n        y += p.y;\n        return *this;\n    }\n    Point\
@@ -160,8 +160,8 @@ data:
   path: geometry/polygon_contain.hpp
   requiredBy:
   - geometry/all.hpp
-  timestamp: '2023-04-05 19:46:31+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-04-06 09:06:24+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_3_c.test.cpp
 documentation_of: geometry/polygon_contain.hpp

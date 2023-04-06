@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':x:'
     path: geometry/point.hpp
     title: geometry/point.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
     path: geometry/all.hpp
     title: geometry/all.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/convex_polygon_diameter.hpp
     title: geometry/convex_polygon_diameter.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/cross_point_ss.hpp
     title: geometry/cross_point_ss.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/distance_sp.hpp
     title: geometry/distance_sp.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/distance_ss.hpp
     title: geometry/distance_ss.hpp
   - icon: ':warning:'
@@ -26,56 +26,56 @@ data:
   - icon: ':warning:'
     path: geometry/is_intersect_lp.hpp
     title: geometry/is_intersect_lp.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/is_intersect_sp.hpp
     title: geometry/is_intersect_sp.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/is_intersect_ss.hpp
     title: geometry/is_intersect_ss.hpp
   - icon: ':x:'
     path: geometry/monotone_chain.hpp
     title: geometry/monotone_chain.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/polygon_contain.hpp
     title: geometry/polygon_contain.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/polygon_is_convex.hpp
     title: geometry/polygon_is_convex.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj_cgl/aoj_cgl_1_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_1_c.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj_cgl/aoj_cgl_2_b.test.cpp
     title: verify/aoj_cgl/aoj_cgl_2_b.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj_cgl/aoj_cgl_2_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_2_c.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj_cgl/aoj_cgl_2_d.test.cpp
     title: verify/aoj_cgl/aoj_cgl_2_d.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj_cgl/aoj_cgl_3_b.test.cpp
     title: verify/aoj_cgl/aoj_cgl_3_b.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
   - icon: ':x:'
     path: verify/aoj_cgl/aoj_cgl_4_a.test.cpp
     title: verify/aoj_cgl/aoj_cgl_4_a.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj_cgl/aoj_cgl_4_b.test.cpp
     title: verify/aoj_cgl/aoj_cgl_4_b.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C
   bundledCode: "#line 2 \"geometry/ccw.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n\
     // point\ntemplate <typename T> struct Point {\n    static T EPS;\n    static\
-    \ constexpr T PI = std::acos(T(-1));\n    static void set_eps(const T &e) { EPS\
-    \ = e; }\n    T x, y;\n    Point(const T x = T(0), const T y = T(0)) : x(x), y(y)\
+    \ const T PI = std::acos(T(-1));\n    static void set_eps(const T &e) { EPS =\
+    \ e; }\n    T x, y;\n    Point(const T x = T(0), const T y = T(0)) : x(x), y(y)\
     \ {}\n    Point &operator+=(const Point &p) {\n        x += p.x;\n        y +=\
     \ p.y;\n        return *this;\n    }\n    Point &operator-=(const Point &p) {\n\
     \        x -= p.x;\n        y -= p.y;\n        return *this;\n    }\n    Point\
@@ -164,8 +164,8 @@ data:
   - geometry/is_intersect_lp.hpp
   - geometry/distance_sp.hpp
   - geometry/convex_polygon_diameter.hpp
-  timestamp: '2023-04-05 19:46:31+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2023-04-06 09:06:24+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_4_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_d.test.cpp
