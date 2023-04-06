@@ -3,7 +3,7 @@
 // point
 template <typename T> struct Point {
     static T EPS;
-    static constexpr T PI = std::acos(T(-1));
+    static const T PI = std::acos(T(-1));
     static void set_eps(const T &e) { EPS = e; }
     T x, y;
     Point(const T x = T(0), const T y = T(0)) : x(x), y(y) {}

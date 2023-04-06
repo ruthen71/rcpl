@@ -13,7 +13,7 @@
 template <typename T> Polygon<T> monotone_chain(std::vector<Point<T>> &p, bool strict = true) {
     int n = (int)p.size();
     if (n <= 2) return p;
-    std::sort(p.begin(), p.end(), compare_x);
+    std::sort(p.begin(), p.end(), compare_x<T>);
     Polygon<T> r;
     r.reserve(n * 2);
     if (strict) {
