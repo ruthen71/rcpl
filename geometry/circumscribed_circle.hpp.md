@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point_ll.hpp
     title: geometry/cross_point_ll.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: geometry/point.hpp
   _extendedRequiredBy:
@@ -18,12 +18,12 @@ data:
     path: geometry/all.hpp
     title: geometry/all.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_c.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C
@@ -31,23 +31,24 @@ data:
   bundledCode: "#line 2 \"geometry/circumscribed_circle.hpp\"\n\n#line 2 \"geometry/cross_point_ll.hpp\"\
     \n\n#line 2 \"geometry/line.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n// point\n\
     template <typename T> struct Point {\n    static T EPS;\n    static constexpr\
-    \ T PI = std::acos(T(-1));\n    static void set_eps(const T &e) { EPS = e; }\n\
-    \    T x, y;\n    Point(const T x = T(0), const T y = T(0)) : x(x), y(y) {}\n\
-    \    Point &operator+=(const Point &p) {\n        x += p.x;\n        y += p.y;\n\
-    \        return *this;\n    }\n    Point &operator-=(const Point &p) {\n     \
-    \   x -= p.x;\n        y -= p.y;\n        return *this;\n    }\n    Point &operator*=(const\
-    \ Point &p) { return *this = Point(x * p.x - y * p.y, x * p.y + y * p.x); }\n\
-    \    Point &operator*=(const T &k) {\n        x *= k;\n        y *= k;\n     \
-    \   return *this;\n    }\n    Point &operator/=(const Point &p) { return *this\
-    \ = Point(x * p.x + y * p.y, -x * p.y + y * p.x) / (p.x * p.x + p.y * p.y); }\n\
-    \    Point &operator/=(const T &k) {\n        x /= k;\n        y /= k;\n     \
-    \   return *this;\n    }\n\n    Point operator+() const { return *this; }\n  \
-    \  Point operator-() const { return Point(-x, -y); }\n\n    friend Point operator+(const\
-    \ Point &a, const Point &b) { return Point(a) += b; }\n    friend Point operator-(const\
-    \ Point &a, const Point &b) { return Point(a) -= b; }\n    friend Point operator*(const\
-    \ Point &a, const Point &b) { return Point(a) *= b; }\n    friend Point operator*(const\
-    \ Point &p, const T &k) { return Point(p) *= k; }\n    friend Point operator/(const\
-    \ Point &a, const Point &b) { return Point(a) /= b; }\n    friend Point operator/(const\
+    \ T PI = 3.1415926535'8979323846'2643383279'5028841971;\n    static void set_eps(const\
+    \ T &e) { EPS = e; }\n    T x, y;\n    Point(const T x = T(0), const T y = T(0))\
+    \ : x(x), y(y) {}\n    Point &operator+=(const Point &p) {\n        x += p.x;\n\
+    \        y += p.y;\n        return *this;\n    }\n    Point &operator-=(const\
+    \ Point &p) {\n        x -= p.x;\n        y -= p.y;\n        return *this;\n \
+    \   }\n    Point &operator*=(const Point &p) { return *this = Point(x * p.x -\
+    \ y * p.y, x * p.y + y * p.x); }\n    Point &operator*=(const T &k) {\n      \
+    \  x *= k;\n        y *= k;\n        return *this;\n    }\n    Point &operator/=(const\
+    \ Point &p) { return *this = Point(x * p.x + y * p.y, -x * p.y + y * p.x) / (p.x\
+    \ * p.x + p.y * p.y); }\n    Point &operator/=(const T &k) {\n        x /= k;\n\
+    \        y /= k;\n        return *this;\n    }\n\n    Point operator+() const\
+    \ { return *this; }\n    Point operator-() const { return Point(-x, -y); }\n\n\
+    \    friend Point operator+(const Point &a, const Point &b) { return Point(a)\
+    \ += b; }\n    friend Point operator-(const Point &a, const Point &b) { return\
+    \ Point(a) -= b; }\n    friend Point operator*(const Point &a, const Point &b)\
+    \ { return Point(a) *= b; }\n    friend Point operator*(const Point &p, const\
+    \ T &k) { return Point(p) *= k; }\n    friend Point operator/(const Point &a,\
+    \ const Point &b) { return Point(a) /= b; }\n    friend Point operator/(const\
     \ Point &p, const T &k) { return Point(p) /= k; }\n    // for std::set, std::map,\
     \ compare_arg, ...\n    friend bool operator<(const Point &a, const Point &b)\
     \ { return a.x == b.x ? a.y < b.y : a.x < b.x; }\n    // I/O\n    friend std::istream\
@@ -132,8 +133,8 @@ data:
   path: geometry/circumscribed_circle.hpp
   requiredBy:
   - geometry/all.hpp
-  timestamp: '2023-04-06 09:26:09+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-04-06 10:02:29+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_7_c.test.cpp
 documentation_of: geometry/circumscribed_circle.hpp

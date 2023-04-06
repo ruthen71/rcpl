@@ -8,10 +8,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/ccw.hpp
     title: geometry/ccw.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/circumscribed_circle.hpp
     title: geometry/circumscribed_circle.hpp
   - icon: ':heavy_check_mark:'
@@ -29,7 +29,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/cross_point_cl.hpp
     title: geometry/cross_point_cl.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point_ll.hpp
     title: geometry/cross_point_ll.hpp
   - icon: ':heavy_check_mark:'
@@ -77,7 +77,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/is_parallel.hpp
     title: geometry/is_parallel.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
   - icon: ':heavy_check_mark:'
@@ -159,7 +159,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_b.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_b.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_c.test.cpp
   - icon: ':heavy_check_mark:'
@@ -171,14 +171,14 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_f.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_f.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://ngtkana.hatenablog.com/entry/2021/11/13/202103
   bundledCode: "#line 2 \"geometry/point.hpp\"\n\n// point\ntemplate <typename T>\
-    \ struct Point {\n    static T EPS;\n    static constexpr T PI = std::acos(T(-1));\n\
+    \ struct Point {\n    static T EPS;\n    static constexpr T PI = 3.1415926535'8979323846'2643383279'5028841971;\n\
     \    static void set_eps(const T &e) { EPS = e; }\n    T x, y;\n    Point(const\
     \ T x = T(0), const T y = T(0)) : x(x), y(y) {}\n    Point &operator+=(const Point\
     \ &p) {\n        x += p.x;\n        y += p.y;\n        return *this;\n    }\n\
@@ -234,24 +234,24 @@ data:
     \ = 0;\n// change EPS\n// using Double = double;\n// using Pt = Point<Double>;\n\
     // Point<Double>::set_eps(new_eps);\n"
   code: "#pragma once\n\n// point\ntemplate <typename T> struct Point {\n    static\
-    \ T EPS;\n    static constexpr T PI = std::acos(T(-1));\n    static void set_eps(const\
-    \ T &e) { EPS = e; }\n    T x, y;\n    Point(const T x = T(0), const T y = T(0))\
-    \ : x(x), y(y) {}\n    Point &operator+=(const Point &p) {\n        x += p.x;\n\
-    \        y += p.y;\n        return *this;\n    }\n    Point &operator-=(const\
-    \ Point &p) {\n        x -= p.x;\n        y -= p.y;\n        return *this;\n \
-    \   }\n    Point &operator*=(const Point &p) { return *this = Point(x * p.x -\
-    \ y * p.y, x * p.y + y * p.x); }\n    Point &operator*=(const T &k) {\n      \
-    \  x *= k;\n        y *= k;\n        return *this;\n    }\n    Point &operator/=(const\
-    \ Point &p) { return *this = Point(x * p.x + y * p.y, -x * p.y + y * p.x) / (p.x\
-    \ * p.x + p.y * p.y); }\n    Point &operator/=(const T &k) {\n        x /= k;\n\
-    \        y /= k;\n        return *this;\n    }\n\n    Point operator+() const\
-    \ { return *this; }\n    Point operator-() const { return Point(-x, -y); }\n\n\
-    \    friend Point operator+(const Point &a, const Point &b) { return Point(a)\
-    \ += b; }\n    friend Point operator-(const Point &a, const Point &b) { return\
-    \ Point(a) -= b; }\n    friend Point operator*(const Point &a, const Point &b)\
-    \ { return Point(a) *= b; }\n    friend Point operator*(const Point &p, const\
-    \ T &k) { return Point(p) *= k; }\n    friend Point operator/(const Point &a,\
-    \ const Point &b) { return Point(a) /= b; }\n    friend Point operator/(const\
+    \ T EPS;\n    static constexpr T PI = 3.1415926535'8979323846'2643383279'5028841971;\n\
+    \    static void set_eps(const T &e) { EPS = e; }\n    T x, y;\n    Point(const\
+    \ T x = T(0), const T y = T(0)) : x(x), y(y) {}\n    Point &operator+=(const Point\
+    \ &p) {\n        x += p.x;\n        y += p.y;\n        return *this;\n    }\n\
+    \    Point &operator-=(const Point &p) {\n        x -= p.x;\n        y -= p.y;\n\
+    \        return *this;\n    }\n    Point &operator*=(const Point &p) { return\
+    \ *this = Point(x * p.x - y * p.y, x * p.y + y * p.x); }\n    Point &operator*=(const\
+    \ T &k) {\n        x *= k;\n        y *= k;\n        return *this;\n    }\n  \
+    \  Point &operator/=(const Point &p) { return *this = Point(x * p.x + y * p.y,\
+    \ -x * p.y + y * p.x) / (p.x * p.x + p.y * p.y); }\n    Point &operator/=(const\
+    \ T &k) {\n        x /= k;\n        y /= k;\n        return *this;\n    }\n\n\
+    \    Point operator+() const { return *this; }\n    Point operator-() const {\
+    \ return Point(-x, -y); }\n\n    friend Point operator+(const Point &a, const\
+    \ Point &b) { return Point(a) += b; }\n    friend Point operator-(const Point\
+    \ &a, const Point &b) { return Point(a) -= b; }\n    friend Point operator*(const\
+    \ Point &a, const Point &b) { return Point(a) *= b; }\n    friend Point operator*(const\
+    \ Point &p, const T &k) { return Point(p) *= k; }\n    friend Point operator/(const\
+    \ Point &a, const Point &b) { return Point(a) /= b; }\n    friend Point operator/(const\
     \ Point &p, const T &k) { return Point(p) /= k; }\n    // for std::set, std::map,\
     \ compare_arg, ...\n    friend bool operator<(const Point &a, const Point &b)\
     \ { return a.x == b.x ? a.y < b.y : a.x < b.x; }\n    // I/O\n    friend std::istream\
@@ -293,65 +293,65 @@ data:
   isVerificationFile: false
   path: geometry/point.hpp
   requiredBy:
-  - geometry/is_intersect_cc.hpp
-  - geometry/is_intersect_ss.hpp
-  - geometry/tangent_point_cp.hpp
-  - geometry/projection.hpp
-  - geometry/is_intersect_cp.hpp
   - geometry/cross_point_ll.hpp
-  - geometry/polygon_is_convex.hpp
-  - geometry/farthest_pair.hpp
-  - geometry/cross_point_ss.hpp
-  - geometry/cross_point_cc.hpp
-  - geometry/convex_polygon_diameter.hpp
-  - geometry/line.hpp
-  - geometry/polygon_area.hpp
-  - geometry/ccw.hpp
-  - geometry/is_intersect_cl.hpp
+  - geometry/segment.hpp
   - geometry/closest_pair.hpp
+  - geometry/circumscribed_circle.hpp
+  - geometry/is_intersect_cc.hpp
+  - geometry/polygon_area.hpp
   - geometry/circle.hpp
+  - geometry/distance_ss.hpp
+  - geometry/tangent_number_cc.hpp
+  - geometry/polygon_contain.hpp
+  - geometry/projection.hpp
+  - geometry/convex_polygon_cut.hpp
+  - geometry/reflection.hpp
+  - geometry/tangent_point_cp.hpp
   - geometry/monotone_chain.hpp
   - geometry/is_intersect_ll.hpp
-  - geometry/circumscribed_circle.hpp
-  - geometry/all.hpp
   - geometry/is_parallel.hpp
-  - geometry/distance_lp.hpp
-  - geometry/segment.hpp
-  - geometry/is_intersect_sp.hpp
-  - geometry/cross_point_cl.hpp
-  - geometry/polygon_contain.hpp
-  - geometry/distance_ss.hpp
-  - geometry/reflection.hpp
-  - geometry/is_intersect_lp.hpp
+  - geometry/farthest_pair.hpp
+  - geometry/line.hpp
+  - geometry/cross_point_ss.hpp
   - geometry/polygon.hpp
+  - geometry/all.hpp
+  - geometry/is_intersect_ss.hpp
+  - geometry/is_intersect_cp.hpp
+  - geometry/polygon_is_convex.hpp
+  - geometry/is_intersect_sp.hpp
+  - geometry/is_intersect_lp.hpp
+  - geometry/is_intersect_cl.hpp
   - geometry/incircle.hpp
-  - geometry/is_orthogonal.hpp
+  - geometry/cross_point_cc.hpp
   - geometry/distance_sp.hpp
-  - geometry/tangent_number_cc.hpp
-  - geometry/convex_polygon_cut.hpp
-  timestamp: '2023-04-06 09:26:09+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  - geometry/is_orthogonal.hpp
+  - geometry/convex_polygon_diameter.hpp
+  - geometry/cross_point_cl.hpp
+  - geometry/ccw.hpp
+  - geometry/distance_lp.hpp
+  timestamp: '2023-04-06 10:02:29+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj_cgl/aoj_cgl_5_a.test.cpp
-  - verify/aoj_cgl/aoj_cgl_7_c.test.cpp
-  - verify/aoj_cgl/aoj_cgl_4_b.test.cpp
-  - verify/aoj_cgl/aoj_cgl_2_c.test.cpp
-  - verify/aoj_cgl/aoj_cgl_1_c.test.cpp
-  - verify/aoj_cgl/aoj_cgl_3_b.test.cpp
-  - verify/aoj_cgl/aoj_cgl_3_c.test.cpp
-  - verify/aoj_cgl/aoj_cgl_7_e.test.cpp
-  - verify/aoj_cgl/aoj_cgl_1_a.test.cpp
-  - verify/aoj_cgl/aoj_cgl_3_a.test.cpp
-  - verify/aoj_cgl/aoj_cgl_1_b.test.cpp
-  - verify/aoj_cgl/aoj_cgl_7_a.test.cpp
   - verify/aoj_cgl/aoj_cgl_7_b.test.cpp
-  - verify/aoj_cgl/aoj_cgl_4_a.test.cpp
-  - verify/aoj_cgl/aoj_cgl_7_f.test.cpp
-  - verify/aoj_cgl/aoj_cgl_7_d.test.cpp
+  - verify/aoj_cgl/aoj_cgl_7_a.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_a.test.cpp
-  - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
+  - verify/aoj_cgl/aoj_cgl_4_b.test.cpp
+  - verify/aoj_cgl/aoj_cgl_5_a.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_d.test.cpp
+  - verify/aoj_cgl/aoj_cgl_7_e.test.cpp
+  - verify/aoj_cgl/aoj_cgl_3_c.test.cpp
+  - verify/aoj_cgl/aoj_cgl_3_a.test.cpp
   - verify/aoj_cgl/aoj_cgl_4_c.test.cpp
+  - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
+  - verify/aoj_cgl/aoj_cgl_7_f.test.cpp
+  - verify/aoj_cgl/aoj_cgl_2_c.test.cpp
+  - verify/aoj_cgl/aoj_cgl_3_b.test.cpp
+  - verify/aoj_cgl/aoj_cgl_1_b.test.cpp
+  - verify/aoj_cgl/aoj_cgl_1_c.test.cpp
+  - verify/aoj_cgl/aoj_cgl_4_a.test.cpp
+  - verify/aoj_cgl/aoj_cgl_7_c.test.cpp
+  - verify/aoj_cgl/aoj_cgl_1_a.test.cpp
+  - verify/aoj_cgl/aoj_cgl_7_d.test.cpp
 documentation_of: geometry/point.hpp
 layout: document
 redirect_from:

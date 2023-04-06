@@ -147,10 +147,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: geometry/ccw.hpp
       title: geometry/ccw.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: geometry/circle.hpp
       title: geometry/circle.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: geometry/circumscribed_circle.hpp
       title: geometry/circumscribed_circle.hpp
     - icon: ':heavy_check_mark:'
@@ -168,7 +168,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: geometry/cross_point_cl.hpp
       title: geometry/cross_point_cl.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: geometry/cross_point_ll.hpp
       title: geometry/cross_point_ll.hpp
     - icon: ':heavy_check_mark:'
@@ -216,13 +216,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: geometry/is_parallel.hpp
       title: geometry/is_parallel.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: geometry/line.hpp
       title: geometry/line.hpp
     - icon: ':heavy_check_mark:'
       path: geometry/monotone_chain.hpp
       title: geometry/monotone_chain.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: geometry/point.hpp
       title: geometry/point.hpp
     - icon: ':heavy_check_mark:'
@@ -415,7 +415,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_cgl/aoj_cgl_7_b.test.cpp
       title: verify/aoj_cgl/aoj_cgl_7_b.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj_cgl/aoj_cgl_7_c.test.cpp
       title: verify/aoj_cgl/aoj_cgl_7_c.test.cpp
     - icon: ':heavy_check_mark:'
