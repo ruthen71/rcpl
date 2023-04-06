@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: geometry/point.hpp
     title: geometry/point.hpp
   _extendedRequiredBy:
@@ -11,31 +11,31 @@ data:
   - icon: ':x:'
     path: geometry/circumscribed_circle.hpp
     title: geometry/circumscribed_circle.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_cut.hpp
     title: geometry/convex_polygon_cut.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point_cl.hpp
     title: geometry/cross_point_cl.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: geometry/cross_point_ll.hpp
     title: geometry/cross_point_ll.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point_ss.hpp
     title: geometry/cross_point_ss.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/distance_lp.hpp
     title: geometry/distance_lp.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/distance_sp.hpp
     title: geometry/distance_sp.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/distance_ss.hpp
     title: geometry/distance_ss.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/incircle.hpp
     title: geometry/incircle.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/is_intersect_cl.hpp
     title: geometry/is_intersect_cl.hpp
   - icon: ':warning:'
@@ -44,73 +44,73 @@ data:
   - icon: ':warning:'
     path: geometry/is_intersect_lp.hpp
     title: geometry/is_intersect_lp.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/is_intersect_sp.hpp
     title: geometry/is_intersect_sp.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/is_intersect_ss.hpp
     title: geometry/is_intersect_ss.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/is_orthogonal.hpp
     title: geometry/is_orthogonal.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/is_parallel.hpp
     title: geometry/is_parallel.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon_contain.hpp
     title: geometry/polygon_contain.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/projection.hpp
     title: geometry/projection.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/reflection.hpp
     title: geometry/reflection.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/segment.hpp
     title: geometry/segment.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_1_a.test.cpp
     title: verify/aoj_cgl/aoj_cgl_1_a.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_1_b.test.cpp
     title: verify/aoj_cgl/aoj_cgl_1_b.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_2_a.test.cpp
     title: verify/aoj_cgl/aoj_cgl_2_a.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_2_b.test.cpp
     title: verify/aoj_cgl/aoj_cgl_2_b.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_2_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_2_c.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_2_d.test.cpp
     title: verify/aoj_cgl/aoj_cgl_2_d.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_b.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_b.test.cpp
   - icon: ':x:'
     path: verify/aoj_cgl/aoj_cgl_7_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_c.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
     title: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/line.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n\
     // point\ntemplate <typename T> struct Point {\n    static T EPS;\n    static\
-    \ const T PI = std::acos(T(-1));\n    static void set_eps(const T &e) { EPS =\
-    \ e; }\n    T x, y;\n    Point(const T x = T(0), const T y = T(0)) : x(x), y(y)\
+    \ constexpr T PI = std::acos(T(-1));\n    static void set_eps(const T &e) { EPS\
+    \ = e; }\n    T x, y;\n    Point(const T x = T(0), const T y = T(0)) : x(x), y(y)\
     \ {}\n    Point &operator+=(const Point &p) {\n        x += p.x;\n        y +=\
     \ p.y;\n        return *this;\n    }\n    Point &operator-=(const Point &p) {\n\
     \        x -= p.x;\n        y -= p.y;\n        return *this;\n    }\n    Point\
@@ -191,41 +191,41 @@ data:
   isVerificationFile: false
   path: geometry/line.hpp
   requiredBy:
-  - geometry/cross_point_ll.hpp
-  - geometry/segment.hpp
-  - geometry/circumscribed_circle.hpp
-  - geometry/distance_ss.hpp
-  - geometry/polygon_contain.hpp
-  - geometry/projection.hpp
-  - geometry/convex_polygon_cut.hpp
-  - geometry/reflection.hpp
-  - geometry/is_intersect_ll.hpp
-  - geometry/is_parallel.hpp
-  - geometry/cross_point_ss.hpp
-  - geometry/all.hpp
   - geometry/is_intersect_ss.hpp
-  - geometry/is_intersect_sp.hpp
-  - geometry/is_intersect_lp.hpp
+  - geometry/projection.hpp
+  - geometry/cross_point_ll.hpp
+  - geometry/cross_point_ss.hpp
   - geometry/is_intersect_cl.hpp
-  - geometry/incircle.hpp
-  - geometry/distance_sp.hpp
-  - geometry/is_orthogonal.hpp
-  - geometry/cross_point_cl.hpp
+  - geometry/is_intersect_ll.hpp
+  - geometry/circumscribed_circle.hpp
+  - geometry/all.hpp
+  - geometry/is_parallel.hpp
   - geometry/distance_lp.hpp
-  timestamp: '2023-04-06 09:06:24+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  - geometry/segment.hpp
+  - geometry/is_intersect_sp.hpp
+  - geometry/cross_point_cl.hpp
+  - geometry/polygon_contain.hpp
+  - geometry/distance_ss.hpp
+  - geometry/reflection.hpp
+  - geometry/is_intersect_lp.hpp
+  - geometry/incircle.hpp
+  - geometry/is_orthogonal.hpp
+  - geometry/distance_sp.hpp
+  - geometry/convex_polygon_cut.hpp
+  timestamp: '2023-04-06 09:26:09+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/aoj_cgl/aoj_cgl_7_b.test.cpp
-  - verify/aoj_cgl/aoj_cgl_2_a.test.cpp
-  - verify/aoj_cgl/aoj_cgl_2_d.test.cpp
-  - verify/aoj_cgl/aoj_cgl_3_c.test.cpp
-  - verify/aoj_cgl/aoj_cgl_4_c.test.cpp
-  - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
-  - verify/aoj_cgl/aoj_cgl_2_c.test.cpp
-  - verify/aoj_cgl/aoj_cgl_1_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_7_c.test.cpp
+  - verify/aoj_cgl/aoj_cgl_2_c.test.cpp
+  - verify/aoj_cgl/aoj_cgl_3_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_1_a.test.cpp
+  - verify/aoj_cgl/aoj_cgl_1_b.test.cpp
+  - verify/aoj_cgl/aoj_cgl_7_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_7_d.test.cpp
+  - verify/aoj_cgl/aoj_cgl_2_a.test.cpp
+  - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
+  - verify/aoj_cgl/aoj_cgl_2_d.test.cpp
+  - verify/aoj_cgl/aoj_cgl_4_c.test.cpp
 documentation_of: geometry/line.hpp
 layout: document
 redirect_from:

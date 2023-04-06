@@ -1,55 +1,55 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/ccw.hpp
     title: geometry/ccw.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
   - icon: ':x:'
     path: geometry/circumscribed_circle.hpp
     title: geometry/circumscribed_circle.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/closest_pair.hpp
     title: "\u6700\u8FD1\u70B9\u5BFE"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_cut.hpp
     title: geometry/convex_polygon_cut.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_diameter.hpp
     title: geometry/convex_polygon_diameter.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point_cc.hpp
     title: geometry/cross_point_cc.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point_cl.hpp
     title: geometry/cross_point_cl.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: geometry/cross_point_ll.hpp
     title: geometry/cross_point_ll.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point_ss.hpp
     title: geometry/cross_point_ss.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/distance_lp.hpp
     title: geometry/distance_lp.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/distance_sp.hpp
     title: geometry/distance_sp.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/distance_ss.hpp
     title: geometry/distance_ss.hpp
   - icon: ':warning:'
     path: geometry/farthest_pair.hpp
     title: "\u6700\u9060\u70B9\u5BFE"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/incircle.hpp
     title: geometry/incircle.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/is_intersect_cc.hpp
     title: geometry/is_intersect_cc.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/is_intersect_cl.hpp
     title: geometry/is_intersect_cl.hpp
   - icon: ':warning:'
@@ -61,52 +61,52 @@ data:
   - icon: ':warning:'
     path: geometry/is_intersect_lp.hpp
     title: geometry/is_intersect_lp.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/is_intersect_sp.hpp
     title: geometry/is_intersect_sp.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/is_intersect_ss.hpp
     title: geometry/is_intersect_ss.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/is_orthogonal.hpp
     title: geometry/is_orthogonal.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/is_parallel.hpp
     title: geometry/is_parallel.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/monotone_chain.hpp
     title: geometry/monotone_chain.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: geometry/point.hpp
     title: geometry/point.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon_area.hpp
     title: geometry/polygon_area.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon_contain.hpp
     title: geometry/polygon_contain.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon_is_convex.hpp
     title: geometry/polygon_is_convex.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/projection.hpp
     title: geometry/projection.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/reflection.hpp
     title: geometry/reflection.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/segment.hpp
     title: geometry/segment.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/tangent_number_cc.hpp
     title: geometry/tangent_number_cc.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/tangent_point_cp.hpp
     title: geometry/tangent_point_cp.hpp
   _extendedRequiredBy: []
@@ -118,8 +118,8 @@ data:
     links: []
   bundledCode: "#line 2 \"geometry/all.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n\
     // point\ntemplate <typename T> struct Point {\n    static T EPS;\n    static\
-    \ const T PI = std::acos(T(-1));\n    static void set_eps(const T &e) { EPS =\
-    \ e; }\n    T x, y;\n    Point(const T x = T(0), const T y = T(0)) : x(x), y(y)\
+    \ constexpr T PI = std::acos(T(-1));\n    static void set_eps(const T &e) { EPS\
+    \ = e; }\n    T x, y;\n    Point(const T x = T(0), const T y = T(0)) : x(x), y(y)\
     \ {}\n    Point &operator+=(const Point &p) {\n        x += p.x;\n        y +=\
     \ p.y;\n        return *this;\n    }\n    Point &operator-=(const Point &p) {\n\
     \        x -= p.x;\n        y -= p.y;\n        return *this;\n    }\n    Point\
@@ -584,7 +584,7 @@ data:
   isVerificationFile: false
   path: geometry/all.hpp
   requiredBy: []
-  timestamp: '2023-04-06 09:06:24+09:00'
+  timestamp: '2023-04-06 09:26:09+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/all.hpp

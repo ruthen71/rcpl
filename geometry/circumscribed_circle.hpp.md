@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: geometry/cross_point_ll.hpp
     title: geometry/cross_point_ll.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: geometry/point.hpp
     title: geometry/point.hpp
   _extendedRequiredBy:
@@ -30,12 +30,12 @@ data:
     - https://drken1215.hatenablog.com/entry/2020/10/16/074400
   bundledCode: "#line 2 \"geometry/circumscribed_circle.hpp\"\n\n#line 2 \"geometry/cross_point_ll.hpp\"\
     \n\n#line 2 \"geometry/line.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n// point\n\
-    template <typename T> struct Point {\n    static T EPS;\n    static const T PI\
-    \ = std::acos(T(-1));\n    static void set_eps(const T &e) { EPS = e; }\n    T\
-    \ x, y;\n    Point(const T x = T(0), const T y = T(0)) : x(x), y(y) {}\n    Point\
-    \ &operator+=(const Point &p) {\n        x += p.x;\n        y += p.y;\n      \
-    \  return *this;\n    }\n    Point &operator-=(const Point &p) {\n        x -=\
-    \ p.x;\n        y -= p.y;\n        return *this;\n    }\n    Point &operator*=(const\
+    template <typename T> struct Point {\n    static T EPS;\n    static constexpr\
+    \ T PI = std::acos(T(-1));\n    static void set_eps(const T &e) { EPS = e; }\n\
+    \    T x, y;\n    Point(const T x = T(0), const T y = T(0)) : x(x), y(y) {}\n\
+    \    Point &operator+=(const Point &p) {\n        x += p.x;\n        y += p.y;\n\
+    \        return *this;\n    }\n    Point &operator-=(const Point &p) {\n     \
+    \   x -= p.x;\n        y -= p.y;\n        return *this;\n    }\n    Point &operator*=(const\
     \ Point &p) { return *this = Point(x * p.x - y * p.y, x * p.y + y * p.x); }\n\
     \    Point &operator*=(const T &k) {\n        x *= k;\n        y *= k;\n     \
     \   return *this;\n    }\n    Point &operator/=(const Point &p) { return *this\
@@ -132,7 +132,7 @@ data:
   path: geometry/circumscribed_circle.hpp
   requiredBy:
   - geometry/all.hpp
-  timestamp: '2023-04-06 09:06:24+09:00'
+  timestamp: '2023-04-06 09:26:09+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_7_c.test.cpp

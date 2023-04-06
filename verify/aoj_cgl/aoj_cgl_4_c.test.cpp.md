@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_cut.hpp
     title: geometry/convex_polygon_cut.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: geometry/cross_point_ll.hpp
     title: geometry/cross_point_ll.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: geometry/point.hpp
     title: geometry/point.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon_area.hpp
     title: geometry/polygon_area.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: '0.00001'
@@ -34,12 +34,12 @@ data:
     http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_C\"\n#define ERROR\
     \ 0.00001\n\n#include <bits/stdc++.h>\n\n#line 2 \"geometry/convex_polygon_cut.hpp\"\
     \n\n#line 2 \"geometry/polygon.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n// point\n\
-    template <typename T> struct Point {\n    static T EPS;\n    static const T PI\
-    \ = std::acos(T(-1));\n    static void set_eps(const T &e) { EPS = e; }\n    T\
-    \ x, y;\n    Point(const T x = T(0), const T y = T(0)) : x(x), y(y) {}\n    Point\
-    \ &operator+=(const Point &p) {\n        x += p.x;\n        y += p.y;\n      \
-    \  return *this;\n    }\n    Point &operator-=(const Point &p) {\n        x -=\
-    \ p.x;\n        y -= p.y;\n        return *this;\n    }\n    Point &operator*=(const\
+    template <typename T> struct Point {\n    static T EPS;\n    static constexpr\
+    \ T PI = std::acos(T(-1));\n    static void set_eps(const T &e) { EPS = e; }\n\
+    \    T x, y;\n    Point(const T x = T(0), const T y = T(0)) : x(x), y(y) {}\n\
+    \    Point &operator+=(const Point &p) {\n        x += p.x;\n        y += p.y;\n\
+    \        return *this;\n    }\n    Point &operator-=(const Point &p) {\n     \
+    \   x -= p.x;\n        y -= p.y;\n        return *this;\n    }\n    Point &operator*=(const\
     \ Point &p) { return *this = Point(x * p.x - y * p.y, x * p.y + y * p.x); }\n\
     \    Point &operator*=(const T &k) {\n        x *= k;\n        y *= k;\n     \
     \   return *this;\n    }\n    Point &operator/=(const Point &p) { return *this\
@@ -166,8 +166,8 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
   requiredBy: []
-  timestamp: '2023-04-06 09:06:24+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-04-06 09:26:09+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
 layout: document

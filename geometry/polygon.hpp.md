@@ -1,62 +1,62 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: geometry/point.hpp
     title: geometry/point.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
     path: geometry/all.hpp
     title: geometry/all.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_cut.hpp
     title: geometry/convex_polygon_cut.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_diameter.hpp
     title: geometry/convex_polygon_diameter.hpp
   - icon: ':warning:'
     path: geometry/farthest_pair.hpp
     title: "\u6700\u9060\u70B9\u5BFE"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/monotone_chain.hpp
     title: geometry/monotone_chain.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon_area.hpp
     title: geometry/polygon_area.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon_contain.hpp
     title: geometry/polygon_contain.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon_is_convex.hpp
     title: geometry/polygon_is_convex.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_3_a.test.cpp
     title: verify/aoj_cgl/aoj_cgl_3_a.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_3_b.test.cpp
     title: verify/aoj_cgl/aoj_cgl_3_b.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_4_a.test.cpp
     title: verify/aoj_cgl/aoj_cgl_4_a.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_4_b.test.cpp
     title: verify/aoj_cgl/aoj_cgl_4_b.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
     title: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/polygon.hpp\"\n\n#line 2 \"geometry/point.hpp\"\
     \n\n// point\ntemplate <typename T> struct Point {\n    static T EPS;\n    static\
-    \ const T PI = std::acos(T(-1));\n    static void set_eps(const T &e) { EPS =\
-    \ e; }\n    T x, y;\n    Point(const T x = T(0), const T y = T(0)) : x(x), y(y)\
+    \ constexpr T PI = std::acos(T(-1));\n    static void set_eps(const T &e) { EPS\
+    \ = e; }\n    T x, y;\n    Point(const T x = T(0), const T y = T(0)) : x(x), y(y)\
     \ {}\n    Point &operator+=(const Point &p) {\n        x += p.x;\n        y +=\
     \ p.y;\n        return *this;\n    }\n    Point &operator-=(const Point &p) {\n\
     \        x -= p.x;\n        y -= p.y;\n        return *this;\n    }\n    Point\
@@ -125,23 +125,23 @@ data:
   isVerificationFile: false
   path: geometry/polygon.hpp
   requiredBy:
+  - geometry/polygon_is_convex.hpp
+  - geometry/farthest_pair.hpp
+  - geometry/convex_polygon_diameter.hpp
   - geometry/polygon_area.hpp
+  - geometry/monotone_chain.hpp
+  - geometry/all.hpp
   - geometry/polygon_contain.hpp
   - geometry/convex_polygon_cut.hpp
-  - geometry/monotone_chain.hpp
-  - geometry/farthest_pair.hpp
-  - geometry/all.hpp
-  - geometry/polygon_is_convex.hpp
-  - geometry/convex_polygon_diameter.hpp
-  timestamp: '2023-04-06 09:06:24+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-04-06 09:26:09+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_4_b.test.cpp
+  - verify/aoj_cgl/aoj_cgl_3_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_3_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_3_a.test.cpp
-  - verify/aoj_cgl/aoj_cgl_4_c.test.cpp
-  - verify/aoj_cgl/aoj_cgl_3_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_4_a.test.cpp
+  - verify/aoj_cgl/aoj_cgl_4_c.test.cpp
 documentation_of: geometry/polygon.hpp
 layout: document
 redirect_from:

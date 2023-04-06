@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/ccw.hpp
     title: geometry/ccw.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/monotone_chain.hpp
     title: geometry/monotone_chain.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: geometry/point.hpp
     title: geometry/point.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A
@@ -27,7 +27,7 @@ data:
     http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A\"\n\n#include\
     \ <bits/stdc++.h>\n\n#line 2 \"geometry/monotone_chain.hpp\"\n\n#line 2 \"geometry/polygon.hpp\"\
     \n\n#line 2 \"geometry/point.hpp\"\n\n// point\ntemplate <typename T> struct Point\
-    \ {\n    static T EPS;\n    static const T PI = std::acos(T(-1));\n    static\
+    \ {\n    static T EPS;\n    static constexpr T PI = std::acos(T(-1));\n    static\
     \ void set_eps(const T &e) { EPS = e; }\n    T x, y;\n    Point(const T x = T(0),\
     \ const T y = T(0)) : x(x), y(y) {}\n    Point &operator+=(const Point &p) {\n\
     \        x += p.x;\n        y += p.y;\n        return *this;\n    }\n    Point\
@@ -144,8 +144,8 @@ data:
   isVerificationFile: true
   path: verify/aoj_cgl/aoj_cgl_4_a.test.cpp
   requiredBy: []
-  timestamp: '2023-04-06 09:06:24+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-04-06 09:26:09+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_cgl/aoj_cgl_4_a.test.cpp
 layout: document
