@@ -30,14 +30,14 @@ template <class T> struct CumulativeSum2D {
         }
     }
 
-    // [lx, ly) x [rx, ry)
+    // [lx, rx) x [ly, ry)
     T sum(int lx, int ly, int rx, int ry) {
         assert(0 <= lx and lx <= rx and rx <= h);
         assert(0 <= ly and ly <= ry and ry <= w);
         return (seg[rx][ry] - seg[lx][ry] - seg[rx][ly] + seg[lx][ly]);
     }
 
-    // (i, j) \in [lx, ly) x [rx, ry) seg[i][j] += z;
+    // (i, j) \in [lx, rx) x [ly, ry) seg[i][j] += z;
     void imos(int lx, int ly, int rx, int ry, T z = T(1)) {
         assert(0 <= lx and lx <= rx and rx <= h);
         assert(0 <= ly and ly <= ry and ry <= w);
