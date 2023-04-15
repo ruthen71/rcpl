@@ -141,8 +141,8 @@ data:
   path: geometry/polygon_is_convex.hpp
   requiredBy:
   - geometry/farthest_pair.hpp
-  - geometry/all.hpp
   - geometry/convex_polygon_diameter.hpp
+  - geometry/all.hpp
   timestamp: '2023-04-06 10:28:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

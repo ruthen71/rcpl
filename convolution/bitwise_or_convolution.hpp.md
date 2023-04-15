@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':warning:'
     path: convolution/fast_zeta_mobius_transform.hpp
-    title: "Fast Zeta/Mobius Transform (\u9AD8\u901F\u30BC\u30FC\u30BF\u5909\u63DB\
+    title: "Fast Zeta / Mobius Transform (\u9AD8\u901F\u30BC\u30FC\u30BF\u5909\u63DB\
       \u30FB\u9AD8\u901F\u30E1\u30D3\u30A6\u30B9\u5909\u63DB)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []

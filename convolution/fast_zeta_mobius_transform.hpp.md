@@ -68,7 +68,7 @@ data:
   verifiedWith: []
 documentation_of: convolution/fast_zeta_mobius_transform.hpp
 layout: document
-title: "Fast Zeta/Mobius Transform (\u9AD8\u901F\u30BC\u30FC\u30BF\u5909\u63DB\u30FB\
+title: "Fast Zeta / Mobius Transform (\u9AD8\u901F\u30BC\u30FC\u30BF\u5909\u63DB\u30FB\
   \u9AD8\u901F\u30E1\u30D3\u30A6\u30B9\u5909\u63DB)"
 ---
 
@@ -80,4 +80,4 @@ title: "Fast Zeta/Mobius Transform (\u9AD8\u901F\u30BC\u30FC\u30BF\u5909\u63DB\u
 ## 使用例
 
 - [PAST12 O](https://atcoder.jp/contests/past202209-open/submissions/40173852)
-    - 各 popcount ごとに Bitwise OR Convolution を $ O(N^2) $ 回行い、全体の計算量は $ O(N^3 2^N + Q) $ であると思いきや、Fast Mobius Transform をまとめて行うことができるため、全体の計算量は $ O(N^2 2^N + Q) $ である
+    - 各 popcount の組合せごとに Bitwise OR Convolution を計 $ O(N^2) $ 回行い、全体の計算量は $ O(N^3 2^N + Q) $ であると思いきや、Fast Mobius Transform をまとめて行うことができるため、全体の計算量は $ O(N^2 2^N + Q) $ である

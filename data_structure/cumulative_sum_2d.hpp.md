@@ -23,10 +23,10 @@ data:
     \        seg[i][j + 1] += seg[i][j];\n            }\n        }\n        for (int\
     \ i = 0; i < h; i++) {\n            for (int j = 0; j < w + 1; j++) {\n      \
     \          seg[i + 1][j] += seg[i][j];\n            }\n        }\n    }\n\n  \
-    \  // [lx, ly) x [rx, ry)\n    T sum(int lx, int ly, int rx, int ry) {\n     \
+    \  // [lx, rx) x [ly, ry)\n    T sum(int lx, int ly, int rx, int ry) {\n     \
     \   assert(0 <= lx and lx <= rx and rx <= h);\n        assert(0 <= ly and ly <=\
     \ ry and ry <= w);\n        return (seg[rx][ry] - seg[lx][ry] - seg[rx][ly] +\
-    \ seg[lx][ly]);\n    }\n\n    // (i, j) \\in [lx, ly) x [rx, ry) seg[i][j] +=\
+    \ seg[lx][ly]);\n    }\n\n    // (i, j) \\in [lx, rx) x [ly, ry) seg[i][j] +=\
     \ z;\n    void imos(int lx, int ly, int rx, int ry, T z = T(1)) {\n        assert(0\
     \ <= lx and lx <= rx and rx <= h);\n        assert(0 <= ly and ly <= ry and ry\
     \ <= w);\n        seg[lx][ly] += z;\n        seg[lx][ry] -= z;\n        seg[rx][ly]\
@@ -54,10 +54,10 @@ data:
     \        seg[i][j + 1] += seg[i][j];\n            }\n        }\n        for (int\
     \ i = 0; i < h; i++) {\n            for (int j = 0; j < w + 1; j++) {\n      \
     \          seg[i + 1][j] += seg[i][j];\n            }\n        }\n    }\n\n  \
-    \  // [lx, ly) x [rx, ry)\n    T sum(int lx, int ly, int rx, int ry) {\n     \
+    \  // [lx, rx) x [ly, ry)\n    T sum(int lx, int ly, int rx, int ry) {\n     \
     \   assert(0 <= lx and lx <= rx and rx <= h);\n        assert(0 <= ly and ly <=\
     \ ry and ry <= w);\n        return (seg[rx][ry] - seg[lx][ry] - seg[rx][ly] +\
-    \ seg[lx][ly]);\n    }\n\n    // (i, j) \\in [lx, ly) x [rx, ry) seg[i][j] +=\
+    \ seg[lx][ly]);\n    }\n\n    // (i, j) \\in [lx, rx) x [ly, ry) seg[i][j] +=\
     \ z;\n    void imos(int lx, int ly, int rx, int ry, T z = T(1)) {\n        assert(0\
     \ <= lx and lx <= rx and rx <= h);\n        assert(0 <= ly and ly <= ry and ry\
     \ <= w);\n        seg[lx][ly] += z;\n        seg[lx][ry] -= z;\n        seg[rx][ly]\
@@ -77,7 +77,7 @@ data:
   isVerificationFile: false
   path: data_structure/cumulative_sum_2d.hpp
   requiredBy: []
-  timestamp: '2023-03-17 17:11:39+09:00'
+  timestamp: '2023-04-16 00:50:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_dsl/aoj_dsl_5_b.test.cpp
