@@ -4,10 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/modint261.hpp
     title: ModInt $\pmod{2^{61}-1} $
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: algebra/monoid_rolling_hash.hpp
-    title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_alds1/aoj_alds1_14_b.test.cpp
@@ -88,8 +85,7 @@ data:
   - math/modint261.hpp
   isVerificationFile: false
   path: string/rolling_hash.hpp
-  requiredBy:
-  - algebra/monoid_rolling_hash.hpp
+  requiredBy: []
   timestamp: '2023-02-06 23:12:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

@@ -2,9 +2,6 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
-    path: algebra/monoid_rolling_hash.hpp
-    title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
   - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
     title: string/rolling_hash.hpp
@@ -70,7 +67,6 @@ data:
   path: math/modint261.hpp
   requiredBy:
   - string/rolling_hash.hpp
-  - algebra/monoid_rolling_hash.hpp
   timestamp: '2023-02-06 23:12:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
