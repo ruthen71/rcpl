@@ -55,7 +55,7 @@ int main() {
 }
 ```
 
-`mrh::set_base(x)` とすると基数に `x` にセットできる
+`mrh::set_base(b)` とすると基数に `b` にセットできる
 
 モノイドを作成するには `mrh::make_element(x)` とする
 
@@ -68,6 +68,6 @@ SegmentTree<mrh> seg(seginit);
 ## 使用例
 
 - [ABC285 F](https://atcoder.jp/contests/abc285/tasks/abc285_f)
-- 2つ以上のmodを組み合わせるなら、include ではなくべた書きするしかない
+    - 2つ以上のmodを組み合わせるなら、include ではなくべた書きするしかない
     - が、基数が $ 2^{61} - 1 $ なので余程のことがなければ衝突しないと思われる
 - [ABC298 D](https://atcoder.jp/contests/abc298/submissions/40706415)
