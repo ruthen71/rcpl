@@ -61,11 +61,11 @@ data:
   timestamp: '2023-02-10 01:10:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj_dpl/aoj_dpl_2_a.test.cpp
-  - verify/aoj_grl/aoj_grl_1_b.test.cpp
-  - verify/aoj_grl/aoj_grl_2_a.test.cpp
-  - verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
   - verify/lc_tree/lc_tree_diameter.test.cpp
+  - verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
+  - verify/aoj_grl/aoj_grl_2_a.test.cpp
+  - verify/aoj_grl/aoj_grl_1_b.test.cpp
+  - verify/aoj_dpl/aoj_dpl_2_a.test.cpp
 documentation_of: graph/read_graph.hpp
 layout: document
 redirect_from:

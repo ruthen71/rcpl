@@ -128,19 +128,19 @@ data:
   path: geometry/segment.hpp
   requiredBy:
   - geometry/is_intersect_ss.hpp
-  - geometry/cross_point_ss.hpp
-  - geometry/all.hpp
-  - geometry/is_intersect_sp.hpp
   - geometry/polygon_contain.hpp
-  - geometry/distance_ss.hpp
+  - geometry/is_intersect_sp.hpp
   - geometry/distance_sp.hpp
+  - geometry/distance_ss.hpp
+  - geometry/all.hpp
+  - geometry/cross_point_ss.hpp
   timestamp: '2023-04-06 10:28:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj_cgl/aoj_cgl_2_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_3_c.test.cpp
-  - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_d.test.cpp
+  - verify/aoj_cgl/aoj_cgl_2_c.test.cpp
+  - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
 documentation_of: geometry/segment.hpp
 layout: document
 redirect_from:

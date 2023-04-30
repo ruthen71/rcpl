@@ -289,6 +289,14 @@ data:
     - icon: ':warning:'
       path: graph/zero_one_bfs.hpp
       title: graph/zero_one_bfs.hpp
+  - name: icpc
+    pages:
+    - icon: ':warning:'
+      path: icpc/dice.hpp
+      title: icpc/dice.hpp
+    - icon: ':warning:'
+      path: icpc/template.hpp
+      title: icpc/template.hpp
   - name: math
     pages:
     - icon: ':warning:'
