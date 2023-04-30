@@ -2,13 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':x:'
     path: icpc/dice.hpp
     title: icpc/dice.hpp
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify/aoj_other/aoj_2703.test.cpp
+    title: verify/aoj_other/aoj_2703.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"icpc/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -28,8 +31,9 @@ data:
   requiredBy:
   - icpc/dice.hpp
   timestamp: '2023-05-01 05:45:09+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - verify/aoj_other/aoj_2703.test.cpp
 documentation_of: icpc/template.hpp
 layout: document
 redirect_from:

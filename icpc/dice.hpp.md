@@ -1,14 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':x:'
     path: icpc/template.hpp
     title: icpc/template.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify/aoj_other/aoj_2703.test.cpp
+    title: verify/aoj_other/aoj_2703.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"icpc/dice.hpp\"\n\n#line 1 \"icpc/template.hpp\"\n#include\
@@ -36,8 +39,9 @@ data:
   path: icpc/dice.hpp
   requiredBy: []
   timestamp: '2023-05-01 05:45:09+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - verify/aoj_other/aoj_2703.test.cpp
 documentation_of: icpc/dice.hpp
 layout: document
 redirect_from:
