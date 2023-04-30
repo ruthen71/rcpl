@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: icpc/template.hpp
     title: icpc/template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_other/aoj_2703.test.cpp
     title: verify/aoj_other/aoj_2703.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"icpc/dice.hpp\"\n\n#line 1 \"icpc/template.hpp\"\n#include\
+  bundledCode: "#line 2 \"icpc/dice.hpp\"\n\n#line 2 \"icpc/template.hpp\"\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n#define REP(i, n) for (int i = 0; i <\
     \ (n); i++)\ntemplate <class T> ostream &operator<<(ostream &os, const vector<T>\
     \ &v) {\n    os << \"[ \";\n    for (auto &vi : v) os << vi << \", \";\n    return\
@@ -38,8 +38,8 @@ data:
   isVerificationFile: false
   path: icpc/dice.hpp
   requiredBy: []
-  timestamp: '2023-05-01 05:45:09+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-05-01 05:59:58+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_other/aoj_2703.test.cpp
 documentation_of: icpc/dice.hpp

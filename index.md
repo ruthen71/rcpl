@@ -291,10 +291,10 @@ data:
       title: graph/zero_one_bfs.hpp
   - name: icpc
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: icpc/dice.hpp
       title: icpc/dice.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: icpc/template.hpp
       title: icpc/template.hpp
   - name: math
@@ -513,7 +513,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_other/aoj_2286.test.cpp
       title: verify/aoj_other/aoj_2286.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj_other/aoj_2703.test.cpp
       title: verify/aoj_other/aoj_2703.test.cpp
   - name: verify/lc_data_structure
