@@ -19,14 +19,15 @@ data:
     \ n) for (int i = 0; i < (n); i++)\ntemplate <class T> using V = vector<T>;\n\
     template <class T> ostream& operator<<(ostream &os, const V<T>& v) {\n    os <<\
     \ \"[ \";\n    for (auto &vi : v) os << vi << \", \";\n    return os << \"]\"\
-    ;\n}\n\n#if 1\n#define show(x) cerr << __LINE__ << \" : \" << #x << \" = \" <<\
-    \ x << endl;\n#else\n#define show(x) true\n#endif\n#line 4 \"icpc/dice.hpp\"\n\
-    \n// d = {x-, x+, y-, y+, z-, z+}\n// d = {0,  1,  2,  3,  4,  5}\nstruct Dice\
-    \ {\n    vector<long long> d;\n    Dice(vector<long long> &d) : d(d) {}\n    void\
-    \ right() { d = {d[2], d[3], d[1], d[0], d[4], d[5]}; }\n    void left() { REP(i,\
-    \ 3) right(); }\n    void xm() { d = {d[5], d[4], d[2], d[3], d[0], d[1]}; }\n\
-    \    void xp() { REP(i, 3) xm(); }\n    void ym() { d = {d[0], d[1], d[5], d[4],\
-    \ d[2], d[3]}; }\n    void yp() { REP(i, 3) ym(); }\n};\n"
+    ;\n}\n\n#ifdef LOCAL\n#define show(x) cerr << __LINE__ << \" : \" << #x << \"\
+    \ = \" << x << endl;\n#else\n#define show(x) true\n#endif\n\n// g++ -g -fsanitize=undefined,address\
+    \ -DLOCAL -std=gnu++17\n#line 4 \"icpc/dice.hpp\"\n\n// d = {x-, x+, y-, y+, z-,\
+    \ z+}\n// d = {0,  1,  2,  3,  4,  5}\nstruct Dice {\n    vector<long long> d;\n\
+    \    Dice(vector<long long> &d) : d(d) {}\n    void right() { d = {d[2], d[3],\
+    \ d[1], d[0], d[4], d[5]}; }\n    void left() { REP(i, 3) right(); }\n    void\
+    \ xm() { d = {d[5], d[4], d[2], d[3], d[0], d[1]}; }\n    void xp() { REP(i, 3)\
+    \ xm(); }\n    void ym() { d = {d[0], d[1], d[5], d[4], d[2], d[3]}; }\n    void\
+    \ yp() { REP(i, 3) ym(); }\n};\n"
   code: "#pragma once\n\n#include \"icpc/template.hpp\"\n\n// d = {x-, x+, y-, y+,\
     \ z-, z+}\n// d = {0,  1,  2,  3,  4,  5}\nstruct Dice {\n    vector<long long>\
     \ d;\n    Dice(vector<long long> &d) : d(d) {}\n    void right() { d = {d[2],\
@@ -39,7 +40,7 @@ data:
   isVerificationFile: false
   path: icpc/dice.hpp
   requiredBy: []
-  timestamp: '2023-05-15 00:09:20+09:00'
+  timestamp: '2023-05-15 01:12:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_other/aoj_2703.test.cpp

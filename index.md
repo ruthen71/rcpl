@@ -295,6 +295,12 @@ data:
       path: icpc/dice.hpp
       title: icpc/dice.hpp
     - icon: ':x:'
+      path: icpc/modint.hpp
+      title: icpc/modint.hpp
+    - icon: ':x:'
+      path: icpc/ntt.hpp
+      title: icpc/ntt.hpp
+    - icon: ':x:'
       path: icpc/segtree.hpp
       title: icpc/segtree.hpp
     - icon: ':question:'
@@ -522,6 +528,9 @@ data:
     - icon: ':x:'
       path: verify/aoj_other/aoj_3326.test.cpp
       title: verify/aoj_other/aoj_3326.test.cpp
+    - icon: ':x:'
+      path: verify/aoj_other/aoj_3331.test.cpp
+      title: verify/aoj_other/aoj_3331.test.cpp
   - name: verify/lc_data_structure
     pages:
     - icon: ':heavy_check_mark:'
