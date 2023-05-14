@@ -17,7 +17,3 @@ template <class T> ostream& operator<<(ostream &os, const V<T>& v) {
 #else
 #define show(x) true
 #endif
-
-int main() {
-    return 0;
-}
