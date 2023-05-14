@@ -5,6 +5,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: icpc/dice.hpp
     title: icpc/dice.hpp
+  - icon: ':warning:'
+    path: icpc/lca.hpp
+    title: icpc/lca.hpp
+  - icon: ':warning:'
+    path: icpc/matrix.hpp
+    title: icpc/matrix.hpp
   - icon: ':x:'
     path: icpc/modint.hpp
     title: icpc/modint.hpp
@@ -14,6 +20,9 @@ data:
   - icon: ':x:'
     path: icpc/segtree.hpp
     title: icpc/segtree.hpp
+  - icon: ':warning:'
+    path: icpc/uf.hpp
+    title: icpc/uf.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_other/aoj_2703.test.cpp
@@ -50,6 +59,9 @@ data:
   - icpc/dice.hpp
   - icpc/ntt.hpp
   - icpc/segtree.hpp
+  - icpc/lca.hpp
+  - icpc/matrix.hpp
+  - icpc/uf.hpp
   - icpc/modint.hpp
   timestamp: '2023-05-15 01:12:22+09:00'
   verificationStatus: LIBRARY_SOME_WA

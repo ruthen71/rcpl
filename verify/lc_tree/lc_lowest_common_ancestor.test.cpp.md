@@ -47,7 +47,9 @@ data:
     \            }\n        }\n        return parent[0][u];\n    }\n\n    int level_ancestor(int\
     \ u, int d) {\n        assert((int)depth.size() == n);\n        if (depth[u] <\
     \ d) return -1;\n        for (int k = 0; k < LOG; k++)\n            if (d >> k\
-    \ & 1) u = parent[k][u];\n        return u;\n    }\n};\n#line 6 \"verify/lc_tree/lc_lowest_common_ancestor.test.cpp\"\
+    \ & 1) u = parent[k][u];\n        return u;\n    }\n\n    int distance(int u,\
+    \ int v) {\n        int par = lca(u, v);\n        return depth[u] + depth[v] -\
+    \ 2 * depth[par];\n    }\n};\n#line 6 \"verify/lc_tree/lc_lowest_common_ancestor.test.cpp\"\
     \n\nint main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    Graph<int> G(N);\n\
     \    for (int i = 1; i < N; i++) {\n        int p;\n        std::cin >> p;\n \
     \       G[i].push_back(Edge(i, p, 1, i - 1));\n        G[p].push_back(Edge(p,\
@@ -67,7 +69,7 @@ data:
   isVerificationFile: true
   path: verify/lc_tree/lc_lowest_common_ancestor.test.cpp
   requiredBy: []
-  timestamp: '2023-02-10 01:10:41+09:00'
+  timestamp: '2023-05-15 05:26:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_tree/lc_lowest_common_ancestor.test.cpp

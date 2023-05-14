@@ -42,7 +42,9 @@ data:
     \            }\n        }\n        return parent[0][u];\n    }\n\n    int level_ancestor(int\
     \ u, int d) {\n        assert((int)depth.size() == n);\n        if (depth[u] <\
     \ d) return -1;\n        for (int k = 0; k < LOG; k++)\n            if (d >> k\
-    \ & 1) u = parent[k][u];\n        return u;\n    }\n};\n"
+    \ & 1) u = parent[k][u];\n        return u;\n    }\n\n    int distance(int u,\
+    \ int v) {\n        int par = lca(u, v);\n        return depth[u] + depth[v] -\
+    \ 2 * depth[par];\n    }\n};\n"
   code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\ntemplate <class\
     \ T> struct LowestCommonAncestor {\n    std::vector<int> depth;\n    std::vector<std::vector<int>>\
     \ parent;\n    int n, LOG;\n\n    LowestCommonAncestor(Graph<T> &G, int root =\
@@ -63,13 +65,15 @@ data:
     \            }\n        }\n        return parent[0][u];\n    }\n\n    int level_ancestor(int\
     \ u, int d) {\n        assert((int)depth.size() == n);\n        if (depth[u] <\
     \ d) return -1;\n        for (int k = 0; k < LOG; k++)\n            if (d >> k\
-    \ & 1) u = parent[k][u];\n        return u;\n    }\n};"
+    \ & 1) u = parent[k][u];\n        return u;\n    }\n\n    int distance(int u,\
+    \ int v) {\n        int par = lca(u, v);\n        return depth[u] + depth[v] -\
+    \ 2 * depth[par];\n    }\n};"
   dependsOn:
   - graph/graph_template.hpp
   isVerificationFile: false
   path: graph/lowest_common_ancestor.hpp
   requiredBy: []
-  timestamp: '2023-02-10 01:10:41+09:00'
+  timestamp: '2023-05-15 05:26:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_tree/lc_lowest_common_ancestor.test.cpp

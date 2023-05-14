@@ -294,6 +294,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: icpc/dice.hpp
       title: icpc/dice.hpp
+    - icon: ':warning:'
+      path: icpc/lca.hpp
+      title: icpc/lca.hpp
+    - icon: ':warning:'
+      path: icpc/matrix.hpp
+      title: icpc/matrix.hpp
     - icon: ':x:'
       path: icpc/modint.hpp
       title: icpc/modint.hpp
@@ -306,6 +312,9 @@ data:
     - icon: ':question:'
       path: icpc/template.hpp
       title: icpc/template.hpp
+    - icon: ':warning:'
+      path: icpc/uf.hpp
+      title: icpc/uf.hpp
   - name: math
     pages:
     - icon: ':warning:'
