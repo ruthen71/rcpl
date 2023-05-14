@@ -12,8 +12,10 @@ template <class T> ostream& operator<<(ostream &os, const V<T>& v) {
     return os << "]";
 }
 
-#if 1
+#ifdef LOCAL
 #define show(x) cerr << __LINE__ << " : " << #x << " = " << x << endl;
 #else
 #define show(x) true
 #endif
+
+// g++ -g -fsanitize=undefined,address -DLOCAL -std=gnu++17
