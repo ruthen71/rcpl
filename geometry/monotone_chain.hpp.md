@@ -154,8 +154,8 @@ data:
   isVerificationFile: false
   path: geometry/monotone_chain.hpp
   requiredBy:
-  - geometry/farthest_pair.hpp
   - geometry/all.hpp
+  - geometry/farthest_pair.hpp
   timestamp: '2023-04-06 10:28:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
