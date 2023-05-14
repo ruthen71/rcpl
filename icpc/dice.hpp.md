@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: icpc/template.hpp
     title: icpc/template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_other/aoj_2703.test.cpp
     title: verify/aoj_other/aoj_2703.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"icpc/dice.hpp\"\n\n#line 2 \"icpc/template.hpp\"\n\n#include\
@@ -20,14 +20,13 @@ data:
     template <class T> ostream& operator<<(ostream &os, const V<T>& v) {\n    os <<\
     \ \"[ \";\n    for (auto &vi : v) os << vi << \", \";\n    return os << \"]\"\
     ;\n}\n\n#if 1\n#define show(x) cerr << __LINE__ << \" : \" << #x << \" = \" <<\
-    \ x << endl;\n#else\n#define show(x) true\n#endif\n\nint main() {\n    return\
-    \ 0;\n}\n#line 4 \"icpc/dice.hpp\"\n\n// d = {x-, x+, y-, y+, z-, z+}\n// d =\
-    \ {0,  1,  2,  3,  4,  5}\nstruct Dice {\n    vector<long long> d;\n    Dice(vector<long\
-    \ long> &d) : d(d) {}\n    void right() { d = {d[2], d[3], d[1], d[0], d[4], d[5]};\
-    \ }\n    void left() { REP(i, 3) right(); }\n    void xm() { d = {d[5], d[4],\
-    \ d[2], d[3], d[0], d[1]}; }\n    void xp() { REP(i, 3) xm(); }\n    void ym()\
-    \ { d = {d[0], d[1], d[5], d[4], d[2], d[3]}; }\n    void yp() { REP(i, 3) ym();\
-    \ }\n};\n"
+    \ x << endl;\n#else\n#define show(x) true\n#endif\n#line 4 \"icpc/dice.hpp\"\n\
+    \n// d = {x-, x+, y-, y+, z-, z+}\n// d = {0,  1,  2,  3,  4,  5}\nstruct Dice\
+    \ {\n    vector<long long> d;\n    Dice(vector<long long> &d) : d(d) {}\n    void\
+    \ right() { d = {d[2], d[3], d[1], d[0], d[4], d[5]}; }\n    void left() { REP(i,\
+    \ 3) right(); }\n    void xm() { d = {d[5], d[4], d[2], d[3], d[0], d[1]}; }\n\
+    \    void xp() { REP(i, 3) xm(); }\n    void ym() { d = {d[0], d[1], d[5], d[4],\
+    \ d[2], d[3]}; }\n    void yp() { REP(i, 3) ym(); }\n};\n"
   code: "#pragma once\n\n#include \"icpc/template.hpp\"\n\n// d = {x-, x+, y-, y+,\
     \ z-, z+}\n// d = {0,  1,  2,  3,  4,  5}\nstruct Dice {\n    vector<long long>\
     \ d;\n    Dice(vector<long long> &d) : d(d) {}\n    void right() { d = {d[2],\
@@ -40,8 +39,8 @@ data:
   isVerificationFile: false
   path: icpc/dice.hpp
   requiredBy: []
-  timestamp: '2023-05-15 00:01:25+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-05-15 00:09:20+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_other/aoj_2703.test.cpp
 documentation_of: icpc/dice.hpp
