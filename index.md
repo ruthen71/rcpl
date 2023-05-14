@@ -291,6 +291,9 @@ data:
       title: graph/zero_one_bfs.hpp
   - name: icpc
     pages:
+    - icon: ':warning:'
+      path: icpc/binary_trie.hpp
+      title: icpc/binary_trie.hpp
     - icon: ':heavy_check_mark:'
       path: icpc/dice.hpp
       title: icpc/dice.hpp
