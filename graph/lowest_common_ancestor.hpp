@@ -50,4 +50,9 @@ template <class T> struct LowestCommonAncestor {
             if (d >> k & 1) u = parent[k][u];
         return u;
     }
+
+    int distance(int u, int v) {
+        int par = lca(u, v);
+        return depth[u] + depth[v] - 2 * depth[par];
+    }
 };
