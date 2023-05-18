@@ -2,6 +2,8 @@
 
 #include "icpc/template.hpp"
 
+// https://onlinejudge.u-aizu.ac.jp/problems/3324
+
 struct UF {
     V<int> par;
 

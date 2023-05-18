@@ -2,6 +2,8 @@
 
 #include "icpc/template.hpp"
 
+// https://onlinejudge.u-aizu.ac.jp/problems/3326
+
 template <class S, S (*op)(S, S), S (*e)()> struct Segtree {
     int n, size, log;
     V<S> d;

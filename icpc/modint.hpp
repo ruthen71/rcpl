@@ -2,6 +2,8 @@
 
 #include "icpc/template.hpp"
 
+// https://onlinejudge.u-aizu.ac.jp/problems/3331
+
 using uint = unsigned int;
 using ull = unsigned long long;
 template <uint MD> struct Modint {

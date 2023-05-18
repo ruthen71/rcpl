@@ -2,6 +2,8 @@
 
 #include "icpc/template.hpp"
 
+// https://onlinejudge.u-aizu.ac.jp/problems/3329
+
 struct LCA {
     V<int> dep;
     V<V<int>> par;

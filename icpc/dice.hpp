@@ -2,6 +2,7 @@
 
 #include "icpc/template.hpp"
 
+// https://onlinejudge.u-aizu.ac.jp/problems/2703
 // d = {x-, x+, y-, y+, z-, z+}
 // d = {0,  1,  2,  3,  4,  5}
 struct Dice {

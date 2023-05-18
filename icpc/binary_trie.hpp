@@ -2,6 +2,8 @@
 
 #include <vector>
 
+// https://onlinejudge.u-aizu.ac.jp/problems/3333
+
 template <class T, int B = 32> class BinaryTrie {
    public:
     struct Node {

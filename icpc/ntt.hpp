@@ -2,9 +2,11 @@
 
 #include "icpc/template.hpp"
 
+// https://onlinejudge.u-aizu.ac.jp/problems/3331
+
 template <class Mint> void ntt(bool type, V<Mint>& a) {
     int n = int(a.size()), s = 0;
-    while((1 << s) < n) s++;
+    while ((1 << s) < n) s++;
     assert(1 << s == n);
 
     static V<Mint> ep, iep;
