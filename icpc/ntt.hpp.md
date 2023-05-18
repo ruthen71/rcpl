@@ -1,19 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: icpc/template.hpp
     title: icpc/template.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/aoj_other/aoj_3331.test.cpp
-    title: verify/aoj_other/aoj_3331.test.cpp
-  _isVerificationFailed: true
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
-    links: []
+    links:
+    - https://onlinejudge.u-aizu.ac.jp/problems/3331
   bundledCode: "#line 2 \"icpc/ntt.hpp\"\n\n#line 2 \"icpc/template.hpp\"\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\nusing ll = long long;\n#define REP(i,\
     \ n) for (int i = 0; i < (n); i++)\ntemplate <class T> using V = vector<T>;\n\
@@ -21,10 +19,10 @@ data:
     \ \"[ \";\n    for (auto &vi : v) os << vi << \", \";\n    return os << \"]\"\
     ;\n}\n\n#ifdef LOCAL\n#define show(x) cerr << __LINE__ << \" : \" << #x << \"\
     \ = \" << x << endl;\n#else\n#define show(x) true\n#endif\n\n// g++ -g -fsanitize=undefined,address\
-    \ -DLOCAL -std=gnu++17\n#line 4 \"icpc/ntt.hpp\"\n\ntemplate <class Mint> void\
-    \ ntt(bool type, V<Mint>& a) {\n    int n = int(a.size()), s = 0;\n    while((1\
-    \ << s) < n) s++;\n    assert(1 << s == n);\n\n    static V<Mint> ep, iep;\n \
-    \   while (int(ep.size()) <= s) {\n        ep.push_back(Mint::G.pow(Mint(-1).v\
+    \ -DLOCAL -std=gnu++17\n#line 4 \"icpc/ntt.hpp\"\n\n// https://onlinejudge.u-aizu.ac.jp/problems/3331\n\
+    \ntemplate <class Mint> void ntt(bool type, V<Mint>& a) {\n    int n = int(a.size()),\
+    \ s = 0;\n    while ((1 << s) < n) s++;\n    assert(1 << s == n);\n\n    static\
+    \ V<Mint> ep, iep;\n    while (int(ep.size()) <= s) {\n        ep.push_back(Mint::G.pow(Mint(-1).v\
     \ / (1 << ep.size())));\n        iep.push_back(ep.back().inv());\n    }\n    V<Mint>\
     \ b(n);\n    for (int i = 1; i <= s; i++) {\n        int w = 1 << (s - i);\n \
     \       Mint base = type ? iep[i] : ep[i], now = 1;\n        for (int y = 0; y\
@@ -41,10 +39,10 @@ data:
     \ b2);\n    REP(i, z) a2[i] *= b2[i];\n    ntt(true, a2);\n    a2.resize(n + m\
     \ - 1);\n    Mint iz = Mint(z).inv();\n    REP(i, n + m - 1) a2[i] *= iz;\n  \
     \  return a2;\n}\n"
-  code: "#pragma once\n\n#include \"icpc/template.hpp\"\n\ntemplate <class Mint> void\
-    \ ntt(bool type, V<Mint>& a) {\n    int n = int(a.size()), s = 0;\n    while((1\
-    \ << s) < n) s++;\n    assert(1 << s == n);\n\n    static V<Mint> ep, iep;\n \
-    \   while (int(ep.size()) <= s) {\n        ep.push_back(Mint::G.pow(Mint(-1).v\
+  code: "#pragma once\n\n#include \"icpc/template.hpp\"\n\n// https://onlinejudge.u-aizu.ac.jp/problems/3331\n\
+    \ntemplate <class Mint> void ntt(bool type, V<Mint>& a) {\n    int n = int(a.size()),\
+    \ s = 0;\n    while ((1 << s) < n) s++;\n    assert(1 << s == n);\n\n    static\
+    \ V<Mint> ep, iep;\n    while (int(ep.size()) <= s) {\n        ep.push_back(Mint::G.pow(Mint(-1).v\
     \ / (1 << ep.size())));\n        iep.push_back(ep.back().inv());\n    }\n    V<Mint>\
     \ b(n);\n    for (int i = 1; i <= s; i++) {\n        int w = 1 << (s - i);\n \
     \       Mint base = type ? iep[i] : ep[i], now = 1;\n        for (int y = 0; y\
@@ -66,10 +64,9 @@ data:
   isVerificationFile: false
   path: icpc/ntt.hpp
   requiredBy: []
-  timestamp: '2023-05-15 01:12:22+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - verify/aoj_other/aoj_3331.test.cpp
+  timestamp: '2023-05-18 16:04:36+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: icpc/ntt.hpp
 layout: document
 redirect_from:

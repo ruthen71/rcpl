@@ -11,13 +11,13 @@ data:
   - icon: ':warning:'
     path: icpc/matrix.hpp
     title: icpc/matrix.hpp
-  - icon: ':x:'
+  - icon: ':warning:'
     path: icpc/modint.hpp
     title: icpc/modint.hpp
-  - icon: ':x:'
+  - icon: ':warning:'
     path: icpc/ntt.hpp
     title: icpc/ntt.hpp
-  - icon: ':x:'
+  - icon: ':warning:'
     path: icpc/segtree.hpp
     title: icpc/segtree.hpp
   - icon: ':warning:'
@@ -27,15 +27,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_other/aoj_2703.test.cpp
     title: verify/aoj_other/aoj_2703.test.cpp
-  - icon: ':x:'
-    path: verify/aoj_other/aoj_3326.test.cpp
-    title: verify/aoj_other/aoj_3326.test.cpp
-  - icon: ':x:'
-    path: verify/aoj_other/aoj_3331.test.cpp
-    title: verify/aoj_other/aoj_3331.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"icpc/template.hpp\"\n\n#include <bits/stdc++.h>\nusing namespace\
@@ -64,10 +58,8 @@ data:
   - icpc/uf.hpp
   - icpc/modint.hpp
   timestamp: '2023-05-15 01:12:22+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj_other/aoj_3331.test.cpp
-  - verify/aoj_other/aoj_3326.test.cpp
   - verify/aoj_other/aoj_2703.test.cpp
 documentation_of: icpc/template.hpp
 layout: document

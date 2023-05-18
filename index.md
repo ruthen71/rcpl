@@ -303,16 +303,16 @@ data:
     - icon: ':warning:'
       path: icpc/matrix.hpp
       title: icpc/matrix.hpp
-    - icon: ':x:'
+    - icon: ':warning:'
       path: icpc/modint.hpp
       title: icpc/modint.hpp
-    - icon: ':x:'
+    - icon: ':warning:'
       path: icpc/ntt.hpp
       title: icpc/ntt.hpp
-    - icon: ':x:'
+    - icon: ':warning:'
       path: icpc/segtree.hpp
       title: icpc/segtree.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: icpc/template.hpp
       title: icpc/template.hpp
     - icon: ':warning:'
@@ -537,12 +537,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_other/aoj_2703.test.cpp
       title: verify/aoj_other/aoj_2703.test.cpp
-    - icon: ':x:'
-      path: verify/aoj_other/aoj_3326.test.cpp
-      title: verify/aoj_other/aoj_3326.test.cpp
-    - icon: ':x:'
-      path: verify/aoj_other/aoj_3331.test.cpp
-      title: verify/aoj_other/aoj_3331.test.cpp
   - name: verify/lc_data_structure
     pages:
     - icon: ':heavy_check_mark:'
