@@ -19,25 +19,25 @@ data:
     ;\n}\n\n#ifdef LOCAL\n#define show(x) cerr << __LINE__ << \" : \" << #x << \"\
     \ = \" << x << endl;\n#else\n#define show(x) true\n#endif\n\n// g++ -g -fsanitize=undefined,address\
     \ -DLOCAL -std=gnu++17\n#line 4 \"icpc/matrix.hpp\"\n\nconstexpr ll MOD = 998244353;\n\
-    \nV<V<ll>> mul(V<V<ll>> a, V<V<ll>> b) {\n    int N = int(a.size());\n    V<V<ll>>\
-    \ c(N, V<ll>(N));\n    REP(i, N) REP(k, N) REP(j, N) c[i][j] = (c[i][j] + a[i][k]\
-    \ * b[k][j] % MOD) % MOD;\n    return c;\n}\n\nV<V<ll>> pow(V<V<ll>> a, ll k)\
-    \ {\n    int N = int(a.size());\n    V<V<ll>> res(N, V<ll>(N));\n    REP(i, N)\
-    \ res[i][i] = 1;\n    while (k) {\n        if (k & 1) res = mul(res, a);\n   \
-    \     a = mul(a, a);\n        k >>= 1;\n    }\n    return res;\n}\n"
+    \nusing Mat = V<V<ll>>;\nMat mul(Mat& a, Mat& b) {\n    int N = int(a.size());\n\
+    \    Mat c(N, V<ll>(N));\n    REP(i, N) REP(k, N) REP(j, N) c[i][j] = (c[i][j]\
+    \ + a[i][k] * b[k][j] % MOD) % MOD;\n    return c;\n}\n\nMat pow(Mat& a, ll k)\
+    \ {\n    int N = int(a.size());\n    Mat res(N, V<ll>(N));\n    REP(i, N) res[i][i]\
+    \ = 1;\n    while (k) {\n        if (k & 1) res = mul(res, a);\n        a = mul(a,\
+    \ a);\n        k >>= 1;\n    }\n    return res;\n}\n"
   code: "#pragma once\n\n#include \"icpc/template.hpp\"\n\nconstexpr ll MOD = 998244353;\n\
-    \nV<V<ll>> mul(V<V<ll>> a, V<V<ll>> b) {\n    int N = int(a.size());\n    V<V<ll>>\
-    \ c(N, V<ll>(N));\n    REP(i, N) REP(k, N) REP(j, N) c[i][j] = (c[i][j] + a[i][k]\
-    \ * b[k][j] % MOD) % MOD;\n    return c;\n}\n\nV<V<ll>> pow(V<V<ll>> a, ll k)\
-    \ {\n    int N = int(a.size());\n    V<V<ll>> res(N, V<ll>(N));\n    REP(i, N)\
-    \ res[i][i] = 1;\n    while (k) {\n        if (k & 1) res = mul(res, a);\n   \
-    \     a = mul(a, a);\n        k >>= 1;\n    }\n    return res;\n}"
+    \nusing Mat = V<V<ll>>;\nMat mul(Mat& a, Mat& b) {\n    int N = int(a.size());\n\
+    \    Mat c(N, V<ll>(N));\n    REP(i, N) REP(k, N) REP(j, N) c[i][j] = (c[i][j]\
+    \ + a[i][k] * b[k][j] % MOD) % MOD;\n    return c;\n}\n\nMat pow(Mat& a, ll k)\
+    \ {\n    int N = int(a.size());\n    Mat res(N, V<ll>(N));\n    REP(i, N) res[i][i]\
+    \ = 1;\n    while (k) {\n        if (k & 1) res = mul(res, a);\n        a = mul(a,\
+    \ a);\n        k >>= 1;\n    }\n    return res;\n}"
   dependsOn:
   - icpc/template.hpp
   isVerificationFile: false
   path: icpc/matrix.hpp
   requiredBy: []
-  timestamp: '2023-05-15 05:26:46+09:00'
+  timestamp: '2023-05-18 15:52:01+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: icpc/matrix.hpp
