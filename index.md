@@ -279,6 +279,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/read_graph.hpp
       title: graph/read_graph.hpp
+    - icon: ':heavy_check_mark:'
+      path: graph/strongly_connected_component.hpp
+      title: graph/strongly_connected_component.hpp
     - icon: ':warning:'
       path: graph/topological_sort.hpp
       title: "Topological Sort (\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8\
@@ -309,10 +312,13 @@ data:
     - icon: ':warning:'
       path: icpc/ntt.hpp
       title: icpc/ntt.hpp
+    - icon: ':x:'
+      path: icpc/scc.hpp
+      title: icpc/scc.hpp
     - icon: ':warning:'
       path: icpc/segtree.hpp
       title: icpc/segtree.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: icpc/template.hpp
       title: icpc/template.hpp
     - icon: ':warning:'
@@ -537,6 +543,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_other/aoj_2703.test.cpp
       title: verify/aoj_other/aoj_2703.test.cpp
+    - icon: ':x:'
+      path: verify/aoj_other/aoj_2748.test.cpp
+      title: verify/aoj_other/aoj_2748.test.cpp
   - name: verify/lc_data_structure
     pages:
     - icon: ':heavy_check_mark:'
@@ -559,6 +568,9 @@ data:
       title: verify/lc_data_structure/lc_unionfind.test.cpp
   - name: verify/lc_graph
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/lc_graph/lc_scc.test.cpp
+      title: verify/lc_graph/lc_scc.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
       title: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp

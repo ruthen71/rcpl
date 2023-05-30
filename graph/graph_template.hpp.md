@@ -28,6 +28,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/read_graph.hpp
     title: graph/read_graph.hpp
+  - icon: ':heavy_check_mark:'
+    path: graph/strongly_connected_component.hpp
+    title: graph/strongly_connected_component.hpp
   - icon: ':warning:'
     path: graph/topological_sort.hpp
     title: "Topological Sort (\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8\
@@ -48,6 +51,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_grl/aoj_grl_2_a.test.cpp
     title: verify/aoj_grl/aoj_grl_2_a.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/lc_graph/lc_scc.test.cpp
+    title: verify/lc_graph/lc_scc.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
     title: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
@@ -88,6 +94,7 @@ data:
   - graph/euler_tour.hpp
   - graph/topological_sort.hpp
   - graph/read_graph.hpp
+  - graph/strongly_connected_component.hpp
   - graph/bellman_ford.hpp
   - graph/lowest_common_ancestor.hpp
   - graph/dijkstra.hpp
@@ -101,6 +108,7 @@ data:
   - verify/aoj_dpl/aoj_dpl_2_a.test.cpp
   - verify/lc_tree/lc_lowest_common_ancestor.test.cpp
   - verify/lc_tree/lc_tree_diameter.test.cpp
+  - verify/lc_graph/lc_scc.test.cpp
   - verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
 documentation_of: graph/graph_template.hpp
 layout: document

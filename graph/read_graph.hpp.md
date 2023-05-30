@@ -16,6 +16,9 @@ data:
     path: verify/aoj_grl/aoj_grl_2_a.test.cpp
     title: verify/aoj_grl/aoj_grl_2_a.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/lc_graph/lc_scc.test.cpp
+    title: verify/lc_graph/lc_scc.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
     title: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
   - icon: ':heavy_check_mark:'
@@ -65,6 +68,7 @@ data:
   - verify/aoj_grl/aoj_grl_1_b.test.cpp
   - verify/aoj_dpl/aoj_dpl_2_a.test.cpp
   - verify/lc_tree/lc_tree_diameter.test.cpp
+  - verify/lc_graph/lc_scc.test.cpp
   - verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
 documentation_of: graph/read_graph.hpp
 layout: document
