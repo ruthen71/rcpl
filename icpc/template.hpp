@@ -6,9 +6,9 @@ using namespace std;
 using ll = long long;
 #define REP(i, n) for (int i = 0; i < (n); i++)
 template <class T> using V = vector<T>;
-template <class T> ostream& operator<<(ostream &os, const V<T>& v) {
+template <class T> ostream& operator<<(ostream& os, const V<T>& v) {
     os << "[ ";
-    for (auto &vi : v) os << vi << ", ";
+    for (auto& vi : v) os << vi << ", ";
     return os << "]";
 }
 
@@ -17,5 +17,8 @@ template <class T> ostream& operator<<(ostream &os, const V<T>& v) {
 #else
 #define show(x) true
 #endif
+
+using uint = unsigned int;
+using ull = unsigned long long;
 
 // g++ -g -fsanitize=undefined,address -DLOCAL -std=gnu++17
