@@ -30,7 +30,7 @@ data:
     title: graph/read_graph.hpp
   - icon: ':heavy_check_mark:'
     path: graph/strongly_connected_component.hpp
-    title: graph/strongly_connected_component.hpp
+    title: "Strongly Connected Component (\u5F37\u9023\u7D50\u6210\u5206)"
   - icon: ':warning:'
     path: graph/topological_sort.hpp
     title: "Topological Sort (\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8\

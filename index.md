@@ -281,7 +281,7 @@ data:
       title: graph/read_graph.hpp
     - icon: ':heavy_check_mark:'
       path: graph/strongly_connected_component.hpp
-      title: graph/strongly_connected_component.hpp
+      title: "Strongly Connected Component (\u5F37\u9023\u7D50\u6210\u5206)"
     - icon: ':warning:'
       path: graph/topological_sort.hpp
       title: "Topological Sort (\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8\
@@ -312,13 +312,13 @@ data:
     - icon: ':warning:'
       path: icpc/ntt.hpp
       title: icpc/ntt.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: icpc/scc.hpp
       title: icpc/scc.hpp
     - icon: ':warning:'
       path: icpc/segtree.hpp
       title: icpc/segtree.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: icpc/template.hpp
       title: icpc/template.hpp
     - icon: ':warning:'
@@ -543,7 +543,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_other/aoj_2703.test.cpp
       title: verify/aoj_other/aoj_2703.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj_other/aoj_2748.test.cpp
       title: verify/aoj_other/aoj_2748.test.cpp
   - name: verify/lc_data_structure

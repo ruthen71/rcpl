@@ -17,7 +17,7 @@ data:
   - icon: ':warning:'
     path: icpc/ntt.hpp
     title: icpc/ntt.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: icpc/scc.hpp
     title: icpc/scc.hpp
   - icon: ':warning:'
@@ -30,12 +30,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_other/aoj_2703.test.cpp
     title: verify/aoj_other/aoj_2703.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_other/aoj_2748.test.cpp
     title: verify/aoj_other/aoj_2748.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"icpc/template.hpp\"\n\n#include <bits/stdc++.h>\nusing namespace\
@@ -65,7 +65,7 @@ data:
   - icpc/uf.hpp
   - icpc/modint.hpp
   timestamp: '2023-05-15 01:12:22+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_other/aoj_2703.test.cpp
   - verify/aoj_other/aoj_2748.test.cpp

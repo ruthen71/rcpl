@@ -71,8 +71,8 @@ data:
   - verify/lc_graph/lc_scc.test.cpp
 documentation_of: graph/strongly_connected_component.hpp
 layout: document
-redirect_from:
-- /library/graph/strongly_connected_component.hpp
-- /library/graph/strongly_connected_component.hpp.html
-title: graph/strongly_connected_component.hpp
+title: "Strongly Connected Component (\u5F37\u9023\u7D50\u6210\u5206)"
 ---
+
+- `strongly_connected_component(G)` で「頂点のリスト」のリストを返す
+- トポロジカルソートされている
