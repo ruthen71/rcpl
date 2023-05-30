@@ -298,6 +298,9 @@ data:
       path: icpc/binary_trie.hpp
       title: icpc/binary_trie.hpp
     - icon: ':heavy_check_mark:'
+      path: icpc/binomal.hpp
+      title: icpc/binomal.hpp
+    - icon: ':heavy_check_mark:'
       path: icpc/dice.hpp
       title: icpc/dice.hpp
     - icon: ':warning:'
@@ -306,7 +309,7 @@ data:
     - icon: ':warning:'
       path: icpc/matrix.hpp
       title: icpc/matrix.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: icpc/modint.hpp
       title: icpc/modint.hpp
     - icon: ':warning:'
@@ -546,6 +549,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_other/aoj_2748.test.cpp
       title: verify/aoj_other/aoj_2748.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_other/aoj_2751.test.cpp
+      title: verify/aoj_other/aoj_2751.test.cpp
   - name: verify/lc_data_structure
     pages:
     - icon: ':heavy_check_mark:'

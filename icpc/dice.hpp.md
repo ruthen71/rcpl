@@ -18,10 +18,11 @@ data:
   bundledCode: "#line 2 \"icpc/dice.hpp\"\n\n#line 2 \"icpc/template.hpp\"\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\nusing ll = long long;\n#define REP(i,\
     \ n) for (int i = 0; i < (n); i++)\ntemplate <class T> using V = vector<T>;\n\
-    template <class T> ostream& operator<<(ostream &os, const V<T>& v) {\n    os <<\
-    \ \"[ \";\n    for (auto &vi : v) os << vi << \", \";\n    return os << \"]\"\
+    template <class T> ostream& operator<<(ostream& os, const V<T>& v) {\n    os <<\
+    \ \"[ \";\n    for (auto& vi : v) os << vi << \", \";\n    return os << \"]\"\
     ;\n}\n\n#ifdef LOCAL\n#define show(x) cerr << __LINE__ << \" : \" << #x << \"\
-    \ = \" << x << endl;\n#else\n#define show(x) true\n#endif\n\n// g++ -g -fsanitize=undefined,address\
+    \ = \" << x << endl;\n#else\n#define show(x) true\n#endif\n\nusing uint = unsigned\
+    \ int;\nusing ull = unsigned long long;\n\n// g++ -g -fsanitize=undefined,address\
     \ -DLOCAL -std=gnu++17\n#line 4 \"icpc/dice.hpp\"\n\n// https://onlinejudge.u-aizu.ac.jp/problems/2703\n\
     // d = {x-, x+, y-, y+, z-, z+}\n// d = {0,  1,  2,  3,  4,  5}\nstruct Dice {\n\
     \    vector<long long> d;\n    Dice(vector<long long> &d) : d(d) {}\n    void\
@@ -41,7 +42,7 @@ data:
   isVerificationFile: false
   path: icpc/dice.hpp
   requiredBy: []
-  timestamp: '2023-05-18 16:04:36+09:00'
+  timestamp: '2023-05-31 02:53:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_other/aoj_2703.test.cpp

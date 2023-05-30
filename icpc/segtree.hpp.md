@@ -15,10 +15,11 @@ data:
   bundledCode: "#line 2 \"icpc/segtree.hpp\"\n\n#line 2 \"icpc/template.hpp\"\n\n\
     #include <bits/stdc++.h>\nusing namespace std;\n\nusing ll = long long;\n#define\
     \ REP(i, n) for (int i = 0; i < (n); i++)\ntemplate <class T> using V = vector<T>;\n\
-    template <class T> ostream& operator<<(ostream &os, const V<T>& v) {\n    os <<\
-    \ \"[ \";\n    for (auto &vi : v) os << vi << \", \";\n    return os << \"]\"\
+    template <class T> ostream& operator<<(ostream& os, const V<T>& v) {\n    os <<\
+    \ \"[ \";\n    for (auto& vi : v) os << vi << \", \";\n    return os << \"]\"\
     ;\n}\n\n#ifdef LOCAL\n#define show(x) cerr << __LINE__ << \" : \" << #x << \"\
-    \ = \" << x << endl;\n#else\n#define show(x) true\n#endif\n\n// g++ -g -fsanitize=undefined,address\
+    \ = \" << x << endl;\n#else\n#define show(x) true\n#endif\n\nusing uint = unsigned\
+    \ int;\nusing ull = unsigned long long;\n\n// g++ -g -fsanitize=undefined,address\
     \ -DLOCAL -std=gnu++17\n#line 4 \"icpc/segtree.hpp\"\n\n// https://onlinejudge.u-aizu.ac.jp/problems/3326\n\
     \ntemplate <class S, S (*op)(S, S), S (*e)()> struct Segtree {\n    int n, size,\
     \ log;\n    V<S> d;\n    Segtree() : Segtree(0) {}\n    Segtree(int n) : Segtree(V<S>(n,\
@@ -90,7 +91,7 @@ data:
   isVerificationFile: false
   path: icpc/segtree.hpp
   requiredBy: []
-  timestamp: '2023-05-18 16:04:36+09:00'
+  timestamp: '2023-05-31 02:53:46+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: icpc/segtree.hpp

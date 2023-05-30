@@ -18,10 +18,11 @@ data:
   bundledCode: "#line 2 \"icpc/scc.hpp\"\n\n#line 2 \"icpc/template.hpp\"\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\nusing ll = long long;\n#define REP(i,\
     \ n) for (int i = 0; i < (n); i++)\ntemplate <class T> using V = vector<T>;\n\
-    template <class T> ostream& operator<<(ostream &os, const V<T>& v) {\n    os <<\
-    \ \"[ \";\n    for (auto &vi : v) os << vi << \", \";\n    return os << \"]\"\
+    template <class T> ostream& operator<<(ostream& os, const V<T>& v) {\n    os <<\
+    \ \"[ \";\n    for (auto& vi : v) os << vi << \", \";\n    return os << \"]\"\
     ;\n}\n\n#ifdef LOCAL\n#define show(x) cerr << __LINE__ << \" : \" << #x << \"\
-    \ = \" << x << endl;\n#else\n#define show(x) true\n#endif\n\n// g++ -g -fsanitize=undefined,address\
+    \ = \" << x << endl;\n#else\n#define show(x) true\n#endif\n\nusing uint = unsigned\
+    \ int;\nusing ull = unsigned long long;\n\n// g++ -g -fsanitize=undefined,address\
     \ -DLOCAL -std=gnu++17\n#line 4 \"icpc/scc.hpp\"\n\n// https://onlinejudge.u-aizu.ac.jp/problems/2748\n\
     \nV<V<int>> scc(V<V<int>>& g) {\n    int n = int(g.size());\n    int now_ord =\
     \ 0, group_num = 0;\n    V<int> vis, low(n), ord(n, -1), ids(n);\n    vis.reserve(n);\n\
@@ -53,7 +54,7 @@ data:
   isVerificationFile: false
   path: icpc/scc.hpp
   requiredBy: []
-  timestamp: '2023-05-30 23:26:09+09:00'
+  timestamp: '2023-05-31 02:53:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_other/aoj_2748.test.cpp
