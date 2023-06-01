@@ -65,20 +65,20 @@ data:
   path: icpc/template.hpp
   requiredBy:
   - icpc/dice.hpp
-  - icpc/ntt.hpp
-  - icpc/segtree.hpp
-  - icpc/lca.hpp
-  - icpc/matrix.hpp
-  - icpc/binomal.hpp
-  - icpc/scc.hpp
   - icpc/uf.hpp
+  - icpc/matrix.hpp
+  - icpc/ntt.hpp
+  - icpc/binomal.hpp
+  - icpc/lca.hpp
+  - icpc/scc.hpp
+  - icpc/segtree.hpp
   - icpc/modint.hpp
   timestamp: '2023-05-31 02:53:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj_other/aoj_2751.test.cpp
   - verify/aoj_other/aoj_2703.test.cpp
   - verify/aoj_other/aoj_2748.test.cpp
+  - verify/aoj_other/aoj_2751.test.cpp
 documentation_of: icpc/template.hpp
 layout: document
 redirect_from:

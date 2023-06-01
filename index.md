@@ -585,6 +585,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/lc_math/lc_enumerate_primes.test.cpp
       title: verify/lc_math/lc_enumerate_primes.test.cpp
+  - name: verify/lc_other
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/lc_other/lc_aplusb_compare_arg.test.cpp
+      title: verify/lc_other/lc_aplusb_compare_arg.test.cpp
   - name: verify/lc_tree
     pages:
     - icon: ':heavy_check_mark:'

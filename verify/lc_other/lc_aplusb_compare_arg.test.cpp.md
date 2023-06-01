@@ -2,30 +2,21 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: geometry/line.hpp
-    title: geometry/line.hpp
-  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: geometry/point.hpp
-  - icon: ':heavy_check_mark:'
-    path: geometry/projection.hpp
-    title: geometry/projection.hpp
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: geometry/all.hpp
-    title: geometry/all.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj_cgl/aoj_cgl_1_b.test.cpp
-    title: verify/aoj_cgl/aoj_cgl_1_b.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/aplusb
     links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_B
-  bundledCode: "#line 2 \"geometry/reflection.hpp\"\n\n#line 2 \"geometry/line.hpp\"\
-    \n\n#line 2 \"geometry/point.hpp\"\n\n// point\ntemplate <typename T> struct Point\
+    - https://judge.yosupo.jp/problem/aplusb
+  bundledCode: "#line 1 \"verify/lc_other/lc_aplusb_compare_arg.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n\n#include <bits/stdc++.h>\n\
+    \n#line 2 \"geometry/point.hpp\"\n\n// point\ntemplate <typename T> struct Point\
     \ {\n    static T EPS;\n    static constexpr T PI = 3.1415926535'8979323846'2643383279L;\n\
     \    static void set_eps(const T &e) { EPS = e; }\n    T x, y;\n    Point(const\
     \ T x = T(0), const T y = T(0)) : x(x), y(y) {}\n    Point &operator+=(const Point\
@@ -85,56 +76,33 @@ data:
     \ <> long double Point<long double>::EPS = 1e-12;\ntemplate <> long long Point<long\
     \ long>::EPS = 0;\ntemplate <> __int128_t Point<__int128_t>::EPS = 0;\n// change\
     \ EPS\n// using Double = double;\n// using Pt = Point<Double>;\n// Point<Double>::set_eps(new_eps);\n\
-    #line 4 \"geometry/line.hpp\"\n\n// line\ntemplate <typename T> struct Line {\n\
-    \    Point<T> a, b;\n\n    Line() = default;\n\n    Line(const Point<T> &a, const\
-    \ Point<T> &b) : a(a), b(b) {}\n\n    // Ax + By = C\n    Line(const T &A, const\
-    \ T &B, const T &C) {\n        assert(equal(A, 0) and equal(B, 0));\n        if\
-    \ (equal(A, 0)) {\n            a = Point<T>(0, C / B), b = Point<T>(1, C / B);\n\
-    \        } else if (equal(B, 0)) {\n            a = Point<T>(C / A, 0), b = Point<T>(C\
-    \ / A, 1);\n        } else if (equal(C, 0)) {\n            a = Point<T>(0, 0),\
-    \ b = Point<T>(1, B / A);\n        } else {\n            a = Point<T>(0, C / B),\
-    \ b = Point<T>(C / A, 0);\n        }\n    }\n\n    friend std::istream &operator>>(std::istream\
-    \ &is, Line &p) { return is >> p.a >> p.b; }\n    friend std::ostream &operator<<(std::ostream\
-    \ &os, const Line &p) { return os << p.a << \"->\" << p.b; }\n};\n#line 2 \"geometry/projection.hpp\"\
-    \n\n#line 5 \"geometry/projection.hpp\"\n\n// projection\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A\n\
-    template <typename T> Point<T> projection(const Line<T> &l, const Point<T> &p)\
-    \ {\n    T t = dot(p - l.a, l.b - l.a) / norm(l.b - l.a);\n    return l.a + t\
-    \ * (l.b - l.a);\n}\n#line 6 \"geometry/reflection.hpp\"\n\n// reflection\n//\
-    \ http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_B\ntemplate <typename\
-    \ T> Point<T> reflection(const Line<T> &l, const Point<T> &p) { return p + (projection(l,\
-    \ p) - p) * T(2); }\n"
-  code: '#pragma once
-
-
-    #include "geometry/line.hpp"
-
-    #include "geometry/point.hpp"
-
-    #include "projection.hpp"
-
-
-    // reflection
-
-    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_B
-
-    template <typename T> Point<T> reflection(const Line<T> &l, const Point<T> &p)
-    { return p + (projection(l, p) - p) * T(2); }'
+    #line 6 \"verify/lc_other/lc_aplusb_compare_arg.test.cpp\"\n\nint main() {\n \
+    \   using Pt = Point<long long>;\n    std::vector<Pt> p = {{1, 0}, {2, 0}, {1,\
+    \ 1}, {2, 2}, {0, 1}, {0, 2}, {-1, 1}, {-2, 2}, {-1, 0}, {-2, 0}, {-1, -1}, {-2,\
+    \ -2}, {0, -1}, {0, -2}, {1, -1}, {2, -2}};\n    for (int i = 0; i < 16; i++)\
+    \ {\n        for (int j = i + 1; j < 16; j++) {\n            assert(compare_arg(p[i],\
+    \ p[j]));\n        }\n    }\n    long long a, b;\n    std::cin >> a >> b;\n  \
+    \  std::cout << a + b << '\\n';\n    return 0;\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n\n#include <bits/stdc++.h>\n\
+    \n#include \"geometry/point.hpp\"\n\nint main() {\n    using Pt = Point<long long>;\n\
+    \    std::vector<Pt> p = {{1, 0}, {2, 0}, {1, 1}, {2, 2}, {0, 1}, {0, 2}, {-1,\
+    \ 1}, {-2, 2}, {-1, 0}, {-2, 0}, {-1, -1}, {-2, -2}, {0, -1}, {0, -2}, {1, -1},\
+    \ {2, -2}};\n    for (int i = 0; i < 16; i++) {\n        for (int j = i + 1; j\
+    \ < 16; j++) {\n            assert(compare_arg(p[i], p[j]));\n        }\n    }\n\
+    \    long long a, b;\n    std::cin >> a >> b;\n    std::cout << a + b << '\\n';\n\
+    \    return 0;\n}"
   dependsOn:
-  - geometry/line.hpp
   - geometry/point.hpp
-  - geometry/projection.hpp
-  isVerificationFile: false
-  path: geometry/reflection.hpp
-  requiredBy:
-  - geometry/all.hpp
+  isVerificationFile: true
+  path: verify/lc_other/lc_aplusb_compare_arg.test.cpp
+  requiredBy: []
   timestamp: '2023-06-01 23:47:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/aoj_cgl/aoj_cgl_1_b.test.cpp
-documentation_of: geometry/reflection.hpp
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: verify/lc_other/lc_aplusb_compare_arg.test.cpp
 layout: document
 redirect_from:
-- /library/geometry/reflection.hpp
-- /library/geometry/reflection.hpp.html
-title: geometry/reflection.hpp
+- /verify/verify/lc_other/lc_aplusb_compare_arg.test.cpp
+- /verify/verify/lc_other/lc_aplusb_compare_arg.test.cpp.html
+title: verify/lc_other/lc_aplusb_compare_arg.test.cpp
 ---

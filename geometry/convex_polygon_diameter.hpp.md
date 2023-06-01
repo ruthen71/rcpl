@@ -53,47 +53,52 @@ data:
     \ Point &a, const Point &b) { return Point(a) /= b; }\n    friend Point operator/(const\
     \ Point &p, const T &k) { return Point(p) /= k; }\n    // for std::set, std::map,\
     \ compare_arg, ...\n    friend bool operator<(const Point &a, const Point &b)\
-    \ { return a.x == b.x ? a.y < b.y : a.x < b.x; }\n    // I/O\n    friend std::istream\
-    \ &operator>>(std::istream &is, Point &p) { return is >> p.x >> p.y; }\n    friend\
-    \ std::ostream &operator<<(std::ostream &os, const Point &p) { return os << '('\
-    \ << p.x << ' ' << p.y << ')'; }\n};\n\n// template\ntemplate <typename T> inline\
-    \ int sign(const T &x) { return x < -Point<T>::EPS ? -1 : (x > Point<T>::EPS ?\
-    \ 1 : 0); }\ntemplate <typename T> inline bool equal(const T &a, const T &b) {\
-    \ return sign(a - b) == 0; }\ntemplate <typename T> inline T radian_to_degree(const\
-    \ T &r) { return r * 180.0 / Point<T>::PI; }\ntemplate <typename T> inline T degree_to_radian(const\
-    \ T &d) { return d * Point<T>::PI / 180.0; }\n\n// contain enum\nconstexpr int\
-    \ IN = 2;\nconstexpr int ON = 1;\nconstexpr int OUT = 0;\n\n// equal (point and\
-    \ point)\ntemplate <typename T> inline bool equal(const Point<T> &a, const Point<T>\
-    \ &b) { return equal(a.x, b.x) and equal(a.y, b.y); }\n// inner product\ntemplate\
-    \ <typename T> inline T dot(const Point<T> &a, const Point<T> &b) { return a.x\
-    \ * b.x + a.y * b.y; }\n// outer product\ntemplate <typename T> inline T cross(const\
-    \ Point<T> &a, const Point<T> &b) { return a.x * b.y - a.y * b.x; }\n// rotate\
-    \ Point p counterclockwise by theta radian\ntemplate <typename T> inline Point<T>\
-    \ rotate(const Point<T> &p, const T &theta) { return p * Point<T>(std::cos(theta),\
-    \ std::sin(theta)); }\n// compare (x, y)\ntemplate <typename T> inline bool compare_x(const\
-    \ Point<T> &a, const Point<T> &b) { return equal(a.x, b.x) ? sign(a.y - b.y) <\
-    \ 0 : sign(a.x - b.x) < 0; }\n// compare (y, x)\ntemplate <typename T> inline\
-    \ bool compare_y(const Point<T> &a, const Point<T> &b) { return equal(a.y, b.y)\
-    \ ? sign(a.x - b.x) < 0 : sign(a.y - b.y) < 0; }\n// compare by arg (start from\
-    \ 90.0000000001~)\ntemplate <typename T> inline bool compare_arg(const Point<T>\
-    \ &a, const Point<T> &b) {\n    // https://ngtkana.hatenablog.com/entry/2021/11/13/202103\n\
-    \    return (Point<T>(0, 0) < a) == (Point<T>(0, 0) < b) ? a.x * b.y > a.y * b.x\
-    \ : a < b;\n}\n// |p| ^ 2\ntemplate <typename T> inline T norm(const Point<T>\
-    \ &p) { return p.x * p.x + p.y * p.y; }\n// |p|\ntemplate <typename T> inline\
-    \ T abs(const Point<T> &p) { return std::sqrt(norm(p)); }\n// arg\ntemplate <typename\
-    \ T> inline T arg(const Point<T> &p) { return std::atan2(p.y, p.x); }\n// polar\n\
-    template <typename T> inline Point<T> polar(const T &rho, const T &theta = T(0))\
-    \ { return rotate(Point<T>(rho, 0), theta); }\n// EPS\ntemplate <> double Point<double>::EPS\
-    \ = 1e-9;\ntemplate <> long double Point<long double>::EPS = 1e-12;\ntemplate\
-    \ <> long long Point<long long>::EPS = 0;\ntemplate <> __int128_t Point<__int128_t>::EPS\
-    \ = 0;\n// change EPS\n// using Double = double;\n// using Pt = Point<Double>;\n\
-    // Point<Double>::set_eps(new_eps);\n#line 4 \"geometry/polygon.hpp\"\n\n// polygon\n\
-    template <typename T> using Polygon = std::vector<Point<T>>;\ntemplate <typename\
-    \ T> std::istream &operator>>(std::istream &is, Polygon<T> &p) {\n    for (auto\
-    \ &&pi : p) is >> pi;\n    return is;\n}\ntemplate <typename T> std::ostream &operator<<(std::ostream\
-    \ &os, const Polygon<T> &p) {\n    for (auto &&pi : p) os << pi << \" -> \";\n\
-    \    return os;\n}\n#line 2 \"geometry/polygon_is_convex.hpp\"\n\n#line 2 \"geometry/ccw.hpp\"\
-    \n\n#line 4 \"geometry/ccw.hpp\"\n\n// counter clockwise\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C\n\
+    \ { return a.x == b.x ? a.y < b.y : a.x < b.x; }\n    friend bool operator>(const\
+    \ Point &a, const Point &b) { return a.x == b.x ? a.y > b.y : a.x > b.x; }\n \
+    \   // I/O\n    friend std::istream &operator>>(std::istream &is, Point &p) {\
+    \ return is >> p.x >> p.y; }\n    friend std::ostream &operator<<(std::ostream\
+    \ &os, const Point &p) { return os << '(' << p.x << ' ' << p.y << ')'; }\n};\n\
+    \n// template\ntemplate <typename T> inline int sign(const T &x) { return x <\
+    \ -Point<T>::EPS ? -1 : (x > Point<T>::EPS ? 1 : 0); }\ntemplate <typename T>\
+    \ inline bool equal(const T &a, const T &b) { return sign(a - b) == 0; }\ntemplate\
+    \ <typename T> inline T radian_to_degree(const T &r) { return r * 180.0 / Point<T>::PI;\
+    \ }\ntemplate <typename T> inline T degree_to_radian(const T &d) { return d *\
+    \ Point<T>::PI / 180.0; }\n\n// contain enum\nconstexpr int IN = 2;\nconstexpr\
+    \ int ON = 1;\nconstexpr int OUT = 0;\n\n// equal (point and point)\ntemplate\
+    \ <typename T> inline bool equal(const Point<T> &a, const Point<T> &b) { return\
+    \ equal(a.x, b.x) and equal(a.y, b.y); }\n// inner product\ntemplate <typename\
+    \ T> inline T dot(const Point<T> &a, const Point<T> &b) { return a.x * b.x + a.y\
+    \ * b.y; }\n// outer product\ntemplate <typename T> inline T cross(const Point<T>\
+    \ &a, const Point<T> &b) { return a.x * b.y - a.y * b.x; }\n// rotate Point p\
+    \ counterclockwise by theta radian\ntemplate <typename T> inline Point<T> rotate(const\
+    \ Point<T> &p, const T &theta) { return p * Point<T>(std::cos(theta), std::sin(theta));\
+    \ }\n// compare (x, y)\ntemplate <typename T> inline bool compare_x(const Point<T>\
+    \ &a, const Point<T> &b) { return equal(a.x, b.x) ? sign(a.y - b.y) < 0 : sign(a.x\
+    \ - b.x) < 0; }\n// compare (y, x)\ntemplate <typename T> inline bool compare_y(const\
+    \ Point<T> &a, const Point<T> &b) { return equal(a.y, b.y) ? sign(a.x - b.x) <\
+    \ 0 : sign(a.y - b.y) < 0; }\n// compare by (arg(p), norm(p)) [0, 360)\ntemplate\
+    \ <typename T> inline bool compare_arg(const Point<T> &a, const Point<T> &b) {\n\
+    \    // https://ngtkana.hatenablog.com/entry/2021/11/13/202103\n    assert(!equal(a,\
+    \ Point<T>(0, 0)));\n    assert(!equal(b, Point<T>(0, 0)));\n    if ((Point<T>(0,\
+    \ 0) < Point<T>(a.y, a.x)) == (Point<T>(0, 0) < Point<T>(b.y, b.x))) {\n     \
+    \   return (a.x * b.y == a.y * b.x) ? norm(a) < norm(b) : a.x * b.y > a.y * b.x;\n\
+    \    } else {\n        return Point<T>(a.y, a.x) > Point<T>(b.y, b.x);\n    }\n\
+    }\n// |p| ^ 2\ntemplate <typename T> inline T norm(const Point<T> &p) { return\
+    \ p.x * p.x + p.y * p.y; }\n// |p|\ntemplate <typename T> inline T abs(const Point<T>\
+    \ &p) { return std::sqrt(norm(p)); }\n// arg\ntemplate <typename T> inline T arg(const\
+    \ Point<T> &p) { return std::atan2(p.y, p.x); }\n// polar\ntemplate <typename\
+    \ T> inline Point<T> polar(const T &rho, const T &theta = T(0)) { return rotate(Point<T>(rho,\
+    \ 0), theta); }\n// EPS\ntemplate <> double Point<double>::EPS = 1e-9;\ntemplate\
+    \ <> long double Point<long double>::EPS = 1e-12;\ntemplate <> long long Point<long\
+    \ long>::EPS = 0;\ntemplate <> __int128_t Point<__int128_t>::EPS = 0;\n// change\
+    \ EPS\n// using Double = double;\n// using Pt = Point<Double>;\n// Point<Double>::set_eps(new_eps);\n\
+    #line 4 \"geometry/polygon.hpp\"\n\n// polygon\ntemplate <typename T> using Polygon\
+    \ = std::vector<Point<T>>;\ntemplate <typename T> std::istream &operator>>(std::istream\
+    \ &is, Polygon<T> &p) {\n    for (auto &&pi : p) is >> pi;\n    return is;\n}\n\
+    template <typename T> std::ostream &operator<<(std::ostream &os, const Polygon<T>\
+    \ &p) {\n    for (auto &&pi : p) os << pi << \" -> \";\n    return os;\n}\n#line\
+    \ 2 \"geometry/polygon_is_convex.hpp\"\n\n#line 2 \"geometry/ccw.hpp\"\n\n#line\
+    \ 4 \"geometry/ccw.hpp\"\n\n// counter clockwise\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C\n\
     constexpr int COUNTER_CLOCKWISE = 1;  // a-b-c counter clockwise\nconstexpr int\
     \ CLOCKWISE = -1;         // a-b-c clockwise\nconstexpr int ONLINE_BACK = 2; \
     \       // c-a-b line\nconstexpr int ONLINE_FRONT = -2;      // a-b-c line\nconstexpr\
@@ -157,9 +162,9 @@ data:
   isVerificationFile: false
   path: geometry/convex_polygon_diameter.hpp
   requiredBy:
-  - geometry/all.hpp
   - geometry/farthest_pair.hpp
-  timestamp: '2023-04-06 10:28:51+09:00'
+  - geometry/all.hpp
+  timestamp: '2023-06-01 23:47:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_cgl/aoj_cgl_4_b.test.cpp
