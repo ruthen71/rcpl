@@ -41,6 +41,7 @@ template <typename T> struct Point {
     friend Point operator/(const Point &p, const T &k) { return Point(p) /= k; }
     // for std::set, std::map, compare_arg, ...
     friend bool operator<(const Point &a, const Point &b) { return a.x == b.x ? a.y < b.y : a.x < b.x; }
+    friend bool operator>(const Point &a, const Point &b) { return a.x == b.x ? a.y > b.y : a.x > b.x; }
     // I/O
     friend std::istream &operator>>(std::istream &is, Point &p) { return is >> p.x >> p.y; }
     friend std::ostream &operator<<(std::ostream &os, const Point &p) { return os << '(' << p.x << ' ' << p.y << ')'; }
@@ -69,10 +70,16 @@ template <typename T> inline Point<T> rotate(const Point<T> &p, const T &theta) 
 template <typename T> inline bool compare_x(const Point<T> &a, const Point<T> &b) { return equal(a.x, b.x) ? sign(a.y - b.y) < 0 : sign(a.x - b.x) < 0; }
 // compare (y, x)
 template <typename T> inline bool compare_y(const Point<T> &a, const Point<T> &b) { return equal(a.y, b.y) ? sign(a.x - b.x) < 0 : sign(a.y - b.y) < 0; }
-// compare by arg (start from 90.0000000001~)
+// compare by (arg(p), norm(p)) [0, 360)
 template <typename T> inline bool compare_arg(const Point<T> &a, const Point<T> &b) {
     // https://ngtkana.hatenablog.com/entry/2021/11/13/202103
-    return (Point<T>(0, 0) < a) == (Point<T>(0, 0) < b) ? a.x * b.y > a.y * b.x : a < b;
+    assert(!equal(a, Point<T>(0, 0)));
+    assert(!equal(b, Point<T>(0, 0)));
+    if ((Point<T>(0, 0) < Point<T>(a.y, a.x)) == (Point<T>(0, 0) < Point<T>(b.y, b.x))) {
+        return (a.x * b.y == a.y * b.x) ? norm(a) < norm(b) : a.x * b.y > a.y * b.x;
+    } else {
+        return Point<T>(a.y, a.x) > Point<T>(b.y, b.x);
+    }
 }
 // |p| ^ 2
 template <typename T> inline T norm(const Point<T> &p) { return p.x * p.x + p.y * p.y; }
