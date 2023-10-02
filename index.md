@@ -119,6 +119,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/weighted_unionfind.hpp
       title: "Weighted UnionFind (\u91CD\u307F\u3064\u304D UnionFind)"
+  - name: .
+    pages:
+    - icon: ':warning:'
+      path: debug.hpp
+      title: debug.hpp
   - name: dp
     pages:
     - icon: ':heavy_check_mark:'
