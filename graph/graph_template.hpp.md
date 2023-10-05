@@ -40,7 +40,7 @@ data:
     title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"
   - icon: ':warning:'
     path: graph/zero_one_bfs.hpp
-    title: graph/zero_one_bfs.hpp
+    title: 01-BFS
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_dpl/aoj_dpl_2_a.test.cpp

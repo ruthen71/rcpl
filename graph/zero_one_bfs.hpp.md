@@ -54,8 +54,5 @@ data:
   verifiedWith: []
 documentation_of: graph/zero_one_bfs.hpp
 layout: document
-redirect_from:
-- /library/graph/zero_one_bfs.hpp
-- /library/graph/zero_one_bfs.hpp.html
-title: graph/zero_one_bfs.hpp
+title: 01-BFS
 ---

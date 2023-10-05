@@ -287,6 +287,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/read_graph.hpp
       title: graph/read_graph.hpp
+    - icon: ':warning:'
+      path: graph/shortest_path_tree.hpp
+      title: "Shortest Path Tree (\u6700\u77ED\u7D4C\u8DEF\u6728)"
     - icon: ':heavy_check_mark:'
       path: graph/strongly_connected_component.hpp
       title: "Strongly Connected Component (\u5F37\u9023\u7D50\u6210\u5206)"
@@ -299,7 +302,7 @@ data:
       title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"
     - icon: ':warning:'
       path: graph/zero_one_bfs.hpp
-      title: graph/zero_one_bfs.hpp
+      title: 01-BFS
   - name: icpc
     pages:
     - icon: ':warning:'
