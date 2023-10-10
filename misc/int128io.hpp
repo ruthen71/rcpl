@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+#include <string>
 std::istream &operator>>(std::istream &is, __int128_t &x) {
     std::string s;
     is >> s;
@@ -16,7 +18,7 @@ std::ostream &operator<<(std::ostream &os, const __int128_t &x) {
     if (x == 0) {
         return os << 0;
     }
-    __int128_t y = std::abs(x);
+    __int128_t y = (x > 0 ? x : -x);
     std::string res = "";
     while (y) {
         res += y % 10 + '0';
