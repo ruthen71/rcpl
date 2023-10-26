@@ -151,8 +151,8 @@ data:
   timestamp: '2023-06-01 23:47:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj_cgl/aoj_cgl_3_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_4_b.test.cpp
+  - verify/aoj_cgl/aoj_cgl_3_b.test.cpp
 documentation_of: geometry/polygon_is_convex.hpp
 layout: document
 redirect_from:

@@ -66,10 +66,10 @@ data:
   verifiedWith:
   - verify/aoj_grl/aoj_grl_1_b.test.cpp
   - verify/aoj_grl/aoj_grl_2_a.test.cpp
-  - verify/lc_graph/lc_scc.test.cpp
-  - verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
-  - verify/lc_tree/lc_tree_diameter.test.cpp
   - verify/aoj_dpl/aoj_dpl_2_a.test.cpp
+  - verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
+  - verify/lc_graph/lc_scc.test.cpp
+  - verify/lc_tree/lc_tree_diameter.test.cpp
 documentation_of: graph/read_graph.hpp
 layout: document
 redirect_from:
