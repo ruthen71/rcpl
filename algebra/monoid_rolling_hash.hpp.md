@@ -60,14 +60,17 @@ int main() {
 モノイドを作成するには `mrh::make_element(x)` とする
 
 ```cpp
-vector<pair<mint, mint>> seginit;
+std::vector<pair<mint, mint>> seginit;
 seginit.push_back(mrh::make_element(x));
 SegmentTree<mrh> seg(seginit);
 ```
-
 ## 使用例
 
-- [ABC285 F](https://atcoder.jp/contests/abc285/tasks/abc285_f)
-    - 2つ以上のmodを組み合わせるなら、include ではなくべた書きするしかない
-    - が、基数が $ 2^{61} - 1 $ なので余程のことがなければ衝突しないと思われる
 - [ABC298 D](https://atcoder.jp/contests/abc298/submissions/40706415)
+    - `set_base()` に乱数以外を用いる例
+- [ABC331 F](https://atcoder.jp/contests/abc331/submissions/48126645)
+    - 1点更新区間回分判定クエリ→反転した文字列も持つ
+- [ABC285 F](https://atcoder.jp/contests/abc285/tasks/abc285_f)
+    - 非想定解
+    - ソートされた文字列のハッシュは個数から計算
+    - 部分列のハッシュはセグメント木で計算

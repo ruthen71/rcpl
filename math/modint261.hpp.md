@@ -28,16 +28,20 @@ data:
     \   _v -= rhs._v;\n        if (_v >= mod()) _v += mod();\n        return *this;\n\
     \    }\n    mint &operator*=(const mint &rhs) {\n        uint128_t z = _v;\n \
     \       z *= rhs._v;\n        z = (z >> 61) + (z & mod());\n        if (z >= mod())\
-    \ z -= mod();\n        _v = (uint64_t)z;\n        return *this;\n    }\n\n   \
-    \ mint operator-() const { return mint() - *this; }\n\n    mint pow(long long\
-    \ n) const {\n        assert(n >= 0);\n        mint x = *this, r = 1;\n      \
-    \  while (n) {\n            if (n & 1) r *= x;\n            x *= x;\n        \
-    \    n >>= 1;\n        }\n        return r;\n    }\n\n    friend mint operator+(const\
-    \ mint &lhs, const mint &rhs) { return mint(lhs) += rhs; }\n    friend mint operator-(const\
-    \ mint &lhs, const mint &rhs) { return mint(lhs) -= rhs; }\n    friend mint operator*(const\
-    \ mint &lhs, const mint &rhs) { return mint(lhs) *= rhs; }\n    friend bool operator==(const\
-    \ mint &lhs, const mint &rhs) { return lhs._v == rhs._v; }\n    friend bool operator!=(const\
-    \ mint &lhs, const mint &rhs) { return lhs._v != rhs._v; }\n};\n"
+    \ z -= mod();\n        _v = (uint64_t)z;\n        return *this;\n    }\n    mint\
+    \ &operator/=(const mint &rhs) { return (*this *= rhs.inv()); }\n\n    mint operator-()\
+    \ const { return mint() - *this; }\n\n    mint pow(long long n) const {\n    \
+    \    assert(n >= 0);\n        mint x = *this, r = 1;\n        while (n) {\n  \
+    \          if (n & 1) r *= x;\n            x *= x;\n            n >>= 1;\n   \
+    \     }\n        return r;\n    }\n\n    mint inv() const { return pow(m - 2);\
+    \ }\n\n    friend mint operator+(const mint &lhs, const mint &rhs) { return mint(lhs)\
+    \ += rhs; }\n    friend mint operator-(const mint &lhs, const mint &rhs) { return\
+    \ mint(lhs) -= rhs; }\n    friend mint operator*(const mint &lhs, const mint &rhs)\
+    \ { return mint(lhs) *= rhs; }\n    friend mint operator/(const mint &lhs, const\
+    \ mint &rhs) { return mint(lhs) /= rhs; }\n    friend bool operator==(const mint\
+    \ &lhs, const mint &rhs) { return lhs._v == rhs._v; }\n    friend bool operator!=(const\
+    \ mint &lhs, const mint &rhs) { return lhs._v != rhs._v; }\n    friend std::ostream\
+    \ &operator<<(std::ostream &os, const mint &v) { return os << v.val(); }\n};\n"
   code: "#pragma once\n\nstruct ModInt261 {\n    static constexpr uint64_t m = (1ULL\
     \ << 61) - 1;\n    using uint128_t = __uint128_t;\n    using mint = ModInt261;\n\
     \    uint64_t _v;\n\n    static constexpr uint64_t mod() { return m; }\n\n   \
@@ -52,22 +56,26 @@ data:
     \   _v -= rhs._v;\n        if (_v >= mod()) _v += mod();\n        return *this;\n\
     \    }\n    mint &operator*=(const mint &rhs) {\n        uint128_t z = _v;\n \
     \       z *= rhs._v;\n        z = (z >> 61) + (z & mod());\n        if (z >= mod())\
-    \ z -= mod();\n        _v = (uint64_t)z;\n        return *this;\n    }\n\n   \
-    \ mint operator-() const { return mint() - *this; }\n\n    mint pow(long long\
-    \ n) const {\n        assert(n >= 0);\n        mint x = *this, r = 1;\n      \
-    \  while (n) {\n            if (n & 1) r *= x;\n            x *= x;\n        \
-    \    n >>= 1;\n        }\n        return r;\n    }\n\n    friend mint operator+(const\
-    \ mint &lhs, const mint &rhs) { return mint(lhs) += rhs; }\n    friend mint operator-(const\
-    \ mint &lhs, const mint &rhs) { return mint(lhs) -= rhs; }\n    friend mint operator*(const\
-    \ mint &lhs, const mint &rhs) { return mint(lhs) *= rhs; }\n    friend bool operator==(const\
-    \ mint &lhs, const mint &rhs) { return lhs._v == rhs._v; }\n    friend bool operator!=(const\
-    \ mint &lhs, const mint &rhs) { return lhs._v != rhs._v; }\n};"
+    \ z -= mod();\n        _v = (uint64_t)z;\n        return *this;\n    }\n    mint\
+    \ &operator/=(const mint &rhs) { return (*this *= rhs.inv()); }\n\n    mint operator-()\
+    \ const { return mint() - *this; }\n\n    mint pow(long long n) const {\n    \
+    \    assert(n >= 0);\n        mint x = *this, r = 1;\n        while (n) {\n  \
+    \          if (n & 1) r *= x;\n            x *= x;\n            n >>= 1;\n   \
+    \     }\n        return r;\n    }\n\n    mint inv() const { return pow(m - 2);\
+    \ }\n\n    friend mint operator+(const mint &lhs, const mint &rhs) { return mint(lhs)\
+    \ += rhs; }\n    friend mint operator-(const mint &lhs, const mint &rhs) { return\
+    \ mint(lhs) -= rhs; }\n    friend mint operator*(const mint &lhs, const mint &rhs)\
+    \ { return mint(lhs) *= rhs; }\n    friend mint operator/(const mint &lhs, const\
+    \ mint &rhs) { return mint(lhs) /= rhs; }\n    friend bool operator==(const mint\
+    \ &lhs, const mint &rhs) { return lhs._v == rhs._v; }\n    friend bool operator!=(const\
+    \ mint &lhs, const mint &rhs) { return lhs._v != rhs._v; }\n    friend std::ostream\
+    \ &operator<<(std::ostream &os, const mint &v) { return os << v.val(); }\n};"
   dependsOn: []
   isVerificationFile: false
   path: math/modint261.hpp
   requiredBy:
   - string/rolling_hash.hpp
-  timestamp: '2023-02-06 23:12:05+09:00'
+  timestamp: '2023-12-02 23:15:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_alds1/aoj_alds1_14_b.test.cpp
