@@ -47,6 +47,7 @@ struct ModInt261 {
         _v = (uint64_t)z;
         return *this;
     }
+    mint &operator/=(const mint &rhs) { return (*this *= rhs.inv()); }
 
     mint operator-() const { return mint() - *this; }
 
@@ -61,9 +62,13 @@ struct ModInt261 {
         return r;
     }
 
+    mint inv() const { return pow(m - 2); }
+
     friend mint operator+(const mint &lhs, const mint &rhs) { return mint(lhs) += rhs; }
     friend mint operator-(const mint &lhs, const mint &rhs) { return mint(lhs) -= rhs; }
     friend mint operator*(const mint &lhs, const mint &rhs) { return mint(lhs) *= rhs; }
+    friend mint operator/(const mint &lhs, const mint &rhs) { return mint(lhs) /= rhs; }
     friend bool operator==(const mint &lhs, const mint &rhs) { return lhs._v == rhs._v; }
     friend bool operator!=(const mint &lhs, const mint &rhs) { return lhs._v != rhs._v; }
+    friend std::ostream &operator<<(std::ostream &os, const mint &v) { return os << v.val(); }
 };
