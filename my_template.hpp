@@ -40,7 +40,6 @@
 #endif
 
 // type definition
-using i32 = int;
 using i64 = long long;
 using i128 = __int128_t;
 using u32 = unsigned int;
@@ -49,6 +48,8 @@ using u128 = __uint128_t;
 using f32 = float;
 using f64 = double;
 using f128 = long double;
+template <class T> using pq = std::priority_queue<T>;
+template <class T> using pqg = std::priority_queue<T, std::vector<T>, std::greater<T>>;
 
 #define overload4(_1, _2, _3, _4, name, ...) name
 #define overload3(_1, _2, _3, name, ...) name
@@ -84,14 +85,38 @@ template <class T> T sum(const std::vector<T>& a) {
     for (auto&& ai : a) res += ai;
     return res;
 }
-#define LB(a, x) std::lower_bound((a).begin(), (a).end(), (x)) - (a).begin()
-#define UB(a, x) std::upper_bound((a).begin(), (a).end(), (x)) - (a).begin()
+#define LB(a, x) std::distance((a).begin(), std::lower_bound((a).begin(), (a).end(), (x)))
+#define UB(a, x) std::distance((a).begin(), std::upper_bound((a).begin(), (a).end(), (x)))
 template <class T, class U> inline bool chmin(T& a, const U& b) { return (a > T(b) ? a = b, 1 : 0); }
 template <class T, class U> inline bool chmax(T& a, const U& b) { return (a < T(b) ? a = b, 1 : 0); }
+template <class T, class S> inline T floor(const T x, const S y) {
+    assert(y);
+    return (y < 0 ? floor(-x, -y) : (x > 0 ? x / y : x / y - (x % y == 0 ? 0 : 1)));
+}
+template <class T, class S> inline T ceil(const T x, const S y) {
+    assert(y);
+    return (y < 0 ? ceil(-x, -y) : (x > 0 ? (x + y - 1) / y : x / y));
+}
+template <class T, class S> std::pair<T, T> inline divmod(const T x, const S y) {
+    T q = floor(x, y);
+    return {q, x - q * y};
+}
 
 // const value
 constexpr int dx[8] = {1, 0, -1, 0, 1, -1, -1, 1};
 constexpr int dy[8] = {0, 1, 0, -1, 1, 1, -1, -1};
+
+// infinity
+template <class T> constexpr T INF = 0;
+template <> constexpr int INF<int> = 1'000'000'000;                 // 1e9
+template <> constexpr i64 INF<i64> = i64(INF<int>) * INF<int> * 2;  // 2e18
+template <> constexpr i128 INF<i128> = i128(INF<i64>) * INF<i64>;   // 4e36
+template <> constexpr u32 INF<u32> = INF<int>;                      // 1e9
+template <> constexpr u64 INF<u64> = INF<i64>;                      // 2e18
+template <> constexpr u128 INF<u128> = INF<i128>;                   // 4e36
+template <> constexpr f32 INF<f32> = INF<i64>;                      // 2e18
+template <> constexpr f64 INF<f64> = INF<i64>;                      // 2e18
+template <> constexpr f128 INF<f128> = INF<i64>;                    // 2e18
 
 // input
 std::istream& operator>>(std::istream& is, __int128_t& x) {
@@ -124,8 +149,8 @@ template <class Head, class... Tail> void scan(Head& head, Tail&... tail) {
 }
 
 // definition & input
-#define I32(...)     \
-    i32 __VA_ARGS__; \
+#define INT(...)     \
+    int __VA_ARGS__; \
     scan(__VA_ARGS__)
 #define I64(...)     \
     i64 __VA_ARGS__; \
@@ -207,6 +232,17 @@ template <class Head, class... Tail> void print(Head&& head, Tail&&... tail) {
     if (sizeof...(Tail)) out(' ');
     print(tail...);
 }
+
+// bool output
+void YES(bool t = 1) { print(t ? "YES" : "NO"); }
+void NO(bool t = 1) { YES(!t); }
+void Yes(bool t = 1) { print(t ? "Yes" : "No"); }
+void No(bool t = 1) { Yes(!t); }
+void yes(bool t = 1) { print(t ? "yes" : "no"); }
+void no(bool t = 1) { yes(!t); }
+void POSSIBLE(bool t = 1) { return print(t ? "POSSIBLE" : "IMPOSSIBLE"); }
+void Possible(bool t = 1) { return print(t ? "Possible" : "Impossible"); }
+void possible(bool t = 1) { return print(t ? "possible" : "impossible"); }
 
 // I/O speed up
 struct SetUpIO {
