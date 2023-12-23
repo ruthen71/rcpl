@@ -48,8 +48,8 @@ using u128 = __uint128_t;
 using f32 = float;
 using f64 = double;
 using f128 = long double;
-template <class T> using pq = std::priority_queue<T>;
-template <class T> using pqg = std::priority_queue<T, std::vector<T>, std::greater<T>>;
+template <class T> using pque = std::priority_queue<T>;
+template <class T> using pqueg = std::priority_queue<T, std::vector<T>, std::greater<T>>;
 
 #define overload4(_1, _2, _3, _4, name, ...) name
 #define overload3(_1, _2, _3, name, ...) name
@@ -80,7 +80,7 @@ template <class T> using pqg = std::priority_queue<T, std::vector<T>, std::great
 #define LEN(a) int((a).size())
 #define MIN(a) *std::min_element((a).begin(), (a).end())
 #define MAX(a) *std::max_element((a).begin(), (a).end())
-template <class T> T sum(const std::vector<T>& a) {
+template <class T, class S> T sum(const S& a) {
     T res = T(0);
     for (auto&& ai : a) res += ai;
     return res;
@@ -100,6 +100,22 @@ template <class T, class S> inline T ceil(const T x, const S y) {
 template <class T, class S> std::pair<T, T> inline divmod(const T x, const S y) {
     T q = floor(x, y);
     return {q, x - q * y};
+}
+
+// binary search
+template <class T, class F> T binary_search(T ok, T ng, F& f) {
+    while (abs(ok - ng) > 1) {
+        T md = (ng + ok) >> 1;
+        (f(md) ? ok : ng) = md;
+    }
+    return ok;
+}
+template <class T, class F> T binary_search_real(T ok, T ng, F& f, const int iter = 100) {
+    for (int _ = 0; _ < iter; _++) {
+        T md = (ng + ok) / 2;
+        (f(md) ? ok : ng) = md;
+    }
+    return ok;
 }
 
 // const value
@@ -185,7 +201,16 @@ template <class Head, class... Tail> void scan(Head& head, Tail&... tail) {
 #define VEC(type, name, size)     \
     std::vector<type> name(size); \
     scan(name)
-#define VEC2(type, name, h, w)                     \
+#define VEC2(type, name1, name2, size)          \
+    std::vector<type> name1(size), name2(size); \
+    for (int i = 0; i < size; i++) scan(name1[i], name2[i])
+#define VEC3(type, name1, name2, name3, size)                \
+    std::vector<type> name1(size), name2(size), name3(size); \
+    for (int i = 0; i < size; i++) scan(name1[i], name2[i], name3[i])
+#define VEC4(type, name1, name2, name3, name4, size)                      \
+    std::vector<type> name1(size), name2(size), name3(size), name4(size); \
+    for (int i = 0; i < size; i++) scan(name1[i], name2[i], name3[i], name4[i]);
+#define VV(type, name, h, w)                       \
     std::vector name((h), std::vector<type>((w))); \
     scan(name)
 
@@ -226,7 +251,10 @@ template <class T> std::ostream& operator<<(std::ostream& os, const std::vector<
     return os;
 }
 template <class... T> void out(const T&... a) { (std::cout << ... << a); }
-void print() { out('\n'); }
+void print() {
+    out('\n');
+    // std::cout.flush();
+}
 template <class Head, class... Tail> void print(Head&& head, Tail&&... tail) {
     out(head);
     if (sizeof...(Tail)) out(' ');
