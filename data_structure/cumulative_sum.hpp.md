@@ -54,8 +54,8 @@ data:
   timestamp: '2023-03-17 17:11:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj_other/aoj_2286.test.cpp
   - verify/aoj_other/aoj_0360.test.cpp
+  - verify/aoj_other/aoj_2286.test.cpp
   - verify/lc_data_structure/lc_static_range_sum.test.cpp
 documentation_of: data_structure/cumulative_sum.hpp
 layout: document

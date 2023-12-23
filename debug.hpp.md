@@ -8,7 +8,7 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"misc/debug.hpp\"\n\n#include <iomanip>\n#include <utility>\n\
+  bundledCode: "#line 2 \"debug.hpp\"\n\n#include <iomanip>\n#include <utility>\n\
     #include <tuple>\n#include <array>\n#include <vector>\n#include <deque>\n#include\
     \ <set>\n#include <unordered_set>\n#include <map>\n#include <unordered_map>\n\n\
     #define show(x) std::cerr << std::setprecision(15) << __LINE__ << \" : \" << #x\
@@ -104,15 +104,15 @@ data:
     \ \"}\";\n}"
   dependsOn: []
   isVerificationFile: false
-  path: misc/debug.hpp
+  path: debug.hpp
   requiredBy: []
-  timestamp: '2023-10-23 12:46:38+09:00'
+  timestamp: '2023-12-24 02:39:16+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: misc/debug.hpp
+documentation_of: debug.hpp
 layout: document
 redirect_from:
-- /library/misc/debug.hpp
-- /library/misc/debug.hpp.html
-title: misc/debug.hpp
+- /library/debug.hpp
+- /library/debug.hpp.html
+title: debug.hpp
 ---

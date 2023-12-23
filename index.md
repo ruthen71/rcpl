@@ -122,6 +122,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/weighted_unionfind.hpp
       title: "Weighted UnionFind (\u91CD\u307F\u3064\u304D UnionFind)"
+  - name: .
+    pages:
+    - icon: ':warning:'
+      path: debug.hpp
+      title: debug.hpp
+    - icon: ':warning:'
+      path: my_template.hpp
+      title: my_template.hpp
   - name: dp
     pages:
     - icon: ':heavy_check_mark:'
@@ -379,9 +387,6 @@ data:
     - icon: ':warning:'
       path: misc/custom_hash.hpp
       title: misc/custom_hash.hpp
-    - icon: ':warning:'
-      path: misc/debug.hpp
-      title: misc/debug.hpp
     - icon: ':warning:'
       path: misc/int128io.hpp
       title: misc/int128io.hpp

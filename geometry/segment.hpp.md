@@ -131,18 +131,18 @@ data:
   isVerificationFile: false
   path: geometry/segment.hpp
   requiredBy:
-  - geometry/is_intersect_ss.hpp
   - geometry/distance_ss.hpp
-  - geometry/polygon_contain.hpp
-  - geometry/all.hpp
   - geometry/distance_sp.hpp
   - geometry/cross_point_ss.hpp
+  - geometry/all.hpp
+  - geometry/polygon_contain.hpp
   - geometry/is_intersect_sp.hpp
+  - geometry/is_intersect_ss.hpp
   timestamp: '2023-06-01 23:47:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj_cgl/aoj_cgl_2_d.test.cpp
   - verify/aoj_cgl/aoj_cgl_3_c.test.cpp
+  - verify/aoj_cgl/aoj_cgl_2_d.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_c.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
 documentation_of: geometry/segment.hpp
