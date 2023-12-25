@@ -67,13 +67,15 @@ template <class T> using pqueg = std::priority_queue<T, std::vector<T>, std::gre
 #define FORE1(x, a) for (auto&& x : a)
 #define FORE2(x, y, a) for (auto&& [x, y] : a)
 #define FORE3(x, y, z, a) for (auto&& [x, y, z] : a)
-#define FORE(...) overload3(__VA_ARGS__, FORE3, FORE2, FORE1)(__VA_ARGS__)
+#define FORE(...) overload4(__VA_ARGS__, FORE3, FORE2, FORE1)(__VA_ARGS__)
 
 // function
 #define ALL(a) (a).begin(), (a).end()
 #define RALL(a) (a).rbegin(), (a).rend()
 #define SORT(a) std::sort((a).begin(), (a).end())
+#define RSORT(a) std::sort((a).rbegin(), (a).rend())
 #define REV(a) std::reverse((a).begin(), (a).end())
+#define RREV(a) std::reverse((a).rbegin(), (a).rend())
 #define UNIQUE(a)                      \
     std::sort((a).begin(), (a).end()); \
     (a).erase(std::unique((a).begin(), (a).end()), (a).end())
@@ -101,6 +103,12 @@ template <class T, class S> std::pair<T, T> inline divmod(const T x, const S y) 
     T q = floor(x, y);
     return {q, x - q * y};
 }
+
+// bit operation
+int popcount(int x) { return __builtin_popcount(x); }
+int popcount(i64 x) { return __builtin_popcountll(x); }
+int popcount(u32 x) { return __builtin_popcount(x); }
+int popcount(u64 x) { return __builtin_popcountll(x); }
 
 // binary search
 template <class T, class F> T binary_search(T ok, T ng, F& f) {
@@ -209,7 +217,7 @@ template <class Head, class... Tail> void scan(Head& head, Tail&... tail) {
     for (int i = 0; i < size; i++) scan(name1[i], name2[i], name3[i])
 #define VEC4(type, name1, name2, name3, name4, size)                      \
     std::vector<type> name1(size), name2(size), name3(size), name4(size); \
-    for (int i = 0; i < size; i++) scan(name1[i], name2[i], name3[i], name4[i]);
+    for (int i = 0; i < size; i++) scan(name1[i], name2[i], name3[i], name4[i])
 #define VV(type, name, h, w)                       \
     std::vector name((h), std::vector<type>((w))); \
     scan(name)
