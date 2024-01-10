@@ -53,6 +53,7 @@ template <class T> using pqueg = std::priority_queue<T, std::vector<T>, std::gre
 
 #define overload4(_1, _2, _3, _4, name, ...) name
 #define overload3(_1, _2, _3, name, ...) name
+#define overload2(_1, _2, name, ...) name
 
 // loop
 #define REP1(a) for (long long _ = 0; _ < (a); _++)
@@ -75,18 +76,15 @@ template <class T> using pqueg = std::priority_queue<T, std::vector<T>, std::gre
 #define SORT(a) std::sort((a).begin(), (a).end())
 #define RSORT(a) std::sort((a).rbegin(), (a).rend())
 #define REV(a) std::reverse((a).begin(), (a).end())
-#define RREV(a) std::reverse((a).rbegin(), (a).rend())
 #define UNIQUE(a)                      \
     std::sort((a).begin(), (a).end()); \
     (a).erase(std::unique((a).begin(), (a).end()), (a).end())
 #define LEN(a) int((a).size())
 #define MIN(a) *std::min_element((a).begin(), (a).end())
 #define MAX(a) *std::max_element((a).begin(), (a).end())
-template <class T, class S> T sum(const S& a) {
-    T res = T(0);
-    for (auto&& ai : a) res += ai;
-    return res;
-}
+#define SUM1(a) std::accumulate((a).begin(), (a).end(), 0LL)
+#define SUM2(a, x) std::accumulate((a).begin(), (a).end(), (x))
+#define SUM(...) overload2(__VA_ARGS__, SUM2, SUM1)(__VA_ARGS__)
 #define LB(a, x) std::distance((a).begin(), std::lower_bound((a).begin(), (a).end(), (x)))
 #define UB(a, x) std::distance((a).begin(), std::upper_bound((a).begin(), (a).end(), (x)))
 template <class T, class U> inline bool chmin(T& a, const U& b) { return (a > T(b) ? a = b, 1 : 0); }
