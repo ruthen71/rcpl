@@ -22,28 +22,28 @@ data:
     using f32 = float;\nusing f64 = double;\nusing f128 = long double;\ntemplate <class\
     \ T> using pque = std::priority_queue<T>;\ntemplate <class T> using pqueg = std::priority_queue<T,\
     \ std::vector<T>, std::greater<T>>;\n\n#define overload4(_1, _2, _3, _4, name,\
-    \ ...) name\n#define overload3(_1, _2, _3, name, ...) name\n\n// loop\n#define\
-    \ REP1(a) for (long long _ = 0; _ < (a); _++)\n#define REP2(i, a) for (long long\
-    \ i = 0; i < (a); i++)\n#define REP3(i, a, b) for (long long i = (a); i < (b);\
-    \ i++)\n#define REP4(i, a, b, c) for (long long i = (a); i < (b); i += (c))\n\
-    #define REP(...) overload4(__VA_ARGS__, REP4, REP3, REP2, REP1)(__VA_ARGS__)\n\
-    #define RREP1(a) for (long long _ = (a)-1; _ >= 0; _--)\n#define RREP2(i, a) for\
-    \ (long long i = (a)-1; i >= 0; i--)\n#define RREP3(i, a, b) for (long long i\
-    \ = (b)-1; i >= (a); i--)\n#define RREP(...) overload3(__VA_ARGS__, RREP3, RREP2,\
-    \ RREP1)(__VA_ARGS__)\n#define FORE1(x, a) for (auto&& x : a)\n#define FORE2(x,\
-    \ y, a) for (auto&& [x, y] : a)\n#define FORE3(x, y, z, a) for (auto&& [x, y,\
-    \ z] : a)\n#define FORE(...) overload4(__VA_ARGS__, FORE3, FORE2, FORE1)(__VA_ARGS__)\n\
-    \n// function\n#define ALL(a) (a).begin(), (a).end()\n#define RALL(a) (a).rbegin(),\
-    \ (a).rend()\n#define SORT(a) std::sort((a).begin(), (a).end())\n#define RSORT(a)\
-    \ std::sort((a).rbegin(), (a).rend())\n#define REV(a) std::reverse((a).begin(),\
-    \ (a).end())\n#define RREV(a) std::reverse((a).rbegin(), (a).rend())\n#define\
-    \ UNIQUE(a)                      \\\n    std::sort((a).begin(), (a).end()); \\\
-    \n    (a).erase(std::unique((a).begin(), (a).end()), (a).end())\n#define LEN(a)\
-    \ int((a).size())\n#define MIN(a) *std::min_element((a).begin(), (a).end())\n\
-    #define MAX(a) *std::max_element((a).begin(), (a).end())\ntemplate <class T, class\
-    \ S> T sum(const S& a) {\n    T res = T(0);\n    for (auto&& ai : a) res += ai;\n\
-    \    return res;\n}\n#define LB(a, x) std::distance((a).begin(), std::lower_bound((a).begin(),\
-    \ (a).end(), (x)))\n#define UB(a, x) std::distance((a).begin(), std::upper_bound((a).begin(),\
+    \ ...) name\n#define overload3(_1, _2, _3, name, ...) name\n#define overload2(_1,\
+    \ _2, name, ...) name\n\n// loop\n#define REP1(a) for (long long _ = 0; _ < (a);\
+    \ _++)\n#define REP2(i, a) for (long long i = 0; i < (a); i++)\n#define REP3(i,\
+    \ a, b) for (long long i = (a); i < (b); i++)\n#define REP4(i, a, b, c) for (long\
+    \ long i = (a); i < (b); i += (c))\n#define REP(...) overload4(__VA_ARGS__, REP4,\
+    \ REP3, REP2, REP1)(__VA_ARGS__)\n#define RREP1(a) for (long long _ = (a)-1; _\
+    \ >= 0; _--)\n#define RREP2(i, a) for (long long i = (a)-1; i >= 0; i--)\n#define\
+    \ RREP3(i, a, b) for (long long i = (b)-1; i >= (a); i--)\n#define RREP(...) overload3(__VA_ARGS__,\
+    \ RREP3, RREP2, RREP1)(__VA_ARGS__)\n#define FORE1(x, a) for (auto&& x : a)\n\
+    #define FORE2(x, y, a) for (auto&& [x, y] : a)\n#define FORE3(x, y, z, a) for\
+    \ (auto&& [x, y, z] : a)\n#define FORE(...) overload4(__VA_ARGS__, FORE3, FORE2,\
+    \ FORE1)(__VA_ARGS__)\n\n// function\n#define ALL(a) (a).begin(), (a).end()\n\
+    #define RALL(a) (a).rbegin(), (a).rend()\n#define SORT(a) std::sort((a).begin(),\
+    \ (a).end())\n#define RSORT(a) std::sort((a).rbegin(), (a).rend())\n#define REV(a)\
+    \ std::reverse((a).begin(), (a).end())\n#define UNIQUE(a)                    \
+    \  \\\n    std::sort((a).begin(), (a).end()); \\\n    (a).erase(std::unique((a).begin(),\
+    \ (a).end()), (a).end())\n#define LEN(a) int((a).size())\n#define MIN(a) *std::min_element((a).begin(),\
+    \ (a).end())\n#define MAX(a) *std::max_element((a).begin(), (a).end())\n#define\
+    \ SUM1(a) std::accumulate((a).begin(), (a).end(), 0LL)\n#define SUM2(a, x) std::accumulate((a).begin(),\
+    \ (a).end(), (x))\n#define SUM(...) overload2(__VA_ARGS__, SUM2, SUM1)(__VA_ARGS__)\n\
+    #define LB(a, x) std::distance((a).begin(), std::lower_bound((a).begin(), (a).end(),\
+    \ (x)))\n#define UB(a, x) std::distance((a).begin(), std::upper_bound((a).begin(),\
     \ (a).end(), (x)))\ntemplate <class T, class U> inline bool chmin(T& a, const\
     \ U& b) { return (a > T(b) ? a = b, 1 : 0); }\ntemplate <class T, class U> inline\
     \ bool chmax(T& a, const U& b) { return (a < T(b) ? a = b, 1 : 0); }\ntemplate\
@@ -141,28 +141,28 @@ data:
     using f32 = float;\nusing f64 = double;\nusing f128 = long double;\ntemplate <class\
     \ T> using pque = std::priority_queue<T>;\ntemplate <class T> using pqueg = std::priority_queue<T,\
     \ std::vector<T>, std::greater<T>>;\n\n#define overload4(_1, _2, _3, _4, name,\
-    \ ...) name\n#define overload3(_1, _2, _3, name, ...) name\n\n// loop\n#define\
-    \ REP1(a) for (long long _ = 0; _ < (a); _++)\n#define REP2(i, a) for (long long\
-    \ i = 0; i < (a); i++)\n#define REP3(i, a, b) for (long long i = (a); i < (b);\
-    \ i++)\n#define REP4(i, a, b, c) for (long long i = (a); i < (b); i += (c))\n\
-    #define REP(...) overload4(__VA_ARGS__, REP4, REP3, REP2, REP1)(__VA_ARGS__)\n\
-    #define RREP1(a) for (long long _ = (a)-1; _ >= 0; _--)\n#define RREP2(i, a) for\
-    \ (long long i = (a)-1; i >= 0; i--)\n#define RREP3(i, a, b) for (long long i\
-    \ = (b)-1; i >= (a); i--)\n#define RREP(...) overload3(__VA_ARGS__, RREP3, RREP2,\
-    \ RREP1)(__VA_ARGS__)\n#define FORE1(x, a) for (auto&& x : a)\n#define FORE2(x,\
-    \ y, a) for (auto&& [x, y] : a)\n#define FORE3(x, y, z, a) for (auto&& [x, y,\
-    \ z] : a)\n#define FORE(...) overload4(__VA_ARGS__, FORE3, FORE2, FORE1)(__VA_ARGS__)\n\
-    \n// function\n#define ALL(a) (a).begin(), (a).end()\n#define RALL(a) (a).rbegin(),\
-    \ (a).rend()\n#define SORT(a) std::sort((a).begin(), (a).end())\n#define RSORT(a)\
-    \ std::sort((a).rbegin(), (a).rend())\n#define REV(a) std::reverse((a).begin(),\
-    \ (a).end())\n#define RREV(a) std::reverse((a).rbegin(), (a).rend())\n#define\
-    \ UNIQUE(a)                      \\\n    std::sort((a).begin(), (a).end()); \\\
-    \n    (a).erase(std::unique((a).begin(), (a).end()), (a).end())\n#define LEN(a)\
-    \ int((a).size())\n#define MIN(a) *std::min_element((a).begin(), (a).end())\n\
-    #define MAX(a) *std::max_element((a).begin(), (a).end())\ntemplate <class T, class\
-    \ S> T sum(const S& a) {\n    T res = T(0);\n    for (auto&& ai : a) res += ai;\n\
-    \    return res;\n}\n#define LB(a, x) std::distance((a).begin(), std::lower_bound((a).begin(),\
-    \ (a).end(), (x)))\n#define UB(a, x) std::distance((a).begin(), std::upper_bound((a).begin(),\
+    \ ...) name\n#define overload3(_1, _2, _3, name, ...) name\n#define overload2(_1,\
+    \ _2, name, ...) name\n\n// loop\n#define REP1(a) for (long long _ = 0; _ < (a);\
+    \ _++)\n#define REP2(i, a) for (long long i = 0; i < (a); i++)\n#define REP3(i,\
+    \ a, b) for (long long i = (a); i < (b); i++)\n#define REP4(i, a, b, c) for (long\
+    \ long i = (a); i < (b); i += (c))\n#define REP(...) overload4(__VA_ARGS__, REP4,\
+    \ REP3, REP2, REP1)(__VA_ARGS__)\n#define RREP1(a) for (long long _ = (a)-1; _\
+    \ >= 0; _--)\n#define RREP2(i, a) for (long long i = (a)-1; i >= 0; i--)\n#define\
+    \ RREP3(i, a, b) for (long long i = (b)-1; i >= (a); i--)\n#define RREP(...) overload3(__VA_ARGS__,\
+    \ RREP3, RREP2, RREP1)(__VA_ARGS__)\n#define FORE1(x, a) for (auto&& x : a)\n\
+    #define FORE2(x, y, a) for (auto&& [x, y] : a)\n#define FORE3(x, y, z, a) for\
+    \ (auto&& [x, y, z] : a)\n#define FORE(...) overload4(__VA_ARGS__, FORE3, FORE2,\
+    \ FORE1)(__VA_ARGS__)\n\n// function\n#define ALL(a) (a).begin(), (a).end()\n\
+    #define RALL(a) (a).rbegin(), (a).rend()\n#define SORT(a) std::sort((a).begin(),\
+    \ (a).end())\n#define RSORT(a) std::sort((a).rbegin(), (a).rend())\n#define REV(a)\
+    \ std::reverse((a).begin(), (a).end())\n#define UNIQUE(a)                    \
+    \  \\\n    std::sort((a).begin(), (a).end()); \\\n    (a).erase(std::unique((a).begin(),\
+    \ (a).end()), (a).end())\n#define LEN(a) int((a).size())\n#define MIN(a) *std::min_element((a).begin(),\
+    \ (a).end())\n#define MAX(a) *std::max_element((a).begin(), (a).end())\n#define\
+    \ SUM1(a) std::accumulate((a).begin(), (a).end(), 0LL)\n#define SUM2(a, x) std::accumulate((a).begin(),\
+    \ (a).end(), (x))\n#define SUM(...) overload2(__VA_ARGS__, SUM2, SUM1)(__VA_ARGS__)\n\
+    #define LB(a, x) std::distance((a).begin(), std::lower_bound((a).begin(), (a).end(),\
+    \ (x)))\n#define UB(a, x) std::distance((a).begin(), std::upper_bound((a).begin(),\
     \ (a).end(), (x)))\ntemplate <class T, class U> inline bool chmin(T& a, const\
     \ U& b) { return (a > T(b) ? a = b, 1 : 0); }\ntemplate <class T, class U> inline\
     \ bool chmax(T& a, const U& b) { return (a < T(b) ? a = b, 1 : 0); }\ntemplate\
@@ -250,7 +250,7 @@ data:
   isVerificationFile: false
   path: my_template.hpp
   requiredBy: []
-  timestamp: '2023-12-25 17:01:29+09:00'
+  timestamp: '2024-01-10 12:46:49+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: my_template.hpp
