@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
+    title: verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://atcoder.jp/contests/practice2/tasks/practice2_k
@@ -38,8 +41,9 @@ data:
   path: algebra/lazy_sum_affine.hpp
   requiredBy: []
   timestamp: '2023-03-12 00:30:44+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
 documentation_of: algebra/lazy_sum_affine.hpp
 layout: document
 redirect_from:

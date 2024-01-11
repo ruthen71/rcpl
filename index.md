@@ -42,7 +42,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: algebra/lazy_sum_add.hpp
       title: algebra/lazy_sum_add.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: algebra/lazy_sum_affine.hpp
       title: algebra/lazy_sum_affine.hpp
     - icon: ':heavy_check_mark:'
@@ -377,6 +377,9 @@ data:
       path: math/prime_table.hpp
       title: math/prime_table.hpp
     - icon: ':heavy_check_mark:'
+      path: math/static_modint.hpp
+      title: math/static_modint.hpp
+    - icon: ':heavy_check_mark:'
       path: math/totient.hpp
       title: math/totient.hpp
     - icon: ':heavy_check_mark:'
@@ -574,6 +577,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
       title: verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
+      title: verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/lc_data_structure/lc_static_range_inversions_query.test.cpp
       title: verify/lc_data_structure/lc_static_range_inversions_query.test.cpp

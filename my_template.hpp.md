@@ -33,12 +33,13 @@ data:
     \ RREP3, RREP2, RREP1)(__VA_ARGS__)\n#define FORE1(x, a) for (auto&& x : a)\n\
     #define FORE2(x, y, a) for (auto&& [x, y] : a)\n#define FORE3(x, y, z, a) for\
     \ (auto&& [x, y, z] : a)\n#define FORE(...) overload4(__VA_ARGS__, FORE3, FORE2,\
-    \ FORE1)(__VA_ARGS__)\n\n// function\n#define ALL(a) (a).begin(), (a).end()\n\
-    #define RALL(a) (a).rbegin(), (a).rend()\n#define SORT(a) std::sort((a).begin(),\
-    \ (a).end())\n#define RSORT(a) std::sort((a).rbegin(), (a).rend())\n#define REV(a)\
-    \ std::reverse((a).begin(), (a).end())\n#define UNIQUE(a)                    \
-    \  \\\n    std::sort((a).begin(), (a).end()); \\\n    (a).erase(std::unique((a).begin(),\
-    \ (a).end()), (a).end())\n#define LEN(a) int((a).size())\n#define MIN(a) *std::min_element((a).begin(),\
+    \ FORE1)(__VA_ARGS__)\n#define FORSUB(t, s) for (long long t = (s); t; t = (t\
+    \ - 1) & (s))\n\n// function\n#define ALL(a) (a).begin(), (a).end()\n#define RALL(a)\
+    \ (a).rbegin(), (a).rend()\n#define SORT(a) std::sort((a).begin(), (a).end())\n\
+    #define RSORT(a) std::sort((a).rbegin(), (a).rend())\n#define REV(a) std::reverse((a).begin(),\
+    \ (a).end())\n#define UNIQUE(a)                      \\\n    std::sort((a).begin(),\
+    \ (a).end()); \\\n    (a).erase(std::unique((a).begin(), (a).end()), (a).end())\n\
+    #define LEN(a) int((a).size())\n#define MIN(a) *std::min_element((a).begin(),\
     \ (a).end())\n#define MAX(a) *std::max_element((a).begin(), (a).end())\n#define\
     \ SUM1(a) std::accumulate((a).begin(), (a).end(), 0LL)\n#define SUM2(a, x) std::accumulate((a).begin(),\
     \ (a).end(), (x))\n#define SUM(...) overload2(__VA_ARGS__, SUM2, SUM1)(__VA_ARGS__)\n\
@@ -53,48 +54,54 @@ data:
     \ {\n    assert(y);\n    return (y < 0 ? ceil(-x, -y) : (x > 0 ? (x + y - 1) /\
     \ y : x / y));\n}\ntemplate <class T, class S> std::pair<T, T> inline divmod(const\
     \ T x, const S y) {\n    T q = floor(x, y);\n    return {q, x - q * y};\n}\n\n\
-    // bit operation\nint popcount(int x) { return __builtin_popcount(x); }\nint popcount(i64\
-    \ x) { return __builtin_popcountll(x); }\nint popcount(u32 x) { return __builtin_popcount(x);\
-    \ }\nint popcount(u64 x) { return __builtin_popcountll(x); }\n\n// binary search\n\
-    template <class T, class F> T binary_search(T ok, T ng, F& f) {\n    while (abs(ok\
-    \ - ng) > 1) {\n        T md = (ng + ok) >> 1;\n        (f(md) ? ok : ng) = md;\n\
-    \    }\n    return ok;\n}\ntemplate <class T, class F> T binary_search_real(T\
+    // bit operation\nint popcnt(int x) { return __builtin_popcount(x); }\nint popcnt(i64\
+    \ x) { return __builtin_popcountll(x); }\nint popcnt(u32 x) { return __builtin_popcount(x);\
+    \ }\nint popcnt(u64 x) { return __builtin_popcountll(x); }\n\n// binary search\n\
+    template <class T, class F> T bin_search(T ok, T ng, F& f) {\n    while ((ok >\
+    \ ng ? ok - ng : ng - ok) > 1) {\n        T md = (ng + ok) >> 1;\n        (f(md)\
+    \ ? ok : ng) = md;\n    }\n    return ok;\n}\ntemplate <class T, class F> T bin_search_real(T\
     \ ok, T ng, F& f, const int iter = 100) {\n    for (int _ = 0; _ < iter; _++)\
     \ {\n        T md = (ng + ok) / 2;\n        (f(md) ? ok : ng) = md;\n    }\n \
-    \   return ok;\n}\n\n// const value\nconstexpr int dx[8] = {1, 0, -1, 0, 1, -1,\
-    \ -1, 1};\nconstexpr int dy[8] = {0, 1, 0, -1, 1, 1, -1, -1};\n\n// infinity\n\
-    template <class T> constexpr T INF = 0;\ntemplate <> constexpr int INF<int> =\
-    \ 1'000'000'000;                 // 1e9\ntemplate <> constexpr i64 INF<i64> =\
-    \ i64(INF<int>) * INF<int> * 2;  // 2e18\ntemplate <> constexpr i128 INF<i128>\
-    \ = i128(INF<i64>) * INF<i64>;   // 4e36\ntemplate <> constexpr u32 INF<u32> =\
-    \ INF<int>;                      // 1e9\ntemplate <> constexpr u64 INF<u64> =\
-    \ INF<i64>;                      // 2e18\ntemplate <> constexpr u128 INF<u128>\
-    \ = INF<i128>;                   // 4e36\ntemplate <> constexpr f32 INF<f32> =\
-    \ INF<i64>;                      // 2e18\ntemplate <> constexpr f64 INF<f64> =\
-    \ INF<i64>;                      // 2e18\ntemplate <> constexpr f128 INF<f128>\
-    \ = INF<i64>;                    // 2e18\n\n// input\nstd::istream& operator>>(std::istream&\
-    \ is, __int128_t& x) {\n    std::string s;\n    is >> s;\n    x = 0;\n    int\
-    \ i = s[0] == '-' ? 1 : 0;\n    while (i < (int)(s.size())) x = 10 * x + s[i++]\
-    \ - '0';\n    if (s[0] == '-') x = -x;\n    return is;\n}\nstd::istream& operator>>(std::istream&\
-    \ is, __uint128_t& x) {\n    std::string s;\n    is >> s;\n    assert(s[0] !=\
-    \ '-');\n    x = 0;\n    int i = 0;\n    while (i < (int)(s.size())) x = 10 *\
-    \ x + s[i++] - '0';\n    return is;\n}\ntemplate <class T> std::istream& operator>>(std::istream&\
-    \ is, std::vector<T>& v) {\n    for (auto&& i : v) is >> i;\n    return is;\n\
-    }\ntemplate <class... T> void in(T&... a) { (std::cin >> ... >> a); }\nvoid scan()\
-    \ {}\ntemplate <class Head, class... Tail> void scan(Head& head, Tail&... tail)\
-    \ {\n    in(head);\n    scan(tail...);\n}\n\n// definition & input\n#define INT(...)\
-    \     \\\n    int __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define I64(...)   \
-    \  \\\n    i64 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define I128(...)     \\\
-    \n    i128 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define U32(...)     \\\n \
-    \   u32 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define U64(...)     \\\n    u64\
-    \ __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define U128(...)     \\\n    u128 __VA_ARGS__;\
-    \ \\\n    scan(__VA_ARGS__)\n#define F32(...)     \\\n    f32 __VA_ARGS__; \\\n\
-    \    scan(__VA_ARGS__)\n#define F64(...)     \\\n    f64 __VA_ARGS__; \\\n   \
-    \ scan(__VA_ARGS__)\n#define F128(...)     \\\n    f128 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n\
-    #define STR(...)             \\\n    std::string __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n\
-    #define CHR(...)      \\\n    char __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define\
-    \ VEC(type, name, size)     \\\n    std::vector<type> name(size); \\\n    scan(name)\n\
-    #define VEC2(type, name1, name2, size)          \\\n    std::vector<type> name1(size),\
+    \   return ok;\n}\n\n// rotate matrix counterclockwise by pi / 2\ntemplate <class\
+    \ T> void rot(std::vector<std::vector<T>>& a) {\n    if (int(a.size()) == 0) return;\n\
+    \    if (int(a[0].size()) == 0) return;\n    int n = int(a.size()), m = int(a[0].size());\n\
+    \    std::vector res(m, std::vector<T>(n));\n    for (int i = 0; i < n; i++) {\n\
+    \        for (int j = 0; j < m; j++) {\n            res[m - 1 - j][i] = a[i][j];\n\
+    \        }\n    }\n    a.swap(res);\n}\n\n// const value\nconstexpr int dx[8]\
+    \ = {1, 0, -1, 0, 1, -1, -1, 1};\nconstexpr int dy[8] = {0, 1, 0, -1, 1, 1, -1,\
+    \ -1};\n\n// infinity\ntemplate <class T> constexpr T INF = 0;\ntemplate <> constexpr\
+    \ int INF<int> = 1'000'000'000;                 // 1e9\ntemplate <> constexpr\
+    \ i64 INF<i64> = i64(INF<int>) * INF<int> * 2;  // 2e18\ntemplate <> constexpr\
+    \ i128 INF<i128> = i128(INF<i64>) * INF<i64>;   // 4e36\ntemplate <> constexpr\
+    \ u32 INF<u32> = INF<int>;                      // 1e9\ntemplate <> constexpr\
+    \ u64 INF<u64> = INF<i64>;                      // 2e18\ntemplate <> constexpr\
+    \ u128 INF<u128> = INF<i128>;                   // 4e36\ntemplate <> constexpr\
+    \ f32 INF<f32> = INF<i64>;                      // 2e18\ntemplate <> constexpr\
+    \ f64 INF<f64> = INF<i64>;                      // 2e18\ntemplate <> constexpr\
+    \ f128 INF<f128> = INF<i64>;                    // 2e18\n\n// input\nstd::istream&\
+    \ operator>>(std::istream& is, __int128_t& x) {\n    std::string s;\n    is >>\
+    \ s;\n    x = 0;\n    int i = s[0] == '-' ? 1 : 0;\n    while (i < (int)(s.size()))\
+    \ x = 10 * x + s[i++] - '0';\n    if (s[0] == '-') x = -x;\n    return is;\n}\n\
+    std::istream& operator>>(std::istream& is, __uint128_t& x) {\n    std::string\
+    \ s;\n    is >> s;\n    assert(s[0] != '-');\n    x = 0;\n    int i = 0;\n   \
+    \ while (i < (int)(s.size())) x = 10 * x + s[i++] - '0';\n    return is;\n}\n\
+    template <class T> std::istream& operator>>(std::istream& is, std::vector<T>&\
+    \ v) {\n    for (auto&& i : v) is >> i;\n    return is;\n}\ntemplate <class...\
+    \ T> void in(T&... a) { (std::cin >> ... >> a); }\nvoid scan() {}\ntemplate <class\
+    \ Head, class... Tail> void scan(Head& head, Tail&... tail) {\n    in(head);\n\
+    \    scan(tail...);\n}\n\n// definition & input\n#define INT(...)     \\\n   \
+    \ int __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define I64(...)     \\\n    i64\
+    \ __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define I128(...)     \\\n    i128 __VA_ARGS__;\
+    \ \\\n    scan(__VA_ARGS__)\n#define U32(...)     \\\n    u32 __VA_ARGS__; \\\n\
+    \    scan(__VA_ARGS__)\n#define U64(...)     \\\n    u64 __VA_ARGS__; \\\n   \
+    \ scan(__VA_ARGS__)\n#define U128(...)     \\\n    u128 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n\
+    #define F32(...)     \\\n    f32 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define\
+    \ F64(...)     \\\n    f64 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define F128(...)\
+    \     \\\n    f128 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define STR(...)  \
+    \           \\\n    std::string __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define\
+    \ CHR(...)      \\\n    char __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define VEC(type,\
+    \ name, size)     \\\n    std::vector<type> name(size); \\\n    scan(name)\n#define\
+    \ VEC2(type, name1, name2, size)          \\\n    std::vector<type> name1(size),\
     \ name2(size); \\\n    for (int i = 0; i < size; i++) scan(name1[i], name2[i])\n\
     #define VEC3(type, name1, name2, name3, size)                \\\n    std::vector<type>\
     \ name1(size), name2(size), name3(size); \\\n    for (int i = 0; i < size; i++)\
@@ -152,12 +159,13 @@ data:
     \ RREP3, RREP2, RREP1)(__VA_ARGS__)\n#define FORE1(x, a) for (auto&& x : a)\n\
     #define FORE2(x, y, a) for (auto&& [x, y] : a)\n#define FORE3(x, y, z, a) for\
     \ (auto&& [x, y, z] : a)\n#define FORE(...) overload4(__VA_ARGS__, FORE3, FORE2,\
-    \ FORE1)(__VA_ARGS__)\n\n// function\n#define ALL(a) (a).begin(), (a).end()\n\
-    #define RALL(a) (a).rbegin(), (a).rend()\n#define SORT(a) std::sort((a).begin(),\
-    \ (a).end())\n#define RSORT(a) std::sort((a).rbegin(), (a).rend())\n#define REV(a)\
-    \ std::reverse((a).begin(), (a).end())\n#define UNIQUE(a)                    \
-    \  \\\n    std::sort((a).begin(), (a).end()); \\\n    (a).erase(std::unique((a).begin(),\
-    \ (a).end()), (a).end())\n#define LEN(a) int((a).size())\n#define MIN(a) *std::min_element((a).begin(),\
+    \ FORE1)(__VA_ARGS__)\n#define FORSUB(t, s) for (long long t = (s); t; t = (t\
+    \ - 1) & (s))\n\n// function\n#define ALL(a) (a).begin(), (a).end()\n#define RALL(a)\
+    \ (a).rbegin(), (a).rend()\n#define SORT(a) std::sort((a).begin(), (a).end())\n\
+    #define RSORT(a) std::sort((a).rbegin(), (a).rend())\n#define REV(a) std::reverse((a).begin(),\
+    \ (a).end())\n#define UNIQUE(a)                      \\\n    std::sort((a).begin(),\
+    \ (a).end()); \\\n    (a).erase(std::unique((a).begin(), (a).end()), (a).end())\n\
+    #define LEN(a) int((a).size())\n#define MIN(a) *std::min_element((a).begin(),\
     \ (a).end())\n#define MAX(a) *std::max_element((a).begin(), (a).end())\n#define\
     \ SUM1(a) std::accumulate((a).begin(), (a).end(), 0LL)\n#define SUM2(a, x) std::accumulate((a).begin(),\
     \ (a).end(), (x))\n#define SUM(...) overload2(__VA_ARGS__, SUM2, SUM1)(__VA_ARGS__)\n\
@@ -172,48 +180,54 @@ data:
     \ {\n    assert(y);\n    return (y < 0 ? ceil(-x, -y) : (x > 0 ? (x + y - 1) /\
     \ y : x / y));\n}\ntemplate <class T, class S> std::pair<T, T> inline divmod(const\
     \ T x, const S y) {\n    T q = floor(x, y);\n    return {q, x - q * y};\n}\n\n\
-    // bit operation\nint popcount(int x) { return __builtin_popcount(x); }\nint popcount(i64\
-    \ x) { return __builtin_popcountll(x); }\nint popcount(u32 x) { return __builtin_popcount(x);\
-    \ }\nint popcount(u64 x) { return __builtin_popcountll(x); }\n\n// binary search\n\
-    template <class T, class F> T binary_search(T ok, T ng, F& f) {\n    while (abs(ok\
-    \ - ng) > 1) {\n        T md = (ng + ok) >> 1;\n        (f(md) ? ok : ng) = md;\n\
-    \    }\n    return ok;\n}\ntemplate <class T, class F> T binary_search_real(T\
+    // bit operation\nint popcnt(int x) { return __builtin_popcount(x); }\nint popcnt(i64\
+    \ x) { return __builtin_popcountll(x); }\nint popcnt(u32 x) { return __builtin_popcount(x);\
+    \ }\nint popcnt(u64 x) { return __builtin_popcountll(x); }\n\n// binary search\n\
+    template <class T, class F> T bin_search(T ok, T ng, F& f) {\n    while ((ok >\
+    \ ng ? ok - ng : ng - ok) > 1) {\n        T md = (ng + ok) >> 1;\n        (f(md)\
+    \ ? ok : ng) = md;\n    }\n    return ok;\n}\ntemplate <class T, class F> T bin_search_real(T\
     \ ok, T ng, F& f, const int iter = 100) {\n    for (int _ = 0; _ < iter; _++)\
     \ {\n        T md = (ng + ok) / 2;\n        (f(md) ? ok : ng) = md;\n    }\n \
-    \   return ok;\n}\n\n// const value\nconstexpr int dx[8] = {1, 0, -1, 0, 1, -1,\
-    \ -1, 1};\nconstexpr int dy[8] = {0, 1, 0, -1, 1, 1, -1, -1};\n\n// infinity\n\
-    template <class T> constexpr T INF = 0;\ntemplate <> constexpr int INF<int> =\
-    \ 1'000'000'000;                 // 1e9\ntemplate <> constexpr i64 INF<i64> =\
-    \ i64(INF<int>) * INF<int> * 2;  // 2e18\ntemplate <> constexpr i128 INF<i128>\
-    \ = i128(INF<i64>) * INF<i64>;   // 4e36\ntemplate <> constexpr u32 INF<u32> =\
-    \ INF<int>;                      // 1e9\ntemplate <> constexpr u64 INF<u64> =\
-    \ INF<i64>;                      // 2e18\ntemplate <> constexpr u128 INF<u128>\
-    \ = INF<i128>;                   // 4e36\ntemplate <> constexpr f32 INF<f32> =\
-    \ INF<i64>;                      // 2e18\ntemplate <> constexpr f64 INF<f64> =\
-    \ INF<i64>;                      // 2e18\ntemplate <> constexpr f128 INF<f128>\
-    \ = INF<i64>;                    // 2e18\n\n// input\nstd::istream& operator>>(std::istream&\
-    \ is, __int128_t& x) {\n    std::string s;\n    is >> s;\n    x = 0;\n    int\
-    \ i = s[0] == '-' ? 1 : 0;\n    while (i < (int)(s.size())) x = 10 * x + s[i++]\
-    \ - '0';\n    if (s[0] == '-') x = -x;\n    return is;\n}\nstd::istream& operator>>(std::istream&\
-    \ is, __uint128_t& x) {\n    std::string s;\n    is >> s;\n    assert(s[0] !=\
-    \ '-');\n    x = 0;\n    int i = 0;\n    while (i < (int)(s.size())) x = 10 *\
-    \ x + s[i++] - '0';\n    return is;\n}\ntemplate <class T> std::istream& operator>>(std::istream&\
-    \ is, std::vector<T>& v) {\n    for (auto&& i : v) is >> i;\n    return is;\n\
-    }\ntemplate <class... T> void in(T&... a) { (std::cin >> ... >> a); }\nvoid scan()\
-    \ {}\ntemplate <class Head, class... Tail> void scan(Head& head, Tail&... tail)\
-    \ {\n    in(head);\n    scan(tail...);\n}\n\n// definition & input\n#define INT(...)\
-    \     \\\n    int __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define I64(...)   \
-    \  \\\n    i64 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define I128(...)     \\\
-    \n    i128 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define U32(...)     \\\n \
-    \   u32 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define U64(...)     \\\n    u64\
-    \ __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define U128(...)     \\\n    u128 __VA_ARGS__;\
-    \ \\\n    scan(__VA_ARGS__)\n#define F32(...)     \\\n    f32 __VA_ARGS__; \\\n\
-    \    scan(__VA_ARGS__)\n#define F64(...)     \\\n    f64 __VA_ARGS__; \\\n   \
-    \ scan(__VA_ARGS__)\n#define F128(...)     \\\n    f128 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n\
-    #define STR(...)             \\\n    std::string __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n\
-    #define CHR(...)      \\\n    char __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define\
-    \ VEC(type, name, size)     \\\n    std::vector<type> name(size); \\\n    scan(name)\n\
-    #define VEC2(type, name1, name2, size)          \\\n    std::vector<type> name1(size),\
+    \   return ok;\n}\n\n// rotate matrix counterclockwise by pi / 2\ntemplate <class\
+    \ T> void rot(std::vector<std::vector<T>>& a) {\n    if (int(a.size()) == 0) return;\n\
+    \    if (int(a[0].size()) == 0) return;\n    int n = int(a.size()), m = int(a[0].size());\n\
+    \    std::vector res(m, std::vector<T>(n));\n    for (int i = 0; i < n; i++) {\n\
+    \        for (int j = 0; j < m; j++) {\n            res[m - 1 - j][i] = a[i][j];\n\
+    \        }\n    }\n    a.swap(res);\n}\n\n// const value\nconstexpr int dx[8]\
+    \ = {1, 0, -1, 0, 1, -1, -1, 1};\nconstexpr int dy[8] = {0, 1, 0, -1, 1, 1, -1,\
+    \ -1};\n\n// infinity\ntemplate <class T> constexpr T INF = 0;\ntemplate <> constexpr\
+    \ int INF<int> = 1'000'000'000;                 // 1e9\ntemplate <> constexpr\
+    \ i64 INF<i64> = i64(INF<int>) * INF<int> * 2;  // 2e18\ntemplate <> constexpr\
+    \ i128 INF<i128> = i128(INF<i64>) * INF<i64>;   // 4e36\ntemplate <> constexpr\
+    \ u32 INF<u32> = INF<int>;                      // 1e9\ntemplate <> constexpr\
+    \ u64 INF<u64> = INF<i64>;                      // 2e18\ntemplate <> constexpr\
+    \ u128 INF<u128> = INF<i128>;                   // 4e36\ntemplate <> constexpr\
+    \ f32 INF<f32> = INF<i64>;                      // 2e18\ntemplate <> constexpr\
+    \ f64 INF<f64> = INF<i64>;                      // 2e18\ntemplate <> constexpr\
+    \ f128 INF<f128> = INF<i64>;                    // 2e18\n\n// input\nstd::istream&\
+    \ operator>>(std::istream& is, __int128_t& x) {\n    std::string s;\n    is >>\
+    \ s;\n    x = 0;\n    int i = s[0] == '-' ? 1 : 0;\n    while (i < (int)(s.size()))\
+    \ x = 10 * x + s[i++] - '0';\n    if (s[0] == '-') x = -x;\n    return is;\n}\n\
+    std::istream& operator>>(std::istream& is, __uint128_t& x) {\n    std::string\
+    \ s;\n    is >> s;\n    assert(s[0] != '-');\n    x = 0;\n    int i = 0;\n   \
+    \ while (i < (int)(s.size())) x = 10 * x + s[i++] - '0';\n    return is;\n}\n\
+    template <class T> std::istream& operator>>(std::istream& is, std::vector<T>&\
+    \ v) {\n    for (auto&& i : v) is >> i;\n    return is;\n}\ntemplate <class...\
+    \ T> void in(T&... a) { (std::cin >> ... >> a); }\nvoid scan() {}\ntemplate <class\
+    \ Head, class... Tail> void scan(Head& head, Tail&... tail) {\n    in(head);\n\
+    \    scan(tail...);\n}\n\n// definition & input\n#define INT(...)     \\\n   \
+    \ int __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define I64(...)     \\\n    i64\
+    \ __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define I128(...)     \\\n    i128 __VA_ARGS__;\
+    \ \\\n    scan(__VA_ARGS__)\n#define U32(...)     \\\n    u32 __VA_ARGS__; \\\n\
+    \    scan(__VA_ARGS__)\n#define U64(...)     \\\n    u64 __VA_ARGS__; \\\n   \
+    \ scan(__VA_ARGS__)\n#define U128(...)     \\\n    u128 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n\
+    #define F32(...)     \\\n    f32 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define\
+    \ F64(...)     \\\n    f64 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define F128(...)\
+    \     \\\n    f128 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define STR(...)  \
+    \           \\\n    std::string __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define\
+    \ CHR(...)      \\\n    char __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define VEC(type,\
+    \ name, size)     \\\n    std::vector<type> name(size); \\\n    scan(name)\n#define\
+    \ VEC2(type, name1, name2, size)          \\\n    std::vector<type> name1(size),\
     \ name2(size); \\\n    for (int i = 0; i < size; i++) scan(name1[i], name2[i])\n\
     #define VEC3(type, name1, name2, name3, size)                \\\n    std::vector<type>\
     \ name1(size), name2(size), name3(size); \\\n    for (int i = 0; i < size; i++)\
@@ -250,7 +264,7 @@ data:
   isVerificationFile: false
   path: my_template.hpp
   requiredBy: []
-  timestamp: '2024-01-10 12:46:49+09:00'
+  timestamp: '2024-01-11 15:54:55+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: my_template.hpp
