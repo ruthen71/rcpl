@@ -20,11 +20,11 @@ data:
   bundledCode: "#line 1 \"verify/aoj_alds1/aoj_alds1_14_b.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B\"\n\n\
     #include <bits/stdc++.h>\n\n#line 2 \"string/rolling_hash.hpp\"\n\n#line 2 \"\
-    math/modint261.hpp\"\n\nstruct ModInt261 {\n    static constexpr unsigned long\
-    \ long m = (1ULL << 61) - 1;\n    using mint = ModInt261;\n    unsigned long long\
+    math/modint261.hpp\"\n\nstruct Modint261 {\n    static constexpr unsigned long\
+    \ long m = (1ULL << 61) - 1;\n    using mint = Modint261;\n    unsigned long long\
     \ _v;\n\n    static constexpr long long mod() { return m; }\n    static constexpr\
-    \ unsigned long long umod() { return m; }\n\n    ModInt261() : _v(0ULL) {}\n\n\
-    \    template <class T> ModInt261(T v) {\n        long long x = (long long)(v\
+    \ unsigned long long umod() { return m; }\n\n    Modint261() : _v(0ULL) {}\n\n\
+    \    template <class T> Modint261(T v) {\n        long long x = (long long)(v\
     \ % (long long)(umod()));\n        if (x < 0) x += umod();\n        _v = (unsigned\
     \ long long)(x);\n    }\n\n    unsigned long long val() const { return _v; }\n\
     \n    mint &operator++() {\n        _v++;\n        if (_v == umod()) _v = 0;\n\
@@ -52,7 +52,7 @@ data:
     \ mint &lhs, const mint &rhs) { return lhs._v == rhs._v; }\n    friend bool operator!=(const\
     \ mint &lhs, const mint &rhs) { return lhs._v != rhs._v; }\n    friend std::ostream\
     \ &operator<<(std::ostream &os, const mint &v) { return os << v.val(); }\n};\n\
-    using mint261 = ModInt261;\n#line 4 \"string/rolling_hash.hpp\"\n\ntemplate <class\
+    using mint261 = Modint261;\n#line 4 \"string/rolling_hash.hpp\"\n\ntemplate <class\
     \ Mint> struct RollingHash {\n    std::vector<Mint> pwr;\n    const Mint base;\n\
     \n    static inline Mint generate_base() {\n        std::mt19937_64 mt(std::chrono::steady_clock::now().time_since_epoch().count());\n\
     \        std::uniform_int_distribution<uint64_t> rand(1, Mint::mod() - 1);\n \
@@ -73,14 +73,14 @@ data:
     \ int l, int r) {\n        assert(0 <= l and l <= r and r < hs.size());\n    \
     \    return hs[r] - hs[l] * power(r - l);\n    }\n\n    Mint combine(Mint h1,\
     \ Mint h2, int h2len) { return h1 * power(h2len) + h2; }\n};\n#line 6 \"verify/aoj_alds1/aoj_alds1_14_b.test.cpp\"\
-    \n\nint main() {\n    std::string T, P;\n    std::cin >> T >> P;\n    RollingHash<ModInt261>\
+    \n\nint main() {\n    std::string T, P;\n    std::cin >> T >> P;\n    RollingHash<mint261>\
     \ rh;\n    auto rht = rh.build(T);\n    auto rhp = rh.build(P);\n    for (int\
     \ i = 0; i + P.size() <= T.size(); i++) {\n        if (rh.prod(rht, i, i + P.size())\
     \ == rh.prod(rhp, 0, P.size())) {\n            std::cout << i << '\\n';\n    \
     \    }\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B\"\
     \n\n#include <bits/stdc++.h>\n\n#include \"string/rolling_hash.hpp\"\n\nint main()\
-    \ {\n    std::string T, P;\n    std::cin >> T >> P;\n    RollingHash<ModInt261>\
+    \ {\n    std::string T, P;\n    std::cin >> T >> P;\n    RollingHash<mint261>\
     \ rh;\n    auto rht = rh.build(T);\n    auto rhp = rh.build(P);\n    for (int\
     \ i = 0; i + P.size() <= T.size(); i++) {\n        if (rh.prod(rht, i, i + P.size())\
     \ == rh.prod(rhp, 0, P.size())) {\n            std::cout << i << '\\n';\n    \
@@ -91,7 +91,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_alds1/aoj_alds1_14_b.test.cpp
   requiredBy: []
-  timestamp: '2024-01-11 15:54:19+09:00'
+  timestamp: '2024-01-11 16:01:19+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_alds1/aoj_alds1_14_b.test.cpp

@@ -14,11 +14,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"math/modint261.hpp\"\n\nstruct ModInt261 {\n    static constexpr\
-    \ unsigned long long m = (1ULL << 61) - 1;\n    using mint = ModInt261;\n    unsigned\
+  bundledCode: "#line 2 \"math/modint261.hpp\"\n\nstruct Modint261 {\n    static constexpr\
+    \ unsigned long long m = (1ULL << 61) - 1;\n    using mint = Modint261;\n    unsigned\
     \ long long _v;\n\n    static constexpr long long mod() { return m; }\n    static\
-    \ constexpr unsigned long long umod() { return m; }\n\n    ModInt261() : _v(0ULL)\
-    \ {}\n\n    template <class T> ModInt261(T v) {\n        long long x = (long long)(v\
+    \ constexpr unsigned long long umod() { return m; }\n\n    Modint261() : _v(0ULL)\
+    \ {}\n\n    template <class T> Modint261(T v) {\n        long long x = (long long)(v\
     \ % (long long)(umod()));\n        if (x < 0) x += umod();\n        _v = (unsigned\
     \ long long)(x);\n    }\n\n    unsigned long long val() const { return _v; }\n\
     \n    mint &operator++() {\n        _v++;\n        if (_v == umod()) _v = 0;\n\
@@ -46,12 +46,12 @@ data:
     \ mint &lhs, const mint &rhs) { return lhs._v == rhs._v; }\n    friend bool operator!=(const\
     \ mint &lhs, const mint &rhs) { return lhs._v != rhs._v; }\n    friend std::ostream\
     \ &operator<<(std::ostream &os, const mint &v) { return os << v.val(); }\n};\n\
-    using mint261 = ModInt261;\n"
-  code: "#pragma once\n\nstruct ModInt261 {\n    static constexpr unsigned long long\
-    \ m = (1ULL << 61) - 1;\n    using mint = ModInt261;\n    unsigned long long _v;\n\
+    using mint261 = Modint261;\n"
+  code: "#pragma once\n\nstruct Modint261 {\n    static constexpr unsigned long long\
+    \ m = (1ULL << 61) - 1;\n    using mint = Modint261;\n    unsigned long long _v;\n\
     \n    static constexpr long long mod() { return m; }\n    static constexpr unsigned\
-    \ long long umod() { return m; }\n\n    ModInt261() : _v(0ULL) {}\n\n    template\
-    \ <class T> ModInt261(T v) {\n        long long x = (long long)(v % (long long)(umod()));\n\
+    \ long long umod() { return m; }\n\n    Modint261() : _v(0ULL) {}\n\n    template\
+    \ <class T> Modint261(T v) {\n        long long x = (long long)(v % (long long)(umod()));\n\
     \        if (x < 0) x += umod();\n        _v = (unsigned long long)(x);\n    }\n\
     \n    unsigned long long val() const { return _v; }\n\n    mint &operator++()\
     \ {\n        _v++;\n        if (_v == umod()) _v = 0;\n        return *this;\n\
@@ -79,13 +79,13 @@ data:
     \ mint &lhs, const mint &rhs) { return lhs._v == rhs._v; }\n    friend bool operator!=(const\
     \ mint &lhs, const mint &rhs) { return lhs._v != rhs._v; }\n    friend std::ostream\
     \ &operator<<(std::ostream &os, const mint &v) { return os << v.val(); }\n};\n\
-    using mint261 = ModInt261;"
+    using mint261 = Modint261;"
   dependsOn: []
   isVerificationFile: false
   path: math/modint261.hpp
   requiredBy:
   - string/rolling_hash.hpp
-  timestamp: '2024-01-11 15:54:19+09:00'
+  timestamp: '2024-01-11 16:01:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_alds1/aoj_alds1_14_b.test.cpp

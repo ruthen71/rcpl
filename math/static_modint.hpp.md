@@ -11,10 +11,10 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"math/static_modint.hpp\"\n\ntemplate <int m> struct StaticModInt\
-    \ {\n    using mint = StaticModInt;\n    unsigned int _v;\n\n    static constexpr\
+  bundledCode: "#line 2 \"math/static_modint.hpp\"\n\ntemplate <int m> struct StaticModint\
+    \ {\n    using mint = StaticModint;\n    unsigned int _v;\n\n    static constexpr\
     \ int mod() { return m; }\n    static constexpr unsigned int umod() { return m;\
-    \ }\n\n    StaticModInt() : _v(0) {}\n\n    template <class T> StaticModInt(T\
+    \ }\n\n    StaticModint() : _v(0) {}\n\n    template <class T> StaticModint(T\
     \ v) {\n        long long x = (long long)(v % (long long)(umod()));\n        if\
     \ (x < 0) x += umod();\n        _v = (unsigned int)(x);\n    }\n\n    unsigned\
     \ int val() const { return _v; }\n\n    mint &operator++() {\n        _v++;\n\
@@ -42,11 +42,11 @@ data:
     \ mint &lhs, const mint &rhs) { return lhs._v == rhs._v; }\n    friend bool operator!=(const\
     \ mint &lhs, const mint &rhs) { return lhs._v != rhs._v; }\n    friend std::ostream\
     \ &operator<<(std::ostream &os, const mint &v) { return os << v.val(); }\n};\n\
-    using mint107 = StaticModInt<1000000007>;\nusing mint998 = StaticModInt<998244353>;\n"
-  code: "#pragma once\n\ntemplate <int m> struct StaticModInt {\n    using mint =\
-    \ StaticModInt;\n    unsigned int _v;\n\n    static constexpr int mod() { return\
-    \ m; }\n    static constexpr unsigned int umod() { return m; }\n\n    StaticModInt()\
-    \ : _v(0) {}\n\n    template <class T> StaticModInt(T v) {\n        long long\
+    using mint107 = StaticModint<1000000007>;\nusing mint998 = StaticModint<998244353>;\n"
+  code: "#pragma once\n\ntemplate <int m> struct StaticModint {\n    using mint =\
+    \ StaticModint;\n    unsigned int _v;\n\n    static constexpr int mod() { return\
+    \ m; }\n    static constexpr unsigned int umod() { return m; }\n\n    StaticModint()\
+    \ : _v(0) {}\n\n    template <class T> StaticModint(T v) {\n        long long\
     \ x = (long long)(v % (long long)(umod()));\n        if (x < 0) x += umod();\n\
     \        _v = (unsigned int)(x);\n    }\n\n    unsigned int val() const { return\
     \ _v; }\n\n    mint &operator++() {\n        _v++;\n        if (_v == umod())\
@@ -74,12 +74,12 @@ data:
     \ mint &lhs, const mint &rhs) { return lhs._v == rhs._v; }\n    friend bool operator!=(const\
     \ mint &lhs, const mint &rhs) { return lhs._v != rhs._v; }\n    friend std::ostream\
     \ &operator<<(std::ostream &os, const mint &v) { return os << v.val(); }\n};\n\
-    using mint107 = StaticModInt<1000000007>;\nusing mint998 = StaticModInt<998244353>;"
+    using mint107 = StaticModint<1000000007>;\nusing mint998 = StaticModint<998244353>;"
   dependsOn: []
   isVerificationFile: false
   path: math/static_modint.hpp
   requiredBy: []
-  timestamp: '2024-01-11 15:54:19+09:00'
+  timestamp: '2024-01-11 16:01:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_data_structure/lc_range_affine_range_sum.test.cpp

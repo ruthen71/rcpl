@@ -105,10 +105,10 @@ data:
     \ lz[k] = Lazy::composition(f, lz[k]);\n    }\n    void push(int k) {\n      \
     \  all_apply(k << 1, lz[k]);\n        all_apply((k << 1) | 1, lz[k]);\n      \
     \  lz[k] = Lazy::id();\n    }\n};\n#line 2 \"math/static_modint.hpp\"\n\ntemplate\
-    \ <int m> struct StaticModInt {\n    using mint = StaticModInt;\n    unsigned\
+    \ <int m> struct StaticModint {\n    using mint = StaticModint;\n    unsigned\
     \ int _v;\n\n    static constexpr int mod() { return m; }\n    static constexpr\
-    \ unsigned int umod() { return m; }\n\n    StaticModInt() : _v(0) {}\n\n    template\
-    \ <class T> StaticModInt(T v) {\n        long long x = (long long)(v % (long long)(umod()));\n\
+    \ unsigned int umod() { return m; }\n\n    StaticModint() : _v(0) {}\n\n    template\
+    \ <class T> StaticModint(T v) {\n        long long x = (long long)(v % (long long)(umod()));\n\
     \        if (x < 0) x += umod();\n        _v = (unsigned int)(x);\n    }\n\n \
     \   unsigned int val() const { return _v; }\n\n    mint &operator++() {\n    \
     \    _v++;\n        if (_v == umod()) _v = 0;\n        return *this;\n    }\n\
@@ -135,7 +135,7 @@ data:
     \ mint &lhs, const mint &rhs) { return lhs._v == rhs._v; }\n    friend bool operator!=(const\
     \ mint &lhs, const mint &rhs) { return lhs._v != rhs._v; }\n    friend std::ostream\
     \ &operator<<(std::ostream &os, const mint &v) { return os << v.val(); }\n};\n\
-    using mint107 = StaticModInt<1000000007>;\nusing mint998 = StaticModInt<998244353>;\n\
+    using mint107 = StaticModint<1000000007>;\nusing mint998 = StaticModint<998244353>;\n\
     #line 8 \"verify/lc_data_structure/lc_range_affine_range_sum.test.cpp\"\nusing\
     \ mint = mint998;\n\nint main() {\n    int N, Q;\n    std::cin >> N >> Q;\n  \
     \  std::vector<std::pair<mint, int>> A(N);\n    for (int i = 0; i < N; i++) {\n\
@@ -165,7 +165,7 @@ data:
   isVerificationFile: true
   path: verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
   requiredBy: []
-  timestamp: '2024-01-11 15:54:39+09:00'
+  timestamp: '2024-01-11 16:01:19+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
