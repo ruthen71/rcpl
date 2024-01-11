@@ -1,22 +1,21 @@
 #pragma once
 
-struct ModInt261 {
-    static constexpr unsigned long long m = (1ULL << 61) - 1;
-    using mint = ModInt261;
-    unsigned long long _v;
+template <int m> struct StaticModInt {
+    using mint = StaticModInt;
+    unsigned int _v;
 
-    static constexpr long long mod() { return m; }
-    static constexpr unsigned long long umod() { return m; }
+    static constexpr int mod() { return m; }
+    static constexpr unsigned int umod() { return m; }
 
-    ModInt261() : _v(0ULL) {}
+    StaticModInt() : _v(0) {}
 
-    template <class T> ModInt261(T v) {
+    template <class T> StaticModInt(T v) {
         long long x = (long long)(v % (long long)(umod()));
         if (x < 0) x += umod();
-        _v = (unsigned long long)(x);
+        _v = (unsigned int)(x);
     }
 
-    unsigned long long val() const { return _v; }
+    unsigned int val() const { return _v; }
 
     mint &operator++() {
         _v++;
@@ -50,11 +49,9 @@ struct ModInt261 {
         return *this;
     }
     mint &operator*=(const mint &rhs) {
-        __uint128_t z = _v;
+        unsigned long long z = _v;
         z *= rhs._v;
-        z = (z >> 61) + (z & umod());
-        if (z >= umod()) z -= umod();
-        _v = (unsigned long long)z;
+        _v = (unsigned int)(z % umod());
         return *this;
     }
     mint &operator/=(const mint &rhs) { return (*this *= rhs.inv()); }
@@ -83,4 +80,5 @@ struct ModInt261 {
     friend bool operator!=(const mint &lhs, const mint &rhs) { return lhs._v != rhs._v; }
     friend std::ostream &operator<<(std::ostream &os, const mint &v) { return os << v.val(); }
 };
-using mint261 = ModInt261;
+using mint107 = StaticModInt<1000000007>;
+using mint998 = StaticModInt<998244353>;
