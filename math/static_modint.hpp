@@ -1,15 +1,15 @@
 #pragma once
 
-template <int m> struct StaticModInt {
-    using mint = StaticModInt;
+template <int m> struct StaticModint {
+    using mint = StaticModint;
     unsigned int _v;
 
     static constexpr int mod() { return m; }
     static constexpr unsigned int umod() { return m; }
 
-    StaticModInt() : _v(0) {}
+    StaticModint() : _v(0) {}
 
-    template <class T> StaticModInt(T v) {
+    template <class T> StaticModint(T v) {
         long long x = (long long)(v % (long long)(umod()));
         if (x < 0) x += umod();
         _v = (unsigned int)(x);
@@ -80,5 +80,5 @@ template <int m> struct StaticModInt {
     friend bool operator!=(const mint &lhs, const mint &rhs) { return lhs._v != rhs._v; }
     friend std::ostream &operator<<(std::ostream &os, const mint &v) { return os << v.val(); }
 };
-using mint107 = StaticModInt<1000000007>;
-using mint998 = StaticModInt<998244353>;
+using mint107 = StaticModint<1000000007>;
+using mint998 = StaticModint<998244353>;

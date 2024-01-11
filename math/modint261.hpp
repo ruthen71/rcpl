@@ -1,16 +1,16 @@
 #pragma once
 
-struct ModInt261 {
+struct Modint261 {
     static constexpr unsigned long long m = (1ULL << 61) - 1;
-    using mint = ModInt261;
+    using mint = Modint261;
     unsigned long long _v;
 
     static constexpr long long mod() { return m; }
     static constexpr unsigned long long umod() { return m; }
 
-    ModInt261() : _v(0ULL) {}
+    Modint261() : _v(0ULL) {}
 
-    template <class T> ModInt261(T v) {
+    template <class T> Modint261(T v) {
         long long x = (long long)(v % (long long)(umod()));
         if (x < 0) x += umod();
         _v = (unsigned long long)(x);
@@ -83,4 +83,4 @@ struct ModInt261 {
     friend bool operator!=(const mint &lhs, const mint &rhs) { return lhs._v != rhs._v; }
     friend std::ostream &operator<<(std::ostream &os, const mint &v) { return os << v.val(); }
 };
-using mint261 = ModInt261;
+using mint261 = Modint261;
