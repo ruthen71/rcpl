@@ -69,6 +69,7 @@ template <class T> using pqueg = std::priority_queue<T, std::vector<T>, std::gre
 #define FORE2(x, y, a) for (auto&& [x, y] : a)
 #define FORE3(x, y, z, a) for (auto&& [x, y, z] : a)
 #define FORE(...) overload4(__VA_ARGS__, FORE3, FORE2, FORE1)(__VA_ARGS__)
+#define FORSUB(t, s) for (long long t = (s); t; t = (t - 1) & (s))
 
 // function
 #define ALL(a) (a).begin(), (a).end()
@@ -103,25 +104,39 @@ template <class T, class S> std::pair<T, T> inline divmod(const T x, const S y) 
 }
 
 // bit operation
-int popcount(int x) { return __builtin_popcount(x); }
-int popcount(i64 x) { return __builtin_popcountll(x); }
-int popcount(u32 x) { return __builtin_popcount(x); }
-int popcount(u64 x) { return __builtin_popcountll(x); }
+int popcnt(int x) { return __builtin_popcount(x); }
+int popcnt(i64 x) { return __builtin_popcountll(x); }
+int popcnt(u32 x) { return __builtin_popcount(x); }
+int popcnt(u64 x) { return __builtin_popcountll(x); }
 
 // binary search
-template <class T, class F> T binary_search(T ok, T ng, F& f) {
-    while (abs(ok - ng) > 1) {
+template <class T, class F> T bin_search(T ok, T ng, F& f) {
+    while ((ok > ng ? ok - ng : ng - ok) > 1) {
         T md = (ng + ok) >> 1;
         (f(md) ? ok : ng) = md;
     }
     return ok;
 }
-template <class T, class F> T binary_search_real(T ok, T ng, F& f, const int iter = 100) {
+template <class T, class F> T bin_search_real(T ok, T ng, F& f, const int iter = 100) {
     for (int _ = 0; _ < iter; _++) {
         T md = (ng + ok) / 2;
         (f(md) ? ok : ng) = md;
     }
     return ok;
+}
+
+// rotate matrix counterclockwise by pi / 2
+template <class T> void rot(std::vector<std::vector<T>>& a) {
+    if (int(a.size()) == 0) return;
+    if (int(a[0].size()) == 0) return;
+    int n = int(a.size()), m = int(a[0].size());
+    std::vector res(m, std::vector<T>(n));
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            res[m - 1 - j][i] = a[i][j];
+        }
+    }
+    a.swap(res);
 }
 
 // const value
