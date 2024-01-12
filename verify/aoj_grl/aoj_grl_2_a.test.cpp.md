@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/get_edges.hpp
     title: graph/get_edges.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
     title: graph/graph_template.hpp
   - icon: ':heavy_check_mark:'

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
     title: graph/graph_template.hpp
   _extendedRequiredBy: []
@@ -18,6 +18,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_grl/aoj_grl_3_a.test.cpp
     title: verify/aoj_grl/aoj_grl_3_a.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_grl/aoj_grl_3_b.test.cpp
+    title: verify/aoj_grl/aoj_grl_3_b.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/lc_graph/lc_scc.test.cpp
     title: verify/lc_graph/lc_scc.test.cpp
@@ -71,6 +74,7 @@ data:
   - verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
   - verify/aoj_grl/aoj_grl_3_a.test.cpp
   - verify/aoj_grl/aoj_grl_1_b.test.cpp
+  - verify/aoj_grl/aoj_grl_3_b.test.cpp
   - verify/aoj_grl/aoj_grl_2_a.test.cpp
   - verify/aoj_dpl/aoj_dpl_2_a.test.cpp
   - verify/lc_tree/lc_tree_diameter.test.cpp

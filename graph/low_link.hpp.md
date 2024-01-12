@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
     title: graph/graph_template.hpp
   _extendedRequiredBy: []
@@ -9,6 +9,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_grl/aoj_grl_3_a.test.cpp
     title: verify/aoj_grl/aoj_grl_3_a.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_grl/aoj_grl_3_b.test.cpp
+    title: verify/aoj_grl/aoj_grl_3_b.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -67,6 +70,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_grl/aoj_grl_3_a.test.cpp
+  - verify/aoj_grl/aoj_grl_3_b.test.cpp
 documentation_of: graph/low_link.hpp
 layout: document
 title: "Low Link (\u95A2\u7BC0\u70B9\u30FB\u6A4B)"

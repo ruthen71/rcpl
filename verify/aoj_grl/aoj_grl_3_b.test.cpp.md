@@ -17,11 +17,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A
+    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_B
     links:
-    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A
-  bundledCode: "#line 1 \"verify/aoj_grl/aoj_grl_3_a.test.cpp\"\n#define PROBLEM \"\
-    https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A\"\n\n#include\
+    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_B
+  bundledCode: "#line 1 \"verify/aoj_grl/aoj_grl_3_b.test.cpp\"\n#define PROBLEM \"\
+    https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_B\"\n\n#include\
     \ <bits/stdc++.h>\n\n#line 2 \"graph/read_graph.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
     \n\ntemplate <class T> struct Edge {\n    int from, to;\n    T cost;\n    int\
     \ id;\n\n    Edge() = default;\n    Edge(int from, int to, T cost = 1, int id\
@@ -57,30 +57,31 @@ data:
     \           if (is_articulation) articulation.push_back(cur);\n            return;\n\
     \        };\n        for (int i = 0; i < n; i++) {\n            if (ord[i] ==\
     \ -1) {\n                dfs(dfs, i, -1);\n            }\n        }\n    }\n};\n\
-    #line 7 \"verify/aoj_grl/aoj_grl_3_a.test.cpp\"\n\nint main() {\n    int N, M;\n\
+    #line 7 \"verify/aoj_grl/aoj_grl_3_b.test.cpp\"\n\nint main() {\n    int N, M;\n\
     \    std::cin >> N >> M;\n    auto G = read_graph<int>(N, M, 0, 0, 0);\n    LowLink\
-    \ llink(G);\n    auto ans = llink.articulation;\n    std::sort(ans.begin(), ans.end());\n\
-    \    for (auto& v : ans) std::cout << v << '\\n';\n    return 0;\n}\n"
-  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A\"\
+    \ llink(G);\n    auto ans = llink.bridge;\n    std::sort(ans.begin(), ans.end());\n\
+    \    for (auto& [s, t] : ans) std::cout << s << ' ' << t << '\\n';\n    return\
+    \ 0;\n}\n"
+  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_B\"\
     \n\n#include <bits/stdc++.h>\n\n#include \"graph/read_graph.hpp\"\n#include \"\
     graph/low_link.hpp\"\n\nint main() {\n    int N, M;\n    std::cin >> N >> M;\n\
     \    auto G = read_graph<int>(N, M, 0, 0, 0);\n    LowLink llink(G);\n    auto\
-    \ ans = llink.articulation;\n    std::sort(ans.begin(), ans.end());\n    for (auto&\
-    \ v : ans) std::cout << v << '\\n';\n    return 0;\n}"
+    \ ans = llink.bridge;\n    std::sort(ans.begin(), ans.end());\n    for (auto&\
+    \ [s, t] : ans) std::cout << s << ' ' << t << '\\n';\n    return 0;\n}"
   dependsOn:
   - graph/read_graph.hpp
   - graph/graph_template.hpp
   - graph/low_link.hpp
   isVerificationFile: true
-  path: verify/aoj_grl/aoj_grl_3_a.test.cpp
+  path: verify/aoj_grl/aoj_grl_3_b.test.cpp
   requiredBy: []
-  timestamp: '2024-01-12 19:15:55+09:00'
+  timestamp: '2024-01-12 19:33:00+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/aoj_grl/aoj_grl_3_a.test.cpp
+documentation_of: verify/aoj_grl/aoj_grl_3_b.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/aoj_grl/aoj_grl_3_a.test.cpp
-- /verify/verify/aoj_grl/aoj_grl_3_a.test.cpp.html
-title: verify/aoj_grl/aoj_grl_3_a.test.cpp
+- /verify/verify/aoj_grl/aoj_grl_3_b.test.cpp
+- /verify/verify/aoj_grl/aoj_grl_3_b.test.cpp.html
+title: verify/aoj_grl/aoj_grl_3_b.test.cpp
 ---

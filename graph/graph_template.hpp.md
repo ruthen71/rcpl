@@ -25,7 +25,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/low_link.hpp
     title: "Low Link (\u95A2\u7BC0\u70B9\u30FB\u6A4B)"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/lowest_common_ancestor.hpp
     title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
   - icon: ':heavy_check_mark:'
@@ -58,20 +58,23 @@ data:
     path: verify/aoj_grl/aoj_grl_3_a.test.cpp
     title: verify/aoj_grl/aoj_grl_3_a.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/aoj_grl/aoj_grl_3_b.test.cpp
+    title: verify/aoj_grl/aoj_grl_3_b.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/lc_graph/lc_scc.test.cpp
     title: verify/lc_graph/lc_scc.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
     title: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/lc_tree/lc_lowest_common_ancestor.test.cpp
     title: verify/lc_tree/lc_lowest_common_ancestor.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/lc_tree/lc_tree_diameter.test.cpp
     title: verify/lc_tree/lc_tree_diameter.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/graph_template.hpp\"\n\ntemplate <class T> struct\
@@ -108,12 +111,13 @@ data:
   - graph/tree_diameter.hpp
   - dp/traveling_salesman_problem.hpp
   timestamp: '2023-02-10 01:10:41+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_graph/lc_scc.test.cpp
   - verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
   - verify/aoj_grl/aoj_grl_3_a.test.cpp
   - verify/aoj_grl/aoj_grl_1_b.test.cpp
+  - verify/aoj_grl/aoj_grl_3_b.test.cpp
   - verify/aoj_grl/aoj_grl_2_a.test.cpp
   - verify/aoj_dpl/aoj_dpl_2_a.test.cpp
   - verify/lc_tree/lc_lowest_common_ancestor.test.cpp

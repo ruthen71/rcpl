@@ -278,7 +278,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/get_edges.hpp
       title: graph/get_edges.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: graph/graph_template.hpp
       title: graph/graph_template.hpp
     - icon: ':heavy_check_mark:'
@@ -287,7 +287,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/low_link.hpp
       title: "Low Link (\u95A2\u7BC0\u70B9\u30FB\u6A4B)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/lowest_common_ancestor.hpp
       title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
     - icon: ':heavy_check_mark:'
@@ -536,6 +536,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_grl/aoj_grl_3_a.test.cpp
       title: verify/aoj_grl/aoj_grl_3_a.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_grl/aoj_grl_3_b.test.cpp
+      title: verify/aoj_grl/aoj_grl_3_b.test.cpp
   - name: verify/aoj_itp1
     pages:
     - icon: ':heavy_check_mark:'
@@ -618,7 +621,7 @@ data:
       title: verify/lc_other/lc_aplusb_compare_arg.test.cpp
   - name: verify/lc_tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/lc_tree/lc_lowest_common_ancestor.test.cpp
       title: verify/lc_tree/lc_lowest_common_ancestor.test.cpp
     - icon: ':heavy_check_mark:'
