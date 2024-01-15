@@ -104,10 +104,21 @@ template <class T, class S> std::pair<T, T> inline divmod(const T x, const S y) 
 }
 
 // bit operation
+// (0, 1, 2, 3, 4) -> (0, 1, 1, 2, 1)
 int popcnt(int x) { return __builtin_popcount(x); }
-int popcnt(i64 x) { return __builtin_popcountll(x); }
 int popcnt(u32 x) { return __builtin_popcount(x); }
+int popcnt(i64 x) { return __builtin_popcountll(x); }
 int popcnt(u64 x) { return __builtin_popcountll(x); }
+// (0, 1, 2, 3, 4) -> (-1, 0, 1, 1, 2)
+int topbit(int x) { return (x == 0 ? -1 : 31 - __builtin_clz(x)); }
+int topbit(u32 x) { return (x == 0 ? -1 : 31 - __builtin_clz(x)); }
+int topbit(i64 x) { return (x == 0 ? -1 : 63 - __builtin_clzll(x)); }
+int topbit(u64 x) { return (x == 0 ? -1 : 63 - __builtin_clzll(x)); }
+// (0, 1, 2, 3, 4) -> (-1, 0, 1, 0, 2)
+int lowbit(int x) { return (x == 0 ? -1 : __builtin_ctz(x)); }
+int lowbit(u32 x) { return (x == 0 ? -1 : __builtin_ctz(x)); }
+int lowbit(i64 x) { return (x == 0 ? -1 : __builtin_ctzll(x)); }
+int lowbit(u64 x) { return (x == 0 ? -1 : __builtin_ctzll(x)); }
 
 // binary search
 template <class T, class F> T bin_search(T ok, T ng, F& f) {
