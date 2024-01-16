@@ -10,7 +10,7 @@ int main() {
     std::cin >> N >> M;
     auto G = read_graph<int>(N, M, 0, 0, 0);
     LowLink llink(G);
-    auto ans = llink.bridge;
+    auto ans = llink.bridges;
     std::sort(ans.begin(), ans.end());
     for (auto& [s, t] : ans) std::cout << s << ' ' << t << '\n';
     return 0;
