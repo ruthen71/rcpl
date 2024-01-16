@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
     title: graph/graph_template.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/low_link.hpp
     title: "Low Link (\u95A2\u7BC0\u70B9\u30FB\u6A4B)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/read_graph.hpp
     title: graph/read_graph.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_B
@@ -90,14 +90,14 @@ data:
     \ }\n            // \u89AA\u306E\u5206\u3067 +1\n            return c + 1;\n \
     \       }\n    }\n};\n#line 7 \"verify/aoj_grl/aoj_grl_3_b.test.cpp\"\n\nint main()\
     \ {\n    int N, M;\n    std::cin >> N >> M;\n    auto G = read_graph<int>(N, M,\
-    \ 0, 0, 0);\n    LowLink llink(G);\n    auto ans = llink.bridge;\n    std::sort(ans.begin(),\
+    \ 0, 0, 0);\n    LowLink llink(G);\n    auto ans = llink.bridges;\n    std::sort(ans.begin(),\
     \ ans.end());\n    for (auto& [s, t] : ans) std::cout << s << ' ' << t << '\\\
     n';\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_B\"\
     \n\n#include <bits/stdc++.h>\n\n#include \"graph/read_graph.hpp\"\n#include \"\
     graph/low_link.hpp\"\n\nint main() {\n    int N, M;\n    std::cin >> N >> M;\n\
     \    auto G = read_graph<int>(N, M, 0, 0, 0);\n    LowLink llink(G);\n    auto\
-    \ ans = llink.bridge;\n    std::sort(ans.begin(), ans.end());\n    for (auto&\
+    \ ans = llink.bridges;\n    std::sort(ans.begin(), ans.end());\n    for (auto&\
     \ [s, t] : ans) std::cout << s << ' ' << t << '\\n';\n    return 0;\n}"
   dependsOn:
   - graph/read_graph.hpp
@@ -106,8 +106,8 @@ data:
   isVerificationFile: true
   path: verify/aoj_grl/aoj_grl_3_b.test.cpp
   requiredBy: []
-  timestamp: '2024-01-15 16:50:24+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-01-16 10:04:08+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_grl/aoj_grl_3_b.test.cpp
 layout: document

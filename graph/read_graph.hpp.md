@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
     title: graph/graph_template.hpp
   _extendedRequiredBy: []
@@ -15,10 +15,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_grl/aoj_grl_2_a.test.cpp
     title: verify/aoj_grl/aoj_grl_2_a.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_grl/aoj_grl_3_a.test.cpp
     title: verify/aoj_grl/aoj_grl_3_a.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_grl/aoj_grl_3_b.test.cpp
     title: verify/aoj_grl/aoj_grl_3_b.test.cpp
   - icon: ':heavy_check_mark:'
@@ -30,9 +30,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/lc_tree/lc_tree_diameter.test.cpp
     title: verify/lc_tree/lc_tree_diameter.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/read_graph.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
@@ -99,7 +99,7 @@ data:
   path: graph/read_graph.hpp
   requiredBy: []
   timestamp: '2024-01-15 16:50:24+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_graph/lc_scc.test.cpp
   - verify/lc_graph/lc_shortest_path_dijkstra.test.cpp

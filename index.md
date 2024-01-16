@@ -278,19 +278,19 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/get_edges.hpp
       title: graph/get_edges.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: graph/graph_template.hpp
       title: graph/graph_template.hpp
     - icon: ':heavy_check_mark:'
       path: graph/kruskal.hpp
       title: "Kruskal's algorithm (\u30AF\u30E9\u30B9\u30AB\u30EB\u6CD5)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/low_link.hpp
       title: "Low Link (\u95A2\u7BC0\u70B9\u30FB\u6A4B)"
     - icon: ':heavy_check_mark:'
       path: graph/lowest_common_ancestor.hpp
       title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: graph/read_graph.hpp
       title: graph/read_graph.hpp
     - icon: ':warning:'
@@ -533,10 +533,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_grl/aoj_grl_2_a.test.cpp
       title: verify/aoj_grl/aoj_grl_2_a.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj_grl/aoj_grl_3_a.test.cpp
       title: verify/aoj_grl/aoj_grl_3_a.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj_grl/aoj_grl_3_b.test.cpp
       title: verify/aoj_grl/aoj_grl_3_b.test.cpp
   - name: verify/aoj_itp1
