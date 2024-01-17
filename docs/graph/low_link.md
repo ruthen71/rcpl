@@ -4,4 +4,4 @@ documentation_of: //graph/low_link.hpp
 ---
 
 - `LowLink llink(G);` で作成
-- `llink.articulation` に関節点が、`llink.bridge` に橋となる辺が含まれる
+- `llink.articulations` に関節点が、`llink.bridges` に橋となる辺が含まれる
