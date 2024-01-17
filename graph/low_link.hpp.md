@@ -111,4 +111,4 @@ title: "Low Link (\u95A2\u7BC0\u70B9\u30FB\u6A4B)"
 ---
 
 - `LowLink llink(G);` で作成
-- `llink.articulation` に関節点が、`llink.bridge` に橋となる辺が含まれる
+- `llink.articulations` に関節点が、`llink.bridges` に橋となる辺が含まれる
