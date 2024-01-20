@@ -143,6 +143,9 @@ data:
       path: dp/knapsack_limitations.hpp
       title: "Knapsack Limitations (\u500B\u6570\u5236\u9650\u4ED8\u304D\u30CA\u30C3\
         \u30D7\u30B5\u30C3\u30AF\u554F\u984C)"
+    - icon: ':warning:'
+      path: dp/meet_in_the_middle.hpp
+      title: "Meet in the middle (\u534A\u5206\u5168\u5217\u6319)"
     - icon: ':heavy_check_mark:'
       path: dp/sliding_window_minimum.hpp
       title: "Sliding Window Minimum (\u30B9\u30E9\u30A4\u30C9\u6700\u5C0F\u5024)"
