@@ -402,6 +402,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: misc/mo.hpp
       title: Mo's Algorithm
+    - icon: ':warning:'
+      path: misc/timer.hpp
+      title: misc/timer.hpp
+    - icon: ':warning:'
+      path: misc/xor_shift.hpp
+      title: misc/xor_shift.hpp
   - name: string
     pages:
     - icon: ':heavy_check_mark:'
