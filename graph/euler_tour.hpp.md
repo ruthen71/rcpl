@@ -12,20 +12,20 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/euler_tour.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
-    \n\ntemplate <class T> struct Edge {\n    int from, to;\n    T cost;\n    int\
-    \ id;\n\n    Edge() = default;\n    Edge(int from, int to, T cost = 1, int id\
-    \ = -1) : from(from), to(to), cost(cost), id(id) {}\n\n    friend std::ostream\
-    \ &operator<<(std::ostream &os, const Edge<T> &e) {\n        // output format:\
-    \ \"{ id : from -> to, cost }\"\n        return os << \"{ \" << e.id << \" : \"\
-    \ << e.from << \" -> \" << e.to << \", \" << e.cost << \" }\";\n    }\n};\n\n\
-    template <class T> using Edges = std::vector<Edge<T>>;\ntemplate <class T> using\
-    \ Graph = std::vector<std::vector<Edge<T>>>;\n#line 4 \"graph/euler_tour.hpp\"\
-    \n\n// Euler Tour\n// complexity: O(N + M)\n// N = 5\n// edges = [{0, 1}, {0,\
-    \ 2}, {2, 3}, {2, 4}]\n//   0\n//  / \\\n// 1   2\n//    / \\\n//   3   4\n//\
-    \ vertices = [0, 1, 0, 2, 3, 2, 4, 2, 0]\n// vertex_id = [{0, 8}, {1, 1}, {3,\
-    \ 7}, {4, 4}, {6, 6}]\n// edges = [0, 0+N, 1, 2, 2+N, 3, 3+N, 1+N]\n// edge_id\
-    \ = [{0, 1}, {2, 7}, {3, 4}, {5, 6}]\n// edges[vertex_id[i].first, vertex_id[i].second)\
-    \ = edges in subtree with root i\ntemplate <class T>\nstd::tuple<std::vector<int>,\
+    \n\n#include <vector>\ntemplate <class T> struct Edge {\n    int from, to;\n \
+    \   T cost;\n    int id;\n\n    Edge() = default;\n    Edge(int from, int to,\
+    \ T cost = 1, int id = -1) : from(from), to(to), cost(cost), id(id) {}\n\n   \
+    \ friend std::ostream &operator<<(std::ostream &os, const Edge<T> &e) {\n    \
+    \    // output format: \"{ id : from -> to, cost }\"\n        return os << \"\
+    { \" << e.id << \" : \" << e.from << \" -> \" << e.to << \", \" << e.cost << \"\
+    \ }\";\n    }\n};\n\ntemplate <class T> using Edges = std::vector<Edge<T>>;\n\
+    template <class T> using Graph = std::vector<std::vector<Edge<T>>>;\n#line 4 \"\
+    graph/euler_tour.hpp\"\n\n// Euler Tour\n// complexity: O(N + M)\n// N = 5\n//\
+    \ edges = [{0, 1}, {0, 2}, {2, 3}, {2, 4}]\n//   0\n//  / \\\n// 1   2\n//   \
+    \ / \\\n//   3   4\n// vertices = [0, 1, 0, 2, 3, 2, 4, 2, 0]\n// vertex_id =\
+    \ [{0, 8}, {1, 1}, {3, 7}, {4, 4}, {6, 6}]\n// edges = [0, 0+N, 1, 2, 2+N, 3,\
+    \ 3+N, 1+N]\n// edge_id = [{0, 1}, {2, 7}, {3, 4}, {5, 6}]\n// edges[vertex_id[i].first,\
+    \ vertex_id[i].second) = edges in subtree with root i\ntemplate <class T>\nstd::tuple<std::vector<int>,\
     \ std::vector<std::pair<int, int>>, std::vector<int>, std::vector<std::pair<int,\
     \ int>>>  //\neuler_tour(Graph<T> &G, int root = 0) {\n    // compiler bugs\n\
     \    // const int n = (int)G.size();\n    // fix\n    int n = (int)G.size();\n\
@@ -66,7 +66,7 @@ data:
   isVerificationFile: false
   path: graph/euler_tour.hpp
   requiredBy: []
-  timestamp: '2023-03-25 02:31:37+09:00'
+  timestamp: '2024-01-25 10:46:02+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: graph/euler_tour.hpp

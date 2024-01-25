@@ -18,21 +18,21 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/low_link.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
-    \n\ntemplate <class T> struct Edge {\n    int from, to;\n    T cost;\n    int\
-    \ id;\n\n    Edge() = default;\n    Edge(int from, int to, T cost = 1, int id\
-    \ = -1) : from(from), to(to), cost(cost), id(id) {}\n\n    friend std::ostream\
-    \ &operator<<(std::ostream &os, const Edge<T> &e) {\n        // output format:\
-    \ \"{ id : from -> to, cost }\"\n        return os << \"{ \" << e.id << \" : \"\
-    \ << e.from << \" -> \" << e.to << \", \" << e.cost << \" }\";\n    }\n};\n\n\
-    template <class T> using Edges = std::vector<Edge<T>>;\ntemplate <class T> using\
-    \ Graph = std::vector<std::vector<Edge<T>>>;\n#line 4 \"graph/low_link.hpp\"\n\
-    \ntemplate <class T> struct LowLink {\n    int n;\n    std::vector<int> ord, low;\n\
-    \    std::vector<int> articulations;\n    std::vector<int> roots;\n    std::vector<std::pair<int,\
-    \ int>> bridges;  // edges {u, v} (u < v)\n    std::vector<std::vector<int>> dfs_tree;\n\
-    \n    LowLink(const Graph<T>& g) : n(int(g.size())) {\n        ord.assign(n, -1);\n\
-    \        low.assign(n, -1);\n        dfs_tree.resize(n);\n        int ord_id =\
-    \ 0;\n        auto dfs = [&](auto f, int cur, int par) -> void {\n           \
-    \ low[cur] = ord[cur] = ord_id++;\n            bool is_articulation = false;\n\
+    \n\n#include <vector>\ntemplate <class T> struct Edge {\n    int from, to;\n \
+    \   T cost;\n    int id;\n\n    Edge() = default;\n    Edge(int from, int to,\
+    \ T cost = 1, int id = -1) : from(from), to(to), cost(cost), id(id) {}\n\n   \
+    \ friend std::ostream &operator<<(std::ostream &os, const Edge<T> &e) {\n    \
+    \    // output format: \"{ id : from -> to, cost }\"\n        return os << \"\
+    { \" << e.id << \" : \" << e.from << \" -> \" << e.to << \", \" << e.cost << \"\
+    \ }\";\n    }\n};\n\ntemplate <class T> using Edges = std::vector<Edge<T>>;\n\
+    template <class T> using Graph = std::vector<std::vector<Edge<T>>>;\n#line 4 \"\
+    graph/low_link.hpp\"\n\ntemplate <class T> struct LowLink {\n    int n;\n    std::vector<int>\
+    \ ord, low;\n    std::vector<int> articulations;\n    std::vector<int> roots;\n\
+    \    std::vector<std::pair<int, int>> bridges;  // edges {u, v} (u < v)\n    std::vector<std::vector<int>>\
+    \ dfs_tree;\n\n    LowLink(const Graph<T>& g) : n(int(g.size())) {\n        ord.assign(n,\
+    \ -1);\n        low.assign(n, -1);\n        dfs_tree.resize(n);\n        int ord_id\
+    \ = 0;\n        auto dfs = [&](auto f, int cur, int par) -> void {\n         \
+    \   low[cur] = ord[cur] = ord_id++;\n            bool is_articulation = false;\n\
     \            for (auto& e : g[cur]) {\n                if (ord[e.to] == -1) {\n\
     \                    // DFS \u6728\u4E0A\u306E\u8FBA\u306B\u5BFE\u3059\u308B\u51E6\
     \u7406\n                    f(f, e.to, cur);\n                    dfs_tree[cur].push_back(e.to);\n\
@@ -100,7 +100,7 @@ data:
   isVerificationFile: false
   path: graph/low_link.hpp
   requiredBy: []
-  timestamp: '2024-01-15 16:49:53+09:00'
+  timestamp: '2024-01-25 10:46:02+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_grl/aoj_grl_3_a.test.cpp

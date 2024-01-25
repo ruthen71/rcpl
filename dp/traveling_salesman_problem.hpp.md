@@ -15,25 +15,26 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"dp/traveling_salesman_problem.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
-    \n\ntemplate <class T> struct Edge {\n    int from, to;\n    T cost;\n    int\
-    \ id;\n\n    Edge() = default;\n    Edge(int from, int to, T cost = 1, int id\
-    \ = -1) : from(from), to(to), cost(cost), id(id) {}\n\n    friend std::ostream\
-    \ &operator<<(std::ostream &os, const Edge<T> &e) {\n        // output format:\
-    \ \"{ id : from -> to, cost }\"\n        return os << \"{ \" << e.id << \" : \"\
-    \ << e.from << \" -> \" << e.to << \", \" << e.cost << \" }\";\n    }\n};\n\n\
-    template <class T> using Edges = std::vector<Edge<T>>;\ntemplate <class T> using\
-    \ Graph = std::vector<std::vector<Edge<T>>>;\n#line 4 \"dp/traveling_salesman_problem.hpp\"\
-    \n\ntemplate <class T>\nstd::vector<std::vector<T>>  //\ntraveling_salesman_problem(Graph<T>\
-    \ &G, const T INF) {\n    int N = (int)G.size();\n    int N2 = 1 << N;\n\n   \
-    \ std::vector<std::vector<T>> dist(N, std::vector<T>(N, INF));\n    for (int i\
-    \ = 0; i < N; i++) dist[i][i] = T(0);\n    for (int i = 0; i < N; i++) {\n   \
-    \     for (auto &&e : G[i]) {\n            dist[e.from][e.to] = std::min(dist[e.from][e.to],\
-    \ e.cost);\n        }\n    }\n\n    std::vector<std::vector<T>> dp(N2, std::vector<T>(N,\
-    \ INF));\n    dp[0][0] = 0;\n    for (int s = 0; s < (1 << N); s++) {\n      \
-    \  for (int v = 0; v < N; v++) {\n            if (s >> v & 1) continue;\n    \
-    \        for (int u = 0; u < N; u++) {\n                if (u == v) continue;\n\
-    \                dp[s | (1 << v)][v] = std::min(dp[s | (1 << v)][v], dp[s][u]\
-    \ + dist[u][v]);\n            }\n        }\n    }\n    return dp;\n}\n"
+    \n\n#include <vector>\ntemplate <class T> struct Edge {\n    int from, to;\n \
+    \   T cost;\n    int id;\n\n    Edge() = default;\n    Edge(int from, int to,\
+    \ T cost = 1, int id = -1) : from(from), to(to), cost(cost), id(id) {}\n\n   \
+    \ friend std::ostream &operator<<(std::ostream &os, const Edge<T> &e) {\n    \
+    \    // output format: \"{ id : from -> to, cost }\"\n        return os << \"\
+    { \" << e.id << \" : \" << e.from << \" -> \" << e.to << \", \" << e.cost << \"\
+    \ }\";\n    }\n};\n\ntemplate <class T> using Edges = std::vector<Edge<T>>;\n\
+    template <class T> using Graph = std::vector<std::vector<Edge<T>>>;\n#line 4 \"\
+    dp/traveling_salesman_problem.hpp\"\n\ntemplate <class T>\nstd::vector<std::vector<T>>\
+    \  //\ntraveling_salesman_problem(Graph<T> &G, const T INF) {\n    int N = (int)G.size();\n\
+    \    int N2 = 1 << N;\n\n    std::vector<std::vector<T>> dist(N, std::vector<T>(N,\
+    \ INF));\n    for (int i = 0; i < N; i++) dist[i][i] = T(0);\n    for (int i =\
+    \ 0; i < N; i++) {\n        for (auto &&e : G[i]) {\n            dist[e.from][e.to]\
+    \ = std::min(dist[e.from][e.to], e.cost);\n        }\n    }\n\n    std::vector<std::vector<T>>\
+    \ dp(N2, std::vector<T>(N, INF));\n    dp[0][0] = 0;\n    for (int s = 0; s <\
+    \ (1 << N); s++) {\n        for (int v = 0; v < N; v++) {\n            if (s >>\
+    \ v & 1) continue;\n            for (int u = 0; u < N; u++) {\n              \
+    \  if (u == v) continue;\n                dp[s | (1 << v)][v] = std::min(dp[s\
+    \ | (1 << v)][v], dp[s][u] + dist[u][v]);\n            }\n        }\n    }\n \
+    \   return dp;\n}\n"
   code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\ntemplate <class\
     \ T>\nstd::vector<std::vector<T>>  //\ntraveling_salesman_problem(Graph<T> &G,\
     \ const T INF) {\n    int N = (int)G.size();\n    int N2 = 1 << N;\n\n    std::vector<std::vector<T>>\
@@ -51,7 +52,7 @@ data:
   isVerificationFile: false
   path: dp/traveling_salesman_problem.hpp
   requiredBy: []
-  timestamp: '2023-02-10 01:10:41+09:00'
+  timestamp: '2024-01-25 10:46:02+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_dpl/aoj_dpl_2_a.test.cpp
