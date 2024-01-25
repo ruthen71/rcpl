@@ -1,5 +1,6 @@
 #pragma once
 
+#include <vector>
 template <class T> struct Edge {
     int from, to;
     T cost;
