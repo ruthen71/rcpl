@@ -292,6 +292,16 @@ template <class Head, class... Tail> void print(Head&& head, Tail&&... tail) {
     if (sizeof...(Tail)) out(' ');
     print(tail...);
 }
+// for interactive problems
+void printflush() {
+    out('\n');
+    std::cout.flush();
+}
+template <class Head, class... Tail> void printflush(Head&& head, Tail&&... tail) {
+    out(head);
+    if (sizeof...(Tail)) out(' ');
+    printflush(tail...);
+}
 
 // bool output
 void YES(bool t = 1) { print(t ? "YES" : "NO"); }
