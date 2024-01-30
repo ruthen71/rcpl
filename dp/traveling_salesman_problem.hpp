@@ -15,12 +15,10 @@ traveling_salesman_problem(Graph<T> &G, const T INF) {
             dist[e.from][e.to] = std::min(dist[e.from][e.to], e.cost);
         }
     }
-
-    std::vector<std::vector<T>> dp(N2, std::vector<T>(N, INF));
+    std::vector dp(N2, std::vector<T>(N, INF));
     dp[0][0] = 0;
-    for (int bit = 0; bit < (1 << N); bit++) {
+    for (int bit = 0; bit < N2; bit++) {
         for (int u = 0; u < N; u++) {
-            if (~bit >> u & 1) continue;
             if (dp[bit][u] == INF) continue;
             for (int v = 0; v < N; v++) {
                 if (bit >> v & 1) continue;
