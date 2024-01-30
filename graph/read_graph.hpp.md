@@ -1,12 +1,12 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: graph/graph_template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj_dpl/aoj_dpl_2_a.test.cpp
     title: verify/aoj_dpl/aoj_dpl_2_a.test.cpp
   - icon: ':heavy_check_mark:'
@@ -30,9 +30,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/lc_tree/lc_tree_diameter.test.cpp
     title: verify/lc_tree/lc_tree_diameter.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/read_graph.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
@@ -117,16 +117,16 @@ data:
   path: graph/read_graph.hpp
   requiredBy: []
   timestamp: '2024-01-25 10:46:02+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/lc_tree/lc_tree_diameter.test.cpp
   - verify/lc_graph/lc_scc.test.cpp
   - verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
-  - verify/aoj_grl/aoj_grl_3_a.test.cpp
+  - verify/aoj_dpl/aoj_dpl_2_a.test.cpp
   - verify/aoj_grl/aoj_grl_1_b.test.cpp
   - verify/aoj_grl/aoj_grl_3_b.test.cpp
   - verify/aoj_grl/aoj_grl_2_a.test.cpp
-  - verify/aoj_dpl/aoj_dpl_2_a.test.cpp
-  - verify/lc_tree/lc_tree_diameter.test.cpp
+  - verify/aoj_grl/aoj_grl_3_a.test.cpp
 documentation_of: graph/read_graph.hpp
 layout: document
 redirect_from:

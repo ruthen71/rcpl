@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: dp/traveling_salesman_problem.hpp
     title: "Traveling Salesman Problem (\u5DE1\u56DE\u30BB\u30FC\u30EB\u30B9\u30DE\
       \u30F3\u554F\u984C)"
@@ -28,7 +28,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/lowest_common_ancestor.hpp
     title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/read_graph.hpp
     title: graph/read_graph.hpp
   - icon: ':heavy_check_mark:'
@@ -45,7 +45,7 @@ data:
     path: graph/zero_one_bfs.hpp
     title: 01-BFS
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj_dpl/aoj_dpl_2_a.test.cpp
     title: verify/aoj_dpl/aoj_dpl_2_a.test.cpp
   - icon: ':heavy_check_mark:'
@@ -72,9 +72,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/lc_tree/lc_tree_diameter.test.cpp
     title: verify/lc_tree/lc_tree_diameter.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/graph_template.hpp\"\n\n#include <vector>\ntemplate\
@@ -97,31 +97,31 @@ data:
   isVerificationFile: false
   path: graph/graph_template.hpp
   requiredBy:
-  - graph/bellman_ford.hpp
-  - graph/lowest_common_ancestor.hpp
-  - graph/euler_tour.hpp
-  - graph/low_link.hpp
-  - graph/topological_sort.hpp
-  - graph/strongly_connected_component.hpp
-  - graph/zero_one_bfs.hpp
   - graph/dijkstra.hpp
-  - graph/get_edges.hpp
+  - graph/euler_tour.hpp
   - graph/kruskal.hpp
   - graph/read_graph.hpp
   - graph/tree_diameter.hpp
+  - graph/topological_sort.hpp
+  - graph/lowest_common_ancestor.hpp
+  - graph/zero_one_bfs.hpp
+  - graph/get_edges.hpp
+  - graph/low_link.hpp
+  - graph/bellman_ford.hpp
+  - graph/strongly_connected_component.hpp
   - dp/traveling_salesman_problem.hpp
   timestamp: '2024-01-25 10:46:02+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/lc_tree/lc_lowest_common_ancestor.test.cpp
+  - verify/lc_tree/lc_tree_diameter.test.cpp
   - verify/lc_graph/lc_scc.test.cpp
   - verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
-  - verify/aoj_grl/aoj_grl_3_a.test.cpp
+  - verify/aoj_dpl/aoj_dpl_2_a.test.cpp
   - verify/aoj_grl/aoj_grl_1_b.test.cpp
   - verify/aoj_grl/aoj_grl_3_b.test.cpp
   - verify/aoj_grl/aoj_grl_2_a.test.cpp
-  - verify/aoj_dpl/aoj_dpl_2_a.test.cpp
-  - verify/lc_tree/lc_lowest_common_ancestor.test.cpp
-  - verify/lc_tree/lc_tree_diameter.test.cpp
+  - verify/aoj_grl/aoj_grl_3_a.test.cpp
 documentation_of: graph/graph_template.hpp
 layout: document
 redirect_from:

@@ -65,14 +65,14 @@ data:
   path: icpc/template.hpp
   requiredBy:
   - icpc/modint.hpp
-  - icpc/ntt.hpp
-  - icpc/uf.hpp
-  - icpc/lca.hpp
-  - icpc/binomal.hpp
-  - icpc/segtree.hpp
-  - icpc/scc.hpp
   - icpc/dice.hpp
+  - icpc/binomal.hpp
+  - icpc/uf.hpp
+  - icpc/scc.hpp
+  - icpc/ntt.hpp
+  - icpc/segtree.hpp
   - icpc/matrix.hpp
+  - icpc/lca.hpp
   timestamp: '2023-05-31 02:53:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

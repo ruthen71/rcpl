@@ -149,7 +149,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: dp/sliding_window_minimum.hpp
       title: "Sliding Window Minimum (\u30B9\u30E9\u30A4\u30C9\u6700\u5C0F\u5024)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: dp/traveling_salesman_problem.hpp
       title: "Traveling Salesman Problem (\u5DE1\u56DE\u30BB\u30FC\u30EB\u30B9\u30DE\
         \u30F3\u554F\u984C)"
@@ -281,7 +281,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/get_edges.hpp
       title: graph/get_edges.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/graph_template.hpp
       title: graph/graph_template.hpp
     - icon: ':heavy_check_mark:'
@@ -293,7 +293,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/lowest_common_ancestor.hpp
       title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/read_graph.hpp
       title: graph/read_graph.hpp
     - icon: ':warning:'
@@ -499,7 +499,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_dpl/aoj_dpl_1_g.test.cpp
       title: verify/aoj_dpl/aoj_dpl_1_g.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/aoj_dpl/aoj_dpl_2_a.test.cpp
       title: verify/aoj_dpl/aoj_dpl_2_a.test.cpp
     - icon: ':heavy_check_mark:'

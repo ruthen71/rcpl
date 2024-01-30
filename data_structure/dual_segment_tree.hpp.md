@@ -74,8 +74,8 @@ data:
   timestamp: '2023-02-06 23:12:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp
   - verify/aoj_dsl/aoj_dsl_2_e_dual_segment_tree.test.cpp
+  - verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp
 documentation_of: data_structure/dual_segment_tree.hpp
 layout: document
 title: "Dual Segment Tree (\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"

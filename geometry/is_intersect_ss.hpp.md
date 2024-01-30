@@ -151,8 +151,8 @@ data:
   isVerificationFile: false
   path: geometry/is_intersect_ss.hpp
   requiredBy:
-  - geometry/distance_ss.hpp
   - geometry/cross_point_ss.hpp
+  - geometry/distance_ss.hpp
   - geometry/all.hpp
   timestamp: '2023-06-01 23:47:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
