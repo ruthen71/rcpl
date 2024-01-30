@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
     title: graph/graph_template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_dpl/aoj_dpl_2_a.test.cpp
     title: verify/aoj_dpl/aoj_dpl_2_a.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"dp/traveling_salesman_problem.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
@@ -28,35 +28,33 @@ data:
     \ = (int)G.size();\n    const int N2 = 1 << N;\n\n    std::vector dist(N, std::vector<T>(N,\
     \ INF));\n    for (int i = 0; i < N; i++) dist[i][i] = T(0);\n    for (int i =\
     \ 0; i < N; i++) {\n        for (auto &&e : G[i]) {\n            dist[e.from][e.to]\
-    \ = std::min(dist[e.from][e.to], e.cost);\n        }\n    }\n\n    std::vector<std::vector<T>>\
-    \ dp(N2, std::vector<T>(N, INF));\n    dp[0][0] = 0;\n    for (int bit = 0; bit\
-    \ < (1 << N); bit++) {\n        for (int u = 0; u < N; u++) {\n            if\
-    \ (~bit >> u & 1) continue;\n            if (dp[bit][u] == INF) continue;\n  \
-    \          for (int v = 0; v < N; v++) {\n                if (bit >> v & 1) continue;\n\
-    \                if (dist[u][v] == INF) continue;\n                dp[bit | (1\
-    \ << v)][v] = std::min(dp[bit | (1 << v)][v], dp[bit][u] + dist[u][v]);\n    \
-    \        }\n        }\n    }\n    return dp;\n}\n"
+    \ = std::min(dist[e.from][e.to], e.cost);\n        }\n    }\n    std::vector dp(N2,\
+    \ std::vector<T>(N, INF));\n    dp[0][0] = 0;\n    for (int bit = 0; bit < N2;\
+    \ bit++) {\n        for (int u = 0; u < N; u++) {\n            if (dp[bit][u]\
+    \ == INF) continue;\n            for (int v = 0; v < N; v++) {\n             \
+    \   if (bit >> v & 1) continue;\n                if (dist[u][v] == INF) continue;\n\
+    \                dp[bit | (1 << v)][v] = std::min(dp[bit | (1 << v)][v], dp[bit][u]\
+    \ + dist[u][v]);\n            }\n        }\n    }\n    return dp;\n}\n"
   code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\ntemplate <class\
     \ T>\nstd::vector<std::vector<T>>  //\ntraveling_salesman_problem(Graph<T> &G,\
     \ const T INF) {\n    const int N = (int)G.size();\n    const int N2 = 1 << N;\n\
     \n    std::vector dist(N, std::vector<T>(N, INF));\n    for (int i = 0; i < N;\
     \ i++) dist[i][i] = T(0);\n    for (int i = 0; i < N; i++) {\n        for (auto\
     \ &&e : G[i]) {\n            dist[e.from][e.to] = std::min(dist[e.from][e.to],\
-    \ e.cost);\n        }\n    }\n\n    std::vector<std::vector<T>> dp(N2, std::vector<T>(N,\
-    \ INF));\n    dp[0][0] = 0;\n    for (int bit = 0; bit < (1 << N); bit++) {\n\
-    \        for (int u = 0; u < N; u++) {\n            if (~bit >> u & 1) continue;\n\
-    \            if (dp[bit][u] == INF) continue;\n            for (int v = 0; v <\
-    \ N; v++) {\n                if (bit >> v & 1) continue;\n                if (dist[u][v]\
-    \ == INF) continue;\n                dp[bit | (1 << v)][v] = std::min(dp[bit |\
-    \ (1 << v)][v], dp[bit][u] + dist[u][v]);\n            }\n        }\n    }\n \
-    \   return dp;\n}"
+    \ e.cost);\n        }\n    }\n    std::vector dp(N2, std::vector<T>(N, INF));\n\
+    \    dp[0][0] = 0;\n    for (int bit = 0; bit < N2; bit++) {\n        for (int\
+    \ u = 0; u < N; u++) {\n            if (dp[bit][u] == INF) continue;\n       \
+    \     for (int v = 0; v < N; v++) {\n                if (bit >> v & 1) continue;\n\
+    \                if (dist[u][v] == INF) continue;\n                dp[bit | (1\
+    \ << v)][v] = std::min(dp[bit | (1 << v)][v], dp[bit][u] + dist[u][v]);\n    \
+    \        }\n        }\n    }\n    return dp;\n}"
   dependsOn:
   - graph/graph_template.hpp
   isVerificationFile: false
   path: dp/traveling_salesman_problem.hpp
   requiredBy: []
-  timestamp: '2024-01-30 13:15:19+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2024-01-30 13:51:21+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_dpl/aoj_dpl_2_a.test.cpp
 documentation_of: dp/traveling_salesman_problem.hpp

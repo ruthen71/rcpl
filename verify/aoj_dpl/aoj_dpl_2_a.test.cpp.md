@@ -1,21 +1,21 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: dp/traveling_salesman_problem.hpp
     title: "Traveling Salesman Problem (\u5DE1\u56DE\u30BB\u30FC\u30EB\u30B9\u30DE\
       \u30F3\u554F\u984C)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
     title: graph/graph_template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/read_graph.hpp
     title: graph/read_graph.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_A
@@ -37,52 +37,51 @@ data:
     \ = (int)G.size();\n    const int N2 = 1 << N;\n\n    std::vector dist(N, std::vector<T>(N,\
     \ INF));\n    for (int i = 0; i < N; i++) dist[i][i] = T(0);\n    for (int i =\
     \ 0; i < N; i++) {\n        for (auto &&e : G[i]) {\n            dist[e.from][e.to]\
-    \ = std::min(dist[e.from][e.to], e.cost);\n        }\n    }\n\n    std::vector<std::vector<T>>\
-    \ dp(N2, std::vector<T>(N, INF));\n    dp[0][0] = 0;\n    for (int bit = 0; bit\
-    \ < (1 << N); bit++) {\n        for (int u = 0; u < N; u++) {\n            if\
-    \ (~bit >> u & 1) continue;\n            if (dp[bit][u] == INF) continue;\n  \
-    \          for (int v = 0; v < N; v++) {\n                if (bit >> v & 1) continue;\n\
-    \                if (dist[u][v] == INF) continue;\n                dp[bit | (1\
-    \ << v)][v] = std::min(dp[bit | (1 << v)][v], dp[bit][u] + dist[u][v]);\n    \
-    \        }\n        }\n    }\n    return dp;\n}\n#line 2 \"graph/read_graph.hpp\"\
-    \n\n#line 4 \"graph/read_graph.hpp\"\n\ntemplate <class T> Graph<T> read_graph(const\
-    \ int n, const int m, const bool weight = false, const bool directed = false,\
-    \ const int offset = 1) {\n    Graph<T> g(n);\n    for (int i = 0; i < m; i++)\
-    \ {\n        int a, b;\n        std::cin >> a >> b;\n        a -= offset, b -=\
-    \ offset;\n        if (weight) {\n            T c;\n            std::cin >> c;\n\
-    \            if (!directed) g[b].push_back(Edge(b, a, c, i));\n            g[a].push_back(Edge(a,\
-    \ b, c, i));\n        } else {\n            // c = 1\n            if (!directed)\
-    \ g[b].push_back(Edge(b, a, T(1), i));\n            g[a].push_back(Edge(a, b,\
-    \ T(1), i));\n        }\n    }\n    return g;\n}\n\ntemplate <class T> Graph<T>\
-    \ read_parent(const int n, const bool weight = false, const bool directed = false,\
-    \ const int offset = 1) {\n    Graph<T> g(n);\n    for (int i = 1; i < n; i++)\
-    \ {\n        int p;\n        std::cin >> p;\n        p -= offset;\n        if\
-    \ (weight) {\n            T c;\n            std::cin >> c;\n            if (!directed)\
-    \ g[i].push_back(Edge(i, p, c, i - 1));\n            g[p].push_back(Edge(p, i,\
-    \ c, i - 1));\n        } else {\n            // c = 1\n            if (!directed)\
-    \ g[i].push_back(Edge(i, p, T(1), i - 1));\n            g[p].push_back(Edge(p,\
-    \ i, T(1), i - 1));\n        }\n    }\n    return g;\n}\n\nstd::tuple<Graph<int>,\
-    \ std::vector<std::vector<int>>, std::vector<std::pair<int, int>>> read_grid(const\
-    \ int h, const int w, std::string rel = \".#\") {\n    std::vector<std::string>\
-    \ s(h);\n    std::vector id(h, std::vector<int>(w, -1));\n    std::vector<std::pair<int,\
-    \ int>> loc;\n    int n = 0;\n    for (int i = 0; i < h; i++) {\n        std::cin\
-    \ >> s[i];\n        for (int j = 0; j < w; j++) {\n            if (s[i][j] ==\
-    \ rel[1]) {\n                id[i][j] = n++;\n                loc.emplace_back(i,\
-    \ j);\n            }\n        }\n    }\n    int m = 0;\n    Graph<int> g(n);\n\
-    \    for (int i = 0; i < h; i++) {\n        for (int j = 0; j < w; j++) {\n  \
-    \          if (s[i][j] == rel[1]) {\n                if (i + 1 < h and s[i + 1][j]\
-    \ == rel[1]) {\n                    g[id[i][j]].push_back(Edge(id[i][j], id[i\
-    \ + 1][j], 1, m));\n                    g[id[i + 1][j]].push_back(Edge(id[i +\
-    \ 1][j], id[i][j], 1, m++));\n                }\n                if (j + 1 < w\
-    \ and s[i][j + 1] == rel[1]) {\n                    g[id[i][j]].push_back(Edge(id[i][j],\
-    \ id[i][j + 1], 1, m));\n                    g[id[i][j + 1]].push_back(Edge(id[i][j\
-    \ + 1], id[i][j], 1, m++));\n                }\n            }\n        }\n   \
-    \ }\n    return {g, id, loc};\n}\n#line 7 \"verify/aoj_dpl/aoj_dpl_2_a.test.cpp\"\
-    \n\nint main() {\n    int N, M;\n    std::cin >> N >> M;\n    auto G = read_graph<long\
-    \ long>(N, M, true, true, 0);\n    const long long INF = 1LL << 60;\n    auto\
-    \ res = traveling_salesman_problem<long long>(G, INF);\n    long long ans = res.back()[0];\n\
-    \    if (ans == INF) ans = -1;\n    std::cout << ans << '\\n';\n    return 0;\n\
-    }\n"
+    \ = std::min(dist[e.from][e.to], e.cost);\n        }\n    }\n    std::vector dp(N2,\
+    \ std::vector<T>(N, INF));\n    dp[0][0] = 0;\n    for (int bit = 0; bit < N2;\
+    \ bit++) {\n        for (int u = 0; u < N; u++) {\n            if (dp[bit][u]\
+    \ == INF) continue;\n            for (int v = 0; v < N; v++) {\n             \
+    \   if (bit >> v & 1) continue;\n                if (dist[u][v] == INF) continue;\n\
+    \                dp[bit | (1 << v)][v] = std::min(dp[bit | (1 << v)][v], dp[bit][u]\
+    \ + dist[u][v]);\n            }\n        }\n    }\n    return dp;\n}\n#line 2\
+    \ \"graph/read_graph.hpp\"\n\n#line 4 \"graph/read_graph.hpp\"\n\ntemplate <class\
+    \ T> Graph<T> read_graph(const int n, const int m, const bool weight = false,\
+    \ const bool directed = false, const int offset = 1) {\n    Graph<T> g(n);\n \
+    \   for (int i = 0; i < m; i++) {\n        int a, b;\n        std::cin >> a >>\
+    \ b;\n        a -= offset, b -= offset;\n        if (weight) {\n            T\
+    \ c;\n            std::cin >> c;\n            if (!directed) g[b].push_back(Edge(b,\
+    \ a, c, i));\n            g[a].push_back(Edge(a, b, c, i));\n        } else {\n\
+    \            // c = 1\n            if (!directed) g[b].push_back(Edge(b, a, T(1),\
+    \ i));\n            g[a].push_back(Edge(a, b, T(1), i));\n        }\n    }\n \
+    \   return g;\n}\n\ntemplate <class T> Graph<T> read_parent(const int n, const\
+    \ bool weight = false, const bool directed = false, const int offset = 1) {\n\
+    \    Graph<T> g(n);\n    for (int i = 1; i < n; i++) {\n        int p;\n     \
+    \   std::cin >> p;\n        p -= offset;\n        if (weight) {\n            T\
+    \ c;\n            std::cin >> c;\n            if (!directed) g[i].push_back(Edge(i,\
+    \ p, c, i - 1));\n            g[p].push_back(Edge(p, i, c, i - 1));\n        }\
+    \ else {\n            // c = 1\n            if (!directed) g[i].push_back(Edge(i,\
+    \ p, T(1), i - 1));\n            g[p].push_back(Edge(p, i, T(1), i - 1));\n  \
+    \      }\n    }\n    return g;\n}\n\nstd::tuple<Graph<int>, std::vector<std::vector<int>>,\
+    \ std::vector<std::pair<int, int>>> read_grid(const int h, const int w, std::string\
+    \ rel = \".#\") {\n    std::vector<std::string> s(h);\n    std::vector id(h, std::vector<int>(w,\
+    \ -1));\n    std::vector<std::pair<int, int>> loc;\n    int n = 0;\n    for (int\
+    \ i = 0; i < h; i++) {\n        std::cin >> s[i];\n        for (int j = 0; j <\
+    \ w; j++) {\n            if (s[i][j] == rel[1]) {\n                id[i][j] =\
+    \ n++;\n                loc.emplace_back(i, j);\n            }\n        }\n  \
+    \  }\n    int m = 0;\n    Graph<int> g(n);\n    for (int i = 0; i < h; i++) {\n\
+    \        for (int j = 0; j < w; j++) {\n            if (s[i][j] == rel[1]) {\n\
+    \                if (i + 1 < h and s[i + 1][j] == rel[1]) {\n                \
+    \    g[id[i][j]].push_back(Edge(id[i][j], id[i + 1][j], 1, m));\n            \
+    \        g[id[i + 1][j]].push_back(Edge(id[i + 1][j], id[i][j], 1, m++));\n  \
+    \              }\n                if (j + 1 < w and s[i][j + 1] == rel[1]) {\n\
+    \                    g[id[i][j]].push_back(Edge(id[i][j], id[i][j + 1], 1, m));\n\
+    \                    g[id[i][j + 1]].push_back(Edge(id[i][j + 1], id[i][j], 1,\
+    \ m++));\n                }\n            }\n        }\n    }\n    return {g, id,\
+    \ loc};\n}\n#line 7 \"verify/aoj_dpl/aoj_dpl_2_a.test.cpp\"\n\nint main() {\n\
+    \    int N, M;\n    std::cin >> N >> M;\n    auto G = read_graph<long long>(N,\
+    \ M, true, true, 0);\n    const long long INF = 1LL << 60;\n    auto res = traveling_salesman_problem<long\
+    \ long>(G, INF);\n    long long ans = res.back()[0];\n    if (ans == INF) ans\
+    \ = -1;\n    std::cout << ans << '\\n';\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_A\"\
     \n\n#include <bits/stdc++.h>\n\n#include \"dp/traveling_salesman_problem.hpp\"\
     \n#include \"graph/read_graph.hpp\"\n\nint main() {\n    int N, M;\n    std::cin\
@@ -97,8 +96,8 @@ data:
   isVerificationFile: true
   path: verify/aoj_dpl/aoj_dpl_2_a.test.cpp
   requiredBy: []
-  timestamp: '2024-01-30 13:15:19+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-01-30 13:51:21+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_dpl/aoj_dpl_2_a.test.cpp
 layout: document
