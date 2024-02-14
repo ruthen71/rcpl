@@ -32,19 +32,28 @@ template <class Mint> struct Binomial {
     }
 
     Mint C(int N, int K) {
-        if (N < 0 || K < 0 || N < K) return 0;
+        // N 個から重複を許さずに K 個取る
+        if (N < 0 or K < 0 or N < K) return Mint(0);
         return fact(N) * finv(N - K) * finv(K);
     }
 
     Mint P(int N, int K) {
-        if (N < 0 || K < 0 || N < K) return 0;
+        // N 個から重複を許さずに K 個取って並べる
+        if (N < 0 or K < 0 or N < K) return Mint(0);
         return fact(N) * finv(N - K);
     }
 
+    Mint H(int N, int K) {
+        // N 個から重複を許して K 個取る
+        if (N < 0 or K < 0) return Mint(0);
+        if (K == 0) return Mint(1);
+        return C(N + K - 1, K);
+    }
+
     Mint C_naive(int N, int K) {
-        if (N < 0 || K < 0 || N < K) return 0;
+        if (N < 0 or K < 0 or N < K) return Mint(0);
         Mint res = 1;
-        K = min(K, N - K);
+        K = std::min(K, N - K);
         for (int i = 1; i <= K; i++) {
             res *= N--;
             res /= i;
