@@ -305,14 +305,20 @@ template <class Head, class... Tail> void printflush(Head&& head, Tail&&... tail
 
 // bool output
 void YES(bool t = 1) { print(t ? "YES" : "NO"); }
-void NO(bool t = 1) { YES(!t); }
 void Yes(bool t = 1) { print(t ? "Yes" : "No"); }
-void No(bool t = 1) { Yes(!t); }
 void yes(bool t = 1) { print(t ? "yes" : "no"); }
+void NO(bool t = 1) { YES(!t); }
+void No(bool t = 1) { Yes(!t); }
 void no(bool t = 1) { yes(!t); }
-void POSSIBLE(bool t = 1) { return print(t ? "POSSIBLE" : "IMPOSSIBLE"); }
-void Possible(bool t = 1) { return print(t ? "Possible" : "Impossible"); }
-void possible(bool t = 1) { return print(t ? "possible" : "impossible"); }
+void POSSIBLE(bool t = 1) { print(t ? "POSSIBLE" : "IMPOSSIBLE"); }
+void Possible(bool t = 1) { print(t ? "Possible" : "Impossible"); }
+void possible(bool t = 1) { print(t ? "possible" : "impossible"); }
+void FIRST(bool t = 1) { print(t ? "FIRST" : "SECOND"); }
+void First(bool t = 1) { print(t ? "First" : "Second"); }
+void first(bool t = 1) { print(t ? "first" : "second"); }
+void SECOND(bool t = 1) { FIRST(!t); }
+void Second(bool t = 1) { First(!t); }
+void second(bool t = 1) { first(!t); }
 
 // I/O speed up
 struct SetUpIO {
