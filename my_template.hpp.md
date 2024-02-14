@@ -137,15 +137,18 @@ data:
     }\ntemplate <class Head, class... Tail> void printflush(Head&& head, Tail&&...\
     \ tail) {\n    out(head);\n    if (sizeof...(Tail)) out(' ');\n    printflush(tail...);\n\
     }\n\n// bool output\nvoid YES(bool t = 1) { print(t ? \"YES\" : \"NO\"); }\nvoid\
-    \ NO(bool t = 1) { YES(!t); }\nvoid Yes(bool t = 1) { print(t ? \"Yes\" : \"No\"\
-    ); }\nvoid No(bool t = 1) { Yes(!t); }\nvoid yes(bool t = 1) { print(t ? \"yes\"\
-    \ : \"no\"); }\nvoid no(bool t = 1) { yes(!t); }\nvoid POSSIBLE(bool t = 1) {\
-    \ return print(t ? \"POSSIBLE\" : \"IMPOSSIBLE\"); }\nvoid Possible(bool t = 1)\
-    \ { return print(t ? \"Possible\" : \"Impossible\"); }\nvoid possible(bool t =\
-    \ 1) { return print(t ? \"possible\" : \"impossible\"); }\n\n// I/O speed up\n\
-    struct SetUpIO {\n    SetUpIO() {\n        std::ios::sync_with_stdio(false);\n\
-    \        std::cin.tie(0);\n        std::cout << std::fixed << std::setprecision(15);\n\
-    \    }\n} set_up_io;\n"
+    \ Yes(bool t = 1) { print(t ? \"Yes\" : \"No\"); }\nvoid yes(bool t = 1) { print(t\
+    \ ? \"yes\" : \"no\"); }\nvoid NO(bool t = 1) { YES(!t); }\nvoid No(bool t = 1)\
+    \ { Yes(!t); }\nvoid no(bool t = 1) { yes(!t); }\nvoid POSSIBLE(bool t = 1) {\
+    \ print(t ? \"POSSIBLE\" : \"IMPOSSIBLE\"); }\nvoid Possible(bool t = 1) { print(t\
+    \ ? \"Possible\" : \"Impossible\"); }\nvoid possible(bool t = 1) { print(t ? \"\
+    possible\" : \"impossible\"); }\nvoid FIRST(bool t = 1) { print(t ? \"FIRST\"\
+    \ : \"SECOND\"); }\nvoid First(bool t = 1) { print(t ? \"First\" : \"Second\"\
+    ); }\nvoid first(bool t = 1) { print(t ? \"first\" : \"second\"); }\nvoid SECOND(bool\
+    \ t = 1) { FIRST(!t); }\nvoid Second(bool t = 1) { First(!t); }\nvoid second(bool\
+    \ t = 1) { first(!t); }\n\n// I/O speed up\nstruct SetUpIO {\n    SetUpIO() {\n\
+    \        std::ios::sync_with_stdio(false);\n        std::cin.tie(0);\n       \
+    \ std::cout << std::fixed << std::setprecision(15);\n    }\n} set_up_io;\n"
   code: "#pragma once\n\n#include <algorithm>\n#include <array>\n#include <bitset>\n\
     #include <cassert>\n#include <chrono>\n#include <cmath>\n#include <complex>\n\
     #include <deque>\n#include <forward_list>\n#include <fstream>\n#include <functional>\n\
@@ -275,20 +278,23 @@ data:
     }\ntemplate <class Head, class... Tail> void printflush(Head&& head, Tail&&...\
     \ tail) {\n    out(head);\n    if (sizeof...(Tail)) out(' ');\n    printflush(tail...);\n\
     }\n\n// bool output\nvoid YES(bool t = 1) { print(t ? \"YES\" : \"NO\"); }\nvoid\
-    \ NO(bool t = 1) { YES(!t); }\nvoid Yes(bool t = 1) { print(t ? \"Yes\" : \"No\"\
-    ); }\nvoid No(bool t = 1) { Yes(!t); }\nvoid yes(bool t = 1) { print(t ? \"yes\"\
-    \ : \"no\"); }\nvoid no(bool t = 1) { yes(!t); }\nvoid POSSIBLE(bool t = 1) {\
-    \ return print(t ? \"POSSIBLE\" : \"IMPOSSIBLE\"); }\nvoid Possible(bool t = 1)\
-    \ { return print(t ? \"Possible\" : \"Impossible\"); }\nvoid possible(bool t =\
-    \ 1) { return print(t ? \"possible\" : \"impossible\"); }\n\n// I/O speed up\n\
-    struct SetUpIO {\n    SetUpIO() {\n        std::ios::sync_with_stdio(false);\n\
-    \        std::cin.tie(0);\n        std::cout << std::fixed << std::setprecision(15);\n\
-    \    }\n} set_up_io;"
+    \ Yes(bool t = 1) { print(t ? \"Yes\" : \"No\"); }\nvoid yes(bool t = 1) { print(t\
+    \ ? \"yes\" : \"no\"); }\nvoid NO(bool t = 1) { YES(!t); }\nvoid No(bool t = 1)\
+    \ { Yes(!t); }\nvoid no(bool t = 1) { yes(!t); }\nvoid POSSIBLE(bool t = 1) {\
+    \ print(t ? \"POSSIBLE\" : \"IMPOSSIBLE\"); }\nvoid Possible(bool t = 1) { print(t\
+    \ ? \"Possible\" : \"Impossible\"); }\nvoid possible(bool t = 1) { print(t ? \"\
+    possible\" : \"impossible\"); }\nvoid FIRST(bool t = 1) { print(t ? \"FIRST\"\
+    \ : \"SECOND\"); }\nvoid First(bool t = 1) { print(t ? \"First\" : \"Second\"\
+    ); }\nvoid first(bool t = 1) { print(t ? \"first\" : \"second\"); }\nvoid SECOND(bool\
+    \ t = 1) { FIRST(!t); }\nvoid Second(bool t = 1) { First(!t); }\nvoid second(bool\
+    \ t = 1) { first(!t); }\n\n// I/O speed up\nstruct SetUpIO {\n    SetUpIO() {\n\
+    \        std::ios::sync_with_stdio(false);\n        std::cin.tie(0);\n       \
+    \ std::cout << std::fixed << std::setprecision(15);\n    }\n} set_up_io;"
   dependsOn: []
   isVerificationFile: false
   path: my_template.hpp
   requiredBy: []
-  timestamp: '2024-01-25 10:45:51+09:00'
+  timestamp: '2024-02-14 17:01:01+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: my_template.hpp

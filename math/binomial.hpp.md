@@ -19,13 +19,19 @@ data:
     \ while (i >= (int)f.size()) extend();\n        return f[i];\n    }\n\n    Mint\
     \ finv(int i) {\n        if (i < 0) return Mint(0);\n        while (i >= (int)g.size())\
     \ extend();\n        return g[i];\n    }\n\n    Mint C(int N, int K) {\n     \
-    \   if (N < 0 || K < 0 || N < K) return 0;\n        return fact(N) * finv(N -\
-    \ K) * finv(K);\n    }\n\n    Mint P(int N, int K) {\n        if (N < 0 || K <\
-    \ 0 || N < K) return 0;\n        return fact(N) * finv(N - K);\n    }\n\n    Mint\
-    \ C_naive(int N, int K) {\n        if (N < 0 || K < 0 || N < K) return 0;\n  \
-    \      Mint res = 1;\n        K = min(K, N - K);\n        for (int i = 1; i <=\
-    \ K; i++) {\n            res *= N--;\n            res /= i;\n        }\n     \
-    \   return res;\n    }\n};\n"
+    \   // N \u500B\u304B\u3089\u91CD\u8907\u3092\u8A31\u3055\u305A\u306B K \u500B\
+    \u53D6\u308B\n        if (N < 0 or K < 0 or N < K) return Mint(0);\n        return\
+    \ fact(N) * finv(N - K) * finv(K);\n    }\n\n    Mint P(int N, int K) {\n    \
+    \    // N \u500B\u304B\u3089\u91CD\u8907\u3092\u8A31\u3055\u305A\u306B K \u500B\
+    \u53D6\u3063\u3066\u4E26\u3079\u308B\n        if (N < 0 or K < 0 or N < K) return\
+    \ Mint(0);\n        return fact(N) * finv(N - K);\n    }\n\n    Mint H(int N,\
+    \ int K) {\n        // N \u500B\u304B\u3089\u91CD\u8907\u3092\u8A31\u3057\u3066\
+    \ K \u500B\u53D6\u308B\n        if (N < 0 or K < 0) return Mint(0);\n        if\
+    \ (K == 0) return Mint(1);\n        return C(N + K - 1, K);\n    }\n\n    Mint\
+    \ C_naive(int N, int K) {\n        if (N < 0 or K < 0 or N < K) return Mint(0);\n\
+    \        Mint res = 1;\n        K = std::min(K, N - K);\n        for (int i =\
+    \ 1; i <= K; i++) {\n            res *= N--;\n            res /= i;\n        }\n\
+    \        return res;\n    }\n};\n"
   code: "#pragma once\n\ntemplate <class Mint> struct Binomial {\n    std::vector<Mint>\
     \ f, g;\n\n    Binomial(int N = 0) {\n        f.resize(1, Mint(1));\n        g.resize(1,\
     \ Mint(1));\n        while (N >= (int)f.size()) extend();\n    }\n\n    void extend()\
@@ -36,18 +42,24 @@ data:
     \ 0) return Mint(0);\n        while (i >= (int)f.size()) extend();\n        return\
     \ f[i];\n    }\n\n    Mint finv(int i) {\n        if (i < 0) return Mint(0);\n\
     \        while (i >= (int)g.size()) extend();\n        return g[i];\n    }\n\n\
-    \    Mint C(int N, int K) {\n        if (N < 0 || K < 0 || N < K) return 0;\n\
-    \        return fact(N) * finv(N - K) * finv(K);\n    }\n\n    Mint P(int N, int\
-    \ K) {\n        if (N < 0 || K < 0 || N < K) return 0;\n        return fact(N)\
-    \ * finv(N - K);\n    }\n\n    Mint C_naive(int N, int K) {\n        if (N < 0\
-    \ || K < 0 || N < K) return 0;\n        Mint res = 1;\n        K = min(K, N -\
-    \ K);\n        for (int i = 1; i <= K; i++) {\n            res *= N--;\n     \
-    \       res /= i;\n        }\n        return res;\n    }\n};"
+    \    Mint C(int N, int K) {\n        // N \u500B\u304B\u3089\u91CD\u8907\u3092\
+    \u8A31\u3055\u305A\u306B K \u500B\u53D6\u308B\n        if (N < 0 or K < 0 or N\
+    \ < K) return Mint(0);\n        return fact(N) * finv(N - K) * finv(K);\n    }\n\
+    \n    Mint P(int N, int K) {\n        // N \u500B\u304B\u3089\u91CD\u8907\u3092\
+    \u8A31\u3055\u305A\u306B K \u500B\u53D6\u3063\u3066\u4E26\u3079\u308B\n      \
+    \  if (N < 0 or K < 0 or N < K) return Mint(0);\n        return fact(N) * finv(N\
+    \ - K);\n    }\n\n    Mint H(int N, int K) {\n        // N \u500B\u304B\u3089\u91CD\
+    \u8907\u3092\u8A31\u3057\u3066 K \u500B\u53D6\u308B\n        if (N < 0 or K <\
+    \ 0) return Mint(0);\n        if (K == 0) return Mint(1);\n        return C(N\
+    \ + K - 1, K);\n    }\n\n    Mint C_naive(int N, int K) {\n        if (N < 0 or\
+    \ K < 0 or N < K) return Mint(0);\n        Mint res = 1;\n        K = std::min(K,\
+    \ N - K);\n        for (int i = 1; i <= K; i++) {\n            res *= N--;\n \
+    \           res /= i;\n        }\n        return res;\n    }\n};"
   dependsOn: []
   isVerificationFile: false
   path: math/binomial.hpp
   requiredBy: []
-  timestamp: '2023-02-06 23:12:05+09:00'
+  timestamp: '2024-02-14 17:01:07+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/binomial.hpp
