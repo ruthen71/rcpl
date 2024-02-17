@@ -43,20 +43,22 @@ data:
     void mo(const int n, const std::vector<int> &l, const std::vector<int> &r,  //\n\
     \        const Add &add, const Del &del, const Out &out) {\n    mo(n, l, r, add,\
     \ add, del, del, out);\n}\n#line 2 \"data_structure/fenwick_tree.hpp\"\n\ntemplate\
-    \ <class T> struct FenwickTree {\n    int N;\n    std::vector<T> seg;\n    FenwickTree(int\
-    \ N) : N(N), seg(N + 1, 0) {}\n    FenwickTree(std::vector<T> &A) {\n        N\
-    \ = (int)A.size();\n        seg.resize(N + 1);\n        for (int i = 0; i < N;\
-    \ i++) add(i, A[i]);\n    }\n    // A[i] += x\n    void add(int i, T x) {\n  \
-    \      assert(0 <= i and i < N);\n        i++;  // 1-indexed\n        while (i\
-    \ <= N) {\n            seg[i] += x;\n            i += i & -i;\n        }\n   \
-    \ }\n    // A[0] + ... + A[i - 1]\n    T sum(int i) const {\n        assert(0\
-    \ <= i and i <= N);\n        T s = 0;\n        while (i > 0) {\n            s\
-    \ += seg[i];\n            i -= i & -i;\n        }\n        return s;\n    }\n\
-    \    // A[a] + ... + A[b - 1]\n    T sum(int a, int b) const {\n        assert(0\
-    \ <= a and a <= b and b <= N);\n        return sum(b) - sum(a);\n    }\n\n   \
-    \ // output\n    friend std::ostream &operator<<(std::ostream &os, const FenwickTree\
-    \ &A) {\n        for (int i = 0; i < A.N; i++) os << A.sum(i, i + 1) << \" \\\
-    n\"[i == A.N - 1];\n        return os;\n    }\n};\n#line 7 \"verify/lc_data_structure/lc_static_range_inversions_query.test.cpp\"\
+    \ <class T> struct FenwickTree {\n    int n;\n    std::vector<T> seg;\n    FenwickTree()\
+    \ : n(0) {}\n    FenwickTree(int n) : n(n), seg(n + 1, 0) {}\n    FenwickTree(std::vector<T>&\
+    \ arr) {\n        n = int(arr.size());\n        seg.resize(n + 1);\n        for\
+    \ (int i = 0; i < n; i++) add(i, arr[i]);\n    }\n    // A[i] += x\n    void add(int\
+    \ i, const T& x) {\n        assert(0 <= i and i < n);\n        i++;  // 1-indexed\n\
+    \        while (i <= n) {\n            seg[i] += x;\n            i += i & -i;\n\
+    \        }\n    }\n    // A[0] + ... + A[i - 1]\n    T sum(int i) const {\n  \
+    \      assert(0 <= i and i <= n);\n        T s = T(0);\n        while (i > 0)\
+    \ {\n            s += seg[i];\n            i -= i & -i;\n        }\n        return\
+    \ s;\n    }\n    // A[a] + ... + A[b - 1]\n    T sum(int a, int b) const {\n \
+    \       assert(0 <= a and a <= b and b <= n);\n        return sum(b) - sum(a);\n\
+    \    }\n    // return A[i]\n    T get(int i) const { return sum(i, i + 1); }\n\
+    \    // A[i] = x\n    void set(int i, const T x) { add(i, x - get(i)); }\n   \
+    \ // output\n    friend std::ostream& operator<<(std::ostream& os, const FenwickTree&\
+    \ fen) {\n        for (int i = 0; i < fen.n; i++) os << fen.get(i) << \" \\n\"\
+    [i == fen.n - 1];\n        return os;\n    }\n};\n#line 7 \"verify/lc_data_structure/lc_static_range_inversions_query.test.cpp\"\
     \n\nint main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    std::vector<int>\
     \ A(N);\n    for (int i = 0; i < N; i++) std::cin >> A[i];\n    std::vector<int>\
     \ L(Q), R(Q);\n    for (int i = 0; i < Q; i++) std::cin >> L[i] >> R[i];\n\n \
@@ -95,7 +97,7 @@ data:
   isVerificationFile: true
   path: verify/lc_data_structure/lc_static_range_inversions_query.test.cpp
   requiredBy: []
-  timestamp: '2023-03-28 00:22:48+09:00'
+  timestamp: '2024-02-18 06:04:00+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_data_structure/lc_static_range_inversions_query.test.cpp
