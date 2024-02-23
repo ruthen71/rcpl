@@ -361,12 +361,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/enumerate_primes.hpp
       title: math/enumerate_primes.hpp
-    - icon: ':heavy_check_mark:'
-      path: math/ext_gcd.hpp
-      title: math/ext_gcd.hpp
+    - icon: ':x:'
+      path: math/extended_gcd.hpp
+      title: math/extended_gcd.hpp
     - icon: ':warning:'
       path: math/inv_mod.hpp
       title: math/inv_mod.hpp
+    - icon: ':warning:'
+      path: math/linear_diophantine.hpp
+      title: math/linear_diophantine.hpp
     - icon: ':heavy_check_mark:'
       path: math/modint261.hpp
       title: ModInt $\pmod{2^{61}-1} $
@@ -564,7 +567,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_ntl/aoj_ntl_1_d.test.cpp
       title: verify/aoj_ntl/aoj_ntl_1_d.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/aoj_ntl/aoj_ntl_1_e.test.cpp
       title: verify/aoj_ntl/aoj_ntl_1_e.test.cpp
   - name: verify/aoj_other
