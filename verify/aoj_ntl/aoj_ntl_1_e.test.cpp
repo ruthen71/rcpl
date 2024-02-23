@@ -2,12 +2,12 @@
 
 #include <bits/stdc++.h>
 
-#include "math/ext_gcd.hpp"
+#include "math/extended_gcd.hpp"
 
 int main() {
     long long a, b, x, y;
     std::cin >> a >> b;
-    ext_gcd(a, b, x, y);
+    auto [x, y] = extended_gcd(a, b);
     std::cout << x << ' ' << y << '\n';
     return 0;
 }
