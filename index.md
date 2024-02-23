@@ -361,7 +361,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/enumerate_primes.hpp
       title: math/enumerate_primes.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/extended_gcd.hpp
       title: math/extended_gcd.hpp
     - icon: ':warning:'
@@ -567,7 +567,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_ntl/aoj_ntl_1_d.test.cpp
       title: verify/aoj_ntl/aoj_ntl_1_d.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj_ntl/aoj_ntl_1_e.test.cpp
       title: verify/aoj_ntl/aoj_ntl_1_e.test.cpp
   - name: verify/aoj_other

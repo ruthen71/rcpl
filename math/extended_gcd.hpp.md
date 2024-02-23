@@ -12,12 +12,12 @@ data:
     path: math/linear_diophantine.hpp
     title: math/linear_diophantine.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj_ntl/aoj_ntl_1_e.test.cpp
     title: verify/aoj_ntl/aoj_ntl_1_e.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/extended_gcd.hpp\"\n\n#include <tuple>\n// find (x,\
@@ -37,7 +37,7 @@ data:
   - math/linear_diophantine.hpp
   - math/inv_mod.hpp
   timestamp: '2024-02-23 10:34:07+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_ntl/aoj_ntl_1_e.test.cpp
 documentation_of: math/extended_gcd.hpp

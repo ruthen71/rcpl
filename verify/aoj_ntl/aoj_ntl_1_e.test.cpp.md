@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/extended_gcd.hpp
     title: math/extended_gcd.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_E
@@ -21,21 +21,20 @@ data:
     \ b)}\ntemplate <class T> std::tuple<T, T, T> extended_gcd(T a, T b) {\n    if\
     \ (b == 0) return {1, 0, a};\n    auto [y, x, g] = extended_gcd(b, a % b);\n \
     \   return {x, y - (a / b) * x, g};\n}\n#line 6 \"verify/aoj_ntl/aoj_ntl_1_e.test.cpp\"\
-    \n\nint main() {\n    long long a, b, x, y;\n    std::cin >> a >> b;\n    auto\
-    \ [x, y, g] = extended_gcd(a, b);\n    std::cout << x << ' ' << y << '\\n';\n\
-    \    return 0;\n}\n"
+    \n\nint main() {\n    long long a, b;\n    std::cin >> a >> b;\n    auto [x, y,\
+    \ g] = extended_gcd(a, b);\n    std::cout << x << ' ' << y << '\\n';\n    return\
+    \ 0;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_E\"\
     \n\n#include <bits/stdc++.h>\n\n#include \"math/extended_gcd.hpp\"\n\nint main()\
-    \ {\n    long long a, b, x, y;\n    std::cin >> a >> b;\n    auto [x, y, g] =\
-    \ extended_gcd(a, b);\n    std::cout << x << ' ' << y << '\\n';\n    return 0;\n\
-    }"
+    \ {\n    long long a, b;\n    std::cin >> a >> b;\n    auto [x, y, g] = extended_gcd(a,\
+    \ b);\n    std::cout << x << ' ' << y << '\\n';\n    return 0;\n}"
   dependsOn:
   - math/extended_gcd.hpp
   isVerificationFile: true
   path: verify/aoj_ntl/aoj_ntl_1_e.test.cpp
   requiredBy: []
-  timestamp: '2024-02-23 10:38:03+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-02-23 10:46:31+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_ntl/aoj_ntl_1_e.test.cpp
 layout: document
