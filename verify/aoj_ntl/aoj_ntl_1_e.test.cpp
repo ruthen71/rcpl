@@ -5,7 +5,7 @@
 #include "math/extended_gcd.hpp"
 
 int main() {
-    long long a, b, x, y;
+    long long a, b;
     std::cin >> a >> b;
     auto [x, y, g] = extended_gcd(a, b);
     std::cout << x << ' ' << y << '\n';
