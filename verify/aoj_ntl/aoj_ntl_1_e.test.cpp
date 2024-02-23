@@ -7,7 +7,7 @@
 int main() {
     long long a, b, x, y;
     std::cin >> a >> b;
-    auto [x, y] = extended_gcd(a, b);
+    auto [x, y, g] = extended_gcd(a, b);
     std::cout << x << ' ' << y << '\n';
     return 0;
 }
