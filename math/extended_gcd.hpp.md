@@ -10,7 +10,9 @@ data:
     title: math/inv_mod.hpp
   - icon: ':warning:'
     path: math/linear_diophantine.hpp
-    title: math/linear_diophantine.hpp
+    title: "\u7DDA\u5F62\u30C7\u30A3\u30AA\u30D5\u30A1\u30F3\u30C8\u30B9\u65B9\u7A0B\
+      \u5F0F ($ ax + by = c $) / \u7DDA\u5F62\u5408\u540C\u5F0F ( $ ax \\equiv b \\\
+      pmod m $ )"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_ntl/aoj_ntl_1_e.test.cpp

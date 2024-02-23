@@ -105,8 +105,13 @@ data:
   verifiedWith: []
 documentation_of: math/linear_diophantine.hpp
 layout: document
-redirect_from:
-- /library/math/linear_diophantine.hpp
-- /library/math/linear_diophantine.hpp.html
-title: math/linear_diophantine.hpp
+title: "\u7DDA\u5F62\u30C7\u30A3\u30AA\u30D5\u30A1\u30F3\u30C8\u30B9\u65B9\u7A0B\u5F0F\
+  \ ($ ax + by = c $) / \u7DDA\u5F62\u5408\u540C\u5F0F ( $ ax \\equiv b \\pmod m $\
+  \ )"
 ---
+
+線形合同式は $ \bmod m $ で $ a^{-1} $ を求めることでは解が求められない場合がある
+
+例えば、$ 9x \equiv 3 \pmod {15} $ は $ 9^{-1} $ となる値を持たないが、$ x \equiv 2 \pmod 5 $ が解である
+
+このような場合、拡張ユークリッドの互除法を用いることで解が求められる
