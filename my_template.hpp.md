@@ -21,14 +21,14 @@ data:
     using u32 = unsigned int;\nusing u64 = unsigned long long;\nusing u128 = __uint128_t;\n\
     using f32 = float;\nusing f64 = double;\nusing f128 = long double;\ntemplate <class\
     \ T> using pque = std::priority_queue<T>;\ntemplate <class T> using pqueg = std::priority_queue<T,\
-    \ std::vector<T>, std::greater<T>>;\n\n#define overload4(_1, _2, _3, _4, name,\
-    \ ...) name\n#define overload3(_1, _2, _3, name, ...) name\n#define overload2(_1,\
-    \ _2, name, ...) name\n\n// loop\n#define REP1(a) for (long long _ = 0; _ < (a);\
-    \ _++)\n#define REP2(i, a) for (long long i = 0; i < (a); i++)\n#define REP3(i,\
-    \ a, b) for (long long i = (a); i < (b); i++)\n#define REP4(i, a, b, c) for (long\
-    \ long i = (a); i < (b); i += (c))\n#define REP(...) overload4(__VA_ARGS__, REP4,\
-    \ REP3, REP2, REP1)(__VA_ARGS__)\n#define RREP1(a) for (long long _ = (a)-1; _\
-    \ >= 0; _--)\n#define RREP2(i, a) for (long long i = (a)-1; i >= 0; i--)\n#define\
+    \ std::vector<T>, std::greater<T>>;\n\n// overload\n#define overload4(_1, _2,\
+    \ _3, _4, name, ...) name\n#define overload3(_1, _2, _3, name, ...) name\n#define\
+    \ overload2(_1, _2, name, ...) name\n\n// for loop\n#define REP1(a) for (long\
+    \ long _ = 0; _ < (a); _++)\n#define REP2(i, a) for (long long i = 0; i < (a);\
+    \ i++)\n#define REP3(i, a, b) for (long long i = (a); i < (b); i++)\n#define REP4(i,\
+    \ a, b, c) for (long long i = (a); i < (b); i += (c))\n#define REP(...) overload4(__VA_ARGS__,\
+    \ REP4, REP3, REP2, REP1)(__VA_ARGS__)\n#define RREP1(a) for (long long _ = (a)-1;\
+    \ _ >= 0; _--)\n#define RREP2(i, a) for (long long i = (a)-1; i >= 0; i--)\n#define\
     \ RREP3(i, a, b) for (long long i = (b)-1; i >= (a); i--)\n#define RREP(...) overload3(__VA_ARGS__,\
     \ RREP3, RREP2, RREP1)(__VA_ARGS__)\n#define FORE1(x, a) for (auto&& x : a)\n\
     #define FORE2(x, y, a) for (auto&& [x, y] : a)\n#define FORE3(x, y, z, a) for\
@@ -53,8 +53,14 @@ data:
     \ : 1)));\n}\ntemplate <class T, class S> inline T ceil(const T x, const S y)\
     \ {\n    assert(y);\n    return (y < 0 ? ceil(-x, -y) : (x > 0 ? (x + y - 1) /\
     \ y : x / y));\n}\ntemplate <class T, class S> std::pair<T, T> inline divmod(const\
-    \ T x, const S y) {\n    T q = floor(x, y);\n    return {q, x - q * y};\n}\n\n\
-    // bit operation\n// (0, 1, 2, 3, 4) -> (0, 1, 1, 2, 1)\nint popcnt(int x) { return\
+    \ T x, const S y) {\n    T q = floor(x, y);\n    return {q, x - q * y};\n}\n//\
+    \ 10 ^ n\nconstexpr long long TEN(int n) { return (n == 0) ? 1 : 10LL * TEN(n\
+    \ - 1); }\n// 1 + 2 + ... + n\n#define TRI1(n) ((n) * ((n) + 1LL) / 2)\n// l +\
+    \ (l + 1) + ... + r\n#define TRI2(l, r) (((l) + (r)) * ((r) - (l) + 1LL) / 2)\n\
+    #define TRI(...) overload2(__VA_ARGS__, TRI2, TRI1)(__VA_ARGS__)\n\n// bit operation\n\
+    // bit[i] (= 0 or 1)\n#define IBIT(bit, i) (((bit) >> (i)) & 1)\n// (0, 1, 2,\
+    \ 3, 4) -> (0, 1, 3, 7, 15)\n#define MASK(n) ((1LL << (n)) - 1)\n#define POW2(n)\
+    \ (1LL << (n))\n// (0, 1, 2, 3, 4) -> (0, 1, 1, 2, 1)\nint popcnt(int x) { return\
     \ __builtin_popcount(x); }\nint popcnt(u32 x) { return __builtin_popcount(x);\
     \ }\nint popcnt(i64 x) { return __builtin_popcountll(x); }\nint popcnt(u64 x)\
     \ { return __builtin_popcountll(x); }\n// (0, 1, 2, 3, 4) -> (-1, 0, 1, 1, 2)\n\
@@ -142,13 +148,15 @@ data:
     \ { Yes(!t); }\nvoid no(bool t = 1) { yes(!t); }\nvoid POSSIBLE(bool t = 1) {\
     \ print(t ? \"POSSIBLE\" : \"IMPOSSIBLE\"); }\nvoid Possible(bool t = 1) { print(t\
     \ ? \"Possible\" : \"Impossible\"); }\nvoid possible(bool t = 1) { print(t ? \"\
-    possible\" : \"impossible\"); }\nvoid FIRST(bool t = 1) { print(t ? \"FIRST\"\
-    \ : \"SECOND\"); }\nvoid First(bool t = 1) { print(t ? \"First\" : \"Second\"\
-    ); }\nvoid first(bool t = 1) { print(t ? \"first\" : \"second\"); }\nvoid SECOND(bool\
-    \ t = 1) { FIRST(!t); }\nvoid Second(bool t = 1) { First(!t); }\nvoid second(bool\
-    \ t = 1) { first(!t); }\n\n// I/O speed up\nstruct SetUpIO {\n    SetUpIO() {\n\
-    \        std::ios::sync_with_stdio(false);\n        std::cin.tie(0);\n       \
-    \ std::cout << std::fixed << std::setprecision(15);\n    }\n} set_up_io;\n"
+    possible\" : \"impossible\"); }\nvoid IMPOSSIBLE(bool t = 1) { POSSIBLE(!t); }\n\
+    void Impossible(bool t = 1) { Possible(!t); }\nvoid impossible(bool t = 1) { possible(!t);\
+    \ }\nvoid FIRST(bool t = 1) { print(t ? \"FIRST\" : \"SECOND\"); }\nvoid First(bool\
+    \ t = 1) { print(t ? \"First\" : \"Second\"); }\nvoid first(bool t = 1) { print(t\
+    \ ? \"first\" : \"second\"); }\nvoid SECOND(bool t = 1) { FIRST(!t); }\nvoid Second(bool\
+    \ t = 1) { First(!t); }\nvoid second(bool t = 1) { first(!t); }\n\n// I/O speed\
+    \ up\nstruct SetUpIO {\n    SetUpIO() {\n        std::ios::sync_with_stdio(false);\n\
+    \        std::cin.tie(0);\n        std::cout << std::fixed << std::setprecision(15);\n\
+    \    }\n} set_up_io;\n"
   code: "#pragma once\n\n#include <algorithm>\n#include <array>\n#include <bitset>\n\
     #include <cassert>\n#include <chrono>\n#include <cmath>\n#include <complex>\n\
     #include <deque>\n#include <forward_list>\n#include <fstream>\n#include <functional>\n\
@@ -162,14 +170,14 @@ data:
     \ u32 = unsigned int;\nusing u64 = unsigned long long;\nusing u128 = __uint128_t;\n\
     using f32 = float;\nusing f64 = double;\nusing f128 = long double;\ntemplate <class\
     \ T> using pque = std::priority_queue<T>;\ntemplate <class T> using pqueg = std::priority_queue<T,\
-    \ std::vector<T>, std::greater<T>>;\n\n#define overload4(_1, _2, _3, _4, name,\
-    \ ...) name\n#define overload3(_1, _2, _3, name, ...) name\n#define overload2(_1,\
-    \ _2, name, ...) name\n\n// loop\n#define REP1(a) for (long long _ = 0; _ < (a);\
-    \ _++)\n#define REP2(i, a) for (long long i = 0; i < (a); i++)\n#define REP3(i,\
-    \ a, b) for (long long i = (a); i < (b); i++)\n#define REP4(i, a, b, c) for (long\
-    \ long i = (a); i < (b); i += (c))\n#define REP(...) overload4(__VA_ARGS__, REP4,\
-    \ REP3, REP2, REP1)(__VA_ARGS__)\n#define RREP1(a) for (long long _ = (a)-1; _\
-    \ >= 0; _--)\n#define RREP2(i, a) for (long long i = (a)-1; i >= 0; i--)\n#define\
+    \ std::vector<T>, std::greater<T>>;\n\n// overload\n#define overload4(_1, _2,\
+    \ _3, _4, name, ...) name\n#define overload3(_1, _2, _3, name, ...) name\n#define\
+    \ overload2(_1, _2, name, ...) name\n\n// for loop\n#define REP1(a) for (long\
+    \ long _ = 0; _ < (a); _++)\n#define REP2(i, a) for (long long i = 0; i < (a);\
+    \ i++)\n#define REP3(i, a, b) for (long long i = (a); i < (b); i++)\n#define REP4(i,\
+    \ a, b, c) for (long long i = (a); i < (b); i += (c))\n#define REP(...) overload4(__VA_ARGS__,\
+    \ REP4, REP3, REP2, REP1)(__VA_ARGS__)\n#define RREP1(a) for (long long _ = (a)-1;\
+    \ _ >= 0; _--)\n#define RREP2(i, a) for (long long i = (a)-1; i >= 0; i--)\n#define\
     \ RREP3(i, a, b) for (long long i = (b)-1; i >= (a); i--)\n#define RREP(...) overload3(__VA_ARGS__,\
     \ RREP3, RREP2, RREP1)(__VA_ARGS__)\n#define FORE1(x, a) for (auto&& x : a)\n\
     #define FORE2(x, y, a) for (auto&& [x, y] : a)\n#define FORE3(x, y, z, a) for\
@@ -194,8 +202,14 @@ data:
     \ : 1)));\n}\ntemplate <class T, class S> inline T ceil(const T x, const S y)\
     \ {\n    assert(y);\n    return (y < 0 ? ceil(-x, -y) : (x > 0 ? (x + y - 1) /\
     \ y : x / y));\n}\ntemplate <class T, class S> std::pair<T, T> inline divmod(const\
-    \ T x, const S y) {\n    T q = floor(x, y);\n    return {q, x - q * y};\n}\n\n\
-    // bit operation\n// (0, 1, 2, 3, 4) -> (0, 1, 1, 2, 1)\nint popcnt(int x) { return\
+    \ T x, const S y) {\n    T q = floor(x, y);\n    return {q, x - q * y};\n}\n//\
+    \ 10 ^ n\nconstexpr long long TEN(int n) { return (n == 0) ? 1 : 10LL * TEN(n\
+    \ - 1); }\n// 1 + 2 + ... + n\n#define TRI1(n) ((n) * ((n) + 1LL) / 2)\n// l +\
+    \ (l + 1) + ... + r\n#define TRI2(l, r) (((l) + (r)) * ((r) - (l) + 1LL) / 2)\n\
+    #define TRI(...) overload2(__VA_ARGS__, TRI2, TRI1)(__VA_ARGS__)\n\n// bit operation\n\
+    // bit[i] (= 0 or 1)\n#define IBIT(bit, i) (((bit) >> (i)) & 1)\n// (0, 1, 2,\
+    \ 3, 4) -> (0, 1, 3, 7, 15)\n#define MASK(n) ((1LL << (n)) - 1)\n#define POW2(n)\
+    \ (1LL << (n))\n// (0, 1, 2, 3, 4) -> (0, 1, 1, 2, 1)\nint popcnt(int x) { return\
     \ __builtin_popcount(x); }\nint popcnt(u32 x) { return __builtin_popcount(x);\
     \ }\nint popcnt(i64 x) { return __builtin_popcountll(x); }\nint popcnt(u64 x)\
     \ { return __builtin_popcountll(x); }\n// (0, 1, 2, 3, 4) -> (-1, 0, 1, 1, 2)\n\
@@ -283,18 +297,20 @@ data:
     \ { Yes(!t); }\nvoid no(bool t = 1) { yes(!t); }\nvoid POSSIBLE(bool t = 1) {\
     \ print(t ? \"POSSIBLE\" : \"IMPOSSIBLE\"); }\nvoid Possible(bool t = 1) { print(t\
     \ ? \"Possible\" : \"Impossible\"); }\nvoid possible(bool t = 1) { print(t ? \"\
-    possible\" : \"impossible\"); }\nvoid FIRST(bool t = 1) { print(t ? \"FIRST\"\
-    \ : \"SECOND\"); }\nvoid First(bool t = 1) { print(t ? \"First\" : \"Second\"\
-    ); }\nvoid first(bool t = 1) { print(t ? \"first\" : \"second\"); }\nvoid SECOND(bool\
-    \ t = 1) { FIRST(!t); }\nvoid Second(bool t = 1) { First(!t); }\nvoid second(bool\
-    \ t = 1) { first(!t); }\n\n// I/O speed up\nstruct SetUpIO {\n    SetUpIO() {\n\
-    \        std::ios::sync_with_stdio(false);\n        std::cin.tie(0);\n       \
-    \ std::cout << std::fixed << std::setprecision(15);\n    }\n} set_up_io;"
+    possible\" : \"impossible\"); }\nvoid IMPOSSIBLE(bool t = 1) { POSSIBLE(!t); }\n\
+    void Impossible(bool t = 1) { Possible(!t); }\nvoid impossible(bool t = 1) { possible(!t);\
+    \ }\nvoid FIRST(bool t = 1) { print(t ? \"FIRST\" : \"SECOND\"); }\nvoid First(bool\
+    \ t = 1) { print(t ? \"First\" : \"Second\"); }\nvoid first(bool t = 1) { print(t\
+    \ ? \"first\" : \"second\"); }\nvoid SECOND(bool t = 1) { FIRST(!t); }\nvoid Second(bool\
+    \ t = 1) { First(!t); }\nvoid second(bool t = 1) { first(!t); }\n\n// I/O speed\
+    \ up\nstruct SetUpIO {\n    SetUpIO() {\n        std::ios::sync_with_stdio(false);\n\
+    \        std::cin.tie(0);\n        std::cout << std::fixed << std::setprecision(15);\n\
+    \    }\n} set_up_io;"
   dependsOn: []
   isVerificationFile: false
   path: my_template.hpp
   requiredBy: []
-  timestamp: '2024-02-14 17:01:01+09:00'
+  timestamp: '2024-02-27 14:55:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: my_template.hpp
