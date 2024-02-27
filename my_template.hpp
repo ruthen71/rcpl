@@ -51,11 +51,12 @@ using f128 = long double;
 template <class T> using pque = std::priority_queue<T>;
 template <class T> using pqueg = std::priority_queue<T, std::vector<T>, std::greater<T>>;
 
+// overload
 #define overload4(_1, _2, _3, _4, name, ...) name
 #define overload3(_1, _2, _3, name, ...) name
 #define overload2(_1, _2, name, ...) name
 
-// loop
+// for loop
 #define REP1(a) for (long long _ = 0; _ < (a); _++)
 #define REP2(i, a) for (long long i = 0; i < (a); i++)
 #define REP3(i, a, b) for (long long i = (a); i < (b); i++)
@@ -102,8 +103,20 @@ template <class T, class S> std::pair<T, T> inline divmod(const T x, const S y) 
     T q = floor(x, y);
     return {q, x - q * y};
 }
+// 10 ^ n
+constexpr long long TEN(int n) { return (n == 0) ? 1 : 10LL * TEN(n - 1); }
+// 1 + 2 + ... + n
+#define TRI1(n) ((n) * ((n) + 1LL) / 2)
+// l + (l + 1) + ... + r
+#define TRI2(l, r) (((l) + (r)) * ((r) - (l) + 1LL) / 2)
+#define TRI(...) overload2(__VA_ARGS__, TRI2, TRI1)(__VA_ARGS__)
 
 // bit operation
+// bit[i] (= 0 or 1)
+#define IBIT(bit, i) (((bit) >> (i)) & 1)
+// (0, 1, 2, 3, 4) -> (0, 1, 3, 7, 15)
+#define MASK(n) ((1LL << (n)) - 1)
+#define POW2(n) (1LL << (n))
 // (0, 1, 2, 3, 4) -> (0, 1, 1, 2, 1)
 int popcnt(int x) { return __builtin_popcount(x); }
 int popcnt(u32 x) { return __builtin_popcount(x); }
@@ -313,6 +326,9 @@ void no(bool t = 1) { yes(!t); }
 void POSSIBLE(bool t = 1) { print(t ? "POSSIBLE" : "IMPOSSIBLE"); }
 void Possible(bool t = 1) { print(t ? "Possible" : "Impossible"); }
 void possible(bool t = 1) { print(t ? "possible" : "impossible"); }
+void IMPOSSIBLE(bool t = 1) { POSSIBLE(!t); }
+void Impossible(bool t = 1) { Possible(!t); }
+void impossible(bool t = 1) { possible(!t); }
 void FIRST(bool t = 1) { print(t ? "FIRST" : "SECOND"); }
 void First(bool t = 1) { print(t ? "First" : "Second"); }
 void first(bool t = 1) { print(t ? "first" : "second"); }
