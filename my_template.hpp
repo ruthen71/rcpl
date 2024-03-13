@@ -194,17 +194,11 @@ template <class Head, class... Tail> void scan(Head& head, Tail&... tail) {
 #define I64(...)     \
     i64 __VA_ARGS__; \
     scan(__VA_ARGS__)
-#define I128(...)     \
-    i128 __VA_ARGS__; \
-    scan(__VA_ARGS__)
 #define U32(...)     \
     u32 __VA_ARGS__; \
     scan(__VA_ARGS__)
 #define U64(...)     \
     u64 __VA_ARGS__; \
-    scan(__VA_ARGS__)
-#define U128(...)     \
-    u128 __VA_ARGS__; \
     scan(__VA_ARGS__)
 #define F32(...)     \
     f32 __VA_ARGS__; \

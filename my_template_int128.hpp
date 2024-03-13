@@ -54,3 +54,10 @@ std::ostream& operator<<(std::ostream& os, const u128& x) {
     std::reverse(res.begin(), res.end());
     return os << res;
 }
+// definition & input
+#define I128(...)     \
+    i128 __VA_ARGS__; \
+    scan(__VA_ARGS__)
+#define U128(...)     \
+    u128 __VA_ARGS__; \
+    scan(__VA_ARGS__)
