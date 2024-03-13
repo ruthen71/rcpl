@@ -41,10 +41,8 @@
 
 // type definition
 using i64 = long long;
-using i128 = __int128_t;
 using u32 = unsigned int;
 using u64 = unsigned long long;
-using u128 = __uint128_t;
 using f32 = float;
 using f64 = double;
 using f128 = long double;
@@ -171,33 +169,13 @@ constexpr int dy[8] = {0, 1, 0, -1, 1, 1, -1, -1};
 template <class T> constexpr T INF = 0;
 template <> constexpr int INF<int> = 1'000'000'000;                 // 1e9
 template <> constexpr i64 INF<i64> = i64(INF<int>) * INF<int> * 2;  // 2e18
-template <> constexpr i128 INF<i128> = i128(INF<i64>) * INF<i64>;   // 4e36
 template <> constexpr u32 INF<u32> = INF<int>;                      // 1e9
 template <> constexpr u64 INF<u64> = INF<i64>;                      // 2e18
-template <> constexpr u128 INF<u128> = INF<i128>;                   // 4e36
 template <> constexpr f32 INF<f32> = INF<i64>;                      // 2e18
 template <> constexpr f64 INF<f64> = INF<i64>;                      // 2e18
 template <> constexpr f128 INF<f128> = INF<i64>;                    // 2e18
 
 // input
-std::istream& operator>>(std::istream& is, __int128_t& x) {
-    std::string s;
-    is >> s;
-    x = 0;
-    int i = s[0] == '-' ? 1 : 0;
-    while (i < (int)(s.size())) x = 10 * x + s[i++] - '0';
-    if (s[0] == '-') x = -x;
-    return is;
-}
-std::istream& operator>>(std::istream& is, __uint128_t& x) {
-    std::string s;
-    is >> s;
-    assert(s[0] != '-');
-    x = 0;
-    int i = 0;
-    while (i < (int)(s.size())) x = 10 * x + s[i++] - '0';
-    return is;
-}
 template <class T> std::istream& operator>>(std::istream& is, std::vector<T>& v) {
     for (auto&& i : v) is >> i;
     return is;
@@ -260,33 +238,6 @@ template <class Head, class... Tail> void scan(Head& head, Tail&... tail) {
     scan(name)
 
 // output
-std::ostream& operator<<(std::ostream& os, const __int128_t& x) {
-    if (x == 0) {
-        return os << 0;
-    }
-    __int128_t y = (x > 0 ? x : -x);
-    std::string res;
-    while (y) {
-        res += y % 10 + '0';
-        y /= 10;
-    }
-    if (x < 0) res += '-';
-    std::reverse(res.begin(), res.end());
-    return os << res;
-}
-std::ostream& operator<<(std::ostream& os, const __uint128_t& x) {
-    if (x == 0) {
-        return os << 0;
-    }
-    __uint128_t y = x;
-    std::string res;
-    while (y) {
-        res += y % 10 + '0';
-        y /= 10;
-    }
-    std::reverse(res.begin(), res.end());
-    return os << res;
-}
 template <class T> std::ostream& operator<<(std::ostream& os, const std::vector<T>& v) {
     auto n = v.size();
     for (size_t i = 0; i < n; i++) {
