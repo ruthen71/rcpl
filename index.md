@@ -139,6 +139,9 @@ data:
     - icon: ':warning:'
       path: my_template.hpp
       title: my_template.hpp
+    - icon: ':warning:'
+      path: my_template_int128.hpp
+      title: my_template_int128.hpp
   - name: dp
     pages:
     - icon: ':heavy_check_mark:'
@@ -410,9 +413,6 @@ data:
     - icon: ':warning:'
       path: misc/custom_hash.hpp
       title: misc/custom_hash.hpp
-    - icon: ':warning:'
-      path: misc/int128_template.hpp
-      title: misc/int128_template.hpp
     - icon: ':heavy_check_mark:'
       path: misc/mo.hpp
       title: Mo's Algorithm

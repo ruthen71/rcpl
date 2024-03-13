@@ -11,7 +11,7 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"misc/int128_template.hpp\"\n\n#include <my_template.hpp>\n\
+  bundledCode: "#line 2 \"my_template_int128.hpp\"\n\n#include <my_template.hpp>\n\
     // type definition\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n// infinity\n\
     template <> constexpr i128 INF<i128> = i128(INF<i64>) * INF<i64>;  // 4e36\ntemplate\
     \ <> constexpr u128 INF<u128> = INF<i128>;                  // 4e36\n// input\n\
@@ -28,7 +28,9 @@ data:
     \ os << res;\n}\nstd::ostream& operator<<(std::ostream& os, const u128& x) {\n\
     \    if (x == 0) {\n        return os << 0;\n    }\n    u128 y = x;\n    std::string\
     \ res;\n    while (y) {\n        res += y % 10 + '0';\n        y /= 10;\n    }\n\
-    \    std::reverse(res.begin(), res.end());\n    return os << res;\n}\n"
+    \    std::reverse(res.begin(), res.end());\n    return os << res;\n}\n// definition\
+    \ & input\n#define I128(...)     \\\n    i128 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n\
+    #define U128(...)     \\\n    u128 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n"
   code: "#pragma once\n\n#include <my_template.hpp>\n// type definition\nusing i128\
     \ = __int128_t;\nusing u128 = __uint128_t;\n// infinity\ntemplate <> constexpr\
     \ i128 INF<i128> = i128(INF<i64>) * INF<i64>;  // 4e36\ntemplate <> constexpr\
@@ -46,19 +48,21 @@ data:
     \ os << res;\n}\nstd::ostream& operator<<(std::ostream& os, const u128& x) {\n\
     \    if (x == 0) {\n        return os << 0;\n    }\n    u128 y = x;\n    std::string\
     \ res;\n    while (y) {\n        res += y % 10 + '0';\n        y /= 10;\n    }\n\
-    \    std::reverse(res.begin(), res.end());\n    return os << res;\n}"
+    \    std::reverse(res.begin(), res.end());\n    return os << res;\n}\n// definition\
+    \ & input\n#define I128(...)     \\\n    i128 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n\
+    #define U128(...)     \\\n    u128 __VA_ARGS__; \\\n    scan(__VA_ARGS__)"
   dependsOn:
   - my_template.hpp
   isVerificationFile: false
-  path: misc/int128_template.hpp
+  path: my_template_int128.hpp
   requiredBy: []
-  timestamp: '2024-03-13 12:33:16+09:00'
+  timestamp: '2024-03-13 12:39:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: misc/int128_template.hpp
+documentation_of: my_template_int128.hpp
 layout: document
 redirect_from:
-- /library/misc/int128_template.hpp
-- /library/misc/int128_template.hpp.html
-title: misc/int128_template.hpp
+- /library/my_template_int128.hpp
+- /library/my_template_int128.hpp.html
+title: my_template_int128.hpp
 ---
