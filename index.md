@@ -411,8 +411,8 @@ data:
       path: misc/custom_hash.hpp
       title: misc/custom_hash.hpp
     - icon: ':warning:'
-      path: misc/int128io.hpp
-      title: misc/int128io.hpp
+      path: misc/int128_template.hpp
+      title: misc/int128_template.hpp
     - icon: ':heavy_check_mark:'
       path: misc/mo.hpp
       title: Mo's Algorithm
