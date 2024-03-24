@@ -2,7 +2,7 @@
 #include "algebra/monoid_s/monoid_min.hpp"
 #include "algebra/monoid_f/monoid_set.hpp"
 // MSF
-template <class S> struct MonoidMinSet {
+template <class T> struct MonoidMinSet {
     using MS = MonoidMin<T>;
     using MF = MonoidSet<T>;
     using S = typename MS::S;
