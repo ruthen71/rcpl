@@ -7,5 +7,5 @@ template <class T> struct MonoidSumSizeSet {
     using MF = MonoidSet<T>;
     using S = typename MS::S;
     using F = typename MF::F;
-    static constexpr S mapping(F f, S x) { return (f == MF::id() ? x : {f * x.second, x.second}); }
+    static constexpr S mapping(F f, S x) { return (f == MF::id() ? x : std::make_pair(f * x.second, x.second)); }
 };
