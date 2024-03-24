@@ -1,77 +1,90 @@
 ---
 data:
   libraryCategories:
-  - name: algebra
+  - name: algebra/monoid_f
     pages:
     - icon: ':heavy_check_mark:'
-      path: algebra/dual_add.hpp
-      title: algebra/dual_add.hpp
+      path: algebra/monoid_f/monoid_add.hpp
+      title: algebra/monoid_f/monoid_add.hpp
     - icon: ':heavy_check_mark:'
-      path: algebra/dual_set.hpp
-      title: algebra/dual_set.hpp
+      path: algebra/monoid_f/monoid_affine.hpp
+      title: algebra/monoid_f/monoid_affine.hpp
     - icon: ':warning:'
-      path: algebra/lazy_inversion_flip.hpp
-      title: algebra/lazy_inversion_flip.hpp
-    - icon: ':warning:'
-      path: algebra/lazy_max01_flip.hpp
-      title: algebra/lazy_max01_flip.hpp
-    - icon: ':warning:'
-      path: algebra/lazy_max_add.hpp
-      title: algebra/lazy_max_add.hpp
-    - icon: ':warning:'
-      path: algebra/lazy_max_index_add.hpp
-      title: algebra/lazy_max_index_add.hpp
-    - icon: ':warning:'
-      path: algebra/lazy_max_index_set.hpp
-      title: algebra/lazy_max_index_set.hpp
-    - icon: ':warning:'
-      path: algebra/lazy_max_set.hpp
-      title: algebra/lazy_max_set.hpp
+      path: algebra/monoid_f/monoid_flip.hpp
+      title: algebra/monoid_f/monoid_flip.hpp
     - icon: ':heavy_check_mark:'
-      path: algebra/lazy_min_add.hpp
-      title: algebra/lazy_min_add.hpp
-    - icon: ':warning:'
-      path: algebra/lazy_min_index_add.hpp
-      title: algebra/lazy_min_index_add.hpp
-    - icon: ':warning:'
-      path: algebra/lazy_min_index_set.hpp
-      title: algebra/lazy_min_index_set.hpp
+      path: algebra/monoid_f/monoid_set.hpp
+      title: algebra/monoid_f/monoid_set.hpp
+  - name: algebra/monoid_s
+    pages:
     - icon: ':heavy_check_mark:'
-      path: algebra/lazy_min_set.hpp
-      title: algebra/lazy_min_set.hpp
-    - icon: ':heavy_check_mark:'
-      path: algebra/lazy_sum_add.hpp
-      title: algebra/lazy_sum_add.hpp
-    - icon: ':heavy_check_mark:'
-      path: algebra/lazy_sum_affine.hpp
-      title: algebra/lazy_sum_affine.hpp
-    - icon: ':heavy_check_mark:'
-      path: algebra/lazy_sum_set.hpp
-      title: algebra/lazy_sum_set.hpp
-    - icon: ':heavy_check_mark:'
-      path: algebra/monoid_gcd.hpp
-      title: algebra/monoid_gcd.hpp
+      path: algebra/monoid_s/monoid_gcd.hpp
+      title: algebra/monoid_s/monoid_gcd.hpp
     - icon: ':warning:'
-      path: algebra/monoid_max.hpp
-      title: algebra/monoid_max.hpp
+      path: algebra/monoid_s/monoid_max.hpp
+      title: algebra/monoid_s/monoid_max.hpp
     - icon: ':warning:'
-      path: algebra/monoid_max_index.hpp
-      title: "\u6700\u5927\u5024(\u30A4\u30F3\u30C7\u30C3\u30AF\u30B9)\u53D6\u5F97"
+      path: algebra/monoid_s/monoid_max_index.hpp
+      title: algebra/monoid_s/monoid_max_index.hpp
     - icon: ':heavy_check_mark:'
-      path: algebra/monoid_min.hpp
-      title: algebra/monoid_min.hpp
+      path: algebra/monoid_s/monoid_min.hpp
+      title: algebra/monoid_s/monoid_min.hpp
     - icon: ':warning:'
-      path: algebra/monoid_min_index.hpp
-      title: "\u6700\u5C0F\u5024(\u30A4\u30F3\u30C7\u30C3\u30AF\u30B9)\u53D6\u5F97"
+      path: algebra/monoid_s/monoid_min_index.hpp
+      title: algebra/monoid_s/monoid_min_index.hpp
     - icon: ':warning:'
-      path: algebra/monoid_rolling_hash.hpp
-      title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
+      path: algebra/monoid_s/monoid_rolling_hash.hpp
+      title: algebra/monoid_s/monoid_rolling_hash.hpp
     - icon: ':heavy_check_mark:'
-      path: algebra/monoid_sum.hpp
-      title: algebra/monoid_sum.hpp
+      path: algebra/monoid_s/monoid_sum.hpp
+      title: algebra/monoid_s/monoid_sum.hpp
+    - icon: ':heavy_check_mark:'
+      path: algebra/monoid_s/monoid_sum_size.hpp
+      title: algebra/monoid_s/monoid_sum_size.hpp
     - icon: ':warning:'
-      path: algebra/monoid_xor.hpp
-      title: algebra/monoid_xor.hpp
+      path: algebra/monoid_s/monoid_xor.hpp
+      title: algebra/monoid_s/monoid_xor.hpp
+  - name: algebra/monoid_s_f
+    pages:
+    - icon: ':warning:'
+      path: algebra/monoid_s_f/monoid_inversion_flip.hpp
+      title: algebra/monoid_s_f/monoid_inversion_flip.hpp
+    - icon: ':warning:'
+      path: algebra/monoid_s_f/monoid_max01_flip.hpp
+      title: algebra/monoid_s_f/monoid_max01_flip.hpp
+    - icon: ':warning:'
+      path: algebra/monoid_s_f/monoid_max_add.hpp
+      title: algebra/monoid_s_f/monoid_max_add.hpp
+    - icon: ':warning:'
+      path: algebra/monoid_s_f/monoid_max_index_add.hpp
+      title: algebra/monoid_s_f/monoid_max_index_add.hpp
+    - icon: ':warning:'
+      path: algebra/monoid_s_f/monoid_max_index_set.hpp
+      title: algebra/monoid_s_f/monoid_max_index_set.hpp
+    - icon: ':warning:'
+      path: algebra/monoid_s_f/monoid_max_set.hpp
+      title: algebra/monoid_s_f/monoid_max_set.hpp
+    - icon: ':heavy_check_mark:'
+      path: algebra/monoid_s_f/monoid_min_add.hpp
+      title: algebra/monoid_s_f/monoid_min_add.hpp
+    - icon: ':warning:'
+      path: algebra/monoid_s_f/monoid_min_index_add.hpp
+      title: algebra/monoid_s_f/monoid_min_index_add.hpp
+    - icon: ':warning:'
+      path: algebra/monoid_s_f/monoid_min_index_set.hpp
+      title: algebra/monoid_s_f/monoid_min_index_set.hpp
+    - icon: ':heavy_check_mark:'
+      path: algebra/monoid_s_f/monoid_min_set.hpp
+      title: algebra/monoid_s_f/monoid_min_set.hpp
+    - icon: ':heavy_check_mark:'
+      path: algebra/monoid_s_f/monoid_sum_size_add.hpp
+      title: algebra/monoid_s_f/monoid_sum_size_add.hpp
+    - icon: ':heavy_check_mark:'
+      path: algebra/monoid_s_f/monoid_sum_size_affine.hpp
+      title: algebra/monoid_s_f/monoid_sum_size_affine.hpp
+    - icon: ':heavy_check_mark:'
+      path: algebra/monoid_s_f/monoid_sum_size_set.hpp
+      title: algebra/monoid_s_f/monoid_sum_size_set.hpp
   - name: convolution
     pages:
     - icon: ':warning:'
