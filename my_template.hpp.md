@@ -41,7 +41,7 @@ data:
     #define SORT(a) std::sort((a).begin(), (a).end())\n#define RSORT(a) std::sort((a).rbegin(),\
     \ (a).rend())\n#define REV(a) std::reverse((a).begin(), (a).end())\n#define UNIQUE(a)\
     \                      \\\n    std::sort((a).begin(), (a).end()); \\\n    (a).erase(std::unique((a).begin(),\
-    \ (a).end()), (a).end())\n#define LEN(a) int((a).size())\n#define MIN(a) *std::min_element((a).begin(),\
+    \ (a).end()), (a).end())\n#define LEN(a) (int)((a).size())\n#define MIN(a) *std::min_element((a).begin(),\
     \ (a).end())\n#define MAX(a) *std::max_element((a).begin(), (a).end())\n#define\
     \ SUM1(a) std::accumulate((a).begin(), (a).end(), 0LL)\n#define SUM2(a, x) std::accumulate((a).begin(),\
     \ (a).end(), (x))\n#define SUM(...) overload2(__VA_ARGS__, SUM2, SUM1)(__VA_ARGS__)\n\
@@ -80,66 +80,66 @@ data:
     \ F& f, const int iter = 100) {\n    for (int _ = 0; _ < iter; _++) {\n      \
     \  T md = (ng + ok) / 2;\n        (f(md) ? ok : ng) = md;\n    }\n    return ok;\n\
     }\n\n// rotate matrix counterclockwise by pi / 2\ntemplate <class T> void rot(std::vector<std::vector<T>>&\
-    \ a) {\n    if (int(a.size()) == 0) return;\n    if (int(a[0].size()) == 0) return;\n\
-    \    int n = int(a.size()), m = int(a[0].size());\n    std::vector res(m, std::vector<T>(n));\n\
-    \    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < m; j++) {\n  \
-    \          res[m - 1 - j][i] = a[i][j];\n        }\n    }\n    a.swap(res);\n\
-    }\n\n// const value\nconstexpr int dx[8] = {1, 0, -1, 0, 1, -1, -1, 1};\nconstexpr\
-    \ int dy[8] = {0, 1, 0, -1, 1, 1, -1, -1};\n\n// infinity\ntemplate <class T>\
-    \ constexpr T INF = 0;\ntemplate <> constexpr int INF<int> = 1'000'000'000;  \
-    \               // 1e9\ntemplate <> constexpr i64 INF<i64> = i64(INF<int>) * INF<int>\
-    \ * 2;  // 2e18\ntemplate <> constexpr u32 INF<u32> = INF<int>;              \
-    \        // 1e9\ntemplate <> constexpr u64 INF<u64> = INF<i64>;              \
-    \        // 2e18\ntemplate <> constexpr f32 INF<f32> = INF<i64>;             \
-    \         // 2e18\ntemplate <> constexpr f64 INF<f64> = INF<i64>;            \
-    \          // 2e18\ntemplate <> constexpr f128 INF<f128> = INF<i64>;         \
-    \           // 2e18\n\n// input\ntemplate <class T> std::istream& operator>>(std::istream&\
-    \ is, std::vector<T>& v) {\n    for (auto&& i : v) is >> i;\n    return is;\n\
-    }\ntemplate <class... T> void in(T&... a) { (std::cin >> ... >> a); }\nvoid scan()\
-    \ {}\ntemplate <class Head, class... Tail> void scan(Head& head, Tail&... tail)\
-    \ {\n    in(head);\n    scan(tail...);\n}\n\n// definition & input\n#define INT(...)\
-    \     \\\n    int __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define I64(...)   \
-    \  \\\n    i64 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define U32(...)     \\\
-    \n    u32 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define U64(...)     \\\n  \
-    \  u64 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define F32(...)     \\\n    f32\
-    \ __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define F64(...)     \\\n    f64 __VA_ARGS__;\
-    \ \\\n    scan(__VA_ARGS__)\n#define F128(...)     \\\n    f128 __VA_ARGS__; \\\
-    \n    scan(__VA_ARGS__)\n#define STR(...)             \\\n    std::string __VA_ARGS__;\
-    \ \\\n    scan(__VA_ARGS__)\n#define CHR(...)      \\\n    char __VA_ARGS__; \\\
-    \n    scan(__VA_ARGS__)\n#define VEC(type, name, size)     \\\n    std::vector<type>\
-    \ name(size); \\\n    scan(name)\n#define VEC2(type, name1, name2, size)     \
-    \     \\\n    std::vector<type> name1(size), name2(size); \\\n    for (int i =\
-    \ 0; i < size; i++) scan(name1[i], name2[i])\n#define VEC3(type, name1, name2,\
-    \ name3, size)                \\\n    std::vector<type> name1(size), name2(size),\
-    \ name3(size); \\\n    for (int i = 0; i < size; i++) scan(name1[i], name2[i],\
-    \ name3[i])\n#define VEC4(type, name1, name2, name3, name4, size)            \
-    \          \\\n    std::vector<type> name1(size), name2(size), name3(size), name4(size);\
-    \ \\\n    for (int i = 0; i < size; i++) scan(name1[i], name2[i], name3[i], name4[i])\n\
-    #define VV(type, name, h, w)                       \\\n    std::vector name((h),\
-    \ std::vector<type>((w))); \\\n    scan(name)\n\n// output\ntemplate <class T>\
-    \ std::ostream& operator<<(std::ostream& os, const std::vector<T>& v) {\n    auto\
-    \ n = v.size();\n    for (size_t i = 0; i < n; i++) {\n        if (i) os << '\
-    \ ';\n        os << v[i];\n    }\n    return os;\n}\ntemplate <class... T> void\
-    \ out(const T&... a) { (std::cout << ... << a); }\nvoid print() {\n    out('\\\
-    n');\n    // std::cout.flush();\n}\ntemplate <class Head, class... Tail> void\
-    \ print(Head&& head, Tail&&... tail) {\n    out(head);\n    if (sizeof...(Tail))\
-    \ out(' ');\n    print(tail...);\n}\n// for interactive problems\nvoid printflush()\
-    \ {\n    out('\\n');\n    std::cout.flush();\n}\ntemplate <class Head, class...\
-    \ Tail> void printflush(Head&& head, Tail&&... tail) {\n    out(head);\n    if\
-    \ (sizeof...(Tail)) out(' ');\n    printflush(tail...);\n}\n\n// bool output\n\
-    void YES(bool t = 1) { print(t ? \"YES\" : \"NO\"); }\nvoid Yes(bool t = 1) {\
-    \ print(t ? \"Yes\" : \"No\"); }\nvoid yes(bool t = 1) { print(t ? \"yes\" : \"\
-    no\"); }\nvoid NO(bool t = 1) { YES(!t); }\nvoid No(bool t = 1) { Yes(!t); }\n\
-    void no(bool t = 1) { yes(!t); }\nvoid POSSIBLE(bool t = 1) { print(t ? \"POSSIBLE\"\
-    \ : \"IMPOSSIBLE\"); }\nvoid Possible(bool t = 1) { print(t ? \"Possible\" : \"\
-    Impossible\"); }\nvoid possible(bool t = 1) { print(t ? \"possible\" : \"impossible\"\
-    ); }\nvoid IMPOSSIBLE(bool t = 1) { POSSIBLE(!t); }\nvoid Impossible(bool t =\
-    \ 1) { Possible(!t); }\nvoid impossible(bool t = 1) { possible(!t); }\nvoid FIRST(bool\
-    \ t = 1) { print(t ? \"FIRST\" : \"SECOND\"); }\nvoid First(bool t = 1) { print(t\
-    \ ? \"First\" : \"Second\"); }\nvoid first(bool t = 1) { print(t ? \"first\" :\
-    \ \"second\"); }\nvoid SECOND(bool t = 1) { FIRST(!t); }\nvoid Second(bool t =\
-    \ 1) { First(!t); }\nvoid second(bool t = 1) { first(!t); }\n\n// I/O speed up\n\
-    struct SetUpIO {\n    SetUpIO() {\n        std::ios::sync_with_stdio(false);\n\
+    \ a) {\n    if ((int)(a.size()) == 0) return;\n    if ((int)(a[0].size()) == 0)\
+    \ return;\n    int n = (int)(a.size()), m = (int)(a[0].size());\n    std::vector\
+    \ res(m, std::vector<T>(n));\n    for (int i = 0; i < n; i++) {\n        for (int\
+    \ j = 0; j < m; j++) {\n            res[m - 1 - j][i] = a[i][j];\n        }\n\
+    \    }\n    a.swap(res);\n}\n\n// const value\nconstexpr int dx[8] = {1, 0, -1,\
+    \ 0, 1, -1, -1, 1};\nconstexpr int dy[8] = {0, 1, 0, -1, 1, 1, -1, -1};\n\n//\
+    \ infinity\ntemplate <class T> constexpr T INF = 0;\ntemplate <> constexpr int\
+    \ INF<int> = 1'000'000'000;                 // 1e9\ntemplate <> constexpr i64\
+    \ INF<i64> = i64(INF<int>) * INF<int> * 2;  // 2e18\ntemplate <> constexpr u32\
+    \ INF<u32> = INF<int>;                      // 1e9\ntemplate <> constexpr u64\
+    \ INF<u64> = INF<i64>;                      // 2e18\ntemplate <> constexpr f32\
+    \ INF<f32> = INF<i64>;                      // 2e18\ntemplate <> constexpr f64\
+    \ INF<f64> = INF<i64>;                      // 2e18\ntemplate <> constexpr f128\
+    \ INF<f128> = INF<i64>;                    // 2e18\n\n// input\ntemplate <class\
+    \ T> std::istream& operator>>(std::istream& is, std::vector<T>& v) {\n    for\
+    \ (auto&& i : v) is >> i;\n    return is;\n}\ntemplate <class... T> void in(T&...\
+    \ a) { (std::cin >> ... >> a); }\nvoid scan() {}\ntemplate <class Head, class...\
+    \ Tail> void scan(Head& head, Tail&... tail) {\n    in(head);\n    scan(tail...);\n\
+    }\n\n// definition & input\n#define INT(...)     \\\n    int __VA_ARGS__; \\\n\
+    \    scan(__VA_ARGS__)\n#define I64(...)     \\\n    i64 __VA_ARGS__; \\\n   \
+    \ scan(__VA_ARGS__)\n#define U32(...)     \\\n    u32 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n\
+    #define U64(...)     \\\n    u64 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define\
+    \ F32(...)     \\\n    f32 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define F64(...)\
+    \     \\\n    f64 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define F128(...)  \
+    \   \\\n    f128 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define STR(...)    \
+    \         \\\n    std::string __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define\
+    \ CHR(...)      \\\n    char __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define VEC(type,\
+    \ name, size)     \\\n    std::vector<type> name(size); \\\n    scan(name)\n#define\
+    \ VEC2(type, name1, name2, size)          \\\n    std::vector<type> name1(size),\
+    \ name2(size); \\\n    for (int i = 0; i < size; i++) scan(name1[i], name2[i])\n\
+    #define VEC3(type, name1, name2, name3, size)                \\\n    std::vector<type>\
+    \ name1(size), name2(size), name3(size); \\\n    for (int i = 0; i < size; i++)\
+    \ scan(name1[i], name2[i], name3[i])\n#define VEC4(type, name1, name2, name3,\
+    \ name4, size)                      \\\n    std::vector<type> name1(size), name2(size),\
+    \ name3(size), name4(size); \\\n    for (int i = 0; i < size; i++) scan(name1[i],\
+    \ name2[i], name3[i], name4[i])\n#define VV(type, name, h, w)                \
+    \       \\\n    std::vector name((h), std::vector<type>((w))); \\\n    scan(name)\n\
+    \n// output\ntemplate <class T> std::ostream& operator<<(std::ostream& os, const\
+    \ std::vector<T>& v) {\n    auto n = v.size();\n    for (size_t i = 0; i < n;\
+    \ i++) {\n        if (i) os << ' ';\n        os << v[i];\n    }\n    return os;\n\
+    }\ntemplate <class... T> void out(const T&... a) { (std::cout << ... << a); }\n\
+    void print() {\n    out('\\n');\n    // std::cout.flush();\n}\ntemplate <class\
+    \ Head, class... Tail> void print(Head&& head, Tail&&... tail) {\n    out(head);\n\
+    \    if (sizeof...(Tail)) out(' ');\n    print(tail...);\n}\n// for interactive\
+    \ problems\nvoid printflush() {\n    out('\\n');\n    std::cout.flush();\n}\n\
+    template <class Head, class... Tail> void printflush(Head&& head, Tail&&... tail)\
+    \ {\n    out(head);\n    if (sizeof...(Tail)) out(' ');\n    printflush(tail...);\n\
+    }\n\n// bool output\nvoid YES(bool t = 1) { print(t ? \"YES\" : \"NO\"); }\nvoid\
+    \ Yes(bool t = 1) { print(t ? \"Yes\" : \"No\"); }\nvoid yes(bool t = 1) { print(t\
+    \ ? \"yes\" : \"no\"); }\nvoid NO(bool t = 1) { YES(!t); }\nvoid No(bool t = 1)\
+    \ { Yes(!t); }\nvoid no(bool t = 1) { yes(!t); }\nvoid POSSIBLE(bool t = 1) {\
+    \ print(t ? \"POSSIBLE\" : \"IMPOSSIBLE\"); }\nvoid Possible(bool t = 1) { print(t\
+    \ ? \"Possible\" : \"Impossible\"); }\nvoid possible(bool t = 1) { print(t ? \"\
+    possible\" : \"impossible\"); }\nvoid IMPOSSIBLE(bool t = 1) { POSSIBLE(!t); }\n\
+    void Impossible(bool t = 1) { Possible(!t); }\nvoid impossible(bool t = 1) { possible(!t);\
+    \ }\nvoid FIRST(bool t = 1) { print(t ? \"FIRST\" : \"SECOND\"); }\nvoid First(bool\
+    \ t = 1) { print(t ? \"First\" : \"Second\"); }\nvoid first(bool t = 1) { print(t\
+    \ ? \"first\" : \"second\"); }\nvoid SECOND(bool t = 1) { FIRST(!t); }\nvoid Second(bool\
+    \ t = 1) { First(!t); }\nvoid second(bool t = 1) { first(!t); }\n\n// I/O speed\
+    \ up\nstruct SetUpIO {\n    SetUpIO() {\n        std::ios::sync_with_stdio(false);\n\
     \        std::cin.tie(0);\n        std::cout << std::fixed << std::setprecision(15);\n\
     \    }\n} set_up_io;\n"
   code: "#pragma once\n\n#include <algorithm>\n#include <array>\n#include <bitset>\n\
@@ -172,7 +172,7 @@ data:
     #define SORT(a) std::sort((a).begin(), (a).end())\n#define RSORT(a) std::sort((a).rbegin(),\
     \ (a).rend())\n#define REV(a) std::reverse((a).begin(), (a).end())\n#define UNIQUE(a)\
     \                      \\\n    std::sort((a).begin(), (a).end()); \\\n    (a).erase(std::unique((a).begin(),\
-    \ (a).end()), (a).end())\n#define LEN(a) int((a).size())\n#define MIN(a) *std::min_element((a).begin(),\
+    \ (a).end()), (a).end())\n#define LEN(a) (int)((a).size())\n#define MIN(a) *std::min_element((a).begin(),\
     \ (a).end())\n#define MAX(a) *std::max_element((a).begin(), (a).end())\n#define\
     \ SUM1(a) std::accumulate((a).begin(), (a).end(), 0LL)\n#define SUM2(a, x) std::accumulate((a).begin(),\
     \ (a).end(), (x))\n#define SUM(...) overload2(__VA_ARGS__, SUM2, SUM1)(__VA_ARGS__)\n\
@@ -211,66 +211,66 @@ data:
     \ F& f, const int iter = 100) {\n    for (int _ = 0; _ < iter; _++) {\n      \
     \  T md = (ng + ok) / 2;\n        (f(md) ? ok : ng) = md;\n    }\n    return ok;\n\
     }\n\n// rotate matrix counterclockwise by pi / 2\ntemplate <class T> void rot(std::vector<std::vector<T>>&\
-    \ a) {\n    if (int(a.size()) == 0) return;\n    if (int(a[0].size()) == 0) return;\n\
-    \    int n = int(a.size()), m = int(a[0].size());\n    std::vector res(m, std::vector<T>(n));\n\
-    \    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < m; j++) {\n  \
-    \          res[m - 1 - j][i] = a[i][j];\n        }\n    }\n    a.swap(res);\n\
-    }\n\n// const value\nconstexpr int dx[8] = {1, 0, -1, 0, 1, -1, -1, 1};\nconstexpr\
-    \ int dy[8] = {0, 1, 0, -1, 1, 1, -1, -1};\n\n// infinity\ntemplate <class T>\
-    \ constexpr T INF = 0;\ntemplate <> constexpr int INF<int> = 1'000'000'000;  \
-    \               // 1e9\ntemplate <> constexpr i64 INF<i64> = i64(INF<int>) * INF<int>\
-    \ * 2;  // 2e18\ntemplate <> constexpr u32 INF<u32> = INF<int>;              \
-    \        // 1e9\ntemplate <> constexpr u64 INF<u64> = INF<i64>;              \
-    \        // 2e18\ntemplate <> constexpr f32 INF<f32> = INF<i64>;             \
-    \         // 2e18\ntemplate <> constexpr f64 INF<f64> = INF<i64>;            \
-    \          // 2e18\ntemplate <> constexpr f128 INF<f128> = INF<i64>;         \
-    \           // 2e18\n\n// input\ntemplate <class T> std::istream& operator>>(std::istream&\
-    \ is, std::vector<T>& v) {\n    for (auto&& i : v) is >> i;\n    return is;\n\
-    }\ntemplate <class... T> void in(T&... a) { (std::cin >> ... >> a); }\nvoid scan()\
-    \ {}\ntemplate <class Head, class... Tail> void scan(Head& head, Tail&... tail)\
-    \ {\n    in(head);\n    scan(tail...);\n}\n\n// definition & input\n#define INT(...)\
-    \     \\\n    int __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define I64(...)   \
-    \  \\\n    i64 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define U32(...)     \\\
-    \n    u32 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define U64(...)     \\\n  \
-    \  u64 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define F32(...)     \\\n    f32\
-    \ __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define F64(...)     \\\n    f64 __VA_ARGS__;\
-    \ \\\n    scan(__VA_ARGS__)\n#define F128(...)     \\\n    f128 __VA_ARGS__; \\\
-    \n    scan(__VA_ARGS__)\n#define STR(...)             \\\n    std::string __VA_ARGS__;\
-    \ \\\n    scan(__VA_ARGS__)\n#define CHR(...)      \\\n    char __VA_ARGS__; \\\
-    \n    scan(__VA_ARGS__)\n#define VEC(type, name, size)     \\\n    std::vector<type>\
-    \ name(size); \\\n    scan(name)\n#define VEC2(type, name1, name2, size)     \
-    \     \\\n    std::vector<type> name1(size), name2(size); \\\n    for (int i =\
-    \ 0; i < size; i++) scan(name1[i], name2[i])\n#define VEC3(type, name1, name2,\
-    \ name3, size)                \\\n    std::vector<type> name1(size), name2(size),\
-    \ name3(size); \\\n    for (int i = 0; i < size; i++) scan(name1[i], name2[i],\
-    \ name3[i])\n#define VEC4(type, name1, name2, name3, name4, size)            \
-    \          \\\n    std::vector<type> name1(size), name2(size), name3(size), name4(size);\
-    \ \\\n    for (int i = 0; i < size; i++) scan(name1[i], name2[i], name3[i], name4[i])\n\
-    #define VV(type, name, h, w)                       \\\n    std::vector name((h),\
-    \ std::vector<type>((w))); \\\n    scan(name)\n\n// output\ntemplate <class T>\
-    \ std::ostream& operator<<(std::ostream& os, const std::vector<T>& v) {\n    auto\
-    \ n = v.size();\n    for (size_t i = 0; i < n; i++) {\n        if (i) os << '\
-    \ ';\n        os << v[i];\n    }\n    return os;\n}\ntemplate <class... T> void\
-    \ out(const T&... a) { (std::cout << ... << a); }\nvoid print() {\n    out('\\\
-    n');\n    // std::cout.flush();\n}\ntemplate <class Head, class... Tail> void\
-    \ print(Head&& head, Tail&&... tail) {\n    out(head);\n    if (sizeof...(Tail))\
-    \ out(' ');\n    print(tail...);\n}\n// for interactive problems\nvoid printflush()\
-    \ {\n    out('\\n');\n    std::cout.flush();\n}\ntemplate <class Head, class...\
-    \ Tail> void printflush(Head&& head, Tail&&... tail) {\n    out(head);\n    if\
-    \ (sizeof...(Tail)) out(' ');\n    printflush(tail...);\n}\n\n// bool output\n\
-    void YES(bool t = 1) { print(t ? \"YES\" : \"NO\"); }\nvoid Yes(bool t = 1) {\
-    \ print(t ? \"Yes\" : \"No\"); }\nvoid yes(bool t = 1) { print(t ? \"yes\" : \"\
-    no\"); }\nvoid NO(bool t = 1) { YES(!t); }\nvoid No(bool t = 1) { Yes(!t); }\n\
-    void no(bool t = 1) { yes(!t); }\nvoid POSSIBLE(bool t = 1) { print(t ? \"POSSIBLE\"\
-    \ : \"IMPOSSIBLE\"); }\nvoid Possible(bool t = 1) { print(t ? \"Possible\" : \"\
-    Impossible\"); }\nvoid possible(bool t = 1) { print(t ? \"possible\" : \"impossible\"\
-    ); }\nvoid IMPOSSIBLE(bool t = 1) { POSSIBLE(!t); }\nvoid Impossible(bool t =\
-    \ 1) { Possible(!t); }\nvoid impossible(bool t = 1) { possible(!t); }\nvoid FIRST(bool\
-    \ t = 1) { print(t ? \"FIRST\" : \"SECOND\"); }\nvoid First(bool t = 1) { print(t\
-    \ ? \"First\" : \"Second\"); }\nvoid first(bool t = 1) { print(t ? \"first\" :\
-    \ \"second\"); }\nvoid SECOND(bool t = 1) { FIRST(!t); }\nvoid Second(bool t =\
-    \ 1) { First(!t); }\nvoid second(bool t = 1) { first(!t); }\n\n// I/O speed up\n\
-    struct SetUpIO {\n    SetUpIO() {\n        std::ios::sync_with_stdio(false);\n\
+    \ a) {\n    if ((int)(a.size()) == 0) return;\n    if ((int)(a[0].size()) == 0)\
+    \ return;\n    int n = (int)(a.size()), m = (int)(a[0].size());\n    std::vector\
+    \ res(m, std::vector<T>(n));\n    for (int i = 0; i < n; i++) {\n        for (int\
+    \ j = 0; j < m; j++) {\n            res[m - 1 - j][i] = a[i][j];\n        }\n\
+    \    }\n    a.swap(res);\n}\n\n// const value\nconstexpr int dx[8] = {1, 0, -1,\
+    \ 0, 1, -1, -1, 1};\nconstexpr int dy[8] = {0, 1, 0, -1, 1, 1, -1, -1};\n\n//\
+    \ infinity\ntemplate <class T> constexpr T INF = 0;\ntemplate <> constexpr int\
+    \ INF<int> = 1'000'000'000;                 // 1e9\ntemplate <> constexpr i64\
+    \ INF<i64> = i64(INF<int>) * INF<int> * 2;  // 2e18\ntemplate <> constexpr u32\
+    \ INF<u32> = INF<int>;                      // 1e9\ntemplate <> constexpr u64\
+    \ INF<u64> = INF<i64>;                      // 2e18\ntemplate <> constexpr f32\
+    \ INF<f32> = INF<i64>;                      // 2e18\ntemplate <> constexpr f64\
+    \ INF<f64> = INF<i64>;                      // 2e18\ntemplate <> constexpr f128\
+    \ INF<f128> = INF<i64>;                    // 2e18\n\n// input\ntemplate <class\
+    \ T> std::istream& operator>>(std::istream& is, std::vector<T>& v) {\n    for\
+    \ (auto&& i : v) is >> i;\n    return is;\n}\ntemplate <class... T> void in(T&...\
+    \ a) { (std::cin >> ... >> a); }\nvoid scan() {}\ntemplate <class Head, class...\
+    \ Tail> void scan(Head& head, Tail&... tail) {\n    in(head);\n    scan(tail...);\n\
+    }\n\n// definition & input\n#define INT(...)     \\\n    int __VA_ARGS__; \\\n\
+    \    scan(__VA_ARGS__)\n#define I64(...)     \\\n    i64 __VA_ARGS__; \\\n   \
+    \ scan(__VA_ARGS__)\n#define U32(...)     \\\n    u32 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n\
+    #define U64(...)     \\\n    u64 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define\
+    \ F32(...)     \\\n    f32 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define F64(...)\
+    \     \\\n    f64 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define F128(...)  \
+    \   \\\n    f128 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define STR(...)    \
+    \         \\\n    std::string __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define\
+    \ CHR(...)      \\\n    char __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define VEC(type,\
+    \ name, size)     \\\n    std::vector<type> name(size); \\\n    scan(name)\n#define\
+    \ VEC2(type, name1, name2, size)          \\\n    std::vector<type> name1(size),\
+    \ name2(size); \\\n    for (int i = 0; i < size; i++) scan(name1[i], name2[i])\n\
+    #define VEC3(type, name1, name2, name3, size)                \\\n    std::vector<type>\
+    \ name1(size), name2(size), name3(size); \\\n    for (int i = 0; i < size; i++)\
+    \ scan(name1[i], name2[i], name3[i])\n#define VEC4(type, name1, name2, name3,\
+    \ name4, size)                      \\\n    std::vector<type> name1(size), name2(size),\
+    \ name3(size), name4(size); \\\n    for (int i = 0; i < size; i++) scan(name1[i],\
+    \ name2[i], name3[i], name4[i])\n#define VV(type, name, h, w)                \
+    \       \\\n    std::vector name((h), std::vector<type>((w))); \\\n    scan(name)\n\
+    \n// output\ntemplate <class T> std::ostream& operator<<(std::ostream& os, const\
+    \ std::vector<T>& v) {\n    auto n = v.size();\n    for (size_t i = 0; i < n;\
+    \ i++) {\n        if (i) os << ' ';\n        os << v[i];\n    }\n    return os;\n\
+    }\ntemplate <class... T> void out(const T&... a) { (std::cout << ... << a); }\n\
+    void print() {\n    out('\\n');\n    // std::cout.flush();\n}\ntemplate <class\
+    \ Head, class... Tail> void print(Head&& head, Tail&&... tail) {\n    out(head);\n\
+    \    if (sizeof...(Tail)) out(' ');\n    print(tail...);\n}\n// for interactive\
+    \ problems\nvoid printflush() {\n    out('\\n');\n    std::cout.flush();\n}\n\
+    template <class Head, class... Tail> void printflush(Head&& head, Tail&&... tail)\
+    \ {\n    out(head);\n    if (sizeof...(Tail)) out(' ');\n    printflush(tail...);\n\
+    }\n\n// bool output\nvoid YES(bool t = 1) { print(t ? \"YES\" : \"NO\"); }\nvoid\
+    \ Yes(bool t = 1) { print(t ? \"Yes\" : \"No\"); }\nvoid yes(bool t = 1) { print(t\
+    \ ? \"yes\" : \"no\"); }\nvoid NO(bool t = 1) { YES(!t); }\nvoid No(bool t = 1)\
+    \ { Yes(!t); }\nvoid no(bool t = 1) { yes(!t); }\nvoid POSSIBLE(bool t = 1) {\
+    \ print(t ? \"POSSIBLE\" : \"IMPOSSIBLE\"); }\nvoid Possible(bool t = 1) { print(t\
+    \ ? \"Possible\" : \"Impossible\"); }\nvoid possible(bool t = 1) { print(t ? \"\
+    possible\" : \"impossible\"); }\nvoid IMPOSSIBLE(bool t = 1) { POSSIBLE(!t); }\n\
+    void Impossible(bool t = 1) { Possible(!t); }\nvoid impossible(bool t = 1) { possible(!t);\
+    \ }\nvoid FIRST(bool t = 1) { print(t ? \"FIRST\" : \"SECOND\"); }\nvoid First(bool\
+    \ t = 1) { print(t ? \"First\" : \"Second\"); }\nvoid first(bool t = 1) { print(t\
+    \ ? \"first\" : \"second\"); }\nvoid SECOND(bool t = 1) { FIRST(!t); }\nvoid Second(bool\
+    \ t = 1) { First(!t); }\nvoid second(bool t = 1) { first(!t); }\n\n// I/O speed\
+    \ up\nstruct SetUpIO {\n    SetUpIO() {\n        std::ios::sync_with_stdio(false);\n\
     \        std::cin.tie(0);\n        std::cout << std::fixed << std::setprecision(15);\n\
     \    }\n} set_up_io;"
   dependsOn: []
@@ -278,7 +278,7 @@ data:
   path: my_template.hpp
   requiredBy:
   - my_template_int128.hpp
-  timestamp: '2024-03-13 12:39:51+09:00'
+  timestamp: '2024-03-24 14:28:47+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: my_template.hpp

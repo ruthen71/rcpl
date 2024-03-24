@@ -180,31 +180,31 @@ data:
     #line 2 \"geometry/line.hpp\"\n\n#line 4 \"geometry/line.hpp\"\n\n// line\ntemplate\
     \ <typename T> struct Line {\n    Point<T> a, b;\n\n    Line() = default;\n\n\
     \    Line(const Point<T> &a, const Point<T> &b) : a(a), b(b) {}\n\n    // Ax +\
-    \ By = C\n    Line(const T &A, const T &B, const T &C) {\n        assert(equal(A,\
-    \ 0) and equal(B, 0));\n        if (equal(A, 0)) {\n            a = Point<T>(0,\
-    \ C / B), b = Point<T>(1, C / B);\n        } else if (equal(B, 0)) {\n       \
-    \     a = Point<T>(C / A, 0), b = Point<T>(C / A, 1);\n        } else if (equal(C,\
-    \ 0)) {\n            a = Point<T>(0, 0), b = Point<T>(1, B / A);\n        } else\
-    \ {\n            a = Point<T>(0, C / B), b = Point<T>(C / A, 0);\n        }\n\
-    \    }\n\n    friend std::istream &operator>>(std::istream &is, Line &p) { return\
-    \ is >> p.a >> p.b; }\n    friend std::ostream &operator<<(std::ostream &os, const\
-    \ Line &p) { return os << p.a << \"->\" << p.b; }\n};\n#line 2 \"geometry/segment.hpp\"\
-    \n\n#line 4 \"geometry/segment.hpp\"\n\n// segment\ntemplate <typename T> struct\
-    \ Segment : Line<T> {\n    Segment() = default;\n\n    Segment(const Point<T>\
-    \ &a, const Point<T> &b) : Line<T>(a, b) {}\n};\n#line 2 \"geometry/circle.hpp\"\
-    \n\n#line 4 \"geometry/circle.hpp\"\n\n// circle\ntemplate <typename T> struct\
-    \ Circle {\n    Point<T> o;\n    T r;\n\n    Circle() = default;\n\n    Circle(const\
-    \ Point<T> &o, const T &r) : o(o), r(r) {}\n\n    friend std::istream &operator>>(std::istream\
-    \ &is, Circle &c) { return is >> c.o >> c.r; }  // format : x y r\n    friend\
-    \ std::ostream &operator<<(std::ostream &os, const Circle &c) { return os << c.o\
-    \ << ' ' << c.r; }\n};\n#line 2 \"geometry/polygon.hpp\"\n\n#line 4 \"geometry/polygon.hpp\"\
-    \n\n// polygon\ntemplate <typename T> using Polygon = std::vector<Point<T>>;\n\
-    template <typename T> std::istream &operator>>(std::istream &is, Polygon<T> &p)\
-    \ {\n    for (auto &&pi : p) is >> pi;\n    return is;\n}\ntemplate <typename\
-    \ T> std::ostream &operator<<(std::ostream &os, const Polygon<T> &p) {\n    for\
-    \ (auto &&pi : p) os << pi << \" -> \";\n    return os;\n}\n#line 8 \"geometry/all.hpp\"\
-    \n\n#line 2 \"geometry/projection.hpp\"\n\n#line 5 \"geometry/projection.hpp\"\
-    \n\n// projection\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A\n\
+    \ By = C\n    Line(const T &A, const T &B, const T &C) {\n        assert(!(equal(A,\
+    \ T(0)) and equal(B, T(0))));\n        if (equal(A, T(0))) {\n            a =\
+    \ Point<T>(T(0), C / B), b = Point<T>(T(1), C / B);\n        } else if (equal(B,\
+    \ T(0))) {\n            a = Point<T>(C / A, T(0)), b = Point<T>(C / A, T(1));\n\
+    \        } else if (equal(C, T(0))) {\n            a = Point<T>(T(0), T(0)), b\
+    \ = Point<T>(T(1), B / A);\n        } else {\n            a = Point<T>(T(0), C\
+    \ / B), b = Point<T>(C / A, T(0));\n        }\n    }\n\n    friend std::istream\
+    \ &operator>>(std::istream &is, Line &p) { return is >> p.a >> p.b; }\n    friend\
+    \ std::ostream &operator<<(std::ostream &os, const Line &p) { return os << p.a\
+    \ << \"->\" << p.b; }\n};\n#line 2 \"geometry/segment.hpp\"\n\n#line 4 \"geometry/segment.hpp\"\
+    \n\n// segment\ntemplate <typename T> struct Segment : Line<T> {\n    Segment()\
+    \ = default;\n\n    Segment(const Point<T> &a, const Point<T> &b) : Line<T>(a,\
+    \ b) {}\n};\n#line 2 \"geometry/circle.hpp\"\n\n#line 4 \"geometry/circle.hpp\"\
+    \n\n// circle\ntemplate <typename T> struct Circle {\n    Point<T> o;\n    T r;\n\
+    \n    Circle() = default;\n\n    Circle(const Point<T> &o, const T &r) : o(o),\
+    \ r(r) {}\n\n    friend std::istream &operator>>(std::istream &is, Circle &c)\
+    \ { return is >> c.o >> c.r; }  // format : x y r\n    friend std::ostream &operator<<(std::ostream\
+    \ &os, const Circle &c) { return os << c.o << ' ' << c.r; }\n};\n#line 2 \"geometry/polygon.hpp\"\
+    \n\n#line 4 \"geometry/polygon.hpp\"\n\n// polygon\ntemplate <typename T> using\
+    \ Polygon = std::vector<Point<T>>;\ntemplate <typename T> std::istream &operator>>(std::istream\
+    \ &is, Polygon<T> &p) {\n    for (auto &&pi : p) is >> pi;\n    return is;\n}\n\
+    template <typename T> std::ostream &operator<<(std::ostream &os, const Polygon<T>\
+    \ &p) {\n    for (auto &&pi : p) os << pi << \" -> \";\n    return os;\n}\n#line\
+    \ 8 \"geometry/all.hpp\"\n\n#line 2 \"geometry/projection.hpp\"\n\n#line 5 \"\
+    geometry/projection.hpp\"\n\n// projection\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A\n\
     template <typename T> Point<T> projection(const Line<T> &l, const Point<T> &p)\
     \ {\n    T t = dot(p - l.a, l.b - l.a) / norm(l.b - l.a);\n    return l.a + t\
     \ * (l.b - l.a);\n}\n#line 2 \"geometry/reflection.hpp\"\n\n#line 6 \"geometry/reflection.hpp\"\
@@ -589,7 +589,7 @@ data:
   isVerificationFile: false
   path: geometry/all.hpp
   requiredBy: []
-  timestamp: '2023-06-01 23:47:10+09:00'
+  timestamp: '2024-03-24 14:28:32+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/all.hpp

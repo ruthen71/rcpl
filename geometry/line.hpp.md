@@ -171,66 +171,67 @@ data:
     #line 4 \"geometry/line.hpp\"\n\n// line\ntemplate <typename T> struct Line {\n\
     \    Point<T> a, b;\n\n    Line() = default;\n\n    Line(const Point<T> &a, const\
     \ Point<T> &b) : a(a), b(b) {}\n\n    // Ax + By = C\n    Line(const T &A, const\
-    \ T &B, const T &C) {\n        assert(equal(A, 0) and equal(B, 0));\n        if\
-    \ (equal(A, 0)) {\n            a = Point<T>(0, C / B), b = Point<T>(1, C / B);\n\
-    \        } else if (equal(B, 0)) {\n            a = Point<T>(C / A, 0), b = Point<T>(C\
-    \ / A, 1);\n        } else if (equal(C, 0)) {\n            a = Point<T>(0, 0),\
-    \ b = Point<T>(1, B / A);\n        } else {\n            a = Point<T>(0, C / B),\
-    \ b = Point<T>(C / A, 0);\n        }\n    }\n\n    friend std::istream &operator>>(std::istream\
-    \ &is, Line &p) { return is >> p.a >> p.b; }\n    friend std::ostream &operator<<(std::ostream\
+    \ T &B, const T &C) {\n        assert(!(equal(A, T(0)) and equal(B, T(0))));\n\
+    \        if (equal(A, T(0))) {\n            a = Point<T>(T(0), C / B), b = Point<T>(T(1),\
+    \ C / B);\n        } else if (equal(B, T(0))) {\n            a = Point<T>(C /\
+    \ A, T(0)), b = Point<T>(C / A, T(1));\n        } else if (equal(C, T(0))) {\n\
+    \            a = Point<T>(T(0), T(0)), b = Point<T>(T(1), B / A);\n        } else\
+    \ {\n            a = Point<T>(T(0), C / B), b = Point<T>(C / A, T(0));\n     \
+    \   }\n    }\n\n    friend std::istream &operator>>(std::istream &is, Line &p)\
+    \ { return is >> p.a >> p.b; }\n    friend std::ostream &operator<<(std::ostream\
     \ &os, const Line &p) { return os << p.a << \"->\" << p.b; }\n};\n"
   code: "#pragma once\n\n#include \"geometry/point.hpp\"\n\n// line\ntemplate <typename\
     \ T> struct Line {\n    Point<T> a, b;\n\n    Line() = default;\n\n    Line(const\
     \ Point<T> &a, const Point<T> &b) : a(a), b(b) {}\n\n    // Ax + By = C\n    Line(const\
-    \ T &A, const T &B, const T &C) {\n        assert(equal(A, 0) and equal(B, 0));\n\
-    \        if (equal(A, 0)) {\n            a = Point<T>(0, C / B), b = Point<T>(1,\
-    \ C / B);\n        } else if (equal(B, 0)) {\n            a = Point<T>(C / A,\
-    \ 0), b = Point<T>(C / A, 1);\n        } else if (equal(C, 0)) {\n           \
-    \ a = Point<T>(0, 0), b = Point<T>(1, B / A);\n        } else {\n            a\
-    \ = Point<T>(0, C / B), b = Point<T>(C / A, 0);\n        }\n    }\n\n    friend\
-    \ std::istream &operator>>(std::istream &is, Line &p) { return is >> p.a >> p.b;\
-    \ }\n    friend std::ostream &operator<<(std::ostream &os, const Line &p) { return\
-    \ os << p.a << \"->\" << p.b; }\n};"
+    \ T &A, const T &B, const T &C) {\n        assert(!(equal(A, T(0)) and equal(B,\
+    \ T(0))));\n        if (equal(A, T(0))) {\n            a = Point<T>(T(0), C /\
+    \ B), b = Point<T>(T(1), C / B);\n        } else if (equal(B, T(0))) {\n     \
+    \       a = Point<T>(C / A, T(0)), b = Point<T>(C / A, T(1));\n        } else\
+    \ if (equal(C, T(0))) {\n            a = Point<T>(T(0), T(0)), b = Point<T>(T(1),\
+    \ B / A);\n        } else {\n            a = Point<T>(T(0), C / B), b = Point<T>(C\
+    \ / A, T(0));\n        }\n    }\n\n    friend std::istream &operator>>(std::istream\
+    \ &is, Line &p) { return is >> p.a >> p.b; }\n    friend std::ostream &operator<<(std::ostream\
+    \ &os, const Line &p) { return os << p.a << \"->\" << p.b; }\n};"
   dependsOn:
   - geometry/point.hpp
   isVerificationFile: false
   path: geometry/line.hpp
   requiredBy:
-  - geometry/polygon_contain.hpp
-  - geometry/cross_point_ss.hpp
-  - geometry/incircle.hpp
-  - geometry/convex_polygon_cut.hpp
-  - geometry/segment.hpp
-  - geometry/circumscribed_circle.hpp
-  - geometry/projection.hpp
-  - geometry/is_intersect_cl.hpp
-  - geometry/is_parallel.hpp
+  - geometry/is_intersect_lp.hpp
   - geometry/cross_point_ll.hpp
   - geometry/is_orthogonal.hpp
-  - geometry/distance_sp.hpp
-  - geometry/reflection.hpp
-  - geometry/distance_ss.hpp
-  - geometry/cross_point_cl.hpp
   - geometry/distance_lp.hpp
+  - geometry/cross_point_ss.hpp
+  - geometry/incircle.hpp
+  - geometry/all.hpp
+  - geometry/circumscribed_circle.hpp
+  - geometry/convex_polygon_cut.hpp
+  - geometry/segment.hpp
+  - geometry/distance_ss.hpp
+  - geometry/is_parallel.hpp
+  - geometry/projection.hpp
+  - geometry/reflection.hpp
+  - geometry/is_intersect_cl.hpp
+  - geometry/cross_point_cl.hpp
+  - geometry/distance_sp.hpp
   - geometry/is_intersect_ss.hpp
+  - geometry/polygon_contain.hpp
   - geometry/is_intersect_sp.hpp
   - geometry/is_intersect_ll.hpp
-  - geometry/is_intersect_lp.hpp
-  - geometry/all.hpp
-  timestamp: '2023-06-01 23:47:10+09:00'
+  timestamp: '2024-03-24 14:28:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj_cgl/aoj_cgl_4_c.test.cpp
-  - verify/aoj_cgl/aoj_cgl_2_a.test.cpp
-  - verify/aoj_cgl/aoj_cgl_2_d.test.cpp
-  - verify/aoj_cgl/aoj_cgl_2_c.test.cpp
-  - verify/aoj_cgl/aoj_cgl_7_c.test.cpp
-  - verify/aoj_cgl/aoj_cgl_1_b.test.cpp
-  - verify/aoj_cgl/aoj_cgl_7_d.test.cpp
   - verify/aoj_cgl/aoj_cgl_7_b.test.cpp
-  - verify/aoj_cgl/aoj_cgl_1_a.test.cpp
-  - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_3_c.test.cpp
+  - verify/aoj_cgl/aoj_cgl_1_b.test.cpp
+  - verify/aoj_cgl/aoj_cgl_7_c.test.cpp
+  - verify/aoj_cgl/aoj_cgl_4_c.test.cpp
+  - verify/aoj_cgl/aoj_cgl_7_d.test.cpp
+  - verify/aoj_cgl/aoj_cgl_2_a.test.cpp
+  - verify/aoj_cgl/aoj_cgl_2_c.test.cpp
+  - verify/aoj_cgl/aoj_cgl_1_a.test.cpp
+  - verify/aoj_cgl/aoj_cgl_2_d.test.cpp
+  - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
 documentation_of: geometry/line.hpp
 layout: document
 redirect_from:
