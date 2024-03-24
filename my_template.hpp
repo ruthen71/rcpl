@@ -79,7 +79,7 @@ template <class T> using pqueg = std::priority_queue<T, std::vector<T>, std::gre
 #define UNIQUE(a)                      \
     std::sort((a).begin(), (a).end()); \
     (a).erase(std::unique((a).begin(), (a).end()), (a).end())
-#define LEN(a) int((a).size())
+#define LEN(a) (int)((a).size())
 #define MIN(a) *std::min_element((a).begin(), (a).end())
 #define MAX(a) *std::max_element((a).begin(), (a).end())
 #define SUM1(a) std::accumulate((a).begin(), (a).end(), 0LL)
@@ -149,9 +149,9 @@ template <class T, class F> T bin_search_real(T ok, T ng, F& f, const int iter =
 
 // rotate matrix counterclockwise by pi / 2
 template <class T> void rot(std::vector<std::vector<T>>& a) {
-    if (int(a.size()) == 0) return;
-    if (int(a[0].size()) == 0) return;
-    int n = int(a.size()), m = int(a[0].size());
+    if ((int)(a.size()) == 0) return;
+    if ((int)(a[0].size()) == 0) return;
+    int n = (int)(a.size()), m = (int)(a[0].size());
     std::vector res(m, std::vector<T>(n));
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
