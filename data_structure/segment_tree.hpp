@@ -1,112 +1,113 @@
 #pragma once
-
-template <class Monoid> struct SegmentTree {
+#include <vector>
+#include <cassert>
+template <class MS> struct SegmentTree {
    public:
-    using S = typename Monoid::value_type;
+    using S = typename MS::S;
     SegmentTree() : SegmentTree(0) {}
-    SegmentTree(int n) : SegmentTree(std::vector<S>(n, Monoid::e())) {}
-    SegmentTree(const std::vector<S>& v) : _n((int)v.size()) {
+    SegmentTree(int n) : SegmentTree(std::vector<S>(n, MS::e())) {}
+    SegmentTree(const std::vector<S>& v) : n((int)(v.size())) {
         log = 0;
-        while ((1U << log) < (unsigned int)(_n)) log++;
+        while ((1U << log) < (unsigned int)(n)) log++;
         size = 1 << log;
-        d = std::vector<S>(size << 1, Monoid::e());
-        for (int i = 0; i < _n; i++) d[i + size] = v[i];
+        d = std::vector<S>(size << 1, MS::e());
+        for (int i = 0; i < n; i++) d[i + size] = v[i];
         for (int i = size - 1; i >= 1; i--) {
             update(i);
         }
     }
 
     void set(int p, const S& x) {
-        assert(0 <= p and p < _n);
+        assert(0 <= p and p < n);
         p += size;
         d[p] = x;
         for (int i = 1; i <= log; i++) update(p >> i);
     }
 
     void chset(int p, const S& x) {
-        assert(0 <= p and p < _n);
+        assert(0 <= p and p < n);
         p += size;
-        d[p] = Monoid::op(d[p], x);
+        d[p] = MS::op(d[p], x);
         for (int i = 1; i <= log; i++) update(p >> i);
     }
 
     S operator[](int p) const {
-        assert(0 <= p and p < _n);
+        assert(0 <= p and p < n);
         return d[p + size];
     }
 
     S get(int p) const {
-        assert(0 <= p && p < _n);
+        assert(0 <= p && p < n);
         return d[p + size];
     }
 
     S prod(int l, int r) const {
-        assert(0 <= l and l <= r and r <= _n);
-        S sml = Monoid::e(), smr = Monoid::e();
+        assert(0 <= l and l <= r and r <= n);
+        S sml = MS::e(), smr = MS::e();
         l += size;
         r += size;
 
         while (l < r) {
-            if (l & 1) sml = Monoid::op(sml, d[l++]);
-            if (r & 1) smr = Monoid::op(d[--r], smr);
+            if (l & 1) sml = MS::op(sml, d[l++]);
+            if (r & 1) smr = MS::op(d[--r], smr);
             l >>= 1;
             r >>= 1;
         }
-        return Monoid::op(sml, smr);
+        return MS::op(sml, smr);
     }
 
     S all_prod() const { return d[1]; }
 
-    template <class F> int max_right(int l, F& f) const {
-        assert(0 <= l and l <= _n);
-        assert(f(Monoid::e()));
-        if (l == _n) return _n;
+    template <class G> int max_right(int l, G& g) const {
+        assert(0 <= l and l <= n);
+        assert(g(MS::e()));
+        if (l == n) return n;
         l += size;
-        S sm = Monoid::e();
+        S sm = MS::e();
         do {
             while ((l & 1) == 0) l >>= 1;
-            if (!f(Monoid::op(sm, d[l]))) {
+            if (!g(MS::op(sm, d[l]))) {
                 while (l < size) {
                     l <<= 1;
-                    if (f(Monoid::op(sm, d[l]))) {
-                        sm = Monoid::op(sm, d[l]);
+                    if (g(MS::op(sm, d[l]))) {
+                        sm = MS::op(sm, d[l]);
                         l++;
                     }
                 }
                 return l - size;
             }
-            sm = Monoid::op(sm, d[l]);
+            sm = MS::op(sm, d[l]);
             l++;
-        } while ((l & -l) != l);  // 2べきまたは0のときfalse
-        return _n;
+        } while ((l & -l) != l);
+        return n;
     }
 
-    template <class F> int min_left(int r, F& f) const {
-        assert(0 <= r and r <= _n);
-        assert(f(Monoid::e()));
+    template <class G> int min_left(int r, G& g) const {
+        assert(0 <= r and r <= n);
+        assert(g(MS::e()));
         if (r == 0) return 0;
         r += size;
-        S sm = Monoid::e();
+        S sm = MS::e();
         do {
             r--;
             while (r > 1 and (r & 1)) r >>= 1;
-            if (!f(Monoid::op(d[r], sm))) {
+            if (!g(MS::op(d[r], sm))) {
                 while (r < size) {
                     r = (r << 1) | 1;
-                    if (f(Monoid::op(d[r], sm))) {
-                        sm = Monoid::op(d[r], sm);
+                    if (g(MS::op(d[r], sm))) {
+                        sm = MS::op(d[r], sm);
                         r--;
                     }
                 }
                 return r + 1 - size;
             }
-            sm = Monoid::op(d[r], sm);
-        } while ((r & -r) != r);  // 2べきまたは0のときfalse
+            sm = MS::op(d[r], sm);
+        } while ((r & -r) != r);
         return 0;
     }
 
    private:
-    int _n, log, size;
+    int n, log, size;
     std::vector<S> d;
-    inline void update(int k) { d[k] = Monoid::op(d[k << 1], d[(k << 1) | 1]); }
+    inline void update(int k) { d[k] = MS::op(d[k << 1], d[(k << 1) | 1]); }
 };

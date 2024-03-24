@@ -1,8 +1,7 @@
 #pragma once
-
+// MS
 template <class Mint> struct MonoidRollingHash {
     using S = std::pair<Mint, Mint>;  // {hash(s), base ^ len(s)}
-    using value_type = S;
 
     static Mint base;
 
@@ -16,8 +15,8 @@ template <class Mint> struct MonoidRollingHash {
         }
     }
 
-    static constexpr S make_element(Mint x) { return make_pair(x, base); }
+    static constexpr S make_element(Mint x) { return {x, base}; }
 
     static constexpr S op(S a, S b) { return {a.first * b.second + b.first, a.second * b.second}; }
-    static constexpr S e() { return {0, 1}; }  // {hash(""), base ^ len("")}
+    static constexpr S e() { return {Mint(0), Mint(1)}; }  // {hash(""), base ^ len("")}
 };

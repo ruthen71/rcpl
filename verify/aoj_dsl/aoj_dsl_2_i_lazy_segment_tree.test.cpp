@@ -2,13 +2,13 @@
 
 #include <bits/stdc++.h>
 
-#include "algebra/lazy_sum_set.hpp"
+#include "algebra/monoid_s_f/monoid_sum_size_set.hpp"
 #include "data_structure/lazy_segment_tree.hpp"
 
 int main() {
     int N, Q;
     std::cin >> N >> Q;
-    LazySegmentTree<LazySumSet<long long>> seg(std::vector<std::pair<long long, int>>(N, {0, 1}));
+    LazySegmentTree<MonoidSumSizeSet<long long>> seg(std::vector<std::pair<long long, int>>(N, {0, 1}));
     while (Q--) {
         int t;
         std::cin >> t;

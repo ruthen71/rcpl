@@ -2,7 +2,7 @@
 
 #include <bits/stdc++.h>
 
-#include "algebra/monoid_gcd.hpp"
+#include "algebra/monoid_s/monoid_gcd.hpp"
 #include "data_structure/segment_tree.hpp"
 
 int main() {

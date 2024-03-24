@@ -1,6 +1,7 @@
 #pragma once
 
 // https://atcoder.jp/contests/abc322/tasks/abc322_f
+// MSF
 template <class T> struct LazyMax01Flip {
     using S = std::array<T, 7>;  // {max0, left0, right0, max1, left1, right1, length}
     using F = int;

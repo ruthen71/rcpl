@@ -2,7 +2,7 @@
 
 #include <bits/stdc++.h>
 
-#include "algebra/monoid_min.hpp"
+#include "algebra/monoid_s/monoid_min.hpp"
 #include "data_structure/segment_tree_2d.hpp"
 
 void solve(int R, int C, int Q) {

@@ -1,6 +1,7 @@
 #pragma once
 
 // https://atcoder.jp/contests/practice2/tasks/practice2_l
+// MSF
 template <class T> struct LazyInversionFlip {
     using S = std::tuple<T, T, T, T>;  // {0, 1, 01, 10}
     using F = bool;

@@ -2,13 +2,13 @@
 
 #include <bits/stdc++.h>
 
-#include "algebra/dual_set.hpp"
+#include "algebra/monoid_f/monoid_set.hpp"
 #include "data_structure/dual_segment_tree.hpp"
 
 int main() {
     int N, Q;
     std::cin >> N >> Q;
-    DualSegmentTree<DualSet<int>> seg(N);
+    DualSegmentTree<MonoidSet<int>> seg(N);
     while (Q--) {
         int t;
         std::cin >> t;

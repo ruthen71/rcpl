@@ -2,13 +2,13 @@
 
 #include <bits/stdc++.h>
 
-#include "algebra/lazy_min_set.hpp"
+#include "algebra/monoid_s_f/monoid_min_set.hpp"
 #include "data_structure/lazy_segment_tree.hpp"
 
 int main() {
     int N, Q;
     std::cin >> N >> Q;
-    LazySegmentTree<LazyMinSet<int>> seg(N);
+    LazySegmentTree<MonoidMinSet<int>> seg(N);
     while (Q--) {
         int t;
         std::cin >> t;
