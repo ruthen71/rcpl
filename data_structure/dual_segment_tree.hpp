@@ -1,40 +1,42 @@
 #pragma once
-
-template <class Dual> struct DualSegmentTree {
+#include <vector>
+#include <cassert>
+template <class MF> struct DualSegmentTree {
    public:
-    using F = typename Dual::value_type;
-    DualSegmentTree(int n) : DualSegmentTree(std::vector<F>(n, Dual::id())) {}
-    DualSegmentTree(const std::vector<F>& v) : _n((int)v.size()) {
+    using F = typename MF::F;
+    DualSegmentTree() : DualSegmentTree(0) {}
+    DualSegmentTree(int n) : DualSegmentTree(std::vector<F>(n, MF::id())) {}
+    DualSegmentTree(const std::vector<F>& v) : n((int)(v.size())) {
         log = 0;
-        while ((1U << log) < (unsigned int)(_n)) log++;
+        while ((1U << log) < (unsigned int)(n)) log++;
         size = 1 << log;
-        lz = std::vector<F>(size << 1, Dual::id());
-        for (int i = 0; i < _n; i++) lz[i + size] = v[i];
+        lz = std::vector<F>(size << 1, MF::id());
+        for (int i = 0; i < n; i++) lz[i + size] = v[i];
     }
 
     F operator[](int p) {
-        assert(0 <= p and p < _n);
+        assert(0 <= p and p < n);
         p += size;
-        for (int i = log; i >= 1; i--) push(p >> i);  // 上から下へ伝搬
+        for (int i = log; i >= 1; i--) push(p >> i);
         return lz[p];
     }
 
     F get(int p) {
-        assert(0 <= p and p < _n);
+        assert(0 <= p and p < n);
         p += size;
-        for (int i = log; i >= 1; i--) push(p >> i);  // 上から下へ伝搬
+        for (int i = log; i >= 1; i--) push(p >> i);
         return lz[p];
     }
 
-    void set(int p, const F& x) {
-        assert(0 <= p and p < _n);
+    void apply(int p, const F& f) {
+        assert(0 <= p and p < n);
         p += size;
-        for (int i = log; i >= 1; i--) push(p >> i);  // 上から下へ伝搬
-        lz[p] = x;
+        for (int i = log; i >= 1; i--) push(p >> i);
+        lz[p] = f;
     }
 
     void apply(int l, int r, const F& f) {
-        assert(0 <= l and l <= r and r <= _n);
+        assert(0 <= l and l <= r and r <= n);
         if (l == r) return;
 
         l += size;
@@ -59,12 +61,12 @@ template <class Dual> struct DualSegmentTree {
     }
 
    private:
-    int _n, log, size;
+    int n, log, size;
     std::vector<F> lz;
-    void all_apply(int k, const F& f) { lz[k] = Dual::composition(f, lz[k]); }
+    void all_apply(int k, const F& f) { lz[k] = MF::composition(f, lz[k]); }
     void push(int k) {
         all_apply(k << 1, lz[k]);
         all_apply((k << 1) | 1, lz[k]);
-        lz[k] = Dual::id();
+        lz[k] = MF::id();
     }
 };

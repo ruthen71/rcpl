@@ -1,11 +1,9 @@
 #pragma once
 
 // https://atcoder.jp/contests/abc322/tasks/abc322_f
-template <class T> struct LazyMax01Flip {
+// MS
+template <class T> struct MonoidMax01 {
     using S = std::array<T, 7>;  // {max0, left0, right0, max1, left1, right1, length}
-    using F = int;
-    using value_type_S = S;
-    using value_type_F = F;
     static constexpr S op(S a, S b) {
         S res;
         for (int i = 0; i < 6; i += 3) {
@@ -19,12 +17,17 @@ template <class T> struct LazyMax01Flip {
     static constexpr S e() { return {0, 0, 0, 0, 0, 0, 0}; }
     static constexpr S e0() { return {1, 1, 1, 0, 0, 0, 1}; }
     static constexpr S e1() { return {0, 0, 0, 1, 1, 1, 1}; }
+};
+#include "algebra/monoid_f/monoid_flip.hpp"
+// MSF
+template <class T> struct MonoidMax01Flip {
+    using MS = MonoidMax01<T>;
+    using MF = MonoidFlip;
+    using S = typename MS::S;
+    using F = typename MF::F;
     static constexpr S mapping(F f, S x) {
-        if (f) {
-            for (int i = 0; i < 3; i++) std::swap(x[i], x[i + 3]);
-        }
+        if (!f) return x;
+        for (int i = 0; i < 3; i++) std::swap(x[i], x[i + 3]);
         return x;
     }
-    static constexpr F composition(F f, F g) { return f ^ g; }
-    static constexpr F id() { return 0; }
 };

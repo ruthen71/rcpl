@@ -2,13 +2,13 @@
 
 #include <bits/stdc++.h>
 
-#include "algebra/lazy_min_add.hpp"
+#include "algebra/monoid_s_f/monoid_min_add.hpp"
 #include "data_structure/lazy_segment_tree.hpp"
 
 int main() {
     int N, Q;
     std::cin >> N >> Q;
-    LazySegmentTree<LazyMinAdd<long long>> seg(std::vector<long long>(N, 0));
+    LazySegmentTree<MonoidMinAdd<long long>> seg(std::vector<long long>(N, 0));
     while (Q--) {
         int t;
         std::cin >> t;

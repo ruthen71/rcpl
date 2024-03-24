@@ -1,20 +1,20 @@
 #pragma once
 
-template <class Monoid> struct SegmentTree2D {
+template <class MS> struct SegmentTree2D {
    public:
-    using S = typename Monoid::value_type;
+    using S = typename MS::S;
     SegmentTree2D() : SegmentTree2D(0, 0) {}
-    SegmentTree2D(int h, int w) : SegmentTree2D(std::vector<std::vector<S>>(h, std::vector<S>(w, Monoid::e()))) {}
-    SegmentTree2D(const std::vector<std::vector<S>>& v) : _h((int)v.size()), _w((int)v[0].size()) {
+    SegmentTree2D(int h, int w) : SegmentTree2D(std::vector<std::vector<S>>(h, std::vector<S>(w, MS::e()))) {}
+    SegmentTree2D(const std::vector<std::vector<S>>& v) : h((int)(v.size())), w((int)(v[0].size())) {
         logh = 0;
-        while ((1U << logh) < (unsigned int)(_h)) logh++;
+        while ((1U << logh) < (unsigned int)(h)) logh++;
         sizeh = 1 << logh;
         logw = 0;
-        while ((1U << logw) < (unsigned int)(_w)) logw++;
+        while ((1U << logw) < (unsigned int)(w)) logw++;
         sizew = 1 << logw;
-        d = std::vector<std::vector<S>>(sizeh << 1, std::vector<S>(sizew << 1, Monoid::e()));
-        for (int i = 0; i < _h; i++) {
-            for (int j = 0; j < _w; j++) {
+        d = std::vector<std::vector<S>>(sizeh << 1, std::vector<S>(sizew << 1, MS::e()));
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < w; j++) {
                 d[i + sizeh][j + sizew] = v[i][j];
             }
         }
@@ -31,7 +31,7 @@ template <class Monoid> struct SegmentTree2D {
     }
 
     void set(int h, int w, const S& x) {
-        assert(0 <= h and h < _h and 0 <= w and w < _w);
+        assert(0 <= h and h < h and 0 <= w and w < w);
         h += sizeh;
         w += sizew;
         d[h][w] = x;
@@ -44,10 +44,10 @@ template <class Monoid> struct SegmentTree2D {
     }
 
     void chset(int h, int w, const S& x) {
-        assert(0 <= h and h < _h and 0 <= w and w < _w);
+        assert(0 <= h and h < h and 0 <= w and w < w);
         h += sizeh;
         w += sizew;
-        d[h][w] = Monoid::op(d[h][w], x);
+        d[h][w] = MS::op(d[h][w], x);
         for (int i = 1; i <= logh; i++) update_bottom(h >> i, w);
         for (int i = 0; i <= logh; i++) {
             for (int j = 1; j <= logw; j++) {
@@ -57,49 +57,49 @@ template <class Monoid> struct SegmentTree2D {
     }
 
     S operator()(int h, int w) const {
-        assert(0 <= h and h < _h and 0 <= w and w < _w);
+        assert(0 <= h and h < h and 0 <= w and w < w);
         return d[h + sizeh][w + sizew];
     }
 
     S get(int h, int w) const {
-        assert(0 <= h and h < _h and 0 <= w and w < _w);
+        assert(0 <= h and h < h and 0 <= w and w < w);
         return d[h + sizeh][w + sizew];
     }
 
     S inner_prod(int h, int w1, int w2) {
-        S sml = Monoid::e(), smr = Monoid::e();
+        S sml = MS::e(), smr = MS::e();
         while (w1 < w2) {
-            if (w1 & 1) sml = Monoid::op(sml, d[h][w1++]);
-            if (w2 & 1) smr = Monoid::op(d[h][--w2], smr);
+            if (w1 & 1) sml = MS::op(sml, d[h][w1++]);
+            if (w2 & 1) smr = MS::op(d[h][--w2], smr);
             w1 >>= 1;
             w2 >>= 1;
         }
-        return Monoid::op(sml, smr);
+        return MS::op(sml, smr);
     }
 
     S prod(int h1, int w1, int h2, int w2) {
-        assert(0 <= h1 and h1 <= h2 and h2 <= _h);
-        assert(0 <= w1 and w1 <= w2 and w2 <= _w);
-        S sml = Monoid::e(), smr = Monoid::e();
+        assert(0 <= h1 and h1 <= h2 and h2 <= h);
+        assert(0 <= w1 and w1 <= w2 and w2 <= w);
+        S sml = MS::e(), smr = MS::e();
         h1 += sizeh;
         h2 += sizeh;
         w1 += sizew;
         w2 += sizew;
 
         while (h1 < h2) {
-            if (h1 & 1) sml = Monoid::op(sml, inner_prod(h1++, w1, w2));
-            if (h2 & 1) smr = Monoid::op(inner_prod(--h2, w1, w2), smr);
+            if (h1 & 1) sml = MS::op(sml, inner_prod(h1++, w1, w2));
+            if (h2 & 1) smr = MS::op(inner_prod(--h2, w1, w2), smr);
             h1 >>= 1;
             h2 >>= 1;
         }
-        return Monoid::op(sml, smr);
+        return MS::op(sml, smr);
     }
 
     S all_prod() const { return d[1][1]; }
 
    private:
-    int _h, logh, sizeh, _w, logw, sizew;
+    int h, logh, sizeh, w, logw, sizew;
     std::vector<std::vector<S>> d;
-    inline void update_bottom(int i, int j) { d[i][j] = Monoid::op(d[(i << 1) | 0][j], d[(i << 1) | 1][j]); }
-    inline void update_else(int i, int j) { d[i][j] = Monoid::op(d[i][(j << 1) | 0], d[i][(j << 1) | 1]); }
+    inline void update_bottom(int i, int j) { d[i][j] = MS::op(d[(i << 1) | 0][j], d[(i << 1) | 1][j]); }
+    inline void update_else(int i, int j) { d[i][j] = MS::op(d[i][(j << 1) | 0], d[i][(j << 1) | 1]); }
 };

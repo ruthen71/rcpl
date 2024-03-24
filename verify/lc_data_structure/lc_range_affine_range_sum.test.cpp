@@ -2,7 +2,7 @@
 
 #include <bits/stdc++.h>
 
-#include "algebra/lazy_sum_affine.hpp"
+#include "algebra/monoid_s_f/monoid_sum_size_affine.hpp"
 #include "data_structure/lazy_segment_tree.hpp"
 #include "math/static_modint.hpp"
 using mint = mint998;
@@ -16,7 +16,7 @@ int main() {
         std::cin >> a;
         A[i] = {mint(a), 1};
     }
-    LazySegmentTree<LazySumAffine<mint>> seg(A);
+    LazySegmentTree<MonoidSumSizeAffine<mint>> seg(A);
     while (Q--) {
         int t;
         std::cin >> t;
