@@ -12,15 +12,15 @@ template <typename T> struct Line {
 
     // Ax + By = C
     Line(const T &A, const T &B, const T &C) {
-        assert(equal(A, 0) and equal(B, 0));
-        if (equal(A, 0)) {
-            a = Point<T>(0, C / B), b = Point<T>(1, C / B);
-        } else if (equal(B, 0)) {
-            a = Point<T>(C / A, 0), b = Point<T>(C / A, 1);
-        } else if (equal(C, 0)) {
-            a = Point<T>(0, 0), b = Point<T>(1, B / A);
+        assert(!(equal(A, T(0)) and equal(B, T(0))));
+        if (equal(A, T(0))) {
+            a = Point<T>(T(0), C / B), b = Point<T>(T(1), C / B);
+        } else if (equal(B, T(0))) {
+            a = Point<T>(C / A, T(0)), b = Point<T>(C / A, T(1));
+        } else if (equal(C, T(0))) {
+            a = Point<T>(T(0), T(0)), b = Point<T>(T(1), B / A);
         } else {
-            a = Point<T>(0, C / B), b = Point<T>(C / A, 0);
+            a = Point<T>(T(0), C / B), b = Point<T>(C / A, T(0));
         }
     }
 
