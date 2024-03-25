@@ -34,7 +34,7 @@ data:
       title: algebra/monoid_s/monoid_min_index.hpp
     - icon: ':warning:'
       path: algebra/monoid_s/monoid_rolling_hash.hpp
-      title: algebra/monoid_s/monoid_rolling_hash.hpp
+      title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
     - icon: ':heavy_check_mark:'
       path: algebra/monoid_s/monoid_sum.hpp
       title: algebra/monoid_s/monoid_sum.hpp

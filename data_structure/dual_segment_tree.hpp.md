@@ -89,7 +89,7 @@ title: "Dual Segment Tree (\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
 #include "algebra/monoid_f/monoid_set.hpp"
 #include "data_structure/dual_segment_tree.hpp"
 int main() {
-    vector<int> A = {3, 1, 4, 1, 5};
+    vector<int> A;
     DualSegmentTree<MonoidSet<int>> seg(A);
 }
 ```

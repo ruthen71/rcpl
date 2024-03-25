@@ -182,7 +182,7 @@ title: "Lazy Segment Tree (\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
 #include "algebra/monoid_s_f/monoid_sum_size_set.hpp"
 #include "data_structure/lazy_segment_tree.hpp"
 int main() {
-    vector<pair<int, int>> A = {{3, 1}, {1, 1}, {4, 1}, {1, 1}, {5, 1}};
+    vector<pair<int, int>> A;
     SegmentTree<MonoidSumSizeSet<int>> seg(A);
 }
 ```
@@ -192,6 +192,7 @@ int main() {
 
 ## 参考資料
 [maspyさんの解説記事](https://maspypy.com/segment-tree-%e3%81%ae%e3%81%8a%e5%8b%89%e5%bc%b72)
+
 区間作用 = apply(l, r, f)
 - 作用素の伝搬 = push を含む部分
 - 作用素の追加 = all_apply を含む部分

@@ -121,7 +121,7 @@ title: "2D Segment Tree (2\u6B21\u5143\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
 #include "algebra/monoid_s/monoid_sum.hpp"
 #include "data_structure/segment_tree_2d.hpp"
 int main() {
-    vector<vector<int>> A = {{3, 1, 4}, {1, 5, 9}};
+    vector<vector<int>> A;
     SegmentTree2D<MonoidSum<int>> seg(A);
 }
 ```
