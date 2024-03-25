@@ -10,7 +10,7 @@ documentation_of: //data_structure/segment_tree_2d.hpp
 #include "algebra/monoid_s/monoid_sum.hpp"
 #include "data_structure/segment_tree_2d.hpp"
 int main() {
-    vector<vector<int>> A = {{3, 1, 4}, {1, 5, 9}};
+    vector<vector<int>> A;
     SegmentTree2D<MonoidSum<int>> seg(A);
 }
 ```
