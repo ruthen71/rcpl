@@ -4,7 +4,7 @@
 #include "math/chinese_remainder_theorem.hpp"
 
 int main() {
-    std::vector<i64> X(3), Y(3);
+    std::vector<long long> X(3), Y(3);
     for (int i = 0; i < 3; i++) std::cin >> X[i] >> Y[i];
     auto [r, m] = chinese_remainder_theorem(X, Y);
     if (m == 0) {
