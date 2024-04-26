@@ -5,13 +5,13 @@ data:
   - icon: ':warning:'
     path: math/baby_step_giant_step.hpp
     title: math/baby_step_giant_step.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/chinese_remainder_theorem.hpp
     title: "Chinese Remainder Theorem (\u4E2D\u56FD\u5270\u4F59\u5B9A\u7406)"
   - icon: ':warning:'
     path: math/inv_mod.hpp
     title: math/inv_mod.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/linear_diophantine.hpp
     title: "\u7DDA\u5F62\u30C7\u30A3\u30AA\u30D5\u30A1\u30F3\u30C8\u30B9\u65B9\u7A0B\
       \u5F0F ($ ax + by = c $) / \u7DDA\u5F62\u5408\u540C\u5F0F ( $ ax \\equiv b \\\
@@ -20,12 +20,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_ntl/aoj_ntl_1_e.test.cpp
     title: verify/aoj_ntl/aoj_ntl_1_e.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/yuki/yuki_186_chinese_remainder_theorem.test.cpp
     title: verify/yuki/yuki_186_chinese_remainder_theorem.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/extended_gcd.hpp\"\n\n#include <tuple>\n// find (x,\
@@ -46,7 +46,7 @@ data:
   - math/chinese_remainder_theorem.hpp
   - math/linear_diophantine.hpp
   timestamp: '2024-02-23 10:34:07+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yuki/yuki_186_chinese_remainder_theorem.test.cpp
   - verify/aoj_ntl/aoj_ntl_1_e.test.cpp

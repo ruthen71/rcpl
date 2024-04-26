@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/extended_gcd.hpp
     title: math/extended_gcd.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/linear_diophantine.hpp
     title: "\u7DDA\u5F62\u30C7\u30A3\u30AA\u30D5\u30A1\u30F3\u30C8\u30B9\u65B9\u7A0B\
       \u5F0F ($ ax + by = c $) / \u7DDA\u5F62\u5408\u540C\u5F0F ( $ ax \\equiv b \\\
       pmod m $ )"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/yuki/yuki_186_chinese_remainder_theorem.test.cpp
     title: verify/yuki/yuki_186_chinese_remainder_theorem.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/chinese_remainder_theorem.hpp\"\n\n#include <cassert>\n\
@@ -100,7 +100,7 @@ data:
   path: math/chinese_remainder_theorem.hpp
   requiredBy: []
   timestamp: '2024-04-27 04:52:03+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yuki/yuki_186_chinese_remainder_theorem.test.cpp
 documentation_of: math/chinese_remainder_theorem.hpp

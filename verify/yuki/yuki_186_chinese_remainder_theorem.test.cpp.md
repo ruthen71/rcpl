@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/chinese_remainder_theorem.hpp
     title: "Chinese Remainder Theorem (\u4E2D\u56FD\u5270\u4F59\u5B9A\u7406)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/extended_gcd.hpp
     title: math/extended_gcd.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/linear_diophantine.hpp
     title: "\u7DDA\u5F62\u30C7\u30A3\u30AA\u30D5\u30A1\u30F3\u30C8\u30B9\u65B9\u7A0B\
       \u5F0F ($ ax + by = c $) / \u7DDA\u5F62\u5408\u540C\u5F0F ( $ ax \\equiv b \\\
       pmod m $ )"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://yukicoder.me/problems/no/186
@@ -82,17 +82,18 @@ data:
     \ h] = linear_congruence(m0, r1 - r0, m1);\n        if (x == -1 and h == -1) return\
     \ {0, 0};\n        r0 += x * m0;\n        m0 *= h;\n        r0 %= m0;\n      \
     \  if (r0 < 0) r0 += m0;\n    }\n    return {r0, m0};\n}\n#line 5 \"verify/yuki/yuki_186_chinese_remainder_theorem.test.cpp\"\
-    \n\nint main() {\n    std::vector<i64> X(3), Y(3);\n    for (int i = 0; i < 3;\
-    \ i++) std::cin >> X[i] >> Y[i];\n    auto [r, m] = chinese_remainder_theorem(X,\
+    \n\nint main() {\n    std::vector<long long> X(3), Y(3);\n    for (int i = 0;\
+    \ i < 3; i++) std::cin >> X[i] >> Y[i];\n    auto [r, m] = chinese_remainder_theorem(X,\
     \ Y);\n    if (m == 0) {\n        std::cout << -1 << '\\n';\n    } else if (r\
     \ == 0) {\n        std::cout << m << '\\n';\n    } else {\n        std::cout <<\
     \ r << '\\n';\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/186\"\n\n#include <bits/stdc++.h>\n\
-    #include \"math/chinese_remainder_theorem.hpp\"\n\nint main() {\n    std::vector<i64>\
-    \ X(3), Y(3);\n    for (int i = 0; i < 3; i++) std::cin >> X[i] >> Y[i];\n   \
-    \ auto [r, m] = chinese_remainder_theorem(X, Y);\n    if (m == 0) {\n        std::cout\
-    \ << -1 << '\\n';\n    } else if (r == 0) {\n        std::cout << m << '\\n';\n\
-    \    } else {\n        std::cout << r << '\\n';\n    }\n    return 0;\n}\n"
+    #include \"math/chinese_remainder_theorem.hpp\"\n\nint main() {\n    std::vector<long\
+    \ long> X(3), Y(3);\n    for (int i = 0; i < 3; i++) std::cin >> X[i] >> Y[i];\n\
+    \    auto [r, m] = chinese_remainder_theorem(X, Y);\n    if (m == 0) {\n     \
+    \   std::cout << -1 << '\\n';\n    } else if (r == 0) {\n        std::cout <<\
+    \ m << '\\n';\n    } else {\n        std::cout << r << '\\n';\n    }\n    return\
+    \ 0;\n}\n"
   dependsOn:
   - math/chinese_remainder_theorem.hpp
   - math/linear_diophantine.hpp
@@ -100,8 +101,8 @@ data:
   isVerificationFile: true
   path: verify/yuki/yuki_186_chinese_remainder_theorem.test.cpp
   requiredBy: []
-  timestamp: '2024-04-27 04:52:03+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-04-27 05:02:04+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/yuki/yuki_186_chinese_remainder_theorem.test.cpp
 layout: document

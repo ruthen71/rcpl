@@ -380,7 +380,7 @@ data:
     - icon: ':warning:'
       path: math/binomial.hpp
       title: "Binomial (\u4E8C\u9805\u4FC2\u6570, \u524D\u8A08\u7B97\u3042\u308A)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/chinese_remainder_theorem.hpp
       title: "Chinese Remainder Theorem (\u4E2D\u56FD\u5270\u4F59\u5B9A\u7406)"
     - icon: ':heavy_check_mark:'
@@ -389,13 +389,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/enumerate_primes.hpp
       title: math/enumerate_primes.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/extended_gcd.hpp
       title: math/extended_gcd.hpp
     - icon: ':warning:'
       path: math/inv_mod.hpp
       title: math/inv_mod.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/linear_diophantine.hpp
       title: "\u7DDA\u5F62\u30C7\u30A3\u30AA\u30D5\u30A1\u30F3\u30C8\u30B9\u65B9\u7A0B\
         \u5F0F ($ ax + by = c $) / \u7DDA\u5F62\u5408\u540C\u5F0F ( $ ax \\equiv b\
@@ -671,7 +671,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/yuki/yuki_1036_segment_tree.test.cpp
       title: verify/yuki/yuki_1036_segment_tree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/yuki/yuki_186_chinese_remainder_theorem.test.cpp
       title: verify/yuki/yuki_186_chinese_remainder_theorem.test.cpp
 layout: toppage
