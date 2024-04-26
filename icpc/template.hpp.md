@@ -64,13 +64,13 @@ data:
   isVerificationFile: false
   path: icpc/template.hpp
   requiredBy:
-  - icpc/binomal.hpp
-  - icpc/dice.hpp
-  - icpc/lca.hpp
-  - icpc/scc.hpp
   - icpc/segtree.hpp
-  - icpc/ntt.hpp
   - icpc/modint.hpp
+  - icpc/dice.hpp
+  - icpc/ntt.hpp
+  - icpc/lca.hpp
+  - icpc/binomal.hpp
+  - icpc/scc.hpp
   - icpc/matrix.hpp
   - icpc/uf.hpp
   timestamp: '2023-05-31 02:53:46+09:00'

@@ -162,8 +162,8 @@ data:
   isVerificationFile: false
   path: geometry/convex_polygon_diameter.hpp
   requiredBy:
-  - geometry/all.hpp
   - geometry/farthest_pair.hpp
+  - geometry/all.hpp
   timestamp: '2023-06-01 23:47:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

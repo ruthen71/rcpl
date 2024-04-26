@@ -1,14 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/extended_gcd.hpp
     title: math/extended_gcd.hpp
-  _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedRequiredBy:
+  - icon: ':x:'
+    path: math/chinese_remainder_theorem.hpp
+    title: "Chinese Remainder Theorem (\u4E2D\u56FD\u5270\u4F59\u5B9A\u7406)"
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify/yuki/yuki_186_chinese_remainder_theorem.test.cpp
+    title: verify/yuki/yuki_186_chinese_remainder_theorem.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - "https://ja.wikipedia.org/wiki/\u30D9\u30BA\u30FC\u306E\u7B49\u5F0F"
@@ -99,10 +105,12 @@ data:
   - math/extended_gcd.hpp
   isVerificationFile: false
   path: math/linear_diophantine.hpp
-  requiredBy: []
+  requiredBy:
+  - math/chinese_remainder_theorem.hpp
   timestamp: '2024-02-23 10:34:07+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - verify/yuki/yuki_186_chinese_remainder_theorem.test.cpp
 documentation_of: math/linear_diophantine.hpp
 layout: document
 title: "\u7DDA\u5F62\u30C7\u30A3\u30AA\u30D5\u30A1\u30F3\u30C8\u30B9\u65B9\u7A0B\u5F0F\
