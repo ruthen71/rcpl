@@ -168,6 +168,10 @@ data:
       path: dp/knapsack_limitations.hpp
       title: "Knapsack Limitations (\u500B\u6570\u5236\u9650\u4ED8\u304D\u30CA\u30C3\
         \u30D7\u30B5\u30C3\u30AF\u554F\u984C)"
+    - icon: ':heavy_check_mark:'
+      path: dp/longest_common_subsequence.hpp
+      title: "Longest Common Subsequence (\u6700\u9577\u5171\u901A\u90E8\u5206\u5217\
+        )"
     - icon: ':warning:'
       path: dp/meet_in_the_middle.hpp
       title: "Meet in the middle (\u534A\u5206\u5168\u5217\u6319)"
@@ -450,6 +454,9 @@ data:
   verificationCategories:
   - name: verify/aoj_alds1
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_alds1/aoj_alds1_10_c.test.cpp
+      title: verify/aoj_alds1/aoj_alds1_10_c.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj_alds1/aoj_alds1_14_b.test.cpp
       title: verify/aoj_alds1/aoj_alds1_14_b.test.cpp
