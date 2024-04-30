@@ -5,8 +5,7 @@
 
 template <class T> std::vector<T> longest_common_subsequence(std::vector<T>& a, std::vector<T>& b) {
     const int n = (int)(a.size()), m = (int)(b.size());
-    // -INF
-    constexpr int e = -1000000000;
+    constexpr int e = -1000000000;  // -INF
     std::vector dp(n + 1, std::vector<int>(m + 1, e));
     std::vector pd(n + 1, std::vector<int>(m + 1, -1));
     // initialize
@@ -35,8 +34,7 @@ template <class T> std::vector<T> longest_common_subsequence(std::vector<T>& a, 
     // 復元
     std::vector<T> res;
     res.reserve(dp[n][m]);
-    int i = n, j = m;
-    while (pd[i][j] != -1) {
+    for (int i = n, j = m; pd[i][j] != -1;) {
         if (pd[i][j] == 0) {
             i--, j--;
             res.push_back(a[i]);
