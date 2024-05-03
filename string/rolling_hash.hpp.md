@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: math/modint261.hpp
-    title: ModInt $\pmod{2^{61}-1} $
+    title: Modint $\pmod{2^{61}-1} $
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'

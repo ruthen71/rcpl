@@ -390,6 +390,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/divisor.hpp
       title: math/divisor.hpp
+    - icon: ':warning:'
+      path: math/dynamic_modint.hpp
+      title: Dynamic Modint
     - icon: ':heavy_check_mark:'
       path: math/enumerate_primes.hpp
       title: math/enumerate_primes.hpp
@@ -406,7 +409,7 @@ data:
         \ \\pmod m $ )"
     - icon: ':heavy_check_mark:'
       path: math/modint261.hpp
-      title: ModInt $\pmod{2^{61}-1} $
+      title: Modint $\pmod{2^{61}-1} $
     - icon: ':heavy_check_mark:'
       path: math/osak.hpp
       title: math/osak.hpp
@@ -421,7 +424,7 @@ data:
       title: math/prime_table.hpp
     - icon: ':heavy_check_mark:'
       path: math/static_modint.hpp
-      title: math/static_modint.hpp
+      title: Static Modint
     - icon: ':heavy_check_mark:'
       path: math/totient.hpp
       title: math/totient.hpp

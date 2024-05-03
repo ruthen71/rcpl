@@ -91,7 +91,7 @@ data:
   - verify/aoj_alds1/aoj_alds1_14_b.test.cpp
 documentation_of: math/modint261.hpp
 layout: document
-title: ModInt $\pmod{2^{61}-1} $
+title: Modint $\pmod{2^{61}-1} $
 ---
 
 ## 参考文献
