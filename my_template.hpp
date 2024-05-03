@@ -68,7 +68,7 @@ template <class T> using pqueg = std::priority_queue<T, std::vector<T>, std::gre
 #define FORE2(x, y, a) for (auto&& [x, y] : a)
 #define FORE3(x, y, z, a) for (auto&& [x, y, z] : a)
 #define FORE(...) overload4(__VA_ARGS__, FORE3, FORE2, FORE1)(__VA_ARGS__)
-#define FORSUB(t, s) for (long long t = (s); t; t = (t - 1) & (s))
+#define FORSUB(t, s) for (long long t = (s); t >= 0; t = (t == 0 ? -1 : (t - 1) & (s)))
 
 // function
 #define ALL(a) (a).begin(), (a).end()
