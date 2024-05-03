@@ -36,12 +36,13 @@ data:
     \ RREP1)(__VA_ARGS__)\n#define FORE1(x, a) for (auto&& x : a)\n#define FORE2(x,\
     \ y, a) for (auto&& [x, y] : a)\n#define FORE3(x, y, z, a) for (auto&& [x, y,\
     \ z] : a)\n#define FORE(...) overload4(__VA_ARGS__, FORE3, FORE2, FORE1)(__VA_ARGS__)\n\
-    #define FORSUB(t, s) for (long long t = (s); t; t = (t - 1) & (s))\n\n// function\n\
-    #define ALL(a) (a).begin(), (a).end()\n#define RALL(a) (a).rbegin(), (a).rend()\n\
-    #define SORT(a) std::sort((a).begin(), (a).end())\n#define RSORT(a) std::sort((a).rbegin(),\
-    \ (a).rend())\n#define REV(a) std::reverse((a).begin(), (a).end())\n#define UNIQUE(a)\
-    \                      \\\n    std::sort((a).begin(), (a).end()); \\\n    (a).erase(std::unique((a).begin(),\
-    \ (a).end()), (a).end())\n#define LEN(a) (int)((a).size())\n#define MIN(a) *std::min_element((a).begin(),\
+    #define FORSUB(t, s) for (long long t = (s); t >= 0; t = (t == 0 ? -1 : (t - 1)\
+    \ & (s)))\n\n// function\n#define ALL(a) (a).begin(), (a).end()\n#define RALL(a)\
+    \ (a).rbegin(), (a).rend()\n#define SORT(a) std::sort((a).begin(), (a).end())\n\
+    #define RSORT(a) std::sort((a).rbegin(), (a).rend())\n#define REV(a) std::reverse((a).begin(),\
+    \ (a).end())\n#define UNIQUE(a)                      \\\n    std::sort((a).begin(),\
+    \ (a).end()); \\\n    (a).erase(std::unique((a).begin(), (a).end()), (a).end())\n\
+    #define LEN(a) (int)((a).size())\n#define MIN(a) *std::min_element((a).begin(),\
     \ (a).end())\n#define MAX(a) *std::max_element((a).begin(), (a).end())\n#define\
     \ SUM1(a) std::accumulate((a).begin(), (a).end(), 0LL)\n#define SUM2(a, x) std::accumulate((a).begin(),\
     \ (a).end(), (x))\n#define SUM(...) overload2(__VA_ARGS__, SUM2, SUM1)(__VA_ARGS__)\n\
@@ -167,12 +168,13 @@ data:
     \ RREP1)(__VA_ARGS__)\n#define FORE1(x, a) for (auto&& x : a)\n#define FORE2(x,\
     \ y, a) for (auto&& [x, y] : a)\n#define FORE3(x, y, z, a) for (auto&& [x, y,\
     \ z] : a)\n#define FORE(...) overload4(__VA_ARGS__, FORE3, FORE2, FORE1)(__VA_ARGS__)\n\
-    #define FORSUB(t, s) for (long long t = (s); t; t = (t - 1) & (s))\n\n// function\n\
-    #define ALL(a) (a).begin(), (a).end()\n#define RALL(a) (a).rbegin(), (a).rend()\n\
-    #define SORT(a) std::sort((a).begin(), (a).end())\n#define RSORT(a) std::sort((a).rbegin(),\
-    \ (a).rend())\n#define REV(a) std::reverse((a).begin(), (a).end())\n#define UNIQUE(a)\
-    \                      \\\n    std::sort((a).begin(), (a).end()); \\\n    (a).erase(std::unique((a).begin(),\
-    \ (a).end()), (a).end())\n#define LEN(a) (int)((a).size())\n#define MIN(a) *std::min_element((a).begin(),\
+    #define FORSUB(t, s) for (long long t = (s); t >= 0; t = (t == 0 ? -1 : (t - 1)\
+    \ & (s)))\n\n// function\n#define ALL(a) (a).begin(), (a).end()\n#define RALL(a)\
+    \ (a).rbegin(), (a).rend()\n#define SORT(a) std::sort((a).begin(), (a).end())\n\
+    #define RSORT(a) std::sort((a).rbegin(), (a).rend())\n#define REV(a) std::reverse((a).begin(),\
+    \ (a).end())\n#define UNIQUE(a)                      \\\n    std::sort((a).begin(),\
+    \ (a).end()); \\\n    (a).erase(std::unique((a).begin(), (a).end()), (a).end())\n\
+    #define LEN(a) (int)((a).size())\n#define MIN(a) *std::min_element((a).begin(),\
     \ (a).end())\n#define MAX(a) *std::max_element((a).begin(), (a).end())\n#define\
     \ SUM1(a) std::accumulate((a).begin(), (a).end(), 0LL)\n#define SUM2(a, x) std::accumulate((a).begin(),\
     \ (a).end(), (x))\n#define SUM(...) overload2(__VA_ARGS__, SUM2, SUM1)(__VA_ARGS__)\n\
@@ -278,7 +280,7 @@ data:
   path: my_template.hpp
   requiredBy:
   - my_template_int128.hpp
-  timestamp: '2024-03-24 14:28:47+09:00'
+  timestamp: '2024-05-03 17:49:37+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: my_template.hpp
