@@ -1,11 +1,12 @@
 #pragma once
 
 template <class T> struct WeightedUnionFind {
+    int n;
     std::vector<int> parents;
     std::vector<T> diff_weight;
 
     WeightedUnionFind() {}
-    WeightedUnionFind(int n) : parents(n, -1), diff_weight(n) {}
+    WeightedUnionFind(int n) : n(n), parents(n, -1), diff_weight(n, T(0)) {}
 
     int leader(int x) {
         if (parents[x] < 0) {
@@ -42,5 +43,23 @@ template <class T> struct WeightedUnionFind {
 
     int size(int x) { return -parents[leader(x)]; }
 
-    void init(int n) { parents.assign(n, -1), diff_weight.assign(n, 0); }  // reset
+    // 連結成分ごとに (頂点番号 v, diff(leader(v), v)) の配列を返す
+    std::vector<std::vector<std::pair<int, T>>> groups() {
+        std::vector<int> leader_buf(n), group_size(n);
+        for (int i = 0; i < n; i++) {
+            leader_buf[i] = leader(i);
+            group_size[leader_buf[i]]++;
+        }
+        std::vector<std::vector<std::pair<int, T>>> result(n);
+        for (int i = 0; i < n; i++) {
+            result[i].reserve(group_size[i]);
+        }
+        for (int i = 0; i < n; i++) {
+            result[leader_buf[i]].emplace_back(i, weight(i));
+        }
+        result.erase(std::remove_if(result.begin(), result.end(), [&](const std::vector<std::pair<int, T>>& v) { return v.empty(); }), result.end());
+        return result;
+    }
+
+    void init(int n) { parents.assign(n, -1), diff_weight.assign(n, T(0)); }  // reset
 };
