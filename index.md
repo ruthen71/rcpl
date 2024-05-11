@@ -454,6 +454,9 @@ data:
       path: string/run_length_encoding.hpp
       title: "Run Length Encoding (\u30E9\u30F3\u30EC\u30F3\u30B0\u30B9\u5727\u7E2E\
         )"
+    - icon: ':warning:'
+      path: string/trie.hpp
+      title: "Trie (\u30C8\u30E9\u30A4\u6728)"
   verificationCategories:
   - name: verify/aoj_alds1
     pages:
