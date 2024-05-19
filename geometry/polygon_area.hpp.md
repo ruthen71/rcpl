@@ -115,8 +115,8 @@ data:
   timestamp: '2023-06-01 23:47:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj_cgl/aoj_cgl_3_a.test.cpp
   - verify/aoj_cgl/aoj_cgl_4_c.test.cpp
+  - verify/aoj_cgl/aoj_cgl_3_a.test.cpp
 documentation_of: geometry/polygon_area.hpp
 layout: document
 redirect_from:

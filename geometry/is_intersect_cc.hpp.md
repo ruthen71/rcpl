@@ -126,14 +126,14 @@ data:
   isVerificationFile: false
   path: geometry/is_intersect_cc.hpp
   requiredBy:
-  - geometry/tangent_point_cp.hpp
   - geometry/all.hpp
+  - geometry/tangent_point_cp.hpp
   - geometry/cross_point_cc.hpp
   timestamp: '2023-06-01 23:47:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj_cgl/aoj_cgl_7_f.test.cpp
   - verify/aoj_cgl/aoj_cgl_7_e.test.cpp
+  - verify/aoj_cgl/aoj_cgl_7_f.test.cpp
 documentation_of: geometry/is_intersect_cc.hpp
 layout: document
 redirect_from:
