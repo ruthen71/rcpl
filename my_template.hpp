@@ -1,5 +1,4 @@
 #pragma once
-
 #include <algorithm>
 #include <array>
 #include <bitset>
@@ -48,12 +47,10 @@ using f64 = double;
 using f128 = long double;
 template <class T> using pque = std::priority_queue<T>;
 template <class T> using pqueg = std::priority_queue<T, std::vector<T>, std::greater<T>>;
-
 // overload
 #define overload4(_1, _2, _3, _4, name, ...) name
 #define overload3(_1, _2, _3, name, ...) name
 #define overload2(_1, _2, name, ...) name
-
 // for loop
 #define REP1(a) for (long long _ = 0; _ < (a); _++)
 #define REP2(i, a) for (long long i = 0; i < (a); i++)
@@ -69,7 +66,6 @@ template <class T> using pqueg = std::priority_queue<T, std::vector<T>, std::gre
 #define FORE3(x, y, z, a) for (auto&& [x, y, z] : a)
 #define FORE(...) overload4(__VA_ARGS__, FORE3, FORE2, FORE1)(__VA_ARGS__)
 #define FORSUB(t, s) for (long long t = (s); t >= 0; t = (t == 0 ? -1 : (t - 1) & (s)))
-
 // function
 #define ALL(a) (a).begin(), (a).end()
 #define RALL(a) (a).rbegin(), (a).rend()
@@ -108,7 +104,6 @@ constexpr long long TEN(int n) { return (n == 0) ? 1 : 10LL * TEN(n - 1); }
 // l + (l + 1) + ... + r
 #define TRI2(l, r) (((l) + (r)) * ((r) - (l) + 1LL) / 2)
 #define TRI(...) overload2(__VA_ARGS__, TRI2, TRI1)(__VA_ARGS__)
-
 // bit operation
 // bit[i] (= 0 or 1)
 #define IBIT(bit, i) (((bit) >> (i)) & 1)
@@ -130,7 +125,6 @@ int lowbit(int x) { return (x == 0 ? -1 : __builtin_ctz(x)); }
 int lowbit(u32 x) { return (x == 0 ? -1 : __builtin_ctz(x)); }
 int lowbit(i64 x) { return (x == 0 ? -1 : __builtin_ctzll(x)); }
 int lowbit(u64 x) { return (x == 0 ? -1 : __builtin_ctzll(x)); }
-
 // binary search
 template <class T, class F> T bin_search(T ok, T ng, F& f) {
     while ((ok > ng ? ok - ng : ng - ok) > 1) {
@@ -146,7 +140,6 @@ template <class T, class F> T bin_search_real(T ok, T ng, F& f, const int iter =
     }
     return ok;
 }
-
 // rotate matrix counterclockwise by pi / 2
 template <class T> void rot(std::vector<std::vector<T>>& a) {
     if ((int)(a.size()) == 0) return;
@@ -160,11 +153,9 @@ template <class T> void rot(std::vector<std::vector<T>>& a) {
     }
     a.swap(res);
 }
-
 // const value
 constexpr int dx[8] = {1, 0, -1, 0, 1, -1, -1, 1};
 constexpr int dy[8] = {0, 1, 0, -1, 1, 1, -1, -1};
-
 // infinity
 template <class T> constexpr T INF = 0;
 template <> constexpr int INF<int> = 1'000'000'000;                 // 1e9
@@ -174,7 +165,7 @@ template <> constexpr u64 INF<u64> = INF<i64>;                      // 2e18
 template <> constexpr f32 INF<f32> = INF<i64>;                      // 2e18
 template <> constexpr f64 INF<f64> = INF<i64>;                      // 2e18
 template <> constexpr f128 INF<f128> = INF<i64>;                    // 2e18
-
+// I/O
 // input
 template <class T> std::istream& operator>>(std::istream& is, std::vector<T>& v) {
     for (auto&& i : v) is >> i;
@@ -186,8 +177,7 @@ template <class Head, class... Tail> void scan(Head& head, Tail&... tail) {
     in(head);
     scan(tail...);
 }
-
-// definition & input
+// input macro
 #define INT(...)     \
     int __VA_ARGS__; \
     scan(__VA_ARGS__)
@@ -230,7 +220,6 @@ template <class Head, class... Tail> void scan(Head& head, Tail&... tail) {
 #define VV(type, name, h, w)                       \
     std::vector name((h), std::vector<type>((w))); \
     scan(name)
-
 // output
 template <class T> std::ostream& operator<<(std::ostream& os, const std::vector<T>& v) {
     auto n = v.size();
@@ -241,26 +230,19 @@ template <class T> std::ostream& operator<<(std::ostream& os, const std::vector<
     return os;
 }
 template <class... T> void out(const T&... a) { (std::cout << ... << a); }
-void print() {
-    out('\n');
-    // std::cout.flush();
-}
+void print() { out('\n'); }
 template <class Head, class... Tail> void print(Head&& head, Tail&&... tail) {
     out(head);
     if (sizeof...(Tail)) out(' ');
     print(tail...);
 }
 // for interactive problems
-void printflush() {
-    out('\n');
-    std::cout.flush();
-}
-template <class Head, class... Tail> void printflush(Head&& head, Tail&&... tail) {
+void printi() { std::cout << std::endl; }
+template <class Head, class... Tail> void printi(Head&& head, Tail&&... tail) {
     out(head);
     if (sizeof...(Tail)) out(' ');
-    printflush(tail...);
+    printi(tail...);
 }
-
 // bool output
 void YES(bool t = 1) { print(t ? "YES" : "NO"); }
 void Yes(bool t = 1) { print(t ? "Yes" : "No"); }
@@ -280,7 +262,6 @@ void first(bool t = 1) { print(t ? "first" : "second"); }
 void SECOND(bool t = 1) { FIRST(!t); }
 void Second(bool t = 1) { First(!t); }
 void second(bool t = 1) { first(!t); }
-
 // I/O speed up
 struct SetUpIO {
     SetUpIO() {
