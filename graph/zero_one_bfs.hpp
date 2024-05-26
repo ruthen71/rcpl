@@ -4,10 +4,10 @@
 
 template <class T>
 std::tuple<std::vector<T>, std::vector<int>, std::vector<int>>  //
-zero_one_bfs(Graph<T> &G, std::vector<int> &s, const T INF) {
-    int N = (int)G.size();
-    std::vector<T> dist(N, INF);
-    std::vector<int> par(N, -1), root(N, -1);
+zero_one_bfs(Graph<T> &g, std::vector<int> &s, const T INF) {
+    const int n = (int)(g.size());
+    std::vector<T> dist(n, INF);
+    std::vector<int> par(n, -1), root(n, -1);
 
     std::deque<int> que;
 
@@ -20,7 +20,7 @@ zero_one_bfs(Graph<T> &G, std::vector<int> &s, const T INF) {
     while (!que.empty()) {
         auto v = que.front();
         que.pop_front();
-        for (auto &e : G[v]) {
+        for (auto &e : g[v]) {
             if (dist[e.to] > dist[v] + e.cost) {
                 dist[e.to] = dist[v] + e.cost;
                 root[e.to] = root[v];
