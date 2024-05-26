@@ -24,37 +24,38 @@ data:
     \ }\";\n    }\n};\n\ntemplate <class T> using Edges = std::vector<Edge<T>>;\n\
     template <class T> using Graph = std::vector<std::vector<Edge<T>>>;\n#line 4 \"\
     graph/bellman_ford.hpp\"\n\ntemplate <class T>\nstd::tuple<std::vector<T>, std::vector<int>,\
-    \ std::vector<int>>  //\nbellman_ford(Graph<T> &G, std::vector<int> &s, const\
-    \ T INF) {\n    int N = (int)G.size();\n    std::vector<T> dist(N, INF);\n   \
-    \ std::vector<int> par(N, -1), root(N, -1);\n\n    for (auto &v : s) {\n     \
-    \   dist[v] = 0;\n        root[v] = v;\n    }\n    int loop_count = 0;\n\n   \
-    \ while (true) {\n        loop_count++;\n        bool update = false;\n      \
-    \  for (int cur = 0; cur < N; cur++) {\n            if (dist[cur] == INF) continue;\n\
-    \            for (auto &e : G[cur]) {\n                T nd = std::max(-INF, dist[cur]\
+    \ std::vector<int>>  //\nbellman_ford(Graph<T> &g, std::vector<int> &s, const\
+    \ T INF) {\n    const int n = (int)(g.size());\n    std::vector<T> dist(n, INF);\n\
+    \    std::vector<int> par(n, -1), root(n, -1);\n\n    for (auto &v : s) {\n  \
+    \      dist[v] = 0;\n        root[v] = v;\n    }\n    int loop_count = 0;\n\n\
+    \    while (true) {\n        loop_count++;\n        bool update = false;\n   \
+    \     for (int cur = 0; cur < n; cur++) {\n            if (dist[cur] == INF) continue;\n\
+    \            for (auto &e : g[cur]) {\n                T nd = std::max(-INF, dist[cur]\
     \ + e.cost);\n                if (dist[e.to] > nd) {\n                    par[e.to]\
     \ = cur;\n                    root[e.to] = root[cur];\n                    update\
-    \ = true;\n                    if (loop_count >= N) nd = -INF;\n             \
+    \ = true;\n                    if (loop_count >= n) nd = -INF;\n             \
     \       dist[e.to] = nd;\n                }\n            }\n        }\n      \
     \  if (!update) break;\n    }\n    return {dist, par, root};\n}\n"
   code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\ntemplate <class\
     \ T>\nstd::tuple<std::vector<T>, std::vector<int>, std::vector<int>>  //\nbellman_ford(Graph<T>\
-    \ &G, std::vector<int> &s, const T INF) {\n    int N = (int)G.size();\n    std::vector<T>\
-    \ dist(N, INF);\n    std::vector<int> par(N, -1), root(N, -1);\n\n    for (auto\
-    \ &v : s) {\n        dist[v] = 0;\n        root[v] = v;\n    }\n    int loop_count\
-    \ = 0;\n\n    while (true) {\n        loop_count++;\n        bool update = false;\n\
-    \        for (int cur = 0; cur < N; cur++) {\n            if (dist[cur] == INF)\
-    \ continue;\n            for (auto &e : G[cur]) {\n                T nd = std::max(-INF,\
-    \ dist[cur] + e.cost);\n                if (dist[e.to] > nd) {\n             \
-    \       par[e.to] = cur;\n                    root[e.to] = root[cur];\n      \
-    \              update = true;\n                    if (loop_count >= N) nd = -INF;\n\
-    \                    dist[e.to] = nd;\n                }\n            }\n    \
-    \    }\n        if (!update) break;\n    }\n    return {dist, par, root};\n}"
+    \ &g, std::vector<int> &s, const T INF) {\n    const int n = (int)(g.size());\n\
+    \    std::vector<T> dist(n, INF);\n    std::vector<int> par(n, -1), root(n, -1);\n\
+    \n    for (auto &v : s) {\n        dist[v] = 0;\n        root[v] = v;\n    }\n\
+    \    int loop_count = 0;\n\n    while (true) {\n        loop_count++;\n      \
+    \  bool update = false;\n        for (int cur = 0; cur < n; cur++) {\n       \
+    \     if (dist[cur] == INF) continue;\n            for (auto &e : g[cur]) {\n\
+    \                T nd = std::max(-INF, dist[cur] + e.cost);\n                if\
+    \ (dist[e.to] > nd) {\n                    par[e.to] = cur;\n                \
+    \    root[e.to] = root[cur];\n                    update = true;\n           \
+    \         if (loop_count >= n) nd = -INF;\n                    dist[e.to] = nd;\n\
+    \                }\n            }\n        }\n        if (!update) break;\n  \
+    \  }\n    return {dist, par, root};\n}"
   dependsOn:
   - graph/graph_template.hpp
   isVerificationFile: false
   path: graph/bellman_ford.hpp
   requiredBy: []
-  timestamp: '2024-01-25 10:46:02+09:00'
+  timestamp: '2024-05-26 20:33:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_grl/aoj_grl_1_b.test.cpp

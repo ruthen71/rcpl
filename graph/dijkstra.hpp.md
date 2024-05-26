@@ -24,27 +24,27 @@ data:
     \ }\";\n    }\n};\n\ntemplate <class T> using Edges = std::vector<Edge<T>>;\n\
     template <class T> using Graph = std::vector<std::vector<Edge<T>>>;\n#line 4 \"\
     graph/dijkstra.hpp\"\n\ntemplate <class T>\nstd::tuple<std::vector<T>, std::vector<int>,\
-    \ std::vector<int>>  //\ndijkstra(Graph<T> &G, std::vector<int> &s, const T INF)\
-    \ {\n    int N = (int)G.size();\n    std::vector<T> dist(N, INF);\n    std::vector<int>\
-    \ par(N, -1), root(N, -1);\n\n    std::priority_queue<std::pair<T, int>, std::vector<std::pair<T,\
-    \ int>>, std::greater<std::pair<T, int>>> que;\n\n    for (auto &v : s) {\n  \
-    \      dist[v] = 0;\n        root[v] = v;\n        que.emplace(T(0), v);\n   \
-    \ }\n\n    while (!que.empty()) {\n        auto [d, v] = que.top();\n        que.pop();\n\
-    \        if (dist[v] != d) continue;  // dist[v] < d\n        for (auto &e : G[v])\
-    \ {\n            if (dist[e.to] > d + e.cost) {\n                dist[e.to] =\
-    \ d + e.cost;\n                root[e.to] = root[v];\n                par[e.to]\
-    \ = v;\n                que.emplace(dist[e.to], e.to);\n            }\n      \
-    \  }\n    }\n    return {dist, par, root};\n}\n"
-  code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\ntemplate <class\
-    \ T>\nstd::tuple<std::vector<T>, std::vector<int>, std::vector<int>>  //\ndijkstra(Graph<T>\
-    \ &G, std::vector<int> &s, const T INF) {\n    int N = (int)G.size();\n    std::vector<T>\
-    \ dist(N, INF);\n    std::vector<int> par(N, -1), root(N, -1);\n\n    std::priority_queue<std::pair<T,\
+    \ std::vector<int>>  //\ndijkstra(Graph<T> &g, std::vector<int> &s, const T INF)\
+    \ {\n    const int n = (int)(g.size());\n    std::vector<T> dist(n, INF);\n  \
+    \  std::vector<int> par(n, -1), root(n, -1);\n\n    std::priority_queue<std::pair<T,\
     \ int>, std::vector<std::pair<T, int>>, std::greater<std::pair<T, int>>> que;\n\
     \n    for (auto &v : s) {\n        dist[v] = 0;\n        root[v] = v;\n      \
     \  que.emplace(T(0), v);\n    }\n\n    while (!que.empty()) {\n        auto [d,\
     \ v] = que.top();\n        que.pop();\n        if (dist[v] != d) continue;  //\
-    \ dist[v] < d\n        for (auto &e : G[v]) {\n            if (dist[e.to] > d\
+    \ dist[v] < d\n        for (auto &e : g[v]) {\n            if (dist[e.to] > d\
     \ + e.cost) {\n                dist[e.to] = d + e.cost;\n                root[e.to]\
+    \ = root[v];\n                par[e.to] = v;\n                que.emplace(dist[e.to],\
+    \ e.to);\n            }\n        }\n    }\n    return {dist, par, root};\n}\n"
+  code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\ntemplate <class\
+    \ T>\nstd::tuple<std::vector<T>, std::vector<int>, std::vector<int>>  //\ndijkstra(Graph<T>\
+    \ &g, std::vector<int> &s, const T INF) {\n    const int n = (int)(g.size());\n\
+    \    std::vector<T> dist(n, INF);\n    std::vector<int> par(n, -1), root(n, -1);\n\
+    \n    std::priority_queue<std::pair<T, int>, std::vector<std::pair<T, int>>, std::greater<std::pair<T,\
+    \ int>>> que;\n\n    for (auto &v : s) {\n        dist[v] = 0;\n        root[v]\
+    \ = v;\n        que.emplace(T(0), v);\n    }\n\n    while (!que.empty()) {\n \
+    \       auto [d, v] = que.top();\n        que.pop();\n        if (dist[v] != d)\
+    \ continue;  // dist[v] < d\n        for (auto &e : g[v]) {\n            if (dist[e.to]\
+    \ > d + e.cost) {\n                dist[e.to] = d + e.cost;\n                root[e.to]\
     \ = root[v];\n                par[e.to] = v;\n                que.emplace(dist[e.to],\
     \ e.to);\n            }\n        }\n    }\n    return {dist, par, root};\n}"
   dependsOn:
@@ -52,7 +52,7 @@ data:
   isVerificationFile: false
   path: graph/dijkstra.hpp
   requiredBy: []
-  timestamp: '2024-01-25 10:46:02+09:00'
+  timestamp: '2024-05-26 20:33:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
