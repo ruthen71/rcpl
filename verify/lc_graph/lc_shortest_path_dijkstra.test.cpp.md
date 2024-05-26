@@ -12,7 +12,7 @@ data:
     title: graph/read_graph.hpp
   - icon: ':heavy_check_mark:'
     path: graph/restore_path.hpp
-    title: graph/restore_path.hpp
+    title: Restore path
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false

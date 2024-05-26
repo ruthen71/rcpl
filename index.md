@@ -327,7 +327,7 @@ data:
       title: graph/read_graph.hpp
     - icon: ':heavy_check_mark:'
       path: graph/restore_path.hpp
-      title: graph/restore_path.hpp
+      title: Restore path
     - icon: ':warning:'
       path: graph/shortest_path_tree.hpp
       title: "Shortest Path Tree (\u6700\u77ED\u7D4C\u8DEF\u6728)"
