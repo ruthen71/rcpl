@@ -4,6 +4,7 @@
 
 #include "graph/dijkstra.hpp"
 #include "graph/read_graph.hpp"
+#include "graph/restore_path.hpp"
 
 int main() {
     int N, M, s, t;
@@ -16,14 +17,8 @@ int main() {
         std::cout << -1 << '\n';
         return 0;
     }
-    std::vector<int> ans;
-    int c = t;
-    while (t != -1) {
-        ans.push_back(t);
-        t = p[t];
-    }
-    std::reverse(ans.begin(), ans.end());
-    std::cout << d[c] << ' ' << ans.size() - 1 << '\n';
+    auto ans = restore_path(p, t);
+    std::cout << d[t] << ' ' << ans.size() - 1 << '\n';
     for (int i = 0; i < ans.size() - 1; i++) std::cout << ans[i] << ' ' << ans[i + 1] << '\n';
     return 0;
 }
