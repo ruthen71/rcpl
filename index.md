@@ -76,6 +76,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: algebra/monoid_s_f/monoid_min_set.hpp
       title: algebra/monoid_s_f/monoid_min_set.hpp
+    - icon: ':warning:'
+      path: algebra/monoid_s_f/monoid_product_sum_add2.hpp
+      title: algebra/monoid_s_f/monoid_product_sum_add2.hpp
     - icon: ':heavy_check_mark:'
       path: algebra/monoid_s_f/monoid_sum_size_add.hpp
       title: algebra/monoid_s_f/monoid_sum_size_add.hpp
@@ -85,6 +88,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: algebra/monoid_s_f/monoid_sum_size_set.hpp
       title: algebra/monoid_s_f/monoid_sum_size_set.hpp
+  - name: algebra
+    pages:
+    - icon: ':warning:'
+      path: algebra/monoid_template.hpp
+      title: algebra/monoid_template.hpp
   - name: convolution
     pages:
     - icon: ':warning:'
