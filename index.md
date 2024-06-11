@@ -116,7 +116,7 @@ data:
     - icon: ':warning:'
       path: data_structure/cumulative_sum_diag.hpp
       title: "\u659C\u3081\u7D2F\u7A4D\u548C"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/dice.hpp
       title: "Dice (\u30B5\u30A4\u30B3\u30ED)"
     - icon: ':heavy_check_mark:'
@@ -471,11 +471,6 @@ data:
     - icon: ':warning:'
       path: string/trie.hpp
       title: "Trie (\u30C8\u30E9\u30A4\u6728)"
-  - name: verify/aoj_other
-    pages:
-    - icon: ':warning:'
-      path: verify/aoj_other/aoj_3206.text.cpp
-      title: verify/aoj_other/aoj_3206.text.cpp
   verificationCategories:
   - name: verify/aoj_alds1
     pages:
@@ -649,6 +644,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_other/aoj_2751.test.cpp
       title: verify/aoj_other/aoj_2751.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_other/aoj_3206.test.cpp
+      title: verify/aoj_other/aoj_3206.test.cpp
   - name: verify/lc_data_structure
     pages:
     - icon: ':heavy_check_mark:'

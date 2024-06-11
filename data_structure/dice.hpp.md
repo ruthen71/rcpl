@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: verify/aoj_other/aoj_3206.text.cpp
-    title: verify/aoj_other/aoj_3206.text.cpp
-  _extendedVerifiedWith: []
+  _extendedRequiredBy: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_other/aoj_3206.test.cpp
+    title: verify/aoj_other/aoj_3206.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://onlinejudge.u-aizu.ac.jp/problems/3206
@@ -132,11 +132,11 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: data_structure/dice.hpp
-  requiredBy:
-  - verify/aoj_other/aoj_3206.text.cpp
+  requiredBy: []
   timestamp: '2024-06-11 20:42:57+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/aoj_other/aoj_3206.test.cpp
 documentation_of: data_structure/dice.hpp
 layout: document
 title: "Dice (\u30B5\u30A4\u30B3\u30ED)"
