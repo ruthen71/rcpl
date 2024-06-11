@@ -51,6 +51,7 @@
 "verify/aoj_other/aoj_2703.test.cpp": "2023-05-31 02:53:46 +0900",
 "verify/aoj_other/aoj_2748.test.cpp": "2023-05-31 02:53:46 +0900",
 "verify/aoj_other/aoj_2751.test.cpp": "2023-05-31 02:53:46 +0900",
+"verify/aoj_other/aoj_3206.test.cpp": "2024-06-11 20:45:26 +0900",
 "verify/lc_data_structure/lc_point_add_range_sum_fenwick_tree.test.cpp": "2024-02-18 06:04:00 +0900",
 "verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp": "2024-03-24 17:04:51 +0900",
 "verify/lc_data_structure/lc_range_affine_range_sum.test.cpp": "2024-05-04 00:04:19 +0900",
