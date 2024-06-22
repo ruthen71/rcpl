@@ -10,7 +10,7 @@ Virtual Tree とも呼ばれる
 ```cpp
 Graph<T> g; // 木
 AuxiliaryTree<T> aux(g, root);
-vector<int> vs; // 頂点集合
+std::vector<int> vs; // 頂点集合
 auto [caux, label] = aux.get(vs);
 ```
 
@@ -22,4 +22,4 @@ auto [caux, label] = aux.get(vs);
 
 ## 使用例
 
-- [ABC359](https://atcoder.jp/contests/abc359/submissions/54857307)
+- [ABC359 G](https://atcoder.jp/contests/abc359/submissions/54857051)

@@ -24,7 +24,6 @@ template <class T> struct AuxiliaryTree {
         };
         dfs(dfs, root, -1);
         for (int i = 0; i < n; i++) rank[preorder[i]] = i;
-        lca = LowestCommonAncestor(g, root);
     }
 
     // (圧縮後のグラフ, グラフの頂点番号 -> 元のグラフの頂点番号 の対応表)
