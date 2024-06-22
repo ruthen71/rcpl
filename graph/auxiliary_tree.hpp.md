@@ -56,15 +56,14 @@ data:
     \ {\n                if (e.to == par) continue;\n                depth[e.to] =\
     \ depth[cur] + e.cost;\n                f(f, e.to, cur);\n            }\n    \
     \    };\n        dfs(dfs, root, -1);\n        for (int i = 0; i < n; i++) rank[preorder[i]]\
-    \ = i;\n        lca = LowestCommonAncestor(g, root);\n    }\n\n    // (\u5727\u7E2E\
-    \u5F8C\u306E\u30B0\u30E9\u30D5, \u30B0\u30E9\u30D5\u306E\u9802\u70B9\u756A\u53F7\
-    \ -> \u5143\u306E\u30B0\u30E9\u30D5\u306E\u9802\u70B9\u756A\u53F7 \u306E\u5BFE\
-    \u5FDC\u8868)\n    std::pair<Graph<T>, std::vector<int>> get(std::vector<int>\
-    \ vs) {\n        if (vs.empty()) return {};\n        auto comp = [&](int i, int\
-    \ j) -> bool { return rank[i] < rank[j]; };\n        std::sort(begin(vs), end(vs),\
-    \ comp);\n        for (int i = 0, vslen = (int)(vs.size()); i + 1 < vslen; i++)\
-    \ {\n            vs.emplace_back(lca.lca(vs[i], vs[i + 1]));\n        }\n    \
-    \    std::sort(begin(vs), end(vs), comp);\n        vs.erase(unique(begin(vs),\
+    \ = i;\n    }\n\n    // (\u5727\u7E2E\u5F8C\u306E\u30B0\u30E9\u30D5, \u30B0\u30E9\
+    \u30D5\u306E\u9802\u70B9\u756A\u53F7 -> \u5143\u306E\u30B0\u30E9\u30D5\u306E\u9802\
+    \u70B9\u756A\u53F7 \u306E\u5BFE\u5FDC\u8868)\n    std::pair<Graph<T>, std::vector<int>>\
+    \ get(std::vector<int> vs) {\n        if (vs.empty()) return {};\n        auto\
+    \ comp = [&](int i, int j) -> bool { return rank[i] < rank[j]; };\n        std::sort(begin(vs),\
+    \ end(vs), comp);\n        for (int i = 0, vslen = (int)(vs.size()); i + 1 < vslen;\
+    \ i++) {\n            vs.emplace_back(lca.lca(vs[i], vs[i + 1]));\n        }\n\
+    \        std::sort(begin(vs), end(vs), comp);\n        vs.erase(unique(begin(vs),\
     \ end(vs)), end(vs));\n        Graph<T> aux(vs.size());\n        std::vector<int>\
     \ rs;\n        rs.push_back(0);\n        for (int i = 1; i < (int)(vs.size());\
     \ i++) {\n            int l = lca.lca(vs[rs.back()], vs[i]);\n            while\
@@ -83,15 +82,14 @@ data:
     \ e : g[cur]) {\n                if (e.to == par) continue;\n                depth[e.to]\
     \ = depth[cur] + e.cost;\n                f(f, e.to, cur);\n            }\n  \
     \      };\n        dfs(dfs, root, -1);\n        for (int i = 0; i < n; i++) rank[preorder[i]]\
-    \ = i;\n        lca = LowestCommonAncestor(g, root);\n    }\n\n    // (\u5727\u7E2E\
-    \u5F8C\u306E\u30B0\u30E9\u30D5, \u30B0\u30E9\u30D5\u306E\u9802\u70B9\u756A\u53F7\
-    \ -> \u5143\u306E\u30B0\u30E9\u30D5\u306E\u9802\u70B9\u756A\u53F7 \u306E\u5BFE\
-    \u5FDC\u8868)\n    std::pair<Graph<T>, std::vector<int>> get(std::vector<int>\
-    \ vs) {\n        if (vs.empty()) return {};\n        auto comp = [&](int i, int\
-    \ j) -> bool { return rank[i] < rank[j]; };\n        std::sort(begin(vs), end(vs),\
-    \ comp);\n        for (int i = 0, vslen = (int)(vs.size()); i + 1 < vslen; i++)\
-    \ {\n            vs.emplace_back(lca.lca(vs[i], vs[i + 1]));\n        }\n    \
-    \    std::sort(begin(vs), end(vs), comp);\n        vs.erase(unique(begin(vs),\
+    \ = i;\n    }\n\n    // (\u5727\u7E2E\u5F8C\u306E\u30B0\u30E9\u30D5, \u30B0\u30E9\
+    \u30D5\u306E\u9802\u70B9\u756A\u53F7 -> \u5143\u306E\u30B0\u30E9\u30D5\u306E\u9802\
+    \u70B9\u756A\u53F7 \u306E\u5BFE\u5FDC\u8868)\n    std::pair<Graph<T>, std::vector<int>>\
+    \ get(std::vector<int> vs) {\n        if (vs.empty()) return {};\n        auto\
+    \ comp = [&](int i, int j) -> bool { return rank[i] < rank[j]; };\n        std::sort(begin(vs),\
+    \ end(vs), comp);\n        for (int i = 0, vslen = (int)(vs.size()); i + 1 < vslen;\
+    \ i++) {\n            vs.emplace_back(lca.lca(vs[i], vs[i + 1]));\n        }\n\
+    \        std::sort(begin(vs), end(vs), comp);\n        vs.erase(unique(begin(vs),\
     \ end(vs)), end(vs));\n        Graph<T> aux(vs.size());\n        std::vector<int>\
     \ rs;\n        rs.push_back(0);\n        for (int i = 1; i < (int)(vs.size());\
     \ i++) {\n            int l = lca.lca(vs[rs.back()], vs[i]);\n            while\
@@ -105,7 +103,7 @@ data:
   isVerificationFile: false
   path: graph/auxiliary_tree.hpp
   requiredBy: []
-  timestamp: '2024-06-23 01:31:29+09:00'
+  timestamp: '2024-06-23 01:48:15+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: graph/auxiliary_tree.hpp
@@ -120,7 +118,7 @@ Virtual Tree とも呼ばれる
 ```cpp
 Graph<T> g; // 木
 AuxiliaryTree<T> aux(g, root);
-vector<int> vs; // 頂点集合
+std::vector<int> vs; // 頂点集合
 auto [caux, label] = aux.get(vs);
 ```
 
@@ -132,4 +130,4 @@ auto [caux, label] = aux.get(vs);
 
 ## 使用例
 
-- [ABC359](https://atcoder.jp/contests/abc359/submissions/54857307)
+- [ABC359 G](https://atcoder.jp/contests/abc359/submissions/54857051)
