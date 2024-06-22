@@ -7,12 +7,12 @@ template <class T> struct LowestCommonAncestor {
     std::vector<std::vector<int>> parent;
     int n, LOG;
 
-    LowestCommonAncestor(const Graph<T> &G, int root = 0) : n(int(G.size())), LOG(32 - __builtin_clz(n)) {
+    LowestCommonAncestor(const Graph<T>& g, int root = 0) : n((int)(g.size())), LOG(32 - __builtin_clz(n)) {
         depth.assign(n, 0);
         parent.assign(LOG, std::vector<int>(n));
         auto dfs = [&](auto f, int cur, int par) -> void {
             parent[0][cur] = par;
-            for (auto &e : G[cur]) {
+            for (auto& e : g[cur]) {
                 if (e.to == par) continue;
                 depth[e.to] = depth[cur] + 1;
                 f(f, e.to, cur);
@@ -27,7 +27,7 @@ template <class T> struct LowestCommonAncestor {
     }
 
     int lca(int u, int v) {
-        assert((int)depth.size() == n);
+        assert((int)(depth.size()) == n);
         if (depth[u] > depth[v]) std::swap(u, v);
         // depth[u] <= depth[v]
         for (int k = 0; k < LOG; k++)
@@ -44,7 +44,7 @@ template <class T> struct LowestCommonAncestor {
     }
 
     int level_ancestor(int u, int d) {
-        assert((int)depth.size() == n);
+        assert((int)(depth.size()) == n);
         if (depth[u] < d) return -1;
         for (int k = 0; k < LOG; k++)
             if (d >> k & 1) u = parent[k][u];
