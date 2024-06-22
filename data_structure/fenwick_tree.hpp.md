@@ -62,9 +62,9 @@ data:
   timestamp: '2024-02-18 06:04:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj_alds1/aoj_alds1_5_d.test.cpp
   - verify/lc_data_structure/lc_static_range_inversions_query.test.cpp
   - verify/lc_data_structure/lc_point_add_range_sum_fenwick_tree.test.cpp
+  - verify/aoj_alds1/aoj_alds1_5_d.test.cpp
 documentation_of: data_structure/fenwick_tree.hpp
 layout: document
 title: Fenwick Tree (Binary Indexed Tree)

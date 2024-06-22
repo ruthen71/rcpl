@@ -6,6 +6,9 @@ data:
     path: dp/traveling_salesman_problem.hpp
     title: "Traveling Salesman Problem (\u5DE1\u56DE\u30BB\u30FC\u30EB\u30B9\u30DE\
       \u30F3\u554F\u984C)"
+  - icon: ':warning:'
+    path: graph/auxiliary_tree.hpp
+    title: "Auxiliary Tree (\u865A\u6811)"
   - icon: ':heavy_check_mark:'
     path: graph/bellman_ford.hpp
     title: "Bellman-Ford algorithm (\u30D9\u30EB\u30DE\u30F3\u30D5\u30A9\u30FC\u30C9\
@@ -97,31 +100,32 @@ data:
   isVerificationFile: false
   path: graph/graph_template.hpp
   requiredBy:
-  - graph/dijkstra.hpp
+  - dp/traveling_salesman_problem.hpp
+  - graph/read_graph.hpp
+  - graph/auxiliary_tree.hpp
   - graph/zero_one_bfs.hpp
-  - graph/euler_tour.hpp
-  - graph/get_edges.hpp
-  - graph/low_link.hpp
-  - graph/topological_sort.hpp
   - graph/kruskal.hpp
   - graph/bellman_ford.hpp
-  - graph/lowest_common_ancestor.hpp
-  - graph/tree_diameter.hpp
-  - graph/read_graph.hpp
   - graph/strongly_connected_component.hpp
-  - dp/traveling_salesman_problem.hpp
+  - graph/topological_sort.hpp
+  - graph/dijkstra.hpp
+  - graph/lowest_common_ancestor.hpp
+  - graph/low_link.hpp
+  - graph/tree_diameter.hpp
+  - graph/get_edges.hpp
+  - graph/euler_tour.hpp
   timestamp: '2024-01-25 10:46:02+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/aoj_dpl/aoj_dpl_2_a.test.cpp
+  - verify/aoj_grl/aoj_grl_3_b.test.cpp
+  - verify/aoj_grl/aoj_grl_1_b.test.cpp
+  - verify/aoj_grl/aoj_grl_3_a.test.cpp
+  - verify/aoj_grl/aoj_grl_2_a.test.cpp
   - verify/lc_graph/lc_scc.test.cpp
   - verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
-  - verify/aoj_grl/aoj_grl_3_a.test.cpp
-  - verify/aoj_grl/aoj_grl_1_b.test.cpp
-  - verify/aoj_grl/aoj_grl_2_a.test.cpp
-  - verify/aoj_grl/aoj_grl_3_b.test.cpp
   - verify/lc_tree/lc_tree_diameter.test.cpp
   - verify/lc_tree/lc_lowest_common_ancestor.test.cpp
-  - verify/aoj_dpl/aoj_dpl_2_a.test.cpp
 documentation_of: graph/graph_template.hpp
 layout: document
 redirect_from:

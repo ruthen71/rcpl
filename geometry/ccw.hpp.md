@@ -157,29 +157,29 @@ data:
   isVerificationFile: false
   path: geometry/ccw.hpp
   requiredBy:
-  - geometry/convex_polygon_diameter.hpp
-  - geometry/monotone_chain.hpp
-  - geometry/distance_ss.hpp
-  - geometry/is_intersect_sp.hpp
-  - geometry/polygon_is_convex.hpp
-  - geometry/all.hpp
-  - geometry/distance_sp.hpp
-  - geometry/is_intersect_ss.hpp
-  - geometry/polygon_contain.hpp
   - geometry/cross_point_ss.hpp
+  - geometry/distance_ss.hpp
+  - geometry/is_intersect_ss.hpp
+  - geometry/all.hpp
+  - geometry/is_intersect_sp.hpp
   - geometry/farthest_pair.hpp
   - geometry/is_intersect_lp.hpp
+  - geometry/monotone_chain.hpp
+  - geometry/polygon_contain.hpp
+  - geometry/polygon_is_convex.hpp
+  - geometry/convex_polygon_diameter.hpp
+  - geometry/distance_sp.hpp
   timestamp: '2023-06-01 23:47:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj_cgl/aoj_cgl_4_b.test.cpp
-  - verify/aoj_cgl/aoj_cgl_3_b.test.cpp
-  - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
   - verify/aoj_cgl/aoj_cgl_4_a.test.cpp
-  - verify/aoj_cgl/aoj_cgl_1_c.test.cpp
-  - verify/aoj_cgl/aoj_cgl_3_c.test.cpp
-  - verify/aoj_cgl/aoj_cgl_2_d.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_c.test.cpp
+  - verify/aoj_cgl/aoj_cgl_4_b.test.cpp
+  - verify/aoj_cgl/aoj_cgl_1_c.test.cpp
+  - verify/aoj_cgl/aoj_cgl_2_d.test.cpp
+  - verify/aoj_cgl/aoj_cgl_3_c.test.cpp
+  - verify/aoj_cgl/aoj_cgl_2_b.test.cpp
+  - verify/aoj_cgl/aoj_cgl_3_b.test.cpp
 documentation_of: geometry/ccw.hpp
 layout: document
 redirect_from:

@@ -30,25 +30,25 @@ data:
     template <class T> using Graph = std::vector<std::vector<Edge<T>>>;\n#line 4 \"\
     graph/lowest_common_ancestor.hpp\"\n\ntemplate <class T> struct LowestCommonAncestor\
     \ {\n    std::vector<int> depth;\n    std::vector<std::vector<int>> parent;\n\
-    \    int n, LOG;\n\n    LowestCommonAncestor(const Graph<T> &G, int root = 0)\
-    \ : n(int(G.size())), LOG(32 - __builtin_clz(n)) {\n        depth.assign(n, 0);\n\
-    \        parent.assign(LOG, std::vector<int>(n));\n        auto dfs = [&](auto\
+    \    int n, LOG;\n\n    LowestCommonAncestor(const Graph<T>& g, int root = 0)\
+    \ : n((int)(g.size())), LOG(32 - __builtin_clz(n)) {\n        depth.assign(n,\
+    \ 0);\n        parent.assign(LOG, std::vector<int>(n));\n        auto dfs = [&](auto\
     \ f, int cur, int par) -> void {\n            parent[0][cur] = par;\n        \
-    \    for (auto &e : G[cur]) {\n                if (e.to == par) continue;\n  \
+    \    for (auto& e : g[cur]) {\n                if (e.to == par) continue;\n  \
     \              depth[e.to] = depth[cur] + 1;\n                f(f, e.to, cur);\n\
     \            }\n        };\n        dfs(dfs, root, -1);\n        for (int k =\
     \ 0; k + 1 < LOG; k++) {\n            for (int v = 0; v < n; v++) {\n        \
     \        parent[k + 1][v] = (parent[k][v] < 0 ? -1 : parent[k][parent[k][v]]);\n\
-    \            }\n        }\n    }\n\n    int lca(int u, int v) {\n        assert((int)depth.size()\
+    \            }\n        }\n    }\n\n    int lca(int u, int v) {\n        assert((int)(depth.size())\
     \ == n);\n        if (depth[u] > depth[v]) std::swap(u, v);\n        // depth[u]\
     \ <= depth[v]\n        for (int k = 0; k < LOG; k++)\n            if ((depth[v]\
     \ - depth[u]) >> k & 1) v = parent[k][v];\n\n        if (u == v) return u;\n \
     \       for (int k = LOG - 1; k >= 0; k--) {\n            if (parent[k][u] !=\
     \ parent[k][v]) {\n                u = parent[k][u];\n                v = parent[k][v];\n\
     \            }\n        }\n        return parent[0][u];\n    }\n\n    int level_ancestor(int\
-    \ u, int d) {\n        assert((int)depth.size() == n);\n        if (depth[u] <\
-    \ d) return -1;\n        for (int k = 0; k < LOG; k++)\n            if (d >> k\
-    \ & 1) u = parent[k][u];\n        return u;\n    }\n\n    int distance(int u,\
+    \ u, int d) {\n        assert((int)(depth.size()) == n);\n        if (depth[u]\
+    \ < d) return -1;\n        for (int k = 0; k < LOG; k++)\n            if (d >>\
+    \ k & 1) u = parent[k][u];\n        return u;\n    }\n\n    int distance(int u,\
     \ int v) {\n        int par = lca(u, v);\n        return depth[u] + depth[v] -\
     \ 2 * depth[par];\n    }\n};\n#line 6 \"verify/lc_tree/lc_lowest_common_ancestor.test.cpp\"\
     \n\nint main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    Graph<int> G(N);\n\
@@ -70,7 +70,7 @@ data:
   isVerificationFile: true
   path: verify/lc_tree/lc_lowest_common_ancestor.test.cpp
   requiredBy: []
-  timestamp: '2024-01-25 10:46:02+09:00'
+  timestamp: '2024-06-23 01:31:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_tree/lc_lowest_common_ancestor.test.cpp

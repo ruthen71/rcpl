@@ -308,6 +308,9 @@ data:
       title: geometry/tangent_point_cp.hpp
   - name: graph
     pages:
+    - icon: ':warning:'
+      path: graph/auxiliary_tree.hpp
+      title: "Auxiliary Tree (\u865A\u6811)"
     - icon: ':heavy_check_mark:'
       path: graph/bellman_ford.hpp
       title: "Bellman-Ford algorithm (\u30D9\u30EB\u30DE\u30F3\u30D5\u30A9\u30FC\u30C9\

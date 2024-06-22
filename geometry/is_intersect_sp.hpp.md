@@ -157,17 +157,17 @@ data:
   isVerificationFile: false
   path: geometry/is_intersect_sp.hpp
   requiredBy:
+  - geometry/cross_point_ss.hpp
   - geometry/distance_ss.hpp
   - geometry/all.hpp
-  - geometry/distance_sp.hpp
   - geometry/polygon_contain.hpp
-  - geometry/cross_point_ss.hpp
+  - geometry/distance_sp.hpp
   timestamp: '2024-03-24 14:28:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj_cgl/aoj_cgl_3_c.test.cpp
-  - verify/aoj_cgl/aoj_cgl_2_d.test.cpp
   - verify/aoj_cgl/aoj_cgl_2_c.test.cpp
+  - verify/aoj_cgl/aoj_cgl_2_d.test.cpp
+  - verify/aoj_cgl/aoj_cgl_3_c.test.cpp
 documentation_of: geometry/is_intersect_sp.hpp
 layout: document
 redirect_from:
