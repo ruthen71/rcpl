@@ -131,3 +131,8 @@ auto [caux, label] = aux.get(vs);
 ## 使用例
 
 - [ABC359 G](https://atcoder.jp/contests/abc359/submissions/54857051)
+
+## 参考文献
+
+- [LCAをベースに構築するAuxiliary Treeのメモ](https://smijake3.hatenablog.com/entry/2019/09/15/200200)
+- [AtCoder Beginner Contest 340 G - Leaf Color 解説](https://atcoder.jp/contests/abc340/editorial/9249)
