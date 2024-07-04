@@ -183,6 +183,10 @@ data:
       path: dp/longest_common_subsequence.hpp
       title: "Longest Common Subsequence (\u6700\u9577\u5171\u901A\u90E8\u5206\u5217\
         )"
+    - icon: ':heavy_check_mark:'
+      path: dp/longest_increasing_subsequence.hpp
+      title: "Longest Increasing Subsequence (\u6700\u9577\u5897\u52A0\u90E8\u5206\
+        \u5217)"
     - icon: ':warning:'
       path: dp/meet_in_the_middle.hpp
       title: "Meet in the middle (\u534A\u5206\u5168\u5217\u6319)"
@@ -556,6 +560,9 @@ data:
       title: verify/aoj_cgl/aoj_cgl_7_f.test.cpp
   - name: verify/aoj_dpl
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj_dpl/aoj_dpl_1_d.test.cpp
+      title: verify/aoj_dpl/aoj_dpl_1_d.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj_dpl/aoj_dpl_1_g.test.cpp
       title: verify/aoj_dpl/aoj_dpl_1_g.test.cpp
