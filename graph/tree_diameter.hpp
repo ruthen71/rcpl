@@ -1,7 +1,7 @@
 #pragma once
 
 #include "graph/graph_template.hpp"
-
+// {直径の辺の重みの総和, 通る頂点集合}
 template <class T> std::pair<T, std::vector<Edge<T>>> tree_diameter(Graph<T> &G) {
     std::vector<int> to(G.size(), -1);
 
