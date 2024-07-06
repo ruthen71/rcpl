@@ -125,7 +125,7 @@ int lowbit(int x) { return (x == 0 ? -1 : __builtin_ctz(x)); }
 int lowbit(u32 x) { return (x == 0 ? -1 : __builtin_ctz(x)); }
 int lowbit(i64 x) { return (x == 0 ? -1 : __builtin_ctzll(x)); }
 int lowbit(u64 x) { return (x == 0 ? -1 : __builtin_ctzll(x)); }
-// binary search
+// binary search (integer)
 template <class T, class F> T bin_search(T ok, T ng, F& f) {
     while ((ok > ng ? ok - ng : ng - ok) > 1) {
         T md = (ng + ok) >> 1;
@@ -133,6 +133,7 @@ template <class T, class F> T bin_search(T ok, T ng, F& f) {
     }
     return ok;
 }
+// binary search (real number)
 template <class T, class F> T bin_search_real(T ok, T ng, F& f, const int iter = 100) {
     for (int _ = 0; _ < iter; _++) {
         T md = (ng + ok) / 2;
@@ -140,6 +141,12 @@ template <class T, class F> T bin_search_real(T ok, T ng, F& f, const int iter =
     }
     return ok;
 }
+// floor(sqrt(x))
+template <class T> T sqrt_floor(T x) { return T(sqrtl(x)); }
+// check if [l1, r1) and [l2, r2) intersect
+template <class T> bool intersect(const T l1, const T r1, const T l2, const T r2) { return std::max(l1, l2) < std::min(r1, r2); }
+// check if [a.first, a.second) and [b.first, b.second) intersect
+template <class T> bool intersect(const std::pair<T, T>& a, const std::pair<T, T>& b) { return intersect(a.first, a.second, b.first, b.second); }
 // rotate matrix counterclockwise by pi / 2
 template <class T> void rot(std::vector<std::vector<T>>& a) {
     if ((int)(a.size()) == 0) return;
