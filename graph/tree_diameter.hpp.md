@@ -23,37 +23,40 @@ data:
     { \" << e.id << \" : \" << e.from << \" -> \" << e.to << \", \" << e.cost << \"\
     \ }\";\n    }\n};\n\ntemplate <class T> using Edges = std::vector<Edge<T>>;\n\
     template <class T> using Graph = std::vector<std::vector<Edge<T>>>;\n#line 4 \"\
-    graph/tree_diameter.hpp\"\n\ntemplate <class T> std::pair<T, std::vector<Edge<T>>>\
-    \ tree_diameter(Graph<T> &G) {\n    std::vector<int> to(G.size(), -1);\n\n   \
-    \ auto dfs = [&](auto f, int cur, int par) -> std::pair<T, int> {\n        std::pair<T,\
-    \ int> ret = {0, cur};\n        for (auto &e : G[cur]) {\n            if (e.to\
-    \ == par) continue;\n            auto cost = f(f, e.to, cur);\n            cost.first\
-    \ += e.cost;\n            if (ret.first < cost.first) {\n                ret =\
-    \ cost;\n                to[cur] = e.to;\n            }\n        }\n        return\
-    \ ret;\n    };\n\n    auto s = dfs(dfs, 0, -1);\n    auto t = dfs(dfs, s.second,\
-    \ -1);\n\n    int cur = s.second;\n    std::vector<Edge<T>> path;\n    while (cur\
-    \ != t.second) {\n        for (auto &e : G[cur]) {\n            if (to[cur] ==\
-    \ e.to) {\n                path.emplace_back(e);\n            }\n        }\n \
-    \       cur = to[cur];\n    }\n    return {t.first, path};\n}\n"
-  code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\ntemplate <class\
-    \ T> std::pair<T, std::vector<Edge<T>>> tree_diameter(Graph<T> &G) {\n    std::vector<int>\
-    \ to(G.size(), -1);\n\n    auto dfs = [&](auto f, int cur, int par) -> std::pair<T,\
-    \ int> {\n        std::pair<T, int> ret = {0, cur};\n        for (auto &e : G[cur])\
-    \ {\n            if (e.to == par) continue;\n            auto cost = f(f, e.to,\
-    \ cur);\n            cost.first += e.cost;\n            if (ret.first < cost.first)\
-    \ {\n                ret = cost;\n                to[cur] = e.to;\n          \
-    \  }\n        }\n        return ret;\n    };\n\n    auto s = dfs(dfs, 0, -1);\n\
-    \    auto t = dfs(dfs, s.second, -1);\n\n    int cur = s.second;\n    std::vector<Edge<T>>\
+    graph/tree_diameter.hpp\"\n// {\u76F4\u5F84\u306E\u8FBA\u306E\u91CD\u307F\u306E\
+    \u7DCF\u548C, \u901A\u308B\u9802\u70B9\u96C6\u5408}\ntemplate <class T> std::pair<T,\
+    \ std::vector<Edge<T>>> tree_diameter(Graph<T> &G) {\n    std::vector<int> to(G.size(),\
+    \ -1);\n\n    auto dfs = [&](auto f, int cur, int par) -> std::pair<T, int> {\n\
+    \        std::pair<T, int> ret = {0, cur};\n        for (auto &e : G[cur]) {\n\
+    \            if (e.to == par) continue;\n            auto cost = f(f, e.to, cur);\n\
+    \            cost.first += e.cost;\n            if (ret.first < cost.first) {\n\
+    \                ret = cost;\n                to[cur] = e.to;\n            }\n\
+    \        }\n        return ret;\n    };\n\n    auto s = dfs(dfs, 0, -1);\n   \
+    \ auto t = dfs(dfs, s.second, -1);\n\n    int cur = s.second;\n    std::vector<Edge<T>>\
     \ path;\n    while (cur != t.second) {\n        for (auto &e : G[cur]) {\n   \
     \         if (to[cur] == e.to) {\n                path.emplace_back(e);\n    \
     \        }\n        }\n        cur = to[cur];\n    }\n    return {t.first, path};\n\
-    }"
+    }\n"
+  code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n// {\u76F4\u5F84\u306E\
+    \u8FBA\u306E\u91CD\u307F\u306E\u7DCF\u548C, \u901A\u308B\u9802\u70B9\u96C6\u5408\
+    }\ntemplate <class T> std::pair<T, std::vector<Edge<T>>> tree_diameter(Graph<T>\
+    \ &G) {\n    std::vector<int> to(G.size(), -1);\n\n    auto dfs = [&](auto f,\
+    \ int cur, int par) -> std::pair<T, int> {\n        std::pair<T, int> ret = {0,\
+    \ cur};\n        for (auto &e : G[cur]) {\n            if (e.to == par) continue;\n\
+    \            auto cost = f(f, e.to, cur);\n            cost.first += e.cost;\n\
+    \            if (ret.first < cost.first) {\n                ret = cost;\n    \
+    \            to[cur] = e.to;\n            }\n        }\n        return ret;\n\
+    \    };\n\n    auto s = dfs(dfs, 0, -1);\n    auto t = dfs(dfs, s.second, -1);\n\
+    \n    int cur = s.second;\n    std::vector<Edge<T>> path;\n    while (cur != t.second)\
+    \ {\n        for (auto &e : G[cur]) {\n            if (to[cur] == e.to) {\n  \
+    \              path.emplace_back(e);\n            }\n        }\n        cur =\
+    \ to[cur];\n    }\n    return {t.first, path};\n}"
   dependsOn:
   - graph/graph_template.hpp
   isVerificationFile: false
   path: graph/tree_diameter.hpp
   requiredBy: []
-  timestamp: '2024-01-25 10:46:02+09:00'
+  timestamp: '2024-07-07 00:10:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_tree/lc_tree_diameter.test.cpp
