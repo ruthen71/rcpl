@@ -1,4 +1,5 @@
 #pragma once
+
 #include <vector>
 #include <cassert>
 template <class MF> struct DualSegmentTree {
@@ -58,6 +59,12 @@ template <class MF> struct DualSegmentTree {
             l = l2;
             r = r2;
         }
+    }
+
+    std::vector<F> make_vector() {
+        std::vector<F> vec(n);
+        for (int i = 0; i < n; i++) vec[i] = get(i);
+        return vec;
     }
 
    private:

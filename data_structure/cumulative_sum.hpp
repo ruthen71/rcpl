@@ -8,7 +8,7 @@ template <class T> struct CumulativeSum {
 
     CumulativeSum(int n) : n(n), seg(n + 1, T(0)) {}
 
-    CumulativeSum(std::vector<T> &a) {
+    CumulativeSum(std::vector<T>& a) {
         n = (int)a.size();
         seg.assign(n + 1, T(0));
         for (int i = 0; i < n; i++) seg[i + 1] = seg[i] + a[i];
@@ -37,10 +37,5 @@ template <class T> struct CumulativeSum {
         return seg[p];
     }
 
-    // output
-    friend std::ostream &operator<<(std::ostream &os, const CumulativeSum &A) {
-        os << "n = " << A.n << "\n";
-        for (int i = 0; i <= A.n; i++) os << A.seg[i] << " \n"[i == A.n];
-        return os;
-    }
+    std::vector<T> make_vector() { return seg; }
 };

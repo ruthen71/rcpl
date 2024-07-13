@@ -106,6 +106,12 @@ template <class MS> struct SegmentTree {
         return 0;
     }
 
+    std::vector<S> make_vector() {
+        std::vector<S> vec(n);
+        for (int i = 0; i < n; i++) vec[i] = get(i);
+        return vec;
+    }
+
    private:
     int n, log, size;
     std::vector<S> d;

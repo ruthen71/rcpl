@@ -1,5 +1,6 @@
 #pragma once
 
+#include <vector>
 template <class T> struct FenwickTree {
     int n;
     std::vector<T> seg;
@@ -38,9 +39,10 @@ template <class T> struct FenwickTree {
     T get(int i) const { return sum(i, i + 1); }
     // A[i] = x
     void set(int i, const T x) { add(i, x - get(i)); }
-    // output
-    friend std::ostream& operator<<(std::ostream& os, const FenwickTree& fen) {
-        for (int i = 0; i < fen.n; i++) os << fen.get(i) << " \n"[i == fen.n - 1];
-        return os;
+
+    std::vector<T> make_vector() {
+        std::vector<T> vec(n);
+        for (int i = 0; i < n; i++) vec[i] = get(i);
+        return vec;
     }
 };

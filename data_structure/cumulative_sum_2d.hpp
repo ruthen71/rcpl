@@ -8,7 +8,7 @@ template <class T> struct CumulativeSum2D {
 
     CumulativeSum2D(int h, int w) : h(h), w(w), seg(h + 1, std::vector<T>(w + 1, T(0))) {}
 
-    CumulativeSum2D(std::vector<std::vector<T>> &a) {
+    CumulativeSum2D(std::vector<std::vector<T>>& a) {
         h = (int)a.size();
         assert(h > 0);
         w = (int)a[0].size();
@@ -66,14 +66,5 @@ template <class T> struct CumulativeSum2D {
         return seg[x][y];
     }
 
-    // output
-    friend std::ostream &operator<<(std::ostream &os, const CumulativeSum2D &A) {
-        os << "h = " << A.h << ", w = " << A.w << "\n";
-        for (int i = 0; i <= A.h; i++) {
-            for (int j = 0; j <= A.w; j++) {
-                os << A.seg[i][j] << " \n"[j == A.w];
-            }
-        }
-        return os;
-    }
+    std::vector<std::vector<T>> make_vector() { return seg; }
 };

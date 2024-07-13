@@ -97,6 +97,14 @@ template <class MS> struct SegmentTree2D {
 
     S all_prod() const { return d[1][1]; }
 
+    std::vector<std::vector<S>> make_vector() {
+        std::vector vec(h, std::vector<S>(w));
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < w; j++) vec[i][j] = get(i, j);
+        }
+        return vec;
+    }
+
    private:
     int h, logh, sizeh, w, logw, sizew;
     std::vector<std::vector<S>> d;
