@@ -14,8 +14,8 @@ data:
   bundledCode: "#line 2 \"data_structure/cumulative_sum_2d.hpp\"\n\ntemplate <class\
     \ T> struct CumulativeSum2D {\n    int h, w;\n    std::vector<std::vector<T>>\
     \ seg;\n\n    CumulativeSum2D() = default;\n\n    CumulativeSum2D(int h, int w)\
-    \ : h(h), w(w), seg(h + 1, std::vector<T>(w + 1, T(0))) {}\n\n    CumulativeSum2D(std::vector<std::vector<T>>\
-    \ &a) {\n        h = (int)a.size();\n        assert(h > 0);\n        w = (int)a[0].size();\n\
+    \ : h(h), w(w), seg(h + 1, std::vector<T>(w + 1, T(0))) {}\n\n    CumulativeSum2D(std::vector<std::vector<T>>&\
+    \ a) {\n        h = (int)a.size();\n        assert(h > 0);\n        w = (int)a[0].size();\n\
     \        seg.assign(h + 1, std::vector<T>(w + 1, T(0)));\n        for (int i =\
     \ 0; i < h; i++) {\n            for (int j = 0; j < w; j++) {\n              \
     \  seg[i + 1][j + 1] = a[i][j];\n            }\n        }\n        for (int i\
@@ -37,15 +37,11 @@ data:
     \               seg[i + 1][j] += seg[i][j];\n            }\n        }\n    }\n\
     \n    // return A[x][y]\n    T get(int x, int y) const {\n        assert(0 <=\
     \ x and x < h and 0 <= y and y < w);\n        return seg[x][y];\n    }\n\n   \
-    \ // output\n    friend std::ostream &operator<<(std::ostream &os, const CumulativeSum2D\
-    \ &A) {\n        os << \"h = \" << A.h << \", w = \" << A.w << \"\\n\";\n    \
-    \    for (int i = 0; i <= A.h; i++) {\n            for (int j = 0; j <= A.w; j++)\
-    \ {\n                os << A.seg[i][j] << \" \\n\"[j == A.w];\n            }\n\
-    \        }\n        return os;\n    }\n};\n"
+    \ std::vector<std::vector<T>> make_vector() { return seg; }\n};\n"
   code: "#pragma once\n\ntemplate <class T> struct CumulativeSum2D {\n    int h, w;\n\
     \    std::vector<std::vector<T>> seg;\n\n    CumulativeSum2D() = default;\n\n\
     \    CumulativeSum2D(int h, int w) : h(h), w(w), seg(h + 1, std::vector<T>(w +\
-    \ 1, T(0))) {}\n\n    CumulativeSum2D(std::vector<std::vector<T>> &a) {\n    \
+    \ 1, T(0))) {}\n\n    CumulativeSum2D(std::vector<std::vector<T>>& a) {\n    \
     \    h = (int)a.size();\n        assert(h > 0);\n        w = (int)a[0].size();\n\
     \        seg.assign(h + 1, std::vector<T>(w + 1, T(0)));\n        for (int i =\
     \ 0; i < h; i++) {\n            for (int j = 0; j < w; j++) {\n              \
@@ -68,16 +64,12 @@ data:
     \               seg[i + 1][j] += seg[i][j];\n            }\n        }\n    }\n\
     \n    // return A[x][y]\n    T get(int x, int y) const {\n        assert(0 <=\
     \ x and x < h and 0 <= y and y < w);\n        return seg[x][y];\n    }\n\n   \
-    \ // output\n    friend std::ostream &operator<<(std::ostream &os, const CumulativeSum2D\
-    \ &A) {\n        os << \"h = \" << A.h << \", w = \" << A.w << \"\\n\";\n    \
-    \    for (int i = 0; i <= A.h; i++) {\n            for (int j = 0; j <= A.w; j++)\
-    \ {\n                os << A.seg[i][j] << \" \\n\"[j == A.w];\n            }\n\
-    \        }\n        return os;\n    }\n};"
+    \ std::vector<std::vector<T>> make_vector() { return seg; }\n};"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/cumulative_sum_2d.hpp
   requiredBy: []
-  timestamp: '2023-04-16 00:50:22+09:00'
+  timestamp: '2024-07-13 11:37:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_dsl/aoj_dsl_5_b.test.cpp

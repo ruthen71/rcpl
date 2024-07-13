@@ -85,10 +85,12 @@ data:
     \                  sm = MS::op(d[r], sm);\n                        r--;\n    \
     \                }\n                }\n                return r + 1 - size;\n\
     \            }\n            sm = MS::op(d[r], sm);\n        } while ((r & -r)\
-    \ != r);\n        return 0;\n    }\n\n   private:\n    int n, log, size;\n   \
-    \ std::vector<S> d;\n    std::vector<F> lz;\n    inline void update(int k) { d[k]\
-    \ = MS::op(d[k << 1], d[(k << 1) | 1]); }\n    void all_apply(int k, const F&\
-    \ f) {\n        d[k] = MSF::mapping(f, d[k]);\n        if (k < size) lz[k] = MF::composition(f,\
+    \ != r);\n        return 0;\n    }\n\n    std::vector<S> make_vector() {\n   \
+    \     std::vector<S> vec(n);\n        for (int i = 0; i < n; i++) vec[i] = get(i);\n\
+    \        return vec;\n    }\n\n   private:\n    int n, log, size;\n    std::vector<S>\
+    \ d;\n    std::vector<F> lz;\n    inline void update(int k) { d[k] = MS::op(d[k\
+    \ << 1], d[(k << 1) | 1]); }\n    void all_apply(int k, const F& f) {\n      \
+    \  d[k] = MSF::mapping(f, d[k]);\n        if (k < size) lz[k] = MF::composition(f,\
     \ lz[k]);\n    }\n    void push(int k) {\n        all_apply(k << 1, lz[k]);\n\
     \        all_apply((k << 1) | 1, lz[k]);\n        lz[k] = MF::id();\n    }\n};\n"
   code: "#pragma once\n#include <vector>\n#include <cassert>\ntemplate <class MSF>\
@@ -152,24 +154,26 @@ data:
     \                  sm = MS::op(d[r], sm);\n                        r--;\n    \
     \                }\n                }\n                return r + 1 - size;\n\
     \            }\n            sm = MS::op(d[r], sm);\n        } while ((r & -r)\
-    \ != r);\n        return 0;\n    }\n\n   private:\n    int n, log, size;\n   \
-    \ std::vector<S> d;\n    std::vector<F> lz;\n    inline void update(int k) { d[k]\
-    \ = MS::op(d[k << 1], d[(k << 1) | 1]); }\n    void all_apply(int k, const F&\
-    \ f) {\n        d[k] = MSF::mapping(f, d[k]);\n        if (k < size) lz[k] = MF::composition(f,\
+    \ != r);\n        return 0;\n    }\n\n    std::vector<S> make_vector() {\n   \
+    \     std::vector<S> vec(n);\n        for (int i = 0; i < n; i++) vec[i] = get(i);\n\
+    \        return vec;\n    }\n\n   private:\n    int n, log, size;\n    std::vector<S>\
+    \ d;\n    std::vector<F> lz;\n    inline void update(int k) { d[k] = MS::op(d[k\
+    \ << 1], d[(k << 1) | 1]); }\n    void all_apply(int k, const F& f) {\n      \
+    \  d[k] = MSF::mapping(f, d[k]);\n        if (k < size) lz[k] = MF::composition(f,\
     \ lz[k]);\n    }\n    void push(int k) {\n        all_apply(k << 1, lz[k]);\n\
     \        all_apply((k << 1) | 1, lz[k]);\n        lz[k] = MF::id();\n    }\n};"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/lazy_segment_tree.hpp
   requiredBy: []
-  timestamp: '2024-03-24 17:04:51+09:00'
+  timestamp: '2024-07-13 11:37:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
-  - verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp
-  - verify/aoj_dsl/aoj_dsl_2_h_lazy_segment_tree.test.cpp
-  - verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
   - verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
+  - verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp
+  - verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
+  - verify/aoj_dsl/aoj_dsl_2_h_lazy_segment_tree.test.cpp
+  - verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
 documentation_of: data_structure/lazy_segment_tree.hpp
 layout: document
 title: "Lazy Segment Tree (\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"

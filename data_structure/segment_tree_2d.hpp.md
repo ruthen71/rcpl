@@ -51,11 +51,14 @@ data:
     \n        while (h1 < h2) {\n            if (h1 & 1) sml = MS::op(sml, inner_prod(h1++,\
     \ w1, w2));\n            if (h2 & 1) smr = MS::op(inner_prod(--h2, w1, w2), smr);\n\
     \            h1 >>= 1;\n            h2 >>= 1;\n        }\n        return MS::op(sml,\
-    \ smr);\n    }\n\n    S all_prod() const { return d[1][1]; }\n\n   private:\n\
-    \    int h, logh, sizeh, w, logw, sizew;\n    std::vector<std::vector<S>> d;\n\
-    \    inline void update_bottom(int i, int j) { d[i][j] = MS::op(d[(i << 1) | 0][j],\
-    \ d[(i << 1) | 1][j]); }\n    inline void update_else(int i, int j) { d[i][j]\
-    \ = MS::op(d[i][(j << 1) | 0], d[i][(j << 1) | 1]); }\n};\n"
+    \ smr);\n    }\n\n    S all_prod() const { return d[1][1]; }\n\n    std::vector<std::vector<S>>\
+    \ make_vector() {\n        std::vector vec(h, std::vector<S>(w));\n        for\
+    \ (int i = 0; i < h; i++) {\n            for (int j = 0; j < w; j++) vec[i][j]\
+    \ = get(i, j);\n        }\n        return vec;\n    }\n\n   private:\n    int\
+    \ h, logh, sizeh, w, logw, sizew;\n    std::vector<std::vector<S>> d;\n    inline\
+    \ void update_bottom(int i, int j) { d[i][j] = MS::op(d[(i << 1) | 0][j], d[(i\
+    \ << 1) | 1][j]); }\n    inline void update_else(int i, int j) { d[i][j] = MS::op(d[i][(j\
+    \ << 1) | 0], d[i][(j << 1) | 1]); }\n};\n"
   code: "#pragma once\n\ntemplate <class MS> struct SegmentTree2D {\n   public:\n\
     \    using S = typename MS::S;\n    SegmentTree2D() : SegmentTree2D(0, 0) {}\n\
     \    SegmentTree2D(int h, int w) : SegmentTree2D(std::vector<std::vector<S>>(h,\
@@ -96,16 +99,19 @@ data:
     \n        while (h1 < h2) {\n            if (h1 & 1) sml = MS::op(sml, inner_prod(h1++,\
     \ w1, w2));\n            if (h2 & 1) smr = MS::op(inner_prod(--h2, w1, w2), smr);\n\
     \            h1 >>= 1;\n            h2 >>= 1;\n        }\n        return MS::op(sml,\
-    \ smr);\n    }\n\n    S all_prod() const { return d[1][1]; }\n\n   private:\n\
-    \    int h, logh, sizeh, w, logw, sizew;\n    std::vector<std::vector<S>> d;\n\
-    \    inline void update_bottom(int i, int j) { d[i][j] = MS::op(d[(i << 1) | 0][j],\
-    \ d[(i << 1) | 1][j]); }\n    inline void update_else(int i, int j) { d[i][j]\
-    \ = MS::op(d[i][(j << 1) | 0], d[i][(j << 1) | 1]); }\n};"
+    \ smr);\n    }\n\n    S all_prod() const { return d[1][1]; }\n\n    std::vector<std::vector<S>>\
+    \ make_vector() {\n        std::vector vec(h, std::vector<S>(w));\n        for\
+    \ (int i = 0; i < h; i++) {\n            for (int j = 0; j < w; j++) vec[i][j]\
+    \ = get(i, j);\n        }\n        return vec;\n    }\n\n   private:\n    int\
+    \ h, logh, sizeh, w, logw, sizew;\n    std::vector<std::vector<S>> d;\n    inline\
+    \ void update_bottom(int i, int j) { d[i][j] = MS::op(d[(i << 1) | 0][j], d[(i\
+    \ << 1) | 1][j]); }\n    inline void update_else(int i, int j) { d[i][j] = MS::op(d[i][(j\
+    \ << 1) | 0], d[i][(j << 1) | 1]); }\n};"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/segment_tree_2d.hpp
   requiredBy: []
-  timestamp: '2024-03-24 17:04:51+09:00'
+  timestamp: '2024-07-13 11:37:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_other/aoj_1068.test.cpp

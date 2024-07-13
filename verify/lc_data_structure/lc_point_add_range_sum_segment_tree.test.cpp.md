@@ -60,9 +60,11 @@ data:
     \ sm))) {\n                        sm = MS::op(d[r], sm);\n                  \
     \      r--;\n                    }\n                }\n                return\
     \ r + 1 - size;\n            }\n            sm = MS::op(d[r], sm);\n        }\
-    \ while ((r & -r) != r);\n        return 0;\n    }\n\n   private:\n    int n,\
-    \ log, size;\n    std::vector<S> d;\n    inline void update(int k) { d[k] = MS::op(d[k\
-    \ << 1], d[(k << 1) | 1]); }\n};\n#line 7 \"verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp\"\
+    \ while ((r & -r) != r);\n        return 0;\n    }\n\n    std::vector<S> make_vector()\
+    \ {\n        std::vector<S> vec(n);\n        for (int i = 0; i < n; i++) vec[i]\
+    \ = get(i);\n        return vec;\n    }\n\n   private:\n    int n, log, size;\n\
+    \    std::vector<S> d;\n    inline void update(int k) { d[k] = MS::op(d[k << 1],\
+    \ d[(k << 1) | 1]); }\n};\n#line 7 \"verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp\"\
     \n\nint main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    std::vector<long\
     \ long> a(N);\n    for (int i = 0; i < N; i++) std::cin >> a[i];\n    SegmentTree<MonoidSum<long\
     \ long>> fen(a);\n    while (Q--) {\n        int t;\n        std::cin >> t;\n\
@@ -86,7 +88,7 @@ data:
   isVerificationFile: true
   path: verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
   requiredBy: []
-  timestamp: '2024-03-24 17:04:51+09:00'
+  timestamp: '2024-07-13 11:37:49+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp

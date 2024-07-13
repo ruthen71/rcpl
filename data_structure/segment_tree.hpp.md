@@ -55,9 +55,11 @@ data:
     \            if (g(MS::op(d[r], sm))) {\n                        sm = MS::op(d[r],\
     \ sm);\n                        r--;\n                    }\n                }\n\
     \                return r + 1 - size;\n            }\n            sm = MS::op(d[r],\
-    \ sm);\n        } while ((r & -r) != r);\n        return 0;\n    }\n\n   private:\n\
-    \    int n, log, size;\n    std::vector<S> d;\n    inline void update(int k) {\
-    \ d[k] = MS::op(d[k << 1], d[(k << 1) | 1]); }\n};\n"
+    \ sm);\n        } while ((r & -r) != r);\n        return 0;\n    }\n\n    std::vector<S>\
+    \ make_vector() {\n        std::vector<S> vec(n);\n        for (int i = 0; i <\
+    \ n; i++) vec[i] = get(i);\n        return vec;\n    }\n\n   private:\n    int\
+    \ n, log, size;\n    std::vector<S> d;\n    inline void update(int k) { d[k] =\
+    \ MS::op(d[k << 1], d[(k << 1) | 1]); }\n};\n"
   code: "#pragma once\n#include <vector>\n#include <cassert>\ntemplate <class MS>\
     \ struct SegmentTree {\n   public:\n    using S = typename MS::S;\n    SegmentTree()\
     \ : SegmentTree(0) {}\n    SegmentTree(int n) : SegmentTree(std::vector<S>(n,\
@@ -96,19 +98,21 @@ data:
     \ sm))) {\n                        sm = MS::op(d[r], sm);\n                  \
     \      r--;\n                    }\n                }\n                return\
     \ r + 1 - size;\n            }\n            sm = MS::op(d[r], sm);\n        }\
-    \ while ((r & -r) != r);\n        return 0;\n    }\n\n   private:\n    int n,\
-    \ log, size;\n    std::vector<S> d;\n    inline void update(int k) { d[k] = MS::op(d[k\
-    \ << 1], d[(k << 1) | 1]); }\n};"
+    \ while ((r & -r) != r);\n        return 0;\n    }\n\n    std::vector<S> make_vector()\
+    \ {\n        std::vector<S> vec(n);\n        for (int i = 0; i < n; i++) vec[i]\
+    \ = get(i);\n        return vec;\n    }\n\n   private:\n    int n, log, size;\n\
+    \    std::vector<S> d;\n    inline void update(int k) { d[k] = MS::op(d[k << 1],\
+    \ d[(k << 1) | 1]); }\n};"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/segment_tree.hpp
   requiredBy: []
-  timestamp: '2024-03-24 17:04:51+09:00'
+  timestamp: '2024-07-13 11:37:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/yuki/yuki_1036_segment_tree.test.cpp
   - verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp
   - verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
-  - verify/yuki/yuki_1036_segment_tree.test.cpp
 documentation_of: data_structure/segment_tree.hpp
 layout: document
 title: "Segment Tree (\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"

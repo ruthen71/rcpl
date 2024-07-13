@@ -105,10 +105,12 @@ data:
     \                  sm = MS::op(d[r], sm);\n                        r--;\n    \
     \                }\n                }\n                return r + 1 - size;\n\
     \            }\n            sm = MS::op(d[r], sm);\n        } while ((r & -r)\
-    \ != r);\n        return 0;\n    }\n\n   private:\n    int n, log, size;\n   \
-    \ std::vector<S> d;\n    std::vector<F> lz;\n    inline void update(int k) { d[k]\
-    \ = MS::op(d[k << 1], d[(k << 1) | 1]); }\n    void all_apply(int k, const F&\
-    \ f) {\n        d[k] = MSF::mapping(f, d[k]);\n        if (k < size) lz[k] = MF::composition(f,\
+    \ != r);\n        return 0;\n    }\n\n    std::vector<S> make_vector() {\n   \
+    \     std::vector<S> vec(n);\n        for (int i = 0; i < n; i++) vec[i] = get(i);\n\
+    \        return vec;\n    }\n\n   private:\n    int n, log, size;\n    std::vector<S>\
+    \ d;\n    std::vector<F> lz;\n    inline void update(int k) { d[k] = MS::op(d[k\
+    \ << 1], d[(k << 1) | 1]); }\n    void all_apply(int k, const F& f) {\n      \
+    \  d[k] = MSF::mapping(f, d[k]);\n        if (k < size) lz[k] = MF::composition(f,\
     \ lz[k]);\n    }\n    void push(int k) {\n        all_apply(k << 1, lz[k]);\n\
     \        all_apply((k << 1) | 1, lz[k]);\n        lz[k] = MF::id();\n    }\n};\n\
     #line 2 \"math/static_modint.hpp\"\n\n#line 4 \"math/static_modint.hpp\"\n\n//\
@@ -193,7 +195,7 @@ data:
   isVerificationFile: true
   path: verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
   requiredBy: []
-  timestamp: '2024-05-04 00:04:19+09:00'
+  timestamp: '2024-07-13 11:37:49+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_data_structure/lc_range_affine_range_sum.test.cpp

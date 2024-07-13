@@ -19,22 +19,20 @@ data:
     links: []
   bundledCode: "#line 2 \"data_structure/cumulative_sum.hpp\"\n\ntemplate <class T>\
     \ struct CumulativeSum {\n    int n;\n    std::vector<T> seg;\n\n    CumulativeSum()\
-    \ = default;\n\n    CumulativeSum(int n) : n(n), seg(n + 1, T(0)) {}\n\n    CumulativeSum(std::vector<T>\
-    \ &a) {\n        n = (int)a.size();\n        seg.assign(n + 1, T(0));\n      \
-    \  for (int i = 0; i < n; i++) seg[i + 1] = seg[i] + a[i];\n    }\n\n    // [l,\
+    \ = default;\n\n    CumulativeSum(int n) : n(n), seg(n + 1, T(0)) {}\n\n    CumulativeSum(std::vector<T>&\
+    \ a) {\n        n = (int)a.size();\n        seg.assign(n + 1, T(0));\n       \
+    \ for (int i = 0; i < n; i++) seg[i + 1] = seg[i] + a[i];\n    }\n\n    // [l,\
     \ r)\n    T sum(int l, int r) const {\n        assert(0 <= l and l <= r and r\
     \ <= n);\n        return seg[r] - seg[l];\n    }\n\n    // A[l] += x, A[l + 1]\
     \ += x, ... , A[r - 1] += x\n    void imos(int l, int r, T x = T(1)) {\n     \
     \   assert(0 <= l and l <= r and r <= n);\n        seg[l] += x;\n        seg[r]\
     \ -= x;\n    }\n\n    void build() {\n        for (int i = 0; i < n; i++) seg[i\
     \ + 1] += seg[i];\n    }\n\n    // return A[p]\n    T get(int p) const {\n   \
-    \     assert(0 <= p and p < n);\n        return seg[p];\n    }\n\n    // output\n\
-    \    friend std::ostream &operator<<(std::ostream &os, const CumulativeSum &A)\
-    \ {\n        os << \"n = \" << A.n << \"\\n\";\n        for (int i = 0; i <= A.n;\
-    \ i++) os << A.seg[i] << \" \\n\"[i == A.n];\n        return os;\n    }\n};\n"
+    \     assert(0 <= p and p < n);\n        return seg[p];\n    }\n\n    std::vector<T>\
+    \ make_vector() { return seg; }\n};\n"
   code: "#pragma once\n\ntemplate <class T> struct CumulativeSum {\n    int n;\n \
     \   std::vector<T> seg;\n\n    CumulativeSum() = default;\n\n    CumulativeSum(int\
-    \ n) : n(n), seg(n + 1, T(0)) {}\n\n    CumulativeSum(std::vector<T> &a) {\n \
+    \ n) : n(n), seg(n + 1, T(0)) {}\n\n    CumulativeSum(std::vector<T>& a) {\n \
     \       n = (int)a.size();\n        seg.assign(n + 1, T(0));\n        for (int\
     \ i = 0; i < n; i++) seg[i + 1] = seg[i] + a[i];\n    }\n\n    // [l, r)\n   \
     \ T sum(int l, int r) const {\n        assert(0 <= l and l <= r and r <= n);\n\
@@ -43,20 +41,18 @@ data:
     \ <= l and l <= r and r <= n);\n        seg[l] += x;\n        seg[r] -= x;\n \
     \   }\n\n    void build() {\n        for (int i = 0; i < n; i++) seg[i + 1] +=\
     \ seg[i];\n    }\n\n    // return A[p]\n    T get(int p) const {\n        assert(0\
-    \ <= p and p < n);\n        return seg[p];\n    }\n\n    // output\n    friend\
-    \ std::ostream &operator<<(std::ostream &os, const CumulativeSum &A) {\n     \
-    \   os << \"n = \" << A.n << \"\\n\";\n        for (int i = 0; i <= A.n; i++)\
-    \ os << A.seg[i] << \" \\n\"[i == A.n];\n        return os;\n    }\n};"
+    \ <= p and p < n);\n        return seg[p];\n    }\n\n    std::vector<T> make_vector()\
+    \ { return seg; }\n};"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/cumulative_sum.hpp
   requiredBy: []
-  timestamp: '2023-03-17 17:11:39+09:00'
+  timestamp: '2024-07-13 11:37:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj_other/aoj_0360.test.cpp
-  - verify/aoj_other/aoj_2286.test.cpp
   - verify/lc_data_structure/lc_static_range_sum.test.cpp
+  - verify/aoj_other/aoj_2286.test.cpp
+  - verify/aoj_other/aoj_0360.test.cpp
 documentation_of: data_structure/cumulative_sum.hpp
 layout: document
 title: "\u7D2F\u7A4D\u548C"
