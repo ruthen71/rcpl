@@ -468,6 +468,9 @@ data:
       title: misc/xor_shift.hpp
   - name: string
     pages:
+    - icon: ':warning:'
+      path: string/is_palindrome.hpp
+      title: string/is_palindrome.hpp
     - icon: ':heavy_check_mark:'
       path: string/rolling_hash.hpp
       title: string/rolling_hash.hpp
