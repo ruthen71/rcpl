@@ -31,6 +31,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/lowest_common_ancestor.hpp
     title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
+  - icon: ':warning:'
+    path: graph/minimum_steiner_tree.hpp
+    title: "Minimum Steiner Tree (\u6700\u5C0F\u30B7\u30E5\u30BF\u30A4\u30CA\u30FC\
+      \u6728)"
   - icon: ':heavy_check_mark:'
     path: graph/read_graph.hpp
     title: graph/read_graph.hpp
@@ -100,32 +104,33 @@ data:
   isVerificationFile: false
   path: graph/graph_template.hpp
   requiredBy:
-  - dp/traveling_salesman_problem.hpp
-  - graph/auxiliary_tree.hpp
-  - graph/strongly_connected_component.hpp
-  - graph/bellman_ford.hpp
-  - graph/lowest_common_ancestor.hpp
-  - graph/topological_sort.hpp
-  - graph/kruskal.hpp
-  - graph/zero_one_bfs.hpp
-  - graph/dijkstra.hpp
   - graph/euler_tour.hpp
+  - graph/auxiliary_tree.hpp
+  - graph/lowest_common_ancestor.hpp
+  - graph/minimum_steiner_tree.hpp
   - graph/read_graph.hpp
+  - graph/dijkstra.hpp
+  - graph/kruskal.hpp
+  - graph/strongly_connected_component.hpp
+  - graph/topological_sort.hpp
+  - graph/bellman_ford.hpp
+  - graph/zero_one_bfs.hpp
+  - graph/low_link.hpp
   - graph/get_edges.hpp
   - graph/tree_diameter.hpp
-  - graph/low_link.hpp
+  - dp/traveling_salesman_problem.hpp
   timestamp: '2024-01-25 10:46:02+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/lc_graph/lc_scc.test.cpp
-  - verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
   - verify/lc_tree/lc_tree_diameter.test.cpp
   - verify/lc_tree/lc_lowest_common_ancestor.test.cpp
+  - verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
+  - verify/lc_graph/lc_scc.test.cpp
   - verify/aoj_dpl/aoj_dpl_2_a.test.cpp
-  - verify/aoj_grl/aoj_grl_2_a.test.cpp
-  - verify/aoj_grl/aoj_grl_1_b.test.cpp
-  - verify/aoj_grl/aoj_grl_3_a.test.cpp
   - verify/aoj_grl/aoj_grl_3_b.test.cpp
+  - verify/aoj_grl/aoj_grl_1_b.test.cpp
+  - verify/aoj_grl/aoj_grl_2_a.test.cpp
+  - verify/aoj_grl/aoj_grl_3_a.test.cpp
 documentation_of: graph/graph_template.hpp
 layout: document
 redirect_from:

@@ -340,6 +340,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/lowest_common_ancestor.hpp
       title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
+    - icon: ':warning:'
+      path: graph/minimum_steiner_tree.hpp
+      title: "Minimum Steiner Tree (\u6700\u5C0F\u30B7\u30E5\u30BF\u30A4\u30CA\u30FC\
+        \u6728)"
     - icon: ':heavy_check_mark:'
       path: graph/read_graph.hpp
       title: graph/read_graph.hpp
@@ -660,6 +664,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_other/aoj_3206.test.cpp
       title: verify/aoj_other/aoj_3206.test.cpp
+  - name: verify/graph
+    pages:
+    - icon: ':x:'
+      path: verify/graph/minimum_steiner_tree.test.cpp
+      title: verify/graph/minimum_steiner_tree.test.cpp
   - name: verify/lc_data_structure
     pages:
     - icon: ':heavy_check_mark:'
