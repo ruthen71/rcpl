@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include "graph/read_graph.hpp"
-#include "graph/minimum_steriner_tree.hpp"
+#include "graph/minimum_steiner_tree.hpp"
 
 int main() {
     int N, M, T;
