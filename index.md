@@ -149,7 +149,7 @@ data:
     - icon: ':warning:'
       path: data_structure/static_matrix.hpp
       title: "Static Matrix (\u884C\u5217, \u30B5\u30A4\u30BA\u56FA\u5B9A)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/unionfind.hpp
       title: UnionFind
     - icon: ':heavy_check_mark:'
@@ -328,7 +328,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/get_edges.hpp
       title: graph/get_edges.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/graph_template.hpp
       title: graph/graph_template.hpp
     - icon: ':heavy_check_mark:'
@@ -340,11 +340,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/lowest_common_ancestor.hpp
       title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
-    - icon: ':warning:'
+    - icon: ':x:'
       path: graph/minimum_steiner_tree.hpp
       title: "Minimum Steiner Tree (\u6700\u5C0F\u30B7\u30E5\u30BF\u30A4\u30CA\u30FC\
         \u6728)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/read_graph.hpp
       title: graph/read_graph.hpp
     - icon: ':heavy_check_mark:'

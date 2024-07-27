@@ -5,7 +5,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/kruskal.hpp
     title: "Kruskal's algorithm (\u30AF\u30E9\u30B9\u30AB\u30EB\u6CD5)"
-  - icon: ':warning:'
+  - icon: ':x:'
     path: graph/minimum_steiner_tree.hpp
     title: "Minimum Steiner Tree (\u6700\u5C0F\u30B7\u30E5\u30BF\u30A4\u30CA\u30FC\
       \u6728)"
@@ -13,12 +13,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_grl/aoj_grl_2_a.test.cpp
     title: verify/aoj_grl/aoj_grl_2_a.test.cpp
+  - icon: ':x:'
+    path: verify/graph/minimum_steiner_tree.test.cpp
+    title: verify/graph/minimum_steiner_tree.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/lc_data_structure/lc_unionfind.test.cpp
     title: verify/lc_data_structure/lc_unionfind.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/unionfind.hpp\"\n\nstruct UnionFind {\n \
@@ -63,8 +66,9 @@ data:
   - graph/minimum_steiner_tree.hpp
   - graph/kruskal.hpp
   timestamp: '2024-01-15 16:49:41+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/graph/minimum_steiner_tree.test.cpp
   - verify/lc_data_structure/lc_unionfind.test.cpp
   - verify/aoj_grl/aoj_grl_2_a.test.cpp
 documentation_of: data_structure/unionfind.hpp
