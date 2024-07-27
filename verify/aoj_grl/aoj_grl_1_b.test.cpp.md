@@ -5,10 +5,10 @@ data:
     path: graph/bellman_ford.hpp
     title: "Bellman-Ford algorithm (\u30D9\u30EB\u30DE\u30F3\u30D5\u30A9\u30FC\u30C9\
       \u6CD5)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
     title: graph/graph_template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/read_graph.hpp
     title: graph/read_graph.hpp
   _extendedRequiredBy: []
@@ -61,23 +61,7 @@ data:
     \ g[i].push_back(Edge(i, p, c, i - 1));\n            g[p].push_back(Edge(p, i,\
     \ c, i - 1));\n        } else {\n            // c = 1\n            if (!directed)\
     \ g[i].push_back(Edge(i, p, T(1), i - 1));\n            g[p].push_back(Edge(p,\
-    \ i, T(1), i - 1));\n        }\n    }\n    return g;\n}\n\nstd::tuple<Graph<int>,\
-    \ std::vector<std::vector<int>>, std::vector<std::pair<int, int>>> read_grid(const\
-    \ int h, const int w, std::string rel = \".#\") {\n    std::vector<std::string>\
-    \ s(h);\n    std::vector id(h, std::vector<int>(w, -1));\n    std::vector<std::pair<int,\
-    \ int>> loc;\n    int n = 0;\n    for (int i = 0; i < h; i++) {\n        std::cin\
-    \ >> s[i];\n        for (int j = 0; j < w; j++) {\n            if (s[i][j] ==\
-    \ rel[1]) {\n                id[i][j] = n++;\n                loc.emplace_back(i,\
-    \ j);\n            }\n        }\n    }\n    int m = 0;\n    Graph<int> g(n);\n\
-    \    for (int i = 0; i < h; i++) {\n        for (int j = 0; j < w; j++) {\n  \
-    \          if (s[i][j] == rel[1]) {\n                if (i + 1 < h and s[i + 1][j]\
-    \ == rel[1]) {\n                    g[id[i][j]].push_back(Edge(id[i][j], id[i\
-    \ + 1][j], 1, m));\n                    g[id[i + 1][j]].push_back(Edge(id[i +\
-    \ 1][j], id[i][j], 1, m++));\n                }\n                if (j + 1 < w\
-    \ and s[i][j + 1] == rel[1]) {\n                    g[id[i][j]].push_back(Edge(id[i][j],\
-    \ id[i][j + 1], 1, m));\n                    g[id[i][j + 1]].push_back(Edge(id[i][j\
-    \ + 1], id[i][j], 1, m++));\n                }\n            }\n        }\n   \
-    \ }\n    return {g, id, loc};\n}\n#line 7 \"verify/aoj_grl/aoj_grl_1_b.test.cpp\"\
+    \ i, T(1), i - 1));\n        }\n    }\n    return g;\n}\n#line 7 \"verify/aoj_grl/aoj_grl_1_b.test.cpp\"\
     \n\nint main() {\n    int N, M, r;\n    std::cin >> N >> M >> r;\n    auto G =\
     \ read_graph<int>(N, M, true, true, 0);\n    std::vector<int> s = {r};\n    const\
     \ int INF = 1 << 30;\n    auto [dist, par, root] = bellman_ford(G, s, INF);\n\
@@ -105,7 +89,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_grl/aoj_grl_1_b.test.cpp
   requiredBy: []
-  timestamp: '2024-05-26 20:33:47+09:00'
+  timestamp: '2024-07-28 03:23:44+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_grl/aoj_grl_1_b.test.cpp

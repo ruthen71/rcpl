@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
     title: graph/graph_template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/read_graph.hpp
     title: graph/read_graph.hpp
   - icon: ':heavy_check_mark:'
@@ -47,26 +47,10 @@ data:
     \ g[i].push_back(Edge(i, p, c, i - 1));\n            g[p].push_back(Edge(p, i,\
     \ c, i - 1));\n        } else {\n            // c = 1\n            if (!directed)\
     \ g[i].push_back(Edge(i, p, T(1), i - 1));\n            g[p].push_back(Edge(p,\
-    \ i, T(1), i - 1));\n        }\n    }\n    return g;\n}\n\nstd::tuple<Graph<int>,\
-    \ std::vector<std::vector<int>>, std::vector<std::pair<int, int>>> read_grid(const\
-    \ int h, const int w, std::string rel = \".#\") {\n    std::vector<std::string>\
-    \ s(h);\n    std::vector id(h, std::vector<int>(w, -1));\n    std::vector<std::pair<int,\
-    \ int>> loc;\n    int n = 0;\n    for (int i = 0; i < h; i++) {\n        std::cin\
-    \ >> s[i];\n        for (int j = 0; j < w; j++) {\n            if (s[i][j] ==\
-    \ rel[1]) {\n                id[i][j] = n++;\n                loc.emplace_back(i,\
-    \ j);\n            }\n        }\n    }\n    int m = 0;\n    Graph<int> g(n);\n\
-    \    for (int i = 0; i < h; i++) {\n        for (int j = 0; j < w; j++) {\n  \
-    \          if (s[i][j] == rel[1]) {\n                if (i + 1 < h and s[i + 1][j]\
-    \ == rel[1]) {\n                    g[id[i][j]].push_back(Edge(id[i][j], id[i\
-    \ + 1][j], 1, m));\n                    g[id[i + 1][j]].push_back(Edge(id[i +\
-    \ 1][j], id[i][j], 1, m++));\n                }\n                if (j + 1 < w\
-    \ and s[i][j + 1] == rel[1]) {\n                    g[id[i][j]].push_back(Edge(id[i][j],\
-    \ id[i][j + 1], 1, m));\n                    g[id[i][j + 1]].push_back(Edge(id[i][j\
-    \ + 1], id[i][j], 1, m++));\n                }\n            }\n        }\n   \
-    \ }\n    return {g, id, loc};\n}\n#line 2 \"graph/tree_diameter.hpp\"\n\n#line\
-    \ 4 \"graph/tree_diameter.hpp\"\n// {\u76F4\u5F84\u306E\u8FBA\u306E\u91CD\u307F\
-    \u306E\u7DCF\u548C, \u901A\u308B\u9802\u70B9\u96C6\u5408}\ntemplate <class T>\
-    \ std::pair<T, std::vector<Edge<T>>> tree_diameter(Graph<T> &G) {\n    std::vector<int>\
+    \ i, T(1), i - 1));\n        }\n    }\n    return g;\n}\n#line 2 \"graph/tree_diameter.hpp\"\
+    \n\n#line 4 \"graph/tree_diameter.hpp\"\n// {\u76F4\u5F84\u306E\u8FBA\u306E\u91CD\
+    \u307F\u306E\u7DCF\u548C, \u901A\u308B\u9802\u70B9\u96C6\u5408}\ntemplate <class\
+    \ T> std::pair<T, std::vector<Edge<T>>> tree_diameter(Graph<T> &G) {\n    std::vector<int>\
     \ to(G.size(), -1);\n\n    auto dfs = [&](auto f, int cur, int par) -> std::pair<T,\
     \ int> {\n        std::pair<T, int> ret = {0, cur};\n        for (auto &e : G[cur])\
     \ {\n            if (e.to == par) continue;\n            auto cost = f(f, e.to,\
@@ -97,7 +81,7 @@ data:
   isVerificationFile: true
   path: verify/lc_tree/lc_tree_diameter.test.cpp
   requiredBy: []
-  timestamp: '2024-07-07 00:10:41+09:00'
+  timestamp: '2024-07-28 03:23:44+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_tree/lc_tree_diameter.test.cpp

@@ -1,24 +1,24 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/unionfind.hpp
     title: UnionFind
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
     title: graph/graph_template.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/minimum_steiner_tree.hpp
     title: "Minimum Steiner Tree (\u6700\u5C0F\u30B7\u30E5\u30BF\u30A4\u30CA\u30FC\
       \u6728)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/read_graph.hpp
     title: graph/read_graph.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://yukicoder.me/problems/no/114
@@ -50,24 +50,8 @@ data:
     \ g[i].push_back(Edge(i, p, c, i - 1));\n            g[p].push_back(Edge(p, i,\
     \ c, i - 1));\n        } else {\n            // c = 1\n            if (!directed)\
     \ g[i].push_back(Edge(i, p, T(1), i - 1));\n            g[p].push_back(Edge(p,\
-    \ i, T(1), i - 1));\n        }\n    }\n    return g;\n}\n\nstd::tuple<Graph<int>,\
-    \ std::vector<std::vector<int>>, std::vector<std::pair<int, int>>> read_grid(const\
-    \ int h, const int w, std::string rel = \".#\") {\n    std::vector<std::string>\
-    \ s(h);\n    std::vector id(h, std::vector<int>(w, -1));\n    std::vector<std::pair<int,\
-    \ int>> loc;\n    int n = 0;\n    for (int i = 0; i < h; i++) {\n        std::cin\
-    \ >> s[i];\n        for (int j = 0; j < w; j++) {\n            if (s[i][j] ==\
-    \ rel[1]) {\n                id[i][j] = n++;\n                loc.emplace_back(i,\
-    \ j);\n            }\n        }\n    }\n    int m = 0;\n    Graph<int> g(n);\n\
-    \    for (int i = 0; i < h; i++) {\n        for (int j = 0; j < w; j++) {\n  \
-    \          if (s[i][j] == rel[1]) {\n                if (i + 1 < h and s[i + 1][j]\
-    \ == rel[1]) {\n                    g[id[i][j]].push_back(Edge(id[i][j], id[i\
-    \ + 1][j], 1, m));\n                    g[id[i + 1][j]].push_back(Edge(id[i +\
-    \ 1][j], id[i][j], 1, m++));\n                }\n                if (j + 1 < w\
-    \ and s[i][j + 1] == rel[1]) {\n                    g[id[i][j]].push_back(Edge(id[i][j],\
-    \ id[i][j + 1], 1, m));\n                    g[id[i][j + 1]].push_back(Edge(id[i][j\
-    \ + 1], id[i][j], 1, m++));\n                }\n            }\n        }\n   \
-    \ }\n    return {g, id, loc};\n}\n#line 2 \"graph/minimum_steiner_tree.hpp\"\n\
-    \n#line 4 \"graph/minimum_steiner_tree.hpp\"\n#include <queue>\n#include <algorithm>\n\
+    \ i, T(1), i - 1));\n        }\n    }\n    return g;\n}\n#line 2 \"graph/minimum_steiner_tree.hpp\"\
+    \n\n#line 4 \"graph/minimum_steiner_tree.hpp\"\n#include <queue>\n#include <algorithm>\n\
     #include <cassert>\n\n#line 2 \"data_structure/unionfind.hpp\"\n\nstruct UnionFind\
     \ {\n    int n;\n    std::vector<int> parents;\n\n    UnionFind() {}\n    UnionFind(int\
     \ n) : n(n), parents(n, -1) {}\n\n    int leader(int x) { return parents[x] <\
@@ -168,8 +152,8 @@ data:
   isVerificationFile: true
   path: verify/graph/minimum_steiner_tree.test.cpp
   requiredBy: []
-  timestamp: '2024-07-28 03:20:49+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-07-28 03:23:44+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/minimum_steiner_tree.test.cpp
 layout: document

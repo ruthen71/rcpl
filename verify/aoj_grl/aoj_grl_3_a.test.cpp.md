@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
     title: graph/graph_template.hpp
   - icon: ':heavy_check_mark:'
     path: graph/low_link.hpp
     title: "Low Link (\u95A2\u7BC0\u70B9\u30FB\u6A4B)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/read_graph.hpp
     title: graph/read_graph.hpp
   _extendedRequiredBy: []
@@ -47,33 +47,18 @@ data:
     \ g[i].push_back(Edge(i, p, c, i - 1));\n            g[p].push_back(Edge(p, i,\
     \ c, i - 1));\n        } else {\n            // c = 1\n            if (!directed)\
     \ g[i].push_back(Edge(i, p, T(1), i - 1));\n            g[p].push_back(Edge(p,\
-    \ i, T(1), i - 1));\n        }\n    }\n    return g;\n}\n\nstd::tuple<Graph<int>,\
-    \ std::vector<std::vector<int>>, std::vector<std::pair<int, int>>> read_grid(const\
-    \ int h, const int w, std::string rel = \".#\") {\n    std::vector<std::string>\
-    \ s(h);\n    std::vector id(h, std::vector<int>(w, -1));\n    std::vector<std::pair<int,\
-    \ int>> loc;\n    int n = 0;\n    for (int i = 0; i < h; i++) {\n        std::cin\
-    \ >> s[i];\n        for (int j = 0; j < w; j++) {\n            if (s[i][j] ==\
-    \ rel[1]) {\n                id[i][j] = n++;\n                loc.emplace_back(i,\
-    \ j);\n            }\n        }\n    }\n    int m = 0;\n    Graph<int> g(n);\n\
-    \    for (int i = 0; i < h; i++) {\n        for (int j = 0; j < w; j++) {\n  \
-    \          if (s[i][j] == rel[1]) {\n                if (i + 1 < h and s[i + 1][j]\
-    \ == rel[1]) {\n                    g[id[i][j]].push_back(Edge(id[i][j], id[i\
-    \ + 1][j], 1, m));\n                    g[id[i + 1][j]].push_back(Edge(id[i +\
-    \ 1][j], id[i][j], 1, m++));\n                }\n                if (j + 1 < w\
-    \ and s[i][j + 1] == rel[1]) {\n                    g[id[i][j]].push_back(Edge(id[i][j],\
-    \ id[i][j + 1], 1, m));\n                    g[id[i][j + 1]].push_back(Edge(id[i][j\
-    \ + 1], id[i][j], 1, m++));\n                }\n            }\n        }\n   \
-    \ }\n    return {g, id, loc};\n}\n#line 2 \"graph/low_link.hpp\"\n\n#line 4 \"\
-    graph/low_link.hpp\"\n\ntemplate <class T> struct LowLink {\n    int n;\n    std::vector<int>\
-    \ ord, low;\n    std::vector<int> articulations;\n    std::vector<int> roots;\n\
-    \    std::vector<std::pair<int, int>> bridges;  // edges {u, v} (u < v)\n    std::vector<std::vector<int>>\
-    \ dfs_tree;\n\n    LowLink(const Graph<T>& g) : n(int(g.size())) {\n        ord.assign(n,\
-    \ -1);\n        low.assign(n, -1);\n        dfs_tree.resize(n);\n        int ord_id\
-    \ = 0;\n        auto dfs = [&](auto f, int cur, int par) -> void {\n         \
-    \   low[cur] = ord[cur] = ord_id++;\n            bool is_articulation = false;\n\
-    \            for (auto& e : g[cur]) {\n                if (ord[e.to] == -1) {\n\
-    \                    // DFS \u6728\u4E0A\u306E\u8FBA\u306B\u5BFE\u3059\u308B\u51E6\
-    \u7406\n                    f(f, e.to, cur);\n                    dfs_tree[cur].push_back(e.to);\n\
+    \ i, T(1), i - 1));\n        }\n    }\n    return g;\n}\n#line 2 \"graph/low_link.hpp\"\
+    \n\n#line 4 \"graph/low_link.hpp\"\n\ntemplate <class T> struct LowLink {\n  \
+    \  int n;\n    std::vector<int> ord, low;\n    std::vector<int> articulations;\n\
+    \    std::vector<int> roots;\n    std::vector<std::pair<int, int>> bridges;  //\
+    \ edges {u, v} (u < v)\n    std::vector<std::vector<int>> dfs_tree;\n\n    LowLink(const\
+    \ Graph<T>& g) : n(int(g.size())) {\n        ord.assign(n, -1);\n        low.assign(n,\
+    \ -1);\n        dfs_tree.resize(n);\n        int ord_id = 0;\n        auto dfs\
+    \ = [&](auto f, int cur, int par) -> void {\n            low[cur] = ord[cur] =\
+    \ ord_id++;\n            bool is_articulation = false;\n            for (auto&\
+    \ e : g[cur]) {\n                if (ord[e.to] == -1) {\n                    //\
+    \ DFS \u6728\u4E0A\u306E\u8FBA\u306B\u5BFE\u3059\u308B\u51E6\u7406\n         \
+    \           f(f, e.to, cur);\n                    dfs_tree[cur].push_back(e.to);\n\
     \                    // e \u304C DFS \u6728\u306B\u542B\u307E\u308C\u3066\u3044\
     \u308B\u306E\u3067\u5F8C\u9000\u8FBA\u3092\u3059\u3067\u306B\u901A\u3063\u305F\
     \ low[e.to] \u3092\u4F7F\u3063\u3066\u66F4\u65B0\u3057\u3066\u826F\u3044\n   \
@@ -115,7 +100,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_grl/aoj_grl_3_a.test.cpp
   requiredBy: []
-  timestamp: '2024-01-25 10:46:02+09:00'
+  timestamp: '2024-07-28 03:23:44+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_grl/aoj_grl_3_a.test.cpp

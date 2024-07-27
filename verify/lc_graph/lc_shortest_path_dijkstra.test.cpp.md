@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/dijkstra.hpp
     title: "Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
     title: graph/graph_template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/read_graph.hpp
     title: graph/read_graph.hpp
   - icon: ':heavy_check_mark:'
@@ -63,27 +63,11 @@ data:
     \ p, c, i - 1));\n            g[p].push_back(Edge(p, i, c, i - 1));\n        }\
     \ else {\n            // c = 1\n            if (!directed) g[i].push_back(Edge(i,\
     \ p, T(1), i - 1));\n            g[p].push_back(Edge(p, i, T(1), i - 1));\n  \
-    \      }\n    }\n    return g;\n}\n\nstd::tuple<Graph<int>, std::vector<std::vector<int>>,\
-    \ std::vector<std::pair<int, int>>> read_grid(const int h, const int w, std::string\
-    \ rel = \".#\") {\n    std::vector<std::string> s(h);\n    std::vector id(h, std::vector<int>(w,\
-    \ -1));\n    std::vector<std::pair<int, int>> loc;\n    int n = 0;\n    for (int\
-    \ i = 0; i < h; i++) {\n        std::cin >> s[i];\n        for (int j = 0; j <\
-    \ w; j++) {\n            if (s[i][j] == rel[1]) {\n                id[i][j] =\
-    \ n++;\n                loc.emplace_back(i, j);\n            }\n        }\n  \
-    \  }\n    int m = 0;\n    Graph<int> g(n);\n    for (int i = 0; i < h; i++) {\n\
-    \        for (int j = 0; j < w; j++) {\n            if (s[i][j] == rel[1]) {\n\
-    \                if (i + 1 < h and s[i + 1][j] == rel[1]) {\n                \
-    \    g[id[i][j]].push_back(Edge(id[i][j], id[i + 1][j], 1, m));\n            \
-    \        g[id[i + 1][j]].push_back(Edge(id[i + 1][j], id[i][j], 1, m++));\n  \
-    \              }\n                if (j + 1 < w and s[i][j + 1] == rel[1]) {\n\
-    \                    g[id[i][j]].push_back(Edge(id[i][j], id[i][j + 1], 1, m));\n\
-    \                    g[id[i][j + 1]].push_back(Edge(id[i][j + 1], id[i][j], 1,\
-    \ m++));\n                }\n            }\n        }\n    }\n    return {g, id,\
-    \ loc};\n}\n#line 2 \"graph/restore_path.hpp\"\n\n#line 4 \"graph/restore_path.hpp\"\
-    \n// restore path from root[t] to t\nstd::vector<int> restore_path(std::vector<int>&\
-    \ par, int t) {\n    std::vector<int> path = {t};\n    while (par[path.back()]\
-    \ != -1) path.emplace_back(par[path.back()]);\n    std::reverse(path.begin(),\
-    \ path.end());\n    return path;\n}\n#line 8 \"verify/lc_graph/lc_shortest_path_dijkstra.test.cpp\"\
+    \      }\n    }\n    return g;\n}\n#line 2 \"graph/restore_path.hpp\"\n\n#line\
+    \ 4 \"graph/restore_path.hpp\"\n// restore path from root[t] to t\nstd::vector<int>\
+    \ restore_path(std::vector<int>& par, int t) {\n    std::vector<int> path = {t};\n\
+    \    while (par[path.back()] != -1) path.emplace_back(par[path.back()]);\n   \
+    \ std::reverse(path.begin(), path.end());\n    return path;\n}\n#line 8 \"verify/lc_graph/lc_shortest_path_dijkstra.test.cpp\"\
     \n\nint main() {\n    int N, M, s, t;\n    std::cin >> N >> M >> s >> t;\n   \
     \ auto G = read_graph<long long>(N, M, true, true, 0);\n    std::vector<int> ss\
     \ = {s};\n    const long long INF = 1LL << 60;\n    auto [d, p, r] = dijkstra(G,\
@@ -109,7 +93,7 @@ data:
   isVerificationFile: true
   path: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
   requiredBy: []
-  timestamp: '2024-05-26 20:33:47+09:00'
+  timestamp: '2024-07-28 03:23:44+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp

@@ -31,11 +31,11 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/lowest_common_ancestor.hpp
     title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/minimum_steiner_tree.hpp
     title: "Minimum Steiner Tree (\u6700\u5C0F\u30B7\u30E5\u30BF\u30A4\u30CA\u30FC\
       \u6728)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/read_graph.hpp
     title: graph/read_graph.hpp
   - icon: ':heavy_check_mark:'
@@ -67,7 +67,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_grl/aoj_grl_3_b.test.cpp
     title: verify/aoj_grl/aoj_grl_3_b.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/minimum_steiner_tree.test.cpp
     title: verify/graph/minimum_steiner_tree.test.cpp
   - icon: ':heavy_check_mark:'
@@ -82,9 +82,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/lc_tree/lc_tree_diameter.test.cpp
     title: verify/lc_tree/lc_tree_diameter.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/graph_template.hpp\"\n\n#include <vector>\ntemplate\
@@ -123,7 +123,7 @@ data:
   - graph/tree_diameter.hpp
   - dp/traveling_salesman_problem.hpp
   timestamp: '2024-01-25 10:46:02+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/minimum_steiner_tree.test.cpp
   - verify/lc_tree/lc_tree_diameter.test.cpp

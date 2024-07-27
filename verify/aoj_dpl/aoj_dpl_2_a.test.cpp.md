@@ -5,10 +5,10 @@ data:
     path: dp/traveling_salesman_problem.hpp
     title: "Traveling Salesman Problem (\u5DE1\u56DE\u30BB\u30FC\u30EB\u30B9\u30DE\
       \u30F3\u554F\u984C)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
     title: graph/graph_template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/read_graph.hpp
     title: graph/read_graph.hpp
   _extendedRequiredBy: []
@@ -61,27 +61,12 @@ data:
     \ p, c, i - 1));\n            g[p].push_back(Edge(p, i, c, i - 1));\n        }\
     \ else {\n            // c = 1\n            if (!directed) g[i].push_back(Edge(i,\
     \ p, T(1), i - 1));\n            g[p].push_back(Edge(p, i, T(1), i - 1));\n  \
-    \      }\n    }\n    return g;\n}\n\nstd::tuple<Graph<int>, std::vector<std::vector<int>>,\
-    \ std::vector<std::pair<int, int>>> read_grid(const int h, const int w, std::string\
-    \ rel = \".#\") {\n    std::vector<std::string> s(h);\n    std::vector id(h, std::vector<int>(w,\
-    \ -1));\n    std::vector<std::pair<int, int>> loc;\n    int n = 0;\n    for (int\
-    \ i = 0; i < h; i++) {\n        std::cin >> s[i];\n        for (int j = 0; j <\
-    \ w; j++) {\n            if (s[i][j] == rel[1]) {\n                id[i][j] =\
-    \ n++;\n                loc.emplace_back(i, j);\n            }\n        }\n  \
-    \  }\n    int m = 0;\n    Graph<int> g(n);\n    for (int i = 0; i < h; i++) {\n\
-    \        for (int j = 0; j < w; j++) {\n            if (s[i][j] == rel[1]) {\n\
-    \                if (i + 1 < h and s[i + 1][j] == rel[1]) {\n                \
-    \    g[id[i][j]].push_back(Edge(id[i][j], id[i + 1][j], 1, m));\n            \
-    \        g[id[i + 1][j]].push_back(Edge(id[i + 1][j], id[i][j], 1, m++));\n  \
-    \              }\n                if (j + 1 < w and s[i][j + 1] == rel[1]) {\n\
-    \                    g[id[i][j]].push_back(Edge(id[i][j], id[i][j + 1], 1, m));\n\
-    \                    g[id[i][j + 1]].push_back(Edge(id[i][j + 1], id[i][j], 1,\
-    \ m++));\n                }\n            }\n        }\n    }\n    return {g, id,\
-    \ loc};\n}\n#line 7 \"verify/aoj_dpl/aoj_dpl_2_a.test.cpp\"\n\nint main() {\n\
-    \    int N, M;\n    std::cin >> N >> M;\n    auto G = read_graph<long long>(N,\
-    \ M, true, true, 0);\n    const long long INF = 1LL << 60;\n    auto res = traveling_salesman_problem<long\
-    \ long>(G, INF);\n    long long ans = res.back()[0];\n    if (ans == INF) ans\
-    \ = -1;\n    std::cout << ans << '\\n';\n    return 0;\n}\n"
+    \      }\n    }\n    return g;\n}\n#line 7 \"verify/aoj_dpl/aoj_dpl_2_a.test.cpp\"\
+    \n\nint main() {\n    int N, M;\n    std::cin >> N >> M;\n    auto G = read_graph<long\
+    \ long>(N, M, true, true, 0);\n    const long long INF = 1LL << 60;\n    auto\
+    \ res = traveling_salesman_problem<long long>(G, INF);\n    long long ans = res.back()[0];\n\
+    \    if (ans == INF) ans = -1;\n    std::cout << ans << '\\n';\n    return 0;\n\
+    }\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_A\"\
     \n\n#include <bits/stdc++.h>\n\n#include \"dp/traveling_salesman_problem.hpp\"\
     \n#include \"graph/read_graph.hpp\"\n\nint main() {\n    int N, M;\n    std::cin\
@@ -96,7 +81,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_dpl/aoj_dpl_2_a.test.cpp
   requiredBy: []
-  timestamp: '2024-01-30 13:51:21+09:00'
+  timestamp: '2024-07-28 03:23:44+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_dpl/aoj_dpl_2_a.test.cpp

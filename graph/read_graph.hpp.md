@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
     title: graph/graph_template.hpp
   _extendedRequiredBy: []
@@ -21,7 +21,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_grl/aoj_grl_3_b.test.cpp
     title: verify/aoj_grl/aoj_grl_3_b.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/minimum_steiner_tree.test.cpp
     title: verify/graph/minimum_steiner_tree.test.cpp
   - icon: ':heavy_check_mark:'
@@ -33,9 +33,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/lc_tree/lc_tree_diameter.test.cpp
     title: verify/lc_tree/lc_tree_diameter.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/read_graph.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
@@ -63,23 +63,7 @@ data:
     \ g[i].push_back(Edge(i, p, c, i - 1));\n            g[p].push_back(Edge(p, i,\
     \ c, i - 1));\n        } else {\n            // c = 1\n            if (!directed)\
     \ g[i].push_back(Edge(i, p, T(1), i - 1));\n            g[p].push_back(Edge(p,\
-    \ i, T(1), i - 1));\n        }\n    }\n    return g;\n}\n\nstd::tuple<Graph<int>,\
-    \ std::vector<std::vector<int>>, std::vector<std::pair<int, int>>> read_grid(const\
-    \ int h, const int w, std::string rel = \".#\") {\n    std::vector<std::string>\
-    \ s(h);\n    std::vector id(h, std::vector<int>(w, -1));\n    std::vector<std::pair<int,\
-    \ int>> loc;\n    int n = 0;\n    for (int i = 0; i < h; i++) {\n        std::cin\
-    \ >> s[i];\n        for (int j = 0; j < w; j++) {\n            if (s[i][j] ==\
-    \ rel[1]) {\n                id[i][j] = n++;\n                loc.emplace_back(i,\
-    \ j);\n            }\n        }\n    }\n    int m = 0;\n    Graph<int> g(n);\n\
-    \    for (int i = 0; i < h; i++) {\n        for (int j = 0; j < w; j++) {\n  \
-    \          if (s[i][j] == rel[1]) {\n                if (i + 1 < h and s[i + 1][j]\
-    \ == rel[1]) {\n                    g[id[i][j]].push_back(Edge(id[i][j], id[i\
-    \ + 1][j], 1, m));\n                    g[id[i + 1][j]].push_back(Edge(id[i +\
-    \ 1][j], id[i][j], 1, m++));\n                }\n                if (j + 1 < w\
-    \ and s[i][j + 1] == rel[1]) {\n                    g[id[i][j]].push_back(Edge(id[i][j],\
-    \ id[i][j + 1], 1, m));\n                    g[id[i][j + 1]].push_back(Edge(id[i][j\
-    \ + 1], id[i][j], 1, m++));\n                }\n            }\n        }\n   \
-    \ }\n    return {g, id, loc};\n}\n"
+    \ i, T(1), i - 1));\n        }\n    }\n    return g;\n}\n"
   code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\ntemplate <class\
     \ T> Graph<T> read_graph(const int n, const int m, const bool weight = false,\
     \ const bool directed = false, const int offset = 1) {\n    Graph<T> g(n);\n \
@@ -97,30 +81,14 @@ data:
     \ p, c, i - 1));\n            g[p].push_back(Edge(p, i, c, i - 1));\n        }\
     \ else {\n            // c = 1\n            if (!directed) g[i].push_back(Edge(i,\
     \ p, T(1), i - 1));\n            g[p].push_back(Edge(p, i, T(1), i - 1));\n  \
-    \      }\n    }\n    return g;\n}\n\nstd::tuple<Graph<int>, std::vector<std::vector<int>>,\
-    \ std::vector<std::pair<int, int>>> read_grid(const int h, const int w, std::string\
-    \ rel = \".#\") {\n    std::vector<std::string> s(h);\n    std::vector id(h, std::vector<int>(w,\
-    \ -1));\n    std::vector<std::pair<int, int>> loc;\n    int n = 0;\n    for (int\
-    \ i = 0; i < h; i++) {\n        std::cin >> s[i];\n        for (int j = 0; j <\
-    \ w; j++) {\n            if (s[i][j] == rel[1]) {\n                id[i][j] =\
-    \ n++;\n                loc.emplace_back(i, j);\n            }\n        }\n  \
-    \  }\n    int m = 0;\n    Graph<int> g(n);\n    for (int i = 0; i < h; i++) {\n\
-    \        for (int j = 0; j < w; j++) {\n            if (s[i][j] == rel[1]) {\n\
-    \                if (i + 1 < h and s[i + 1][j] == rel[1]) {\n                \
-    \    g[id[i][j]].push_back(Edge(id[i][j], id[i + 1][j], 1, m));\n            \
-    \        g[id[i + 1][j]].push_back(Edge(id[i + 1][j], id[i][j], 1, m++));\n  \
-    \              }\n                if (j + 1 < w and s[i][j + 1] == rel[1]) {\n\
-    \                    g[id[i][j]].push_back(Edge(id[i][j], id[i][j + 1], 1, m));\n\
-    \                    g[id[i][j + 1]].push_back(Edge(id[i][j + 1], id[i][j], 1,\
-    \ m++));\n                }\n            }\n        }\n    }\n    return {g, id,\
-    \ loc};\n}"
+    \      }\n    }\n    return g;\n}"
   dependsOn:
   - graph/graph_template.hpp
   isVerificationFile: false
   path: graph/read_graph.hpp
   requiredBy: []
-  timestamp: '2024-01-25 10:46:02+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2024-07-28 03:23:44+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/minimum_steiner_tree.test.cpp
   - verify/lc_tree/lc_tree_diameter.test.cpp
