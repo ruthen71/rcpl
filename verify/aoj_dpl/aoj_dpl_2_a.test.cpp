@@ -2,7 +2,7 @@
 
 #include <bits/stdc++.h>
 
-#include "dp/traveling_salesman_problem.hpp"
+#include "graph/traveling_salesman_problem.hpp"
 #include "graph/read_graph.hpp"
 
 int main() {
