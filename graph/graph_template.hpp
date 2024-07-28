@@ -18,7 +18,7 @@ template <class T> struct Edge {
 };
 template <class T> using Edges = std::vector<Edge<T>>;
 
-template <class T, bool directed = false> struct Graph {
+template <class T> struct Graph {
     struct EdgeIterators {
        public:
         using Iterator = typename std::vector<Edge<T>>::iterator;
@@ -41,7 +41,7 @@ template <class T, bool directed = false> struct Graph {
     std::vector<Edge<T>> csr_edges;
 
     Graph() : Graph(0) {}
-    Graph(const int n) : n(n), m(0), is_build(false), start(n + 1, 0), is_directed(directed) {}
+    Graph(const int n, const bool directed = false) : n(n), m(0), is_build(false), start(n + 1, 0), is_directed(directed) {}
 
     // 辺を追加し, その辺が何番目に追加されたかを返す
     int add_edge(const int from, const int to, const T cost = T(1), int id = -1) {
@@ -58,14 +58,14 @@ template <class T, bool directed = false> struct Graph {
         assert(!is_build);
         for (auto&& e : edges) {
             start[e.from + 1]++;
-            if (!directed) start[e.to + 1]++;
+            if (!is_directed) start[e.to + 1]++;
         }
         for (int v = 0; v < n; v++) start[v + 1] += start[v];
         auto counter = start;
         csr_edges.resize(start.back() + 1);
         for (auto&& e : edges) {
             csr_edges[counter[e.from]++] = e;
-            if (!directed) csr_edges[counter[e.to]++] = Edge(e.to, e.from, e.cost, e.id);
+            if (!is_directed) csr_edges[counter[e.to]++] = Edge(e.to, e.from, e.cost, e.id);
         }
         is_build = true;
     }
@@ -77,7 +77,7 @@ template <class T, bool directed = false> struct Graph {
 
     size_t size() const { return (size_t)(n); }
 
-    friend std::ostream& operator<<(std::ostream& os, Graph<T, directed>& g) {
+    friend std::ostream& operator<<(std::ostream& os, Graph<T>& g) {
         // output format: {id: cost(from, to) = cost}
         os << "[";
         for (int i = 0; i < g.size(); i++) {

@@ -3,7 +3,7 @@
 #include "graph/graph_template.hpp"
 
 template <class T> Graph<T> read_graph(const int n, const int m, const bool weight = false, const bool directed = false, const int offset = 1) {
-    Graph<T, directed> g(n);
+    Graph<T> g(n, directed);
     for (int i = 0; i < m; i++) {
         int a, b;
         std::cin >> a >> b;
@@ -17,7 +17,7 @@ template <class T> Graph<T> read_graph(const int n, const int m, const bool weig
 }
 
 template <class T> Graph<T> read_parent(const int n, const bool weight = false, const bool directed = false, const int offset = 1) {
-    Graph<T, directed> g(n);
+    Graph<T> g(n, directed);
     for (int i = 1; i < n; i++) {
         int p;
         std::cin >> p;
