@@ -36,6 +36,7 @@ template <class T> struct Graph {
     int n, m;
     bool is_build, is_directed;
     std::vector<Edge<T>> edges;
+
     // CSR (Compressed Row Storage) 形式用
     std::vector<int> start;
     std::vector<Edge<T>> csr_edges;
@@ -78,7 +79,6 @@ template <class T> struct Graph {
     size_t size() const { return (size_t)(n); }
 
     friend std::ostream& operator<<(std::ostream& os, Graph<T>& g) {
-        // output format: {id: cost(from, to) = cost}
         os << "[";
         for (int i = 0; i < g.size(); i++) {
             os << "[";
