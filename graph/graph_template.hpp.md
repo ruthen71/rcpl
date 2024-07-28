@@ -31,6 +31,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/read_graph.hpp
     title: "\u30B0\u30E9\u30D5\u5165\u529B\u30E9\u30A4\u30D6\u30E9\u30EA"
+  - icon: ':warning:'
+    path: graph/shortest_path_tree.hpp
+    title: "Shortest Path Tree (\u6700\u77ED\u7D4C\u8DEF\u6728)"
   - icon: ':heavy_check_mark:'
     path: graph/strongly_connected_component.hpp
     title: "Strongly Connected Component (\u5F37\u9023\u7D50\u6210\u5206)"
@@ -179,6 +182,7 @@ data:
   - graph/read_graph.hpp
   - graph/dijkstra.hpp
   - graph/kruskal.hpp
+  - graph/shortest_path_tree.hpp
   - graph/strongly_connected_component.hpp
   - graph/topological_sort.hpp
   - graph/bellman_ford.hpp
