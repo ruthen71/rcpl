@@ -10,7 +10,7 @@ template <class T> struct LowLink {
     std::vector<std::pair<int, int>> bridges;  // edges {u, v} (u < v)
     std::vector<std::vector<int>> dfs_tree;
 
-    LowLink(const Graph<T>& g) : n(int(g.size())) {
+    LowLink(Graph<T>& g) : n(int(g.size())) {
         ord.assign(n, -1);
         low.assign(n, -1);
         dfs_tree.resize(n);
