@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/lc_tree/lc_tree_diameter.test.cpp
     title: verify/lc_tree/lc_tree_diameter.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/tree_diameter.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
@@ -65,7 +65,7 @@ data:
     \ {\n                ret = cost;\n                to[cur] = e.to;\n          \
     \  }\n        }\n        return ret;\n    };\n\n    auto s = dfs(dfs, 0, -1);\n\
     \    auto t = dfs(dfs, s.second, -1);\n\n    int cur = s.second;\n    std::vector<Edge<T>>\
-    \ path;\n    while (cur != t.second) {\n        for (auto& e : G[cur]) {\n   \
+    \ path;\n    while (cur != t.second) {\n        for (auto& e : g[cur]) {\n   \
     \         if (to[cur] == e.to) {\n                path.emplace_back(e);\n    \
     \        }\n        }\n        cur = to[cur];\n    }\n    return {t.first, path};\n\
     }\n"
@@ -80,7 +80,7 @@ data:
     \           to[cur] = e.to;\n            }\n        }\n        return ret;\n \
     \   };\n\n    auto s = dfs(dfs, 0, -1);\n    auto t = dfs(dfs, s.second, -1);\n\
     \n    int cur = s.second;\n    std::vector<Edge<T>> path;\n    while (cur != t.second)\
-    \ {\n        for (auto& e : G[cur]) {\n            if (to[cur] == e.to) {\n  \
+    \ {\n        for (auto& e : g[cur]) {\n            if (to[cur] == e.to) {\n  \
     \              path.emplace_back(e);\n            }\n        }\n        cur =\
     \ to[cur];\n    }\n    return {t.first, path};\n}"
   dependsOn:
@@ -88,8 +88,8 @@ data:
   isVerificationFile: false
   path: graph/tree_diameter.hpp
   requiredBy: []
-  timestamp: '2024-07-28 21:56:34+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2024-07-28 22:03:32+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_tree/lc_tree_diameter.test.cpp
 documentation_of: graph/tree_diameter.hpp
