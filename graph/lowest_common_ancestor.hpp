@@ -7,7 +7,7 @@ template <class T> struct LowestCommonAncestor {
     std::vector<std::vector<int>> parent;
     int n, LOG;
 
-    LowestCommonAncestor(Graph<T>& g, int root = 0) : n((int)(g.size())), LOG(32 - __builtin_clz(n)) {
+    LowestCommonAncestor(Graph<T>& g, const int root = 0) : n((int)(g.size())), LOG(32 - __builtin_clz(n)) {
         depth.assign(n, 0);
         parent.assign(LOG, std::vector<int>(n));
         auto dfs = [&](auto f, int cur, int par) -> void {

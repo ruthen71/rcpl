@@ -10,7 +10,7 @@ template <class T> struct LowLink {
     std::vector<std::pair<int, int>> bridges;  // edges {u, v} (u < v)
     std::vector<std::vector<int>> dfs_tree;
 
-    LowLink(Graph<T>& g) : n(int(g.size())) {
+    LowLink(Graph<T>& g) : n((int)(g.size())) {
         ord.assign(n, -1);
         low.assign(n, -1);
         dfs_tree.resize(n);
@@ -35,7 +35,7 @@ template <class T> struct LowLink {
                     low[cur] = std::min(low[cur], ord[e.to]);
                 }
             }
-            is_articulation |= par == -1 and int(dfs_tree[cur].size()) > 1;
+            is_articulation |= par == -1 and (int)(dfs_tree[cur].size()) > 1;
             if (is_articulation) articulations.push_back(cur);
             return;
         };
@@ -47,11 +47,11 @@ template <class T> struct LowLink {
         }
     }
     // 連結成分数
-    int count_components() { return int(roots.size()); }
+    int count_components() { return (int)(roots.size()); }
     // 頂点 x を取り除くともともと 1 つだった連結成分がいくつになるか
     int count_components_remove(int x) {
         if (std::binary_search(roots.begin(), roots.end(), x)) {
-            int c = int(dfs_tree[x].size());
+            int c = (int)(dfs_tree[x].size());
             return c;
         } else {
             int c = 0;
