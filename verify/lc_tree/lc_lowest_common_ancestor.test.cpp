@@ -2,6 +2,7 @@
 
 #include <bits/stdc++.h>
 
+#include "graph/read_graph.hpp"
 #include "graph/lowest_common_ancestor.hpp"
 
 int main() {
