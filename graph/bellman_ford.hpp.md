@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
-    title: graph/graph_template.hpp
+    title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -30,7 +30,7 @@ data:
     \      size_t size() const { return std::distance(begit, endit); }\n        Edge<T>&\
     \ operator[](int i) const { return begit[i]; }\n\n       private:\n        Iterator\
     \ begit, endit;\n    };\n\n    int n, m;\n    bool is_build, is_directed;\n  \
-    \  std::vector<Edge<T>> edges;\n    // CSR (Compressed Row Storage) \u5F62\u5F0F\
+    \  std::vector<Edge<T>> edges;\n\n    // CSR (Compressed Row Storage) \u5F62\u5F0F\
     \u7528\n    std::vector<int> start;\n    std::vector<Edge<T>> csr_edges;\n\n \
     \   Graph() : Graph(0) {}\n    Graph(const int n, const bool directed = false)\
     \ : n(n), m(0), is_build(false), start(n + 1, 0), is_directed(directed) {}\n\n\
@@ -50,25 +50,24 @@ data:
     \ operator[](int i) {\n        if (!is_build) build();\n        return EdgeIterators(csr_edges.begin()\
     \ + start[i], csr_edges.begin() + start[i + 1]);\n    }\n\n    size_t size() const\
     \ { return (size_t)(n); }\n\n    friend std::ostream& operator<<(std::ostream&\
-    \ os, Graph<T>& g) {\n        // output format: {id: cost(from, to) = cost}\n\
-    \        os << \"[\";\n        for (int i = 0; i < g.size(); i++) {\n        \
-    \    os << \"[\";\n            for (int j = 0; j < g[i].size(); j++) {\n     \
-    \           os << g[i][j];\n                if (j + 1 != g[i].size()) os << \"\
-    , \";\n            }\n            os << \"]\";\n            if (i + 1 != g.size())\
-    \ os << \", \";\n        }\n        return os << \"]\";\n    }\n};\n#line 4 \"\
-    graph/bellman_ford.hpp\"\n\ntemplate <class T>\nstd::tuple<std::vector<T>, std::vector<int>,\
-    \ std::vector<int>>  //\nbellman_ford(Graph<T> &g, std::vector<int> &s, const\
-    \ T INF) {\n    const int n = (int)(g.size());\n    std::vector<T> dist(n, INF);\n\
-    \    std::vector<int> par(n, -1), root(n, -1);\n\n    for (auto &v : s) {\n  \
-    \      dist[v] = 0;\n        root[v] = v;\n    }\n    int loop_count = 0;\n\n\
-    \    while (true) {\n        loop_count++;\n        bool update = false;\n   \
-    \     for (int cur = 0; cur < n; cur++) {\n            if (dist[cur] == INF) continue;\n\
-    \            for (auto &e : g[cur]) {\n                T nd = std::max(-INF, dist[cur]\
-    \ + e.cost);\n                if (dist[e.to] > nd) {\n                    par[e.to]\
-    \ = cur;\n                    root[e.to] = root[cur];\n                    update\
-    \ = true;\n                    if (loop_count >= n) nd = -INF;\n             \
-    \       dist[e.to] = nd;\n                }\n            }\n        }\n      \
-    \  if (!update) break;\n    }\n    return {dist, par, root};\n}\n"
+    \ os, Graph<T>& g) {\n        os << \"[\";\n        for (int i = 0; i < g.size();\
+    \ i++) {\n            os << \"[\";\n            for (int j = 0; j < g[i].size();\
+    \ j++) {\n                os << g[i][j];\n                if (j + 1 != g[i].size())\
+    \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
+    \ 1 != g.size()) os << \", \";\n        }\n        return os << \"]\";\n    }\n\
+    };\n#line 4 \"graph/bellman_ford.hpp\"\n\ntemplate <class T>\nstd::tuple<std::vector<T>,\
+    \ std::vector<int>, std::vector<int>>  //\nbellman_ford(Graph<T> &g, std::vector<int>\
+    \ &s, const T INF) {\n    const int n = (int)(g.size());\n    std::vector<T> dist(n,\
+    \ INF);\n    std::vector<int> par(n, -1), root(n, -1);\n\n    for (auto &v : s)\
+    \ {\n        dist[v] = 0;\n        root[v] = v;\n    }\n    int loop_count = 0;\n\
+    \n    while (true) {\n        loop_count++;\n        bool update = false;\n  \
+    \      for (int cur = 0; cur < n; cur++) {\n            if (dist[cur] == INF)\
+    \ continue;\n            for (auto &e : g[cur]) {\n                T nd = std::max(-INF,\
+    \ dist[cur] + e.cost);\n                if (dist[e.to] > nd) {\n             \
+    \       par[e.to] = cur;\n                    root[e.to] = root[cur];\n      \
+    \              update = true;\n                    if (loop_count >= n) nd = -INF;\n\
+    \                    dist[e.to] = nd;\n                }\n            }\n    \
+    \    }\n        if (!update) break;\n    }\n    return {dist, par, root};\n}\n"
   code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\ntemplate <class\
     \ T>\nstd::tuple<std::vector<T>, std::vector<int>, std::vector<int>>  //\nbellman_ford(Graph<T>\
     \ &g, std::vector<int> &s, const T INF) {\n    const int n = (int)(g.size());\n\
@@ -88,7 +87,7 @@ data:
   isVerificationFile: false
   path: graph/bellman_ford.hpp
   requiredBy: []
-  timestamp: '2024-07-28 20:02:10+09:00'
+  timestamp: '2024-07-28 21:19:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_grl/aoj_grl_1_b.test.cpp

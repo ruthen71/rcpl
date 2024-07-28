@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
-    title: graph/graph_template.hpp
+    title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -27,7 +27,7 @@ data:
     \      size_t size() const { return std::distance(begit, endit); }\n        Edge<T>&\
     \ operator[](int i) const { return begit[i]; }\n\n       private:\n        Iterator\
     \ begit, endit;\n    };\n\n    int n, m;\n    bool is_build, is_directed;\n  \
-    \  std::vector<Edge<T>> edges;\n    // CSR (Compressed Row Storage) \u5F62\u5F0F\
+    \  std::vector<Edge<T>> edges;\n\n    // CSR (Compressed Row Storage) \u5F62\u5F0F\
     \u7528\n    std::vector<int> start;\n    std::vector<Edge<T>> csr_edges;\n\n \
     \   Graph() : Graph(0) {}\n    Graph(const int n, const bool directed = false)\
     \ : n(n), m(0), is_build(false), start(n + 1, 0), is_directed(directed) {}\n\n\
@@ -47,16 +47,15 @@ data:
     \ operator[](int i) {\n        if (!is_build) build();\n        return EdgeIterators(csr_edges.begin()\
     \ + start[i], csr_edges.begin() + start[i + 1]);\n    }\n\n    size_t size() const\
     \ { return (size_t)(n); }\n\n    friend std::ostream& operator<<(std::ostream&\
-    \ os, Graph<T>& g) {\n        // output format: {id: cost(from, to) = cost}\n\
-    \        os << \"[\";\n        for (int i = 0; i < g.size(); i++) {\n        \
-    \    os << \"[\";\n            for (int j = 0; j < g[i].size(); j++) {\n     \
-    \           os << g[i][j];\n                if (j + 1 != g[i].size()) os << \"\
-    , \";\n            }\n            os << \"]\";\n            if (i + 1 != g.size())\
-    \ os << \", \";\n        }\n        return os << \"]\";\n    }\n};\n#line 4 \"\
-    graph/euler_tour.hpp\"\n\n// Euler Tour\n// complexity: O(N + M)\n// N = 5\n//\
-    \ edges = [{0, 1}, {0, 2}, {2, 3}, {2, 4}]\n//   0\n//  / \\\n// 1   2\n//   \
-    \ / \\\n//   3   4\n// vertices = [0, 1, 0, 2, 3, 2, 4, 2, 0]\n// vertex_id =\
-    \ [{0, 8}, {1, 1}, {3, 7}, {4, 4}, {6, 6}]\n// edges = [0, 0+N, 1, 2, 2+N, 3,\
+    \ os, Graph<T>& g) {\n        os << \"[\";\n        for (int i = 0; i < g.size();\
+    \ i++) {\n            os << \"[\";\n            for (int j = 0; j < g[i].size();\
+    \ j++) {\n                os << g[i][j];\n                if (j + 1 != g[i].size())\
+    \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
+    \ 1 != g.size()) os << \", \";\n        }\n        return os << \"]\";\n    }\n\
+    };\n#line 4 \"graph/euler_tour.hpp\"\n\n// Euler Tour\n// complexity: O(N + M)\n\
+    // N = 5\n// edges = [{0, 1}, {0, 2}, {2, 3}, {2, 4}]\n//   0\n//  / \\\n// 1\
+    \   2\n//    / \\\n//   3   4\n// vertices = [0, 1, 0, 2, 3, 2, 4, 2, 0]\n// vertex_id\
+    \ = [{0, 8}, {1, 1}, {3, 7}, {4, 4}, {6, 6}]\n// edges = [0, 0+N, 1, 2, 2+N, 3,\
     \ 3+N, 1+N]\n// edge_id = [{0, 1}, {2, 7}, {3, 4}, {5, 6}]\n// edges[vertex_id[i].first,\
     \ vertex_id[i].second) = edges in subtree with root i\ntemplate <class T>\nstd::tuple<std::vector<int>,\
     \ std::vector<std::pair<int, int>>, std::vector<int>, std::vector<std::pair<int,\
@@ -99,7 +98,7 @@ data:
   isVerificationFile: false
   path: graph/euler_tour.hpp
   requiredBy: []
-  timestamp: '2024-07-28 20:02:10+09:00'
+  timestamp: '2024-07-28 21:19:35+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: graph/euler_tour.hpp

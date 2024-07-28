@@ -6,10 +6,10 @@ data:
     title: "Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
   - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
-    title: graph/graph_template.hpp
+    title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   - icon: ':heavy_check_mark:'
     path: graph/read_graph.hpp
-    title: graph/read_graph.hpp
+    title: "\u30B0\u30E9\u30D5\u5165\u529B\u30E9\u30A4\u30D6\u30E9\u30EA"
   - icon: ':heavy_check_mark:'
     path: graph/restore_path.hpp
     title: Restore path
@@ -41,7 +41,7 @@ data:
     \      size_t size() const { return std::distance(begit, endit); }\n        Edge<T>&\
     \ operator[](int i) const { return begit[i]; }\n\n       private:\n        Iterator\
     \ begit, endit;\n    };\n\n    int n, m;\n    bool is_build, is_directed;\n  \
-    \  std::vector<Edge<T>> edges;\n    // CSR (Compressed Row Storage) \u5F62\u5F0F\
+    \  std::vector<Edge<T>> edges;\n\n    // CSR (Compressed Row Storage) \u5F62\u5F0F\
     \u7528\n    std::vector<int> start;\n    std::vector<Edge<T>> csr_edges;\n\n \
     \   Graph() : Graph(0) {}\n    Graph(const int n, const bool directed = false)\
     \ : n(n), m(0), is_build(false), start(n + 1, 0), is_directed(directed) {}\n\n\
@@ -61,16 +61,15 @@ data:
     \ operator[](int i) {\n        if (!is_build) build();\n        return EdgeIterators(csr_edges.begin()\
     \ + start[i], csr_edges.begin() + start[i + 1]);\n    }\n\n    size_t size() const\
     \ { return (size_t)(n); }\n\n    friend std::ostream& operator<<(std::ostream&\
-    \ os, Graph<T>& g) {\n        // output format: {id: cost(from, to) = cost}\n\
-    \        os << \"[\";\n        for (int i = 0; i < g.size(); i++) {\n        \
-    \    os << \"[\";\n            for (int j = 0; j < g[i].size(); j++) {\n     \
-    \           os << g[i][j];\n                if (j + 1 != g[i].size()) os << \"\
-    , \";\n            }\n            os << \"]\";\n            if (i + 1 != g.size())\
-    \ os << \", \";\n        }\n        return os << \"]\";\n    }\n};\n#line 4 \"\
-    graph/dijkstra.hpp\"\n\ntemplate <class T>\nstd::tuple<std::vector<T>, std::vector<int>,\
-    \ std::vector<int>>  //\ndijkstra(Graph<T> &g, std::vector<int> &s, const T INF)\
-    \ {\n    const int n = (int)(g.size());\n    std::vector<T> dist(n, INF);\n  \
-    \  std::vector<int> par(n, -1), root(n, -1);\n\n    std::priority_queue<std::pair<T,\
+    \ os, Graph<T>& g) {\n        os << \"[\";\n        for (int i = 0; i < g.size();\
+    \ i++) {\n            os << \"[\";\n            for (int j = 0; j < g[i].size();\
+    \ j++) {\n                os << g[i][j];\n                if (j + 1 != g[i].size())\
+    \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
+    \ 1 != g.size()) os << \", \";\n        }\n        return os << \"]\";\n    }\n\
+    };\n#line 4 \"graph/dijkstra.hpp\"\n\ntemplate <class T>\nstd::tuple<std::vector<T>,\
+    \ std::vector<int>, std::vector<int>>  //\ndijkstra(Graph<T> &g, std::vector<int>\
+    \ &s, const T INF) {\n    const int n = (int)(g.size());\n    std::vector<T> dist(n,\
+    \ INF);\n    std::vector<int> par(n, -1), root(n, -1);\n\n    std::priority_queue<std::pair<T,\
     \ int>, std::vector<std::pair<T, int>>, std::greater<std::pair<T, int>>> que;\n\
     \n    for (auto &v : s) {\n        dist[v] = 0;\n        root[v] = v;\n      \
     \  que.emplace(T(0), v);\n    }\n\n    while (!que.empty()) {\n        auto [d,\
@@ -120,7 +119,7 @@ data:
   isVerificationFile: true
   path: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
   requiredBy: []
-  timestamp: '2024-07-28 20:02:10+09:00'
+  timestamp: '2024-07-28 21:19:35+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp

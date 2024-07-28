@@ -326,11 +326,8 @@ data:
       path: graph/euler_tour.hpp
       title: "Euler Tour (\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
     - icon: ':heavy_check_mark:'
-      path: graph/get_edges.hpp
-      title: graph/get_edges.hpp
-    - icon: ':heavy_check_mark:'
       path: graph/graph_template.hpp
-      title: graph/graph_template.hpp
+      title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':heavy_check_mark:'
       path: graph/kruskal.hpp
       title: "Kruskal's algorithm (\u30AF\u30E9\u30B9\u30AB\u30EB\u6CD5)"
@@ -346,7 +343,7 @@ data:
         \u6728)"
     - icon: ':heavy_check_mark:'
       path: graph/read_graph.hpp
-      title: graph/read_graph.hpp
+      title: "\u30B0\u30E9\u30D5\u5165\u529B\u30E9\u30A4\u30D6\u30E9\u30EA"
     - icon: ':heavy_check_mark:'
       path: graph/restore_path.hpp
       title: Restore path
