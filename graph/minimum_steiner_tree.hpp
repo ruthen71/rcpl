@@ -13,7 +13,7 @@
 // https://www.slideshare.net/wata_orz/ss-12131479#50
 // https://kopricky.github.io/code/Academic/steiner_tree.html
 // https://atcoder.jp/contests/abc364/editorial/10547
-template <class T> std::vector<std::vector<T>> minimum_steiner_tree(const Graph<T>& g, const std::vector<int>& terminals, const T inf) {
+template <class T> std::vector<std::vector<T>> minimum_steiner_tree(Graph<T>& g, const std::vector<int>& terminals, const T inf) {
     const int n = (int)(g.size());
     const int k = (int)(terminals.size());
     const int k2 = 1 << k;
