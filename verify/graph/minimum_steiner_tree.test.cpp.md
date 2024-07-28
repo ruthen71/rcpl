@@ -73,8 +73,8 @@ data:
     \ tree\n// O(3 ^ k n + 2 ^ k m \\log m) (n = |V|, m = |E|, k = |terminals|)\n\
     // https://www.slideshare.net/wata_orz/ss-12131479#50\n// https://kopricky.github.io/code/Academic/steiner_tree.html\n\
     // https://atcoder.jp/contests/abc364/editorial/10547\ntemplate <class T> std::vector<std::vector<T>>\
-    \ minimum_steiner_tree(Graph<T>& g, std::vector<int>& terminals, const T inf)\
-    \ {\n    const int n = (int)(g.size());\n    const int k = (int)(terminals.size());\n\
+    \ minimum_steiner_tree(const Graph<T>& g, const std::vector<int>& terminals, const\
+    \ T inf) {\n    const int n = (int)(g.size());\n    const int k = (int)(terminals.size());\n\
     \    const int k2 = 1 << k;\n\n    // dp[bit][v] = \u30BF\u30FC\u30DF\u30CA\u30EB\
     \u306E\u90E8\u5206\u96C6\u5408\u304C bit (0 ~ k - 1 \u306B\u5727\u7E2E), \u52A0\
     \u3048\u3066\u9802\u70B9 v \u3082\u542B\u307E\u308C\u308B\u6700\u5C0F\u30B7\u30E5\
@@ -101,35 +101,35 @@ data:
     \u6728\n    // dp[k2 - 1][terminals[0]] \u304C\u57FA\u672C\u7684\u306A\u7B54\u3048\
     \u306B\u306A\u308B\n    return dp;\n}\n\n// O(2 ^ {n - k} (n + m)) (n = |V|, m\
     \ = |E|, k = |terminals|)\n// https://yukicoder.me/problems/no/114/editorial\n\
-    // n - k <= 20, n <= 64\ntemplate <class T> T minimum_steiner_tree_mst(Graph<T>&\
-    \ g, std::vector<int>& terminals, const T inf) {\n    const int n = (int)(g.size());\n\
-    \    const int k = (int)(terminals.size());\n    assert(n <= 64);\n\n    // \u30BF\
-    \u30FC\u30DF\u30CA\u30EB\u306B\u542B\u307E\u308C\u306A\u3044\u70B9\u96C6\u5408\
-    \ (others) \u3092\u53D6\u5F97\n    unsigned long long st = 0;\n    for (int i\
-    \ = 0; i < k; i++) st |= 1LL << terminals[i];\n    std::vector<int> others;\n\
-    \    for (int i = 0; i < n; i++)\n        if ((st >> i & 1) == 0) others.emplace_back(i);\n\
-    \n    // \u8FBA\u306E\u30EA\u30B9\u30C8\n    std::vector<Edge<T>> edges;\n   \
-    \ for (int v = 0; v < n; v++) {\n        for (auto&& e : g[v]) {\n           \
-    \ edges.push_back(e);\n        }\n    }\n    std::sort(edges.begin(), edges.end(),\
-    \ [&](Edge<T>& a, Edge<T>& b) -> bool { return a.cost < b.cost; });\n\n    //\
-    \ \u30BF\u30FC\u30DF\u30CA\u30EB + others \u306E\u7D44\u5408\u305B\u3092\u5168\
-    \u5217\u6319 -> Minimum Spanning Tree \u3092\u6C42\u3081\u308B\n    T ans = inf;\n\
-    \    for (int bit = 0; bit < (1 << (n - k)); bit++) {\n        // \u4F7F\u3046\
-    \u9802\u70B9\u96C6\u5408\n        unsigned long long subv = st;\n        for (int\
-    \ i = 0; i < n - k; i++) {\n            if (bit >> i & 1) {\n                subv\
-    \ |= 1LL << others[i];\n            }\n        }\n\n        // Minimum Spanning\
-    \ Tree \u3092\u8A08\u7B97\n        UnionFind uf(n);\n        T cur = 0;\n    \
-    \    int connected = 0;\n        for (auto&& e : edges) {\n            // subv\
-    \ \u306B\u5BFE\u3059\u308B g \u306E\u8A98\u5C0E\u90E8\u5206\u30B0\u30E9\u30D5\u306B\
-    \u542B\u307E\u308C\u308B\u8FBA\u306E\u307F\u8A66\u3059\n            if (!(subv\
-    \ >> e.from & 1) or !(subv >> e.to & 1)) continue;\n            if (!uf.same(e.from,\
-    \ e.to)) {\n                uf.merge(e.from, e.to);\n                cur += e.cost;\n\
-    \                connected++;\n            }\n        }\n        // \u5168\u57DF\
-    \u6728\u304C\u4F5C\u308C\u305F\u304B\u5224\u5B9A\n        if (connected + 1 ==\
-    \ k + __builtin_popcount(bit)) ans = std::min(ans, cur);\n    }\n    return ans;\n\
-    }\n#line 7 \"verify/graph/minimum_steiner_tree.test.cpp\"\n\nint main() {\n  \
-    \  int N, M, T;\n    std::cin >> N >> M >> T;\n    auto g = read_graph<long long>(N,\
-    \ M, true);\n    std::vector<int> terminals(T);\n    for (int i = 0; i < T; i++)\
+    // n - k <= 20\ntemplate <class T> T minimum_steiner_tree_mst(const Graph<T>&\
+    \ g, const std::vector<int>& terminals, const T inf) {\n    const int n = (int)(g.size());\n\
+    \    const int k = (int)(terminals.size());\n\n    // \u30BF\u30FC\u30DF\u30CA\
+    \u30EB\u306B\u542B\u307E\u308C\u306A\u3044\u70B9\u96C6\u5408 (others) \u3092\u53D6\
+    \u5F97\n    std::vector<int> used(n, 0);\n    for (int i = 0; i < k; i++) used[terminals[i]]\
+    \ = 1;\n    std::vector<int> others;\n    for (int i = 0; i < n; i++) {\n    \
+    \    if (used[i] == 0) others.push_back(i);\n    }\n\n    // \u8FBA\u306E\u30EA\
+    \u30B9\u30C8\n    std::vector<Edge<T>> edges;\n    for (int v = 0; v < n; v++)\
+    \ {\n        for (auto&& e : g[v]) {\n            if (e.from < e.to) edges.push_back(e);\n\
+    \        }\n    }\n    std::sort(edges.begin(), edges.end(), [&](Edge<T>& a, Edge<T>&\
+    \ b) -> bool { return a.cost < b.cost; });\n\n    // \u30BF\u30FC\u30DF\u30CA\u30EB\
+    \ + others \u306E\u7D44\u5408\u305B\u3092\u5168\u5217\u6319 -> Minimum Spanning\
+    \ Tree \u3092\u6C42\u3081\u308B\n    T ans = inf;\n    for (int bit = 0; bit <\
+    \ (1 << (n - k)); bit++) {\n        // \u4F7F\u3046\u9802\u70B9\u96C6\u5408 (used)\
+    \ \u3092\u8A08\u7B97\n        for (int i = 0; i < n - k; i++) used[others[i]]\
+    \ = bit >> i & 1;\n\n        // Minimum Spanning Tree \u3092\u8A08\u7B97\n   \
+    \     UnionFind uf(n);\n        T cur = 0;\n        int connected = 0;\n     \
+    \   for (auto&& e : edges) {\n            // subv \u306B\u5BFE\u3059\u308B g \u306E\
+    \u8A98\u5C0E\u90E8\u5206\u30B0\u30E9\u30D5\u306B\u542B\u307E\u308C\u308B\u8FBA\
+    \u306E\u307F\u8A66\u3059\n            if (!(used[e.from] and used[e.to])) continue;\n\
+    \            if (!uf.same(e.from, e.to)) {\n                uf.merge(e.from, e.to);\n\
+    \                cur += e.cost;\n                connected++;\n            }\n\
+    \        }\n\n        // \u5168\u57DF\u6728\u304C\u4F5C\u308C\u305F\u304B\u5224\
+    \u5B9A\n        if (connected + 1 == k + __builtin_popcount(bit)) ans = std::min(ans,\
+    \ cur);\n\n        // used \u3092\u3082\u3068\u306B\u623B\u3059\n        for (int\
+    \ i = 0; i < n - k; i++) used[others[i]] = 0;\n    }\n    return ans;\n}\n#line\
+    \ 7 \"verify/graph/minimum_steiner_tree.test.cpp\"\n\nint main() {\n    int N,\
+    \ M, T;\n    std::cin >> N >> M >> T;\n    auto g = read_graph<long long>(N, M,\
+    \ true);\n    std::vector<int> terminals(T);\n    for (int i = 0; i < T; i++)\
     \ {\n        std::cin >> terminals[i];\n        terminals[i]--;\n    }\n    if\
     \ (T <= 15) {\n        auto dp = minimum_steiner_tree(g, terminals, 1'000'000'000'000'000'000LL);\n\
     \        std::cout << dp.back()[terminals[0]] << '\\n';\n    } else {\n      \
@@ -152,7 +152,7 @@ data:
   isVerificationFile: true
   path: verify/graph/minimum_steiner_tree.test.cpp
   requiredBy: []
-  timestamp: '2024-07-28 03:23:44+09:00'
+  timestamp: '2024-07-28 14:12:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/minimum_steiner_tree.test.cpp
