@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/read_graph.hpp
     title: "\u30B0\u30E9\u30D5\u5165\u529B\u30E9\u30A4\u30D6\u30E9\u30EA"
   - icon: ':heavy_check_mark:'
@@ -75,8 +75,8 @@ data:
     \ if (weight) std::cin >> c;\n        g.add_edge(p, i, c);\n    }\n    g.build();\n\
     \    return g;\n}\n#line 2 \"graph/strongly_connected_component.hpp\"\n\n#line\
     \ 4 \"graph/strongly_connected_component.hpp\"\n\ntemplate <class T> std::vector<std::vector<int>>\
-    \ strongly_connected_component(Graph<T>& g) {\n    int n = int(g.size());\n  \
-    \  int now_ord = 0, group_num = 0;\n    std::vector<int> visited, low(n), ord(n,\
+    \ strongly_connected_component(Graph<T>& g) {\n    const int n = int(g.size());\n\
+    \    int now_ord = 0, group_num = 0;\n    std::vector<int> visited, low(n), ord(n,\
     \ -1), ids(n);\n    visited.reserve(n);\n    auto dfs = [&](auto f, int cur) ->\
     \ void {\n        low[cur] = ord[cur] = now_ord++;\n        visited.push_back(cur);\n\
     \        for (auto& e : g[cur]) {\n            if (ord[e.to] == -1) {\n      \
@@ -113,7 +113,7 @@ data:
   isVerificationFile: true
   path: verify/lc_graph/lc_scc.test.cpp
   requiredBy: []
-  timestamp: '2024-07-28 21:19:35+09:00'
+  timestamp: '2024-07-28 21:56:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_graph/lc_scc.test.cpp

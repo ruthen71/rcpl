@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -53,12 +53,12 @@ data:
     \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
     \ 1 != g.size()) os << \", \";\n        }\n        return os << \"]\";\n    }\n\
     };\n#line 4 \"graph/zero_one_bfs.hpp\"\n\ntemplate <class T>\nstd::tuple<std::vector<T>,\
-    \ std::vector<int>, std::vector<int>>  //\nzero_one_bfs(Graph<T> &g, std::vector<int>\
-    \ &s, const T INF) {\n    const int n = (int)(g.size());\n    std::vector<T> dist(n,\
-    \ INF);\n    std::vector<int> par(n, -1), root(n, -1);\n\n    std::deque<int>\
-    \ que;\n\n    for (auto &v : s) {\n        dist[v] = 0;\n        root[v] = v;\n\
+    \ std::vector<int>, std::vector<int>>  //\nzero_one_bfs(Graph<T>& g, std::vector<int>&\
+    \ s, const T inf) {\n    const int n = (int)(g.size());\n    std::vector<T> dist(n,\
+    \ inf);\n    std::vector<int> par(n, -1), root(n, -1);\n\n    std::deque<int>\
+    \ que;\n\n    for (auto& v : s) {\n        dist[v] = 0;\n        root[v] = v;\n\
     \        que.push_back(v);\n    }\n\n    while (!que.empty()) {\n        auto\
-    \ v = que.front();\n        que.pop_front();\n        for (auto &e : g[v]) {\n\
+    \ v = que.front();\n        que.pop_front();\n        for (auto& e : g[v]) {\n\
     \            if (dist[e.to] > dist[v] + e.cost) {\n                dist[e.to]\
     \ = dist[v] + e.cost;\n                root[e.to] = root[v];\n               \
     \ par[e.to] = v;\n                if (e.cost != 0) {\n                    que.push_back(e.to);\n\
@@ -66,24 +66,24 @@ data:
     \         }\n            }\n        }\n    }\n    return {dist, par, root};\n\
     }\n"
   code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\ntemplate <class\
-    \ T>\nstd::tuple<std::vector<T>, std::vector<int>, std::vector<int>>  //\nzero_one_bfs(Graph<T>\
-    \ &g, std::vector<int> &s, const T INF) {\n    const int n = (int)(g.size());\n\
-    \    std::vector<T> dist(n, INF);\n    std::vector<int> par(n, -1), root(n, -1);\n\
-    \n    std::deque<int> que;\n\n    for (auto &v : s) {\n        dist[v] = 0;\n\
+    \ T>\nstd::tuple<std::vector<T>, std::vector<int>, std::vector<int>>  //\nzero_one_bfs(Graph<T>&\
+    \ g, std::vector<int>& s, const T inf) {\n    const int n = (int)(g.size());\n\
+    \    std::vector<T> dist(n, inf);\n    std::vector<int> par(n, -1), root(n, -1);\n\
+    \n    std::deque<int> que;\n\n    for (auto& v : s) {\n        dist[v] = 0;\n\
     \        root[v] = v;\n        que.push_back(v);\n    }\n\n    while (!que.empty())\
-    \ {\n        auto v = que.front();\n        que.pop_front();\n        for (auto\
-    \ &e : g[v]) {\n            if (dist[e.to] > dist[v] + e.cost) {\n           \
-    \     dist[e.to] = dist[v] + e.cost;\n                root[e.to] = root[v];\n\
-    \                par[e.to] = v;\n                if (e.cost != 0) {\n        \
-    \            que.push_back(e.to);\n                } else {\n                \
-    \    que.push_front(e.to);\n                }\n            }\n        }\n    }\n\
+    \ {\n        auto v = que.front();\n        que.pop_front();\n        for (auto&\
+    \ e : g[v]) {\n            if (dist[e.to] > dist[v] + e.cost) {\n            \
+    \    dist[e.to] = dist[v] + e.cost;\n                root[e.to] = root[v];\n \
+    \               par[e.to] = v;\n                if (e.cost != 0) {\n         \
+    \           que.push_back(e.to);\n                } else {\n                 \
+    \   que.push_front(e.to);\n                }\n            }\n        }\n    }\n\
     \    return {dist, par, root};\n}"
   dependsOn:
   - graph/graph_template.hpp
   isVerificationFile: false
   path: graph/zero_one_bfs.hpp
   requiredBy: []
-  timestamp: '2024-07-28 21:19:35+09:00'
+  timestamp: '2024-07-28 21:56:34+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: graph/zero_one_bfs.hpp

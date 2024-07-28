@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   - icon: ':heavy_check_mark:'
     path: graph/lowest_common_ancestor.hpp
     title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/read_graph.hpp
     title: "\u30B0\u30E9\u30D5\u5165\u529B\u30E9\u30A4\u30D6\u30E9\u30EA"
   _extendedRequiredBy: []
@@ -76,8 +76,8 @@ data:
     \ c);\n    }\n    g.build();\n    return g;\n}\n#line 2 \"graph/lowest_common_ancestor.hpp\"\
     \n\n#line 4 \"graph/lowest_common_ancestor.hpp\"\n\ntemplate <class T> struct\
     \ LowestCommonAncestor {\n    std::vector<int> depth;\n    std::vector<std::vector<int>>\
-    \ parent;\n    int n, LOG;\n\n    LowestCommonAncestor(Graph<T>& g, int root =\
-    \ 0) : n((int)(g.size())), LOG(32 - __builtin_clz(n)) {\n        depth.assign(n,\
+    \ parent;\n    int n, LOG;\n\n    LowestCommonAncestor(Graph<T>& g, const int\
+    \ root = 0) : n((int)(g.size())), LOG(32 - __builtin_clz(n)) {\n        depth.assign(n,\
     \ 0);\n        parent.assign(LOG, std::vector<int>(n));\n        auto dfs = [&](auto\
     \ f, int cur, int par) -> void {\n            parent[0][cur] = par;\n        \
     \    for (auto& e : g[cur]) {\n                if (e.to == par) continue;\n  \
@@ -114,7 +114,7 @@ data:
   isVerificationFile: true
   path: verify/lc_tree/lc_lowest_common_ancestor.test.cpp
   requiredBy: []
-  timestamp: '2024-07-28 21:19:35+09:00'
+  timestamp: '2024-07-28 21:56:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_tree/lc_lowest_common_ancestor.test.cpp

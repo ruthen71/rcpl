@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   - icon: ':heavy_check_mark:'
@@ -58,9 +58,9 @@ data:
     };\n#line 2 \"graph/lowest_common_ancestor.hpp\"\n\n#line 4 \"graph/lowest_common_ancestor.hpp\"\
     \n\ntemplate <class T> struct LowestCommonAncestor {\n    std::vector<int> depth;\n\
     \    std::vector<std::vector<int>> parent;\n    int n, LOG;\n\n    LowestCommonAncestor(Graph<T>&\
-    \ g, int root = 0) : n((int)(g.size())), LOG(32 - __builtin_clz(n)) {\n      \
-    \  depth.assign(n, 0);\n        parent.assign(LOG, std::vector<int>(n));\n   \
-    \     auto dfs = [&](auto f, int cur, int par) -> void {\n            parent[0][cur]\
+    \ g, const int root = 0) : n((int)(g.size())), LOG(32 - __builtin_clz(n)) {\n\
+    \        depth.assign(n, 0);\n        parent.assign(LOG, std::vector<int>(n));\n\
+    \        auto dfs = [&](auto f, int cur, int par) -> void {\n            parent[0][cur]\
     \ = par;\n            for (auto& e : g[cur]) {\n                if (e.to == par)\
     \ continue;\n                depth[e.to] = depth[cur] + 1;\n                f(f,\
     \ e.to, cur);\n            }\n        };\n        dfs(dfs, root, -1);\n      \
@@ -80,7 +80,7 @@ data:
     \ 2 * depth[par];\n    }\n};\n#line 5 \"graph/auxiliary_tree.hpp\"\n\ntemplate\
     \ <class T> struct AuxiliaryTree {\n    Graph<T> g;\n    int n, root;\n    std::vector<int>\
     \ preorder, rank;\n    std::vector<T> depth;\n    LowestCommonAncestor<T> lca;\n\
-    \n    AuxiliaryTree(const Graph<T>& g, int root = 0) : n((int)(g.size())), root(root),\
+    \n    AuxiliaryTree(Graph<T>& g, int root = 0) : n((int)(g.size())), root(root),\
     \ g(g), lca(g, root) {\n        // DFS\u3057\u3066\u884C\u304D\u304C\u3051\u9806\
     \u306B\u9802\u70B9\u3092\u4E26\u3079\u308B\n        depth.assign(n, T(0));\n \
     \       rank.resize(n);\n        auto dfs = [&](auto f, int cur, int par) -> void\
@@ -106,14 +106,14 @@ data:
   code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n#include \"graph/lowest_common_ancestor.hpp\"\
     \n\ntemplate <class T> struct AuxiliaryTree {\n    Graph<T> g;\n    int n, root;\n\
     \    std::vector<int> preorder, rank;\n    std::vector<T> depth;\n    LowestCommonAncestor<T>\
-    \ lca;\n\n    AuxiliaryTree(const Graph<T>& g, int root = 0) : n((int)(g.size())),\
-    \ root(root), g(g), lca(g, root) {\n        // DFS\u3057\u3066\u884C\u304D\u304C\
-    \u3051\u9806\u306B\u9802\u70B9\u3092\u4E26\u3079\u308B\n        depth.assign(n,\
-    \ T(0));\n        rank.resize(n);\n        auto dfs = [&](auto f, int cur, int\
-    \ par) -> void {\n            preorder.push_back(cur);\n            for (auto&\
-    \ e : g[cur]) {\n                if (e.to == par) continue;\n                depth[e.to]\
-    \ = depth[cur] + e.cost;\n                f(f, e.to, cur);\n            }\n  \
-    \      };\n        dfs(dfs, root, -1);\n        for (int i = 0; i < n; i++) rank[preorder[i]]\
+    \ lca;\n\n    AuxiliaryTree(Graph<T>& g, int root = 0) : n((int)(g.size())), root(root),\
+    \ g(g), lca(g, root) {\n        // DFS\u3057\u3066\u884C\u304D\u304C\u3051\u9806\
+    \u306B\u9802\u70B9\u3092\u4E26\u3079\u308B\n        depth.assign(n, T(0));\n \
+    \       rank.resize(n);\n        auto dfs = [&](auto f, int cur, int par) -> void\
+    \ {\n            preorder.push_back(cur);\n            for (auto& e : g[cur])\
+    \ {\n                if (e.to == par) continue;\n                depth[e.to] =\
+    \ depth[cur] + e.cost;\n                f(f, e.to, cur);\n            }\n    \
+    \    };\n        dfs(dfs, root, -1);\n        for (int i = 0; i < n; i++) rank[preorder[i]]\
     \ = i;\n    }\n\n    // (\u5727\u7E2E\u5F8C\u306E\u30B0\u30E9\u30D5, \u30B0\u30E9\
     \u30D5\u306E\u9802\u70B9\u756A\u53F7 -> \u5143\u306E\u30B0\u30E9\u30D5\u306E\u9802\
     \u70B9\u756A\u53F7 \u306E\u5BFE\u5FDC\u8868)\n    std::pair<Graph<T>, std::vector<int>>\
@@ -135,7 +135,7 @@ data:
   isVerificationFile: false
   path: graph/auxiliary_tree.hpp
   requiredBy: []
-  timestamp: '2024-07-28 21:19:35+09:00'
+  timestamp: '2024-07-28 21:56:34+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: graph/auxiliary_tree.hpp

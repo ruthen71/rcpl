@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -33,12 +33,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/lc_tree/lc_lowest_common_ancestor.test.cpp
     title: verify/lc_tree/lc_lowest_common_ancestor.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/lc_tree/lc_tree_diameter.test.cpp
     title: verify/lc_tree/lc_tree_diameter.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/read_graph.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
@@ -111,7 +111,7 @@ data:
   path: graph/read_graph.hpp
   requiredBy: []
   timestamp: '2024-07-28 21:19:35+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/graph/minimum_steiner_tree.test.cpp
   - verify/lc_tree/lc_tree_diameter.test.cpp

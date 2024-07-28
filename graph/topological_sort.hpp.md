@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -53,35 +53,35 @@ data:
     \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
     \ 1 != g.size()) os << \", \";\n        }\n        return os << \"]\";\n    }\n\
     };\n#line 4 \"graph/topological_sort.hpp\"\ntemplate <class T> std::vector<int>\
-    \ topological_sort(Graph<T> &G) {\n    int N = (int)G.size();\n    std::vector<int>\
-    \ indeg(N, 0);\n    for (int i = 0; i < N; i++) {\n        for (auto &e : G[i])\
-    \ indeg[e.to]++;\n    }\n    std::vector<int> res;\n    for (int i = 0; i < N;\
+    \ topological_sort(Graph<T>& g) {\n    const int n = (int)(g.size());\n    std::vector<int>\
+    \ indeg(n, 0);\n    for (int i = 0; i < n; i++) {\n        for (auto&& e : g[i])\
+    \ indeg[e.to]++;\n    }\n    std::vector<int> res;\n    for (int i = 0; i < n;\
     \ i++) {\n        if (indeg[i] == 0) res.push_back(i);\n    }\n    int i = 0;\n\
     \    while (i < (int)res.size()) {\n        // determine whether topological sort\
-    \ is unique or not\n        // or by checking the length of G's longest path is\
-    \ N - 1\n        // if ((int)res.size() - i != 1) return std::vector<int>();\n\
-    \        int v = res[i];\n        i++;\n        for (auto &e : G[v]) {\n     \
-    \       indeg[e.to]--;\n            if (indeg[e.to] == 0) res.push_back(e.to);\n\
-    \        }\n    }\n    if ((int)res.size() != N) {\n        return std::vector<int>();\n\
+    \ is unique or not\n        // or by checking the length of g's longest path is\
+    \ n - 1\n        // if ((int)res.size() - i != 1) return std::vector<int>();\n\
+    \        int v = res[i];\n        i++;\n        for (auto&& e : g[v]) {\n    \
+    \        indeg[e.to]--;\n            if (indeg[e.to] == 0) res.push_back(e.to);\n\
+    \        }\n    }\n    if ((int)res.size() != n) {\n        return std::vector<int>();\n\
     \    }\n    return res;\n}\n"
   code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\ntemplate <class T>\
-    \ std::vector<int> topological_sort(Graph<T> &G) {\n    int N = (int)G.size();\n\
-    \    std::vector<int> indeg(N, 0);\n    for (int i = 0; i < N; i++) {\n      \
-    \  for (auto &e : G[i]) indeg[e.to]++;\n    }\n    std::vector<int> res;\n   \
-    \ for (int i = 0; i < N; i++) {\n        if (indeg[i] == 0) res.push_back(i);\n\
+    \ std::vector<int> topological_sort(Graph<T>& g) {\n    const int n = (int)(g.size());\n\
+    \    std::vector<int> indeg(n, 0);\n    for (int i = 0; i < n; i++) {\n      \
+    \  for (auto&& e : g[i]) indeg[e.to]++;\n    }\n    std::vector<int> res;\n  \
+    \  for (int i = 0; i < n; i++) {\n        if (indeg[i] == 0) res.push_back(i);\n\
     \    }\n    int i = 0;\n    while (i < (int)res.size()) {\n        // determine\
     \ whether topological sort is unique or not\n        // or by checking the length\
-    \ of G's longest path is N - 1\n        // if ((int)res.size() - i != 1) return\
-    \ std::vector<int>();\n        int v = res[i];\n        i++;\n        for (auto\
-    \ &e : G[v]) {\n            indeg[e.to]--;\n            if (indeg[e.to] == 0)\
-    \ res.push_back(e.to);\n        }\n    }\n    if ((int)res.size() != N) {\n  \
-    \      return std::vector<int>();\n    }\n    return res;\n}"
+    \ of g's longest path is n - 1\n        // if ((int)res.size() - i != 1) return\
+    \ std::vector<int>();\n        int v = res[i];\n        i++;\n        for (auto&&\
+    \ e : g[v]) {\n            indeg[e.to]--;\n            if (indeg[e.to] == 0) res.push_back(e.to);\n\
+    \        }\n    }\n    if ((int)res.size() != n) {\n        return std::vector<int>();\n\
+    \    }\n    return res;\n}"
   dependsOn:
   - graph/graph_template.hpp
   isVerificationFile: false
   path: graph/topological_sort.hpp
   requiredBy: []
-  timestamp: '2024-07-28 21:19:35+09:00'
+  timestamp: '2024-07-28 21:56:34+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: graph/topological_sort.hpp

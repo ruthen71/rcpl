@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -62,41 +62,42 @@ data:
     \  int n;\n    std::vector<int> ord, low;\n    std::vector<int> articulations;\n\
     \    std::vector<int> roots;\n    std::vector<std::pair<int, int>> bridges;  //\
     \ edges {u, v} (u < v)\n    std::vector<std::vector<int>> dfs_tree;\n\n    LowLink(Graph<T>&\
-    \ g) : n(int(g.size())) {\n        ord.assign(n, -1);\n        low.assign(n, -1);\n\
-    \        dfs_tree.resize(n);\n        int ord_id = 0;\n        auto dfs = [&](auto\
-    \ f, int cur, int par) -> void {\n            low[cur] = ord[cur] = ord_id++;\n\
-    \            bool is_articulation = false;\n            for (auto& e : g[cur])\
-    \ {\n                if (ord[e.to] == -1) {\n                    // DFS \u6728\
-    \u4E0A\u306E\u8FBA\u306B\u5BFE\u3059\u308B\u51E6\u7406\n                    f(f,\
-    \ e.to, cur);\n                    dfs_tree[cur].push_back(e.to);\n          \
-    \          // e \u304C DFS \u6728\u306B\u542B\u307E\u308C\u3066\u3044\u308B\u306E\
-    \u3067\u5F8C\u9000\u8FBA\u3092\u3059\u3067\u306B\u901A\u3063\u305F low[e.to] \u3092\
-    \u4F7F\u3063\u3066\u66F4\u65B0\u3057\u3066\u826F\u3044\n                    low[cur]\
-    \ = std::min(low[cur], low[e.to]);\n                    is_articulation |= (par\
-    \ != -1) and (ord[cur] <= low[e.to]);\n                    if (ord[cur] < low[e.to])\
-    \ {\n                        bridges.emplace_back(std::minmax(cur, e.to));\n \
-    \                   }\n                } else if (e.to != par) {\n           \
-    \         // \u5F8C\u9000\u8FBA\u306B\u5BFE\u3059\u308B\u51E6\u7406\n        \
-    \            // Todo: multiple edges\n                    low[cur] = std::min(low[cur],\
-    \ ord[e.to]);\n                }\n            }\n            is_articulation |=\
-    \ par == -1 and int(dfs_tree[cur].size()) > 1;\n            if (is_articulation)\
-    \ articulations.push_back(cur);\n            return;\n        };\n        for\
-    \ (int i = 0; i < n; i++) {\n            if (ord[i] == -1) {\n               \
-    \ roots.push_back(i);\n                dfs(dfs, i, -1);\n            }\n     \
-    \   }\n    }\n    // \u9023\u7D50\u6210\u5206\u6570\n    int count_components()\
-    \ { return int(roots.size()); }\n    // \u9802\u70B9 x \u3092\u53D6\u308A\u9664\
-    \u304F\u3068\u3082\u3068\u3082\u3068 1 \u3064\u3060\u3063\u305F\u9023\u7D50\u6210\
-    \u5206\u304C\u3044\u304F\u3064\u306B\u306A\u308B\u304B\n    int count_components_remove(int\
-    \ x) {\n        if (std::binary_search(roots.begin(), roots.end(), x)) {\n   \
-    \         int c = int(dfs_tree[x].size());\n            return c;\n        } else\
-    \ {\n            int c = 0;\n            for (auto& e : dfs_tree[x]) {\n     \
-    \           if (ord[x] <= low[e]) c++;\n            }\n            // \u89AA\u306E\
-    \u5206\u3067 +1\n            return c + 1;\n        }\n    }\n};\n"
+    \ g) : n((int)(g.size())) {\n        ord.assign(n, -1);\n        low.assign(n,\
+    \ -1);\n        dfs_tree.resize(n);\n        int ord_id = 0;\n        auto dfs\
+    \ = [&](auto f, int cur, int par) -> void {\n            low[cur] = ord[cur] =\
+    \ ord_id++;\n            bool is_articulation = false;\n            for (auto&\
+    \ e : g[cur]) {\n                if (ord[e.to] == -1) {\n                    //\
+    \ DFS \u6728\u4E0A\u306E\u8FBA\u306B\u5BFE\u3059\u308B\u51E6\u7406\n         \
+    \           f(f, e.to, cur);\n                    dfs_tree[cur].push_back(e.to);\n\
+    \                    // e \u304C DFS \u6728\u306B\u542B\u307E\u308C\u3066\u3044\
+    \u308B\u306E\u3067\u5F8C\u9000\u8FBA\u3092\u3059\u3067\u306B\u901A\u3063\u305F\
+    \ low[e.to] \u3092\u4F7F\u3063\u3066\u66F4\u65B0\u3057\u3066\u826F\u3044\n   \
+    \                 low[cur] = std::min(low[cur], low[e.to]);\n                \
+    \    is_articulation |= (par != -1) and (ord[cur] <= low[e.to]);\n           \
+    \         if (ord[cur] < low[e.to]) {\n                        bridges.emplace_back(std::minmax(cur,\
+    \ e.to));\n                    }\n                } else if (e.to != par) {\n\
+    \                    // \u5F8C\u9000\u8FBA\u306B\u5BFE\u3059\u308B\u51E6\u7406\
+    \n                    // Todo: multiple edges\n                    low[cur] =\
+    \ std::min(low[cur], ord[e.to]);\n                }\n            }\n         \
+    \   is_articulation |= par == -1 and (int)(dfs_tree[cur].size()) > 1;\n      \
+    \      if (is_articulation) articulations.push_back(cur);\n            return;\n\
+    \        };\n        for (int i = 0; i < n; i++) {\n            if (ord[i] ==\
+    \ -1) {\n                roots.push_back(i);\n                dfs(dfs, i, -1);\n\
+    \            }\n        }\n    }\n    // \u9023\u7D50\u6210\u5206\u6570\n    int\
+    \ count_components() { return (int)(roots.size()); }\n    // \u9802\u70B9 x \u3092\
+    \u53D6\u308A\u9664\u304F\u3068\u3082\u3068\u3082\u3068 1 \u3064\u3060\u3063\u305F\
+    \u9023\u7D50\u6210\u5206\u304C\u3044\u304F\u3064\u306B\u306A\u308B\u304B\n   \
+    \ int count_components_remove(int x) {\n        if (std::binary_search(roots.begin(),\
+    \ roots.end(), x)) {\n            int c = (int)(dfs_tree[x].size());\n       \
+    \     return c;\n        } else {\n            int c = 0;\n            for (auto&\
+    \ e : dfs_tree[x]) {\n                if (ord[x] <= low[e]) c++;\n           \
+    \ }\n            // \u89AA\u306E\u5206\u3067 +1\n            return c + 1;\n \
+    \       }\n    }\n};\n"
   code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\ntemplate <class\
     \ T> struct LowLink {\n    int n;\n    std::vector<int> ord, low;\n    std::vector<int>\
     \ articulations;\n    std::vector<int> roots;\n    std::vector<std::pair<int,\
     \ int>> bridges;  // edges {u, v} (u < v)\n    std::vector<std::vector<int>> dfs_tree;\n\
-    \n    LowLink(Graph<T>& g) : n(int(g.size())) {\n        ord.assign(n, -1);\n\
+    \n    LowLink(Graph<T>& g) : n((int)(g.size())) {\n        ord.assign(n, -1);\n\
     \        low.assign(n, -1);\n        dfs_tree.resize(n);\n        int ord_id =\
     \ 0;\n        auto dfs = [&](auto f, int cur, int par) -> void {\n           \
     \ low[cur] = ord[cur] = ord_id++;\n            bool is_articulation = false;\n\
@@ -113,17 +114,17 @@ data:
     \                    // \u5F8C\u9000\u8FBA\u306B\u5BFE\u3059\u308B\u51E6\u7406\
     \n                    // Todo: multiple edges\n                    low[cur] =\
     \ std::min(low[cur], ord[e.to]);\n                }\n            }\n         \
-    \   is_articulation |= par == -1 and int(dfs_tree[cur].size()) > 1;\n        \
-    \    if (is_articulation) articulations.push_back(cur);\n            return;\n\
+    \   is_articulation |= par == -1 and (int)(dfs_tree[cur].size()) > 1;\n      \
+    \      if (is_articulation) articulations.push_back(cur);\n            return;\n\
     \        };\n        for (int i = 0; i < n; i++) {\n            if (ord[i] ==\
     \ -1) {\n                roots.push_back(i);\n                dfs(dfs, i, -1);\n\
     \            }\n        }\n    }\n    // \u9023\u7D50\u6210\u5206\u6570\n    int\
-    \ count_components() { return int(roots.size()); }\n    // \u9802\u70B9 x \u3092\
+    \ count_components() { return (int)(roots.size()); }\n    // \u9802\u70B9 x \u3092\
     \u53D6\u308A\u9664\u304F\u3068\u3082\u3068\u3082\u3068 1 \u3064\u3060\u3063\u305F\
     \u9023\u7D50\u6210\u5206\u304C\u3044\u304F\u3064\u306B\u306A\u308B\u304B\n   \
     \ int count_components_remove(int x) {\n        if (std::binary_search(roots.begin(),\
-    \ roots.end(), x)) {\n            int c = int(dfs_tree[x].size());\n         \
-    \   return c;\n        } else {\n            int c = 0;\n            for (auto&\
+    \ roots.end(), x)) {\n            int c = (int)(dfs_tree[x].size());\n       \
+    \     return c;\n        } else {\n            int c = 0;\n            for (auto&\
     \ e : dfs_tree[x]) {\n                if (ord[x] <= low[e]) c++;\n           \
     \ }\n            // \u89AA\u306E\u5206\u3067 +1\n            return c + 1;\n \
     \       }\n    }\n};"
@@ -132,7 +133,7 @@ data:
   isVerificationFile: false
   path: graph/low_link.hpp
   requiredBy: []
-  timestamp: '2024-07-28 21:19:35+09:00'
+  timestamp: '2024-07-28 21:56:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_grl/aoj_grl_3_b.test.cpp

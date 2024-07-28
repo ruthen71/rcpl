@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -59,18 +59,18 @@ data:
     \ 3+N, 1+N]\n// edge_id = [{0, 1}, {2, 7}, {3, 4}, {5, 6}]\n// edges[vertex_id[i].first,\
     \ vertex_id[i].second) = edges in subtree with root i\ntemplate <class T>\nstd::tuple<std::vector<int>,\
     \ std::vector<std::pair<int, int>>, std::vector<int>, std::vector<std::pair<int,\
-    \ int>>>  //\neuler_tour(Graph<T> &G, int root = 0) {\n    // compiler bugs\n\
-    \    // const int n = (int)G.size();\n    // fix\n    int n = (int)G.size();\n\
+    \ int>>>  //\neuler_tour(Graph<T>& g, const int root = 0) {\n    // compiler bugs\n\
+    \    // const int n = (int)g.size();\n    // fix\n    int n = (int)(g.size());\n\
     \    std::vector<int> vertices, edges;\n    std::vector<std::pair<int, int>> vertex_id(n),\
     \ edge_id(n - 1);\n    vertices.reserve(2 * n - 1);\n    edges.reserve(2 * (n\
     \ - 1));\n\n    auto dfs = [&](auto f, int cur, int par) -> void {\n        vertex_id[cur].first\
-    \ = (int)vertices.size();\n        vertices.push_back(cur);\n        for (auto\
-    \ &&e : G[cur]) {\n            if (e.to == par) continue;\n            edge_id[e.id].first\
-    \ = (int)edges.size();\n            edges.push_back(e.id);\n\n            f(f,\
+    \ = (int)(vertices.size());\n        vertices.push_back(cur);\n        for (auto&&\
+    \ e : g[cur]) {\n            if (e.to == par) continue;\n            edge_id[e.id].first\
+    \ = (int)(edges.size());\n            edges.push_back(e.id);\n\n            f(f,\
     \ e.to, cur);\n            vertices.push_back(cur);\n\n            edge_id[e.id].second\
-    \ = (int)edges.size();\n            edges.push_back(e.id + n);\n        }\n  \
-    \      vertex_id[cur].second = (int)vertices.size() - 1;\n    };\n    dfs(dfs,\
-    \ root, -1);\n\n    assert((int)vertices.size() == 2 * n - 1);\n    assert((int)edges.size()\
+    \ = (int)(edges.size());\n            edges.push_back(e.id + n);\n        }\n\
+    \        vertex_id[cur].second = (int)(vertices.size()) - 1;\n    };\n    dfs(dfs,\
+    \ root, -1);\n\n    assert((int)(vertices.size()) == 2 * n - 1);\n    assert((int)(edges.size())\
     \ == 2 * (n - 1));\n    return {vertices, vertex_id, edges, edge_id};\n}\n"
   code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\n// Euler Tour\n\
     // complexity: O(N + M)\n// N = 5\n// edges = [{0, 1}, {0, 2}, {2, 3}, {2, 4}]\n\
@@ -79,26 +79,26 @@ data:
     \ edges = [0, 0+N, 1, 2, 2+N, 3, 3+N, 1+N]\n// edge_id = [{0, 1}, {2, 7}, {3,\
     \ 4}, {5, 6}]\n// edges[vertex_id[i].first, vertex_id[i].second) = edges in subtree\
     \ with root i\ntemplate <class T>\nstd::tuple<std::vector<int>, std::vector<std::pair<int,\
-    \ int>>, std::vector<int>, std::vector<std::pair<int, int>>>  //\neuler_tour(Graph<T>\
-    \ &G, int root = 0) {\n    // compiler bugs\n    // const int n = (int)G.size();\n\
-    \    // fix\n    int n = (int)G.size();\n    std::vector<int> vertices, edges;\n\
+    \ int>>, std::vector<int>, std::vector<std::pair<int, int>>>  //\neuler_tour(Graph<T>&\
+    \ g, const int root = 0) {\n    // compiler bugs\n    // const int n = (int)g.size();\n\
+    \    // fix\n    int n = (int)(g.size());\n    std::vector<int> vertices, edges;\n\
     \    std::vector<std::pair<int, int>> vertex_id(n), edge_id(n - 1);\n    vertices.reserve(2\
     \ * n - 1);\n    edges.reserve(2 * (n - 1));\n\n    auto dfs = [&](auto f, int\
-    \ cur, int par) -> void {\n        vertex_id[cur].first = (int)vertices.size();\n\
-    \        vertices.push_back(cur);\n        for (auto &&e : G[cur]) {\n       \
-    \     if (e.to == par) continue;\n            edge_id[e.id].first = (int)edges.size();\n\
+    \ cur, int par) -> void {\n        vertex_id[cur].first = (int)(vertices.size());\n\
+    \        vertices.push_back(cur);\n        for (auto&& e : g[cur]) {\n       \
+    \     if (e.to == par) continue;\n            edge_id[e.id].first = (int)(edges.size());\n\
     \            edges.push_back(e.id);\n\n            f(f, e.to, cur);\n        \
-    \    vertices.push_back(cur);\n\n            edge_id[e.id].second = (int)edges.size();\n\
+    \    vertices.push_back(cur);\n\n            edge_id[e.id].second = (int)(edges.size());\n\
     \            edges.push_back(e.id + n);\n        }\n        vertex_id[cur].second\
-    \ = (int)vertices.size() - 1;\n    };\n    dfs(dfs, root, -1);\n\n    assert((int)vertices.size()\
-    \ == 2 * n - 1);\n    assert((int)edges.size() == 2 * (n - 1));\n    return {vertices,\
-    \ vertex_id, edges, edge_id};\n}"
+    \ = (int)(vertices.size()) - 1;\n    };\n    dfs(dfs, root, -1);\n\n    assert((int)(vertices.size())\
+    \ == 2 * n - 1);\n    assert((int)(edges.size()) == 2 * (n - 1));\n    return\
+    \ {vertices, vertex_id, edges, edge_id};\n}"
   dependsOn:
   - graph/graph_template.hpp
   isVerificationFile: false
   path: graph/euler_tour.hpp
   requiredBy: []
-  timestamp: '2024-07-28 21:19:35+09:00'
+  timestamp: '2024-07-28 21:56:34+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: graph/euler_tour.hpp

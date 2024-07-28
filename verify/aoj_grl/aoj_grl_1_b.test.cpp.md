@@ -5,10 +5,10 @@ data:
     path: graph/bellman_ford.hpp
     title: "Bellman-Ford algorithm (\u30D9\u30EB\u30DE\u30F3\u30D5\u30A9\u30FC\u30C9\
       \u6CD5)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/read_graph.hpp
     title: "\u30B0\u30E9\u30D5\u5165\u529B\u30E9\u30A4\u30D6\u30E9\u30EA"
   _extendedRequiredBy: []
@@ -65,16 +65,16 @@ data:
     \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
     \ 1 != g.size()) os << \", \";\n        }\n        return os << \"]\";\n    }\n\
     };\n#line 4 \"graph/bellman_ford.hpp\"\n\ntemplate <class T>\nstd::tuple<std::vector<T>,\
-    \ std::vector<int>, std::vector<int>>  //\nbellman_ford(Graph<T> &g, std::vector<int>\
-    \ &s, const T INF) {\n    const int n = (int)(g.size());\n    std::vector<T> dist(n,\
-    \ INF);\n    std::vector<int> par(n, -1), root(n, -1);\n\n    for (auto &v : s)\
+    \ std::vector<int>, std::vector<int>>  //\nbellman_ford(Graph<T>& g, std::vector<int>&\
+    \ s, const T inf) {\n    const int n = (int)(g.size());\n    std::vector<T> dist(n,\
+    \ inf);\n    std::vector<int> par(n, -1), root(n, -1);\n\n    for (auto& v : s)\
     \ {\n        dist[v] = 0;\n        root[v] = v;\n    }\n    int loop_count = 0;\n\
     \n    while (true) {\n        loop_count++;\n        bool update = false;\n  \
-    \      for (int cur = 0; cur < n; cur++) {\n            if (dist[cur] == INF)\
-    \ continue;\n            for (auto &e : g[cur]) {\n                T nd = std::max(-INF,\
+    \      for (int cur = 0; cur < n; cur++) {\n            if (dist[cur] == inf)\
+    \ continue;\n            for (auto& e : g[cur]) {\n                T nd = std::max(-inf,\
     \ dist[cur] + e.cost);\n                if (dist[e.to] > nd) {\n             \
     \       par[e.to] = cur;\n                    root[e.to] = root[cur];\n      \
-    \              update = true;\n                    if (loop_count >= n) nd = -INF;\n\
+    \              update = true;\n                    if (loop_count >= n) nd = -inf;\n\
     \                    dist[e.to] = nd;\n                }\n            }\n    \
     \    }\n        if (!update) break;\n    }\n    return {dist, par, root};\n}\n\
     #line 2 \"graph/read_graph.hpp\"\n\n#line 4 \"graph/read_graph.hpp\"\n\ntemplate\
@@ -115,7 +115,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_grl/aoj_grl_1_b.test.cpp
   requiredBy: []
-  timestamp: '2024-07-28 21:19:35+09:00'
+  timestamp: '2024-07-28 21:56:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_grl/aoj_grl_1_b.test.cpp

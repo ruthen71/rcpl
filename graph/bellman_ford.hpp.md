@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -56,30 +56,30 @@ data:
     \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
     \ 1 != g.size()) os << \", \";\n        }\n        return os << \"]\";\n    }\n\
     };\n#line 4 \"graph/bellman_ford.hpp\"\n\ntemplate <class T>\nstd::tuple<std::vector<T>,\
-    \ std::vector<int>, std::vector<int>>  //\nbellman_ford(Graph<T> &g, std::vector<int>\
-    \ &s, const T INF) {\n    const int n = (int)(g.size());\n    std::vector<T> dist(n,\
-    \ INF);\n    std::vector<int> par(n, -1), root(n, -1);\n\n    for (auto &v : s)\
+    \ std::vector<int>, std::vector<int>>  //\nbellman_ford(Graph<T>& g, std::vector<int>&\
+    \ s, const T inf) {\n    const int n = (int)(g.size());\n    std::vector<T> dist(n,\
+    \ inf);\n    std::vector<int> par(n, -1), root(n, -1);\n\n    for (auto& v : s)\
     \ {\n        dist[v] = 0;\n        root[v] = v;\n    }\n    int loop_count = 0;\n\
     \n    while (true) {\n        loop_count++;\n        bool update = false;\n  \
-    \      for (int cur = 0; cur < n; cur++) {\n            if (dist[cur] == INF)\
-    \ continue;\n            for (auto &e : g[cur]) {\n                T nd = std::max(-INF,\
+    \      for (int cur = 0; cur < n; cur++) {\n            if (dist[cur] == inf)\
+    \ continue;\n            for (auto& e : g[cur]) {\n                T nd = std::max(-inf,\
     \ dist[cur] + e.cost);\n                if (dist[e.to] > nd) {\n             \
     \       par[e.to] = cur;\n                    root[e.to] = root[cur];\n      \
-    \              update = true;\n                    if (loop_count >= n) nd = -INF;\n\
+    \              update = true;\n                    if (loop_count >= n) nd = -inf;\n\
     \                    dist[e.to] = nd;\n                }\n            }\n    \
     \    }\n        if (!update) break;\n    }\n    return {dist, par, root};\n}\n"
   code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\ntemplate <class\
-    \ T>\nstd::tuple<std::vector<T>, std::vector<int>, std::vector<int>>  //\nbellman_ford(Graph<T>\
-    \ &g, std::vector<int> &s, const T INF) {\n    const int n = (int)(g.size());\n\
-    \    std::vector<T> dist(n, INF);\n    std::vector<int> par(n, -1), root(n, -1);\n\
-    \n    for (auto &v : s) {\n        dist[v] = 0;\n        root[v] = v;\n    }\n\
+    \ T>\nstd::tuple<std::vector<T>, std::vector<int>, std::vector<int>>  //\nbellman_ford(Graph<T>&\
+    \ g, std::vector<int>& s, const T inf) {\n    const int n = (int)(g.size());\n\
+    \    std::vector<T> dist(n, inf);\n    std::vector<int> par(n, -1), root(n, -1);\n\
+    \n    for (auto& v : s) {\n        dist[v] = 0;\n        root[v] = v;\n    }\n\
     \    int loop_count = 0;\n\n    while (true) {\n        loop_count++;\n      \
     \  bool update = false;\n        for (int cur = 0; cur < n; cur++) {\n       \
-    \     if (dist[cur] == INF) continue;\n            for (auto &e : g[cur]) {\n\
-    \                T nd = std::max(-INF, dist[cur] + e.cost);\n                if\
+    \     if (dist[cur] == inf) continue;\n            for (auto& e : g[cur]) {\n\
+    \                T nd = std::max(-inf, dist[cur] + e.cost);\n                if\
     \ (dist[e.to] > nd) {\n                    par[e.to] = cur;\n                \
     \    root[e.to] = root[cur];\n                    update = true;\n           \
-    \         if (loop_count >= n) nd = -INF;\n                    dist[e.to] = nd;\n\
+    \         if (loop_count >= n) nd = -inf;\n                    dist[e.to] = nd;\n\
     \                }\n            }\n        }\n        if (!update) break;\n  \
     \  }\n    return {dist, par, root};\n}"
   dependsOn:
@@ -87,7 +87,7 @@ data:
   isVerificationFile: false
   path: graph/bellman_ford.hpp
   requiredBy: []
-  timestamp: '2024-07-28 21:19:35+09:00'
+  timestamp: '2024-07-28 21:56:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_grl/aoj_grl_1_b.test.cpp

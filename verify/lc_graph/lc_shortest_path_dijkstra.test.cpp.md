@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/dijkstra.hpp
     title: "Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/read_graph.hpp
     title: "\u30B0\u30E9\u30D5\u5165\u529B\u30E9\u30A4\u30D6\u30E9\u30EA"
   - icon: ':heavy_check_mark:'
@@ -67,14 +67,14 @@ data:
     \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
     \ 1 != g.size()) os << \", \";\n        }\n        return os << \"]\";\n    }\n\
     };\n#line 4 \"graph/dijkstra.hpp\"\n\ntemplate <class T>\nstd::tuple<std::vector<T>,\
-    \ std::vector<int>, std::vector<int>>  //\ndijkstra(Graph<T> &g, std::vector<int>\
-    \ &s, const T INF) {\n    const int n = (int)(g.size());\n    std::vector<T> dist(n,\
-    \ INF);\n    std::vector<int> par(n, -1), root(n, -1);\n\n    std::priority_queue<std::pair<T,\
+    \ std::vector<int>, std::vector<int>>  //\ndijkstra(Graph<T>& g, std::vector<int>&\
+    \ s, const T inf) {\n    const int n = (int)(g.size());\n    std::vector<T> dist(n,\
+    \ inf);\n    std::vector<int> par(n, -1), root(n, -1);\n\n    std::priority_queue<std::pair<T,\
     \ int>, std::vector<std::pair<T, int>>, std::greater<std::pair<T, int>>> que;\n\
-    \n    for (auto &v : s) {\n        dist[v] = 0;\n        root[v] = v;\n      \
+    \n    for (auto& v : s) {\n        dist[v] = 0;\n        root[v] = v;\n      \
     \  que.emplace(T(0), v);\n    }\n\n    while (!que.empty()) {\n        auto [d,\
     \ v] = que.top();\n        que.pop();\n        if (dist[v] != d) continue;  //\
-    \ dist[v] < d\n        for (auto &e : g[v]) {\n            if (dist[e.to] > d\
+    \ dist[v] < d\n        for (auto& e : g[v]) {\n            if (dist[e.to] > d\
     \ + e.cost) {\n                dist[e.to] = d + e.cost;\n                root[e.to]\
     \ = root[v];\n                par[e.to] = v;\n                que.emplace(dist[e.to],\
     \ e.to);\n            }\n        }\n    }\n    return {dist, par, root};\n}\n\
@@ -119,7 +119,7 @@ data:
   isVerificationFile: true
   path: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
   requiredBy: []
-  timestamp: '2024-07-28 21:19:35+09:00'
+  timestamp: '2024-07-28 21:56:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp

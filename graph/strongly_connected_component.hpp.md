@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -56,8 +56,8 @@ data:
     \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
     \ 1 != g.size()) os << \", \";\n        }\n        return os << \"]\";\n    }\n\
     };\n#line 4 \"graph/strongly_connected_component.hpp\"\n\ntemplate <class T> std::vector<std::vector<int>>\
-    \ strongly_connected_component(Graph<T>& g) {\n    int n = int(g.size());\n  \
-    \  int now_ord = 0, group_num = 0;\n    std::vector<int> visited, low(n), ord(n,\
+    \ strongly_connected_component(Graph<T>& g) {\n    const int n = int(g.size());\n\
+    \    int now_ord = 0, group_num = 0;\n    std::vector<int> visited, low(n), ord(n,\
     \ -1), ids(n);\n    visited.reserve(n);\n    auto dfs = [&](auto f, int cur) ->\
     \ void {\n        low[cur] = ord[cur] = now_ord++;\n        visited.push_back(cur);\n\
     \        for (auto& e : g[cur]) {\n            if (ord[e.to] == -1) {\n      \
@@ -76,7 +76,7 @@ data:
     \ groups;\n}\n"
   code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\ntemplate <class\
     \ T> std::vector<std::vector<int>> strongly_connected_component(Graph<T>& g) {\n\
-    \    int n = int(g.size());\n    int now_ord = 0, group_num = 0;\n    std::vector<int>\
+    \    const int n = int(g.size());\n    int now_ord = 0, group_num = 0;\n    std::vector<int>\
     \ visited, low(n), ord(n, -1), ids(n);\n    visited.reserve(n);\n    auto dfs\
     \ = [&](auto f, int cur) -> void {\n        low[cur] = ord[cur] = now_ord++;\n\
     \        visited.push_back(cur);\n        for (auto& e : g[cur]) {\n         \
@@ -98,7 +98,7 @@ data:
   isVerificationFile: false
   path: graph/strongly_connected_component.hpp
   requiredBy: []
-  timestamp: '2024-07-28 21:19:35+09:00'
+  timestamp: '2024-07-28 21:56:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_graph/lc_scc.test.cpp
