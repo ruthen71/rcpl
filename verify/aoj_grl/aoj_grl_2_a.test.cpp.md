@@ -61,7 +61,7 @@ data:
     \ edges;\n\n    // CSR (Compressed Row Storage) \u5F62\u5F0F\u7528\n    std::vector<int>\
     \ start;\n    std::vector<Edge<T>> csr_edges;\n\n    Graph() : Graph(0) {}\n \
     \   Graph(const int n, const bool directed = false) : n(n), m(0), is_build(false),\
-    \ start(n + 1, 0), is_directed(directed) {}\n\n    // \u8FBA\u3092\u8FFD\u52A0\
+    \ is_directed(directed), start(n + 1, 0) {}\n\n    // \u8FBA\u3092\u8FFD\u52A0\
     \u3057, \u305D\u306E\u8FBA\u304C\u4F55\u756A\u76EE\u306B\u8FFD\u52A0\u3055\u308C\
     \u305F\u304B\u3092\u8FD4\u3059\n    int add_edge(const int from, const int to,\
     \ const T cost = T(1), int id = -1) {\n        assert(!is_build);\n        assert(0\
@@ -118,7 +118,7 @@ data:
   isVerificationFile: true
   path: verify/aoj_grl/aoj_grl_2_a.test.cpp
   requiredBy: []
-  timestamp: '2024-07-28 21:19:48+09:00'
+  timestamp: '2024-07-29 01:58:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_grl/aoj_grl_2_a.test.cpp
