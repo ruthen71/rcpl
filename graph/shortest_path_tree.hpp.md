@@ -56,25 +56,30 @@ data:
     \ 1 != g.size()) os << \", \";\n        }\n        return os << \"]\";\n    }\n\
     };\n#line 6 \"graph/shortest_path_tree.hpp\"\n\n// https://atcoder.jp/contests/abc252/tasks/abc252_e\n\
     // \u6700\u77ED\u7D4C\u8DEF\u6728\u306E\u3046\u3061\u306E 1 \u3064\u3092\u8FD4\
-    \u3059\ntemplate <class T> Graph<T> shortest_path_tree(Graph<T>& g, std::vector<int>&\
-    \ par) {\n    const int n = (int)(g.size());\n    Graph<T> sptree(n, true);\n\
-    \    for (auto&& e : g.edges) {\n        if (par[e.to] == e.from) sptree.add_edge(e.from,\
-    \ e.to, e.cost, e.id);\n        if (par[e.from] == e.to) sptree.add_edge(e.to,\
-    \ e.from, e.cost, e.id);\n    }\n    return sptree;\n}\n"
+    \u3059\ntemplate <class T> Graph<T> shortest_path_tree(Graph<T>& g, std::vector<T>&\
+    \ dist, std::vector<int>& par) {\n    const int n = (int)(g.size());\n    Graph<T>\
+    \ sptree(n, true);\n    for (auto&& e : g.edges) {\n        if (par[e.to] == e.from\
+    \ and dist[e.from] + e.cost == dist[e.to]) {\n            sptree.add_edge(e.from,\
+    \ e.to, e.cost, e.id);\n        }\n        if (!g.is_directed and par[e.from]\
+    \ == e.to and dist[e.to] + e.cost == dist[e.from]) {\n            if (par[e.from]\
+    \ == e.to) sptree.add_edge(e.to, e.from, e.cost, e.id);\n        }\n    }\n  \
+    \  return sptree;\n}\n"
   code: "#pragma once\n\n#include <vector>\n#include <cassert>\n#include \"graph/graph_template.hpp\"\
     \n\n// https://atcoder.jp/contests/abc252/tasks/abc252_e\n// \u6700\u77ED\u7D4C\
     \u8DEF\u6728\u306E\u3046\u3061\u306E 1 \u3064\u3092\u8FD4\u3059\ntemplate <class\
-    \ T> Graph<T> shortest_path_tree(Graph<T>& g, std::vector<int>& par) {\n    const\
-    \ int n = (int)(g.size());\n    Graph<T> sptree(n, true);\n    for (auto&& e :\
-    \ g.edges) {\n        if (par[e.to] == e.from) sptree.add_edge(e.from, e.to, e.cost,\
-    \ e.id);\n        if (par[e.from] == e.to) sptree.add_edge(e.to, e.from, e.cost,\
-    \ e.id);\n    }\n    return sptree;\n}"
+    \ T> Graph<T> shortest_path_tree(Graph<T>& g, std::vector<T>& dist, std::vector<int>&\
+    \ par) {\n    const int n = (int)(g.size());\n    Graph<T> sptree(n, true);\n\
+    \    for (auto&& e : g.edges) {\n        if (par[e.to] == e.from and dist[e.from]\
+    \ + e.cost == dist[e.to]) {\n            sptree.add_edge(e.from, e.to, e.cost,\
+    \ e.id);\n        }\n        if (!g.is_directed and par[e.from] == e.to and dist[e.to]\
+    \ + e.cost == dist[e.from]) {\n            if (par[e.from] == e.to) sptree.add_edge(e.to,\
+    \ e.from, e.cost, e.id);\n        }\n    }\n    return sptree;\n}"
   dependsOn:
   - graph/graph_template.hpp
   isVerificationFile: false
   path: graph/shortest_path_tree.hpp
   requiredBy: []
-  timestamp: '2024-07-29 01:58:55+09:00'
+  timestamp: '2024-07-29 02:05:39+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: graph/shortest_path_tree.hpp
