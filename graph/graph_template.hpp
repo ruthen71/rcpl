@@ -42,7 +42,7 @@ template <class T> struct Graph {
     std::vector<Edge<T>> csr_edges;
 
     Graph() : Graph(0) {}
-    Graph(const int n, const bool directed = false) : n(n), m(0), is_build(false), start(n + 1, 0), is_directed(directed) {}
+    Graph(const int n, const bool directed = false) : n(n), m(0), is_build(false), is_directed(directed), start(n + 1, 0) {}
 
     // 辺を追加し, その辺が何番目に追加されたかを返す
     int add_edge(const int from, const int to, const T cost = T(1), int id = -1) {
