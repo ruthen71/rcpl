@@ -25,7 +25,7 @@ template <class T> std::pair<T, std::vector<Edge<T>>> tree_diameter(Graph<T>& g)
     int cur = s.second;
     std::vector<Edge<T>> path;
     while (cur != t.second) {
-        for (auto& e : G[cur]) {
+        for (auto& e : g[cur]) {
             if (to[cur] == e.to) {
                 path.emplace_back(e);
             }
