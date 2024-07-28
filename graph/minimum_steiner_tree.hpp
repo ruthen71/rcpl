@@ -13,7 +13,7 @@
 // https://www.slideshare.net/wata_orz/ss-12131479#50
 // https://kopricky.github.io/code/Academic/steiner_tree.html
 // https://atcoder.jp/contests/abc364/editorial/10547
-template <class T> std::vector<std::vector<T>> minimum_steiner_tree(Graph<T>& g, std::vector<int>& terminals, const T inf) {
+template <class T> std::vector<std::vector<T>> minimum_steiner_tree(const Graph<T>& g, const std::vector<int>& terminals, const T inf) {
     const int n = (int)(g.size());
     const int k = (int)(terminals.size());
     const int k2 = 1 << k;
@@ -57,24 +57,24 @@ template <class T> std::vector<std::vector<T>> minimum_steiner_tree(Graph<T>& g,
 
 // O(2 ^ {n - k} (n + m)) (n = |V|, m = |E|, k = |terminals|)
 // https://yukicoder.me/problems/no/114/editorial
-// n - k <= 20, n <= 64
-template <class T> T minimum_steiner_tree_mst(Graph<T>& g, std::vector<int>& terminals, const T inf) {
+// n - k <= 20
+template <class T> T minimum_steiner_tree_mst(const Graph<T>& g, const std::vector<int>& terminals, const T inf) {
     const int n = (int)(g.size());
     const int k = (int)(terminals.size());
-    assert(n <= 64);
 
     // ターミナルに含まれない点集合 (others) を取得
-    unsigned long long st = 0;
-    for (int i = 0; i < k; i++) st |= 1LL << terminals[i];
+    std::vector<int> used(n, 0);
+    for (int i = 0; i < k; i++) used[terminals[i]] = 1;
     std::vector<int> others;
-    for (int i = 0; i < n; i++)
-        if ((st >> i & 1) == 0) others.emplace_back(i);
+    for (int i = 0; i < n; i++) {
+        if (used[i] == 0) others.push_back(i);
+    }
 
     // 辺のリスト
     std::vector<Edge<T>> edges;
     for (int v = 0; v < n; v++) {
         for (auto&& e : g[v]) {
-            edges.push_back(e);
+            if (e.from < e.to) edges.push_back(e);
         }
     }
     std::sort(edges.begin(), edges.end(), [&](Edge<T>& a, Edge<T>& b) -> bool { return a.cost < b.cost; });
@@ -82,13 +82,8 @@ template <class T> T minimum_steiner_tree_mst(Graph<T>& g, std::vector<int>& ter
     // ターミナル + others の組合せを全列挙 -> Minimum Spanning Tree を求める
     T ans = inf;
     for (int bit = 0; bit < (1 << (n - k)); bit++) {
-        // 使う頂点集合
-        unsigned long long subv = st;
-        for (int i = 0; i < n - k; i++) {
-            if (bit >> i & 1) {
-                subv |= 1LL << others[i];
-            }
-        }
+        // 使う頂点集合 (used) を計算
+        for (int i = 0; i < n - k; i++) used[others[i]] = bit >> i & 1;
 
         // Minimum Spanning Tree を計算
         UnionFind uf(n);
@@ -96,15 +91,19 @@ template <class T> T minimum_steiner_tree_mst(Graph<T>& g, std::vector<int>& ter
         int connected = 0;
         for (auto&& e : edges) {
             // subv に対する g の誘導部分グラフに含まれる辺のみ試す
-            if (!(subv >> e.from & 1) or !(subv >> e.to & 1)) continue;
+            if (!(used[e.from] and used[e.to])) continue;
             if (!uf.same(e.from, e.to)) {
                 uf.merge(e.from, e.to);
                 cur += e.cost;
                 connected++;
             }
         }
+
         // 全域木が作れたか判定
         if (connected + 1 == k + __builtin_popcount(bit)) ans = std::min(ans, cur);
+
+        // used をもとに戻す
+        for (int i = 0; i < n - k; i++) used[others[i]] = 0;
     }
     return ans;
 }
