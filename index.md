@@ -193,10 +193,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: dp/sliding_window_minimum.hpp
       title: "Sliding Window Minimum (\u30B9\u30E9\u30A4\u30C9\u6700\u5C0F\u5024)"
-    - icon: ':heavy_check_mark:'
-      path: dp/traveling_salesman_problem.hpp
-      title: "Traveling Salesman Problem (\u5DE1\u56DE\u30BB\u30FC\u30EB\u30B9\u30DE\
-        \u30F3\u554F\u984C)"
   - name: geometry
     pages:
     - icon: ':warning:'
@@ -357,6 +353,10 @@ data:
       path: graph/topological_sort.hpp
       title: "Topological Sort (\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8\
         )"
+    - icon: ':heavy_check_mark:'
+      path: graph/traveling_salesman_problem.hpp
+      title: "Traveling Salesman Problem (\u5DE1\u56DE\u30BB\u30FC\u30EB\u30B9\u30DE\
+        \u30F3\u554F\u984C)"
     - icon: ':heavy_check_mark:'
       path: graph/tree_diameter.hpp
       title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"

@@ -2,10 +2,6 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: dp/traveling_salesman_problem.hpp
-    title: "Traveling Salesman Problem (\u5DE1\u56DE\u30BB\u30FC\u30EB\u30B9\u30DE\
-      \u30F3\u554F\u984C)"
   - icon: ':warning:'
     path: graph/auxiliary_tree.hpp
     title: "Auxiliary Tree (\u865A\u6811)"
@@ -42,6 +38,10 @@ data:
     path: graph/topological_sort.hpp
     title: "Topological Sort (\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8\
       )"
+  - icon: ':heavy_check_mark:'
+    path: graph/traveling_salesman_problem.hpp
+    title: "Traveling Salesman Problem (\u5DE1\u56DE\u30BB\u30FC\u30EB\u30B9\u30DE\
+      \u30F3\u554F\u984C)"
   - icon: ':heavy_check_mark:'
     path: graph/tree_diameter.hpp
     title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"
@@ -184,8 +184,8 @@ data:
   - graph/bellman_ford.hpp
   - graph/zero_one_bfs.hpp
   - graph/low_link.hpp
+  - graph/traveling_salesman_problem.hpp
   - graph/tree_diameter.hpp
-  - dp/traveling_salesman_problem.hpp
   timestamp: '2024-07-28 21:19:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

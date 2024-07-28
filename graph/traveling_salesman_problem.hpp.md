@@ -14,7 +14,7 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"dp/traveling_salesman_problem.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
+  bundledCode: "#line 2 \"graph/traveling_salesman_problem.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
     \n\n#include <vector>\n#include <cassert>\n\ntemplate <class T> struct Edge {\n\
     \    int from, to;\n    T cost;\n    int id;\n\n    Edge() = default;\n    Edge(const\
     \ int from, const int to, const T cost = T(1), const int id = -1) : from(from),\
@@ -55,41 +55,33 @@ data:
     \ j++) {\n                os << g[i][j];\n                if (j + 1 != g[i].size())\
     \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
     \ 1 != g.size()) os << \", \";\n        }\n        return os << \"]\";\n    }\n\
-    };\n#line 4 \"dp/traveling_salesman_problem.hpp\"\n\ntemplate <class T>\nstd::vector<std::vector<T>>\
-    \  //\ntraveling_salesman_problem(Graph<T> &G, const T INF) {\n    const int N\
-    \ = (int)G.size();\n    const int N2 = 1 << N;\n\n    std::vector dist(N, std::vector<T>(N,\
-    \ INF));\n    for (int i = 0; i < N; i++) dist[i][i] = T(0);\n    for (int i =\
-    \ 0; i < N; i++) {\n        for (auto &&e : G[i]) {\n            dist[e.from][e.to]\
-    \ = std::min(dist[e.from][e.to], e.cost);\n        }\n    }\n    std::vector dp(N2,\
-    \ std::vector<T>(N, INF));\n    dp[0][0] = 0;\n    for (int bit = 0; bit < N2;\
-    \ bit++) {\n        for (int u = 0; u < N; u++) {\n            if (dp[bit][u]\
-    \ == INF) continue;\n            for (int v = 0; v < N; v++) {\n             \
-    \   if (bit >> v & 1) continue;\n                if (dist[u][v] == INF) continue;\n\
-    \                dp[bit | (1 << v)][v] = std::min(dp[bit | (1 << v)][v], dp[bit][u]\
-    \ + dist[u][v]);\n            }\n        }\n    }\n    return dp;\n}\n"
+    };\n#line 4 \"graph/traveling_salesman_problem.hpp\"\n\ntemplate <class T> std::vector<std::vector<T>>\
+    \ traveling_salesman_problem(Graph<T>& g, const T inf) {\n    const int n = (int)(g.size());\n\
+    \    const int n2 = 1 << n;\n\n    std::vector dp(n2, std::vector<T>(n, inf));\n\
+    \    dp[0][0] = 0;\n    for (int bit = 0; bit < n2; bit++) {\n        for (int\
+    \ u = 0; u < n; u++) {\n            if (dp[bit][u] == inf) continue;\n       \
+    \     for (auto&& e : g[u]) {\n                if (bit >> e.to & 1) continue;\n\
+    \                dp[bit | (1 << e.to)][e.to] = std::min(dp[bit | (1 << e.to)][e.to],\
+    \ dp[bit][u] + e.cost);\n            }\n        }\n    }\n    return dp;\n}\n"
   code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\ntemplate <class\
-    \ T>\nstd::vector<std::vector<T>>  //\ntraveling_salesman_problem(Graph<T> &G,\
-    \ const T INF) {\n    const int N = (int)G.size();\n    const int N2 = 1 << N;\n\
-    \n    std::vector dist(N, std::vector<T>(N, INF));\n    for (int i = 0; i < N;\
-    \ i++) dist[i][i] = T(0);\n    for (int i = 0; i < N; i++) {\n        for (auto\
-    \ &&e : G[i]) {\n            dist[e.from][e.to] = std::min(dist[e.from][e.to],\
-    \ e.cost);\n        }\n    }\n    std::vector dp(N2, std::vector<T>(N, INF));\n\
-    \    dp[0][0] = 0;\n    for (int bit = 0; bit < N2; bit++) {\n        for (int\
-    \ u = 0; u < N; u++) {\n            if (dp[bit][u] == INF) continue;\n       \
-    \     for (int v = 0; v < N; v++) {\n                if (bit >> v & 1) continue;\n\
-    \                if (dist[u][v] == INF) continue;\n                dp[bit | (1\
-    \ << v)][v] = std::min(dp[bit | (1 << v)][v], dp[bit][u] + dist[u][v]);\n    \
-    \        }\n        }\n    }\n    return dp;\n}"
+    \ T> std::vector<std::vector<T>> traveling_salesman_problem(Graph<T>& g, const\
+    \ T inf) {\n    const int n = (int)(g.size());\n    const int n2 = 1 << n;\n\n\
+    \    std::vector dp(n2, std::vector<T>(n, inf));\n    dp[0][0] = 0;\n    for (int\
+    \ bit = 0; bit < n2; bit++) {\n        for (int u = 0; u < n; u++) {\n       \
+    \     if (dp[bit][u] == inf) continue;\n            for (auto&& e : g[u]) {\n\
+    \                if (bit >> e.to & 1) continue;\n                dp[bit | (1 <<\
+    \ e.to)][e.to] = std::min(dp[bit | (1 << e.to)][e.to], dp[bit][u] + e.cost);\n\
+    \            }\n        }\n    }\n    return dp;\n}"
   dependsOn:
   - graph/graph_template.hpp
   isVerificationFile: false
-  path: dp/traveling_salesman_problem.hpp
+  path: graph/traveling_salesman_problem.hpp
   requiredBy: []
-  timestamp: '2024-07-28 21:19:35+09:00'
+  timestamp: '2024-07-29 00:14:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_dpl/aoj_dpl_2_a.test.cpp
-documentation_of: dp/traveling_salesman_problem.hpp
+documentation_of: graph/traveling_salesman_problem.hpp
 layout: document
 title: "Traveling Salesman Problem (\u5DE1\u56DE\u30BB\u30FC\u30EB\u30B9\u30DE\u30F3\
   \u554F\u984C)"
