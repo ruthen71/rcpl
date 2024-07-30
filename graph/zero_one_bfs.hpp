@@ -1,10 +1,12 @@
 #pragma once
 
+#include <queue>
+#include <tuple>
+#include <vector>
+
 #include "graph/graph_template.hpp"
 
-template <class T>
-std::tuple<std::vector<T>, std::vector<int>, std::vector<int>>  //
-zero_one_bfs(Graph<T>& g, std::vector<int>& s, const T inf) {
+template <class T> std::tuple<std::vector<T>, std::vector<int>, std::vector<int>> zero_one_bfs(Graph<T>& g, std::vector<int>& s, const T inf) {
     const int n = (int)(g.size());
     std::vector<T> dist(n, inf);
     std::vector<int> par(n, -1), root(n, -1);
