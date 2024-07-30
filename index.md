@@ -360,7 +360,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/tree_diameter.hpp
       title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: graph/zero_one_bfs.hpp
       title: 01-BFS
   - name: icpc
@@ -666,6 +666,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/minimum_steiner_tree.test.cpp
       title: verify/graph/minimum_steiner_tree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/zero_one_bfs.test.cpp
+      title: verify/graph/zero_one_bfs.test.cpp
   - name: verify/lc_data_structure
     pages:
     - icon: ':heavy_check_mark:'

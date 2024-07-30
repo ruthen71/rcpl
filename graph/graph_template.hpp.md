@@ -48,7 +48,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/tree_diameter.hpp
     title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: graph/zero_one_bfs.hpp
     title: 01-BFS
   _extendedVerifiedWith:
@@ -70,6 +70,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/minimum_steiner_tree.test.cpp
     title: verify/graph/minimum_steiner_tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/zero_one_bfs.test.cpp
+    title: verify/graph/zero_one_bfs.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/lc_graph/lc_scc.test.cpp
     title: verify/lc_graph/lc_scc.test.cpp
@@ -194,6 +197,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/minimum_steiner_tree.test.cpp
+  - verify/graph/zero_one_bfs.test.cpp
   - verify/lc_tree/lc_tree_diameter.test.cpp
   - verify/lc_tree/lc_lowest_common_ancestor.test.cpp
   - verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
