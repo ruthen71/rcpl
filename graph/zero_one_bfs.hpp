@@ -13,7 +13,7 @@ template <class T> std::tuple<std::vector<T>, std::vector<int>, std::vector<int>
 
     std::deque<int> que;
 
-    for (auto& v : s) {
+    for (auto&& v : s) {
         dist[v] = 0;
         root[v] = v;
         que.push_back(v);
@@ -22,7 +22,7 @@ template <class T> std::tuple<std::vector<T>, std::vector<int>, std::vector<int>
     while (!que.empty()) {
         auto v = que.front();
         que.pop_front();
-        for (auto& e : g[v]) {
+        for (auto&& e : g[v]) {
             if (dist[e.to] > dist[v] + e.cost) {
                 dist[e.to] = dist[v] + e.cost;
                 root[e.to] = root[v];

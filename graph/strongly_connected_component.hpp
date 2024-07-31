@@ -10,7 +10,7 @@ template <class T> std::vector<std::vector<int>> strongly_connected_component(Gr
     auto dfs = [&](auto f, int cur) -> void {
         low[cur] = ord[cur] = now_ord++;
         visited.push_back(cur);
-        for (auto& e : g[cur]) {
+        for (auto&& e : g[cur]) {
             if (ord[e.to] == -1) {
                 f(f, e.to);
                 low[cur] = std::min(low[cur], low[e.to]);
@@ -32,11 +32,11 @@ template <class T> std::vector<std::vector<int>> strongly_connected_component(Gr
     for (int i = 0; i < n; i++) {
         if (ord[i] == -1) dfs(dfs, i);
     }
-    for (auto& x : ids) {
+    for (auto&& x : ids) {
         x = group_num - 1 - x;
     }
     std::vector<int> counts(group_num);
-    for (auto& x : ids) counts[x]++;
+    for (auto&& x : ids) counts[x]++;
     std::vector<std::vector<int>> groups(group_num);
     for (int i = 0; i < group_num; i++) {
         groups[i].reserve(counts[i]);

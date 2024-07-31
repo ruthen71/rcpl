@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_A"
 
-#include <bits/stdc++.h>
+#include <iostream>
 
 #include "graph/kruskal.hpp"
 #include "graph/read_graph.hpp"

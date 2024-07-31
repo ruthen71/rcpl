@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_B"
 
-#include <bits/stdc++.h>
+#include <iostream>
 
 #include "graph/bellman_ford.hpp"
 #include "graph/read_graph.hpp"
@@ -8,10 +8,10 @@
 int main() {
     int N, M, r;
     std::cin >> N >> M >> r;
-    auto G = read_graph<int>(N, M, true, true, 0);
+    auto g = read_graph<int>(N, M, true, true, 0);
     std::vector<int> s = {r};
     const int INF = 1 << 30;
-    auto [dist, par, root] = bellman_ford(G, s, INF);
+    auto [dist, par, root] = bellman_ford(g, s, INF);
     int ans = *std::min_element(dist.begin(), dist.end());
     if (ans == -INF) {
         std::cout << "NEGATIVE CYCLE" << '\n';

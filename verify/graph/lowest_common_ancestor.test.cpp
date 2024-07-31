@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/lca"
 
-#include <bits/stdc++.h>
+#include <iostream>
 
 #include "graph/read_graph.hpp"
 #include "graph/lowest_common_ancestor.hpp"

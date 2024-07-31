@@ -5,20 +5,17 @@
 template <class T> struct LowLink {
     int n;
     std::vector<int> ord, low;
-    std::vector<int> articulations;
-    std::vector<int> roots;
-    std::vector<std::pair<int, int>> bridges;  // edges {u, v} (u < v)
     std::vector<std::vector<int>> dfs_tree;
+    std::vector<int> articulations;
+    std::vector<std::pair<int, int>> bridges;  // edges {u, v} (u < v)
+    std::vector<int> roots;
 
-    LowLink(Graph<T>& g) : n((int)(g.size())) {
-        ord.assign(n, -1);
-        low.assign(n, -1);
-        dfs_tree.resize(n);
+    LowLink(Graph<T>& g) : n((int)(g.size())), ord(n, -1), low(n, -1), dfs_tree(n) {
         int ord_id = 0;
         auto dfs = [&](auto f, int cur, int par) -> void {
             low[cur] = ord[cur] = ord_id++;
             bool is_articulation = false;
-            for (auto& e : g[cur]) {
+            for (auto&& e : g[cur]) {
                 if (ord[e.to] == -1) {
                     // DFS 木上の辺に対する処理
                     f(f, e.to, cur);
@@ -46,16 +43,17 @@ template <class T> struct LowLink {
             }
         }
     }
+
     // 連結成分数
     int count_components() { return (int)(roots.size()); }
+
     // 頂点 x を取り除くともともと 1 つだった連結成分がいくつになるか
     int count_components_remove(int x) {
         if (std::binary_search(roots.begin(), roots.end(), x)) {
-            int c = (int)(dfs_tree[x].size());
-            return c;
+            return (int)(dfs_tree[x].size());
         } else {
             int c = 0;
-            for (auto& e : dfs_tree[x]) {
+            for (auto&& e : dfs_tree[x]) {
                 if (ord[x] <= low[e]) c++;
             }
             // 親の分で +1

@@ -9,13 +9,11 @@ template <class T> struct AuxiliaryTree {
     std::vector<T> depth;
     LowestCommonAncestor<T> lca;
 
-    AuxiliaryTree(Graph<T>& g, const int root = 0) : n((int)(g.size())), root(root), lca(g, root) {
+    AuxiliaryTree(Graph<T>& g, const int root = 0) : n((int)(g.size())), root(root), depth(n, T(0)), rank(n), lca(g, root) {
         // DFS して行きがけ順に頂点を並べる
-        depth.assign(n, T(0));
-        rank.resize(n);
         auto dfs = [&](auto f, int cur, int par) -> void {
             preorder.push_back(cur);
-            for (auto& e : g[cur]) {
+            for (auto&& e : g[cur]) {
                 if (e.to == par) continue;
                 depth[e.to] = depth[cur] + e.cost;
                 f(f, e.to, cur);

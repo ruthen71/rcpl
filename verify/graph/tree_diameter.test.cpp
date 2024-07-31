@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/tree_diameter"
 
-#include <bits/stdc++.h>
+#include <iostream>
 
 #include "graph/read_graph.hpp"
 #include "graph/tree_diameter.hpp"
@@ -10,11 +10,9 @@ int main() {
     std::cin >> N;
     auto G = read_graph<long long>(N, N - 1, true, false, 0);
     auto [d, path] = tree_diameter(G);
-    std::cout << d << ' ' << path.size() + 1 << '\n';
-    std::cout << path.front().from;
-    for (auto &e : path) {
-        std::cout << ' ' << e.to;
+    std::cout << d << ' ' << path.size() << '\n';
+    for (int i = 0; i < (int)(path.size()); i++) {
+        std::cout << path[i] << " \n"[i + 1 == (int)(path.size())];
     }
-    std::cout << '\n';
     return 0;
 }
