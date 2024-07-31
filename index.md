@@ -311,11 +311,11 @@ data:
     - icon: ':warning:'
       path: graph/auxiliary_tree.hpp
       title: "Auxiliary Tree (\u865A\u6811)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/bellman_ford.hpp
       title: "Bellman-Ford algorithm (\u30D9\u30EB\u30DE\u30F3\u30D5\u30A9\u30FC\u30C9\
         \u6CD5)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/dijkstra.hpp
       title: "Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
     - icon: ':warning:'
@@ -327,7 +327,7 @@ data:
     - icon: ':x:'
       path: graph/kruskal.hpp
       title: "Kruskal's algorithm (\u30AF\u30E9\u30B9\u30AB\u30EB\u6CD5)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/low_link.hpp
       title: "Low Link (\u95A2\u7BC0\u70B9\u30FB\u6A4B)"
     - icon: ':heavy_check_mark:'
@@ -340,7 +340,7 @@ data:
     - icon: ':question:'
       path: graph/read_graph.hpp
       title: "\u30B0\u30E9\u30D5\u5165\u529B\u30E9\u30A4\u30D6\u30E9\u30EA"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/restore_path.hpp
       title: Restore path
     - icon: ':warning:'
@@ -357,7 +357,7 @@ data:
       path: graph/traveling_salesman_problem.hpp
       title: "Traveling Salesman Problem (\u5DE1\u56DE\u30BB\u30FC\u30EB\u30B9\u30DE\
         \u30F3\u554F\u984C)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/tree_diameter.hpp
       title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"
     - icon: ':heavy_check_mark:'
@@ -649,19 +649,19 @@ data:
       title: verify/aoj_other/aoj_3206.test.cpp
   - name: verify/graph
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/bellman_ford.test.cpp
       title: verify/graph/bellman_ford.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/dijkstra.test.cpp
       title: verify/graph/dijkstra.test.cpp
     - icon: ':x:'
       path: verify/graph/kruskal.test.cpp
       title: verify/graph/kruskal.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/low_link_1.test.cpp
       title: verify/graph/low_link_1.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/low_link_2.test.cpp
       title: verify/graph/low_link_2.test.cpp
     - icon: ':heavy_check_mark:'
@@ -676,7 +676,7 @@ data:
     - icon: ':x:'
       path: verify/graph/topological_sort.test.cpp
       title: verify/graph/topological_sort.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/tree_diameter.test.cpp
       title: verify/graph/tree_diameter.test.cpp
     - icon: ':heavy_check_mark:'

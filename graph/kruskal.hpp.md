@@ -75,21 +75,21 @@ data:
     \ j++) {\n                os << g[i][j];\n                if (j + 1 != g[i].size())\
     \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
     \ 1 != g.size()) os << \", \";\n        }\n        return os << \"]\";\n    }\n\
-    };\n#line 5 \"graph/kruskal.hpp\"\n\ntemplate <class T> std::pair<T, Edges<T>>\
-    \ kruskal(Graph<T>& g) {\n    auto es = g.edges;\n    std::sort(es.begin(), es.end(),\
-    \ [](Edge<T>& a, Edge<T>& b) { return a.cost < b.cost; });\n    const int n =\
-    \ (int)(g.size());\n    UnionFind uf(n);\n    T ret = 0;\n    Edges<T> es_ret;\n\
-    \    es_ret.reserve(n - 1);\n    for (auto&& e : es) {\n        if (!uf.same(e.from,\
+    };\n#line 5 \"graph/kruskal.hpp\"\n\n#include <algorithm>\n\ntemplate <class T>\
+    \ std::pair<T, Edges<T>> kruskal(Graph<T>& g) {\n    auto es = g.edges;\n    std::sort(es.begin(),\
+    \ es.end(), [](Edge<T>& a, Edge<T>& b) { return a.cost < b.cost; });\n    const\
+    \ int n = (int)(g.size());\n    UnionFind uf(n);\n    T ret = 0;\n    Edges<T>\
+    \ es_ret;\n    es_ret.reserve(n - 1);\n    for (auto&& e : es) {\n        if (!uf.same(e.from,\
     \ e.to)) {\n            ret += e.cost;\n            uf.merge(e.from, e.to);\n\
     \            es_ret.push_back(e);\n        }\n    }\n    return {ret, es_ret};\n\
     }\n"
   code: "#pragma once\n\n#include \"data_structure/unionfind.hpp\"\n#include \"graph/graph_template.hpp\"\
-    \n\ntemplate <class T> std::pair<T, Edges<T>> kruskal(Graph<T>& g) {\n    auto\
-    \ es = g.edges;\n    std::sort(es.begin(), es.end(), [](Edge<T>& a, Edge<T>& b)\
-    \ { return a.cost < b.cost; });\n    const int n = (int)(g.size());\n    UnionFind\
-    \ uf(n);\n    T ret = 0;\n    Edges<T> es_ret;\n    es_ret.reserve(n - 1);\n \
-    \   for (auto&& e : es) {\n        if (!uf.same(e.from, e.to)) {\n           \
-    \ ret += e.cost;\n            uf.merge(e.from, e.to);\n            es_ret.push_back(e);\n\
+    \n\n#include <algorithm>\n\ntemplate <class T> std::pair<T, Edges<T>> kruskal(Graph<T>&\
+    \ g) {\n    auto es = g.edges;\n    std::sort(es.begin(), es.end(), [](Edge<T>&\
+    \ a, Edge<T>& b) { return a.cost < b.cost; });\n    const int n = (int)(g.size());\n\
+    \    UnionFind uf(n);\n    T ret = 0;\n    Edges<T> es_ret;\n    es_ret.reserve(n\
+    \ - 1);\n    for (auto&& e : es) {\n        if (!uf.same(e.from, e.to)) {\n  \
+    \          ret += e.cost;\n            uf.merge(e.from, e.to);\n            es_ret.push_back(e);\n\
     \        }\n    }\n    return {ret, es_ret};\n}"
   dependsOn:
   - data_structure/unionfind.hpp
@@ -97,7 +97,7 @@ data:
   isVerificationFile: false
   path: graph/kruskal.hpp
   requiredBy: []
-  timestamp: '2024-07-31 16:51:10+09:00'
+  timestamp: '2024-07-31 17:14:51+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/graph/kruskal.test.cpp

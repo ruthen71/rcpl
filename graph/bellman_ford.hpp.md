@@ -6,12 +6,12 @@ data:
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/bellman_ford.test.cpp
     title: verify/graph/bellman_ford.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/bellman_ford.hpp\"\n\n#include <tuple>\n#line 2 \"\
@@ -90,7 +90,7 @@ data:
   path: graph/bellman_ford.hpp
   requiredBy: []
   timestamp: '2024-07-31 16:51:10+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/bellman_ford.test.cpp
 documentation_of: graph/bellman_ford.hpp

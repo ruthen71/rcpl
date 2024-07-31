@@ -9,19 +9,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_dpl/aoj_dpl_2_a.test.cpp
     title: verify/aoj_dpl/aoj_dpl_2_a.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/bellman_ford.test.cpp
     title: verify/graph/bellman_ford.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dijkstra.test.cpp
     title: verify/graph/dijkstra.test.cpp
   - icon: ':x:'
     path: verify/graph/kruskal.test.cpp
     title: verify/graph/kruskal.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/low_link_1.test.cpp
     title: verify/graph/low_link_1.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/low_link_2.test.cpp
     title: verify/graph/low_link_2.test.cpp
   - icon: ':heavy_check_mark:'
@@ -36,7 +36,7 @@ data:
   - icon: ':x:'
     path: verify/graph/topological_sort.test.cpp
     title: verify/graph/topological_sort.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/tree_diameter.test.cpp
     title: verify/graph/tree_diameter.test.cpp
   - icon: ':heavy_check_mark:'

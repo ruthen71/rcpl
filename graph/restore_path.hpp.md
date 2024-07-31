@@ -2,37 +2,37 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/tree_diameter.hpp
     title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/dijkstra.test.cpp
     title: verify/graph/dijkstra.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/tree_diameter.test.cpp
     title: verify/graph/tree_diameter.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"graph/restore_path.hpp\"\n\n#include <vector>\n// restore\
-    \ path from root[t] to t\nstd::vector<int> restore_path(std::vector<int>& par,\
-    \ int t) {\n    std::vector<int> path = {t};\n    while (par[path.back()] != -1)\
-    \ path.emplace_back(par[path.back()]);\n    std::reverse(path.begin(), path.end());\n\
-    \    return path;\n}\n"
-  code: "#pragma once\n\n#include <vector>\n// restore path from root[t] to t\nstd::vector<int>\
-    \ restore_path(std::vector<int>& par, int t) {\n    std::vector<int> path = {t};\n\
-    \    while (par[path.back()] != -1) path.emplace_back(par[path.back()]);\n   \
-    \ std::reverse(path.begin(), path.end());\n    return path;\n}"
+  bundledCode: "#line 2 \"graph/restore_path.hpp\"\n\n#include <vector>\n#include\
+    \ <algorithm>\n\n// restore path from root[t] to t\nstd::vector<int> restore_path(std::vector<int>&\
+    \ par, int t) {\n    std::vector<int> path = {t};\n    while (par[path.back()]\
+    \ != -1) path.emplace_back(par[path.back()]);\n    std::reverse(path.begin(),\
+    \ path.end());\n    return path;\n}\n"
+  code: "#pragma once\n\n#include <vector>\n#include <algorithm>\n\n// restore path\
+    \ from root[t] to t\nstd::vector<int> restore_path(std::vector<int>& par, int\
+    \ t) {\n    std::vector<int> path = {t};\n    while (par[path.back()] != -1) path.emplace_back(par[path.back()]);\n\
+    \    std::reverse(path.begin(), path.end());\n    return path;\n}"
   dependsOn: []
   isVerificationFile: false
   path: graph/restore_path.hpp
   requiredBy:
   - graph/tree_diameter.hpp
-  timestamp: '2024-05-26 20:33:30+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2024-07-31 17:14:51+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/dijkstra.test.cpp
   - verify/graph/tree_diameter.test.cpp

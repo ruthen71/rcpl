@@ -7,17 +7,17 @@ data:
   - icon: ':question:'
     path: graph/read_graph.hpp
     title: "\u30B0\u30E9\u30D5\u5165\u529B\u30E9\u30A4\u30D6\u30E9\u30EA"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/restore_path.hpp
     title: Restore path
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/tree_diameter.hpp
     title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/tree_diameter
@@ -77,16 +77,17 @@ data:
     \ i = 1; i < n; i++) {\n        int p;\n        std::cin >> p;\n        p -= offset;\n\
     \        T c = 1;\n        if (weight) std::cin >> c;\n        g.add_edge(p, i,\
     \ c);\n    }\n    g.build();\n    return g;\n}\n#line 2 \"graph/tree_diameter.hpp\"\
-    \n\n#include <utility>\n#line 2 \"graph/restore_path.hpp\"\n\n#line 4 \"graph/restore_path.hpp\"\
-    \n// restore path from root[t] to t\nstd::vector<int> restore_path(std::vector<int>&\
+    \n\n#line 2 \"graph/restore_path.hpp\"\n\n#line 4 \"graph/restore_path.hpp\"\n\
+    #include <algorithm>\n\n// restore path from root[t] to t\nstd::vector<int> restore_path(std::vector<int>&\
     \ par, int t) {\n    std::vector<int> path = {t};\n    while (par[path.back()]\
     \ != -1) path.emplace_back(par[path.back()]);\n    std::reverse(path.begin(),\
-    \ path.end());\n    return path;\n}\n#line 6 \"graph/tree_diameter.hpp\"\n\n//\
-    \ {\u76F4\u5F84\u306E\u8FBA\u306E\u91CD\u307F\u306E\u7DCF\u548C, \u901A\u308B\u9802\
-    \u70B9\u96C6\u5408}\ntemplate <class T> std::pair<T, std::vector<int>> tree_diameter(Graph<T>&\
-    \ g) {\n    const int n = (int)(g.size());\n    std::vector<int> parent(n, -1);\n\
-    \    std::vector<T> dist(n);\n\n    auto dfs = [&](auto f, int cur, int par) ->\
-    \ void {\n        for (auto&& e : g[cur]) {\n            if (e.to == par) continue;\n\
+    \ path.end());\n    return path;\n}\n#line 5 \"graph/tree_diameter.hpp\"\n\n#include\
+    \ <utility>\n#line 8 \"graph/tree_diameter.hpp\"\n\n// {\u76F4\u5F84\u306E\u8FBA\
+    \u306E\u91CD\u307F\u306E\u7DCF\u548C, \u901A\u308B\u9802\u70B9\u96C6\u5408}\n\
+    template <class T> std::pair<T, std::vector<int>> tree_diameter(Graph<T>& g) {\n\
+    \    const int n = (int)(g.size());\n    std::vector<int> parent(n, -1);\n   \
+    \ std::vector<T> dist(n);\n\n    auto dfs = [&](auto f, int cur, int par) -> void\
+    \ {\n        for (auto&& e : g[cur]) {\n            if (e.to == par) continue;\n\
     \            dist[e.to] = dist[cur] + e.cost;\n            parent[e.to] = cur;\n\
     \            f(f, e.to, cur);\n        }\n        return;\n    };\n\n    dfs(dfs,\
     \ 0, -1);\n    int s = std::max_element(dist.begin(), dist.end()) - dist.begin();\n\
@@ -113,8 +114,8 @@ data:
   isVerificationFile: true
   path: verify/graph/tree_diameter.test.cpp
   requiredBy: []
-  timestamp: '2024-07-31 16:51:10+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-07-31 17:14:51+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/tree_diameter.test.cpp
 layout: document

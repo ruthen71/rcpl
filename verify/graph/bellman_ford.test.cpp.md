@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/bellman_ford.hpp
     title: "Bellman-Ford algorithm (\u30D9\u30EB\u30DE\u30F3\u30D5\u30A9\u30FC\u30C9\
       \u6CD5)"
@@ -13,9 +13,9 @@ data:
     title: "\u30B0\u30E9\u30D5\u5165\u529B\u30E9\u30A4\u30D6\u30E9\u30EA"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_B
@@ -23,16 +23,16 @@ data:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_B
   bundledCode: "#line 1 \"verify/graph/bellman_ford.test.cpp\"\n#define PROBLEM \"\
     https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_B\"\n\n#include\
-    \ <iostream>\n\n#line 2 \"graph/bellman_ford.hpp\"\n\n#include <tuple>\n#line\
-    \ 2 \"graph/graph_template.hpp\"\n\n#include <vector>\n#include <cassert>\n\n\
-    template <class T> struct Edge {\n    int from, to;\n    T cost;\n    int id;\n\
-    \n    Edge() = default;\n    Edge(const int from, const int to, const T cost =\
-    \ T(1), const int id = -1) : from(from), to(to), cost(cost), id(id) {}\n\n   \
-    \ friend std::ostream& operator<<(std::ostream& os, const Edge<T>& e) {\n    \
-    \    // output format: {id: cost(from, to) = cost}\n        return os << \"{\"\
-    \ << e.id << \": cost(\" << e.from << \", \" << e.to << \") = \" << e.cost <<\
-    \ \"}\";\n    }\n};\ntemplate <class T> using Edges = std::vector<Edge<T>>;\n\n\
-    template <class T> struct Graph {\n    struct EdgeIterators {\n       public:\n\
+    \ <iostream>\n#include <algorithm>\n\n#line 2 \"graph/bellman_ford.hpp\"\n\n#include\
+    \ <tuple>\n#line 2 \"graph/graph_template.hpp\"\n\n#include <vector>\n#include\
+    \ <cassert>\n\ntemplate <class T> struct Edge {\n    int from, to;\n    T cost;\n\
+    \    int id;\n\n    Edge() = default;\n    Edge(const int from, const int to,\
+    \ const T cost = T(1), const int id = -1) : from(from), to(to), cost(cost), id(id)\
+    \ {}\n\n    friend std::ostream& operator<<(std::ostream& os, const Edge<T>& e)\
+    \ {\n        // output format: {id: cost(from, to) = cost}\n        return os\
+    \ << \"{\" << e.id << \": cost(\" << e.from << \", \" << e.to << \") = \" << e.cost\
+    \ << \"}\";\n    }\n};\ntemplate <class T> using Edges = std::vector<Edge<T>>;\n\
+    \ntemplate <class T> struct Graph {\n    struct EdgeIterators {\n       public:\n\
     \        using Iterator = typename std::vector<Edge<T>>::iterator;\n        EdgeIterators()\
     \ = default;\n        EdgeIterators(const Iterator& begit, const Iterator& endit)\
     \ : begit(begit), endit(endit) {}\n        Iterator begin() const { return begit;\
@@ -89,7 +89,7 @@ data:
     \ = false, const int offset = 1) {\n    Graph<T> g(n, directed);\n    for (int\
     \ i = 1; i < n; i++) {\n        int p;\n        std::cin >> p;\n        p -= offset;\n\
     \        T c = 1;\n        if (weight) std::cin >> c;\n        g.add_edge(p, i,\
-    \ c);\n    }\n    g.build();\n    return g;\n}\n#line 7 \"verify/graph/bellman_ford.test.cpp\"\
+    \ c);\n    }\n    g.build();\n    return g;\n}\n#line 8 \"verify/graph/bellman_ford.test.cpp\"\
     \n\nint main() {\n    int N, M, r;\n    std::cin >> N >> M >> r;\n    auto g =\
     \ read_graph<int>(N, M, true, true, 0);\n    std::vector<int> s = {r};\n    const\
     \ int INF = 1 << 30;\n    auto [dist, par, root] = bellman_ford(g, s, INF);\n\
@@ -100,16 +100,16 @@ data:
     \ std::cout << dist[i] << '\\n';\n            }\n        }\n    }\n    return\
     \ 0;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_B\"\
-    \n\n#include <iostream>\n\n#include \"graph/bellman_ford.hpp\"\n#include \"graph/read_graph.hpp\"\
-    \n\nint main() {\n    int N, M, r;\n    std::cin >> N >> M >> r;\n    auto g =\
-    \ read_graph<int>(N, M, true, true, 0);\n    std::vector<int> s = {r};\n    const\
-    \ int INF = 1 << 30;\n    auto [dist, par, root] = bellman_ford(g, s, INF);\n\
-    \    int ans = *std::min_element(dist.begin(), dist.end());\n    if (ans == -INF)\
-    \ {\n        std::cout << \"NEGATIVE CYCLE\" << '\\n';\n    } else {\n       \
-    \ for (int i = 0; i < N; i++) {\n            if (dist[i] == INF) {\n         \
-    \       std::cout << \"INF\" << '\\n';\n            } else {\n               \
-    \ std::cout << dist[i] << '\\n';\n            }\n        }\n    }\n    return\
-    \ 0;\n}"
+    \n\n#include <iostream>\n#include <algorithm>\n\n#include \"graph/bellman_ford.hpp\"\
+    \n#include \"graph/read_graph.hpp\"\n\nint main() {\n    int N, M, r;\n    std::cin\
+    \ >> N >> M >> r;\n    auto g = read_graph<int>(N, M, true, true, 0);\n    std::vector<int>\
+    \ s = {r};\n    const int INF = 1 << 30;\n    auto [dist, par, root] = bellman_ford(g,\
+    \ s, INF);\n    int ans = *std::min_element(dist.begin(), dist.end());\n    if\
+    \ (ans == -INF) {\n        std::cout << \"NEGATIVE CYCLE\" << '\\n';\n    } else\
+    \ {\n        for (int i = 0; i < N; i++) {\n            if (dist[i] == INF) {\n\
+    \                std::cout << \"INF\" << '\\n';\n            } else {\n      \
+    \          std::cout << dist[i] << '\\n';\n            }\n        }\n    }\n \
+    \   return 0;\n}"
   dependsOn:
   - graph/bellman_ford.hpp
   - graph/graph_template.hpp
@@ -117,8 +117,8 @@ data:
   isVerificationFile: true
   path: verify/graph/bellman_ford.test.cpp
   requiredBy: []
-  timestamp: '2024-07-31 16:51:10+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-07-31 17:14:51+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/bellman_ford.test.cpp
 layout: document
