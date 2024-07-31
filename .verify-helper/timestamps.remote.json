@@ -51,6 +51,7 @@
 "verify/graph/auxiliary_tree.test.cpp": "2024-07-31 23:48:12 +0900",
 "verify/graph/bellman_ford.test.cpp": "2024-07-31 21:19:59 +0900",
 "verify/graph/dijkstra.test.cpp": "2024-07-31 21:19:59 +0900",
+"verify/graph/euler_tour.test.cpp": "2024-08-01 05:02:04 +0900",
 "verify/graph/kruskal.test.cpp": "2024-07-31 21:19:59 +0900",
 "verify/graph/low_link_1.test.cpp": "2024-07-31 21:19:59 +0900",
 "verify/graph/low_link_2.test.cpp": "2024-07-31 21:19:59 +0900",
