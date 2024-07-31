@@ -43,6 +43,8 @@ token 取得のために `$ oj d --system https://atcoder.jp/contests/agc001/tas
 
 注意: トークンは直接ではなく [ここ](https://github.com/ruthen71/rcpl/settings/secrets/actions) に書くこと
 
+適宜空コミット `git commit --allow-empty -m "empty"` をする
+
 `.github/workflows/verify.yml` が読み取ってくれる
 
 

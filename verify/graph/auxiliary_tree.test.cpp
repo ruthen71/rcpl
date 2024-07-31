@@ -21,7 +21,9 @@ int main() {
     for (int col = 0; col < N; col++) {
         auto vec = vs[col];
         if ((int)(vec.size()) == 0) continue;
-        auto [caux, label] = aux.get(vec);
+        auto res = aux.get(vec);
+        auto caux = res.first;
+        auto label = res.second;
         const int M = (int)(vec.size());
         std::vector<int> dp((int)(label.size()));
         auto rec = [&](auto f, int cur, int par) -> void {
