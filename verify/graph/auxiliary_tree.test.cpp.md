@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/auxiliary_tree.hpp
     title: "Auxiliary Tree (\u865A\u6811)"
   - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/lowest_common_ancestor.hpp
     title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
   - icon: ':question:'
@@ -15,9 +15,9 @@ data:
     title: "\u30B0\u30E9\u30D5\u5165\u529B\u30E9\u30A4\u30D6\u30E9\u30EA"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://atcoder.jp/contests/abc359/tasks/abc359_g
@@ -135,14 +135,15 @@ data:
     \ i = 0; i < N; i++) {\n        std::cin >> A[i];\n        A[i]--;\n        vs[A[i]].push_back(i);\n\
     \    }\n    AuxiliaryTree<int> aux(g);\n    long long ans = 0;\n    for (int col\
     \ = 0; col < N; col++) {\n        auto vec = vs[col];\n        if ((int)(vec.size())\
-    \ == 0) continue;\n        auto [caux, label] = aux.get(vec);\n        const int\
-    \ M = (int)(vec.size());\n        std::vector<int> dp((int)(label.size()));\n\
-    \        auto rec = [&](auto f, int cur, int par) -> void {\n            dp[cur]\
-    \ = (A[label[cur]] == col);\n            for (auto&& e : caux[cur]) {\n      \
-    \          if (e.to == par) continue;\n                f(f, e.to, cur);\n    \
-    \            dp[cur] += dp[e.to];\n                ans += (long long)e.cost *\
-    \ dp[e.to] * (M - dp[e.to]);\n            }\n        };\n        rec(rec, 0, -1);\n\
-    \    }\n    std::cout << ans << '\\n';\n    return 0;\n}\n"
+    \ == 0) continue;\n        auto res = aux.get(vec);\n        auto caux = res.first;\n\
+    \        auto label = res.second;\n        const int M = (int)(vec.size());\n\
+    \        std::vector<int> dp((int)(label.size()));\n        auto rec = [&](auto\
+    \ f, int cur, int par) -> void {\n            dp[cur] = (A[label[cur]] == col);\n\
+    \            for (auto&& e : caux[cur]) {\n                if (e.to == par) continue;\n\
+    \                f(f, e.to, cur);\n                dp[cur] += dp[e.to];\n    \
+    \            ans += (long long)e.cost * dp[e.to] * (M - dp[e.to]);\n         \
+    \   }\n        };\n        rec(rec, 0, -1);\n    }\n    std::cout << ans << '\\\
+    n';\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://atcoder.jp/contests/abc359/tasks/abc359_g\"\n\n\
     #include <iostream>\n\n#include \"graph/read_graph.hpp\"\n#include \"graph/auxiliary_tree.hpp\"\
     \n\nint main() {\n    int N;\n    std::cin >> N;\n    auto g = read_graph<int>(N,\
@@ -150,8 +151,9 @@ data:
     \    for (int i = 0; i < N; i++) {\n        std::cin >> A[i];\n        A[i]--;\n\
     \        vs[A[i]].push_back(i);\n    }\n    AuxiliaryTree<int> aux(g);\n    long\
     \ long ans = 0;\n    for (int col = 0; col < N; col++) {\n        auto vec = vs[col];\n\
-    \        if ((int)(vec.size()) == 0) continue;\n        auto [caux, label] = aux.get(vec);\n\
-    \        const int M = (int)(vec.size());\n        std::vector<int> dp((int)(label.size()));\n\
+    \        if ((int)(vec.size()) == 0) continue;\n        auto res = aux.get(vec);\n\
+    \        auto caux = res.first;\n        auto label = res.second;\n        const\
+    \ int M = (int)(vec.size());\n        std::vector<int> dp((int)(label.size()));\n\
     \        auto rec = [&](auto f, int cur, int par) -> void {\n            dp[cur]\
     \ = (A[label[cur]] == col);\n            for (auto&& e : caux[cur]) {\n      \
     \          if (e.to == par) continue;\n                f(f, e.to, cur);\n    \
@@ -166,8 +168,8 @@ data:
   isVerificationFile: true
   path: verify/graph/auxiliary_tree.test.cpp
   requiredBy: []
-  timestamp: '2024-07-31 21:19:59+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-07-31 23:48:12+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/auxiliary_tree.test.cpp
 layout: document

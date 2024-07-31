@@ -308,7 +308,7 @@ data:
       title: geometry/tangent_point_cp.hpp
   - name: graph
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/auxiliary_tree.hpp
       title: "Auxiliary Tree (\u865A\u6811)"
     - icon: ':heavy_check_mark:'
@@ -330,7 +330,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/low_link.hpp
       title: "Low Link (\u95A2\u7BC0\u70B9\u30FB\u6A4B)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: graph/lowest_common_ancestor.hpp
       title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
     - icon: ':heavy_check_mark:'
@@ -646,7 +646,7 @@ data:
       title: verify/aoj_other/aoj_3206.test.cpp
   - name: verify/graph
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/auxiliary_tree.test.cpp
       title: verify/graph/auxiliary_tree.test.cpp
     - icon: ':heavy_check_mark:'
