@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   - icon: ':heavy_check_mark:'
@@ -21,7 +21,8 @@ data:
     \n\n#include <vector>\n#include <cassert>\n\ntemplate <class T> struct Edge {\n\
     \    int from, to;\n    T cost;\n    int id;\n\n    Edge() = default;\n    Edge(const\
     \ int from, const int to, const T cost = T(1), const int id = -1) : from(from),\
-    \ to(to), cost(cost), id(id) {}\n\n    friend std::ostream& operator<<(std::ostream&\
+    \ to(to), cost(cost), id(id) {}\n\n    friend bool operator<(const Edge<T>& a,\
+    \ const Edge<T>& b) { return a.cost < b.cost; }\n\n    friend std::ostream& operator<<(std::ostream&\
     \ os, const Edge<T>& e) {\n        // output format: {id: cost(from, to) = cost}\n\
     \        return os << \"{\" << e.id << \": cost(\" << e.from << \", \" << e.to\
     \ << \") = \" << e.cost << \"}\";\n    }\n};\ntemplate <class T> using Edges =\
@@ -53,22 +54,22 @@ data:
     \ operator[](int i) {\n        if (!is_build) build();\n        return EdgeIterators(csr_edges.begin()\
     \ + start[i], csr_edges.begin() + start[i + 1]);\n    }\n\n    size_t size() const\
     \ { return (size_t)(n); }\n\n    friend std::ostream& operator<<(std::ostream&\
-    \ os, Graph<T>& g) {\n        os << \"[\";\n        for (int i = 0; i < g.size();\
-    \ i++) {\n            os << \"[\";\n            for (int j = 0; j < g[i].size();\
-    \ j++) {\n                os << g[i][j];\n                if (j + 1 != g[i].size())\
+    \ os, Graph<T>& g) {\n        os << \"[\";\n        for (int i = 0; i < (int)(g.size());\
+    \ i++) {\n            os << \"[\";\n            for (int j = 0; j < (int)(g[i].size());\
+    \ j++) {\n                os << g[i][j];\n                if (j + 1 != (int)(g[i].size()))\
     \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
-    \ 1 != g.size()) os << \", \";\n        }\n        return os << \"]\";\n    }\n\
-    };\n#line 2 \"graph/restore_path.hpp\"\n\n#line 4 \"graph/restore_path.hpp\"\n\
-    #include <algorithm>\n\n// restore path from root[t] to t\nstd::vector<int> restore_path(std::vector<int>&\
-    \ par, int t) {\n    std::vector<int> path = {t};\n    while (par[path.back()]\
-    \ != -1) path.emplace_back(par[path.back()]);\n    std::reverse(path.begin(),\
-    \ path.end());\n    return path;\n}\n#line 5 \"graph/tree_diameter.hpp\"\n\n#include\
-    \ <utility>\n#line 8 \"graph/tree_diameter.hpp\"\n\n// {\u76F4\u5F84\u306E\u8FBA\
-    \u306E\u91CD\u307F\u306E\u7DCF\u548C, \u901A\u308B\u9802\u70B9\u96C6\u5408}\n\
-    template <class T> std::pair<T, std::vector<int>> tree_diameter(Graph<T>& g) {\n\
-    \    const int n = (int)(g.size());\n    std::vector<int> parent(n, -1);\n   \
-    \ std::vector<T> dist(n);\n\n    auto dfs = [&](auto f, int cur, int par) -> void\
-    \ {\n        for (auto&& e : g[cur]) {\n            if (e.to == par) continue;\n\
+    \ 1 != (int)(g.size())) os << \", \";\n        }\n        return os << \"]\";\n\
+    \    }\n};\n#line 2 \"graph/restore_path.hpp\"\n\n#line 4 \"graph/restore_path.hpp\"\
+    \n#include <algorithm>\n\n// restore path from root[t] to t\nstd::vector<int>\
+    \ restore_path(std::vector<int>& par, int t) {\n    std::vector<int> path = {t};\n\
+    \    while (par[path.back()] != -1) path.emplace_back(par[path.back()]);\n   \
+    \ std::reverse(path.begin(), path.end());\n    return path;\n}\n#line 5 \"graph/tree_diameter.hpp\"\
+    \n\n#include <utility>\n#line 8 \"graph/tree_diameter.hpp\"\n\n// {\u76F4\u5F84\
+    \u306E\u8FBA\u306E\u91CD\u307F\u306E\u7DCF\u548C, \u901A\u308B\u9802\u70B9\u96C6\
+    \u5408}\ntemplate <class T> std::pair<T, std::vector<int>> tree_diameter(Graph<T>&\
+    \ g) {\n    const int n = (int)(g.size());\n    std::vector<int> parent(n, -1);\n\
+    \    std::vector<T> dist(n);\n\n    auto dfs = [&](auto f, int cur, int par) ->\
+    \ void {\n        for (auto&& e : g[cur]) {\n            if (e.to == par) continue;\n\
     \            dist[e.to] = dist[cur] + e.cost;\n            parent[e.to] = cur;\n\
     \            f(f, e.to, cur);\n        }\n        return;\n    };\n\n    dfs(dfs,\
     \ 0, -1);\n    int s = std::max_element(dist.begin(), dist.end()) - dist.begin();\n\
@@ -94,7 +95,7 @@ data:
   isVerificationFile: false
   path: graph/tree_diameter.hpp
   requiredBy: []
-  timestamp: '2024-07-31 17:14:51+09:00'
+  timestamp: '2024-07-31 21:19:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/tree_diameter.test.cpp
@@ -103,4 +104,11 @@ layout: document
 title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"
 ---
 
-- `auto [d, path] = tree_diameter(G);` で `d` に直径の長さが、`path` に辺の集合が入る
+## 使い方
+
+```cpp
+Graph<T> g;
+auto [d, path] = tree_diameter(g);  // 直径の長さとパス
+```
+
+## 参考文献

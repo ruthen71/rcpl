@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/read_graph.hpp
     title: "\u30B0\u30E9\u30D5\u5165\u529B\u30E9\u30A4\u30D6\u30E9\u30EA"
   - icon: ':heavy_check_mark:'
@@ -29,8 +29,9 @@ data:
     \ <vector>\n#include <cassert>\n\ntemplate <class T> struct Edge {\n    int from,\
     \ to;\n    T cost;\n    int id;\n\n    Edge() = default;\n    Edge(const int from,\
     \ const int to, const T cost = T(1), const int id = -1) : from(from), to(to),\
-    \ cost(cost), id(id) {}\n\n    friend std::ostream& operator<<(std::ostream& os,\
-    \ const Edge<T>& e) {\n        // output format: {id: cost(from, to) = cost}\n\
+    \ cost(cost), id(id) {}\n\n    friend bool operator<(const Edge<T>& a, const Edge<T>&\
+    \ b) { return a.cost < b.cost; }\n\n    friend std::ostream& operator<<(std::ostream&\
+    \ os, const Edge<T>& e) {\n        // output format: {id: cost(from, to) = cost}\n\
     \        return os << \"{\" << e.id << \": cost(\" << e.from << \", \" << e.to\
     \ << \") = \" << e.cost << \"}\";\n    }\n};\ntemplate <class T> using Edges =\
     \ std::vector<Edge<T>>;\n\ntemplate <class T> struct Graph {\n    struct EdgeIterators\
@@ -61,12 +62,12 @@ data:
     \ operator[](int i) {\n        if (!is_build) build();\n        return EdgeIterators(csr_edges.begin()\
     \ + start[i], csr_edges.begin() + start[i + 1]);\n    }\n\n    size_t size() const\
     \ { return (size_t)(n); }\n\n    friend std::ostream& operator<<(std::ostream&\
-    \ os, Graph<T>& g) {\n        os << \"[\";\n        for (int i = 0; i < g.size();\
-    \ i++) {\n            os << \"[\";\n            for (int j = 0; j < g[i].size();\
-    \ j++) {\n                os << g[i][j];\n                if (j + 1 != g[i].size())\
+    \ os, Graph<T>& g) {\n        os << \"[\";\n        for (int i = 0; i < (int)(g.size());\
+    \ i++) {\n            os << \"[\";\n            for (int j = 0; j < (int)(g[i].size());\
+    \ j++) {\n                os << g[i][j];\n                if (j + 1 != (int)(g[i].size()))\
     \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
-    \ 1 != g.size()) os << \", \";\n        }\n        return os << \"]\";\n    }\n\
-    };\n#line 4 \"graph/read_graph.hpp\"\n\ntemplate <class T> Graph<T> read_graph(const\
+    \ 1 != (int)(g.size())) os << \", \";\n        }\n        return os << \"]\";\n\
+    \    }\n};\n#line 4 \"graph/read_graph.hpp\"\n\ntemplate <class T> Graph<T> read_graph(const\
     \ int n, const int m, const bool weight = false, const bool directed = false,\
     \ const int offset = 1) {\n    Graph<T> g(n, directed);\n    for (int i = 0; i\
     \ < m; i++) {\n        int a, b;\n        std::cin >> a >> b;\n        a -= offset,\
@@ -95,14 +96,14 @@ data:
     \ int t = std::max_element(dist.begin(), dist.end()) - dist.begin();\n    auto\
     \ path = restore_path(parent, t);\n    return {dist[t], path};\n}\n#line 7 \"\
     verify/graph/tree_diameter.test.cpp\"\n\nint main() {\n    int N;\n    std::cin\
-    \ >> N;\n    auto G = read_graph<long long>(N, N - 1, true, false, 0);\n    auto\
-    \ [d, path] = tree_diameter(G);\n    std::cout << d << ' ' << path.size() << '\\\
+    \ >> N;\n    auto g = read_graph<long long>(N, N - 1, true, false, 0);\n    auto\
+    \ [d, path] = tree_diameter(g);\n    std::cout << d << ' ' << path.size() << '\\\
     n';\n    for (int i = 0; i < (int)(path.size()); i++) {\n        std::cout <<\
     \ path[i] << \" \\n\"[i + 1 == (int)(path.size())];\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tree_diameter\"\n\n#include\
     \ <iostream>\n\n#include \"graph/read_graph.hpp\"\n#include \"graph/tree_diameter.hpp\"\
-    \n\nint main() {\n    int N;\n    std::cin >> N;\n    auto G = read_graph<long\
-    \ long>(N, N - 1, true, false, 0);\n    auto [d, path] = tree_diameter(G);\n \
+    \n\nint main() {\n    int N;\n    std::cin >> N;\n    auto g = read_graph<long\
+    \ long>(N, N - 1, true, false, 0);\n    auto [d, path] = tree_diameter(g);\n \
     \   std::cout << d << ' ' << path.size() << '\\n';\n    for (int i = 0; i < (int)(path.size());\
     \ i++) {\n        std::cout << path[i] << \" \\n\"[i + 1 == (int)(path.size())];\n\
     \    }\n    return 0;\n}"
@@ -114,7 +115,7 @@ data:
   isVerificationFile: true
   path: verify/graph/tree_diameter.test.cpp
   requiredBy: []
-  timestamp: '2024-07-31 17:14:51+09:00'
+  timestamp: '2024-07-31 21:19:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/tree_diameter.test.cpp

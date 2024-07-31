@@ -1,11 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify/graph/auxiliary_tree.test.cpp
+    title: verify/graph/auxiliary_tree.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/graph/bellman_ford.test.cpp
     title: verify/graph/bellman_ford.test.cpp
@@ -27,6 +30,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/minimum_steiner_tree.test.cpp
     title: verify/graph/minimum_steiner_tree.test.cpp
+  - icon: ':x:'
+    path: verify/graph/shortest_path_tree.test.cpp
+    title: verify/graph/shortest_path_tree.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/graph/strongly_connected_component.test.cpp
     title: verify/graph/strongly_connected_component.test.cpp
@@ -42,16 +48,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/zero_one_bfs.test.cpp
     title: verify/graph/zero_one_bfs.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/read_graph.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
     \n\n#include <vector>\n#include <cassert>\n\ntemplate <class T> struct Edge {\n\
     \    int from, to;\n    T cost;\n    int id;\n\n    Edge() = default;\n    Edge(const\
     \ int from, const int to, const T cost = T(1), const int id = -1) : from(from),\
-    \ to(to), cost(cost), id(id) {}\n\n    friend std::ostream& operator<<(std::ostream&\
+    \ to(to), cost(cost), id(id) {}\n\n    friend bool operator<(const Edge<T>& a,\
+    \ const Edge<T>& b) { return a.cost < b.cost; }\n\n    friend std::ostream& operator<<(std::ostream&\
     \ os, const Edge<T>& e) {\n        // output format: {id: cost(from, to) = cost}\n\
     \        return os << \"{\" << e.id << \": cost(\" << e.from << \", \" << e.to\
     \ << \") = \" << e.cost << \"}\";\n    }\n};\ntemplate <class T> using Edges =\
@@ -83,12 +90,12 @@ data:
     \ operator[](int i) {\n        if (!is_build) build();\n        return EdgeIterators(csr_edges.begin()\
     \ + start[i], csr_edges.begin() + start[i + 1]);\n    }\n\n    size_t size() const\
     \ { return (size_t)(n); }\n\n    friend std::ostream& operator<<(std::ostream&\
-    \ os, Graph<T>& g) {\n        os << \"[\";\n        for (int i = 0; i < g.size();\
-    \ i++) {\n            os << \"[\";\n            for (int j = 0; j < g[i].size();\
-    \ j++) {\n                os << g[i][j];\n                if (j + 1 != g[i].size())\
+    \ os, Graph<T>& g) {\n        os << \"[\";\n        for (int i = 0; i < (int)(g.size());\
+    \ i++) {\n            os << \"[\";\n            for (int j = 0; j < (int)(g[i].size());\
+    \ j++) {\n                os << g[i][j];\n                if (j + 1 != (int)(g[i].size()))\
     \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
-    \ 1 != g.size()) os << \", \";\n        }\n        return os << \"]\";\n    }\n\
-    };\n#line 4 \"graph/read_graph.hpp\"\n\ntemplate <class T> Graph<T> read_graph(const\
+    \ 1 != (int)(g.size())) os << \", \";\n        }\n        return os << \"]\";\n\
+    \    }\n};\n#line 4 \"graph/read_graph.hpp\"\n\ntemplate <class T> Graph<T> read_graph(const\
     \ int n, const int m, const bool weight = false, const bool directed = false,\
     \ const int offset = 1) {\n    Graph<T> g(n, directed);\n    for (int i = 0; i\
     \ < m; i++) {\n        int a, b;\n        std::cin >> a >> b;\n        a -= offset,\
@@ -116,15 +123,17 @@ data:
   isVerificationFile: false
   path: graph/read_graph.hpp
   requiredBy: []
-  timestamp: '2024-07-31 16:51:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-07-31 21:19:59+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/graph/bellman_ford.test.cpp
+  - verify/graph/auxiliary_tree.test.cpp
   - verify/graph/topological_sort.test.cpp
   - verify/graph/low_link_1.test.cpp
   - verify/graph/lowest_common_ancestor.test.cpp
   - verify/graph/kruskal.test.cpp
   - verify/graph/strongly_connected_component.test.cpp
+  - verify/graph/shortest_path_tree.test.cpp
   - verify/graph/minimum_steiner_tree.test.cpp
   - verify/graph/dijkstra.test.cpp
   - verify/graph/traveling_salesman_problem.test.cpp
@@ -136,5 +145,6 @@ layout: document
 title: "\u30B0\u30E9\u30D5\u5165\u529B\u30E9\u30A4\u30D6\u30E9\u30EA"
 ---
 
-- `read_graph(n, m, weight, directed, offset)`
-- `read_parent(n, weight, directed, offset)`
+## 使い方
+
+## 参考文献

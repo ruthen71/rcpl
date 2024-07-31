@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -18,7 +18,8 @@ data:
     \n\n#include <vector>\n#include <cassert>\n\ntemplate <class T> struct Edge {\n\
     \    int from, to;\n    T cost;\n    int id;\n\n    Edge() = default;\n    Edge(const\
     \ int from, const int to, const T cost = T(1), const int id = -1) : from(from),\
-    \ to(to), cost(cost), id(id) {}\n\n    friend std::ostream& operator<<(std::ostream&\
+    \ to(to), cost(cost), id(id) {}\n\n    friend bool operator<(const Edge<T>& a,\
+    \ const Edge<T>& b) { return a.cost < b.cost; }\n\n    friend std::ostream& operator<<(std::ostream&\
     \ os, const Edge<T>& e) {\n        // output format: {id: cost(from, to) = cost}\n\
     \        return os << \"{\" << e.id << \": cost(\" << e.from << \", \" << e.to\
     \ << \") = \" << e.cost << \"}\";\n    }\n};\ntemplate <class T> using Edges =\
@@ -50,30 +51,30 @@ data:
     \ operator[](int i) {\n        if (!is_build) build();\n        return EdgeIterators(csr_edges.begin()\
     \ + start[i], csr_edges.begin() + start[i + 1]);\n    }\n\n    size_t size() const\
     \ { return (size_t)(n); }\n\n    friend std::ostream& operator<<(std::ostream&\
-    \ os, Graph<T>& g) {\n        os << \"[\";\n        for (int i = 0; i < g.size();\
-    \ i++) {\n            os << \"[\";\n            for (int j = 0; j < g[i].size();\
-    \ j++) {\n                os << g[i][j];\n                if (j + 1 != g[i].size())\
+    \ os, Graph<T>& g) {\n        os << \"[\";\n        for (int i = 0; i < (int)(g.size());\
+    \ i++) {\n            os << \"[\";\n            for (int j = 0; j < (int)(g[i].size());\
+    \ j++) {\n                os << g[i][j];\n                if (j + 1 != (int)(g[i].size()))\
     \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
-    \ 1 != g.size()) os << \", \";\n        }\n        return os << \"]\";\n    }\n\
-    };\n#line 4 \"graph/strongly_connected_component.hpp\"\n\ntemplate <class T> std::vector<std::vector<int>>\
-    \ strongly_connected_component(Graph<T>& g) {\n    const int n = int(g.size());\n\
-    \    int now_ord = 0, group_num = 0;\n    std::vector<int> visited, low(n), ord(n,\
-    \ -1), ids(n);\n    visited.reserve(n);\n    auto dfs = [&](auto f, int cur) ->\
-    \ void {\n        low[cur] = ord[cur] = now_ord++;\n        visited.push_back(cur);\n\
-    \        for (auto&& e : g[cur]) {\n            if (ord[e.to] == -1) {\n     \
-    \           f(f, e.to);\n                low[cur] = std::min(low[cur], low[e.to]);\n\
-    \            } else {\n                low[cur] = std::min(low[cur], ord[e.to]);\n\
-    \            }\n        }\n        if (low[cur] == ord[cur]) {\n            while\
-    \ (true) {\n                int u = visited.back();\n                visited.pop_back();\n\
-    \                ord[u] = n;\n                ids[u] = group_num;\n          \
-    \      if (u == cur) break;\n            }\n            group_num++;\n       \
-    \ }\n    };\n    for (int i = 0; i < n; i++) {\n        if (ord[i] == -1) dfs(dfs,\
-    \ i);\n    }\n    for (auto&& x : ids) {\n        x = group_num - 1 - x;\n   \
-    \ }\n    std::vector<int> counts(group_num);\n    for (auto&& x : ids) counts[x]++;\n\
-    \    std::vector<std::vector<int>> groups(group_num);\n    for (int i = 0; i <\
-    \ group_num; i++) {\n        groups[i].reserve(counts[i]);\n    }\n    for (int\
-    \ i = 0; i < n; i++) {\n        groups[ids[i]].push_back(i);\n    }\n    return\
-    \ groups;\n}\n"
+    \ 1 != (int)(g.size())) os << \", \";\n        }\n        return os << \"]\";\n\
+    \    }\n};\n#line 4 \"graph/strongly_connected_component.hpp\"\n\ntemplate <class\
+    \ T> std::vector<std::vector<int>> strongly_connected_component(Graph<T>& g) {\n\
+    \    const int n = int(g.size());\n    int now_ord = 0, group_num = 0;\n    std::vector<int>\
+    \ visited, low(n), ord(n, -1), ids(n);\n    visited.reserve(n);\n    auto dfs\
+    \ = [&](auto f, int cur) -> void {\n        low[cur] = ord[cur] = now_ord++;\n\
+    \        visited.push_back(cur);\n        for (auto&& e : g[cur]) {\n        \
+    \    if (ord[e.to] == -1) {\n                f(f, e.to);\n                low[cur]\
+    \ = std::min(low[cur], low[e.to]);\n            } else {\n                low[cur]\
+    \ = std::min(low[cur], ord[e.to]);\n            }\n        }\n        if (low[cur]\
+    \ == ord[cur]) {\n            while (true) {\n                int u = visited.back();\n\
+    \                visited.pop_back();\n                ord[u] = n;\n          \
+    \      ids[u] = group_num;\n                if (u == cur) break;\n           \
+    \ }\n            group_num++;\n        }\n    };\n    for (int i = 0; i < n; i++)\
+    \ {\n        if (ord[i] == -1) dfs(dfs, i);\n    }\n    for (auto&& x : ids) {\n\
+    \        x = group_num - 1 - x;\n    }\n    std::vector<int> counts(group_num);\n\
+    \    for (auto&& x : ids) counts[x]++;\n    std::vector<std::vector<int>> groups(group_num);\n\
+    \    for (int i = 0; i < group_num; i++) {\n        groups[i].reserve(counts[i]);\n\
+    \    }\n    for (int i = 0; i < n; i++) {\n        groups[ids[i]].push_back(i);\n\
+    \    }\n    return groups;\n}\n"
   code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\ntemplate <class\
     \ T> std::vector<std::vector<int>> strongly_connected_component(Graph<T>& g) {\n\
     \    const int n = int(g.size());\n    int now_ord = 0, group_num = 0;\n    std::vector<int>\
@@ -98,7 +99,7 @@ data:
   isVerificationFile: false
   path: graph/strongly_connected_component.hpp
   requiredBy: []
-  timestamp: '2024-07-31 16:51:10+09:00'
+  timestamp: '2024-07-31 21:19:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/strongly_connected_component.test.cpp
@@ -107,5 +108,13 @@ layout: document
 title: "Strongly Connected Component (\u5F37\u9023\u7D50\u6210\u5206)"
 ---
 
-- `strongly_connected_component(G)` で「頂点のリスト」のリストを返す
-- トポロジカルソートされている
+## 使い方
+
+```cpp
+Graph<T> g;
+auto scc = strongly_connected_component(g);
+```
+
+強連結成分ごとに頂点のリストを作り, トポロジカルソートしたリストを返す
+
+## 参考文献

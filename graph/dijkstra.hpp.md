@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -9,9 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/dijkstra.test.cpp
     title: verify/graph/dijkstra.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: verify/graph/shortest_path_tree.test.cpp
+    title: verify/graph/shortest_path_tree.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/dijkstra.hpp\"\n\n#include <tuple>\n#include <queue>\n\
@@ -19,11 +22,12 @@ data:
     \ntemplate <class T> struct Edge {\n    int from, to;\n    T cost;\n    int id;\n\
     \n    Edge() = default;\n    Edge(const int from, const int to, const T cost =\
     \ T(1), const int id = -1) : from(from), to(to), cost(cost), id(id) {}\n\n   \
-    \ friend std::ostream& operator<<(std::ostream& os, const Edge<T>& e) {\n    \
-    \    // output format: {id: cost(from, to) = cost}\n        return os << \"{\"\
-    \ << e.id << \": cost(\" << e.from << \", \" << e.to << \") = \" << e.cost <<\
-    \ \"}\";\n    }\n};\ntemplate <class T> using Edges = std::vector<Edge<T>>;\n\n\
-    template <class T> struct Graph {\n    struct EdgeIterators {\n       public:\n\
+    \ friend bool operator<(const Edge<T>& a, const Edge<T>& b) { return a.cost <\
+    \ b.cost; }\n\n    friend std::ostream& operator<<(std::ostream& os, const Edge<T>&\
+    \ e) {\n        // output format: {id: cost(from, to) = cost}\n        return\
+    \ os << \"{\" << e.id << \": cost(\" << e.from << \", \" << e.to << \") = \" <<\
+    \ e.cost << \"}\";\n    }\n};\ntemplate <class T> using Edges = std::vector<Edge<T>>;\n\
+    \ntemplate <class T> struct Graph {\n    struct EdgeIterators {\n       public:\n\
     \        using Iterator = typename std::vector<Edge<T>>::iterator;\n        EdgeIterators()\
     \ = default;\n        EdgeIterators(const Iterator& begit, const Iterator& endit)\
     \ : begit(begit), endit(endit) {}\n        Iterator begin() const { return begit;\
@@ -51,12 +55,12 @@ data:
     \ operator[](int i) {\n        if (!is_build) build();\n        return EdgeIterators(csr_edges.begin()\
     \ + start[i], csr_edges.begin() + start[i + 1]);\n    }\n\n    size_t size() const\
     \ { return (size_t)(n); }\n\n    friend std::ostream& operator<<(std::ostream&\
-    \ os, Graph<T>& g) {\n        os << \"[\";\n        for (int i = 0; i < g.size();\
-    \ i++) {\n            os << \"[\";\n            for (int j = 0; j < g[i].size();\
-    \ j++) {\n                os << g[i][j];\n                if (j + 1 != g[i].size())\
+    \ os, Graph<T>& g) {\n        os << \"[\";\n        for (int i = 0; i < (int)(g.size());\
+    \ i++) {\n            os << \"[\";\n            for (int j = 0; j < (int)(g[i].size());\
+    \ j++) {\n                os << g[i][j];\n                if (j + 1 != (int)(g[i].size()))\
     \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
-    \ 1 != g.size()) os << \", \";\n        }\n        return os << \"]\";\n    }\n\
-    };\n#line 6 \"graph/dijkstra.hpp\"\n\ntemplate <class T> std::tuple<std::vector<T>,\
+    \ 1 != (int)(g.size())) os << \", \";\n        }\n        return os << \"]\";\n\
+    \    }\n};\n#line 6 \"graph/dijkstra.hpp\"\n\ntemplate <class T> std::tuple<std::vector<T>,\
     \ std::vector<int>, std::vector<int>> dijkstra(Graph<T>& g, std::vector<int>&\
     \ s, const T inf) {\n    const int n = (int)(g.size());\n    std::vector<T> dist(n,\
     \ inf);\n    std::vector<int> par(n, -1), root(n, -1);\n\n    std::priority_queue<std::pair<T,\
@@ -86,14 +90,26 @@ data:
   isVerificationFile: false
   path: graph/dijkstra.hpp
   requiredBy: []
-  timestamp: '2024-07-31 16:51:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-07-31 21:19:59+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/graph/shortest_path_tree.test.cpp
   - verify/graph/dijkstra.test.cpp
 documentation_of: graph/dijkstra.hpp
 layout: document
 title: "Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
 ---
 
-- 多始点スタートに対応
-- `s` に始点となる頂点を入れて、`auto [dist, par, root] = dijkstra(G, s, INF);` で距離、親、始点が各頂点について得られる
+## 使い方
+
+```cpp
+Graph<T> g;
+std::vector<int> s = {0};   // 始点の集合
+const T INF;
+auto [dist, par, root] = dijkstra(g, s, INF);
+```
+
+`dist[i]` について
+- 到達できない場合は `INF`
+
+## 参考文献

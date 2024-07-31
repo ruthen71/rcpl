@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -15,7 +15,8 @@ data:
     \n\n#include <vector>\n#include <cassert>\n\ntemplate <class T> struct Edge {\n\
     \    int from, to;\n    T cost;\n    int id;\n\n    Edge() = default;\n    Edge(const\
     \ int from, const int to, const T cost = T(1), const int id = -1) : from(from),\
-    \ to(to), cost(cost), id(id) {}\n\n    friend std::ostream& operator<<(std::ostream&\
+    \ to(to), cost(cost), id(id) {}\n\n    friend bool operator<(const Edge<T>& a,\
+    \ const Edge<T>& b) { return a.cost < b.cost; }\n\n    friend std::ostream& operator<<(std::ostream&\
     \ os, const Edge<T>& e) {\n        // output format: {id: cost(from, to) = cost}\n\
     \        return os << \"{\" << e.id << \": cost(\" << e.from << \", \" << e.to\
     \ << \") = \" << e.cost << \"}\";\n    }\n};\ntemplate <class T> using Edges =\
@@ -47,20 +48,40 @@ data:
     \ operator[](int i) {\n        if (!is_build) build();\n        return EdgeIterators(csr_edges.begin()\
     \ + start[i], csr_edges.begin() + start[i + 1]);\n    }\n\n    size_t size() const\
     \ { return (size_t)(n); }\n\n    friend std::ostream& operator<<(std::ostream&\
-    \ os, Graph<T>& g) {\n        os << \"[\";\n        for (int i = 0; i < g.size();\
-    \ i++) {\n            os << \"[\";\n            for (int j = 0; j < g[i].size();\
-    \ j++) {\n                os << g[i][j];\n                if (j + 1 != g[i].size())\
+    \ os, Graph<T>& g) {\n        os << \"[\";\n        for (int i = 0; i < (int)(g.size());\
+    \ i++) {\n            os << \"[\";\n            for (int j = 0; j < (int)(g[i].size());\
+    \ j++) {\n                os << g[i][j];\n                if (j + 1 != (int)(g[i].size()))\
     \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
-    \ 1 != g.size()) os << \", \";\n        }\n        return os << \"]\";\n    }\n\
-    };\n#line 4 \"graph/euler_tour.hpp\"\n\n// Euler Tour\n// complexity: O(N + M)\n\
-    // N = 5\n// edges = [{0, 1}, {0, 2}, {2, 3}, {2, 4}]\n//   0\n//  / \\\n// 1\
-    \   2\n//    / \\\n//   3   4\n// vertices = [0, 1, 0, 2, 3, 2, 4, 2, 0]\n// vertex_id\
-    \ = [{0, 8}, {1, 1}, {3, 7}, {4, 4}, {6, 6}]\n// edges = [0, 0+N, 1, 2, 2+N, 3,\
-    \ 3+N, 1+N]\n// edge_id = [{0, 1}, {2, 7}, {3, 4}, {5, 6}]\n// edges[vertex_id[i].first,\
-    \ vertex_id[i].second) = edges in subtree with root i\ntemplate <class T>\nstd::tuple<std::vector<int>,\
+    \ 1 != (int)(g.size())) os << \", \";\n        }\n        return os << \"]\";\n\
+    \    }\n};\n#line 4 \"graph/euler_tour.hpp\"\n\n#include <tuple>\n\n// Euler Tour\n\
+    // complexity: O(N + M)\n// N = 5\n// edges = [{0, 1}, {0, 2}, {2, 3}, {2, 4}]\n\
+    //   0\n//  / \\\n// 1   2\n//    / \\\n//   3   4\n// vertices = [0, 1, 0, 2,\
+    \ 3, 2, 4, 2, 0]\n// vertex_id = [{0, 8}, {1, 1}, {3, 7}, {4, 4}, {6, 6}]\n//\
+    \ edges = [0, 0+N, 1, 2, 2+N, 3, 3+N, 1+N]\n// edge_id = [{0, 1}, {2, 7}, {3,\
+    \ 4}, {5, 6}]\n// edges[vertex_id[i].first, vertex_id[i].second) = edges in subtree\
+    \ with root i\ntemplate <class T> std::tuple<std::vector<int>, std::vector<std::pair<int,\
+    \ int>>, std::vector<int>, std::vector<std::pair<int, int>>> euler_tour(Graph<T>&\
+    \ g, const int root = 0) {\n    const int n = (int)(g.size());\n    std::vector<int>\
+    \ vertices, edges;\n    std::vector<std::pair<int, int>> vertex_id(n), edge_id(n\
+    \ - 1);\n    vertices.reserve(2 * n - 1);\n    edges.reserve(2 * (n - 1));\n\n\
+    \    auto dfs = [&](auto f, int cur, int par) -> void {\n        vertex_id[cur].first\
+    \ = (int)(vertices.size());\n        vertices.push_back(cur);\n        for (auto&&\
+    \ e : g[cur]) {\n            if (e.to == par) continue;\n            edge_id[e.id].first\
+    \ = (int)(edges.size());\n            edges.push_back(e.id);\n\n            f(f,\
+    \ e.to, cur);\n            vertices.push_back(cur);\n\n            edge_id[e.id].second\
+    \ = (int)(edges.size());\n            edges.push_back(e.id + n);\n        }\n\
+    \        vertex_id[cur].second = (int)(vertices.size()) - 1;\n    };\n    dfs(dfs,\
+    \ root, -1);\n\n    assert((int)(vertices.size()) == 2 * n - 1);\n    assert((int)(edges.size())\
+    \ == 2 * (n - 1));\n    return {vertices, vertex_id, edges, edge_id};\n}\n"
+  code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\n#include <tuple>\n\
+    \n// Euler Tour\n// complexity: O(N + M)\n// N = 5\n// edges = [{0, 1}, {0, 2},\
+    \ {2, 3}, {2, 4}]\n//   0\n//  / \\\n// 1   2\n//    / \\\n//   3   4\n// vertices\
+    \ = [0, 1, 0, 2, 3, 2, 4, 2, 0]\n// vertex_id = [{0, 8}, {1, 1}, {3, 7}, {4, 4},\
+    \ {6, 6}]\n// edges = [0, 0+N, 1, 2, 2+N, 3, 3+N, 1+N]\n// edge_id = [{0, 1},\
+    \ {2, 7}, {3, 4}, {5, 6}]\n// edges[vertex_id[i].first, vertex_id[i].second) =\
+    \ edges in subtree with root i\ntemplate <class T> std::tuple<std::vector<int>,\
     \ std::vector<std::pair<int, int>>, std::vector<int>, std::vector<std::pair<int,\
-    \ int>>>  //\neuler_tour(Graph<T>& g, const int root = 0) {\n    // compiler bugs\n\
-    \    // const int n = (int)g.size();\n    // fix\n    int n = (int)(g.size());\n\
+    \ int>>> euler_tour(Graph<T>& g, const int root = 0) {\n    const int n = (int)(g.size());\n\
     \    std::vector<int> vertices, edges;\n    std::vector<std::pair<int, int>> vertex_id(n),\
     \ edge_id(n - 1);\n    vertices.reserve(2 * n - 1);\n    edges.reserve(2 * (n\
     \ - 1));\n\n    auto dfs = [&](auto f, int cur, int par) -> void {\n        vertex_id[cur].first\
@@ -71,34 +92,13 @@ data:
     \ = (int)(edges.size());\n            edges.push_back(e.id + n);\n        }\n\
     \        vertex_id[cur].second = (int)(vertices.size()) - 1;\n    };\n    dfs(dfs,\
     \ root, -1);\n\n    assert((int)(vertices.size()) == 2 * n - 1);\n    assert((int)(edges.size())\
-    \ == 2 * (n - 1));\n    return {vertices, vertex_id, edges, edge_id};\n}\n"
-  code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\n// Euler Tour\n\
-    // complexity: O(N + M)\n// N = 5\n// edges = [{0, 1}, {0, 2}, {2, 3}, {2, 4}]\n\
-    //   0\n//  / \\\n// 1   2\n//    / \\\n//   3   4\n// vertices = [0, 1, 0, 2,\
-    \ 3, 2, 4, 2, 0]\n// vertex_id = [{0, 8}, {1, 1}, {3, 7}, {4, 4}, {6, 6}]\n//\
-    \ edges = [0, 0+N, 1, 2, 2+N, 3, 3+N, 1+N]\n// edge_id = [{0, 1}, {2, 7}, {3,\
-    \ 4}, {5, 6}]\n// edges[vertex_id[i].first, vertex_id[i].second) = edges in subtree\
-    \ with root i\ntemplate <class T>\nstd::tuple<std::vector<int>, std::vector<std::pair<int,\
-    \ int>>, std::vector<int>, std::vector<std::pair<int, int>>>  //\neuler_tour(Graph<T>&\
-    \ g, const int root = 0) {\n    // compiler bugs\n    // const int n = (int)g.size();\n\
-    \    // fix\n    int n = (int)(g.size());\n    std::vector<int> vertices, edges;\n\
-    \    std::vector<std::pair<int, int>> vertex_id(n), edge_id(n - 1);\n    vertices.reserve(2\
-    \ * n - 1);\n    edges.reserve(2 * (n - 1));\n\n    auto dfs = [&](auto f, int\
-    \ cur, int par) -> void {\n        vertex_id[cur].first = (int)(vertices.size());\n\
-    \        vertices.push_back(cur);\n        for (auto&& e : g[cur]) {\n       \
-    \     if (e.to == par) continue;\n            edge_id[e.id].first = (int)(edges.size());\n\
-    \            edges.push_back(e.id);\n\n            f(f, e.to, cur);\n        \
-    \    vertices.push_back(cur);\n\n            edge_id[e.id].second = (int)(edges.size());\n\
-    \            edges.push_back(e.id + n);\n        }\n        vertex_id[cur].second\
-    \ = (int)(vertices.size()) - 1;\n    };\n    dfs(dfs, root, -1);\n\n    assert((int)(vertices.size())\
-    \ == 2 * n - 1);\n    assert((int)(edges.size()) == 2 * (n - 1));\n    return\
-    \ {vertices, vertex_id, edges, edge_id};\n}"
+    \ == 2 * (n - 1));\n    return {vertices, vertex_id, edges, edge_id};\n}"
   dependsOn:
   - graph/graph_template.hpp
   isVerificationFile: false
   path: graph/euler_tour.hpp
   requiredBy: []
-  timestamp: '2024-07-31 16:51:10+09:00'
+  timestamp: '2024-07-31 21:19:59+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: graph/euler_tour.hpp
@@ -106,6 +106,12 @@ layout: document
 title: "Euler Tour (\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
 ---
 
+## 使い方
+
+
+
 ## 使用例
 
 - [ABC294 G](https://atcoder.jp/contests/abc294/submissions/39997126)
+
+## 参考文献

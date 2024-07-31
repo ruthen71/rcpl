@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -21,7 +21,8 @@ data:
     \n\n#include <vector>\n#include <cassert>\n\ntemplate <class T> struct Edge {\n\
     \    int from, to;\n    T cost;\n    int id;\n\n    Edge() = default;\n    Edge(const\
     \ int from, const int to, const T cost = T(1), const int id = -1) : from(from),\
-    \ to(to), cost(cost), id(id) {}\n\n    friend std::ostream& operator<<(std::ostream&\
+    \ to(to), cost(cost), id(id) {}\n\n    friend bool operator<(const Edge<T>& a,\
+    \ const Edge<T>& b) { return a.cost < b.cost; }\n\n    friend std::ostream& operator<<(std::ostream&\
     \ os, const Edge<T>& e) {\n        // output format: {id: cost(from, to) = cost}\n\
     \        return os << \"{\" << e.id << \": cost(\" << e.from << \", \" << e.to\
     \ << \") = \" << e.cost << \"}\";\n    }\n};\ntemplate <class T> using Edges =\
@@ -53,19 +54,19 @@ data:
     \ operator[](int i) {\n        if (!is_build) build();\n        return EdgeIterators(csr_edges.begin()\
     \ + start[i], csr_edges.begin() + start[i + 1]);\n    }\n\n    size_t size() const\
     \ { return (size_t)(n); }\n\n    friend std::ostream& operator<<(std::ostream&\
-    \ os, Graph<T>& g) {\n        os << \"[\";\n        for (int i = 0; i < g.size();\
-    \ i++) {\n            os << \"[\";\n            for (int j = 0; j < g[i].size();\
-    \ j++) {\n                os << g[i][j];\n                if (j + 1 != g[i].size())\
+    \ os, Graph<T>& g) {\n        os << \"[\";\n        for (int i = 0; i < (int)(g.size());\
+    \ i++) {\n            os << \"[\";\n            for (int j = 0; j < (int)(g[i].size());\
+    \ j++) {\n                os << g[i][j];\n                if (j + 1 != (int)(g[i].size()))\
     \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
-    \ 1 != g.size()) os << \", \";\n        }\n        return os << \"]\";\n    }\n\
-    };\n#line 4 \"graph/low_link.hpp\"\n\ntemplate <class T> struct LowLink {\n  \
-    \  int n;\n    std::vector<int> ord, low;\n    std::vector<std::vector<int>> dfs_tree;\n\
-    \    std::vector<int> articulations;\n    std::vector<std::pair<int, int>> bridges;\
-    \  // edges {u, v} (u < v)\n    std::vector<int> roots;\n\n    LowLink(Graph<T>&\
-    \ g) : n((int)(g.size())), ord(n, -1), low(n, -1), dfs_tree(n) {\n        int\
-    \ ord_id = 0;\n        auto dfs = [&](auto f, int cur, int par) -> void {\n  \
-    \          low[cur] = ord[cur] = ord_id++;\n            bool is_articulation =\
-    \ false;\n            for (auto&& e : g[cur]) {\n                if (ord[e.to]\
+    \ 1 != (int)(g.size())) os << \", \";\n        }\n        return os << \"]\";\n\
+    \    }\n};\n#line 4 \"graph/low_link.hpp\"\n\ntemplate <class T> struct LowLink\
+    \ {\n    int n;\n    std::vector<int> ord, low;\n    std::vector<std::vector<int>>\
+    \ dfs_tree;\n    std::vector<int> articulations;\n    std::vector<std::pair<int,\
+    \ int>> bridges;  // edges {u, v} (u < v)\n    std::vector<int> roots;\n\n   \
+    \ LowLink(Graph<T>& g) : n((int)(g.size())), ord(n, -1), low(n, -1), dfs_tree(n)\
+    \ {\n        int ord_id = 0;\n        auto dfs = [&](auto f, int cur, int par)\
+    \ -> void {\n            low[cur] = ord[cur] = ord_id++;\n            bool is_articulation\
+    \ = false;\n            for (auto&& e : g[cur]) {\n                if (ord[e.to]\
     \ == -1) {\n                    // DFS \u6728\u4E0A\u306E\u8FBA\u306B\u5BFE\u3059\
     \u308B\u51E6\u7406\n                    f(f, e.to, cur);\n                   \
     \ dfs_tree[cur].push_back(e.to);\n                    // e \u304C DFS \u6728\u306B\
@@ -129,7 +130,7 @@ data:
   isVerificationFile: false
   path: graph/low_link.hpp
   requiredBy: []
-  timestamp: '2024-07-31 16:51:10+09:00'
+  timestamp: '2024-07-31 21:19:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/low_link_1.test.cpp
@@ -139,5 +140,14 @@ layout: document
 title: "Low Link (\u95A2\u7BC0\u70B9\u30FB\u6A4B)"
 ---
 
-- `LowLink llink(G);` で作成
-- `llink.articulations` に関節点が、`llink.bridges` に橋となる辺が含まれる
+## 使い方
+
+```cpp
+Graph<T> g;
+LowLink lk(g);
+auto articulations = lk.articulations    // 関節点の集合
+auto bridges = lk.bridges          // 橋である辺の集合
+```
+
+## 参考文献
+

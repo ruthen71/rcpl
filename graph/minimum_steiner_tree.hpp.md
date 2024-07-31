@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/unionfind.hpp
     title: UnionFind
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -26,7 +26,8 @@ data:
     \n\n#line 5 \"graph/graph_template.hpp\"\n\ntemplate <class T> struct Edge {\n\
     \    int from, to;\n    T cost;\n    int id;\n\n    Edge() = default;\n    Edge(const\
     \ int from, const int to, const T cost = T(1), const int id = -1) : from(from),\
-    \ to(to), cost(cost), id(id) {}\n\n    friend std::ostream& operator<<(std::ostream&\
+    \ to(to), cost(cost), id(id) {}\n\n    friend bool operator<(const Edge<T>& a,\
+    \ const Edge<T>& b) { return a.cost < b.cost; }\n\n    friend std::ostream& operator<<(std::ostream&\
     \ os, const Edge<T>& e) {\n        // output format: {id: cost(from, to) = cost}\n\
     \        return os << \"{\" << e.id << \": cost(\" << e.from << \", \" << e.to\
     \ << \") = \" << e.cost << \"}\";\n    }\n};\ntemplate <class T> using Edges =\
@@ -58,12 +59,12 @@ data:
     \ operator[](int i) {\n        if (!is_build) build();\n        return EdgeIterators(csr_edges.begin()\
     \ + start[i], csr_edges.begin() + start[i + 1]);\n    }\n\n    size_t size() const\
     \ { return (size_t)(n); }\n\n    friend std::ostream& operator<<(std::ostream&\
-    \ os, Graph<T>& g) {\n        os << \"[\";\n        for (int i = 0; i < g.size();\
-    \ i++) {\n            os << \"[\";\n            for (int j = 0; j < g[i].size();\
-    \ j++) {\n                os << g[i][j];\n                if (j + 1 != g[i].size())\
+    \ os, Graph<T>& g) {\n        os << \"[\";\n        for (int i = 0; i < (int)(g.size());\
+    \ i++) {\n            os << \"[\";\n            for (int j = 0; j < (int)(g[i].size());\
+    \ j++) {\n                os << g[i][j];\n                if (j + 1 != (int)(g[i].size()))\
     \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
-    \ 1 != g.size()) os << \", \";\n        }\n        return os << \"]\";\n    }\n\
-    };\n#line 2 \"data_structure/unionfind.hpp\"\n\n#line 5 \"data_structure/unionfind.hpp\"\
+    \ 1 != (int)(g.size())) os << \", \";\n        }\n        return os << \"]\";\n\
+    \    }\n};\n#line 2 \"data_structure/unionfind.hpp\"\n\n#line 5 \"data_structure/unionfind.hpp\"\
     \n\nstruct UnionFind {\n    int n;\n    std::vector<int> parents;\n\n    UnionFind()\
     \ {}\n    UnionFind(int n) : n(n), parents(n, -1) {}\n\n    int leader(int x)\
     \ { return parents[x] < 0 ? x : parents[x] = leader(parents[x]); }\n\n    bool\
@@ -204,7 +205,7 @@ data:
   isVerificationFile: false
   path: graph/minimum_steiner_tree.hpp
   requiredBy: []
-  timestamp: '2024-07-31 17:25:29+09:00'
+  timestamp: '2024-07-31 21:19:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/minimum_steiner_tree.test.cpp
@@ -214,6 +215,8 @@ title: "Minimum Steiner Tree (\u6700\u5C0F\u30B7\u30E5\u30BF\u30A4\u30CA\u30FC\u
   )"
 ---
 
+## 使い方
+
 - `minimum_steiner_tree(g, terminals, inf)`
     - $ O(3 ^ k n + 2 ^ k m \log m) $
     - 戻り値は dp の配列
@@ -221,4 +224,6 @@ title: "Minimum Steiner Tree (\u6700\u5C0F\u30B7\u30E5\u30BF\u30A4\u30CA\u30FC\u
     - ほとんどの頂点がターミナル点であるときに残りの点のうち使うものを全探索することで解く方法
     - $ O(2 ^ {n - k} (n + m)) $
     - 戻り値は最小シュタイナー木の辺の重みの総和
+
+## 参考文献
 

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -18,7 +18,8 @@ data:
     \n\n#include <vector>\n#include <cassert>\n\ntemplate <class T> struct Edge {\n\
     \    int from, to;\n    T cost;\n    int id;\n\n    Edge() = default;\n    Edge(const\
     \ int from, const int to, const T cost = T(1), const int id = -1) : from(from),\
-    \ to(to), cost(cost), id(id) {}\n\n    friend std::ostream& operator<<(std::ostream&\
+    \ to(to), cost(cost), id(id) {}\n\n    friend bool operator<(const Edge<T>& a,\
+    \ const Edge<T>& b) { return a.cost < b.cost; }\n\n    friend std::ostream& operator<<(std::ostream&\
     \ os, const Edge<T>& e) {\n        // output format: {id: cost(from, to) = cost}\n\
     \        return os << \"{\" << e.id << \": cost(\" << e.from << \", \" << e.to\
     \ << \") = \" << e.cost << \"}\";\n    }\n};\ntemplate <class T> using Edges =\
@@ -50,19 +51,20 @@ data:
     \ operator[](int i) {\n        if (!is_build) build();\n        return EdgeIterators(csr_edges.begin()\
     \ + start[i], csr_edges.begin() + start[i + 1]);\n    }\n\n    size_t size() const\
     \ { return (size_t)(n); }\n\n    friend std::ostream& operator<<(std::ostream&\
-    \ os, Graph<T>& g) {\n        os << \"[\";\n        for (int i = 0; i < g.size();\
-    \ i++) {\n            os << \"[\";\n            for (int j = 0; j < g[i].size();\
-    \ j++) {\n                os << g[i][j];\n                if (j + 1 != g[i].size())\
+    \ os, Graph<T>& g) {\n        os << \"[\";\n        for (int i = 0; i < (int)(g.size());\
+    \ i++) {\n            os << \"[\";\n            for (int j = 0; j < (int)(g[i].size());\
+    \ j++) {\n                os << g[i][j];\n                if (j + 1 != (int)(g[i].size()))\
     \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
-    \ 1 != g.size()) os << \", \";\n        }\n        return os << \"]\";\n    }\n\
-    };\n#line 4 \"graph/traveling_salesman_problem.hpp\"\n\ntemplate <class T> std::vector<std::vector<T>>\
-    \ traveling_salesman_problem(Graph<T>& g, const T inf) {\n    const int n = (int)(g.size());\n\
-    \    const int n2 = 1 << n;\n\n    std::vector dp(n2, std::vector<T>(n, inf));\n\
-    \    dp[0][0] = 0;\n    for (int bit = 0; bit < n2; bit++) {\n        for (int\
-    \ u = 0; u < n; u++) {\n            if (dp[bit][u] == inf) continue;\n       \
-    \     for (auto&& e : g[u]) {\n                if (bit >> e.to & 1) continue;\n\
-    \                dp[bit | (1 << e.to)][e.to] = std::min(dp[bit | (1 << e.to)][e.to],\
-    \ dp[bit][u] + e.cost);\n            }\n        }\n    }\n    return dp;\n}\n"
+    \ 1 != (int)(g.size())) os << \", \";\n        }\n        return os << \"]\";\n\
+    \    }\n};\n#line 4 \"graph/traveling_salesman_problem.hpp\"\n\ntemplate <class\
+    \ T> std::vector<std::vector<T>> traveling_salesman_problem(Graph<T>& g, const\
+    \ T inf) {\n    const int n = (int)(g.size());\n    const int n2 = 1 << n;\n\n\
+    \    std::vector dp(n2, std::vector<T>(n, inf));\n    dp[0][0] = 0;\n    for (int\
+    \ bit = 0; bit < n2; bit++) {\n        for (int u = 0; u < n; u++) {\n       \
+    \     if (dp[bit][u] == inf) continue;\n            for (auto&& e : g[u]) {\n\
+    \                if (bit >> e.to & 1) continue;\n                dp[bit | (1 <<\
+    \ e.to)][e.to] = std::min(dp[bit | (1 << e.to)][e.to], dp[bit][u] + e.cost);\n\
+    \            }\n        }\n    }\n    return dp;\n}\n"
   code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\ntemplate <class\
     \ T> std::vector<std::vector<T>> traveling_salesman_problem(Graph<T>& g, const\
     \ T inf) {\n    const int n = (int)(g.size());\n    const int n2 = 1 << n;\n\n\
@@ -77,7 +79,7 @@ data:
   isVerificationFile: false
   path: graph/traveling_salesman_problem.hpp
   requiredBy: []
-  timestamp: '2024-07-31 16:51:10+09:00'
+  timestamp: '2024-07-31 21:19:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/traveling_salesman_problem.test.cpp
@@ -87,8 +89,21 @@ title: "Traveling Salesman Problem (\u5DE1\u56DE\u30BB\u30FC\u30EB\u30B9\u30DE\u
   \u554F\u984C)"
 ---
 
-- 初期化 (TSP = 最短ハミルトン閉路問題の場合)
-    - TSP は閉路なのでどこを始点にしても良い
+## 使い方
+
+```cpp
+Graph<T> g;
+const T INF;
+auto res = traveling_salesman_problem<T>(g, INF);
+// res.back()[0] が 答え
+```
+
+初期化
+
+- 最短ハミルトン閉路問題 (= TSP) の場合
+    - 始点は任意
     - 始点を `s` とすると、「まだどこにも行ってないけど `s` にいる」ので `dp[0][s] = 0`
-- 初期化 (最短ハミルトン路問題の場合)
+- 最短ハミルトン路問題の場合
     - 始点を `s` とすると、「 `s` は訪問済みと考えて良い」ので `dp[1 << s][s] = 0`
+
+## 参考文献

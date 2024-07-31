@@ -1,14 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify/graph/shortest_path_tree.test.cpp
+    title: verify/graph/shortest_path_tree.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://atcoder.jp/contests/abc252/tasks/abc252_e
@@ -17,11 +20,12 @@ data:
     \n\ntemplate <class T> struct Edge {\n    int from, to;\n    T cost;\n    int\
     \ id;\n\n    Edge() = default;\n    Edge(const int from, const int to, const T\
     \ cost = T(1), const int id = -1) : from(from), to(to), cost(cost), id(id) {}\n\
-    \n    friend std::ostream& operator<<(std::ostream& os, const Edge<T>& e) {\n\
-    \        // output format: {id: cost(from, to) = cost}\n        return os << \"\
-    {\" << e.id << \": cost(\" << e.from << \", \" << e.to << \") = \" << e.cost <<\
-    \ \"}\";\n    }\n};\ntemplate <class T> using Edges = std::vector<Edge<T>>;\n\n\
-    template <class T> struct Graph {\n    struct EdgeIterators {\n       public:\n\
+    \n    friend bool operator<(const Edge<T>& a, const Edge<T>& b) { return a.cost\
+    \ < b.cost; }\n\n    friend std::ostream& operator<<(std::ostream& os, const Edge<T>&\
+    \ e) {\n        // output format: {id: cost(from, to) = cost}\n        return\
+    \ os << \"{\" << e.id << \": cost(\" << e.from << \", \" << e.to << \") = \" <<\
+    \ e.cost << \"}\";\n    }\n};\ntemplate <class T> using Edges = std::vector<Edge<T>>;\n\
+    \ntemplate <class T> struct Graph {\n    struct EdgeIterators {\n       public:\n\
     \        using Iterator = typename std::vector<Edge<T>>::iterator;\n        EdgeIterators()\
     \ = default;\n        EdgeIterators(const Iterator& begit, const Iterator& endit)\
     \ : begit(begit), endit(endit) {}\n        Iterator begin() const { return begit;\
@@ -49,12 +53,12 @@ data:
     \ operator[](int i) {\n        if (!is_build) build();\n        return EdgeIterators(csr_edges.begin()\
     \ + start[i], csr_edges.begin() + start[i + 1]);\n    }\n\n    size_t size() const\
     \ { return (size_t)(n); }\n\n    friend std::ostream& operator<<(std::ostream&\
-    \ os, Graph<T>& g) {\n        os << \"[\";\n        for (int i = 0; i < g.size();\
-    \ i++) {\n            os << \"[\";\n            for (int j = 0; j < g[i].size();\
-    \ j++) {\n                os << g[i][j];\n                if (j + 1 != g[i].size())\
+    \ os, Graph<T>& g) {\n        os << \"[\";\n        for (int i = 0; i < (int)(g.size());\
+    \ i++) {\n            os << \"[\";\n            for (int j = 0; j < (int)(g[i].size());\
+    \ j++) {\n                os << g[i][j];\n                if (j + 1 != (int)(g[i].size()))\
     \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
-    \ 1 != g.size()) os << \", \";\n        }\n        return os << \"]\";\n    }\n\
-    };\n#line 6 \"graph/shortest_path_tree.hpp\"\n\n// https://atcoder.jp/contests/abc252/tasks/abc252_e\n\
+    \ 1 != (int)(g.size())) os << \", \";\n        }\n        return os << \"]\";\n\
+    \    }\n};\n#line 6 \"graph/shortest_path_tree.hpp\"\n\n// https://atcoder.jp/contests/abc252/tasks/abc252_e\n\
     // \u6700\u77ED\u7D4C\u8DEF\u6728\u306E\u3046\u3061\u306E 1 \u3064\u3092\u8FD4\
     \u3059\ntemplate <class T> Graph<T> shortest_path_tree(Graph<T>& g, std::vector<T>&\
     \ dist, std::vector<int>& par) {\n    const int n = (int)(g.size());\n    Graph<T>\
@@ -79,9 +83,10 @@ data:
   isVerificationFile: false
   path: graph/shortest_path_tree.hpp
   requiredBy: []
-  timestamp: '2024-07-31 16:51:10+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2024-07-31 21:19:59+09:00'
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - verify/graph/shortest_path_tree.test.cpp
 documentation_of: graph/shortest_path_tree.hpp
 layout: document
 title: "Shortest Path Tree (\u6700\u77ED\u7D4C\u8DEF\u6728)"
@@ -98,5 +103,4 @@ auto [d, p, r] = dijkstra(g, s, inf);   // zero_one_bfs, bellman_ford でも OK
 auto sptree = shortest_path_tree(g, p); // 最短経路木の 1 つが得られる
 ```
 
-## 使用例
-- [ABC252 E](https://atcoder.jp/contests/abc252/submissions/56095660)
+## 参考文献
