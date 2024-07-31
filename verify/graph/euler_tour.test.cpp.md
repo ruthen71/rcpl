@@ -108,14 +108,12 @@ data:
     \ \u89AA\u65B9\u5411\u306E\u8FBA\u3092\u8FFD\u52A0\n                edges.emplace_back(e.id);\n\
     \                dir.emplace_back(1);\n            }\n            // \u9802\u70B9\
     \u3092\u8FFD\u52A0\n            vertices.emplace_back(cur);\n        };\n    \
-    \    dfs(dfs, root, -1);\n        for (int i = 0; i < 2 * n - 1; i++) {\n    \
-    \        vsl[vertices[i]] = std::min(vsl[vertices[i]], i);\n            vsr[vertices[i]]\
-    \ = std::max(vsr[vertices[i]], i);\n        }\n        for (int i = 0; i < 2 *\
-    \ n - 2; i++) {\n            if (dir[i] == 0) {\n                esl[edges[i]]\
-    \ = i;\n            } else {\n                esr[edges[i]] = i;\n           \
-    \ }\n        }\n    }\n};\n#line 4 \"data_structure/segment_tree.hpp\"\ntemplate\
-    \ <class MS> struct SegmentTree {\n   public:\n    using S = typename MS::S;\n\
-    \    SegmentTree() : SegmentTree(0) {}\n    SegmentTree(int n) : SegmentTree(std::vector<S>(n,\
+    \    dfs(dfs, root, -1);\n        for (int i = 2 * n - 2; i >= 0; i--) vsl[vertices[i]]\
+    \ = i;\n        for (int i = 0; i < 2 * n - 1; i++) vsr[vertices[i]] = i;\n  \
+    \      for (int i = 0; i < 2 * n - 2; i++) (dir[i] == 0 ? esl[edges[i]] : esr[edges[i]])\
+    \ = i;\n    }\n};\n#line 4 \"data_structure/segment_tree.hpp\"\ntemplate <class\
+    \ MS> struct SegmentTree {\n   public:\n    using S = typename MS::S;\n    SegmentTree()\
+    \ : SegmentTree(0) {}\n    SegmentTree(int n) : SegmentTree(std::vector<S>(n,\
     \ MS::e())) {}\n    SegmentTree(const std::vector<S>& v) : n((int)(v.size()))\
     \ {\n        log = 0;\n        while ((1U << log) < (unsigned int)(n)) log++;\n\
     \        size = 1 << log;\n        d = std::vector<S>(size << 1, MS::e());\n \
@@ -194,7 +192,7 @@ data:
   isVerificationFile: true
   path: verify/graph/euler_tour.test.cpp
   requiredBy: []
-  timestamp: '2024-08-01 05:02:04+09:00'
+  timestamp: '2024-08-01 05:24:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/euler_tour.test.cpp

@@ -84,12 +84,10 @@ data:
     \ \u89AA\u65B9\u5411\u306E\u8FBA\u3092\u8FFD\u52A0\n                edges.emplace_back(e.id);\n\
     \                dir.emplace_back(1);\n            }\n            // \u9802\u70B9\
     \u3092\u8FFD\u52A0\n            vertices.emplace_back(cur);\n        };\n    \
-    \    dfs(dfs, root, -1);\n        for (int i = 0; i < 2 * n - 1; i++) {\n    \
-    \        vsl[vertices[i]] = std::min(vsl[vertices[i]], i);\n            vsr[vertices[i]]\
-    \ = std::max(vsr[vertices[i]], i);\n        }\n        for (int i = 0; i < 2 *\
-    \ n - 2; i++) {\n            if (dir[i] == 0) {\n                esl[edges[i]]\
-    \ = i;\n            } else {\n                esr[edges[i]] = i;\n           \
-    \ }\n        }\n    }\n};\n"
+    \    dfs(dfs, root, -1);\n        for (int i = 2 * n - 2; i >= 0; i--) vsl[vertices[i]]\
+    \ = i;\n        for (int i = 0; i < 2 * n - 1; i++) vsr[vertices[i]] = i;\n  \
+    \      for (int i = 0; i < 2 * n - 2; i++) (dir[i] == 0 ? esl[edges[i]] : esr[edges[i]])\
+    \ = i;\n    }\n};\n"
   code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\n#include <tuple>\n\
     \n// Euler Tour\n// complexity: O(N + M)\n// \u8FBA\u3068\u9802\u70B9\u306E\u3046\
     \u3061, \u5909\u5316\u3055\u305B\u308B\u3082\u306E\u3092\u8981\u7D20\u3068\u898B\
@@ -118,18 +116,16 @@ data:
     \ \u89AA\u65B9\u5411\u306E\u8FBA\u3092\u8FFD\u52A0\n                edges.emplace_back(e.id);\n\
     \                dir.emplace_back(1);\n            }\n            // \u9802\u70B9\
     \u3092\u8FFD\u52A0\n            vertices.emplace_back(cur);\n        };\n    \
-    \    dfs(dfs, root, -1);\n        for (int i = 0; i < 2 * n - 1; i++) {\n    \
-    \        vsl[vertices[i]] = std::min(vsl[vertices[i]], i);\n            vsr[vertices[i]]\
-    \ = std::max(vsr[vertices[i]], i);\n        }\n        for (int i = 0; i < 2 *\
-    \ n - 2; i++) {\n            if (dir[i] == 0) {\n                esl[edges[i]]\
-    \ = i;\n            } else {\n                esr[edges[i]] = i;\n           \
-    \ }\n        }\n    }\n};"
+    \    dfs(dfs, root, -1);\n        for (int i = 2 * n - 2; i >= 0; i--) vsl[vertices[i]]\
+    \ = i;\n        for (int i = 0; i < 2 * n - 1; i++) vsr[vertices[i]] = i;\n  \
+    \      for (int i = 0; i < 2 * n - 2; i++) (dir[i] == 0 ? esl[edges[i]] : esr[edges[i]])\
+    \ = i;\n    }\n};"
   dependsOn:
   - graph/graph_template.hpp
   isVerificationFile: false
   path: graph/euler_tour.hpp
   requiredBy: []
-  timestamp: '2024-08-01 05:02:04+09:00'
+  timestamp: '2024-08-01 05:24:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/euler_tour.test.cpp
@@ -146,7 +142,7 @@ EulerTour et(g);
 // et.vertices, et.edges, et.dir, et.vsl, et.vsr, et.esl, et.esr が利用可能
 ```
 
-$N = 5$ 頂点の木で辺が $E = \{ \{0, 1\}, \{0, 2\}, \{2, 3\}, \{2, 4\} \}$ である場合は以下のようになる
+$ N = 5 $ 頂点の木で辺が $ E = \left( \lbrace 0, 1\rbrace, \lbrace 0, 2\rbrace, \lbrace2, 3\rbrace, \lbrace 2, 4\rbrace \right) $ である場合は以下のようになる
 
 
 ```txt
