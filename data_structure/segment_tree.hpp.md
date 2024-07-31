@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/graph/euler_tour.test.cpp
+    title: verify/graph/euler_tour.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
     title: verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
   - icon: ':heavy_check_mark:'
@@ -110,6 +113,7 @@ data:
   timestamp: '2024-07-13 11:37:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/graph/euler_tour.test.cpp
   - verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp
   - verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
   - verify/yuki/yuki_1036_segment_tree.test.cpp

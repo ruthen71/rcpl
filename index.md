@@ -318,7 +318,7 @@ data:
     - icon: ':question:'
       path: graph/dijkstra.hpp
       title: "Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: graph/euler_tour.hpp
       title: "Euler Tour (\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
     - icon: ':question:'
@@ -655,6 +655,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/dijkstra.test.cpp
       title: verify/graph/dijkstra.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/euler_tour.test.cpp
+      title: verify/graph/euler_tour.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/graph/kruskal.test.cpp
       title: verify/graph/kruskal.test.cpp

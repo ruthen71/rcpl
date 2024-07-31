@@ -20,14 +20,16 @@ data:
   _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://atcoder.jp/contests/abc252/tasks/abc252_e
+    IGNORE: ''
+    IGNORE_IF_CLANG: ''
+    IGNORE_IF_GCC: ''
     links:
     - https://atcoder.jp/contests/abc252/tasks/abc252_e
   bundledCode: "#line 1 \"verify/graph/shortest_path_tree.test.cpp\"\n#define PROBLEM\
-    \ \"https://atcoder.jp/contests/abc252/tasks/abc252_e\"\n\n#include <iostream>\n\
-    \n#line 2 \"graph/read_graph.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\n\n\
-    #include <vector>\n#include <cassert>\n\ntemplate <class T> struct Edge {\n  \
-    \  int from, to;\n    T cost;\n    int id;\n\n    Edge() = default;\n    Edge(const\
+    \ \"https://atcoder.jp/contests/abc252/tasks/abc252_e\"\n#define IGNORE\n\n#include\
+    \ <iostream>\n\n#line 2 \"graph/read_graph.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
+    \n\n#include <vector>\n#include <cassert>\n\ntemplate <class T> struct Edge {\n\
+    \    int from, to;\n    T cost;\n    int id;\n\n    Edge() = default;\n    Edge(const\
     \ int from, const int to, const T cost = T(1), const int id = -1) : from(from),\
     \ to(to), cost(cost), id(id) {}\n\n    friend bool operator<(const Edge<T>& a,\
     \ const Edge<T>& b) { return a.cost < b.cost; }\n\n    friend std::ostream& operator<<(std::ostream&\
@@ -99,7 +101,7 @@ data:
     \ + e.cost == dist[e.to]) {\n            sptree.add_edge(e.from, e.to, e.cost,\
     \ e.id);\n        }\n        if (!g.is_directed and par[e.from] == e.to and dist[e.to]\
     \ + e.cost == dist[e.from]) {\n            if (par[e.from] == e.to) sptree.add_edge(e.to,\
-    \ e.from, e.cost, e.id);\n        }\n    }\n    return sptree;\n}\n#line 8 \"\
+    \ e.from, e.cost, e.id);\n        }\n    }\n    return sptree;\n}\n#line 9 \"\
     verify/graph/shortest_path_tree.test.cpp\"\n\nint main() {\n    int N, M;\n  \
     \  std::cin >> N >> M;\n    auto g = read_graph<long long>(N, M, true, false,\
     \ 1);\n    std::vector<int> s = {0};\n    const long long INF = 1LL << 60;\n \
@@ -107,12 +109,12 @@ data:
     \ d, p);\n    std::vector<int> ans;\n    for (auto&& e : sptree.edges) ans.push_back(e.id\
     \ + 1);\n    for (int i = 0; i < (int)(ans.size()); i++) {\n        std::cout\
     \ << ans[i] << \" \\n\"[i + 1 == (int)(ans.size())];\n    }\n    return 0;\n}\n"
-  code: "#define PROBLEM \"https://atcoder.jp/contests/abc252/tasks/abc252_e\"\n\n\
-    #include <iostream>\n\n#include \"graph/read_graph.hpp\"\n#include \"graph/dijkstra.hpp\"\
-    \n#include \"graph/shortest_path_tree.hpp\"\n\nint main() {\n    int N, M;\n \
-    \   std::cin >> N >> M;\n    auto g = read_graph<long long>(N, M, true, false,\
-    \ 1);\n    std::vector<int> s = {0};\n    const long long INF = 1LL << 60;\n \
-    \   auto [d, p, r] = dijkstra(g, s, INF);\n    auto sptree = shortest_path_tree(g,\
+  code: "#define PROBLEM \"https://atcoder.jp/contests/abc252/tasks/abc252_e\"\n#define\
+    \ IGNORE\n\n#include <iostream>\n\n#include \"graph/read_graph.hpp\"\n#include\
+    \ \"graph/dijkstra.hpp\"\n#include \"graph/shortest_path_tree.hpp\"\n\nint main()\
+    \ {\n    int N, M;\n    std::cin >> N >> M;\n    auto g = read_graph<long long>(N,\
+    \ M, true, false, 1);\n    std::vector<int> s = {0};\n    const long long INF\
+    \ = 1LL << 60;\n    auto [d, p, r] = dijkstra(g, s, INF);\n    auto sptree = shortest_path_tree(g,\
     \ d, p);\n    std::vector<int> ans;\n    for (auto&& e : sptree.edges) ans.push_back(e.id\
     \ + 1);\n    for (int i = 0; i < (int)(ans.size()); i++) {\n        std::cout\
     \ << ans[i] << \" \\n\"[i + 1 == (int)(ans.size())];\n    }\n    return 0;\n}"
@@ -124,7 +126,7 @@ data:
   isVerificationFile: true
   path: verify/graph/shortest_path_tree.test.cpp
   requiredBy: []
-  timestamp: '2024-07-31 21:19:59+09:00'
+  timestamp: '2024-08-01 05:02:04+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/graph/shortest_path_tree.test.cpp

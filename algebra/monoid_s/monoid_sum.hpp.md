@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/graph/euler_tour.test.cpp
+    title: verify/graph/euler_tour.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
     title: verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
   _isVerificationFailed: false
@@ -24,6 +27,7 @@ data:
   timestamp: '2024-03-24 17:04:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/graph/euler_tour.test.cpp
   - verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
 documentation_of: algebra/monoid_s/monoid_sum.hpp
 layout: document

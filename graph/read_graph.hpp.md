@@ -16,6 +16,9 @@ data:
     path: verify/graph/dijkstra.test.cpp
     title: verify/graph/dijkstra.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/graph/euler_tour.test.cpp
+    title: verify/graph/euler_tour.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/graph/kruskal.test.cpp
     title: verify/graph/kruskal.test.cpp
   - icon: ':heavy_check_mark:'
@@ -138,6 +141,7 @@ data:
   - verify/graph/dijkstra.test.cpp
   - verify/graph/traveling_salesman_problem.test.cpp
   - verify/graph/low_link_2.test.cpp
+  - verify/graph/euler_tour.test.cpp
   - verify/graph/tree_diameter.test.cpp
   - verify/graph/zero_one_bfs.test.cpp
 documentation_of: graph/read_graph.hpp
