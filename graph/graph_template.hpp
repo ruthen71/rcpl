@@ -80,14 +80,14 @@ template <class T> struct Graph {
 
     friend std::ostream& operator<<(std::ostream& os, Graph<T>& g) {
         os << "[";
-        for (int i = 0; i < g.size(); i++) {
+        for (int i = 0; i < (int)(g.size()); i++) {
             os << "[";
-            for (int j = 0; j < g[i].size(); j++) {
+            for (int j = 0; j < (int)(g[i].size()); j++) {
                 os << g[i][j];
-                if (j + 1 != g[i].size()) os << ", ";
+                if (j + 1 != (int)(g[i].size())) os << ", ";
             }
             os << "]";
-            if (i + 1 != g.size()) os << ", ";
+            if (i + 1 != (int)(g.size())) os << ", ";
         }
         return os << "]";
     }
