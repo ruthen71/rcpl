@@ -1,4 +1,4 @@
-#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_4_B"
+#define PROBLEM "https://atcoder.jp/contests/abc223/tasks/abc223_d"
 
 #include <iostream>
 
@@ -8,8 +8,12 @@
 int main() {
     int N, M;
     std::cin >> N >> M;
-    auto g = read_graph<int>(N, M, false, true, 0);
+    auto g = read_graph<int>(N, M, false, true, 1);
     auto vec = topological_sort(g);
-    for (auto&& e : vec) std::cout << e << '\n';
+    if ((int)(vec.size()) != N) {
+        std::cout << -1 << '\n';
+    } else {
+        for (int i = 0; i < N; i++) std::cout << vec[i] + 1 << " \n"[i + 1 == N];
+    }
     return 0;
 }
