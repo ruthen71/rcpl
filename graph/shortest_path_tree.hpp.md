@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -30,21 +30,21 @@ data:
     \ const { return begit[i]; }\n\n       private:\n        Iterator begit, endit;\n\
     \    };\n\n    int n, m;\n    bool is_build, is_directed;\n    std::vector<Edge<T>>\
     \ edges;\n\n    // CSR (Compressed Row Storage) \u5F62\u5F0F\u7528\n    std::vector<int>\
-    \ start;\n    std::vector<Edge<T>> csr_edges;\n\n    Graph() : Graph(0) {}\n \
-    \   Graph(const int n, const bool directed = false) : n(n), m(0), is_build(false),\
-    \ is_directed(directed), start(n + 1, 0) {}\n\n    // \u8FBA\u3092\u8FFD\u52A0\
-    \u3057, \u305D\u306E\u8FBA\u304C\u4F55\u756A\u76EE\u306B\u8FFD\u52A0\u3055\u308C\
-    \u305F\u304B\u3092\u8FD4\u3059\n    int add_edge(const int from, const int to,\
-    \ const T cost = T(1), int id = -1) {\n        assert(!is_build);\n        assert(0\
-    \ <= from and from < n);\n        assert(0 <= to and to < n);\n        if (id\
-    \ == -1) id = m;\n        edges.emplace_back(from, to, cost, id);\n        return\
-    \ m++;\n    }\n\n    // CSR \u5F62\u5F0F\u3067\u30B0\u30E9\u30D5\u3092\u69CB\u7BC9\
-    \n    void build() {\n        assert(!is_build);\n        for (auto&& e : edges)\
-    \ {\n            start[e.from + 1]++;\n            if (!is_directed) start[e.to\
-    \ + 1]++;\n        }\n        for (int v = 0; v < n; v++) start[v + 1] += start[v];\n\
-    \        auto counter = start;\n        csr_edges.resize(start.back() + 1);\n\
-    \        for (auto&& e : edges) {\n            csr_edges[counter[e.from]++] =\
-    \ e;\n            if (!is_directed) csr_edges[counter[e.to]++] = Edge(e.to, e.from,\
+    \ start;\n    std::vector<Edge<T>> csr_edges;\n\n    Graph() = default;\n    Graph(const\
+    \ int n, const bool directed = false) : n(n), m(0), is_build(false), is_directed(directed),\
+    \ start(n + 1, 0) {}\n\n    // \u8FBA\u3092\u8FFD\u52A0\u3057, \u305D\u306E\u8FBA\
+    \u304C\u4F55\u756A\u76EE\u306B\u8FFD\u52A0\u3055\u308C\u305F\u304B\u3092\u8FD4\
+    \u3059\n    int add_edge(const int from, const int to, const T cost = T(1), int\
+    \ id = -1) {\n        assert(!is_build);\n        assert(0 <= from and from <\
+    \ n);\n        assert(0 <= to and to < n);\n        if (id == -1) id = m;\n  \
+    \      edges.emplace_back(from, to, cost, id);\n        return m++;\n    }\n\n\
+    \    // CSR \u5F62\u5F0F\u3067\u30B0\u30E9\u30D5\u3092\u69CB\u7BC9\n    void build()\
+    \ {\n        assert(!is_build);\n        for (auto&& e : edges) {\n          \
+    \  start[e.from + 1]++;\n            if (!is_directed) start[e.to + 1]++;\n  \
+    \      }\n        for (int v = 0; v < n; v++) start[v + 1] += start[v];\n    \
+    \    auto counter = start;\n        csr_edges.resize(start.back() + 1);\n    \
+    \    for (auto&& e : edges) {\n            csr_edges[counter[e.from]++] = e;\n\
+    \            if (!is_directed) csr_edges[counter[e.to]++] = Edge(e.to, e.from,\
     \ e.cost, e.id);\n        }\n        is_build = true;\n    }\n\n    EdgeIterators\
     \ operator[](int i) {\n        if (!is_build) build();\n        return EdgeIterators(csr_edges.begin()\
     \ + start[i], csr_edges.begin() + start[i + 1]);\n    }\n\n    size_t size() const\
@@ -79,7 +79,7 @@ data:
   isVerificationFile: false
   path: graph/shortest_path_tree.hpp
   requiredBy: []
-  timestamp: '2024-07-29 02:05:39+09:00'
+  timestamp: '2024-07-31 16:51:10+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: graph/shortest_path_tree.hpp

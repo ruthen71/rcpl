@@ -1,14 +1,20 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':x:'
+    path: graph/tree_diameter.hpp
+    title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
-    title: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: verify/graph/dijkstra.test.cpp
+    title: verify/graph/dijkstra.test.cpp
+  - icon: ':x:'
+    path: verify/graph/tree_diameter.test.cpp
+    title: verify/graph/tree_diameter.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/restore_path.hpp\"\n\n#include <vector>\n// restore\
@@ -23,11 +29,13 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: graph/restore_path.hpp
-  requiredBy: []
+  requiredBy:
+  - graph/tree_diameter.hpp
   timestamp: '2024-05-26 20:33:30+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
+  - verify/graph/dijkstra.test.cpp
+  - verify/graph/tree_diameter.test.cpp
 documentation_of: graph/restore_path.hpp
 layout: document
 title: Restore path

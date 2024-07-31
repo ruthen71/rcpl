@@ -1,30 +1,31 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-  - icon: ':heavy_check_mark:'
-    path: graph/lowest_common_ancestor.hpp
-    title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/read_graph.hpp
     title: "\u30B0\u30E9\u30D5\u5165\u529B\u30E9\u30A4\u30D6\u30E9\u30EA"
+  - icon: ':x:'
+    path: graph/topological_sort.hpp
+    title: "Topological Sort (\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8\
+      )"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/lca
+    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_4_B
     links:
-    - https://judge.yosupo.jp/problem/lca
-  bundledCode: "#line 1 \"verify/lc_tree/lc_lowest_common_ancestor.test.cpp\"\n#define\
-    \ PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include <bits/stdc++.h>\n\
-    \n#line 2 \"graph/read_graph.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\n\n\
-    #line 5 \"graph/graph_template.hpp\"\n\ntemplate <class T> struct Edge {\n   \
-    \ int from, to;\n    T cost;\n    int id;\n\n    Edge() = default;\n    Edge(const\
+    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_4_B
+  bundledCode: "#line 1 \"verify/graph/topological_sort.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_4_B\"\n\n#include\
+    \ <iostream>\n\n#line 2 \"graph/read_graph.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
+    \n\n#include <vector>\n#include <cassert>\n\ntemplate <class T> struct Edge {\n\
+    \    int from, to;\n    T cost;\n    int id;\n\n    Edge() = default;\n    Edge(const\
     \ int from, const int to, const T cost = T(1), const int id = -1) : from(from),\
     \ to(to), cost(cost), id(id) {}\n\n    friend std::ostream& operator<<(std::ostream&\
     \ os, const Edge<T>& e) {\n        // output format: {id: cost(from, to) = cost}\n\
@@ -40,9 +41,9 @@ data:
     \ begit, endit;\n    };\n\n    int n, m;\n    bool is_build, is_directed;\n  \
     \  std::vector<Edge<T>> edges;\n\n    // CSR (Compressed Row Storage) \u5F62\u5F0F\
     \u7528\n    std::vector<int> start;\n    std::vector<Edge<T>> csr_edges;\n\n \
-    \   Graph() : Graph(0) {}\n    Graph(const int n, const bool directed = false)\
-    \ : n(n), m(0), is_build(false), is_directed(directed), start(n + 1, 0) {}\n\n\
-    \    // \u8FBA\u3092\u8FFD\u52A0\u3057, \u305D\u306E\u8FBA\u304C\u4F55\u756A\u76EE\
+    \   Graph() = default;\n    Graph(const int n, const bool directed = false) :\
+    \ n(n), m(0), is_build(false), is_directed(directed), start(n + 1, 0) {}\n\n \
+    \   // \u8FBA\u3092\u8FFD\u52A0\u3057, \u305D\u306E\u8FBA\u304C\u4F55\u756A\u76EE\
     \u306B\u8FFD\u52A0\u3055\u308C\u305F\u304B\u3092\u8FD4\u3059\n    int add_edge(const\
     \ int from, const int to, const T cost = T(1), int id = -1) {\n        assert(!is_build);\n\
     \        assert(0 <= from and from < n);\n        assert(0 <= to and to < n);\n\
@@ -73,54 +74,40 @@ data:
     \ = false, const int offset = 1) {\n    Graph<T> g(n, directed);\n    for (int\
     \ i = 1; i < n; i++) {\n        int p;\n        std::cin >> p;\n        p -= offset;\n\
     \        T c = 1;\n        if (weight) std::cin >> c;\n        g.add_edge(p, i,\
-    \ c);\n    }\n    g.build();\n    return g;\n}\n#line 2 \"graph/lowest_common_ancestor.hpp\"\
-    \n\n#line 4 \"graph/lowest_common_ancestor.hpp\"\n\ntemplate <class T> struct\
-    \ LowestCommonAncestor {\n    std::vector<int> depth;\n    std::vector<std::vector<int>>\
-    \ parent;\n    int n, LOG;\n\n    LowestCommonAncestor(Graph<T>& g, const int\
-    \ root = 0) : n((int)(g.size())), LOG(32 - __builtin_clz(n)) {\n        depth.assign(n,\
-    \ 0);\n        parent.assign(LOG, std::vector<int>(n));\n        auto dfs = [&](auto\
-    \ f, int cur, int par) -> void {\n            parent[0][cur] = par;\n        \
-    \    for (auto& e : g[cur]) {\n                if (e.to == par) continue;\n  \
-    \              depth[e.to] = depth[cur] + 1;\n                f(f, e.to, cur);\n\
-    \            }\n        };\n        dfs(dfs, root, -1);\n        for (int k =\
-    \ 0; k + 1 < LOG; k++) {\n            for (int v = 0; v < n; v++) {\n        \
-    \        parent[k + 1][v] = (parent[k][v] < 0 ? -1 : parent[k][parent[k][v]]);\n\
-    \            }\n        }\n    }\n\n    int lca(int u, int v) {\n        assert((int)(depth.size())\
-    \ == n);\n        if (depth[u] > depth[v]) std::swap(u, v);\n        // depth[u]\
-    \ <= depth[v]\n        for (int k = 0; k < LOG; k++)\n            if ((depth[v]\
-    \ - depth[u]) >> k & 1) v = parent[k][v];\n\n        if (u == v) return u;\n \
-    \       for (int k = LOG - 1; k >= 0; k--) {\n            if (parent[k][u] !=\
-    \ parent[k][v]) {\n                u = parent[k][u];\n                v = parent[k][v];\n\
-    \            }\n        }\n        return parent[0][u];\n    }\n\n    int level_ancestor(int\
-    \ u, int d) {\n        assert((int)(depth.size()) == n);\n        if (depth[u]\
-    \ < d) return -1;\n        for (int k = 0; k < LOG; k++)\n            if (d >>\
-    \ k & 1) u = parent[k][u];\n        return u;\n    }\n\n    int distance(int u,\
-    \ int v) {\n        int par = lca(u, v);\n        return depth[u] + depth[v] -\
-    \ 2 * depth[par];\n    }\n};\n#line 7 \"verify/lc_tree/lc_lowest_common_ancestor.test.cpp\"\
-    \n\nint main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    auto g = read_parent<int>(N,\
-    \ false, false, 0);\n    LowestCommonAncestor tq(g, 0);\n    while (Q--) {\n \
-    \       int u, v;\n        std::cin >> u >> v;\n        std::cout << tq.lca(u,\
-    \ v) << '\\n';\n    }\n    return 0;\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include <bits/stdc++.h>\n\
-    \n#include \"graph/read_graph.hpp\"\n#include \"graph/lowest_common_ancestor.hpp\"\
-    \n\nint main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    auto g = read_parent<int>(N,\
-    \ false, false, 0);\n    LowestCommonAncestor tq(g, 0);\n    while (Q--) {\n \
-    \       int u, v;\n        std::cin >> u >> v;\n        std::cout << tq.lca(u,\
-    \ v) << '\\n';\n    }\n    return 0;\n}"
+    \ c);\n    }\n    g.build();\n    return g;\n}\n#line 2 \"graph/topological_sort.hpp\"\
+    \n\n#line 5 \"graph/topological_sort.hpp\"\n\ntemplate <class T> std::vector<int>\
+    \ topological_sort(Graph<T>& g) {\n    const int n = (int)(g.size());\n    assert(n\
+    \ > 0);\n    std::vector<int> indeg(n, 0);\n    for (int i = 0; i < n; i++) {\n\
+    \        for (auto&& e : g[i]) indeg[e.to]++;\n    }\n    std::vector<int> res;\n\
+    \    for (int i = 0; i < n; i++) {\n        if (indeg[i] == 0) res.push_back(i);\n\
+    \    }\n    for (int i = 0; i < (int)(res.size()); i++) {\n        int v = res[i];\n\
+    \        for (auto&& e : g[v]) {\n            indeg[e.to]--;\n            if (indeg[e.to]\
+    \ == 0) res.push_back(e.to);\n        }\n    }\n    // topological sort \u304C\
+    \u4E00\u610F\u306B\u5B9A\u307E\u308B <=> \u6700\u9577\u30D1\u30B9\u306E\u9577\u3055\
+    \u304C n - 1\n    if ((int)(res.size()) != n) {\n        return std::vector<int>();\n\
+    \    }\n    return res;\n}\n#line 7 \"verify/graph/topological_sort.test.cpp\"\
+    \n\nint main() {\n    int N, M;\n    std::cin >> N >> M;\n    auto g = read_graph<int>(N,\
+    \ M, false, true, 0);\n    auto vec = topological_sort(g);\n    for (auto&& e\
+    \ : vec) std::cout << e << '\\n';\n    return 0;\n}\n"
+  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_4_B\"\
+    \n\n#include <iostream>\n\n#include \"graph/read_graph.hpp\"\n#include \"graph/topological_sort.hpp\"\
+    \n\nint main() {\n    int N, M;\n    std::cin >> N >> M;\n    auto g = read_graph<int>(N,\
+    \ M, false, true, 0);\n    auto vec = topological_sort(g);\n    for (auto&& e\
+    \ : vec) std::cout << e << '\\n';\n    return 0;\n}"
   dependsOn:
   - graph/read_graph.hpp
   - graph/graph_template.hpp
-  - graph/lowest_common_ancestor.hpp
+  - graph/topological_sort.hpp
   isVerificationFile: true
-  path: verify/lc_tree/lc_lowest_common_ancestor.test.cpp
+  path: verify/graph/topological_sort.test.cpp
   requiredBy: []
-  timestamp: '2024-07-29 01:58:55+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-07-31 16:51:10+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: verify/lc_tree/lc_lowest_common_ancestor.test.cpp
+documentation_of: verify/graph/topological_sort.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/lc_tree/lc_lowest_common_ancestor.test.cpp
-- /verify/verify/lc_tree/lc_lowest_common_ancestor.test.cpp.html
-title: verify/lc_tree/lc_lowest_common_ancestor.test.cpp
+- /verify/verify/graph/topological_sort.test.cpp
+- /verify/verify/graph/topological_sort.test.cpp.html
+title: verify/graph/topological_sort.test.cpp
 ---

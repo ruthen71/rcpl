@@ -149,7 +149,7 @@ data:
     - icon: ':warning:'
       path: data_structure/static_matrix.hpp
       title: "Static Matrix (\u884C\u5217, \u30B5\u30A4\u30BA\u56FA\u5B9A)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/unionfind.hpp
       title: UnionFind
     - icon: ':heavy_check_mark:'
@@ -311,23 +311,23 @@ data:
     - icon: ':warning:'
       path: graph/auxiliary_tree.hpp
       title: "Auxiliary Tree (\u865A\u6811)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/bellman_ford.hpp
       title: "Bellman-Ford algorithm (\u30D9\u30EB\u30DE\u30F3\u30D5\u30A9\u30FC\u30C9\
         \u6CD5)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/dijkstra.hpp
       title: "Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
     - icon: ':warning:'
       path: graph/euler_tour.hpp
       title: "Euler Tour (\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/graph_template.hpp
       title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/kruskal.hpp
       title: "Kruskal's algorithm (\u30AF\u30E9\u30B9\u30AB\u30EB\u6CD5)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/low_link.hpp
       title: "Low Link (\u95A2\u7BC0\u70B9\u30FB\u6A4B)"
     - icon: ':heavy_check_mark:'
@@ -337,10 +337,10 @@ data:
       path: graph/minimum_steiner_tree.hpp
       title: "Minimum Steiner Tree (\u6700\u5C0F\u30B7\u30E5\u30BF\u30A4\u30CA\u30FC\
         \u6728)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/read_graph.hpp
       title: "\u30B0\u30E9\u30D5\u5165\u529B\u30E9\u30A4\u30D6\u30E9\u30EA"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/restore_path.hpp
       title: Restore path
     - icon: ':warning:'
@@ -349,7 +349,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/strongly_connected_component.hpp
       title: "Strongly Connected Component (\u5F37\u9023\u7D50\u6210\u5206)"
-    - icon: ':warning:'
+    - icon: ':x:'
       path: graph/topological_sort.hpp
       title: "Topological Sort (\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8\
         )"
@@ -357,7 +357,7 @@ data:
       path: graph/traveling_salesman_problem.hpp
       title: "Traveling Salesman Problem (\u5DE1\u56DE\u30BB\u30FC\u30EB\u30B9\u30DE\
         \u30F3\u554F\u984C)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/tree_diameter.hpp
       title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"
     - icon: ':heavy_check_mark:'
@@ -605,20 +605,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_dsl/aoj_dsl_5_b.test.cpp
       title: verify/aoj_dsl/aoj_dsl_5_b.test.cpp
-  - name: verify/aoj_grl
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: verify/aoj_grl/aoj_grl_1_b.test.cpp
-      title: verify/aoj_grl/aoj_grl_1_b.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/aoj_grl/aoj_grl_2_a.test.cpp
-      title: verify/aoj_grl/aoj_grl_2_a.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/aoj_grl/aoj_grl_3_a.test.cpp
-      title: verify/aoj_grl/aoj_grl_3_a.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/aoj_grl/aoj_grl_3_b.test.cpp
-      title: verify/aoj_grl/aoj_grl_3_b.test.cpp
   - name: verify/aoj_itp1
     pages:
     - icon: ':heavy_check_mark:'
@@ -663,9 +649,36 @@ data:
       title: verify/aoj_other/aoj_3206.test.cpp
   - name: verify/graph
     pages:
+    - icon: ':x:'
+      path: verify/graph/bellman_ford.test.cpp
+      title: verify/graph/bellman_ford.test.cpp
+    - icon: ':x:'
+      path: verify/graph/dijkstra.test.cpp
+      title: verify/graph/dijkstra.test.cpp
+    - icon: ':x:'
+      path: verify/graph/kruskal.test.cpp
+      title: verify/graph/kruskal.test.cpp
+    - icon: ':x:'
+      path: verify/graph/low_link_1.test.cpp
+      title: verify/graph/low_link_1.test.cpp
+    - icon: ':x:'
+      path: verify/graph/low_link_2.test.cpp
+      title: verify/graph/low_link_2.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/lowest_common_ancestor.test.cpp
+      title: verify/graph/lowest_common_ancestor.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/graph/minimum_steiner_tree.test.cpp
       title: verify/graph/minimum_steiner_tree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/strongly_connected_component.test.cpp
+      title: verify/graph/strongly_connected_component.test.cpp
+    - icon: ':x:'
+      path: verify/graph/topological_sort.test.cpp
+      title: verify/graph/topological_sort.test.cpp
+    - icon: ':x:'
+      path: verify/graph/tree_diameter.test.cpp
+      title: verify/graph/tree_diameter.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/graph/zero_one_bfs.test.cpp
       title: verify/graph/zero_one_bfs.test.cpp
@@ -692,14 +705,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/lc_data_structure/lc_unionfind.test.cpp
       title: verify/lc_data_structure/lc_unionfind.test.cpp
-  - name: verify/lc_graph
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: verify/lc_graph/lc_scc.test.cpp
-      title: verify/lc_graph/lc_scc.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
-      title: verify/lc_graph/lc_shortest_path_dijkstra.test.cpp
   - name: verify/lc_math
     pages:
     - icon: ':heavy_check_mark:'
@@ -710,14 +715,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/lc_other/lc_aplusb_compare_arg.test.cpp
       title: verify/lc_other/lc_aplusb_compare_arg.test.cpp
-  - name: verify/lc_tree
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: verify/lc_tree/lc_lowest_common_ancestor.test.cpp
-      title: verify/lc_tree/lc_lowest_common_ancestor.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/lc_tree/lc_tree_diameter.test.cpp
-      title: verify/lc_tree/lc_tree_diameter.test.cpp
   - name: verify/yuki
     pages:
     - icon: ':heavy_check_mark:'
