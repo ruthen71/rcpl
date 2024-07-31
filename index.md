@@ -149,7 +149,7 @@ data:
     - icon: ':warning:'
       path: data_structure/static_matrix.hpp
       title: "Static Matrix (\u884C\u5217, \u30B5\u30A4\u30BA\u56FA\u5B9A)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/unionfind.hpp
       title: UnionFind
     - icon: ':heavy_check_mark:'
@@ -324,7 +324,7 @@ data:
     - icon: ':question:'
       path: graph/graph_template.hpp
       title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/kruskal.hpp
       title: "Kruskal's algorithm (\u30AF\u30E9\u30B9\u30AB\u30EB\u6CD5)"
     - icon: ':heavy_check_mark:'
@@ -655,7 +655,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/dijkstra.test.cpp
       title: verify/graph/dijkstra.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/kruskal.test.cpp
       title: verify/graph/kruskal.test.cpp
     - icon: ':heavy_check_mark:'

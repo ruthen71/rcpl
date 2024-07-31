@@ -15,7 +15,7 @@ data:
   - icon: ':warning:'
     path: graph/euler_tour.hpp
     title: "Euler Tour (\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/kruskal.hpp
     title: "Kruskal's algorithm (\u30AF\u30E9\u30B9\u30AB\u30EB\u6CD5)"
   - icon: ':heavy_check_mark:'
@@ -61,7 +61,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/dijkstra.test.cpp
     title: verify/graph/dijkstra.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/kruskal.test.cpp
     title: verify/graph/kruskal.test.cpp
   - icon: ':heavy_check_mark:'

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/unionfind.hpp
     title: UnionFind
   - icon: ':question:'
@@ -9,39 +9,39 @@ data:
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/kruskal.test.cpp
     title: verify/graph/kruskal.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/kruskal.hpp\"\n\n#line 2 \"data_structure/unionfind.hpp\"\
-    \n\nstruct UnionFind {\n    int n;\n    std::vector<int> parents;\n\n    UnionFind()\
-    \ {}\n    UnionFind(int n) : n(n), parents(n, -1) {}\n\n    int leader(int x)\
-    \ { return parents[x] < 0 ? x : parents[x] = leader(parents[x]); }\n\n    bool\
-    \ merge(int x, int y) {\n        x = leader(x), y = leader(y);\n        if (x\
-    \ == y) return false;\n        if (parents[x] > parents[y]) std::swap(x, y);\n\
-    \        parents[x] += parents[y];\n        parents[y] = x;\n        return true;\n\
-    \    }\n\n    bool same(int x, int y) { return leader(x) == leader(y); }\n\n \
-    \   int size(int x) { return -parents[leader(x)]; }\n\n    std::vector<std::vector<int>>\
-    \ groups() {\n        std::vector<int> leader_buf(n), group_size(n);\n       \
-    \ for (int i = 0; i < n; i++) {\n            leader_buf[i] = leader(i);\n    \
-    \        group_size[leader_buf[i]]++;\n        }\n        std::vector<std::vector<int>>\
+    \n\n#include <vector>\n#include <algorithm>\n\nstruct UnionFind {\n    int n;\n\
+    \    std::vector<int> parents;\n\n    UnionFind() {}\n    UnionFind(int n) : n(n),\
+    \ parents(n, -1) {}\n\n    int leader(int x) { return parents[x] < 0 ? x : parents[x]\
+    \ = leader(parents[x]); }\n\n    bool merge(int x, int y) {\n        x = leader(x),\
+    \ y = leader(y);\n        if (x == y) return false;\n        if (parents[x] >\
+    \ parents[y]) std::swap(x, y);\n        parents[x] += parents[y];\n        parents[y]\
+    \ = x;\n        return true;\n    }\n\n    bool same(int x, int y) { return leader(x)\
+    \ == leader(y); }\n\n    int size(int x) { return -parents[leader(x)]; }\n\n \
+    \   std::vector<std::vector<int>> groups() {\n        std::vector<int> leader_buf(n),\
+    \ group_size(n);\n        for (int i = 0; i < n; i++) {\n            leader_buf[i]\
+    \ = leader(i);\n            group_size[leader_buf[i]]++;\n        }\n        std::vector<std::vector<int>>\
     \ result(n);\n        for (int i = 0; i < n; i++) {\n            result[i].reserve(group_size[i]);\n\
     \        }\n        for (int i = 0; i < n; i++) {\n            result[leader_buf[i]].push_back(i);\n\
     \        }\n        result.erase(std::remove_if(result.begin(), result.end(),\
     \ [&](const std::vector<int>& v) { return v.empty(); }), result.end());\n    \
     \    return result;\n    }\n\n    void init(int n) { parents.assign(n, -1); }\
-    \  // reset\n};\n#line 2 \"graph/graph_template.hpp\"\n\n#include <vector>\n#include\
-    \ <cassert>\n\ntemplate <class T> struct Edge {\n    int from, to;\n    T cost;\n\
-    \    int id;\n\n    Edge() = default;\n    Edge(const int from, const int to,\
-    \ const T cost = T(1), const int id = -1) : from(from), to(to), cost(cost), id(id)\
-    \ {}\n\n    friend std::ostream& operator<<(std::ostream& os, const Edge<T>& e)\
-    \ {\n        // output format: {id: cost(from, to) = cost}\n        return os\
-    \ << \"{\" << e.id << \": cost(\" << e.from << \", \" << e.to << \") = \" << e.cost\
-    \ << \"}\";\n    }\n};\ntemplate <class T> using Edges = std::vector<Edge<T>>;\n\
+    \  // reset\n};\n#line 2 \"graph/graph_template.hpp\"\n\n#line 4 \"graph/graph_template.hpp\"\
+    \n#include <cassert>\n\ntemplate <class T> struct Edge {\n    int from, to;\n\
+    \    T cost;\n    int id;\n\n    Edge() = default;\n    Edge(const int from, const\
+    \ int to, const T cost = T(1), const int id = -1) : from(from), to(to), cost(cost),\
+    \ id(id) {}\n\n    friend std::ostream& operator<<(std::ostream& os, const Edge<T>&\
+    \ e) {\n        // output format: {id: cost(from, to) = cost}\n        return\
+    \ os << \"{\" << e.id << \": cost(\" << e.from << \", \" << e.to << \") = \" <<\
+    \ e.cost << \"}\";\n    }\n};\ntemplate <class T> using Edges = std::vector<Edge<T>>;\n\
     \ntemplate <class T> struct Graph {\n    struct EdgeIterators {\n       public:\n\
     \        using Iterator = typename std::vector<Edge<T>>::iterator;\n        EdgeIterators()\
     \ = default;\n        EdgeIterators(const Iterator& begit, const Iterator& endit)\
@@ -75,30 +75,31 @@ data:
     \ j++) {\n                os << g[i][j];\n                if (j + 1 != g[i].size())\
     \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
     \ 1 != g.size()) os << \", \";\n        }\n        return os << \"]\";\n    }\n\
-    };\n#line 5 \"graph/kruskal.hpp\"\n\n#include <algorithm>\n\ntemplate <class T>\
-    \ std::pair<T, Edges<T>> kruskal(Graph<T>& g) {\n    auto es = g.edges;\n    std::sort(es.begin(),\
-    \ es.end(), [](Edge<T>& a, Edge<T>& b) { return a.cost < b.cost; });\n    const\
-    \ int n = (int)(g.size());\n    UnionFind uf(n);\n    T ret = 0;\n    Edges<T>\
+    };\n#line 5 \"graph/kruskal.hpp\"\n\n#line 7 \"graph/kruskal.hpp\"\n\ntemplate\
+    \ <class T> std::pair<T, std::vector<Edge<T>>> kruskal(Graph<T>& g) {\n    auto\
+    \ es = g.edges;\n    std::sort(es.begin(), es.end(), [](Edge<T>& a, Edge<T>& b)\
+    \ { return a.cost < b.cost; });\n    const int n = (int)(g.size());\n    UnionFind\
+    \ uf(n);\n    T ret = 0;\n    std::vector<Edge<T>> es_ret;\n    es_ret.reserve(n\
+    \ - 1);\n    for (auto&& e : es) {\n        if (!uf.same(e.from, e.to)) {\n  \
+    \          ret += e.cost;\n            uf.merge(e.from, e.to);\n            es_ret.push_back(e);\n\
+    \        }\n    }\n    return {ret, es_ret};\n}\n"
+  code: "#pragma once\n\n#include \"data_structure/unionfind.hpp\"\n#include \"graph/graph_template.hpp\"\
+    \n\n#include <algorithm>\n\ntemplate <class T> std::pair<T, std::vector<Edge<T>>>\
+    \ kruskal(Graph<T>& g) {\n    auto es = g.edges;\n    std::sort(es.begin(), es.end(),\
+    \ [](Edge<T>& a, Edge<T>& b) { return a.cost < b.cost; });\n    const int n =\
+    \ (int)(g.size());\n    UnionFind uf(n);\n    T ret = 0;\n    std::vector<Edge<T>>\
     \ es_ret;\n    es_ret.reserve(n - 1);\n    for (auto&& e : es) {\n        if (!uf.same(e.from,\
     \ e.to)) {\n            ret += e.cost;\n            uf.merge(e.from, e.to);\n\
     \            es_ret.push_back(e);\n        }\n    }\n    return {ret, es_ret};\n\
-    }\n"
-  code: "#pragma once\n\n#include \"data_structure/unionfind.hpp\"\n#include \"graph/graph_template.hpp\"\
-    \n\n#include <algorithm>\n\ntemplate <class T> std::pair<T, Edges<T>> kruskal(Graph<T>&\
-    \ g) {\n    auto es = g.edges;\n    std::sort(es.begin(), es.end(), [](Edge<T>&\
-    \ a, Edge<T>& b) { return a.cost < b.cost; });\n    const int n = (int)(g.size());\n\
-    \    UnionFind uf(n);\n    T ret = 0;\n    Edges<T> es_ret;\n    es_ret.reserve(n\
-    \ - 1);\n    for (auto&& e : es) {\n        if (!uf.same(e.from, e.to)) {\n  \
-    \          ret += e.cost;\n            uf.merge(e.from, e.to);\n            es_ret.push_back(e);\n\
-    \        }\n    }\n    return {ret, es_ret};\n}"
+    }"
   dependsOn:
   - data_structure/unionfind.hpp
   - graph/graph_template.hpp
   isVerificationFile: false
   path: graph/kruskal.hpp
   requiredBy: []
-  timestamp: '2024-07-31 17:14:51+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2024-07-31 17:25:29+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/kruskal.test.cpp
 documentation_of: graph/kruskal.hpp

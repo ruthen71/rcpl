@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/unionfind.hpp
     title: UnionFind
   - icon: ':question:'
@@ -80,17 +80,17 @@ data:
     \ c);\n    }\n    g.build();\n    return g;\n}\n#line 2 \"graph/minimum_steiner_tree.hpp\"\
     \n\n#line 4 \"graph/minimum_steiner_tree.hpp\"\n#include <queue>\n#include <algorithm>\n\
     #line 7 \"graph/minimum_steiner_tree.hpp\"\n\n#line 2 \"data_structure/unionfind.hpp\"\
-    \n\nstruct UnionFind {\n    int n;\n    std::vector<int> parents;\n\n    UnionFind()\
-    \ {}\n    UnionFind(int n) : n(n), parents(n, -1) {}\n\n    int leader(int x)\
-    \ { return parents[x] < 0 ? x : parents[x] = leader(parents[x]); }\n\n    bool\
-    \ merge(int x, int y) {\n        x = leader(x), y = leader(y);\n        if (x\
-    \ == y) return false;\n        if (parents[x] > parents[y]) std::swap(x, y);\n\
-    \        parents[x] += parents[y];\n        parents[y] = x;\n        return true;\n\
-    \    }\n\n    bool same(int x, int y) { return leader(x) == leader(y); }\n\n \
-    \   int size(int x) { return -parents[leader(x)]; }\n\n    std::vector<std::vector<int>>\
-    \ groups() {\n        std::vector<int> leader_buf(n), group_size(n);\n       \
-    \ for (int i = 0; i < n; i++) {\n            leader_buf[i] = leader(i);\n    \
-    \        group_size[leader_buf[i]]++;\n        }\n        std::vector<std::vector<int>>\
+    \n\n#line 5 \"data_structure/unionfind.hpp\"\n\nstruct UnionFind {\n    int n;\n\
+    \    std::vector<int> parents;\n\n    UnionFind() {}\n    UnionFind(int n) : n(n),\
+    \ parents(n, -1) {}\n\n    int leader(int x) { return parents[x] < 0 ? x : parents[x]\
+    \ = leader(parents[x]); }\n\n    bool merge(int x, int y) {\n        x = leader(x),\
+    \ y = leader(y);\n        if (x == y) return false;\n        if (parents[x] >\
+    \ parents[y]) std::swap(x, y);\n        parents[x] += parents[y];\n        parents[y]\
+    \ = x;\n        return true;\n    }\n\n    bool same(int x, int y) { return leader(x)\
+    \ == leader(y); }\n\n    int size(int x) { return -parents[leader(x)]; }\n\n \
+    \   std::vector<std::vector<int>> groups() {\n        std::vector<int> leader_buf(n),\
+    \ group_size(n);\n        for (int i = 0; i < n; i++) {\n            leader_buf[i]\
+    \ = leader(i);\n            group_size[leader_buf[i]]++;\n        }\n        std::vector<std::vector<int>>\
     \ result(n);\n        for (int i = 0; i < n; i++) {\n            result[i].reserve(group_size[i]);\n\
     \        }\n        for (int i = 0; i < n; i++) {\n            result[leader_buf[i]].push_back(i);\n\
     \        }\n        result.erase(std::remove_if(result.begin(), result.end(),\
@@ -179,7 +179,7 @@ data:
   isVerificationFile: true
   path: verify/graph/minimum_steiner_tree.test.cpp
   requiredBy: []
-  timestamp: '2024-07-31 16:51:10+09:00'
+  timestamp: '2024-07-31 17:25:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/minimum_steiner_tree.test.cpp

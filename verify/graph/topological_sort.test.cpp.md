@@ -75,20 +75,21 @@ data:
     \ i = 1; i < n; i++) {\n        int p;\n        std::cin >> p;\n        p -= offset;\n\
     \        T c = 1;\n        if (weight) std::cin >> c;\n        g.add_edge(p, i,\
     \ c);\n    }\n    g.build();\n    return g;\n}\n#line 2 \"graph/topological_sort.hpp\"\
-    \n\n#line 5 \"graph/topological_sort.hpp\"\n\ntemplate <class T> std::vector<int>\
-    \ topological_sort(Graph<T>& g) {\n    const int n = (int)(g.size());\n    assert(n\
-    \ > 0);\n    std::vector<int> indeg(n, 0);\n    for (int i = 0; i < n; i++) {\n\
-    \        for (auto&& e : g[i]) indeg[e.to]++;\n    }\n    std::vector<int> res;\n\
-    \    for (int i = 0; i < n; i++) {\n        if (indeg[i] == 0) res.push_back(i);\n\
-    \    }\n    for (int i = 0; i < (int)(res.size()); i++) {\n        int v = res[i];\n\
-    \        for (auto&& e : g[v]) {\n            indeg[e.to]--;\n            if (indeg[e.to]\
-    \ == 0) res.push_back(e.to);\n        }\n    }\n    // topological sort \u304C\
-    \u4E00\u610F\u306B\u5B9A\u307E\u308B <=> \u6700\u9577\u30D1\u30B9\u306E\u9577\u3055\
-    \u304C n - 1\n    if ((int)(res.size()) != n) {\n        return std::vector<int>();\n\
-    \    }\n    return res;\n}\n#line 7 \"verify/graph/topological_sort.test.cpp\"\
-    \n\nint main() {\n    int N, M;\n    std::cin >> N >> M;\n    auto g = read_graph<int>(N,\
-    \ M, false, true, 0);\n    auto vec = topological_sort(g);\n    for (auto&& e\
-    \ : vec) std::cout << e << '\\n';\n    return 0;\n}\n"
+    \n\n#line 4 \"graph/topological_sort.hpp\"\n\n#line 6 \"graph/topological_sort.hpp\"\
+    \n\ntemplate <class T> std::vector<int> topological_sort(Graph<T>& g) {\n    const\
+    \ int n = (int)(g.size());\n    assert(n > 0);\n    std::vector<int> indeg(n,\
+    \ 0);\n    for (int i = 0; i < n; i++) {\n        for (auto&& e : g[i]) indeg[e.to]++;\n\
+    \    }\n    std::vector<int> res;\n    for (int i = 0; i < n; i++) {\n       \
+    \ if (indeg[i] == 0) res.push_back(i);\n    }\n    for (int i = 0; i < (int)(res.size());\
+    \ i++) {\n        int v = res[i];\n        for (auto&& e : g[v]) {\n         \
+    \   indeg[e.to]--;\n            if (indeg[e.to] == 0) res.push_back(e.to);\n \
+    \       }\n    }\n    // topological sort \u304C\u4E00\u610F\u306B\u5B9A\u307E\
+    \u308B <=> \u6700\u9577\u30D1\u30B9\u306E\u9577\u3055\u304C n - 1\n    if ((int)(res.size())\
+    \ != n) {\n        return std::vector<int>();\n    }\n    return res;\n}\n#line\
+    \ 7 \"verify/graph/topological_sort.test.cpp\"\n\nint main() {\n    int N, M;\n\
+    \    std::cin >> N >> M;\n    auto g = read_graph<int>(N, M, false, true, 0);\n\
+    \    auto vec = topological_sort(g);\n    for (auto&& e : vec) std::cout << e\
+    \ << '\\n';\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_4_B\"\
     \n\n#include <iostream>\n\n#include \"graph/read_graph.hpp\"\n#include \"graph/topological_sort.hpp\"\
     \n\nint main() {\n    int N, M;\n    std::cin >> N >> M;\n    auto g = read_graph<int>(N,\
@@ -101,7 +102,7 @@ data:
   isVerificationFile: true
   path: verify/graph/topological_sort.test.cpp
   requiredBy: []
-  timestamp: '2024-07-31 16:51:10+09:00'
+  timestamp: '2024-07-31 17:25:29+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/graph/topological_sort.test.cpp
