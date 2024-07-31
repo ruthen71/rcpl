@@ -8,9 +8,8 @@ documentation_of: ./low_link.hpp
 ```cpp
 Graph<T> g;
 LowLink lk(g);
-auto articulations = lk.articulations    // 関節点の集合
-auto bridges = lk.bridges          // 橋である辺の集合
+auto articulations = lk.articulations   // 関節点の集合
+auto bridges = lk.bridges               // 橋である辺の集合
 ```
 
 ## 参考文献
-

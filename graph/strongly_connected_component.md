@@ -6,7 +6,7 @@ documentation_of: ./strongly_connected_component.hpp
 ## 使い方
 
 ```cpp
-Graph<T> g;
+Graph<int> g;
 auto scc = strongly_connected_component(g);
 ```
 

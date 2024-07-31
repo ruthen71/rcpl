@@ -10,10 +10,11 @@ documentation_of: ./graph_template.hpp
 `add_edge()` は辺が何番目に追加されたかを返す
 
 ```cpp
-Graph<int> g(n, false); // 無向グラフ
-Graph<int> g(n, true);  // 有向グラフ
+Graph<T> g(n, false); // 無向グラフ
+Graph<T> g(n, true);  // 有向グラフ
 for (int i = 0; i < m; i++) {
-    int a, b, c;
+    int a, b;
+    T c;
     std::cin >> a >> b >> c;
     int edge_id = g.add_edge(a, b, c);
 }
