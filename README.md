@@ -21,7 +21,7 @@ token 取得のために `$ oj d --system https://atcoder.jp/contests/agc001/tas
 ところがこの App は更新が停止しており, `アプリ接続中のエラー：レビューが承認待ちのままになっているので、このアプリで追加ユーザーをリンクできません。` と表示される
 
 
-解決策として以下の記事を参考に Dropbox のアプリを自分で取得して token を取得した
+解決策として以下の記事を参考に Dropbox のアプリを自分で作成して token を取得した
 
 参考: [online-judge-tooolsでAtCoderのテストケースを取得できない](https://sizk.hatenablog.com/entry/2023/08/20/045153)
 
@@ -41,9 +41,9 @@ token 取得のために `$ oj d --system https://atcoder.jp/contests/agc001/tas
     - `oj download https://atcoder.jp/contests/agc001/tasks/agc001_a --system --dropbox-token=${ACCESS_TOKEN}`
     - `${ACCESS_TOKEN}` という文字列を実際のアクセストークンで置き換える
 
-注意: トークンは `https://github.com/ruthen71/rcpl/settings/secrets/actions` に書くこと
+注意: トークンは直接ではなく [ここ](https://github.com/ruthen71/rcpl/settings/secrets/actions) に書くこと
 
-`rcpl/.github/workflows/verify.yml` が読み取ってくれる
+`.github/workflows/verify.yml` が読み取ってくれる
 
 
 ## コーディングスタイル
@@ -105,22 +105,19 @@ int main() {
 }
 ```
 
-- docs ファイルは `docs/data_structure/segment_tree.md` とする
+- docs ファイルは `data_structure/segment_tree.md` とする
     - `title` は日本語のみ or 英語+(日本語)
 
 ```md
 ---
 title: Segment Tree (セグメント木)
-documentation_of: //data_structure/segment_tree.hpp
+documentation_of: ./segment_tree.hpp
 ---
 
 ## 使い方
 
-## 使用例
-- [問題名](提出URL)
-
 ## 参考文献
-- [文献タイトル](URL)
+- [文献タイトル, 問題名](URL)
 ```
 
 ### 細かいこと
@@ -137,4 +134,4 @@ documentation_of: //data_structure/segment_tree.hpp
 - 再帰関数の名前は `rec` ではなく `dfs`
 - 構造体のコンストラクタ (引数なし) を定義し, `StructName() = default;` か引数ありのコンストラクタを呼び出す実装にする
 - `std::vector` に対する `resize()` `assign()` はコンストラクタでは `StructName(int n): vec(n, 0) {}` でなるべく処理する
-
+- `&&` や `||` ではなく `and` や `or` を使う

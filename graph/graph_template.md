@@ -1,6 +1,6 @@
 ---
 title: グラフテンプレート
-documentation_of: //graph/graph_template.hpp
+documentation_of: ./graph_template.hpp
 ---
 
 隣接リストを CSR (Compressed Row Storage) 形式で管理しているため定数倍が良い
