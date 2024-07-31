@@ -5,13 +5,13 @@
 
 #include <algorithm>
 
-template <class T> std::pair<T, Edges<T>> kruskal(Graph<T>& g) {
+template <class T> std::pair<T, std::vector<Edge<T>>> kruskal(Graph<T>& g) {
     auto es = g.edges;
     std::sort(es.begin(), es.end(), [](Edge<T>& a, Edge<T>& b) { return a.cost < b.cost; });
     const int n = (int)(g.size());
     UnionFind uf(n);
     T ret = 0;
-    Edges<T> es_ret;
+    std::vector<Edge<T>> es_ret;
     es_ret.reserve(n - 1);
     for (auto&& e : es) {
         if (!uf.same(e.from, e.to)) {

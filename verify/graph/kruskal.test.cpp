@@ -8,8 +8,8 @@
 int main() {
     int N, M;
     std::cin >> N >> M;
-    auto G = read_graph<long long>(N, M, true, false, 0);
-    auto [cost, es_set] = kruskal<long long>(G);
+    auto g = read_graph<long long>(N, M, true, false, 0);
+    auto [cost, es_set] = kruskal<long long>(g);
     std::cout << cost << '\n';
     return 0;
 }

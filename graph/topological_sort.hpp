@@ -1,7 +1,8 @@
 #pragma once
 
-#include <cassert>
 #include "graph/graph_template.hpp"
+
+#include <cassert>
 
 template <class T> std::vector<int> topological_sort(Graph<T>& g) {
     const int n = (int)(g.size());

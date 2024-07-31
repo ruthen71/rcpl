@@ -1,5 +1,8 @@
 #pragma once
 
+#include <vector>
+#include <algorithm>
+
 struct UnionFind {
     int n;
     std::vector<int> parents;
