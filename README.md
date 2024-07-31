@@ -32,11 +32,37 @@
     - 省略しないパスカルケースの頭文字を取っていくと考える
 - クラスは使う場面がほぼなさそう
 
+```cpp
+#pragma once
+
+#include "hoge/fuga.hpp"    // 必要なライブラリ
+
+#include <vector>   // 必要なヘッダー
+
+template <class T> struct StructName {
+    ...
+};
+```
+
 ### verify ファイルと docs ファイルについて
 
 以下では `data_structure/segment_tree.hpp` を例とする
 - verify ファイルは `verify/data_structure/segment_tree.test.cpp` とする
     - ファイルが複数ある場合は `segment_tree_1.test.cpp`, `segment_tree_2.test.cpp`, ... とする
+
+```cpp
+#define PROBLEM "https://..."   // 問題の URL
+
+#include <iostream> // 必要なヘッダー
+
+#include "data_structure/segment_tree.hpp"  // 必要なライブラリ
+
+int main() {
+    ...
+    return 0;
+}
+```
+
 - docs ファイルは `docs/data_structure/segment_tree.md` とする
     - `title` は日本語のみ or 英語+(日本語)
 

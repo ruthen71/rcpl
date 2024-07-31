@@ -1,6 +1,7 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_B"
 
 #include <iostream>
+#include <algorithm>
 
 #include "graph/bellman_ford.hpp"
 #include "graph/read_graph.hpp"

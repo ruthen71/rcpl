@@ -1,8 +1,10 @@
 #pragma once
 
-#include <utility>
 #include "graph/graph_template.hpp"
 #include "graph/restore_path.hpp"
+
+#include <utility>
+#include <algorithm>
 
 // {直径の辺の重みの総和, 通る頂点集合}
 template <class T> std::pair<T, std::vector<int>> tree_diameter(Graph<T>& g) {

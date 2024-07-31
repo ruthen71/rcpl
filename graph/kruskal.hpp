@@ -3,6 +3,8 @@
 #include "data_structure/unionfind.hpp"
 #include "graph/graph_template.hpp"
 
+#include <algorithm>
+
 template <class T> std::pair<T, Edges<T>> kruskal(Graph<T>& g) {
     auto es = g.edges;
     std::sort(es.begin(), es.end(), [](Edge<T>& a, Edge<T>& b) { return a.cost < b.cost; });

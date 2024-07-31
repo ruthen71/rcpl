@@ -1,6 +1,8 @@
 #pragma once
 
 #include <vector>
+#include <algorithm>
+
 // restore path from root[t] to t
 std::vector<int> restore_path(std::vector<int>& par, int t) {
     std::vector<int> path = {t};

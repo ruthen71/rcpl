@@ -1,6 +1,7 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A"
 
 #include <iostream>
+#include <algorithm>
 
 #include "graph/read_graph.hpp"
 #include "graph/low_link.hpp"
