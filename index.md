@@ -321,7 +321,7 @@ data:
     - icon: ':warning:'
       path: graph/euler_tour.hpp
       title: "Euler Tour (\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: graph/graph_template.hpp
       title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':heavy_check_mark:'
@@ -337,7 +337,7 @@ data:
       path: graph/minimum_steiner_tree.hpp
       title: "Minimum Steiner Tree (\u6700\u5C0F\u30B7\u30E5\u30BF\u30A4\u30CA\u30FC\
         \u6728)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: graph/read_graph.hpp
       title: "\u30B0\u30E9\u30D5\u5165\u529B\u30E9\u30A4\u30D6\u30E9\u30EA"
     - icon: ':heavy_check_mark:'
@@ -349,7 +349,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/strongly_connected_component.hpp
       title: "Strongly Connected Component (\u5F37\u9023\u7D50\u6210\u5206)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/topological_sort.hpp
       title: "Topological Sort (\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8\
         )"
@@ -571,9 +571,6 @@ data:
       path: verify/aoj_dpl/aoj_dpl_1_g.test.cpp
       title: verify/aoj_dpl/aoj_dpl_1_g.test.cpp
     - icon: ':heavy_check_mark:'
-      path: verify/aoj_dpl/aoj_dpl_2_a.test.cpp
-      title: verify/aoj_dpl/aoj_dpl_2_a.test.cpp
-    - icon: ':heavy_check_mark:'
       path: verify/aoj_dpl/aoj_dpl_3_c.test.cpp
       title: verify/aoj_dpl/aoj_dpl_3_c.test.cpp
   - name: verify/aoj_dsl
@@ -673,9 +670,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/strongly_connected_component.test.cpp
       title: verify/graph/strongly_connected_component.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/topological_sort.test.cpp
       title: verify/graph/topological_sort.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/traveling_salesman_problem.test.cpp
+      title: verify/graph/traveling_salesman_problem.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/graph/tree_diameter.test.cpp
       title: verify/graph/tree_diameter.test.cpp

@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/aoj_dpl/aoj_dpl_2_a.test.cpp
-    title: verify/aoj_dpl/aoj_dpl_2_a.test.cpp
+    path: verify/graph/traveling_salesman_problem.test.cpp
+    title: verify/graph/traveling_salesman_problem.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -80,7 +80,7 @@ data:
   timestamp: '2024-07-31 16:51:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj_dpl/aoj_dpl_2_a.test.cpp
+  - verify/graph/traveling_salesman_problem.test.cpp
 documentation_of: graph/traveling_salesman_problem.hpp
 layout: document
 title: "Traveling Salesman Problem (\u5DE1\u56DE\u30BB\u30FC\u30EB\u30B9\u30DE\u30F3\

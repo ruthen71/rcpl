@@ -4,6 +4,48 @@
 
 [![GitHub Pages](https://img.shields.io/static/v1?label=GitHub+Pages&message=+&color=brightgreen&logo=github)](https://ruthen71.github.io/rcpl/)
 
+
+## AtCoder の問題で verify する方法
+
+[Online Judge Verification Helper の細かい仕様](https://online-judge-tools.github.io/verification-helper/document.ja.html) によれば, AtCoder の問題のテストケースをダウンロードするためには環境変数 `DROPBOX_TOKEN` の設定が必要
+
+token 取得のために `$ oj d --system https://atcoder.jp/contests/agc001/tasks/agc001_a` を手元で実行すると以下のような案内が表示される
+
+```txt
+1. Open the following URL in your browser:
+    https://www.dropbox.com/oauth2/authorize?client_id=153gig8dqgk3ujg&response_type=code
+2. Authorize the app and take the access code.
+3. ...
+```
+
+ところがこの App は更新が停止しており, `アプリ接続中のエラー：レビューが承認待ちのままになっているので、このアプリで追加ユーザーをリンクできません。` と表示される
+
+
+解決策として以下の記事を参考に Dropbox のアプリを自分で取得して token を取得した
+
+参考: [online-judge-tooolsでAtCoderのテストケースを取得できない](https://sizk.hatenablog.com/entry/2023/08/20/045153)
+
+
+1. Dropbox アカウントの作成
+1. Dropbox アプリの作成
+    - [Dropbox Develpers](https://www.dropbox.com/developers/apps) の `Create app` を選択
+    - Choose an API: `Scoped access`
+    - Choose the type of access you need: `Full Dropbox`
+    - Name your app: `rcpl-verify-atcoder` など
+1. Permission の変更
+    - Dropbox アプリの設定ページの `Permissions` タブから `files.metadata.read` と `sharing.read` にチェックを入れて保存
+1. アクセストークンの取得
+    - Dropbox アプリの設定ページの `Settings` タブから `Generated access token` でアクセストークンを取得
+    - アクセスコードの取得などはいらない
+1. テストケースの取得
+    - `oj download https://atcoder.jp/contests/agc001/tasks/agc001_a --system --dropbox-token=${ACCESS_TOKEN}`
+    - `${ACCESS_TOKEN}` という文字列を実際のアクセストークンで置き換える
+
+注意: トークンは `https://github.com/ruthen71/rcpl/settings/secrets/actions` に書くこと
+
+`rcpl/.github/workflows/verify.yml` が読み取ってくれる
+
+
 ## コーディングスタイル
 
 なるべく下表に合わせる努力（←重要!!）をする
@@ -27,7 +69,7 @@
 
 - なるべく省略を避ける
 - スネークケースで大文字は使わない
-- パスカルケースにおいて、BFS (Breadth First Search) などはすべて大文字でも良い
+- パスカルケースにおいて, BFS (Breadth First Search) などはすべて大文字でも良い
     - 2D (2 Dimensional) など
     - 省略しないパスカルケースの頭文字を取っていくと考える
 - クラスは使う場面がほぼなさそう
@@ -79,10 +121,7 @@ documentation_of: //data_structure/segment_tree.hpp
 
 ## 参考文献
 - [文献タイトル](URL)
-
 ```
-
-
 
 ### 細かいこと
 

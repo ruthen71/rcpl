@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/read_graph.hpp
     title: "\u30B0\u30E9\u30D5\u5165\u529B\u30E9\u30A4\u30D6\u30E9\u30EA"
   - icon: ':heavy_check_mark:'
@@ -21,19 +21,19 @@ data:
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_A
     links:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_A
-  bundledCode: "#line 1 \"verify/aoj_dpl/aoj_dpl_2_a.test.cpp\"\n#define PROBLEM \"\
-    https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_A\"\n\n#include\
-    \ <bits/stdc++.h>\n\n#line 2 \"graph/traveling_salesman_problem.hpp\"\n\n#line\
-    \ 2 \"graph/graph_template.hpp\"\n\n#line 5 \"graph/graph_template.hpp\"\n\ntemplate\
-    \ <class T> struct Edge {\n    int from, to;\n    T cost;\n    int id;\n\n   \
-    \ Edge() = default;\n    Edge(const int from, const int to, const T cost = T(1),\
-    \ const int id = -1) : from(from), to(to), cost(cost), id(id) {}\n\n    friend\
-    \ std::ostream& operator<<(std::ostream& os, const Edge<T>& e) {\n        // output\
-    \ format: {id: cost(from, to) = cost}\n        return os << \"{\" << e.id << \"\
-    : cost(\" << e.from << \", \" << e.to << \") = \" << e.cost << \"}\";\n    }\n\
-    };\ntemplate <class T> using Edges = std::vector<Edge<T>>;\n\ntemplate <class\
-    \ T> struct Graph {\n    struct EdgeIterators {\n       public:\n        using\
-    \ Iterator = typename std::vector<Edge<T>>::iterator;\n        EdgeIterators()\
+  bundledCode: "#line 1 \"verify/graph/traveling_salesman_problem.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_A\"\
+    \n\n#include <iostream>\n\n#line 2 \"graph/traveling_salesman_problem.hpp\"\n\n\
+    #line 2 \"graph/graph_template.hpp\"\n\n#include <vector>\n#include <cassert>\n\
+    \ntemplate <class T> struct Edge {\n    int from, to;\n    T cost;\n    int id;\n\
+    \n    Edge() = default;\n    Edge(const int from, const int to, const T cost =\
+    \ T(1), const int id = -1) : from(from), to(to), cost(cost), id(id) {}\n\n   \
+    \ friend std::ostream& operator<<(std::ostream& os, const Edge<T>& e) {\n    \
+    \    // output format: {id: cost(from, to) = cost}\n        return os << \"{\"\
+    \ << e.id << \": cost(\" << e.from << \", \" << e.to << \") = \" << e.cost <<\
+    \ \"}\";\n    }\n};\ntemplate <class T> using Edges = std::vector<Edge<T>>;\n\n\
+    template <class T> struct Graph {\n    struct EdgeIterators {\n       public:\n\
+    \        using Iterator = typename std::vector<Edge<T>>::iterator;\n        EdgeIterators()\
     \ = default;\n        EdgeIterators(const Iterator& begit, const Iterator& endit)\
     \ : begit(begit), endit(endit) {}\n        Iterator begin() const { return begit;\
     \ }\n        Iterator end() const { return endit; }\n        size_t size() const\
@@ -84,16 +84,17 @@ data:
     \    Graph<T> g(n, directed);\n    for (int i = 1; i < n; i++) {\n        int\
     \ p;\n        std::cin >> p;\n        p -= offset;\n        T c = 1;\n       \
     \ if (weight) std::cin >> c;\n        g.add_edge(p, i, c);\n    }\n    g.build();\n\
-    \    return g;\n}\n#line 7 \"verify/aoj_dpl/aoj_dpl_2_a.test.cpp\"\n\nint main()\
-    \ {\n    int N, M;\n    std::cin >> N >> M;\n    auto G = read_graph<long long>(N,\
-    \ M, true, true, 0);\n    const long long INF = 1LL << 60;\n    auto res = traveling_salesman_problem<long\
-    \ long>(G, INF);\n    long long ans = res.back()[0];\n    if (ans == INF) ans\
-    \ = -1;\n    std::cout << ans << '\\n';\n    return 0;\n}\n"
+    \    return g;\n}\n#line 7 \"verify/graph/traveling_salesman_problem.test.cpp\"\
+    \n\nint main() {\n    int N, M;\n    std::cin >> N >> M;\n    auto g = read_graph<long\
+    \ long>(N, M, true, true, 0);\n    const long long INF = 1LL << 60;\n    auto\
+    \ res = traveling_salesman_problem<long long>(g, INF);\n    long long ans = res.back()[0];\n\
+    \    if (ans == INF) ans = -1;\n    std::cout << ans << '\\n';\n    return 0;\n\
+    }\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_A\"\
-    \n\n#include <bits/stdc++.h>\n\n#include \"graph/traveling_salesman_problem.hpp\"\
-    \n#include \"graph/read_graph.hpp\"\n\nint main() {\n    int N, M;\n    std::cin\
-    \ >> N >> M;\n    auto G = read_graph<long long>(N, M, true, true, 0);\n    const\
-    \ long long INF = 1LL << 60;\n    auto res = traveling_salesman_problem<long long>(G,\
+    \n\n#include <iostream>\n\n#include \"graph/traveling_salesman_problem.hpp\"\n\
+    #include \"graph/read_graph.hpp\"\n\nint main() {\n    int N, M;\n    std::cin\
+    \ >> N >> M;\n    auto g = read_graph<long long>(N, M, true, true, 0);\n    const\
+    \ long long INF = 1LL << 60;\n    auto res = traveling_salesman_problem<long long>(g,\
     \ INF);\n    long long ans = res.back()[0];\n    if (ans == INF) ans = -1;\n \
     \   std::cout << ans << '\\n';\n    return 0;\n}"
   dependsOn:
@@ -101,15 +102,15 @@ data:
   - graph/graph_template.hpp
   - graph/read_graph.hpp
   isVerificationFile: true
-  path: verify/aoj_dpl/aoj_dpl_2_a.test.cpp
+  path: verify/graph/traveling_salesman_problem.test.cpp
   requiredBy: []
-  timestamp: '2024-07-31 16:51:10+09:00'
+  timestamp: '2024-07-31 19:08:53+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/aoj_dpl/aoj_dpl_2_a.test.cpp
+documentation_of: verify/graph/traveling_salesman_problem.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/aoj_dpl/aoj_dpl_2_a.test.cpp
-- /verify/verify/aoj_dpl/aoj_dpl_2_a.test.cpp.html
-title: verify/aoj_dpl/aoj_dpl_2_a.test.cpp
+- /verify/verify/graph/traveling_salesman_problem.test.cpp
+- /verify/verify/graph/traveling_salesman_problem.test.cpp.html
+title: verify/graph/traveling_salesman_problem.test.cpp
 ---
