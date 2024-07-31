@@ -145,9 +145,8 @@ title: "Low Link (\u95A2\u7BC0\u70B9\u30FB\u6A4B)"
 ```cpp
 Graph<T> g;
 LowLink lk(g);
-auto articulations = lk.articulations    // 関節点の集合
-auto bridges = lk.bridges          // 橋である辺の集合
+auto articulations = lk.articulations   // 関節点の集合
+auto bridges = lk.bridges               // 橋である辺の集合
 ```
 
 ## 参考文献
-

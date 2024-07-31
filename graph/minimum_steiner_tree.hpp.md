@@ -217,6 +217,13 @@ title: "Minimum Steiner Tree (\u6700\u5C0F\u30B7\u30E5\u30BF\u30A4\u30CA\u30FC\u
 
 ## 使い方
 
+```cpp
+Graph<T> g;
+std::vector<int> terminals;
+auto dp = minimum_steiner_tree(g, terminals, INF);
+auto wt = minimum_steiner_tree_mst(g, terminals, INF);
+```
+
 - `minimum_steiner_tree(g, terminals, inf)`
     - $ O(3 ^ k n + 2 ^ k m \log m) $
     - 戻り値は dp の配列
@@ -226,4 +233,3 @@ title: "Minimum Steiner Tree (\u6700\u5C0F\u30B7\u30E5\u30BF\u30A4\u30CA\u30FC\u
     - 戻り値は最小シュタイナー木の辺の重みの総和
 
 ## 参考文献
-

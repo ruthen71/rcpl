@@ -97,7 +97,7 @@ title: "Shortest Path Tree (\u6700\u77ED\u7D4C\u8DEF\u6728)"
 ## 使い方
 
 ```cpp
-Graph<int> g(n);
+Graph<T> g;
 std::vector<int> s;
 auto [d, p, r] = dijkstra(g, s, inf);   // zero_one_bfs, bellman_ford でも OK
 auto sptree = shortest_path_tree(g, p); // 最短経路木の 1 つが得られる

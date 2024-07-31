@@ -111,7 +111,7 @@ title: "Strongly Connected Component (\u5F37\u9023\u7D50\u6210\u5206)"
 ## 使い方
 
 ```cpp
-Graph<T> g;
+Graph<int> g;
 auto scc = strongly_connected_component(g);
 ```
 

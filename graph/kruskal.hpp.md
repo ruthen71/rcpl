@@ -107,8 +107,11 @@ layout: document
 title: "Kruskal's algorithm (\u30AF\u30E9\u30B9\u30AB\u30EB\u6CD5)"
 ---
 
-
 ## 使い方
 
-## 参考文献
+```cpp
+Graph<T> g;
+auto [cost, edges] = kruskal<T>(g);
+```
 
+## 参考文献

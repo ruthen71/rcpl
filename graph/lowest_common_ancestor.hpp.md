@@ -128,7 +128,7 @@ title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
 ## 使い方
 
 ```cpp
-Graph<T> g; // 辺の重みはなし
+Graph<int> g; // 辺の重みはなし
 LowestCommonAncestor lca(g, root);
 lca.lca(u, v)               // u, v の lca
 lca.level_ancestor(u, d)    // u から d 本の辺を登った頂点を出力
