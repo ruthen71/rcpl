@@ -6,44 +6,50 @@
 
 // Euler Tour
 // complexity: O(N + M)
-// N = 5
-// edges = [{0, 1}, {0, 2}, {2, 3}, {2, 4}]
-//   0
-//  / \
-// 1   2
-//    / \
-//   3   4
-// vertices = [0, 1, 0, 2, 3, 2, 4, 2, 0]
-// vertex_id = [{0, 8}, {1, 1}, {3, 7}, {4, 4}, {6, 6}]
-// edges = [0, 0+N, 1, 2, 2+N, 3, 3+N, 1+N]
-// edge_id = [{0, 1}, {2, 7}, {3, 4}, {5, 6}]
-// edges[vertex_id[i].first, vertex_id[i].second) = edges in subtree with root i
-template <class T> std::tuple<std::vector<int>, std::vector<std::pair<int, int>>, std::vector<int>, std::vector<std::pair<int, int>>> euler_tour(Graph<T>& g, const int root = 0) {
-    const int n = (int)(g.size());
-    std::vector<int> vertices, edges;
-    std::vector<std::pair<int, int>> vertex_id(n), edge_id(n - 1);
-    vertices.reserve(2 * n - 1);
-    edges.reserve(2 * (n - 1));
+// 辺と頂点のうち, 変化させるものを要素と見て, そうでないもので要素を区切ると考えると良い
+template <class T> struct EulerTour {
+    int n;
+    std::vector<int> vertices;  // DFS で訪問する頂点の番号を並べたもの, 2 * n - 1 要素
+    std::vector<int> edges;     // DFS で通る辺の番号を並べたもの, 2 * n - 2 要素
+    std::vector<int> dir;       // DFS で通る辺の向きが 0 = 子供方向, 1 = 親方向
+    std::vector<int> vsl;       // vsl[v]: vertices[i] = v となる i の最小値
+    std::vector<int> vsr;       // vsr[v]: vertices[i] = v となる i の最大値
+    std::vector<int> esl;       // esl[e]: edges[i] = e かつ dir[i] = 0 となる i
+    std::vector<int> esr;       // esr[e]: edges[i] = e かつ dir[i] = 1 となる i
 
-    auto dfs = [&](auto f, int cur, int par) -> void {
-        vertex_id[cur].first = (int)(vertices.size());
-        vertices.push_back(cur);
-        for (auto&& e : g[cur]) {
-            if (e.to == par) continue;
-            edge_id[e.id].first = (int)(edges.size());
-            edges.push_back(e.id);
+    EulerTour(Graph<T>& g, const int root = 0) : n((int)(g.size())), vsl(n, 2 * n - 1), vsr(n, -1), esl(n - 1, -1), esr(n - 1, -1) {
+        vertices.reserve(2 * n - 1);
+        edges.reserve(2 * n - 2);
+        dir.reserve(2 * n - 2);
 
-            f(f, e.to, cur);
-            vertices.push_back(cur);
-
-            edge_id[e.id].second = (int)(edges.size());
-            edges.push_back(e.id + n);
+        auto dfs = [&](auto f, int cur, int par) -> void {
+            for (auto&& e : g[cur]) {
+                if (e.to == par) continue;
+                // 頂点を追加
+                vertices.emplace_back(cur);
+                // 子供方向の辺を追加
+                edges.emplace_back(e.id);
+                dir.emplace_back(0);
+                // DFS
+                f(f, e.to, cur);
+                // 親方向の辺を追加
+                edges.emplace_back(e.id);
+                dir.emplace_back(1);
+            }
+            // 頂点を追加
+            vertices.emplace_back(cur);
+        };
+        dfs(dfs, root, -1);
+        for (int i = 0; i < 2 * n - 1; i++) {
+            vsl[vertices[i]] = std::min(vsl[vertices[i]], i);
+            vsr[vertices[i]] = std::max(vsr[vertices[i]], i);
         }
-        vertex_id[cur].second = (int)(vertices.size()) - 1;
-    };
-    dfs(dfs, root, -1);
-
-    assert((int)(vertices.size()) == 2 * n - 1);
-    assert((int)(edges.size()) == 2 * (n - 1));
-    return {vertices, vertex_id, edges, edge_id};
-}
+        for (int i = 0; i < 2 * n - 2; i++) {
+            if (dir[i] == 0) {
+                esl[edges[i]] = i;
+            } else {
+                esr[edges[i]] = i;
+            }
+        }
+    }
+};

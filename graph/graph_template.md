@@ -28,6 +28,5 @@ g.build();
 - 関数の引数に与えるときに `function(const Graph<T>& g)` とはできず, `function(Graph<T>& g)` とする必要がある
     - `g[v]` の中で `build()` が走る可能性があるため `const` にできない
 
-
 ## 参考文献
 - [【競プロ/C++】2次元ベクタを潰してグラフライブラリを軒並み高速化](https://qiita.com/Nachia/items/d420c08b333296f54526)
