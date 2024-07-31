@@ -7,7 +7,7 @@
 
 template <class T> std::pair<T, std::vector<Edge<T>>> kruskal(Graph<T>& g) {
     auto es = g.edges;
-    std::sort(es.begin(), es.end(), [](Edge<T>& a, Edge<T>& b) { return a.cost < b.cost; });
+    std::sort(es.begin(), es.end());
     const int n = (int)(g.size());
     UnionFind uf(n);
     T ret = 0;

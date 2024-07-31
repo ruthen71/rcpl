@@ -11,6 +11,8 @@ template <class T> struct Edge {
     Edge() = default;
     Edge(const int from, const int to, const T cost = T(1), const int id = -1) : from(from), to(to), cost(cost), id(id) {}
 
+    friend bool operator<(const Edge<T>& a, const Edge<T>& b) { return a.cost < b.cost; }
+
     friend std::ostream& operator<<(std::ostream& os, const Edge<T>& e) {
         // output format: {id: cost(from, to) = cost}
         return os << "{" << e.id << ": cost(" << e.from << ", " << e.to << ") = " << e.cost << "}";

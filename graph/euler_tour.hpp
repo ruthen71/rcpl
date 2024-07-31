@@ -2,6 +2,8 @@
 
 #include "graph/graph_template.hpp"
 
+#include <tuple>
+
 // Euler Tour
 // complexity: O(N + M)
 // N = 5
@@ -16,13 +18,8 @@
 // edges = [0, 0+N, 1, 2, 2+N, 3, 3+N, 1+N]
 // edge_id = [{0, 1}, {2, 7}, {3, 4}, {5, 6}]
 // edges[vertex_id[i].first, vertex_id[i].second) = edges in subtree with root i
-template <class T>
-std::tuple<std::vector<int>, std::vector<std::pair<int, int>>, std::vector<int>, std::vector<std::pair<int, int>>>  //
-euler_tour(Graph<T>& g, const int root = 0) {
-    // compiler bugs
-    // const int n = (int)g.size();
-    // fix
-    int n = (int)(g.size());
+template <class T> std::tuple<std::vector<int>, std::vector<std::pair<int, int>>, std::vector<int>, std::vector<std::pair<int, int>>> euler_tour(Graph<T>& g, const int root = 0) {
+    const int n = (int)(g.size());
     std::vector<int> vertices, edges;
     std::vector<std::pair<int, int>> vertex_id(n), edge_id(n - 1);
     vertices.reserve(2 * n - 1);

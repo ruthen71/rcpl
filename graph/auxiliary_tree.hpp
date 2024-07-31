@@ -3,6 +3,8 @@
 #include "graph/graph_template.hpp"
 #include "graph/lowest_common_ancestor.hpp"
 
+#include <algorithm>
+
 template <class T> struct AuxiliaryTree {
     int n, root;
     std::vector<int> preorder, rank;
