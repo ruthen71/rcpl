@@ -40,16 +40,8 @@ template <class T> struct EulerTour {
             vertices.emplace_back(cur);
         };
         dfs(dfs, root, -1);
-        for (int i = 0; i < 2 * n - 1; i++) {
-            vsl[vertices[i]] = std::min(vsl[vertices[i]], i);
-            vsr[vertices[i]] = std::max(vsr[vertices[i]], i);
-        }
-        for (int i = 0; i < 2 * n - 2; i++) {
-            if (dir[i] == 0) {
-                esl[edges[i]] = i;
-            } else {
-                esr[edges[i]] = i;
-            }
-        }
+        for (int i = 2 * n - 2; i >= 0; i--) vsl[vertices[i]] = i;
+        for (int i = 0; i < 2 * n - 1; i++) vsr[vertices[i]] = i;
+        for (int i = 0; i < 2 * n - 2; i++) (dir[i] == 0 ? esl[edges[i]] : esr[edges[i]]) = i;
     }
 };

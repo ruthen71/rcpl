@@ -11,7 +11,7 @@ EulerTour et(g);
 // et.vertices, et.edges, et.dir, et.vsl, et.vsr, et.esl, et.esr が利用可能
 ```
 
-$N = 5$ 頂点の木で辺が $E = \{ \{0, 1\}, \{0, 2\}, \{2, 3\}, \{2, 4\} \}$ である場合は以下のようになる
+$ N = 5 $ 頂点の木で辺が $ E = \left( \lbrace 0, 1\rbrace, \lbrace 0, 2\rbrace, \lbrace2, 3\rbrace, \lbrace 2, 4\rbrace \right) $ である場合は以下のようになる
 
 
 ```txt
