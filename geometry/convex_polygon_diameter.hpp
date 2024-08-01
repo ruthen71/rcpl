@@ -1,16 +1,18 @@
 #pragma once
 
 #include "geometry/polygon.hpp"
-#include "geometry/polygon_is_convex.hpp"
 
-// convex polygon diameter
+#include <tuple>
+#include <algorithm>
+
+// 凸多角形の直径 (rotating calipers)
+// https://en.wikipedia.org/wiki/Rotating_calipers
+// O(n)
 // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B
 // return {index1, index2, diameter}
-// using the method of rotating calipers (https://en.wikipedia.org/wiki/Rotating_calipers)
-// complexity: O(n)
-template <typename T> std::tuple<int, int, T> convex_polygon_diameter(const Polygon<T> &p) {
+template <class T> std::tuple<int, int, T> convex_polygon_diameter(const Polygon<T>& p) {
     assert(polygon_is_convex(p));
-    int n = (int)p.size();
+    const int n = (int)(p.size());
     assert(n >= 2);
     if (n == 2) {
         return {0, 1, abs(p[0] - p[1])};
@@ -33,6 +35,6 @@ template <typename T> std::tuple<int, int, T> convex_polygon_diameter(const Poly
             maxi = i;
             maxj = j;
         }
-    } while (i != idx_min || j != idx_max);
+    } while (i != idx_min or j != idx_max);
     return {maxi, maxj, abs(p[maxi] - p[maxj])};
 }

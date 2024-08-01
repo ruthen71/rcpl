@@ -1,15 +1,14 @@
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A"
 
-#include <bits/stdc++.h>
+#include <iostream>
 
-#include "geometry/is_orthogonal.hpp"
-#include "geometry/is_parallel.hpp"
+#include "geometry/line.hpp"
 
 int main() {
     int Q;
     std::cin >> Q;
     while (Q--) {
-        Line<double> L1, L2;
+        Line<long long> L1, L2;
         std::cin >> L1 >> L2;
         if (is_parallel(L1, L2)) {
             std::cout << 2 << '\n';

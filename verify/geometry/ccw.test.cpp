@@ -1,25 +1,24 @@
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C"
 
-#include <bits/stdc++.h>
+#include <iostream>
 
-#include "geometry/ccw.hpp"
+#include "geometry/point.hpp"
 
 int main() {
-    Point<double> P1, P2;
-    std::cin >> P1 >> P2;
+    Point<long long> P1, P2;
     int Q;
-    std::cin >> Q;
+    std::cin >> P1 >> P2 >> Q;
     while (Q--) {
-        Point<double> P3;
+        Point<long long> P3;
         std::cin >> P3;
         auto ans = ccw(P1, P2, P3);
-        if (ans == COUNTER_CLOCKWISE) {
+        if (ans == Ccw::COUNTER_CLOCKWISE) {
             std::cout << "COUNTER_CLOCKWISE\n";
-        } else if (ans == CLOCKWISE) {
+        } else if (ans == Ccw::CLOCKWISE) {
             std::cout << "CLOCKWISE\n";
-        } else if (ans == ONLINE_BACK) {
+        } else if (ans == Ccw::ONLINE_BACK) {
             std::cout << "ONLINE_BACK\n";
-        } else if (ans == ONLINE_FRONT) {
+        } else if (ans == Ccw::ONLINE_FRONT) {
             std::cout << "ONLINE_FRONT\n";
         } else {
             std::cout << "ON_SEGMENT\n";

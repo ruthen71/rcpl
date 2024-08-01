@@ -1,15 +1,15 @@
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_B"
 #define ERROR 0.00000001
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <iomanip>
 
-#include "geometry/reflection.hpp"
+#include "geometry/line.hpp"
 
 int main() {
     Line<double> L;
-    std::cin >> L;
     int Q;
-    std::cin >> Q;
+    std::cin >> L >> Q;
     while (Q--) {
         Point<double> P;
         std::cin >> P;

@@ -1,13 +1,14 @@
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_C"
 #define ERROR 0.00001
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <iomanip>
 
 #include "geometry/convex_polygon_cut.hpp"
-#include "geometry/polygon_area.hpp"
+#include "geometry/polygon.hpp"
 
 int main() {
-    Point<double>::set_eps(1e-8);
+    Constants<double>::set_eps(1e-8);
     int N;
     std::cin >> N;
     Polygon<double> P(N);

@@ -1,7 +1,11 @@
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_5_A"
 #define ERROR 0.000001
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <iomanip>
+#include <cassert>
+#include <vector>
+#include <numeric>
 
 #include "geometry/closest_pair.hpp"
 
