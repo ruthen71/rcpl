@@ -80,7 +80,7 @@ data:
     \ i = 1; i < n; i++) {\n        int p;\n        std::cin >> p;\n        p -= offset;\n\
     \        T c = 1;\n        if (weight) std::cin >> c;\n        g.add_edge(p, i,\
     \ c);\n    }\n    g.build();\n    return g;\n}\n#line 2 \"graph/dijkstra.hpp\"\
-    \n\n#include <tuple>\n#include <queue>\n#line 6 \"graph/dijkstra.hpp\"\n\ntemplate\
+    \n\n#line 4 \"graph/dijkstra.hpp\"\n\n#include <tuple>\n#include <queue>\n\ntemplate\
     \ <class T> std::tuple<std::vector<T>, std::vector<int>, std::vector<int>> dijkstra(Graph<T>&\
     \ g, std::vector<int>& s, const T inf) {\n    const int n = (int)(g.size());\n\
     \    std::vector<T> dist(n, inf);\n    std::vector<int> par(n, -1), root(n, -1);\n\
@@ -92,23 +92,24 @@ data:
     \ > d + e.cost) {\n                dist[e.to] = d + e.cost;\n                root[e.to]\
     \ = root[v];\n                par[e.to] = v;\n                que.emplace(dist[e.to],\
     \ e.to);\n            }\n        }\n    }\n    return {dist, par, root};\n}\n\
-    #line 2 \"graph/shortest_path_tree.hpp\"\n\n#line 6 \"graph/shortest_path_tree.hpp\"\
-    \n\n// https://atcoder.jp/contests/abc252/tasks/abc252_e\n// \u6700\u77ED\u7D4C\
-    \u8DEF\u6728\u306E\u3046\u3061\u306E 1 \u3064\u3092\u8FD4\u3059\ntemplate <class\
-    \ T> Graph<T> shortest_path_tree(Graph<T>& g, std::vector<T>& dist, std::vector<int>&\
-    \ par) {\n    const int n = (int)(g.size());\n    Graph<T> sptree(n, true);\n\
-    \    for (auto&& e : g.edges) {\n        if (par[e.to] == e.from and dist[e.from]\
-    \ + e.cost == dist[e.to]) {\n            sptree.add_edge(e.from, e.to, e.cost,\
-    \ e.id);\n        }\n        if (!g.is_directed and par[e.from] == e.to and dist[e.to]\
-    \ + e.cost == dist[e.from]) {\n            if (par[e.from] == e.to) sptree.add_edge(e.to,\
-    \ e.from, e.cost, e.id);\n        }\n    }\n    return sptree;\n}\n#line 9 \"\
-    verify/graph/shortest_path_tree.test.cpp\"\n\nint main() {\n    int N, M;\n  \
-    \  std::cin >> N >> M;\n    auto g = read_graph<long long>(N, M, true, false,\
-    \ 1);\n    std::vector<int> s = {0};\n    const long long INF = 1LL << 60;\n \
-    \   auto [d, p, r] = dijkstra(g, s, INF);\n    auto sptree = shortest_path_tree(g,\
-    \ d, p);\n    std::vector<int> ans;\n    for (auto&& e : sptree.edges) ans.push_back(e.id\
-    \ + 1);\n    for (int i = 0; i < (int)(ans.size()); i++) {\n        std::cout\
-    \ << ans[i] << \" \\n\"[i + 1 == (int)(ans.size())];\n    }\n    return 0;\n}\n"
+    #line 2 \"graph/shortest_path_tree.hpp\"\n\n#line 4 \"graph/shortest_path_tree.hpp\"\
+    \n\n#line 7 \"graph/shortest_path_tree.hpp\"\n\n// https://atcoder.jp/contests/abc252/tasks/abc252_e\n\
+    // \u6700\u77ED\u7D4C\u8DEF\u6728\u306E\u3046\u3061\u306E 1 \u3064\u3092\u8FD4\
+    \u3059\ntemplate <class T> Graph<T> shortest_path_tree(Graph<T>& g, std::vector<T>&\
+    \ dist, std::vector<int>& par) {\n    const int n = (int)(g.size());\n    Graph<T>\
+    \ sptree(n, true);\n    for (auto&& e : g.edges) {\n        if (par[e.to] == e.from\
+    \ and dist[e.from] + e.cost == dist[e.to]) {\n            sptree.add_edge(e.from,\
+    \ e.to, e.cost, e.id);\n        }\n        if (!g.is_directed and par[e.from]\
+    \ == e.to and dist[e.to] + e.cost == dist[e.from]) {\n            if (par[e.from]\
+    \ == e.to) sptree.add_edge(e.to, e.from, e.cost, e.id);\n        }\n    }\n  \
+    \  return sptree;\n}\n#line 9 \"verify/graph/shortest_path_tree.test.cpp\"\n\n\
+    int main() {\n    int N, M;\n    std::cin >> N >> M;\n    auto g = read_graph<long\
+    \ long>(N, M, true, false, 1);\n    std::vector<int> s = {0};\n    const long\
+    \ long INF = 1LL << 60;\n    auto [d, p, r] = dijkstra(g, s, INF);\n    auto sptree\
+    \ = shortest_path_tree(g, d, p);\n    std::vector<int> ans;\n    for (auto&& e\
+    \ : sptree.edges) ans.push_back(e.id + 1);\n    for (int i = 0; i < (int)(ans.size());\
+    \ i++) {\n        std::cout << ans[i] << \" \\n\"[i + 1 == (int)(ans.size())];\n\
+    \    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://atcoder.jp/contests/abc252/tasks/abc252_e\"\n#define\
     \ IGNORE\n\n#include <iostream>\n\n#include \"graph/read_graph.hpp\"\n#include\
     \ \"graph/dijkstra.hpp\"\n#include \"graph/shortest_path_tree.hpp\"\n\nint main()\
@@ -126,7 +127,7 @@ data:
   isVerificationFile: true
   path: verify/graph/shortest_path_tree.test.cpp
   requiredBy: []
-  timestamp: '2024-08-01 05:02:04+09:00'
+  timestamp: '2024-08-01 13:43:30+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/graph/shortest_path_tree.test.cpp

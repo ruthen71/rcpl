@@ -76,7 +76,7 @@ data:
     \ i = 1; i < n; i++) {\n        int p;\n        std::cin >> p;\n        p -= offset;\n\
     \        T c = 1;\n        if (weight) std::cin >> c;\n        g.add_edge(p, i,\
     \ c);\n    }\n    g.build();\n    return g;\n}\n#line 2 \"graph/zero_one_bfs.hpp\"\
-    \n\n#include <queue>\n#include <tuple>\n#line 6 \"graph/zero_one_bfs.hpp\"\n\n\
+    \n\n#line 4 \"graph/zero_one_bfs.hpp\"\n\n#include <queue>\n#include <tuple>\n\
     #line 8 \"graph/zero_one_bfs.hpp\"\n\ntemplate <class T> std::tuple<std::vector<T>,\
     \ std::vector<int>, std::vector<int>> zero_one_bfs(Graph<T>& g, std::vector<int>&\
     \ s, const T inf) {\n    const int n = (int)(g.size());\n    std::vector<T> dist(n,\
@@ -110,7 +110,7 @@ data:
   isVerificationFile: true
   path: verify/graph/zero_one_bfs.test.cpp
   requiredBy: []
-  timestamp: '2024-07-31 21:19:59+09:00'
+  timestamp: '2024-08-01 13:43:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/zero_one_bfs.test.cpp

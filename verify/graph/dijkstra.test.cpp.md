@@ -24,13 +24,12 @@ data:
     links:
     - https://judge.yosupo.jp/problem/shortest_path
   bundledCode: "#line 1 \"verify/graph/dijkstra.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/shortest_path\"\
-    \n\n#include <iostream>\n\n#line 2 \"graph/dijkstra.hpp\"\n\n#include <tuple>\n\
-    #include <queue>\n#line 2 \"graph/graph_template.hpp\"\n\n#include <vector>\n\
-    #include <cassert>\n\ntemplate <class T> struct Edge {\n    int from, to;\n  \
-    \  T cost;\n    int id;\n\n    Edge() = default;\n    Edge(const int from, const\
-    \ int to, const T cost = T(1), const int id = -1) : from(from), to(to), cost(cost),\
-    \ id(id) {}\n\n    friend bool operator<(const Edge<T>& a, const Edge<T>& b) {\
-    \ return a.cost < b.cost; }\n\n    friend std::ostream& operator<<(std::ostream&\
+    \n\n#include <iostream>\n\n#line 2 \"graph/dijkstra.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
+    \n\n#include <vector>\n#include <cassert>\n\ntemplate <class T> struct Edge {\n\
+    \    int from, to;\n    T cost;\n    int id;\n\n    Edge() = default;\n    Edge(const\
+    \ int from, const int to, const T cost = T(1), const int id = -1) : from(from),\
+    \ to(to), cost(cost), id(id) {}\n\n    friend bool operator<(const Edge<T>& a,\
+    \ const Edge<T>& b) { return a.cost < b.cost; }\n\n    friend std::ostream& operator<<(std::ostream&\
     \ os, const Edge<T>& e) {\n        // output format: {id: cost(from, to) = cost}\n\
     \        return os << \"{\" << e.id << \": cost(\" << e.from << \", \" << e.to\
     \ << \") = \" << e.cost << \"}\";\n    }\n};\ntemplate <class T> using Edges =\
@@ -67,41 +66,42 @@ data:
     \ j++) {\n                os << g[i][j];\n                if (j + 1 != (int)(g[i].size()))\
     \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
     \ 1 != (int)(g.size())) os << \", \";\n        }\n        return os << \"]\";\n\
-    \    }\n};\n#line 6 \"graph/dijkstra.hpp\"\n\ntemplate <class T> std::tuple<std::vector<T>,\
-    \ std::vector<int>, std::vector<int>> dijkstra(Graph<T>& g, std::vector<int>&\
-    \ s, const T inf) {\n    const int n = (int)(g.size());\n    std::vector<T> dist(n,\
-    \ inf);\n    std::vector<int> par(n, -1), root(n, -1);\n\n    std::priority_queue<std::pair<T,\
-    \ int>, std::vector<std::pair<T, int>>, std::greater<>> que;\n\n    for (auto&&\
-    \ v : s) {\n        dist[v] = 0;\n        root[v] = v;\n        que.emplace(T(0),\
-    \ v);\n    }\n\n    while (!que.empty()) {\n        auto [d, v] = que.top();\n\
-    \        que.pop();\n        if (dist[v] != d) continue;  // dist[v] < d\n   \
-    \     for (auto&& e : g[v]) {\n            if (dist[e.to] > d + e.cost) {\n  \
-    \              dist[e.to] = d + e.cost;\n                root[e.to] = root[v];\n\
-    \                par[e.to] = v;\n                que.emplace(dist[e.to], e.to);\n\
-    \            }\n        }\n    }\n    return {dist, par, root};\n}\n#line 2 \"\
-    graph/read_graph.hpp\"\n\n#line 4 \"graph/read_graph.hpp\"\n\ntemplate <class\
-    \ T> Graph<T> read_graph(const int n, const int m, const bool weight = false,\
-    \ const bool directed = false, const int offset = 1) {\n    Graph<T> g(n, directed);\n\
-    \    for (int i = 0; i < m; i++) {\n        int a, b;\n        std::cin >> a >>\
-    \ b;\n        a -= offset, b -= offset;\n        T c = 1;\n        if (weight)\
-    \ std::cin >> c;\n        g.add_edge(a, b, c);\n    }\n    g.build();\n    return\
-    \ g;\n}\n\ntemplate <class T> Graph<T> read_parent(const int n, const bool weight\
-    \ = false, const bool directed = false, const int offset = 1) {\n    Graph<T>\
-    \ g(n, directed);\n    for (int i = 1; i < n; i++) {\n        int p;\n       \
-    \ std::cin >> p;\n        p -= offset;\n        T c = 1;\n        if (weight)\
-    \ std::cin >> c;\n        g.add_edge(p, i, c);\n    }\n    g.build();\n    return\
-    \ g;\n}\n#line 2 \"graph/restore_path.hpp\"\n\n#line 4 \"graph/restore_path.hpp\"\
-    \n#include <algorithm>\n\n// restore path from root[t] to t\nstd::vector<int>\
-    \ restore_path(std::vector<int>& par, int t) {\n    std::vector<int> path = {t};\n\
-    \    while (par[path.back()] != -1) path.emplace_back(par[path.back()]);\n   \
-    \ std::reverse(path.begin(), path.end());\n    return path;\n}\n#line 8 \"verify/graph/dijkstra.test.cpp\"\
-    \n\nint main() {\n    int N, M, s, t;\n    std::cin >> N >> M >> s >> t;\n   \
-    \ auto g = read_graph<long long>(N, M, true, true, 0);\n    std::vector<int> ss\
-    \ = {s};\n    const long long INF = 1LL << 60;\n    auto [d, p, r] = dijkstra(g,\
-    \ ss, INF);\n    if (d[t] == INF) {\n        std::cout << -1 << '\\n';\n     \
-    \   return 0;\n    }\n    auto ans = restore_path(p, t);\n    std::cout << d[t]\
-    \ << ' ' << ans.size() - 1 << '\\n';\n    for (int i = 0; i < ans.size() - 1;\
-    \ i++) std::cout << ans[i] << ' ' << ans[i + 1] << '\\n';\n    return 0;\n}\n"
+    \    }\n};\n#line 4 \"graph/dijkstra.hpp\"\n\n#include <tuple>\n#include <queue>\n\
+    \ntemplate <class T> std::tuple<std::vector<T>, std::vector<int>, std::vector<int>>\
+    \ dijkstra(Graph<T>& g, std::vector<int>& s, const T inf) {\n    const int n =\
+    \ (int)(g.size());\n    std::vector<T> dist(n, inf);\n    std::vector<int> par(n,\
+    \ -1), root(n, -1);\n\n    std::priority_queue<std::pair<T, int>, std::vector<std::pair<T,\
+    \ int>>, std::greater<>> que;\n\n    for (auto&& v : s) {\n        dist[v] = 0;\n\
+    \        root[v] = v;\n        que.emplace(T(0), v);\n    }\n\n    while (!que.empty())\
+    \ {\n        auto [d, v] = que.top();\n        que.pop();\n        if (dist[v]\
+    \ != d) continue;  // dist[v] < d\n        for (auto&& e : g[v]) {\n         \
+    \   if (dist[e.to] > d + e.cost) {\n                dist[e.to] = d + e.cost;\n\
+    \                root[e.to] = root[v];\n                par[e.to] = v;\n     \
+    \           que.emplace(dist[e.to], e.to);\n            }\n        }\n    }\n\
+    \    return {dist, par, root};\n}\n#line 2 \"graph/read_graph.hpp\"\n\n#line 4\
+    \ \"graph/read_graph.hpp\"\n\ntemplate <class T> Graph<T> read_graph(const int\
+    \ n, const int m, const bool weight = false, const bool directed = false, const\
+    \ int offset = 1) {\n    Graph<T> g(n, directed);\n    for (int i = 0; i < m;\
+    \ i++) {\n        int a, b;\n        std::cin >> a >> b;\n        a -= offset,\
+    \ b -= offset;\n        T c = 1;\n        if (weight) std::cin >> c;\n       \
+    \ g.add_edge(a, b, c);\n    }\n    g.build();\n    return g;\n}\n\ntemplate <class\
+    \ T> Graph<T> read_parent(const int n, const bool weight = false, const bool directed\
+    \ = false, const int offset = 1) {\n    Graph<T> g(n, directed);\n    for (int\
+    \ i = 1; i < n; i++) {\n        int p;\n        std::cin >> p;\n        p -= offset;\n\
+    \        T c = 1;\n        if (weight) std::cin >> c;\n        g.add_edge(p, i,\
+    \ c);\n    }\n    g.build();\n    return g;\n}\n#line 2 \"graph/restore_path.hpp\"\
+    \n\n#line 4 \"graph/restore_path.hpp\"\n#include <algorithm>\n\n// restore path\
+    \ from root[t] to t\nstd::vector<int> restore_path(std::vector<int>& par, int\
+    \ t) {\n    std::vector<int> path = {t};\n    while (par[path.back()] != -1) path.emplace_back(par[path.back()]);\n\
+    \    std::reverse(path.begin(), path.end());\n    return path;\n}\n#line 8 \"\
+    verify/graph/dijkstra.test.cpp\"\n\nint main() {\n    int N, M, s, t;\n    std::cin\
+    \ >> N >> M >> s >> t;\n    auto g = read_graph<long long>(N, M, true, true, 0);\n\
+    \    std::vector<int> ss = {s};\n    const long long INF = 1LL << 60;\n    auto\
+    \ [d, p, r] = dijkstra(g, ss, INF);\n    if (d[t] == INF) {\n        std::cout\
+    \ << -1 << '\\n';\n        return 0;\n    }\n    auto ans = restore_path(p, t);\n\
+    \    std::cout << d[t] << ' ' << ans.size() - 1 << '\\n';\n    for (int i = 0;\
+    \ i < ans.size() - 1; i++) std::cout << ans[i] << ' ' << ans[i + 1] << '\\n';\n\
+    \    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/shortest_path\"\n\n#include\
     \ <iostream>\n\n#include \"graph/dijkstra.hpp\"\n#include \"graph/read_graph.hpp\"\
     \n#include \"graph/restore_path.hpp\"\n\nint main() {\n    int N, M, s, t;\n \
@@ -120,7 +120,7 @@ data:
   isVerificationFile: true
   path: verify/graph/dijkstra.test.cpp
   requiredBy: []
-  timestamp: '2024-07-31 21:19:59+09:00'
+  timestamp: '2024-08-01 13:43:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/dijkstra.test.cpp

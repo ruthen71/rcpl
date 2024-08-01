@@ -21,9 +21,8 @@ data:
     - https://kopricky.github.io/code/Academic/steiner_tree.html
     - https://www.slideshare.net/wata_orz/ss-12131479#50
     - https://yukicoder.me/problems/no/114/editorial
-  bundledCode: "#line 2 \"graph/minimum_steiner_tree.hpp\"\n\n#include <vector>\n\
-    #include <queue>\n#include <algorithm>\n#include <cassert>\n\n#line 2 \"graph/graph_template.hpp\"\
-    \n\n#line 5 \"graph/graph_template.hpp\"\n\ntemplate <class T> struct Edge {\n\
+  bundledCode: "#line 2 \"graph/minimum_steiner_tree.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
+    \n\n#include <vector>\n#include <cassert>\n\ntemplate <class T> struct Edge {\n\
     \    int from, to;\n    T cost;\n    int id;\n\n    Edge() = default;\n    Edge(const\
     \ int from, const int to, const T cost = T(1), const int id = -1) : from(from),\
     \ to(to), cost(cost), id(id) {}\n\n    friend bool operator<(const Edge<T>& a,\
@@ -64,15 +63,15 @@ data:
     \ j++) {\n                os << g[i][j];\n                if (j + 1 != (int)(g[i].size()))\
     \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
     \ 1 != (int)(g.size())) os << \", \";\n        }\n        return os << \"]\";\n\
-    \    }\n};\n#line 2 \"data_structure/unionfind.hpp\"\n\n#line 5 \"data_structure/unionfind.hpp\"\
-    \n\nstruct UnionFind {\n    int n;\n    std::vector<int> parents;\n\n    UnionFind()\
-    \ {}\n    UnionFind(int n) : n(n), parents(n, -1) {}\n\n    int leader(int x)\
-    \ { return parents[x] < 0 ? x : parents[x] = leader(parents[x]); }\n\n    bool\
-    \ merge(int x, int y) {\n        x = leader(x), y = leader(y);\n        if (x\
-    \ == y) return false;\n        if (parents[x] > parents[y]) std::swap(x, y);\n\
-    \        parents[x] += parents[y];\n        parents[y] = x;\n        return true;\n\
-    \    }\n\n    bool same(int x, int y) { return leader(x) == leader(y); }\n\n \
-    \   int size(int x) { return -parents[leader(x)]; }\n\n    std::vector<std::vector<int>>\
+    \    }\n};\n#line 2 \"data_structure/unionfind.hpp\"\n\n#line 4 \"data_structure/unionfind.hpp\"\
+    \n#include <algorithm>\n\nstruct UnionFind {\n    int n;\n    std::vector<int>\
+    \ parents;\n\n    UnionFind() {}\n    UnionFind(int n) : n(n), parents(n, -1)\
+    \ {}\n\n    int leader(int x) { return parents[x] < 0 ? x : parents[x] = leader(parents[x]);\
+    \ }\n\n    bool merge(int x, int y) {\n        x = leader(x), y = leader(y);\n\
+    \        if (x == y) return false;\n        if (parents[x] > parents[y]) std::swap(x,\
+    \ y);\n        parents[x] += parents[y];\n        parents[y] = x;\n        return\
+    \ true;\n    }\n\n    bool same(int x, int y) { return leader(x) == leader(y);\
+    \ }\n\n    int size(int x) { return -parents[leader(x)]; }\n\n    std::vector<std::vector<int>>\
     \ groups() {\n        std::vector<int> leader_buf(n), group_size(n);\n       \
     \ for (int i = 0; i < n; i++) {\n            leader_buf[i] = leader(i);\n    \
     \        group_size[leader_buf[i]]++;\n        }\n        std::vector<std::vector<int>>\
@@ -81,8 +80,9 @@ data:
     \        }\n        result.erase(std::remove_if(result.begin(), result.end(),\
     \ [&](const std::vector<int>& v) { return v.empty(); }), result.end());\n    \
     \    return result;\n    }\n\n    void init(int n) { parents.assign(n, -1); }\
-    \  // reset\n};\n#line 10 \"graph/minimum_steiner_tree.hpp\"\n\n// minimum steiner\
-    \ tree\n// O(3 ^ k n + 2 ^ k m \\log m) (n = |V|, m = |E|, k = |terminals|)\n\
+    \  // reset\n};\n#line 5 \"graph/minimum_steiner_tree.hpp\"\n\n#line 7 \"graph/minimum_steiner_tree.hpp\"\
+    \n#include <queue>\n#line 10 \"graph/minimum_steiner_tree.hpp\"\n\n// minimum\
+    \ steiner tree\n// O(3 ^ k n + 2 ^ k m \\log m) (n = |V|, m = |E|, k = |terminals|)\n\
     // https://www.slideshare.net/wata_orz/ss-12131479#50\n// https://kopricky.github.io/code/Academic/steiner_tree.html\n\
     // https://atcoder.jp/contests/abc364/editorial/10547\ntemplate <class T> std::vector<std::vector<T>>\
     \ minimum_steiner_tree(Graph<T>& g, const std::vector<int>& terminals, const T\
@@ -139,9 +139,9 @@ data:
     \u5B9A\n        if (connected + 1 == k + __builtin_popcount(bit)) ans = std::min(ans,\
     \ cur);\n\n        // used \u3092\u3082\u3068\u306B\u623B\u3059\n        for (int\
     \ i = 0; i < n - k; i++) used[others[i]] = 0;\n    }\n    return ans;\n}\n"
-  code: "#pragma once\n\n#include <vector>\n#include <queue>\n#include <algorithm>\n\
-    #include <cassert>\n\n#include \"graph/graph_template.hpp\"\n#include \"data_structure/unionfind.hpp\"\
-    \n\n// minimum steiner tree\n// O(3 ^ k n + 2 ^ k m \\log m) (n = |V|, m = |E|,\
+  code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n#include \"data_structure/unionfind.hpp\"\
+    \n\n#include <vector>\n#include <queue>\n#include <algorithm>\n#include <cassert>\n\
+    \n// minimum steiner tree\n// O(3 ^ k n + 2 ^ k m \\log m) (n = |V|, m = |E|,\
     \ k = |terminals|)\n// https://www.slideshare.net/wata_orz/ss-12131479#50\n//\
     \ https://kopricky.github.io/code/Academic/steiner_tree.html\n// https://atcoder.jp/contests/abc364/editorial/10547\n\
     template <class T> std::vector<std::vector<T>> minimum_steiner_tree(Graph<T>&\
@@ -205,7 +205,7 @@ data:
   isVerificationFile: false
   path: graph/minimum_steiner_tree.hpp
   requiredBy: []
-  timestamp: '2024-07-31 21:19:59+09:00'
+  timestamp: '2024-08-01 13:43:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/minimum_steiner_tree.test.cpp

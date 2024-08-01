@@ -79,26 +79,26 @@ data:
     \ i = 1; i < n; i++) {\n        int p;\n        std::cin >> p;\n        p -= offset;\n\
     \        T c = 1;\n        if (weight) std::cin >> c;\n        g.add_edge(p, i,\
     \ c);\n    }\n    g.build();\n    return g;\n}\n#line 2 \"graph/minimum_steiner_tree.hpp\"\
-    \n\n#line 4 \"graph/minimum_steiner_tree.hpp\"\n#include <queue>\n#include <algorithm>\n\
-    #line 7 \"graph/minimum_steiner_tree.hpp\"\n\n#line 2 \"data_structure/unionfind.hpp\"\
-    \n\n#line 5 \"data_structure/unionfind.hpp\"\n\nstruct UnionFind {\n    int n;\n\
-    \    std::vector<int> parents;\n\n    UnionFind() {}\n    UnionFind(int n) : n(n),\
-    \ parents(n, -1) {}\n\n    int leader(int x) { return parents[x] < 0 ? x : parents[x]\
-    \ = leader(parents[x]); }\n\n    bool merge(int x, int y) {\n        x = leader(x),\
-    \ y = leader(y);\n        if (x == y) return false;\n        if (parents[x] >\
-    \ parents[y]) std::swap(x, y);\n        parents[x] += parents[y];\n        parents[y]\
-    \ = x;\n        return true;\n    }\n\n    bool same(int x, int y) { return leader(x)\
-    \ == leader(y); }\n\n    int size(int x) { return -parents[leader(x)]; }\n\n \
-    \   std::vector<std::vector<int>> groups() {\n        std::vector<int> leader_buf(n),\
-    \ group_size(n);\n        for (int i = 0; i < n; i++) {\n            leader_buf[i]\
-    \ = leader(i);\n            group_size[leader_buf[i]]++;\n        }\n        std::vector<std::vector<int>>\
+    \n\n#line 2 \"data_structure/unionfind.hpp\"\n\n#line 4 \"data_structure/unionfind.hpp\"\
+    \n#include <algorithm>\n\nstruct UnionFind {\n    int n;\n    std::vector<int>\
+    \ parents;\n\n    UnionFind() {}\n    UnionFind(int n) : n(n), parents(n, -1)\
+    \ {}\n\n    int leader(int x) { return parents[x] < 0 ? x : parents[x] = leader(parents[x]);\
+    \ }\n\n    bool merge(int x, int y) {\n        x = leader(x), y = leader(y);\n\
+    \        if (x == y) return false;\n        if (parents[x] > parents[y]) std::swap(x,\
+    \ y);\n        parents[x] += parents[y];\n        parents[y] = x;\n        return\
+    \ true;\n    }\n\n    bool same(int x, int y) { return leader(x) == leader(y);\
+    \ }\n\n    int size(int x) { return -parents[leader(x)]; }\n\n    std::vector<std::vector<int>>\
+    \ groups() {\n        std::vector<int> leader_buf(n), group_size(n);\n       \
+    \ for (int i = 0; i < n; i++) {\n            leader_buf[i] = leader(i);\n    \
+    \        group_size[leader_buf[i]]++;\n        }\n        std::vector<std::vector<int>>\
     \ result(n);\n        for (int i = 0; i < n; i++) {\n            result[i].reserve(group_size[i]);\n\
     \        }\n        for (int i = 0; i < n; i++) {\n            result[leader_buf[i]].push_back(i);\n\
     \        }\n        result.erase(std::remove_if(result.begin(), result.end(),\
     \ [&](const std::vector<int>& v) { return v.empty(); }), result.end());\n    \
     \    return result;\n    }\n\n    void init(int n) { parents.assign(n, -1); }\
-    \  // reset\n};\n#line 10 \"graph/minimum_steiner_tree.hpp\"\n\n// minimum steiner\
-    \ tree\n// O(3 ^ k n + 2 ^ k m \\log m) (n = |V|, m = |E|, k = |terminals|)\n\
+    \  // reset\n};\n#line 5 \"graph/minimum_steiner_tree.hpp\"\n\n#line 7 \"graph/minimum_steiner_tree.hpp\"\
+    \n#include <queue>\n#line 10 \"graph/minimum_steiner_tree.hpp\"\n\n// minimum\
+    \ steiner tree\n// O(3 ^ k n + 2 ^ k m \\log m) (n = |V|, m = |E|, k = |terminals|)\n\
     // https://www.slideshare.net/wata_orz/ss-12131479#50\n// https://kopricky.github.io/code/Academic/steiner_tree.html\n\
     // https://atcoder.jp/contests/abc364/editorial/10547\ntemplate <class T> std::vector<std::vector<T>>\
     \ minimum_steiner_tree(Graph<T>& g, const std::vector<int>& terminals, const T\
@@ -180,7 +180,7 @@ data:
   isVerificationFile: true
   path: verify/graph/minimum_steiner_tree.test.cpp
   requiredBy: []
-  timestamp: '2024-07-31 21:19:59+09:00'
+  timestamp: '2024-08-01 13:43:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/minimum_steiner_tree.test.cpp

@@ -20,13 +20,12 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"graph/lowest_common_ancestor.hpp\"\n\n#include <vector>\n\
-    \n#line 2 \"graph/graph_template.hpp\"\n\n#line 4 \"graph/graph_template.hpp\"\
-    \n#include <cassert>\n\ntemplate <class T> struct Edge {\n    int from, to;\n\
-    \    T cost;\n    int id;\n\n    Edge() = default;\n    Edge(const int from, const\
-    \ int to, const T cost = T(1), const int id = -1) : from(from), to(to), cost(cost),\
-    \ id(id) {}\n\n    friend bool operator<(const Edge<T>& a, const Edge<T>& b) {\
-    \ return a.cost < b.cost; }\n\n    friend std::ostream& operator<<(std::ostream&\
+  bundledCode: "#line 2 \"graph/lowest_common_ancestor.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
+    \n\n#include <vector>\n#include <cassert>\n\ntemplate <class T> struct Edge {\n\
+    \    int from, to;\n    T cost;\n    int id;\n\n    Edge() = default;\n    Edge(const\
+    \ int from, const int to, const T cost = T(1), const int id = -1) : from(from),\
+    \ to(to), cost(cost), id(id) {}\n\n    friend bool operator<(const Edge<T>& a,\
+    \ const Edge<T>& b) { return a.cost < b.cost; }\n\n    friend std::ostream& operator<<(std::ostream&\
     \ os, const Edge<T>& e) {\n        // output format: {id: cost(from, to) = cost}\n\
     \        return os << \"{\" << e.id << \": cost(\" << e.from << \", \" << e.to\
     \ << \") = \" << e.cost << \"}\";\n    }\n};\ntemplate <class T> using Edges =\
@@ -63,9 +62,9 @@ data:
     \ j++) {\n                os << g[i][j];\n                if (j + 1 != (int)(g[i].size()))\
     \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
     \ 1 != (int)(g.size())) os << \", \";\n        }\n        return os << \"]\";\n\
-    \    }\n};\n#line 6 \"graph/lowest_common_ancestor.hpp\"\n\ntemplate <class T>\
-    \ struct LowestCommonAncestor {\n    int n, lg;\n    std::vector<int> depth;\n\
-    \    std::vector<std::vector<int>> parent;\n\n    LowestCommonAncestor(Graph<T>&\
+    \    }\n};\n#line 4 \"graph/lowest_common_ancestor.hpp\"\n\n#line 6 \"graph/lowest_common_ancestor.hpp\"\
+    \n\ntemplate <class T> struct LowestCommonAncestor {\n    int n, lg;\n    std::vector<int>\
+    \ depth;\n    std::vector<std::vector<int>> parent;\n\n    LowestCommonAncestor(Graph<T>&\
     \ g, const int root = 0) : n((int)(g.size())), lg(32 - __builtin_clz(n)), depth(n,\
     \ 0), parent(lg, std::vector<int>(n)) {\n        auto dfs = [&](auto f, int cur,\
     \ int par) -> void {\n            parent[0][cur] = par;\n            for (auto&&\
@@ -86,8 +85,8 @@ data:
     \ k & 1) u = parent[k][u];\n        }\n        return u;\n    }\n\n    int distance(const\
     \ int u, const int v) const { return depth[u] + depth[v] - 2 * depth[lca(u, v)];\
     \ }\n};\n"
-  code: "#pragma once\n\n#include <vector>\n\n#include \"graph/graph_template.hpp\"\
-    \n\ntemplate <class T> struct LowestCommonAncestor {\n    int n, lg;\n    std::vector<int>\
+  code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\n#include <vector>\n\
+    \ntemplate <class T> struct LowestCommonAncestor {\n    int n, lg;\n    std::vector<int>\
     \ depth;\n    std::vector<std::vector<int>> parent;\n\n    LowestCommonAncestor(Graph<T>&\
     \ g, const int root = 0) : n((int)(g.size())), lg(32 - __builtin_clz(n)), depth(n,\
     \ 0), parent(lg, std::vector<int>(n)) {\n        auto dfs = [&](auto f, int cur,\
@@ -115,7 +114,7 @@ data:
   path: graph/lowest_common_ancestor.hpp
   requiredBy:
   - graph/auxiliary_tree.hpp
-  timestamp: '2024-07-31 21:19:59+09:00'
+  timestamp: '2024-08-01 13:43:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/auxiliary_tree.test.cpp

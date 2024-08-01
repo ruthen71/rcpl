@@ -148,7 +148,7 @@ data:
   isVerificationFile: false
   path: graph/auxiliary_tree.hpp
   requiredBy: []
-  timestamp: '2024-07-31 21:19:59+09:00'
+  timestamp: '2024-08-01 13:43:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/auxiliary_tree.test.cpp

@@ -168,7 +168,7 @@ data:
   isVerificationFile: true
   path: verify/graph/auxiliary_tree.test.cpp
   requiredBy: []
-  timestamp: '2024-07-31 23:48:12+09:00'
+  timestamp: '2024-08-01 13:43:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/auxiliary_tree.test.cpp

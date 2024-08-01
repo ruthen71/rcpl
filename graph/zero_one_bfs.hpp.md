@@ -14,13 +14,12 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"graph/zero_one_bfs.hpp\"\n\n#include <queue>\n#include <tuple>\n\
-    #include <vector>\n\n#line 2 \"graph/graph_template.hpp\"\n\n#line 4 \"graph/graph_template.hpp\"\
-    \n#include <cassert>\n\ntemplate <class T> struct Edge {\n    int from, to;\n\
-    \    T cost;\n    int id;\n\n    Edge() = default;\n    Edge(const int from, const\
-    \ int to, const T cost = T(1), const int id = -1) : from(from), to(to), cost(cost),\
-    \ id(id) {}\n\n    friend bool operator<(const Edge<T>& a, const Edge<T>& b) {\
-    \ return a.cost < b.cost; }\n\n    friend std::ostream& operator<<(std::ostream&\
+  bundledCode: "#line 2 \"graph/zero_one_bfs.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
+    \n\n#include <vector>\n#include <cassert>\n\ntemplate <class T> struct Edge {\n\
+    \    int from, to;\n    T cost;\n    int id;\n\n    Edge() = default;\n    Edge(const\
+    \ int from, const int to, const T cost = T(1), const int id = -1) : from(from),\
+    \ to(to), cost(cost), id(id) {}\n\n    friend bool operator<(const Edge<T>& a,\
+    \ const Edge<T>& b) { return a.cost < b.cost; }\n\n    friend std::ostream& operator<<(std::ostream&\
     \ os, const Edge<T>& e) {\n        // output format: {id: cost(from, to) = cost}\n\
     \        return os << \"{\" << e.id << \": cost(\" << e.from << \", \" << e.to\
     \ << \") = \" << e.cost << \"}\";\n    }\n};\ntemplate <class T> using Edges =\
@@ -57,7 +56,8 @@ data:
     \ j++) {\n                os << g[i][j];\n                if (j + 1 != (int)(g[i].size()))\
     \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
     \ 1 != (int)(g.size())) os << \", \";\n        }\n        return os << \"]\";\n\
-    \    }\n};\n#line 8 \"graph/zero_one_bfs.hpp\"\n\ntemplate <class T> std::tuple<std::vector<T>,\
+    \    }\n};\n#line 4 \"graph/zero_one_bfs.hpp\"\n\n#include <queue>\n#include <tuple>\n\
+    #line 8 \"graph/zero_one_bfs.hpp\"\n\ntemplate <class T> std::tuple<std::vector<T>,\
     \ std::vector<int>, std::vector<int>> zero_one_bfs(Graph<T>& g, std::vector<int>&\
     \ s, const T inf) {\n    const int n = (int)(g.size());\n    std::vector<T> dist(n,\
     \ inf);\n    std::vector<int> par(n, -1), root(n, -1);\n\n    std::deque<int>\
@@ -70,8 +70,8 @@ data:
     \                } else {\n                    que.push_front(e.to);\n       \
     \         }\n            }\n        }\n    }\n    return {dist, par, root};\n\
     }\n"
-  code: "#pragma once\n\n#include <queue>\n#include <tuple>\n#include <vector>\n\n\
-    #include \"graph/graph_template.hpp\"\n\ntemplate <class T> std::tuple<std::vector<T>,\
+  code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\n#include <queue>\n\
+    #include <tuple>\n#include <vector>\n\ntemplate <class T> std::tuple<std::vector<T>,\
     \ std::vector<int>, std::vector<int>> zero_one_bfs(Graph<T>& g, std::vector<int>&\
     \ s, const T inf) {\n    const int n = (int)(g.size());\n    std::vector<T> dist(n,\
     \ inf);\n    std::vector<int> par(n, -1), root(n, -1);\n\n    std::deque<int>\
@@ -88,7 +88,7 @@ data:
   isVerificationFile: false
   path: graph/zero_one_bfs.hpp
   requiredBy: []
-  timestamp: '2024-07-31 21:19:59+09:00'
+  timestamp: '2024-08-01 13:43:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/zero_one_bfs.test.cpp
