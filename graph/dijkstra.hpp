@@ -1,8 +1,9 @@
 #pragma once
 
+#include "graph/graph_template.hpp"
+
 #include <tuple>
 #include <queue>
-#include "graph/graph_template.hpp"
 
 template <class T> std::tuple<std::vector<T>, std::vector<int>, std::vector<int>> dijkstra(Graph<T>& g, std::vector<int>& s, const T inf) {
     const int n = (int)(g.size());

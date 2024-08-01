@@ -1,7 +1,8 @@
 #pragma once
 
-#include <tuple>
 #include "graph/graph_template.hpp"
+
+#include <tuple>
 
 // {dist, par, root}
 template <class T> std::tuple<std::vector<T>, std::vector<int>, std::vector<int>> bellman_ford(Graph<T>& g, std::vector<int>& s, const T inf) {

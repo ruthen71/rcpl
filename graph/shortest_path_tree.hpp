@@ -1,8 +1,9 @@
 #pragma once
 
+#include "graph/graph_template.hpp"
+
 #include <vector>
 #include <cassert>
-#include "graph/graph_template.hpp"
 
 // https://atcoder.jp/contests/abc252/tasks/abc252_e
 // 最短経路木のうちの 1 つを返す

@@ -1,8 +1,8 @@
 #pragma once
 
-#include <vector>
-
 #include "graph/graph_template.hpp"
+
+#include <vector>
 
 template <class T> struct LowestCommonAncestor {
     int n, lg;
