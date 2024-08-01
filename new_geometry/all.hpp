@@ -386,6 +386,7 @@ template <class T> std::vector<Point<T>> cross_point(const Segment<T>& s, const 
 // 円 c1, c2 の交点 1 or 2 つ
 // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_E
 template <class T> std::vector<Point<T>> cross_point(const Circle<T>& c1, const Circle<T>& c2) {
+    static_assert(std::is_floating_point<T>::value == true);
     assert(is_intersect(c1, c2));
     T d = abs(c1.o - c2.o);
     T a = std::acosl((c1.r * c1.r - c2.r * c2.r + d * d) / (T(2) * c1.r * d));
@@ -396,7 +397,7 @@ template <class T> std::vector<Point<T>> cross_point(const Circle<T>& c1, const 
     return {p, q};
 }
 
-// 距離
+// 距離 (直線, 線分, 点)
 // 点 p1, p2 の距離
 template <class T> T distance(const Point<T>& p1, const Point<T>& p2) { return abs(p1 - p2); }
 
@@ -409,6 +410,7 @@ template <class T> T distance(const Point<T>& p, const Line<T>& l) { return dist
 
 // 線分 s, 点 p の距離
 template <class T> T distance(const Segment<T>& s, const Point<T>& p) {
+    static_assert(std::is_floating_point<T>::value == true);
     Point<T> r = projection(s, p);
     if (is_intersect(s, r)) return abs(r - p);
     return std::min(abs(s.a - p), abs(s.b - p));
@@ -417,6 +419,7 @@ template <class T> T distance(const Point<T>& p, const Segment<T>& s) { return d
 
 // 直線 l1, l2 の距離
 template <class T> T distance(const Line<T>& l1, const Line<T>& l2) {
+    static_assert(std::is_floating_point<T>::value == true);
     if (is_intersect(l1, l2)) return 0;
     return distance(l1, l2.a);
 }
@@ -425,6 +428,7 @@ template <class T> T distance(const Line<T>& l1, const Line<T>& l2) {
 
 // 直線 l, 線分 s の距離
 template <class T> T distance(const Line<T>& l, const Segment<T>& s) {
+    static_assert(std::is_floating_point<T>::value == true);
     if (is_intersect(l, s)) return 0;
     return std::min(distance(l, s.a), distance(l, s.b));
 }
@@ -433,6 +437,7 @@ template <class T> T distance(const Segment<T>& s, const Line<T>& l) { return di
 // 線分 s1, s2 の距離
 // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_D
 template <class T> T distance(const Segment<T>& s1, const Segment<T>& s2) {
+    static_assert(std::is_floating_point<T>::value == true);
     if (is_intersect(s1, s2)) return 0;
     return std::min({distance(s1, s2.a), distance(s1, s2.b), distance(s2, s1.a), distance(s2, s1.b)});
 }
@@ -440,6 +445,7 @@ template <class T> T distance(const Segment<T>& s1, const Segment<T>& s2) {
 // 円の接点 (円の外側の点に対する円の接線の円との交点)
 // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_F
 template <class T> std::vector<Point<T>> tangent_point(const Circle<T>& c, const Point<T>& p) {
+    static_assert(std::is_floating_point<T>::value == true);
     assert(sign(abs(c.o - p) - c.r) == 1);
     return cross_point(c, Circle(p, sqrtl(norm(c.o - p) - c.r * c.r)));
 }
@@ -448,6 +454,7 @@ template <class T> std::vector<Point<T>> tangent_point(const Circle<T>& c, const
 // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_B
 // https://drken1215.hatenablog.com/entry/2020/10/16/073700
 template <class T> Circle<T> incircle(const Point<T>& a, const Point<T>& b, const Point<T>& c) {
+    static_assert(std::is_floating_point<T>::value == true);
     T A = arg((c - a) / (b - a)), B = arg((a - b) / (c - b));
     Line l1(a, a + rotate(b - a, A / 2)), l2(b, b + rotate(c - b, B / 2));
     auto o = cross_point(l1, l2);
@@ -459,7 +466,9 @@ template <class T> Circle<T> incircle(const Point<T>& a, const Point<T>& b, cons
 // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C
 // https://drken1215.hatenablog.com/entry/2020/10/16/074400
 template <class T> Circle<T> circumscribed_circle(const Point<T>& a, const Point<T>& b, const Point<T>& c) {
-    Line l1((a + b) / 2, (a + b) / 2 + rotate(b - a, Constants<T>::PI / 2)), l2((b + c) / 2, (b + c) / 2 + rotate(c - b, Constants<T>::PI / 2));
+    static_assert(std::is_floating_point<T>::value == true);
+    Line<T> l1((a + b) / 2, (a + b) / 2 + rotate(b - a, Constants<T>::PI / 2));
+    Line<T> l2((b + c) / 2, (b + c) / 2 + rotate(c - b, Constants<T>::PI / 2));
     auto o = cross_point(l1, l2);
     auto r = abs(o - a);
     return Circle(o, r);
@@ -477,7 +486,10 @@ template <class T> T polygon_area2(const Polygon<T>& p) {
     // clockwise: ret < 0
     return ret;
 }
-template <class T> T polygon_area(const Polygon<T>& p) { return polygon_area2(p) / T(2); }
+template <class T> T polygon_area(const Polygon<T>& p) {
+    static_assert(std::is_floating_point<T>::value == true);
+    return polygon_area2(p) / T(2);
+}
 
 // 多角形の凸判定 (角度が 0 でも PI でも許容)
 // 許容したくないときには ON_SEGMENT, ONLINE_FRONT, ONLINE_BACK が出てきたら false を返せば OK
@@ -582,6 +594,7 @@ template <class T> std::tuple<int, int, T> convex_polygon_diameter(const Polygon
 // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_C
 // return {left polygon, right polygon}
 template <class T> std::pair<Polygon<T>, Polygon<T>> convex_polygon_cut(const Polygon<T>& p, const Line<T>& l) {
+    static_assert(std::is_floating_point<T>::value == true);
     const int n = (int)(p.size());
     assert(n >= 3);
     Polygon<T> pl, pr;
