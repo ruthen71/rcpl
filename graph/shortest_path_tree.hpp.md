@@ -1,17 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/graph/shortest_path_tree.test.cpp
-    title: verify/graph/shortest_path_tree.test.cpp
-  _isVerificationFailed: true
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links:
     - https://atcoder.jp/contests/abc252/tasks/abc252_e
@@ -84,9 +81,8 @@ data:
   path: graph/shortest_path_tree.hpp
   requiredBy: []
   timestamp: '2024-08-01 13:43:30+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - verify/graph/shortest_path_tree.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: graph/shortest_path_tree.hpp
 layout: document
 title: "Shortest Path Tree (\u6700\u77ED\u7D4C\u8DEF\u6728)"

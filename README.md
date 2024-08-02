@@ -7,6 +7,8 @@
 
 ## AtCoder の問題で verify する方法
 
+[AtCoder のテストケース](https://atcoder.jp/posts/20) で公開されているテストケースを利用してライブラリを verify することができる
+
 [Online Judge Verification Helper の細かい仕様](https://online-judge-tools.github.io/verification-helper/document.ja.html) によれば, AtCoder の問題のテストケースをダウンロードするためには環境変数 `DROPBOX_TOKEN` の設定が必要
 
 token 取得のために `$ oj d --system https://atcoder.jp/contests/agc001/tasks/agc001_a` を手元で実行すると以下のような案内が表示される
@@ -43,9 +45,9 @@ token 取得のために `$ oj d --system https://atcoder.jp/contests/agc001/tas
 
 注意: トークンは直接ではなく [ここ](https://github.com/ruthen71/rcpl/settings/secrets/actions) に書くこと
 
-適宜空コミット `git commit --allow-empty -m "empty"` をする
-
 `.github/workflows/verify.yml` が読み取ってくれる
+
+テストが途中で終了した場合, 適宜空コミット `git commit --allow-empty -m "empty"` をする
 
 
 ## コーディングスタイル
@@ -83,6 +85,9 @@ token 取得のために `$ oj d --system https://atcoder.jp/contests/agc001/tas
 
 #include <vector>   // 必要なヘッダー
 
+// 名前
+// 計算量
+// アルゴリズムの解説, リンクなど
 template <class T> struct StructName {
     ...
 };
@@ -110,7 +115,7 @@ int main() {
 - docs ファイルは `data_structure/segment_tree.md` とする
     - `title` は日本語のみ or 英語+(日本語)
 
-```md
+~~~md
 ---
 title: Segment Tree (セグメント木)
 documentation_of: ./segment_tree.hpp
@@ -118,9 +123,15 @@ documentation_of: ./segment_tree.hpp
 
 ## 使い方
 
+```cpp
+説明
+```
+
 ## 参考文献
 - [文献タイトル, 問題名](URL)
-```
+    - コメント (あれば)
+
+~~~
 
 ### 細かいこと
 

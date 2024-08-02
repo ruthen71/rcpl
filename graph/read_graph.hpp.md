@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -33,9 +33,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/minimum_steiner_tree.test.cpp
     title: verify/graph/minimum_steiner_tree.test.cpp
-  - icon: ':x:'
-    path: verify/graph/shortest_path_tree.test.cpp
-    title: verify/graph/shortest_path_tree.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/graph/strongly_connected_component.test.cpp
     title: verify/graph/strongly_connected_component.test.cpp
@@ -51,9 +48,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/zero_one_bfs.test.cpp
     title: verify/graph/zero_one_bfs.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/read_graph.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
@@ -127,7 +124,7 @@ data:
   path: graph/read_graph.hpp
   requiredBy: []
   timestamp: '2024-07-31 21:19:59+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/kruskal.test.cpp
   - verify/graph/traveling_salesman_problem.test.cpp
@@ -141,7 +138,6 @@ data:
   - verify/graph/bellman_ford.test.cpp
   - verify/graph/tree_diameter.test.cpp
   - verify/graph/topological_sort.test.cpp
-  - verify/graph/shortest_path_tree.test.cpp
   - verify/graph/auxiliary_tree.test.cpp
   - verify/graph/euler_tour.test.cpp
 documentation_of: graph/read_graph.hpp

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -9,12 +9,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/dijkstra.test.cpp
     title: verify/graph/dijkstra.test.cpp
-  - icon: ':x:'
-    path: verify/graph/shortest_path_tree.test.cpp
-    title: verify/graph/shortest_path_tree.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/dijkstra.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
@@ -91,10 +88,9 @@ data:
   path: graph/dijkstra.hpp
   requiredBy: []
   timestamp: '2024-08-01 13:43:30+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/dijkstra.test.cpp
-  - verify/graph/shortest_path_tree.test.cpp
 documentation_of: graph/dijkstra.hpp
 layout: document
 title: "Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
