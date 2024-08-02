@@ -5,7 +5,7 @@
 #include <cmath>
 #include <cassert>
 
-// point
+// 点
 template <class T> struct Point {
     T x, y;
 
