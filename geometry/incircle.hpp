@@ -2,6 +2,9 @@
 
 #include "geometry/point.hpp"
 #include "geometry/circle.hpp"
+#include "geometry/line.hpp"
+#include "geometry/cross_point.hpp"
+#include "geometry/distance.hpp"
 
 // 三角形の内接円
 // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_B

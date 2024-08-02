@@ -1,10 +1,11 @@
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C"
 #define ERROR 0.000001
-// The original ERROR is 0.000001 (absolute error)
-
-#include <bits/stdc++.h>
+// 誤差は本来より緩め
 
 #include "geometry/circumscribed_circle.hpp"
+
+#include <iostream>
+#include <iomanip>
 
 int main() {
     Point<long double> a, b, c;

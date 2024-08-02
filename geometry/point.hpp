@@ -3,6 +3,7 @@
 #include "geometry/geometry_template.hpp"
 
 #include <cmath>
+#include <cassert>
 
 // point
 template <class T> struct Point {
@@ -50,6 +51,7 @@ template <class T> struct Point {
     // 辞書式順序
     friend bool operator<(const Point& a, const Point& b) { return a.x == b.x ? a.y < b.y : a.x < b.x; }
     friend bool operator>(const Point& a, const Point& b) { return a.x == b.x ? a.y > b.y : a.x > b.x; }
+    friend bool operator==(const Point& a, const Point& b) { return a.x == b.x and a.y == b.y; }
 
     // I/O
     friend std::istream& operator>>(std::istream& is, Point& p) { return is >> p.x >> p.y; }
@@ -68,21 +70,22 @@ template <class T> inline Point<T> rotate(const Point<T>& p, const T theta) {
     static_assert(is_geometry_floating_point<T>::value == true);
     return p * Point<T>(std::cos(theta), std::sin(theta));
 }
-// x, y の順で比較
+// (x, y) の辞書式順序 (誤差許容)
 template <class T> inline bool compare_x(const Point<T>& a, const Point<T>& b) { return equal(a.x, b.x) ? sign(a.y - b.y) < 0 : sign(a.x - b.x) < 0; }
-// y, x の順で比較
+// (y, x) の辞書式順序 (誤差許容)
 template <class T> inline bool compare_y(const Point<T>& a, const Point<T>& b) { return equal(a.y, b.y) ? sign(a.x - b.x) < 0 : sign(a.y - b.y) < 0; }
-// arg(p), norm(p) の順で比較, arg(p) は [0, 2 * PI) で並ぶ
-// 整数の範囲で比較可能
-template <class T> inline bool compare_arg(const Point<T>& a, const Point<T>& b) {
-    // https://ngtkana.hatenablog.com/entry/2021/11/13/202103
-    assert(!equal(a, Point<T>(0, 0)));
-    assert(!equal(b, Point<T>(0, 0)));
-    if ((Point<T>(0, 0) < Point<T>(a.y, a.x)) == (Point<T>(0, 0) < Point<T>(b.y, b.x))) {
-        return (a.x * b.y == a.y * b.x) ? norm(a) < norm(b) : a.x * b.y > a.y * b.x;
-    } else {
-        return Point<T>(a.y, a.x) > Point<T>(b.y, b.x);
+// 整数のまま行う偏角ソート
+// 無限の精度をもつ arg(p) = atan2(y, x) で比較し, 同じ場合は norm(p) で比較 (atan2(0, 0) = 0 とする)
+// 基本的に (-PI, PI] でソートされ, 点 (0, 0) は (-PI, 0) と [0, PI] の間に入る
+// https://ngtkana.hatenablog.com/entry/2021/11/13/202103
+// https://judge.yosupo.jp/problem/sort_points_by_argument
+template <class T> inline bool compare_atan2(const Point<T>& a, const Point<T>& b) {
+    static_assert(is_geometry_integer<T>::value == true);
+    if ((Point<T>(a.y, -a.x) > Point<T>(0, 0)) == (Point<T>(b.y, -b.x) > Point<T>(0, 0))) {  // a, b in (-PI, 0] or a, b in (0, PI]
+        if (a.x * b.y != a.y * b.x) return a.x * b.y > a.y * b.x;                            // cross(a, b) != 0
+        return a == Point<T>(0, 0) ? b.x > 0 and b.y == 0 : (b == Point<T>(0, 0) ? a.y < 0 : norm(a) < norm(b));
     }
+    return Point<T>(a.y, -a.x) < Point<T>(b.y, -b.x);
 }
 // 絶対値の 2 乗
 template <class T> inline T norm(const Point<T>& p) { return p.x * p.x + p.y * p.y; }

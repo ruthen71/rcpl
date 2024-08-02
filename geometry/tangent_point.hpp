@@ -2,6 +2,7 @@
 
 #include "geometry/point.hpp"
 #include "geometry/circle.hpp"
+#include "geometry/cross_point.hpp"
 
 #include <vector>
 
@@ -10,5 +11,5 @@
 template <class T> std::vector<Point<T>> tangent_point(const Circle<T>& c, const Point<T>& p) {
     static_assert(is_geometry_floating_point<T>::value == true);
     assert(sign(abs(c.o - p) - c.r) == 1);
-    return cross_point(c, Circle(p, sqrtl(norm(c.o - p) - c.r * c.r)));
+    return cross_point(c, Circle(p, std::sqrt(norm(c.o - p) - c.r * c.r)));
 }
