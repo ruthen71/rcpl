@@ -12,8 +12,9 @@ template <class T> Contain polygon_contain(const Polygon<T>& q, const Point<T>& 
     bool x = false;
     const int n = (int)(q.size());
     for (int i = 0; i < n; i++) {
-        if (is_intersect(Segment(q[i], q[i + 1 == n ? 0 : i + 1]), p)) return Contain::ON;
-        Point a = q[i] - p, b = q[i + 1] - p;
+        int ni = i + 1 == n ? 0 : i + 1;
+        if (is_intersect(Segment(q[i], q[ni]), p)) return Contain::ON;
+        Point a = q[i] - p, b = q[ni] - p;
         if (a.y > b.y) std::swap(a, b);
         // a.y < b.y
         // check each point's y is 0 at most 1 times

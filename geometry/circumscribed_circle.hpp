@@ -3,6 +3,7 @@
 #include "geometry/point.hpp"
 #include "geometry/line.hpp"
 #include "geometry/circle.hpp"
+#include "geometry/cross_point.hpp"
 
 // 三角形の外接円
 // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C

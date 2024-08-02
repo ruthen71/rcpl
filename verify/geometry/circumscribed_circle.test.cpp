@@ -2,10 +2,10 @@
 #define ERROR 0.000001
 // 誤差は本来より緩め
 
-#include "geometry/circumscribed_circle.hpp"
-
 #include <iostream>
 #include <iomanip>
+
+#include "geometry/circumscribed_circle.hpp"
 
 int main() {
     Point<long double> a, b, c;

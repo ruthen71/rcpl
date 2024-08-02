@@ -1,6 +1,7 @@
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B"
 
 #include <iostream>
+#include <algorithm>
 
 #include "geometry/polygon.hpp"
 

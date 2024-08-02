@@ -24,7 +24,7 @@ int main() {
                 assert(equal(ps[i], ps[j]));
             }
         }
-        std::cout << std::fixed << std::setprecision(15) << p.x << ' ' << p.y << '\n';
+        std::cout << std::fixed << std::setprecision(15) << ps[0].x << ' ' << ps[0].y << '\n';
     }
     return 0;
 }
