@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/closest_pair.hpp
     title: "Closest Pair (\u6700\u8FD1\u70B9\u5BFE)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/geometry_template.hpp
     title: "\u5E7E\u4F55\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/point.hpp
     title: "Point (\u70B9)"
   _extendedRequiredBy: []
@@ -123,12 +123,13 @@ data:
     \ return Ccw::CLOCKWISE;\n    if (sign(dot(ab, ac)) == -1) return Ccw::ONLINE_BACK;\n\
     \    if (sign(norm(ab) - norm(ac)) == -1) return Ccw::ONLINE_FRONT;\n    return\
     \ Ccw::ON_SEGMENT;\n}\n#line 4 \"geometry/closest_pair.hpp\"\n\n#include <tuple>\n\
-    #include <limits>\n#include <algorithm>\n\n// \u6700\u8FD1\u70B9\u5BFE (\u5206\
-    \u5272\u7D71\u6CBB\u6CD5)\n// O(n log n)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_5_A\n\
-    // return {index1, index2, distance}\ntemplate <class T> std::tuple<int, int,\
-    \ T> closest_pair(const std::vector<Point<T>>& p) {\n    const int n = (int)(p.size());\n\
-    \n    assert(n >= 2);\n    if (n == 2) {\n        return {0, 1, abs(p[0] - p[1])};\n\
-    \    }\n    // may not be efficient due to indirect references ...\n    std::vector<int>\
+    #include <limits>\n#include <algorithm>\n#line 9 \"geometry/closest_pair.hpp\"\
+    \n\n// \u6700\u8FD1\u70B9\u5BFE (\u5206\u5272\u7D71\u6CBB\u6CD5)\n// O(n log n)\n\
+    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_5_A\n// return\
+    \ {index1, index2, distance}\ntemplate <class T> std::tuple<int, int, T> closest_pair(const\
+    \ std::vector<Point<T>>& p) {\n    const int n = (int)(p.size());\n\n    assert(n\
+    \ >= 2);\n    if (n == 2) {\n        return {0, 1, abs(p[0] - p[1])};\n    }\n\
+    \    // may not be efficient due to indirect references ...\n    std::vector<int>\
     \ ind(n);\n    std::iota(ind.begin(), ind.end(), 0);\n    std::sort(ind.begin(),\
     \ ind.end(), [&](int i, int j) { return compare_x(p[i], p[j]); });\n    auto dfs\
     \ = [&](auto f, int l, int r) -> std::tuple<int, int, T> {\n        if (r - l\
@@ -170,7 +171,7 @@ data:
   isVerificationFile: true
   path: verify/geometry/closest_pair.test.cpp
   requiredBy: []
-  timestamp: '2024-08-02 21:55:10+09:00'
+  timestamp: '2024-08-03 01:19:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/closest_pair.test.cpp

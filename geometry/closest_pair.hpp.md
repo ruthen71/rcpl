@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/geometry_template.hpp
     title: "\u5E7E\u4F55\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/point.hpp
     title: "Point (\u70B9)"
   _extendedRequiredBy:
@@ -15,9 +15,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/closest_pair.test.cpp
     title: verify/geometry/closest_pair.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: verify/geometry/closest_pair_farthest_pair.test.cpp
+    title: verify/geometry/closest_pair_farthest_pair.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_5_A
@@ -120,8 +123,8 @@ data:
     \ return Ccw::CLOCKWISE;\n    if (sign(dot(ab, ac)) == -1) return Ccw::ONLINE_BACK;\n\
     \    if (sign(norm(ab) - norm(ac)) == -1) return Ccw::ONLINE_FRONT;\n    return\
     \ Ccw::ON_SEGMENT;\n}\n#line 4 \"geometry/closest_pair.hpp\"\n\n#include <tuple>\n\
-    #include <limits>\n#include <algorithm>\n\n// \u6700\u8FD1\u70B9\u5BFE (\u5206\
-    \u5272\u7D71\u6CBB\u6CD5)\n// O(n log n)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_5_A\n\
+    #include <limits>\n#include <algorithm>\n#include <numeric>\n\n// \u6700\u8FD1\
+    \u70B9\u5BFE (\u5206\u5272\u7D71\u6CBB\u6CD5)\n// O(n log n)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_5_A\n\
     // return {index1, index2, distance}\ntemplate <class T> std::tuple<int, int,\
     \ T> closest_pair(const std::vector<Point<T>>& p) {\n    const int n = (int)(p.size());\n\
     \n    assert(n >= 2);\n    if (n == 2) {\n        return {0, 1, abs(p[0] - p[1])};\n\
@@ -150,8 +153,8 @@ data:
     \        }\n        return {i1, i2, d};\n    };\n    return dfs(dfs, 0, n);\n\
     }\n"
   code: "#pragma once\n\n#include \"point.hpp\"\n\n#include <tuple>\n#include <limits>\n\
-    #include <algorithm>\n\n// \u6700\u8FD1\u70B9\u5BFE (\u5206\u5272\u7D71\u6CBB\u6CD5\
-    )\n// O(n log n)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_5_A\n\
+    #include <algorithm>\n#include <numeric>\n\n// \u6700\u8FD1\u70B9\u5BFE (\u5206\
+    \u5272\u7D71\u6CBB\u6CD5)\n// O(n log n)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_5_A\n\
     // return {index1, index2, distance}\ntemplate <class T> std::tuple<int, int,\
     \ T> closest_pair(const std::vector<Point<T>>& p) {\n    const int n = (int)(p.size());\n\
     \n    assert(n >= 2);\n    if (n == 2) {\n        return {0, 1, abs(p[0] - p[1])};\n\
@@ -185,9 +188,10 @@ data:
   path: geometry/closest_pair.hpp
   requiredBy:
   - geometry/all.hpp
-  timestamp: '2024-08-02 21:55:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-08-03 01:19:23+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/geometry/closest_pair_farthest_pair.test.cpp
   - verify/geometry/closest_pair.test.cpp
 documentation_of: geometry/closest_pair.hpp
 layout: document

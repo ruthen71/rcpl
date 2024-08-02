@@ -7,17 +7,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/circumscribed_circle.hpp
     title: "Circumscribed Circle (\u5916\u63A5\u5186)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/closest_pair.hpp
     title: "Closest Pair (\u6700\u8FD1\u70B9\u5BFE)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/convex_hull_monotone_chain.hpp
     title: "Convex Hull (\u51F8\u5305)"
   - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_cut.hpp
     title: "Convex Polygon Cut (\u51F8\u591A\u89D2\u5F62\u306E\u76F4\u7DDA\u3067\u306E\
       \u5207\u65AD)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/convex_polygon_diameter.hpp
     title: "Convex Polygon Diameter (\u51F8\u591A\u89D2\u5F62\u306E\u76F4\u5F84)"
   - icon: ':heavy_check_mark:'
@@ -26,10 +26,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/distance.hpp
     title: "Distance (\u8DDD\u96E2)"
-  - icon: ':warning:'
+  - icon: ':x:'
     path: geometry/farthest_pair.hpp
     title: "Farthest Pair (\u6700\u9060\u70B9\u5BFE)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/geometry_template.hpp
     title: "\u5E7E\u4F55\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   - icon: ':heavy_check_mark:'
@@ -41,10 +41,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: "Line / Segment (\u76F4\u7DDA\u30FB\u7DDA\u5206)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/point.hpp
     title: "Point (\u70B9)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/polygon.hpp
     title: "Polygon (\u591A\u89D2\u5F62)"
   - icon: ':heavy_check_mark:'
@@ -454,12 +454,13 @@ data:
     \ l);\n            pl.push_back(pc);\n            pr.push_back(pc);\n        }\n\
     \    }\n    return {pl, pr};\n}\n#line 20 \"geometry/all.hpp\"\n\n#line 2 \"geometry/closest_pair.hpp\"\
     \n\n#line 4 \"geometry/closest_pair.hpp\"\n\n#line 6 \"geometry/closest_pair.hpp\"\
-    \n#include <limits>\n#line 8 \"geometry/closest_pair.hpp\"\n\n// \u6700\u8FD1\u70B9\
-    \u5BFE (\u5206\u5272\u7D71\u6CBB\u6CD5)\n// O(n log n)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_5_A\n\
-    // return {index1, index2, distance}\ntemplate <class T> std::tuple<int, int,\
-    \ T> closest_pair(const std::vector<Point<T>>& p) {\n    const int n = (int)(p.size());\n\
-    \n    assert(n >= 2);\n    if (n == 2) {\n        return {0, 1, abs(p[0] - p[1])};\n\
-    \    }\n    // may not be efficient due to indirect references ...\n    std::vector<int>\
+    \n#include <limits>\n#line 8 \"geometry/closest_pair.hpp\"\n#include <numeric>\n\
+    \n// \u6700\u8FD1\u70B9\u5BFE (\u5206\u5272\u7D71\u6CBB\u6CD5)\n// O(n log n)\n\
+    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_5_A\n// return\
+    \ {index1, index2, distance}\ntemplate <class T> std::tuple<int, int, T> closest_pair(const\
+    \ std::vector<Point<T>>& p) {\n    const int n = (int)(p.size());\n\n    assert(n\
+    \ >= 2);\n    if (n == 2) {\n        return {0, 1, abs(p[0] - p[1])};\n    }\n\
+    \    // may not be efficient due to indirect references ...\n    std::vector<int>\
     \ ind(n);\n    std::iota(ind.begin(), ind.end(), 0);\n    std::sort(ind.begin(),\
     \ ind.end(), [&](int i, int j) { return compare_x(p[i], p[j]); });\n    auto dfs\
     \ = [&](auto f, int l, int r) -> std::tuple<int, int, T> {\n        if (r - l\
@@ -556,7 +557,7 @@ data:
   isVerificationFile: false
   path: geometry/all.hpp
   requiredBy: []
-  timestamp: '2024-08-03 00:38:06+09:00'
+  timestamp: '2024-08-03 01:19:23+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/all.hpp

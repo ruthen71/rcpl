@@ -2,6 +2,18 @@
 data:
   _extendedDependsOn:
   - icon: ':question:'
+    path: geometry/closest_pair.hpp
+    title: "Closest Pair (\u6700\u8FD1\u70B9\u5BFE)"
+  - icon: ':question:'
+    path: geometry/convex_hull_monotone_chain.hpp
+    title: "Convex Hull (\u51F8\u5305)"
+  - icon: ':question:'
+    path: geometry/convex_polygon_diameter.hpp
+    title: "Convex Polygon Diameter (\u51F8\u591A\u89D2\u5F62\u306E\u76F4\u5F84)"
+  - icon: ':x:'
+    path: geometry/farthest_pair.hpp
+    title: "Farthest Pair (\u6700\u9060\u70B9\u5BFE)"
+  - icon: ':question:'
     path: geometry/geometry_template.hpp
     title: "\u5E7E\u4F55\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   - icon: ':question:'
@@ -10,28 +22,21 @@ data:
   - icon: ':question:'
     path: geometry/polygon.hpp
     title: "Polygon (\u591A\u89D2\u5F62)"
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: geometry/all.hpp
-    title: geometry/all.hpp
-  - icon: ':x:'
-    path: geometry/farthest_pair.hpp
-    title: "Farthest Pair (\u6700\u9060\u70B9\u5BFE)"
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/geometry/closest_pair_farthest_pair.test.cpp
-    title: verify/geometry/closest_pair_farthest_pair.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/convex_polygon_diameter.test.cpp
-    title: verify/geometry/convex_polygon_diameter.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: true
-  _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _pathExtension: cpp
+  _verificationStatusIcon: ':x:'
   attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    ERROR: '0.0000001'
+    PROBLEM: https://atcoder.jp/contests/abc022/tasks/abc022_d
     links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B
-    - https://en.wikipedia.org/wiki/Rotating_calipers
-  bundledCode: "#line 2 \"geometry/convex_polygon_diameter.hpp\"\n\n#line 2 \"geometry/polygon.hpp\"\
+    - https://atcoder.jp/contests/abc022/tasks/abc022_d
+  bundledCode: "#line 1 \"verify/geometry/closest_pair_farthest_pair.test.cpp\"\n\
+    #define PROBLEM \"https://atcoder.jp/contests/abc022/tasks/abc022_d\"\n#define\
+    \ ERROR 0.0000001\n\n#include <iostream>\n#include <iomanip>\n\n#line 2 \"geometry/farthest_pair.hpp\"\
+    \n\n#line 2 \"geometry/convex_hull_monotone_chain.hpp\"\n\n#line 2 \"geometry/polygon.hpp\"\
     \n\n#line 2 \"geometry/point.hpp\"\n\n#line 2 \"geometry/geometry_template.hpp\"\
     \n\n#include <type_traits>\n\n// Constants (EPS, PI)\n// EPS \u306E\u5909\u66F4\
     \u306F Constants<T>::set_eps(new_eps) \u3067\ntemplate <class T> struct Constants\
@@ -152,9 +157,28 @@ data:
     \ ? i + 1 - n : i + 1], p[i + 2 >= n ? i + 2 - n : i + 2]);\n        if (res ==\
     \ Ccw::CLOCKWISE) okccw = false;\n        if (res == Ccw::COUNTER_CLOCKWISE) okcw\
     \ = false;\n        if (!okccw and !okcw) return false;\n    }\n    return true;\n\
-    }\n#line 4 \"geometry/convex_polygon_diameter.hpp\"\n\n#include <tuple>\n#include\
-    \ <algorithm>\n\n// \u51F8\u591A\u89D2\u5F62\u306E\u76F4\u5F84 (rotating calipers)\n\
-    // https://en.wikipedia.org/wiki/Rotating_calipers\n// O(n)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B\n\
+    }\n#line 4 \"geometry/convex_hull_monotone_chain.hpp\"\n\n#include <algorithm>\n\
+    \n// \u51F8\u5305 (Andrew's Monotone Chain algorithm)\n// O(n log n)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A\n\
+    // (x, y) \u3092\u8F9E\u66F8\u5F0F\u9806\u5E8F\u3067\u30BD\u30FC\u30C8\u3057,\
+    \ \u30B9\u30BF\u30C3\u30AF\u3092\u4F7F\u3063\u3066\u4E0A\u5074\u51F8\u5305\u3068\
+    \u4E0B\u5074\u51F8\u5305\u3092\u6C42\u3081\u308B\n// \u53CD\u6642\u8A08\u56DE\u308A\
+    \n// strict \u3092 true \u306B\u3059\u308B\u3068\u51F8\u5305\u306E\u8FBA\u4E0A\
+    \u306B\u4E26\u3076\u9802\u70B9\u306F\u542B\u3081\u306A\u3044 (\u9802\u70B9\u6570\
+    \u304C\u6700\u5C0F\u306B\u306A\u308B)\ntemplate <class T> Polygon<T> convex_hull_monotone_chain(std::vector<Point<T>>&\
+    \ p, bool strict = true) {\n    const int n = (int)(p.size());\n    if (n <= 2)\
+    \ return p;\n    std::sort(p.begin(), p.end(), compare_x<T>);\n    Polygon<T>\
+    \ r;\n    r.reserve(n * 2);\n    auto f = [&strict](Ccw ccwres) -> bool { return\
+    \ strict ? ccwres != Ccw::CLOCKWISE : ccwres == Ccw::COUNTER_CLOCKWISE; };\n \
+    \   for (int i = 0; i < n; i++) {\n        while (r.size() >= 2 and f(ccw(r[r.size()\
+    \ - 2], r[r.size() - 1], p[i]))) {\n            r.pop_back();\n        }\n   \
+    \     r.push_back(p[i]);\n    }\n    int t = r.size() + 1;\n    for (int i = n\
+    \ - 2; i >= 0; i--) {\n        while (r.size() >= t and f(ccw(r[r.size() - 2],\
+    \ r[r.size() - 1], p[i]))) {\n            r.pop_back();\n        }\n        r.push_back(p[i]);\n\
+    \    }\n    r.pop_back();\n    std::reverse(r.begin(), r.end());\n    return r;\n\
+    }\n#line 2 \"geometry/convex_polygon_diameter.hpp\"\n\n#line 4 \"geometry/convex_polygon_diameter.hpp\"\
+    \n\n#include <tuple>\n#line 7 \"geometry/convex_polygon_diameter.hpp\"\n\n// \u51F8\
+    \u591A\u89D2\u5F62\u306E\u76F4\u5F84 (rotating calipers)\n// https://en.wikipedia.org/wiki/Rotating_calipers\n\
+    // O(n)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B\n\
     // return {index1, index2, diameter}\ntemplate <class T> std::tuple<int, int,\
     \ T> convex_polygon_diameter(const Polygon<T>& p) {\n    assert(polygon_is_convex(p));\n\
     \    const int n = (int)(p.size());\n    assert(n >= 2);\n    if (n == 2) {\n\
@@ -167,48 +191,86 @@ data:
     \    i = ni;\n        } else {\n            j = nj;\n        }\n        if (norm(p[i]\
     \ - p[j]) > maxdis) {\n            maxdis = norm(p[i] - p[j]);\n            maxi\
     \ = i;\n            maxj = j;\n        }\n    } while (i != idx_min or j != idx_max);\n\
-    \    return {maxi, maxj, abs(p[maxi] - p[maxj])};\n}\n"
-  code: "#pragma once\n\n#include \"geometry/polygon.hpp\"\n\n#include <tuple>\n#include\
-    \ <algorithm>\n\n// \u51F8\u591A\u89D2\u5F62\u306E\u76F4\u5F84 (rotating calipers)\n\
-    // https://en.wikipedia.org/wiki/Rotating_calipers\n// O(n)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B\n\
-    // return {index1, index2, diameter}\ntemplate <class T> std::tuple<int, int,\
-    \ T> convex_polygon_diameter(const Polygon<T>& p) {\n    assert(polygon_is_convex(p));\n\
-    \    const int n = (int)(p.size());\n    assert(n >= 2);\n    if (n == 2) {\n\
-    \        return {0, 1, abs(p[0] - p[1])};\n    }\n    auto [it_min, it_max] =\
-    \ std::minmax_element(p.begin(), p.end(), compare_x<T>);\n    int idx_min = it_min\
-    \ - p.begin();\n    int idx_max = it_max - p.begin();\n\n    T maxdis = norm(p[idx_max]\
-    \ - p[idx_min]);\n    int maxi = idx_min, i = idx_min, maxj = idx_max, j = idx_max;\n\
-    \    do {\n        int ni = (i + 1 == n ? 0 : i + 1), nj = (j + 1 == n ? 0 : j\
-    \ + 1);\n        if (sign(cross(p[ni] - p[i], p[nj] - p[j])) < 0) {\n        \
-    \    i = ni;\n        } else {\n            j = nj;\n        }\n        if (norm(p[i]\
-    \ - p[j]) > maxdis) {\n            maxdis = norm(p[i] - p[j]);\n            maxi\
-    \ = i;\n            maxj = j;\n        }\n    } while (i != idx_min or j != idx_max);\n\
-    \    return {maxi, maxj, abs(p[maxi] - p[maxj])};\n}"
+    \    return {maxi, maxj, abs(p[maxi] - p[maxj])};\n}\n#line 5 \"geometry/farthest_pair.hpp\"\
+    \n\n#line 7 \"geometry/farthest_pair.hpp\"\n\n// \u6700\u9060\u70B9\u5BFE\n//\
+    \ return {index1, index2, distance}\n// \u51F8\u5305\u3092\u6C42\u3081\u3066\u304B\
+    \u3089\u51F8\u591A\u89D2\u5F62\u306E\u76F4\u5F84\u3092\u6C42\u3081\u3066\u3044\
+    \u308B\n// O(n log n)\ntemplate <class T> std::tuple<int, int, T> farthest_pair(const\
+    \ std::vector<Point<T>>& p) {\n    const int n = (int)(p.size());\n    assert(n\
+    \ >= 2);\n    if (n == 2) {\n        return {0, 1, abs(p[0] - p[1])};\n    }\n\
+    \    auto q = p;\n    auto ch = convex_hull_monotone_chain(q);       // O(n log\
+    \ n)\n    auto [i, j, d] = convex_polygon_diameter(ch);  // O(|ch|)\n    int resi,\
+    \ resj;\n    for (int k = 0; k < n; k++) {\n        if (p[k] == ch[i]) {\n   \
+    \         resi = k;\n        }\n        if (p[k] == ch[j]) {\n            resj\
+    \ = k;\n        }\n    }\n    return {resi, resj, d};\n}\n#line 2 \"geometry/closest_pair.hpp\"\
+    \n\n#line 4 \"geometry/closest_pair.hpp\"\n\n#line 6 \"geometry/closest_pair.hpp\"\
+    \n#include <limits>\n#line 8 \"geometry/closest_pair.hpp\"\n#include <numeric>\n\
+    \n// \u6700\u8FD1\u70B9\u5BFE (\u5206\u5272\u7D71\u6CBB\u6CD5)\n// O(n log n)\n\
+    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_5_A\n// return\
+    \ {index1, index2, distance}\ntemplate <class T> std::tuple<int, int, T> closest_pair(const\
+    \ std::vector<Point<T>>& p) {\n    const int n = (int)(p.size());\n\n    assert(n\
+    \ >= 2);\n    if (n == 2) {\n        return {0, 1, abs(p[0] - p[1])};\n    }\n\
+    \    // may not be efficient due to indirect references ...\n    std::vector<int>\
+    \ ind(n);\n    std::iota(ind.begin(), ind.end(), 0);\n    std::sort(ind.begin(),\
+    \ ind.end(), [&](int i, int j) { return compare_x(p[i], p[j]); });\n    auto dfs\
+    \ = [&](auto f, int l, int r) -> std::tuple<int, int, T> {\n        if (r - l\
+    \ <= 1) return {-1, -1, std::numeric_limits<T>::max()};\n        const int md\
+    \ = (l + r) / 2;\n        T x = p[ind[md]].x;\n        // \u5206\u5272\u7D71\u6CBB\
+    \u6CD5\n        auto [i1l, i2l, dl] = f(f, l, md);\n        auto [i1r, i2r, dr]\
+    \ = f(f, md, r);\n        int i1 = i1r, i2 = i2r;\n        T d = dr;\n       \
+    \ if (dl < dr) {\n            d = dl, i1 = i1l, i2 = i2l;\n        }\n       \
+    \ std::inplace_merge(ind.begin() + l, ind.begin() + md, ind.begin() + r, [&](int\
+    \ i, int j) { return compare_y(p[i], p[j]); });\n        // ind \u306F y \u3067\
+    \u30BD\u30FC\u30C8\u3055\u308C\u308B\n        std::vector<int> near_x;  // \u76F4\
+    \u7DDA x \u304B\u3089\u306E\u8DDD\u96E2\u304C d \u672A\u6E80\u306E\u9802\u70B9\
+    \u306E\u30A4\u30F3\u30C7\u30C3\u30AF\u30B9\n        for (int i = l; i < r; i++)\
+    \ {\n            if (sign(std::abs(p[ind[i]].x - x) - d) >= 0) continue;  // |p[ind[i]].x\
+    \ - x| >= d\n            const int sz = (int)(near_x.size());\n            //\
+    \ y\u5EA7\u6A19\u3068\u306E\u8DDD\u96E2\u304C d \u4EE5\u4E0A\u306B\u306A\u308B\
+    \u307E\u3067\u7E70\u308A\u8FD4\u3059\n            for (int j = sz - 1; j >= 0;\
+    \ j--) {\n                Point cp = p[ind[i]] - p[near_x[j]];\n             \
+    \   if (sign(cp.y - d) >= 0) break;  // cp.y >= d\n                T cd = abs(cp);\n\
+    \                if (cd < d) {\n                    d = cd, i1 = ind[i], i2 =\
+    \ near_x[j];\n                }\n            }\n            near_x.push_back(ind[i]);\n\
+    \        }\n        return {i1, i2, d};\n    };\n    return dfs(dfs, 0, n);\n\
+    }\n#line 9 \"verify/geometry/closest_pair_farthest_pair.test.cpp\"\n\nint main()\
+    \ {\n    int N;\n    std::cin >> N;\n    std::vector<Point<double>> A(N), B(N);\n\
+    \    for (int i = 0; i < N; i++) std::cin >> A[i];\n    for (int i = 0; i < N;\
+    \ i++) std::cin >> B[i];\n    double ans1, ans2;\n    {\n        auto [ia, ja,\
+    \ da] = farthest_pair(A);\n        auto [ib, jb, db] = farthest_pair(B);\n   \
+    \     ans1 = db / da;\n    }\n    {\n        auto [ia, ja, da] = closest_pair(A);\n\
+    \        auto [ib, jb, db] = closest_pair(B);\n        ans2 = db / da;\n    }\n\
+    \    assert(equal(ans1, ans2));\n    std::cout << std::fixed << std::setprecision(15)\
+    \ << ans1 << '\\n';\n    return 0;\n}\n"
+  code: "#define PROBLEM \"https://atcoder.jp/contests/abc022/tasks/abc022_d\"\n#define\
+    \ ERROR 0.0000001\n\n#include <iostream>\n#include <iomanip>\n\n#include \"geometry/farthest_pair.hpp\"\
+    \n#include \"geometry/closest_pair.hpp\"\n\nint main() {\n    int N;\n    std::cin\
+    \ >> N;\n    std::vector<Point<double>> A(N), B(N);\n    for (int i = 0; i < N;\
+    \ i++) std::cin >> A[i];\n    for (int i = 0; i < N; i++) std::cin >> B[i];\n\
+    \    double ans1, ans2;\n    {\n        auto [ia, ja, da] = farthest_pair(A);\n\
+    \        auto [ib, jb, db] = farthest_pair(B);\n        ans1 = db / da;\n    }\n\
+    \    {\n        auto [ia, ja, da] = closest_pair(A);\n        auto [ib, jb, db]\
+    \ = closest_pair(B);\n        ans2 = db / da;\n    }\n    assert(equal(ans1, ans2));\n\
+    \    std::cout << std::fixed << std::setprecision(15) << ans1 << '\\n';\n    return\
+    \ 0;\n}"
   dependsOn:
+  - geometry/farthest_pair.hpp
+  - geometry/convex_hull_monotone_chain.hpp
   - geometry/polygon.hpp
   - geometry/point.hpp
   - geometry/geometry_template.hpp
-  isVerificationFile: false
-  path: geometry/convex_polygon_diameter.hpp
-  requiredBy:
-  - geometry/farthest_pair.hpp
-  - geometry/all.hpp
-  timestamp: '2024-08-02 21:55:10+09:00'
-  verificationStatus: LIBRARY_SOME_WA
-  verifiedWith:
-  - verify/geometry/convex_polygon_diameter.test.cpp
-  - verify/geometry/closest_pair_farthest_pair.test.cpp
-documentation_of: geometry/convex_polygon_diameter.hpp
+  - geometry/convex_polygon_diameter.hpp
+  - geometry/closest_pair.hpp
+  isVerificationFile: true
+  path: verify/geometry/closest_pair_farthest_pair.test.cpp
+  requiredBy: []
+  timestamp: '2024-08-03 01:19:23+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
+  verifiedWith: []
+documentation_of: verify/geometry/closest_pair_farthest_pair.test.cpp
 layout: document
-title: "Convex Polygon Diameter (\u51F8\u591A\u89D2\u5F62\u306E\u76F4\u5F84)"
+redirect_from:
+- /verify/verify/geometry/closest_pair_farthest_pair.test.cpp
+- /verify/verify/geometry/closest_pair_farthest_pair.test.cpp.html
+title: verify/geometry/closest_pair_farthest_pair.test.cpp
 ---
-
-## 使い方
-
-```cpp
-Polygon<T> P;
-// i, j は直径となる頂点のインデックス
-auto [i, j, d] = convex_polygon_diameter(P);
-```
-
-## 参考文献
