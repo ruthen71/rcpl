@@ -137,3 +137,4 @@ documentation_of: ./segment_tree.hpp
 - 構造体のコンストラクタ (引数なし) を定義し, `StructName() = default;` か引数ありのコンストラクタを呼び出す実装にする
 - `std::vector` に対する `resize()` `assign()` はコンストラクタでは `StructName(int n): vec(n, 0) {}` でなるべく処理する
 - `&&` や `||` ではなく `and` や `or` を使う
+- `assert()` を除いて 1 行で書ける関数はなるべく `inline` を付ける
