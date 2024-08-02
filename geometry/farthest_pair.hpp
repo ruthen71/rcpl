@@ -1,20 +1,22 @@
 #pragma once
 
-#include "geometry/monotone_chain.hpp"
+#include "geometry/convex_hull_monotone_chain.hpp"
 #include "geometry/convex_polygon_diameter.hpp"
 
-// farthest pair
+#include <tuple>
+
+// 最遠点対
 // return {index1, index2, distance}
-// using monotone chain (convex hull) and convex polygon diameter
-// complexity: O(n \log n) (n: the number of points)
-template <typename T> std::tuple<int, int, T> farthest_pair(const std::vector<Point<T>> &p) {
-    int n = int(p.size());
+// 凸包を求めてから凸多角形の直径を求めている
+// O(n log n)
+template <class T> std::tuple<int, int, T> farthest_pair(const std::vector<Point<T>>& p) {
+    const int n = (int)(p.size());
     assert(n >= 2);
     if (n == 2) {
         return {0, 1, abs(p[0] - p[1])};
     }
     auto q = p;
-    auto ch = monotone_chain(q);                   // O(n \log n)
+    auto ch = convex_hull_monotone_chain(q);       // O(n log n)
     auto [i, j, d] = convex_polygon_diameter(ch);  // O(|ch|)
     int resi, resj;
     for (int k = 0; k < n; k++) {
