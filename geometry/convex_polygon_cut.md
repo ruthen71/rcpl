@@ -1,6 +1,6 @@
 ---
 title: Convex Polygon Cut (凸多角形の直線での切断)
-documentation_of: ./convex_polyon_cut.hpp
+documentation_of: ./convex_polygon_cut.hpp
 ---
 
 ## 使い方
