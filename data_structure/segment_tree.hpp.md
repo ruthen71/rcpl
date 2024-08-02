@@ -113,10 +113,10 @@ data:
   timestamp: '2024-07-13 11:37:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/euler_tour.test.cpp
-  - verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp
-  - verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
   - verify/yuki/yuki_1036_segment_tree.test.cpp
+  - verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
+  - verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp
+  - verify/graph/euler_tour.test.cpp
 documentation_of: data_structure/segment_tree.hpp
 layout: document
 title: "Segment Tree (\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"

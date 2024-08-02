@@ -25,16 +25,15 @@ data:
     title: geometry/all.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/geometry/circumscribed_circle.test.cpp
-    title: verify/geometry/circumscribed_circle.test.cpp
+    path: verify/geometry/tangent_point.test.cpp
+    title: verify/geometry/tangent_point.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C
-    - https://drken1215.hatenablog.com/entry/2020/10/16/074400
-  bundledCode: "#line 2 \"geometry/circumscribed_circle.hpp\"\n\n#line 2 \"geometry/point.hpp\"\
+    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_F
+  bundledCode: "#line 2 \"geometry/tangent_point.hpp\"\n\n#line 2 \"geometry/point.hpp\"\
     \n\n#line 2 \"geometry/geometry_template.hpp\"\n\n#include <type_traits>\n\n//\
     \ Constants (EPS, PI)\n// EPS \u306E\u5909\u66F4\u306F Constants<T>::set_eps(new_eps)\
     \ \u3067\ntemplate <class T> struct Constants {\n    static T EPS;\n    static\
@@ -132,10 +131,27 @@ data:
     \ ac)) == 1) return Ccw::COUNTER_CLOCKWISE;\n    if (sign(cross(ab, ac)) == -1)\
     \ return Ccw::CLOCKWISE;\n    if (sign(dot(ab, ac)) == -1) return Ccw::ONLINE_BACK;\n\
     \    if (sign(norm(ab) - norm(ac)) == -1) return Ccw::ONLINE_FRONT;\n    return\
-    \ Ccw::ON_SEGMENT;\n}\n#line 2 \"geometry/line.hpp\"\n\n#line 4 \"geometry/line.hpp\"\
-    \n\n// line\ntemplate <class T> struct Line {\n    Point<T> a, b;\n\n    Line()\
-    \ = default;\n    Line(const Point<T>& a, const Point<T>& b) : a(a), b(b) {}\n\
-    \n    // Ax + By = C\n    Line(const T A, const T B, const T C) {\n        static_assert(is_geometry_floating_point<T>::value\
+    \ Ccw::ON_SEGMENT;\n}\n#line 2 \"geometry/circle.hpp\"\n\n#line 4 \"geometry/circle.hpp\"\
+    \n\n// circle\ntemplate <class T> struct Circle {\n    Point<T> o;\n    T r;\n\
+    \n    Circle() = default;\n    Circle(const Point<T>& o, const T r) : o(o), r(r)\
+    \ {}\n\n    friend std::istream& operator>>(std::istream& is, Circle& c) { return\
+    \ is >> c.o >> c.r; }\n    friend std::ostream& operator<<(std::ostream& os, const\
+    \ Circle& c) { return os << c.o << \", \" << c.r; }\n};\n\n// \u5171\u901A\u63A5\
+    \u7DDA\u306E\u672C\u6570\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A\n\
+    template <class T> int tangent_number(Circle<T> c1, Circle<T> c2) {\n    if (c1.r\
+    \ < c2.r) std::swap(c1, c2);\n    const T d2 = norm(c1.o - c2.o);\n    if (sign(d2\
+    \ - (c1.r + c2.r) * (c1.r + c2.r)) == 1) return 4;  // d > c1.r + c2.r and c1.r\
+    \ + c2.r >= 0 <=> d ^ 2 > (c1.r + c2.r) ^ 2\n    if (sign(d2 - (c1.r + c2.r) *\
+    \ (c1.r + c2.r)) == 0) return 3;  // d = c1.r + c2.r and c1.r + c2.r >= 0 <=>\
+    \ d ^ 2 = (c1.r + c2.r) ^ 2\n    if (sign(d2 - (c1.r - c2.r) * (c1.r - c2.r))\
+    \ == 1) return 2;  // d > c1.r - c2.r and c1.r - c2.r >= 0 <=> d ^ 2 > (c1.r -\
+    \ c2.r) ^ 2\n    if (sign(d2 - (c1.r - c2.r) * (c1.r - c2.r)) == 0) return 1;\
+    \  // d = c1.r - c2.r and c1.r - c2.r >= 0 <=> d ^ 2 = (c1.r - c2.r) ^ 2\n   \
+    \ return 0;\n}\n#line 2 \"geometry/cross_point.hpp\"\n\n#line 2 \"geometry/line.hpp\"\
+    \n\n#line 4 \"geometry/line.hpp\"\n\n// line\ntemplate <class T> struct Line {\n\
+    \    Point<T> a, b;\n\n    Line() = default;\n    Line(const Point<T>& a, const\
+    \ Point<T>& b) : a(a), b(b) {}\n\n    // Ax + By = C\n    Line(const T A, const\
+    \ T B, const T C) {\n        static_assert(is_geometry_floating_point<T>::value\
     \ == true);\n        assert(!(equal(A, T(0)) and equal(B, T(0))));\n        if\
     \ (equal(A, T(0))) {\n            a = Point<T>(T(0), C / B), b = Point<T>(T(1),\
     \ C / B);\n        } else if (equal(B, T(0))) {\n            a = Point<T>(C /\
@@ -162,23 +178,7 @@ data:
     \ l2) { return sign(dot(l1.b - l1.a, l2.b - l2.a)) == 0; }\n\n// \u76F4\u7DDA\
     \ l1, l2 \u306E\u5E73\u884C\u5224\u5B9A\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A\n\
     template <class T> inline bool is_parallel(const Line<T>& l1, const Line<T>& l2)\
-    \ { return sign(cross(l1.b - l1.a, l2.b - l2.a)) == 0; }\n#line 2 \"geometry/circle.hpp\"\
-    \n\n#line 4 \"geometry/circle.hpp\"\n\n// circle\ntemplate <class T> struct Circle\
-    \ {\n    Point<T> o;\n    T r;\n\n    Circle() = default;\n    Circle(const Point<T>&\
-    \ o, const T r) : o(o), r(r) {}\n\n    friend std::istream& operator>>(std::istream&\
-    \ is, Circle& c) { return is >> c.o >> c.r; }\n    friend std::ostream& operator<<(std::ostream&\
-    \ os, const Circle& c) { return os << c.o << \", \" << c.r; }\n};\n\n// \u5171\
-    \u901A\u63A5\u7DDA\u306E\u672C\u6570\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A\n\
-    template <class T> int tangent_number(Circle<T> c1, Circle<T> c2) {\n    if (c1.r\
-    \ < c2.r) std::swap(c1, c2);\n    const T d2 = norm(c1.o - c2.o);\n    if (sign(d2\
-    \ - (c1.r + c2.r) * (c1.r + c2.r)) == 1) return 4;  // d > c1.r + c2.r and c1.r\
-    \ + c2.r >= 0 <=> d ^ 2 > (c1.r + c2.r) ^ 2\n    if (sign(d2 - (c1.r + c2.r) *\
-    \ (c1.r + c2.r)) == 0) return 3;  // d = c1.r + c2.r and c1.r + c2.r >= 0 <=>\
-    \ d ^ 2 = (c1.r + c2.r) ^ 2\n    if (sign(d2 - (c1.r - c2.r) * (c1.r - c2.r))\
-    \ == 1) return 2;  // d > c1.r - c2.r and c1.r - c2.r >= 0 <=> d ^ 2 > (c1.r -\
-    \ c2.r) ^ 2\n    if (sign(d2 - (c1.r - c2.r) * (c1.r - c2.r)) == 0) return 1;\
-    \  // d = c1.r - c2.r and c1.r - c2.r >= 0 <=> d ^ 2 = (c1.r - c2.r) ^ 2\n   \
-    \ return 0;\n}\n#line 2 \"geometry/cross_point.hpp\"\n\n#line 2 \"geometry/is_intersect.hpp\"\
+    \ { return sign(cross(l1.b - l1.a, l2.b - l2.a)) == 0; }\n#line 2 \"geometry/is_intersect.hpp\"\
     \n\n#line 6 \"geometry/is_intersect.hpp\"\n\n// \u4EA4\u5DEE\u5224\u5B9A (\u76F4\
     \u7DDA, \u7DDA\u5206, \u5186, \u70B9)\n// \u76F4\u7DDA l1, l2 \u306E\u4EA4\u5DEE\
     \u5224\u5B9A\ntemplate <class T> bool is_intersect(const Line<T>& l1, const Line<T>&\
@@ -294,52 +294,49 @@ data:
     \ T a = std::acos((c1.r * c1.r - c2.r * c2.r + d * d) / (T(2) * c1.r * d));\n\
     \    T t = arg(c2.o - c1.o);\n    Point<T> p = c1.o + polar(c1.r, t + a);\n  \
     \  Point<T> q = c1.o + polar(c1.r, t - a);\n    if (equal(p, q)) return {p};\n\
-    \    return {p, q};\n}\n#line 7 \"geometry/circumscribed_circle.hpp\"\n\n// \u4E09\
-    \u89D2\u5F62\u306E\u5916\u63A5\u5186\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C\n\
-    // https://drken1215.hatenablog.com/entry/2020/10/16/074400\ntemplate <class T>\
-    \ Circle<T> circumscribed_circle(const Point<T>& a, const Point<T>& b, const Point<T>&\
-    \ c) {\n    static_assert(is_geometry_floating_point<T>::value == true);\n   \
-    \ Line<T> l1((a + b) / 2, (a + b) / 2 + rotate(b - a, Constants<T>::PI / 2));\n\
-    \    Line<T> l2((b + c) / 2, (b + c) / 2 + rotate(c - b, Constants<T>::PI / 2));\n\
-    \    auto o = cross_point(l1, l2);\n    auto r = abs(o - a);\n    return Circle(o,\
-    \ r);\n}\n"
-  code: "#pragma once\n\n#include \"geometry/point.hpp\"\n#include \"geometry/line.hpp\"\
-    \n#include \"geometry/circle.hpp\"\n#include \"geometry/cross_point.hpp\"\n\n\
-    // \u4E09\u89D2\u5F62\u306E\u5916\u63A5\u5186\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C\n\
-    // https://drken1215.hatenablog.com/entry/2020/10/16/074400\ntemplate <class T>\
-    \ Circle<T> circumscribed_circle(const Point<T>& a, const Point<T>& b, const Point<T>&\
-    \ c) {\n    static_assert(is_geometry_floating_point<T>::value == true);\n   \
-    \ Line<T> l1((a + b) / 2, (a + b) / 2 + rotate(b - a, Constants<T>::PI / 2));\n\
-    \    Line<T> l2((b + c) / 2, (b + c) / 2 + rotate(c - b, Constants<T>::PI / 2));\n\
-    \    auto o = cross_point(l1, l2);\n    auto r = abs(o - a);\n    return Circle(o,\
-    \ r);\n}"
+    \    return {p, q};\n}\n#line 6 \"geometry/tangent_point.hpp\"\n\n#line 8 \"geometry/tangent_point.hpp\"\
+    \n\n// \u5186\u306E\u63A5\u70B9 (\u5186\u306E\u5916\u5074\u306E\u70B9\u306B\u5BFE\
+    \u3059\u308B\u5186\u306E\u63A5\u7DDA\u306E\u5186\u3068\u306E\u4EA4\u70B9)\n//\
+    \ http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_F\ntemplate <class\
+    \ T> std::vector<Point<T>> tangent_point(const Circle<T>& c, const Point<T>& p)\
+    \ {\n    static_assert(is_geometry_floating_point<T>::value == true);\n    assert(sign(abs(c.o\
+    \ - p) - c.r) == 1);\n    return cross_point(c, Circle(p, std::sqrt(norm(c.o -\
+    \ p) - c.r * c.r)));\n}\n"
+  code: "#pragma once\n\n#include \"geometry/point.hpp\"\n#include \"geometry/circle.hpp\"\
+    \n#include \"geometry/cross_point.hpp\"\n\n#include <vector>\n\n// \u5186\u306E\
+    \u63A5\u70B9 (\u5186\u306E\u5916\u5074\u306E\u70B9\u306B\u5BFE\u3059\u308B\u5186\
+    \u306E\u63A5\u7DDA\u306E\u5186\u3068\u306E\u4EA4\u70B9)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_F\n\
+    template <class T> std::vector<Point<T>> tangent_point(const Circle<T>& c, const\
+    \ Point<T>& p) {\n    static_assert(is_geometry_floating_point<T>::value == true);\n\
+    \    assert(sign(abs(c.o - p) - c.r) == 1);\n    return cross_point(c, Circle(p,\
+    \ std::sqrt(norm(c.o - p) - c.r * c.r)));\n}"
   dependsOn:
   - geometry/point.hpp
   - geometry/geometry_template.hpp
-  - geometry/line.hpp
   - geometry/circle.hpp
   - geometry/cross_point.hpp
+  - geometry/line.hpp
   - geometry/is_intersect.hpp
   isVerificationFile: false
-  path: geometry/circumscribed_circle.hpp
+  path: geometry/tangent_point.hpp
   requiredBy:
   - geometry/all.hpp
   timestamp: '2024-08-02 21:55:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/geometry/circumscribed_circle.test.cpp
-documentation_of: geometry/circumscribed_circle.hpp
+  - verify/geometry/tangent_point.test.cpp
+documentation_of: geometry/tangent_point.hpp
 layout: document
-title: "Circumscribed Circle (\u5916\u63A5\u5186)"
+title: "Tangent Point (\u5186\u306E\u63A5\u70B9)"
 ---
 
 ## 使い方
 
 ```cpp
-Point<T> a, b, c;
-auto cir = circumscribed_circle(a, b, c);
+Point<T> P;
+Circle<T> C;
+auto res = tangent_point(C, P);
+   
 ```
 
 ## 参考文献
-
-- [AOJ Course CGL_7_C: 外接円 (Circumscribed Circle of a Triangle)](https://drken1215.hatenablog.com/entry/2020/10/16/074400)

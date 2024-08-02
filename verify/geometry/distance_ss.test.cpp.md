@@ -5,8 +5,8 @@ data:
     path: geometry/circle.hpp
     title: "Circle (\u5186)"
   - icon: ':heavy_check_mark:'
-    path: geometry/cross_point.hpp
-    title: "Cross Point (\u4EA4\u70B9)"
+    path: geometry/distance.hpp
+    title: "Distance (\u8DDD\u96E2)"
   - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: "\u5E7E\u4F55\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
@@ -19,39 +19,37 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: "Point (\u70B9)"
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: geometry/all.hpp
-    title: geometry/all.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/circumscribed_circle.test.cpp
-    title: verify/geometry/circumscribed_circle.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    ERROR: '0.00000001'
+    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_D
     links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C
-    - https://drken1215.hatenablog.com/entry/2020/10/16/074400
-  bundledCode: "#line 2 \"geometry/circumscribed_circle.hpp\"\n\n#line 2 \"geometry/point.hpp\"\
-    \n\n#line 2 \"geometry/geometry_template.hpp\"\n\n#include <type_traits>\n\n//\
-    \ Constants (EPS, PI)\n// EPS \u306E\u5909\u66F4\u306F Constants<T>::set_eps(new_eps)\
-    \ \u3067\ntemplate <class T> struct Constants {\n    static T EPS;\n    static\
-    \ void set_eps(const T e) { EPS = e; }\n    static constexpr T PI = 3.14159'26535'89793L;\n\
-    };\n\ntemplate <> double Constants<double>::EPS = 1e-9;\ntemplate <> long double\
-    \ Constants<long double>::EPS = 1e-12;\ntemplate <> long long Constants<long long>::EPS\
-    \ = 0;\n\n// base functions\ntemplate <class T> inline int sign(const T x) { return\
-    \ x < -Constants<T>::EPS ? -1 : (x > Constants<T>::EPS ? 1 : 0); }\ntemplate <class\
-    \ T> inline bool equal(const T a, const T b) { return sign(a - b) == 0; }\ntemplate\
-    \ <class T> inline T radian_to_degree(const T r) { return r * 180.0 / Constants<T>::PI;\
-    \ }\ntemplate <class T> inline T degree_to_radian(const T d) { return d * Constants<T>::PI\
-    \ / 180.0; }\n\n// type traits\ntemplate <class T> using is_geometry_floating_point\
-    \ = typename std::conditional<std::is_same<T, double>::value || std::is_same<T,\
-    \ long double>::value, std::true_type, std::false_type>::type;\ntemplate <class\
-    \ T> using is_geometry_integer = typename std::conditional<std::is_same<T, long\
-    \ long>::value, std::true_type, std::false_type>::type;\ntemplate <class T> using\
-    \ is_geometry = typename std::conditional<is_geometry_floating_point<T>::value\
+    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_D
+  bundledCode: "#line 1 \"verify/geometry/distance_ss.test.cpp\"\n#define PROBLEM\
+    \ \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_D\"\n#define\
+    \ ERROR 0.00000001\n\n#include <iostream>\n#include <iomanip>\n\n#line 2 \"geometry/distance.hpp\"\
+    \n\n#line 2 \"geometry/point.hpp\"\n\n#line 2 \"geometry/geometry_template.hpp\"\
+    \n\n#include <type_traits>\n\n// Constants (EPS, PI)\n// EPS \u306E\u5909\u66F4\
+    \u306F Constants<T>::set_eps(new_eps) \u3067\ntemplate <class T> struct Constants\
+    \ {\n    static T EPS;\n    static void set_eps(const T e) { EPS = e; }\n    static\
+    \ constexpr T PI = 3.14159'26535'89793L;\n};\n\ntemplate <> double Constants<double>::EPS\
+    \ = 1e-9;\ntemplate <> long double Constants<long double>::EPS = 1e-12;\ntemplate\
+    \ <> long long Constants<long long>::EPS = 0;\n\n// base functions\ntemplate <class\
+    \ T> inline int sign(const T x) { return x < -Constants<T>::EPS ? -1 : (x > Constants<T>::EPS\
+    \ ? 1 : 0); }\ntemplate <class T> inline bool equal(const T a, const T b) { return\
+    \ sign(a - b) == 0; }\ntemplate <class T> inline T radian_to_degree(const T r)\
+    \ { return r * 180.0 / Constants<T>::PI; }\ntemplate <class T> inline T degree_to_radian(const\
+    \ T d) { return d * Constants<T>::PI / 180.0; }\n\n// type traits\ntemplate <class\
+    \ T> using is_geometry_floating_point = typename std::conditional<std::is_same<T,\
+    \ double>::value || std::is_same<T, long double>::value, std::true_type, std::false_type>::type;\n\
+    template <class T> using is_geometry_integer = typename std::conditional<std::is_same<T,\
+    \ long long>::value, std::true_type, std::false_type>::type;\ntemplate <class\
+    \ T> using is_geometry = typename std::conditional<is_geometry_floating_point<T>::value\
     \ || is_geometry_integer<T>::value, std::true_type, std::false_type>::type;\n\
     #line 4 \"geometry/point.hpp\"\n\n#include <cmath>\n#include <cassert>\n\n// \u70B9\
     \ntemplate <class T> struct Point {\n    T x, y;\n\n    Point() = default;\n \
@@ -162,13 +160,14 @@ data:
     \ l2) { return sign(dot(l1.b - l1.a, l2.b - l2.a)) == 0; }\n\n// \u76F4\u7DDA\
     \ l1, l2 \u306E\u5E73\u884C\u5224\u5B9A\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A\n\
     template <class T> inline bool is_parallel(const Line<T>& l1, const Line<T>& l2)\
-    \ { return sign(cross(l1.b - l1.a, l2.b - l2.a)) == 0; }\n#line 2 \"geometry/circle.hpp\"\
-    \n\n#line 4 \"geometry/circle.hpp\"\n\n// circle\ntemplate <class T> struct Circle\
-    \ {\n    Point<T> o;\n    T r;\n\n    Circle() = default;\n    Circle(const Point<T>&\
-    \ o, const T r) : o(o), r(r) {}\n\n    friend std::istream& operator>>(std::istream&\
-    \ is, Circle& c) { return is >> c.o >> c.r; }\n    friend std::ostream& operator<<(std::ostream&\
-    \ os, const Circle& c) { return os << c.o << \", \" << c.r; }\n};\n\n// \u5171\
-    \u901A\u63A5\u7DDA\u306E\u672C\u6570\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A\n\
+    \ { return sign(cross(l1.b - l1.a, l2.b - l2.a)) == 0; }\n#line 2 \"geometry/is_intersect.hpp\"\
+    \n\n#line 2 \"geometry/circle.hpp\"\n\n#line 4 \"geometry/circle.hpp\"\n\n// circle\n\
+    template <class T> struct Circle {\n    Point<T> o;\n    T r;\n\n    Circle()\
+    \ = default;\n    Circle(const Point<T>& o, const T r) : o(o), r(r) {}\n\n   \
+    \ friend std::istream& operator>>(std::istream& is, Circle& c) { return is >>\
+    \ c.o >> c.r; }\n    friend std::ostream& operator<<(std::ostream& os, const Circle&\
+    \ c) { return os << c.o << \", \" << c.r; }\n};\n\n// \u5171\u901A\u63A5\u7DDA\
+    \u306E\u672C\u6570\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A\n\
     template <class T> int tangent_number(Circle<T> c1, Circle<T> c2) {\n    if (c1.r\
     \ < c2.r) std::swap(c1, c2);\n    const T d2 = norm(c1.o - c2.o);\n    if (sign(d2\
     \ - (c1.r + c2.r) * (c1.r + c2.r)) == 1) return 4;  // d > c1.r + c2.r and c1.r\
@@ -178,30 +177,29 @@ data:
     \ == 1) return 2;  // d > c1.r - c2.r and c1.r - c2.r >= 0 <=> d ^ 2 > (c1.r -\
     \ c2.r) ^ 2\n    if (sign(d2 - (c1.r - c2.r) * (c1.r - c2.r)) == 0) return 1;\
     \  // d = c1.r - c2.r and c1.r - c2.r >= 0 <=> d ^ 2 = (c1.r - c2.r) ^ 2\n   \
-    \ return 0;\n}\n#line 2 \"geometry/cross_point.hpp\"\n\n#line 2 \"geometry/is_intersect.hpp\"\
-    \n\n#line 6 \"geometry/is_intersect.hpp\"\n\n// \u4EA4\u5DEE\u5224\u5B9A (\u76F4\
-    \u7DDA, \u7DDA\u5206, \u5186, \u70B9)\n// \u76F4\u7DDA l1, l2 \u306E\u4EA4\u5DEE\
-    \u5224\u5B9A\ntemplate <class T> bool is_intersect(const Line<T>& l1, const Line<T>&\
-    \ l2) {\n    Point<T> base = l1.b - l1.a;\n    T d12 = cross(base, l2.b - l2.a);\n\
-    \    T d1 = cross(base, l1.b - l2.a);\n    // sign(d12) != 0 -> \u5E73\u884C\u3067\
-    \u306A\u3044\u306E\u3067\u4EA4\u5DEE\u3059\u308B\n    // sign(d12) == 0 and sign(d1)\
-    \ == 0 -> \u4E00\u81F4\u3059\u308B\u306E\u3067\u4EA4\u5DEE\u3059\u308B\n    return\
-    \ sign(d12) != 0 or sign(d1) == 0;\n}\n// \u76F4\u7DDA l, \u70B9 p \u306E\u4EA4\
-    \u5DEE\u5224\u5B9A\ntemplate <class T> inline bool is_intersect(const Line<T>&\
-    \ l, const Point<T>& p) {\n    auto res = ccw(l.a, l.b, p);\n    return res ==\
-    \ Ccw::ONLINE_BACK or res == Ccw::ONLINE_FRONT or res == Ccw::ON_SEGMENT;\n}\n\
-    template <class T> bool is_intersect(const Point<T>& p, const Line<T>& l) { return\
-    \ is_intersect(l, p); }\n\n// \u7DDA\u5206 s, \u70B9 p \u306E\u4EA4\u5DEE\u5224\
-    \u5B9A\ntemplate <class T> inline bool is_intersect(const Segment<T>& s, const\
-    \ Point<T>& p) { return ccw(s.a, s.b, p) == Ccw::ON_SEGMENT; }\ntemplate <class\
-    \ T> inline bool is_intersect(const Point<T>& p, const Segment<T>& s) { return\
-    \ ccw(s.a, s.b, p) == Ccw::ON_SEGMENT; }\n\n// \u76F4\u7DDA l, \u7DDA\u5206 s\
-    \ \u306E\u4EA4\u5DEE\u5224\u5B9A\ntemplate <class T> bool is_intersect(const Line<T>&\
-    \ l, const Segment<T>& s) {\n    // s.a \u3068 s.b \u304C\u76F4\u7DDA l \u306B\
-    \u95A2\u3057\u3066\u540C\u3058\u5074 (\u76F4\u7DDA\u4E0A\u3092\u9664\u304D) \u306B\
-    \u3042\u308B\u5834\u5408\u306B\u9650\u308A\u4EA4\u5DEE\u3057\u306A\u3044\n   \
-    \ auto c1 = ccw(l.a, l.b, s.a);\n    auto c2 = ccw(l.a, l.b, s.b);\n    return\
-    \ !((c1 == c2) and (c1 == Ccw::CLOCKWISE or c1 == Ccw::COUNTER_CLOCKWISE));\n\
+    \ return 0;\n}\n#line 6 \"geometry/is_intersect.hpp\"\n\n// \u4EA4\u5DEE\u5224\
+    \u5B9A (\u76F4\u7DDA, \u7DDA\u5206, \u5186, \u70B9)\n// \u76F4\u7DDA l1, l2 \u306E\
+    \u4EA4\u5DEE\u5224\u5B9A\ntemplate <class T> bool is_intersect(const Line<T>&\
+    \ l1, const Line<T>& l2) {\n    Point<T> base = l1.b - l1.a;\n    T d12 = cross(base,\
+    \ l2.b - l2.a);\n    T d1 = cross(base, l1.b - l2.a);\n    // sign(d12) != 0 ->\
+    \ \u5E73\u884C\u3067\u306A\u3044\u306E\u3067\u4EA4\u5DEE\u3059\u308B\n    // sign(d12)\
+    \ == 0 and sign(d1) == 0 -> \u4E00\u81F4\u3059\u308B\u306E\u3067\u4EA4\u5DEE\u3059\
+    \u308B\n    return sign(d12) != 0 or sign(d1) == 0;\n}\n// \u76F4\u7DDA l, \u70B9\
+    \ p \u306E\u4EA4\u5DEE\u5224\u5B9A\ntemplate <class T> inline bool is_intersect(const\
+    \ Line<T>& l, const Point<T>& p) {\n    auto res = ccw(l.a, l.b, p);\n    return\
+    \ res == Ccw::ONLINE_BACK or res == Ccw::ONLINE_FRONT or res == Ccw::ON_SEGMENT;\n\
+    }\ntemplate <class T> bool is_intersect(const Point<T>& p, const Line<T>& l) {\
+    \ return is_intersect(l, p); }\n\n// \u7DDA\u5206 s, \u70B9 p \u306E\u4EA4\u5DEE\
+    \u5224\u5B9A\ntemplate <class T> inline bool is_intersect(const Segment<T>& s,\
+    \ const Point<T>& p) { return ccw(s.a, s.b, p) == Ccw::ON_SEGMENT; }\ntemplate\
+    \ <class T> inline bool is_intersect(const Point<T>& p, const Segment<T>& s) {\
+    \ return ccw(s.a, s.b, p) == Ccw::ON_SEGMENT; }\n\n// \u76F4\u7DDA l, \u7DDA\u5206\
+    \ s \u306E\u4EA4\u5DEE\u5224\u5B9A\ntemplate <class T> bool is_intersect(const\
+    \ Line<T>& l, const Segment<T>& s) {\n    // s.a \u3068 s.b \u304C\u76F4\u7DDA\
+    \ l \u306B\u95A2\u3057\u3066\u540C\u3058\u5074 (\u76F4\u7DDA\u4E0A\u3092\u9664\
+    \u304D) \u306B\u3042\u308B\u5834\u5408\u306B\u9650\u308A\u4EA4\u5DEE\u3057\u306A\
+    \u3044\n    auto c1 = ccw(l.a, l.b, s.a);\n    auto c2 = ccw(l.a, l.b, s.b);\n\
+    \    return !((c1 == c2) and (c1 == Ccw::CLOCKWISE or c1 == Ccw::COUNTER_CLOCKWISE));\n\
     }\ntemplate <class T> bool is_intersect(const Segment<T>& s, const Line<T>& l)\
     \ { return is_intersect(l, s); }\n\n// \u7DDA\u5206 s1, s2 \u306E\u4EA4\u5DEE\u5224\
     \u5B9A\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_B\n\
@@ -247,99 +245,59 @@ data:
     \ c.o);\n    return ccw(s.a, s.b, h) == Ccw::ON_SEGMENT;  // s.a -> h -> s.b \u306E\
     \u9806\u3067\u4E26\u3093\u3067\u3044\u308B\n}\ntemplate <class T> inline bool\
     \ is_intersect(const Segment<T>& s, const Circle<T>& c) { return is_intersect(c,\
-    \ s); }\n#line 7 \"geometry/cross_point.hpp\"\n\n#include <vector>\n#line 10 \"\
-    geometry/cross_point.hpp\"\n\n// \u4EA4\u70B9 (\u76F4\u7DDA, \u7DDA\u5206, \u5186\
-    )\n// \u4EA4\u70B9\u3092\u6301\u305F\u306A\u3044\u5834\u5408\u306E\u6319\u52D5\
-    \u306F\u672A\u5B9A\u7FA9\n// \u76F4\u7DDA l1, l2 \u306E\u4EA4\u70B9 1 \u3064\n\
-    template <class T> Point<T> cross_point(const Line<T>& l1, const Line<T>& l2)\
-    \ {\n    static_assert(is_geometry_floating_point<T>::value == true);\n    Point<T>\
-    \ base = l1.b - l1.a;\n    T d12 = cross(base, l2.b - l2.a);\n    T d1 = cross(base,\
-    \ l1.b - l2.a);\n    if (sign(d12) == 0) {\n        assert(sign(d1) == 0);  //\
-    \ \u5E73\u884C\u304B\u3064\u4E00\u81F4\u3057\u306A\u3044\n        return l2.a;\n\
-    \    }\n    return l2.a + (l2.b - l2.a) * (d1 / d12);\n}\n\n// \u7DDA\u5206 s1,\
-    \ s2 \u306E\u4EA4\u70B9 1 \u3064\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_C\n\
-    template <class T> Point<T> cross_point(const Segment<T>& s1, const Segment<T>&\
-    \ s2) {\n    static_assert(is_geometry_floating_point<T>::value == true);\n  \
-    \  Point<T> base = s1.b - s1.a;\n    T d12 = cross(base, s2.b - s2.a);\n    T\
-    \ d1 = cross(base, s1.b - s2.a);\n    if (sign(d12) == 0) {\n        assert(sign(d1)\
-    \ == 0);  // \u5E73\u884C\u304B\u3064\u4E00\u81F4\u3057\u306A\u3044\n        //\
-    \ \u7AEF\u70B9\u306E\u3069\u308C\u304B\u3092\u8FD4\u3059\n        if (is_intersect(s1,\
-    \ s2.a)) return s2.a;\n        if (is_intersect(s1, s2.b)) return s2.b;\n    \
-    \    if (is_intersect(s2, s1.a)) return s1.a;\n        assert(is_intersect(s2,\
-    \ s1.b));\n        return s1.b;\n    }\n    return s2.a + (s2.b - s2.a) * (d1\
-    \ / d12);\n}\n\n// \u76F4\u7DDA l, \u7DDA\u5206 s \u306E\u4EA4\u70B9 1 \u3064\n\
-    template <class T> Point<T> cross_point(const Line<T>& l, const Segment<T>& s)\
-    \ {\n    // cross_point(l1, l2) \u306F\u91CD\u306A\u308B\u3068\u304D l2.a \u3092\
-    \u8FD4\u3059\u306E\u3067 OK\n    return cross_point(l, Line<T>(s.a, s.b));\n}\n\
-    template <class T> Point<T> cross_point(const Segment<T>& s, const Line<T>& l)\
-    \ { return cross_point(l, s); }\n\n// \u5186 c, \u76F4\u7DDA l \u306E\u4EA4\u70B9\
-    \ 1 or 2 \u3064\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_D\n\
-    template <class T> std::vector<Point<T>> cross_point(const Circle<T>& c, const\
-    \ Line<T>& l) {\n    static_assert(is_geometry_floating_point<T>::value == true);\n\
-    \    auto pr = projection(l, c.o);\n    if (equal(norm(pr - c.o), c.r * c.r))\
-    \ return {pr};\n    Point<T> e = (l.b - l.a) / abs(l.b - l.a);\n    auto k = sqrtl(c.r\
-    \ * c.r - norm(pr - c.o));\n    return {pr - e * k, pr + e * k};\n}\ntemplate\
-    \ <class T> std::vector<Point<T>> cross_point(const Line<T>& l, const Circle<T>&\
-    \ c) { return cross_point(c, l); }\n\n// \u5186 c, \u7DDA\u5206 s \u306E\u4EA4\
-    \u70B9 1 or 2 \u3064\ntemplate <class T> std::vector<Point<T>> cross_point(const\
-    \ Circle<T>& c, const Segment<T>& s) {\n    assert(is_intersect(c, s));\n    auto\
-    \ ps = cross_point(c, Line<T>(s.a, s.b));\n    std::vector<Point<T>> res;\n  \
-    \  for (auto&& p : ps)\n        if (ccw(s.a, s.b, p) == Ccw::ON_SEGMENT) res.emplace_back(p);\n\
-    \    return res;\n}\ntemplate <class T> std::vector<Point<T>> cross_point(const\
-    \ Segment<T>& s, const Circle<T>& c) { return cross_point(c, s); }\n\n// \u5186\
-    \ c1, c2 \u306E\u4EA4\u70B9 1 or 2 \u3064\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_E\n\
-    template <class T> std::vector<Point<T>> cross_point(const Circle<T>& c1, const\
-    \ Circle<T>& c2) {\n    static_assert(is_geometry_floating_point<T>::value ==\
-    \ true);\n    assert(is_intersect(c1, c2));\n    T d = abs(c1.o - c2.o);\n   \
-    \ T a = std::acos((c1.r * c1.r - c2.r * c2.r + d * d) / (T(2) * c1.r * d));\n\
-    \    T t = arg(c2.o - c1.o);\n    Point<T> p = c1.o + polar(c1.r, t + a);\n  \
-    \  Point<T> q = c1.o + polar(c1.r, t - a);\n    if (equal(p, q)) return {p};\n\
-    \    return {p, q};\n}\n#line 7 \"geometry/circumscribed_circle.hpp\"\n\n// \u4E09\
-    \u89D2\u5F62\u306E\u5916\u63A5\u5186\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C\n\
-    // https://drken1215.hatenablog.com/entry/2020/10/16/074400\ntemplate <class T>\
-    \ Circle<T> circumscribed_circle(const Point<T>& a, const Point<T>& b, const Point<T>&\
-    \ c) {\n    static_assert(is_geometry_floating_point<T>::value == true);\n   \
-    \ Line<T> l1((a + b) / 2, (a + b) / 2 + rotate(b - a, Constants<T>::PI / 2));\n\
-    \    Line<T> l2((b + c) / 2, (b + c) / 2 + rotate(c - b, Constants<T>::PI / 2));\n\
-    \    auto o = cross_point(l1, l2);\n    auto r = abs(o - a);\n    return Circle(o,\
-    \ r);\n}\n"
-  code: "#pragma once\n\n#include \"geometry/point.hpp\"\n#include \"geometry/line.hpp\"\
-    \n#include \"geometry/circle.hpp\"\n#include \"geometry/cross_point.hpp\"\n\n\
-    // \u4E09\u89D2\u5F62\u306E\u5916\u63A5\u5186\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C\n\
-    // https://drken1215.hatenablog.com/entry/2020/10/16/074400\ntemplate <class T>\
-    \ Circle<T> circumscribed_circle(const Point<T>& a, const Point<T>& b, const Point<T>&\
-    \ c) {\n    static_assert(is_geometry_floating_point<T>::value == true);\n   \
-    \ Line<T> l1((a + b) / 2, (a + b) / 2 + rotate(b - a, Constants<T>::PI / 2));\n\
-    \    Line<T> l2((b + c) / 2, (b + c) / 2 + rotate(c - b, Constants<T>::PI / 2));\n\
-    \    auto o = cross_point(l1, l2);\n    auto r = abs(o - a);\n    return Circle(o,\
-    \ r);\n}"
+    \ s); }\n#line 6 \"geometry/distance.hpp\"\n\n// \u8DDD\u96E2 (\u76F4\u7DDA, \u7DDA\
+    \u5206, \u70B9)\n// \u70B9 p1, p2 \u306E\u8DDD\u96E2\ntemplate <class T> T distance(const\
+    \ Point<T>& p1, const Point<T>& p2) { return abs(p1 - p2); }\n\n// \u76F4\u7DDA\
+    \ l, \u70B9 p \u306E\u8DDD\u96E2\ntemplate <class T> T distance(const Line<T>&\
+    \ l, const Point<T>& p) {\n    static_assert(is_geometry_floating_point<T>::value\
+    \ == true);\n    return abs(p - projection(l, p));\n}\ntemplate <class T> T distance(const\
+    \ Point<T>& p, const Line<T>& l) { return distance(l, p); }\n\n// \u7DDA\u5206\
+    \ s, \u70B9 p \u306E\u8DDD\u96E2\ntemplate <class T> T distance(const Segment<T>&\
+    \ s, const Point<T>& p) {\n    static_assert(is_geometry_floating_point<T>::value\
+    \ == true);\n    Point<T> r = projection(s, p);\n    if (is_intersect(s, r)) return\
+    \ abs(r - p);\n    return std::min(abs(s.a - p), abs(s.b - p));\n}\ntemplate <class\
+    \ T> T distance(const Point<T>& p, const Segment<T>& s) { return distance(s, p);\
+    \ }\n\n// \u76F4\u7DDA l1, l2 \u306E\u8DDD\u96E2\ntemplate <class T> T distance(const\
+    \ Line<T>& l1, const Line<T>& l2) {\n    static_assert(is_geometry_floating_point<T>::value\
+    \ == true);\n    if (is_intersect(l1, l2)) return 0;\n    return distance(l1,\
+    \ l2.a);\n}\n\n#include <algorithm>\n\n// \u76F4\u7DDA l, \u7DDA\u5206 s \u306E\
+    \u8DDD\u96E2\ntemplate <class T> T distance(const Line<T>& l, const Segment<T>&\
+    \ s) {\n    static_assert(is_geometry_floating_point<T>::value == true);\n   \
+    \ if (is_intersect(l, s)) return 0;\n    return std::min(distance(l, s.a), distance(l,\
+    \ s.b));\n}\ntemplate <class T> T distance(const Segment<T>& s, const Line<T>&\
+    \ l) { return distance(l, s); }\n\n// \u7DDA\u5206 s1, s2 \u306E\u8DDD\u96E2\n\
+    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_D\ntemplate\
+    \ <class T> T distance(const Segment<T>& s1, const Segment<T>& s2) {\n    static_assert(is_geometry_floating_point<T>::value\
+    \ == true);\n    if (is_intersect(s1, s2)) return 0;\n    return std::min({distance(s1,\
+    \ s2.a), distance(s1, s2.b), distance(s2, s1.a), distance(s2, s1.b)});\n}\n#line\
+    \ 8 \"verify/geometry/distance_ss.test.cpp\"\n\nint main() {\n    int Q;\n   \
+    \ std::cin >> Q;\n    while (Q--) {\n        Segment<double> S1, S2;\n       \
+    \ std::cin >> S1 >> S2;\n        auto d = distance(S1, S2);\n        std::cout\
+    \ << std::fixed << std::setprecision(15) << d << '\\n';\n    }\n    return 0;\n\
+    }\n"
+  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_D\"\
+    \n#define ERROR 0.00000001\n\n#include <iostream>\n#include <iomanip>\n\n#include\
+    \ \"geometry/distance.hpp\"\n\nint main() {\n    int Q;\n    std::cin >> Q;\n\
+    \    while (Q--) {\n        Segment<double> S1, S2;\n        std::cin >> S1 >>\
+    \ S2;\n        auto d = distance(S1, S2);\n        std::cout << std::fixed <<\
+    \ std::setprecision(15) << d << '\\n';\n    }\n    return 0;\n}"
   dependsOn:
+  - geometry/distance.hpp
   - geometry/point.hpp
   - geometry/geometry_template.hpp
   - geometry/line.hpp
-  - geometry/circle.hpp
-  - geometry/cross_point.hpp
   - geometry/is_intersect.hpp
-  isVerificationFile: false
-  path: geometry/circumscribed_circle.hpp
-  requiredBy:
-  - geometry/all.hpp
+  - geometry/circle.hpp
+  isVerificationFile: true
+  path: verify/geometry/distance_ss.test.cpp
+  requiredBy: []
   timestamp: '2024-08-02 21:55:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/geometry/circumscribed_circle.test.cpp
-documentation_of: geometry/circumscribed_circle.hpp
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: verify/geometry/distance_ss.test.cpp
 layout: document
-title: "Circumscribed Circle (\u5916\u63A5\u5186)"
+redirect_from:
+- /verify/verify/geometry/distance_ss.test.cpp
+- /verify/verify/geometry/distance_ss.test.cpp.html
+title: verify/geometry/distance_ss.test.cpp
 ---
-
-## 使い方
-
-```cpp
-Point<T> a, b, c;
-auto cir = circumscribed_circle(a, b, c);
-```
-
-## 参考文献
-
-- [AOJ Course CGL_7_C: 外接円 (Circumscribed Circle of a Triangle)](https://drken1215.hatenablog.com/entry/2020/10/16/074400)

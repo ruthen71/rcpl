@@ -93,8 +93,8 @@ data:
   timestamp: '2024-08-01 13:43:30+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/graph/shortest_path_tree.test.cpp
   - verify/graph/dijkstra.test.cpp
+  - verify/graph/shortest_path_tree.test.cpp
 documentation_of: graph/dijkstra.hpp
 layout: document
 title: "Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"

@@ -7,77 +7,20 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: "Point (\u70B9)"
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: geometry/all.hpp
-    title: geometry/all.hpp
-  - icon: ':heavy_check_mark:'
-    path: geometry/circumscribed_circle.hpp
-    title: "Circumscribed Circle (\u5916\u63A5\u5186)"
-  - icon: ':heavy_check_mark:'
-    path: geometry/convex_polygon_cut.hpp
-    title: geometry/convex_polygon_cut.hpp
-  - icon: ':heavy_check_mark:'
-    path: geometry/cross_point.hpp
-    title: "Cross Point (\u4EA4\u70B9)"
-  - icon: ':heavy_check_mark:'
-    path: geometry/distance.hpp
-    title: "Distance (\u8DDD\u96E2)"
-  - icon: ':heavy_check_mark:'
-    path: geometry/incircle.hpp
-    title: "Incircle (\u5185\u63A5\u5186)"
-  - icon: ':heavy_check_mark:'
-    path: geometry/is_intersect.hpp
-    title: "Intersection (\u4EA4\u5DEE\u5224\u5B9A)"
-  - icon: ':heavy_check_mark:'
-    path: geometry/polygon_contain.hpp
-    title: "Polygon Contain (\u591A\u89D2\u5F62\u3068\u70B9\u306E\u4EA4\u5DEE\u5224\
-      \u5B9A)"
-  - icon: ':heavy_check_mark:'
-    path: geometry/tangent_point.hpp
-    title: "Tangent Point (\u5186\u306E\u63A5\u70B9)"
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/circumscribed_circle.test.cpp
-    title: verify/geometry/circumscribed_circle.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/convex_polygon_cut.test.cpp
-    title: verify/geometry/convex_polygon_cut.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/cross_point_cc.test.cpp
-    title: verify/geometry/cross_point_cc.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/cross_point_cl.test.cpp
-    title: verify/geometry/cross_point_cl.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/cross_point_ss.test.cpp
-    title: verify/geometry/cross_point_ss.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/distance_ss.test.cpp
-    title: verify/geometry/distance_ss.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/incircle.test.cpp
-    title: verify/geometry/incircle.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/is_intersect_ss.test.cpp
-    title: verify/geometry/is_intersect_ss.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/polygon_contain.test.cpp
-    title: verify/geometry/polygon_contain.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/tangent_number.test.cpp
-    title: verify/geometry/tangent_number.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/tangent_point.test.cpp
-    title: verify/geometry/tangent_point.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/sort_points_by_argument
     links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A
-  bundledCode: "#line 2 \"geometry/circle.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\
-    \n#line 2 \"geometry/geometry_template.hpp\"\n\n#include <type_traits>\n\n// Constants\
+    - https://judge.yosupo.jp/problem/sort_points_by_argument
+  bundledCode: "#line 1 \"verify/geometry/compare_atan2.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/sort_points_by_argument\"\n\n#include <iostream>\n\
+    #include <vector>\n#include <algorithm>\n\n#line 2 \"geometry/point.hpp\"\n\n\
+    #line 2 \"geometry/geometry_template.hpp\"\n\n#include <type_traits>\n\n// Constants\
     \ (EPS, PI)\n// EPS \u306E\u5909\u66F4\u306F Constants<T>::set_eps(new_eps) \u3067\
     \ntemplate <class T> struct Constants {\n    static T EPS;\n    static void set_eps(const\
     \ T e) { EPS = e; }\n    static constexpr T PI = 3.14159'26535'89793L;\n};\n\n\
@@ -174,76 +117,56 @@ data:
     \ ac)) == 1) return Ccw::COUNTER_CLOCKWISE;\n    if (sign(cross(ab, ac)) == -1)\
     \ return Ccw::CLOCKWISE;\n    if (sign(dot(ab, ac)) == -1) return Ccw::ONLINE_BACK;\n\
     \    if (sign(norm(ab) - norm(ac)) == -1) return Ccw::ONLINE_FRONT;\n    return\
-    \ Ccw::ON_SEGMENT;\n}\n#line 4 \"geometry/circle.hpp\"\n\n// circle\ntemplate\
-    \ <class T> struct Circle {\n    Point<T> o;\n    T r;\n\n    Circle() = default;\n\
-    \    Circle(const Point<T>& o, const T r) : o(o), r(r) {}\n\n    friend std::istream&\
-    \ operator>>(std::istream& is, Circle& c) { return is >> c.o >> c.r; }\n    friend\
-    \ std::ostream& operator<<(std::ostream& os, const Circle& c) { return os << c.o\
-    \ << \", \" << c.r; }\n};\n\n// \u5171\u901A\u63A5\u7DDA\u306E\u672C\u6570\n//\
-    \ http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A\ntemplate <class\
-    \ T> int tangent_number(Circle<T> c1, Circle<T> c2) {\n    if (c1.r < c2.r) std::swap(c1,\
-    \ c2);\n    const T d2 = norm(c1.o - c2.o);\n    if (sign(d2 - (c1.r + c2.r) *\
-    \ (c1.r + c2.r)) == 1) return 4;  // d > c1.r + c2.r and c1.r + c2.r >= 0 <=>\
-    \ d ^ 2 > (c1.r + c2.r) ^ 2\n    if (sign(d2 - (c1.r + c2.r) * (c1.r + c2.r))\
-    \ == 0) return 3;  // d = c1.r + c2.r and c1.r + c2.r >= 0 <=> d ^ 2 = (c1.r +\
-    \ c2.r) ^ 2\n    if (sign(d2 - (c1.r - c2.r) * (c1.r - c2.r)) == 1) return 2;\
-    \  // d > c1.r - c2.r and c1.r - c2.r >= 0 <=> d ^ 2 > (c1.r - c2.r) ^ 2\n   \
-    \ if (sign(d2 - (c1.r - c2.r) * (c1.r - c2.r)) == 0) return 1;  // d = c1.r -\
-    \ c2.r and c1.r - c2.r >= 0 <=> d ^ 2 = (c1.r - c2.r) ^ 2\n    return 0;\n}\n"
-  code: "#pragma once\n\n#include \"geometry/point.hpp\"\n\n// circle\ntemplate <class\
-    \ T> struct Circle {\n    Point<T> o;\n    T r;\n\n    Circle() = default;\n \
-    \   Circle(const Point<T>& o, const T r) : o(o), r(r) {}\n\n    friend std::istream&\
-    \ operator>>(std::istream& is, Circle& c) { return is >> c.o >> c.r; }\n    friend\
-    \ std::ostream& operator<<(std::ostream& os, const Circle& c) { return os << c.o\
-    \ << \", \" << c.r; }\n};\n\n// \u5171\u901A\u63A5\u7DDA\u306E\u672C\u6570\n//\
-    \ http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A\ntemplate <class\
-    \ T> int tangent_number(Circle<T> c1, Circle<T> c2) {\n    if (c1.r < c2.r) std::swap(c1,\
-    \ c2);\n    const T d2 = norm(c1.o - c2.o);\n    if (sign(d2 - (c1.r + c2.r) *\
-    \ (c1.r + c2.r)) == 1) return 4;  // d > c1.r + c2.r and c1.r + c2.r >= 0 <=>\
-    \ d ^ 2 > (c1.r + c2.r) ^ 2\n    if (sign(d2 - (c1.r + c2.r) * (c1.r + c2.r))\
-    \ == 0) return 3;  // d = c1.r + c2.r and c1.r + c2.r >= 0 <=> d ^ 2 = (c1.r +\
-    \ c2.r) ^ 2\n    if (sign(d2 - (c1.r - c2.r) * (c1.r - c2.r)) == 1) return 2;\
-    \  // d > c1.r - c2.r and c1.r - c2.r >= 0 <=> d ^ 2 > (c1.r - c2.r) ^ 2\n   \
-    \ if (sign(d2 - (c1.r - c2.r) * (c1.r - c2.r)) == 0) return 1;  // d = c1.r -\
-    \ c2.r and c1.r - c2.r >= 0 <=> d ^ 2 = (c1.r - c2.r) ^ 2\n    return 0;\n}"
+    \ Ccw::ON_SEGMENT;\n}\n#line 8 \"verify/geometry/compare_atan2.test.cpp\"\n\n\
+    int main() {\n    assert(std::atan2(0LL, 0LL) == 0.0);\n    assert(std::atan2(0.0,\
+    \ 0.0) == 0.0);\n    assert(std::atan2(0.0L, 0.0L) == 0.0L);\n    {\n        //\
+    \ x < 0, y = 0 (270\xB0) \u306E\u534A\u76F4\u7DDA\u30B9\u30BF\u30FC\u30C8, x <\
+    \ 0, y = 0 \u81EA\u4F53\u306F\u6700\u5F8C\u306B\u542B\u3081\u308B\n        std::vector<Point<long\
+    \ long>> p = {\n            {-1, -1}, {-2, -2},          // -3/4 PI\n        \
+    \    {0, -1},  {0, -2},           // -2/4 PI\n            {1, -1},  {2, -2}, \
+    \          // -1/4 PI\n            {0, 0},   {1, 0},   {2, 0},  //  0/4 PI\n \
+    \           {1, 1},   {2, 2},            //  1/4 PI\n            {0, 1},   {0,\
+    \ 2},            //  2/4 PI\n            {-1, 1},  {-2, 2},           //  3/4\
+    \ PI\n            {-1, 0},  {-2, 0},           //  4/4 PI\n        };\n      \
+    \  const int n = (int)(p.size());\n        for (int i = 0; i < n; i++) {\n   \
+    \         for (int j = 0; j < n; j++) {\n                assert((i < j) == compare_atan2(p[i],\
+    \ p[j]));\n            }\n        }\n    }\n    int N;\n    std::cin >> N;\n \
+    \   std::vector<Point<long long>> P(N);\n    for (int i = 0; i < N; i++) std::cin\
+    \ >> P[i];\n    std::sort(P.begin(), P.end(), compare_atan2<long long>);\n   \
+    \ for (int i = 0; i < N; i++) std::cout << P[i].x << \" \" << P[i].y << \"\\n\"\
+    ;\n    return 0;\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/sort_points_by_argument\"\
+    \n\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\n#include \"\
+    geometry/point.hpp\"\n\nint main() {\n    assert(std::atan2(0LL, 0LL) == 0.0);\n\
+    \    assert(std::atan2(0.0, 0.0) == 0.0);\n    assert(std::atan2(0.0L, 0.0L) ==\
+    \ 0.0L);\n    {\n        // x < 0, y = 0 (270\xB0) \u306E\u534A\u76F4\u7DDA\u30B9\
+    \u30BF\u30FC\u30C8, x < 0, y = 0 \u81EA\u4F53\u306F\u6700\u5F8C\u306B\u542B\u3081\
+    \u308B\n        std::vector<Point<long long>> p = {\n            {-1, -1}, {-2,\
+    \ -2},          // -3/4 PI\n            {0, -1},  {0, -2},           // -2/4 PI\n\
+    \            {1, -1},  {2, -2},           // -1/4 PI\n            {0, 0},   {1,\
+    \ 0},   {2, 0},  //  0/4 PI\n            {1, 1},   {2, 2},            //  1/4\
+    \ PI\n            {0, 1},   {0, 2},            //  2/4 PI\n            {-1, 1},\
+    \  {-2, 2},           //  3/4 PI\n            {-1, 0},  {-2, 0},           //\
+    \  4/4 PI\n        };\n        const int n = (int)(p.size());\n        for (int\
+    \ i = 0; i < n; i++) {\n            for (int j = 0; j < n; j++) {\n          \
+    \      assert((i < j) == compare_atan2(p[i], p[j]));\n            }\n        }\n\
+    \    }\n    int N;\n    std::cin >> N;\n    std::vector<Point<long long>> P(N);\n\
+    \    for (int i = 0; i < N; i++) std::cin >> P[i];\n    std::sort(P.begin(), P.end(),\
+    \ compare_atan2<long long>);\n    for (int i = 0; i < N; i++) std::cout << P[i].x\
+    \ << \" \" << P[i].y << \"\\n\";\n    return 0;\n}"
   dependsOn:
   - geometry/point.hpp
   - geometry/geometry_template.hpp
-  isVerificationFile: false
-  path: geometry/circle.hpp
-  requiredBy:
-  - geometry/distance.hpp
-  - geometry/circumscribed_circle.hpp
-  - geometry/is_intersect.hpp
-  - geometry/incircle.hpp
-  - geometry/cross_point.hpp
-  - geometry/all.hpp
-  - geometry/convex_polygon_cut.hpp
-  - geometry/polygon_contain.hpp
-  - geometry/tangent_point.hpp
+  isVerificationFile: true
+  path: verify/geometry/compare_atan2.test.cpp
+  requiredBy: []
   timestamp: '2024-08-02 21:55:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/geometry/tangent_point.test.cpp
-  - verify/geometry/cross_point_ss.test.cpp
-  - verify/geometry/polygon_contain.test.cpp
-  - verify/geometry/cross_point_cl.test.cpp
-  - verify/geometry/cross_point_cc.test.cpp
-  - verify/geometry/incircle.test.cpp
-  - verify/geometry/tangent_number.test.cpp
-  - verify/geometry/is_intersect_ss.test.cpp
-  - verify/geometry/distance_ss.test.cpp
-  - verify/geometry/convex_polygon_cut.test.cpp
-  - verify/geometry/circumscribed_circle.test.cpp
-documentation_of: geometry/circle.hpp
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: verify/geometry/compare_atan2.test.cpp
 layout: document
-title: "Circle (\u5186)"
+redirect_from:
+- /verify/verify/geometry/compare_atan2.test.cpp
+- /verify/verify/geometry/compare_atan2.test.cpp.html
+title: verify/geometry/compare_atan2.test.cpp
 ---
-
-## 使い方
-
-```cpp
-using Cc = Circle<T>;
-```
-
-## 参考文献

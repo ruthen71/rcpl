@@ -5,6 +5,9 @@ data:
     path: geometry/circle.hpp
     title: "Circle (\u5186)"
   - icon: ':heavy_check_mark:'
+    path: geometry/circumscribed_circle.hpp
+    title: "Circumscribed Circle (\u5916\u63A5\u5186)"
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point.hpp
     title: "Cross Point (\u4EA4\u70B9)"
   - icon: ':heavy_check_mark:'
@@ -19,39 +22,38 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: "Point (\u70B9)"
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: geometry/all.hpp
-    title: geometry/all.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/circumscribed_circle.test.cpp
-    title: verify/geometry/circumscribed_circle.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    ERROR: '0.000001'
+    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C
-    - https://drken1215.hatenablog.com/entry/2020/10/16/074400
-  bundledCode: "#line 2 \"geometry/circumscribed_circle.hpp\"\n\n#line 2 \"geometry/point.hpp\"\
-    \n\n#line 2 \"geometry/geometry_template.hpp\"\n\n#include <type_traits>\n\n//\
-    \ Constants (EPS, PI)\n// EPS \u306E\u5909\u66F4\u306F Constants<T>::set_eps(new_eps)\
-    \ \u3067\ntemplate <class T> struct Constants {\n    static T EPS;\n    static\
-    \ void set_eps(const T e) { EPS = e; }\n    static constexpr T PI = 3.14159'26535'89793L;\n\
-    };\n\ntemplate <> double Constants<double>::EPS = 1e-9;\ntemplate <> long double\
-    \ Constants<long double>::EPS = 1e-12;\ntemplate <> long long Constants<long long>::EPS\
-    \ = 0;\n\n// base functions\ntemplate <class T> inline int sign(const T x) { return\
-    \ x < -Constants<T>::EPS ? -1 : (x > Constants<T>::EPS ? 1 : 0); }\ntemplate <class\
-    \ T> inline bool equal(const T a, const T b) { return sign(a - b) == 0; }\ntemplate\
-    \ <class T> inline T radian_to_degree(const T r) { return r * 180.0 / Constants<T>::PI;\
-    \ }\ntemplate <class T> inline T degree_to_radian(const T d) { return d * Constants<T>::PI\
-    \ / 180.0; }\n\n// type traits\ntemplate <class T> using is_geometry_floating_point\
-    \ = typename std::conditional<std::is_same<T, double>::value || std::is_same<T,\
-    \ long double>::value, std::true_type, std::false_type>::type;\ntemplate <class\
-    \ T> using is_geometry_integer = typename std::conditional<std::is_same<T, long\
-    \ long>::value, std::true_type, std::false_type>::type;\ntemplate <class T> using\
-    \ is_geometry = typename std::conditional<is_geometry_floating_point<T>::value\
+  bundledCode: "#line 1 \"verify/geometry/circumscribed_circle.test.cpp\"\n#define\
+    \ PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C\"\
+    \n#define ERROR 0.000001\n// \u8AA4\u5DEE\u306F\u672C\u6765\u3088\u308A\u7DE9\u3081\
+    \n\n#include <iostream>\n#include <iomanip>\n\n#line 2 \"geometry/circumscribed_circle.hpp\"\
+    \n\n#line 2 \"geometry/point.hpp\"\n\n#line 2 \"geometry/geometry_template.hpp\"\
+    \n\n#include <type_traits>\n\n// Constants (EPS, PI)\n// EPS \u306E\u5909\u66F4\
+    \u306F Constants<T>::set_eps(new_eps) \u3067\ntemplate <class T> struct Constants\
+    \ {\n    static T EPS;\n    static void set_eps(const T e) { EPS = e; }\n    static\
+    \ constexpr T PI = 3.14159'26535'89793L;\n};\n\ntemplate <> double Constants<double>::EPS\
+    \ = 1e-9;\ntemplate <> long double Constants<long double>::EPS = 1e-12;\ntemplate\
+    \ <> long long Constants<long long>::EPS = 0;\n\n// base functions\ntemplate <class\
+    \ T> inline int sign(const T x) { return x < -Constants<T>::EPS ? -1 : (x > Constants<T>::EPS\
+    \ ? 1 : 0); }\ntemplate <class T> inline bool equal(const T a, const T b) { return\
+    \ sign(a - b) == 0; }\ntemplate <class T> inline T radian_to_degree(const T r)\
+    \ { return r * 180.0 / Constants<T>::PI; }\ntemplate <class T> inline T degree_to_radian(const\
+    \ T d) { return d * Constants<T>::PI / 180.0; }\n\n// type traits\ntemplate <class\
+    \ T> using is_geometry_floating_point = typename std::conditional<std::is_same<T,\
+    \ double>::value || std::is_same<T, long double>::value, std::true_type, std::false_type>::type;\n\
+    template <class T> using is_geometry_integer = typename std::conditional<std::is_same<T,\
+    \ long long>::value, std::true_type, std::false_type>::type;\ntemplate <class\
+    \ T> using is_geometry = typename std::conditional<is_geometry_floating_point<T>::value\
     \ || is_geometry_integer<T>::value, std::true_type, std::false_type>::type;\n\
     #line 4 \"geometry/point.hpp\"\n\n#include <cmath>\n#include <cassert>\n\n// \u70B9\
     \ntemplate <class T> struct Point {\n    T x, y;\n\n    Point() = default;\n \
@@ -302,44 +304,35 @@ data:
     \ Line<T> l1((a + b) / 2, (a + b) / 2 + rotate(b - a, Constants<T>::PI / 2));\n\
     \    Line<T> l2((b + c) / 2, (b + c) / 2 + rotate(c - b, Constants<T>::PI / 2));\n\
     \    auto o = cross_point(l1, l2);\n    auto r = abs(o - a);\n    return Circle(o,\
-    \ r);\n}\n"
-  code: "#pragma once\n\n#include \"geometry/point.hpp\"\n#include \"geometry/line.hpp\"\
-    \n#include \"geometry/circle.hpp\"\n#include \"geometry/cross_point.hpp\"\n\n\
-    // \u4E09\u89D2\u5F62\u306E\u5916\u63A5\u5186\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C\n\
-    // https://drken1215.hatenablog.com/entry/2020/10/16/074400\ntemplate <class T>\
-    \ Circle<T> circumscribed_circle(const Point<T>& a, const Point<T>& b, const Point<T>&\
-    \ c) {\n    static_assert(is_geometry_floating_point<T>::value == true);\n   \
-    \ Line<T> l1((a + b) / 2, (a + b) / 2 + rotate(b - a, Constants<T>::PI / 2));\n\
-    \    Line<T> l2((b + c) / 2, (b + c) / 2 + rotate(c - b, Constants<T>::PI / 2));\n\
-    \    auto o = cross_point(l1, l2);\n    auto r = abs(o - a);\n    return Circle(o,\
-    \ r);\n}"
+    \ r);\n}\n#line 9 \"verify/geometry/circumscribed_circle.test.cpp\"\n\nint main()\
+    \ {\n    Point<long double> a, b, c;\n    std::cin >> a >> b >> c;\n    auto cir\
+    \ = circumscribed_circle(a, b, c);\n    std::cout << std::fixed << std::setprecision(15)\
+    \ << cir.o.x << ' ' << cir.o.y << ' ' << cir.r << '\\n';\n    return 0;\n}\n"
+  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_C\"\
+    \n#define ERROR 0.000001\n// \u8AA4\u5DEE\u306F\u672C\u6765\u3088\u308A\u7DE9\u3081\
+    \n\n#include <iostream>\n#include <iomanip>\n\n#include \"geometry/circumscribed_circle.hpp\"\
+    \n\nint main() {\n    Point<long double> a, b, c;\n    std::cin >> a >> b >> c;\n\
+    \    auto cir = circumscribed_circle(a, b, c);\n    std::cout << std::fixed <<\
+    \ std::setprecision(15) << cir.o.x << ' ' << cir.o.y << ' ' << cir.r << '\\n';\n\
+    \    return 0;\n}"
   dependsOn:
+  - geometry/circumscribed_circle.hpp
   - geometry/point.hpp
   - geometry/geometry_template.hpp
   - geometry/line.hpp
   - geometry/circle.hpp
   - geometry/cross_point.hpp
   - geometry/is_intersect.hpp
-  isVerificationFile: false
-  path: geometry/circumscribed_circle.hpp
-  requiredBy:
-  - geometry/all.hpp
+  isVerificationFile: true
+  path: verify/geometry/circumscribed_circle.test.cpp
+  requiredBy: []
   timestamp: '2024-08-02 21:55:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/geometry/circumscribed_circle.test.cpp
-documentation_of: geometry/circumscribed_circle.hpp
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: verify/geometry/circumscribed_circle.test.cpp
 layout: document
-title: "Circumscribed Circle (\u5916\u63A5\u5186)"
+redirect_from:
+- /verify/verify/geometry/circumscribed_circle.test.cpp
+- /verify/verify/geometry/circumscribed_circle.test.cpp.html
+title: verify/geometry/circumscribed_circle.test.cpp
 ---
-
-## 使い方
-
-```cpp
-Point<T> a, b, c;
-auto cir = circumscribed_circle(a, b, c);
-```
-
-## 参考文献
-
-- [AOJ Course CGL_7_C: 外接円 (Circumscribed Circle of a Triangle)](https://drken1215.hatenablog.com/entry/2020/10/16/074400)

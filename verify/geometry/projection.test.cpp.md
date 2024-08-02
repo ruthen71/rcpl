@@ -5,30 +5,25 @@ data:
     path: geometry/geometry_template.hpp
     title: "\u5E7E\u4F55\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   - icon: ':heavy_check_mark:'
+    path: geometry/line.hpp
+    title: "Line / Segment (\u76F4\u7DDA\u30FB\u7DDA\u5206)"
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: "Point (\u70B9)"
-  - icon: ':heavy_check_mark:'
-    path: geometry/polygon.hpp
-    title: "Polygon (\u591A\u89D2\u5F62)"
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: geometry/all.hpp
-    title: geometry/all.hpp
-  - icon: ':warning:'
-    path: geometry/farthest_pair.hpp
-    title: "Farthest Pair (\u6700\u9060\u70B9\u5BFE)"
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/convex_polygon_diameter.test.cpp
-    title: verify/geometry/convex_polygon_diameter.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    ERROR: '0.00000001'
+    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A
     links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B
-    - https://en.wikipedia.org/wiki/Rotating_calipers
-  bundledCode: "#line 2 \"geometry/convex_polygon_diameter.hpp\"\n\n#line 2 \"geometry/polygon.hpp\"\
+    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A
+  bundledCode: "#line 1 \"verify/geometry/projection.test.cpp\"\n#define PROBLEM \"\
+    http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A\"\n#define ERROR\
+    \ 0.00000001\n\n#include <iostream>\n#include <iomanip>\n\n#line 2 \"geometry/line.hpp\"\
     \n\n#line 2 \"geometry/point.hpp\"\n\n#line 2 \"geometry/geometry_template.hpp\"\
     \n\n#include <type_traits>\n\n// Constants (EPS, PI)\n// EPS \u306E\u5909\u66F4\
     \u306F Constants<T>::set_eps(new_eps) \u3067\ntemplate <class T> struct Constants\
@@ -126,78 +121,62 @@ data:
     \ ac)) == 1) return Ccw::COUNTER_CLOCKWISE;\n    if (sign(cross(ab, ac)) == -1)\
     \ return Ccw::CLOCKWISE;\n    if (sign(dot(ab, ac)) == -1) return Ccw::ONLINE_BACK;\n\
     \    if (sign(norm(ab) - norm(ac)) == -1) return Ccw::ONLINE_FRONT;\n    return\
-    \ Ccw::ON_SEGMENT;\n}\n#line 4 \"geometry/polygon.hpp\"\n\n#include <vector>\n\
-    #line 7 \"geometry/polygon.hpp\"\n\n// polygon\ntemplate <class T> using Polygon\
-    \ = std::vector<Point<T>>;\ntemplate <class T> std::istream& operator>>(std::istream&\
-    \ is, Polygon<T>& p) {\n    for (auto&& pi : p) is >> pi;\n    return is;\n}\n\
-    template <class T> std::ostream& operator<<(std::ostream& os, const Polygon<T>&\
-    \ p) {\n    for (auto&& pi : p) os << pi << \" -> \";\n    return os;\n}\n\n//\
-    \ \u591A\u89D2\u5F62\u306E\u9762\u7A4D (\u7B26\u53F7\u4ED8\u304D)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\n\
-    // return area * 2\ntemplate <class T> T polygon_area2(const Polygon<T>& p) {\n\
-    \    const int n = (int)(p.size());\n    assert(n >= 2);\n    T ret = T(0);\n\
-    \    for (int i = 0; i < n; i++) ret += cross(p[i], p[i + 1 == n ? 0 : i + 1]);\n\
-    \    // counter clockwise: ret > 0\n    // clockwise: ret < 0\n    return ret;\n\
-    }\ntemplate <class T> T polygon_area(const Polygon<T>& p) {\n    static_assert(is_geometry_floating_point<T>::value\
-    \ == true);\n    return polygon_area2(p) / T(2);\n}\n\n// \u591A\u89D2\u5F62\u306E\
-    \u51F8\u5224\u5B9A (\u89D2\u5EA6\u304C 0 \u3067\u3082 PI \u3067\u3082\u8A31\u5BB9\
-    )\n// \u8A31\u5BB9\u3057\u305F\u304F\u306A\u3044\u3068\u304D\u306B\u306F ON_SEGMENT,\
-    \ ONLINE_FRONT, ONLINE_BACK \u304C\u51FA\u3066\u304D\u305F\u3089 false \u3092\u8FD4\
-    \u305B\u3070 OK\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B\n\
-    template <class T> bool polygon_is_convex(const Polygon<T>& p) {\n    const int\
-    \ n = (int)(p.size());\n    assert(n >= 3);\n    bool okccw = true, okcw = true;\n\
-    \    for (int i = 0; i < n; i++) {\n        auto res = ccw(p[i], p[i + 1 >= n\
-    \ ? i + 1 - n : i + 1], p[i + 2 >= n ? i + 2 - n : i + 2]);\n        if (res ==\
-    \ Ccw::CLOCKWISE) okccw = false;\n        if (res == Ccw::COUNTER_CLOCKWISE) okcw\
-    \ = false;\n        if (!okccw and !okcw) return false;\n    }\n    return true;\n\
-    }\n#line 4 \"geometry/convex_polygon_diameter.hpp\"\n\n#include <tuple>\n#include\
-    \ <algorithm>\n\n// \u51F8\u591A\u89D2\u5F62\u306E\u76F4\u5F84 (rotating calipers)\n\
-    // https://en.wikipedia.org/wiki/Rotating_calipers\n// O(n)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B\n\
-    // return {index1, index2, diameter}\ntemplate <class T> std::tuple<int, int,\
-    \ T> convex_polygon_diameter(const Polygon<T>& p) {\n    assert(polygon_is_convex(p));\n\
-    \    const int n = (int)(p.size());\n    assert(n >= 2);\n    if (n == 2) {\n\
-    \        return {0, 1, abs(p[0] - p[1])};\n    }\n    auto [it_min, it_max] =\
-    \ std::minmax_element(p.begin(), p.end(), compare_x<T>);\n    int idx_min = it_min\
-    \ - p.begin();\n    int idx_max = it_max - p.begin();\n\n    T maxdis = norm(p[idx_max]\
-    \ - p[idx_min]);\n    int maxi = idx_min, i = idx_min, maxj = idx_max, j = idx_max;\n\
-    \    do {\n        int ni = (i + 1 == n ? 0 : i + 1), nj = (j + 1 == n ? 0 : j\
-    \ + 1);\n        if (sign(cross(p[ni] - p[i], p[nj] - p[j])) < 0) {\n        \
-    \    i = ni;\n        } else {\n            j = nj;\n        }\n        if (norm(p[i]\
-    \ - p[j]) > maxdis) {\n            maxdis = norm(p[i] - p[j]);\n            maxi\
-    \ = i;\n            maxj = j;\n        }\n    } while (i != idx_min or j != idx_max);\n\
-    \    return {maxi, maxj, abs(p[maxi] - p[maxj])};\n}\n"
-  code: "#pragma once\n\n#include \"geometry/polygon.hpp\"\n\n#include <tuple>\n#include\
-    \ <algorithm>\n\n// \u51F8\u591A\u89D2\u5F62\u306E\u76F4\u5F84 (rotating calipers)\n\
-    // https://en.wikipedia.org/wiki/Rotating_calipers\n// O(n)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B\n\
-    // return {index1, index2, diameter}\ntemplate <class T> std::tuple<int, int,\
-    \ T> convex_polygon_diameter(const Polygon<T>& p) {\n    assert(polygon_is_convex(p));\n\
-    \    const int n = (int)(p.size());\n    assert(n >= 2);\n    if (n == 2) {\n\
-    \        return {0, 1, abs(p[0] - p[1])};\n    }\n    auto [it_min, it_max] =\
-    \ std::minmax_element(p.begin(), p.end(), compare_x<T>);\n    int idx_min = it_min\
-    \ - p.begin();\n    int idx_max = it_max - p.begin();\n\n    T maxdis = norm(p[idx_max]\
-    \ - p[idx_min]);\n    int maxi = idx_min, i = idx_min, maxj = idx_max, j = idx_max;\n\
-    \    do {\n        int ni = (i + 1 == n ? 0 : i + 1), nj = (j + 1 == n ? 0 : j\
-    \ + 1);\n        if (sign(cross(p[ni] - p[i], p[nj] - p[j])) < 0) {\n        \
-    \    i = ni;\n        } else {\n            j = nj;\n        }\n        if (norm(p[i]\
-    \ - p[j]) > maxdis) {\n            maxdis = norm(p[i] - p[j]);\n            maxi\
-    \ = i;\n            maxj = j;\n        }\n    } while (i != idx_min or j != idx_max);\n\
-    \    return {maxi, maxj, abs(p[maxi] - p[maxj])};\n}"
+    \ Ccw::ON_SEGMENT;\n}\n#line 4 \"geometry/line.hpp\"\n\n// line\ntemplate <class\
+    \ T> struct Line {\n    Point<T> a, b;\n\n    Line() = default;\n    Line(const\
+    \ Point<T>& a, const Point<T>& b) : a(a), b(b) {}\n\n    // Ax + By = C\n    Line(const\
+    \ T A, const T B, const T C) {\n        static_assert(is_geometry_floating_point<T>::value\
+    \ == true);\n        assert(!(equal(A, T(0)) and equal(B, T(0))));\n        if\
+    \ (equal(A, T(0))) {\n            a = Point<T>(T(0), C / B), b = Point<T>(T(1),\
+    \ C / B);\n        } else if (equal(B, T(0))) {\n            a = Point<T>(C /\
+    \ A, T(0)), b = Point<T>(C / A, T(1));\n        } else if (equal(C, T(0))) {\n\
+    \            a = Point<T>(T(0), T(0)), b = Point<T>(T(1), -A / B);\n        }\
+    \ else {\n            a = Point<T>(T(0), C / B), b = Point<T>(C / A, T(0));\n\
+    \        }\n    }\n\n    friend std::istream& operator>>(std::istream& is, Line&\
+    \ p) { return is >> p.a >> p.b; }\n    friend std::ostream& operator<<(std::ostream&\
+    \ os, const Line& p) { return os << p.a << \"->\" << p.b; }\n};\n\n// segment\n\
+    template <class T> struct Segment : Line<T> {\n    Segment() = default;\n\n  \
+    \  Segment(const Point<T>& a, const Point<T>& b) : Line<T>(a, b) {}\n};\n\n//\
+    \ \u70B9 p \u304B\u3089\u76F4\u7DDA l \u306B\u4E0B\u308D\u3057\u305F\u5782\u7DDA\
+    \u3068\u76F4\u7DDA l \u306E\u4EA4\u70B9\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A\n\
+    template <class T> Point<T> projection(const Line<T>& l, const Point<T>& p) {\n\
+    \    static_assert(is_geometry_floating_point<T>::value == true);\n    T t = dot(p\
+    \ - l.a, l.b - l.a) / norm(l.b - l.a);\n    return l.a + (l.b - l.a) * t;\n}\n\
+    \n// \u76F4\u7DDA l \u306B\u95A2\u3057\u3066\u70B9 p \u3068\u5BFE\u8C61\u306A\u4F4D\
+    \u7F6E\u306B\u3042\u308B\u70B9\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_B\n\
+    template <class T> Point<T> reflection(const Line<T>& l, const Point<T>& p) {\n\
+    \    static_assert(is_geometry_floating_point<T>::value == true);\n    return\
+    \ p + (projection(l, p) - p) * T(2);\n}\n\n// \u76F4\u7DDA l1, l2 \u306E\u5782\
+    \u76F4\u5224\u5B9A\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A\n\
+    template <class T> inline bool is_orthogonal(const Line<T>& l1, const Line<T>&\
+    \ l2) { return sign(dot(l1.b - l1.a, l2.b - l2.a)) == 0; }\n\n// \u76F4\u7DDA\
+    \ l1, l2 \u306E\u5E73\u884C\u5224\u5B9A\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A\n\
+    template <class T> inline bool is_parallel(const Line<T>& l1, const Line<T>& l2)\
+    \ { return sign(cross(l1.b - l1.a, l2.b - l2.a)) == 0; }\n#line 8 \"verify/geometry/projection.test.cpp\"\
+    \n\nint main() {\n    Line<double> L;\n    int Q;\n    std::cin >> L >> Q;\n \
+    \   while (Q--) {\n        Point<double> P;\n        std::cin >> P;\n        auto\
+    \ ans = projection(L, P);\n        std::cout << std::fixed << std::setprecision(15)\
+    \ << ans.x << ' ' << ans.y << '\\n';\n    }\n    return 0;\n}\n"
+  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A\"\
+    \n#define ERROR 0.00000001\n\n#include <iostream>\n#include <iomanip>\n\n#include\
+    \ \"geometry/line.hpp\"\n\nint main() {\n    Line<double> L;\n    int Q;\n   \
+    \ std::cin >> L >> Q;\n    while (Q--) {\n        Point<double> P;\n        std::cin\
+    \ >> P;\n        auto ans = projection(L, P);\n        std::cout << std::fixed\
+    \ << std::setprecision(15) << ans.x << ' ' << ans.y << '\\n';\n    }\n    return\
+    \ 0;\n}"
   dependsOn:
-  - geometry/polygon.hpp
+  - geometry/line.hpp
   - geometry/point.hpp
   - geometry/geometry_template.hpp
-  isVerificationFile: false
-  path: geometry/convex_polygon_diameter.hpp
-  requiredBy:
-  - geometry/farthest_pair.hpp
-  - geometry/all.hpp
+  isVerificationFile: true
+  path: verify/geometry/projection.test.cpp
+  requiredBy: []
   timestamp: '2024-08-02 21:55:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/geometry/convex_polygon_diameter.test.cpp
-documentation_of: geometry/convex_polygon_diameter.hpp
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: verify/geometry/projection.test.cpp
 layout: document
 redirect_from:
-- /library/geometry/convex_polygon_diameter.hpp
-- /library/geometry/convex_polygon_diameter.hpp.html
-title: geometry/convex_polygon_diameter.hpp
+- /verify/verify/geometry/projection.test.cpp
+- /verify/verify/geometry/projection.test.cpp.html
+title: verify/geometry/projection.test.cpp
 ---

@@ -2,82 +2,32 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: geometry/convex_hull_monotone_chain.hpp
+    title: "Convex Hull (\u51F8\u5305)"
+  - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: "\u5E7E\u4F55\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: "Point (\u70B9)"
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: geometry/all.hpp
-    title: geometry/all.hpp
   - icon: ':heavy_check_mark:'
-    path: geometry/circumscribed_circle.hpp
-    title: "Circumscribed Circle (\u5916\u63A5\u5186)"
-  - icon: ':heavy_check_mark:'
-    path: geometry/convex_polygon_cut.hpp
-    title: geometry/convex_polygon_cut.hpp
-  - icon: ':heavy_check_mark:'
-    path: geometry/cross_point.hpp
-    title: "Cross Point (\u4EA4\u70B9)"
-  - icon: ':heavy_check_mark:'
-    path: geometry/distance.hpp
-    title: "Distance (\u8DDD\u96E2)"
-  - icon: ':heavy_check_mark:'
-    path: geometry/incircle.hpp
-    title: "Incircle (\u5185\u63A5\u5186)"
-  - icon: ':heavy_check_mark:'
-    path: geometry/is_intersect.hpp
-    title: "Intersection (\u4EA4\u5DEE\u5224\u5B9A)"
-  - icon: ':heavy_check_mark:'
-    path: geometry/polygon_contain.hpp
-    title: "Polygon Contain (\u591A\u89D2\u5F62\u3068\u70B9\u306E\u4EA4\u5DEE\u5224\
-      \u5B9A)"
-  - icon: ':heavy_check_mark:'
-    path: geometry/tangent_point.hpp
-    title: "Tangent Point (\u5186\u306E\u63A5\u70B9)"
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/circumscribed_circle.test.cpp
-    title: verify/geometry/circumscribed_circle.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/convex_polygon_cut.test.cpp
-    title: verify/geometry/convex_polygon_cut.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/cross_point_cc.test.cpp
-    title: verify/geometry/cross_point_cc.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/cross_point_cl.test.cpp
-    title: verify/geometry/cross_point_cl.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/cross_point_ss.test.cpp
-    title: verify/geometry/cross_point_ss.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/distance_ss.test.cpp
-    title: verify/geometry/distance_ss.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/incircle.test.cpp
-    title: verify/geometry/incircle.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/is_intersect_ss.test.cpp
-    title: verify/geometry/is_intersect_ss.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/polygon_contain.test.cpp
-    title: verify/geometry/polygon_contain.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/tangent_number.test.cpp
-    title: verify/geometry/tangent_number.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/tangent_point.test.cpp
-    title: verify/geometry/tangent_point.test.cpp
+    path: geometry/polygon.hpp
+    title: "Polygon (\u591A\u89D2\u5F62)"
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A
     links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A
-  bundledCode: "#line 2 \"geometry/circle.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\
-    \n#line 2 \"geometry/geometry_template.hpp\"\n\n#include <type_traits>\n\n// Constants\
+    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A
+  bundledCode: "#line 1 \"verify/geometry/convex_hull_monotone_chain.test.cpp\"\n\
+    #define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A\"\
+    \n\n#include <iostream>\n\n#line 2 \"geometry/convex_hull_monotone_chain.hpp\"\
+    \n\n#line 2 \"geometry/polygon.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n#line\
+    \ 2 \"geometry/geometry_template.hpp\"\n\n#include <type_traits>\n\n// Constants\
     \ (EPS, PI)\n// EPS \u306E\u5909\u66F4\u306F Constants<T>::set_eps(new_eps) \u3067\
     \ntemplate <class T> struct Constants {\n    static T EPS;\n    static void set_eps(const\
     \ T e) { EPS = e; }\n    static constexpr T PI = 3.14159'26535'89793L;\n};\n\n\
@@ -174,76 +124,79 @@ data:
     \ ac)) == 1) return Ccw::COUNTER_CLOCKWISE;\n    if (sign(cross(ab, ac)) == -1)\
     \ return Ccw::CLOCKWISE;\n    if (sign(dot(ab, ac)) == -1) return Ccw::ONLINE_BACK;\n\
     \    if (sign(norm(ab) - norm(ac)) == -1) return Ccw::ONLINE_FRONT;\n    return\
-    \ Ccw::ON_SEGMENT;\n}\n#line 4 \"geometry/circle.hpp\"\n\n// circle\ntemplate\
-    \ <class T> struct Circle {\n    Point<T> o;\n    T r;\n\n    Circle() = default;\n\
-    \    Circle(const Point<T>& o, const T r) : o(o), r(r) {}\n\n    friend std::istream&\
-    \ operator>>(std::istream& is, Circle& c) { return is >> c.o >> c.r; }\n    friend\
-    \ std::ostream& operator<<(std::ostream& os, const Circle& c) { return os << c.o\
-    \ << \", \" << c.r; }\n};\n\n// \u5171\u901A\u63A5\u7DDA\u306E\u672C\u6570\n//\
-    \ http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A\ntemplate <class\
-    \ T> int tangent_number(Circle<T> c1, Circle<T> c2) {\n    if (c1.r < c2.r) std::swap(c1,\
-    \ c2);\n    const T d2 = norm(c1.o - c2.o);\n    if (sign(d2 - (c1.r + c2.r) *\
-    \ (c1.r + c2.r)) == 1) return 4;  // d > c1.r + c2.r and c1.r + c2.r >= 0 <=>\
-    \ d ^ 2 > (c1.r + c2.r) ^ 2\n    if (sign(d2 - (c1.r + c2.r) * (c1.r + c2.r))\
-    \ == 0) return 3;  // d = c1.r + c2.r and c1.r + c2.r >= 0 <=> d ^ 2 = (c1.r +\
-    \ c2.r) ^ 2\n    if (sign(d2 - (c1.r - c2.r) * (c1.r - c2.r)) == 1) return 2;\
-    \  // d > c1.r - c2.r and c1.r - c2.r >= 0 <=> d ^ 2 > (c1.r - c2.r) ^ 2\n   \
-    \ if (sign(d2 - (c1.r - c2.r) * (c1.r - c2.r)) == 0) return 1;  // d = c1.r -\
-    \ c2.r and c1.r - c2.r >= 0 <=> d ^ 2 = (c1.r - c2.r) ^ 2\n    return 0;\n}\n"
-  code: "#pragma once\n\n#include \"geometry/point.hpp\"\n\n// circle\ntemplate <class\
-    \ T> struct Circle {\n    Point<T> o;\n    T r;\n\n    Circle() = default;\n \
-    \   Circle(const Point<T>& o, const T r) : o(o), r(r) {}\n\n    friend std::istream&\
-    \ operator>>(std::istream& is, Circle& c) { return is >> c.o >> c.r; }\n    friend\
-    \ std::ostream& operator<<(std::ostream& os, const Circle& c) { return os << c.o\
-    \ << \", \" << c.r; }\n};\n\n// \u5171\u901A\u63A5\u7DDA\u306E\u672C\u6570\n//\
-    \ http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A\ntemplate <class\
-    \ T> int tangent_number(Circle<T> c1, Circle<T> c2) {\n    if (c1.r < c2.r) std::swap(c1,\
-    \ c2);\n    const T d2 = norm(c1.o - c2.o);\n    if (sign(d2 - (c1.r + c2.r) *\
-    \ (c1.r + c2.r)) == 1) return 4;  // d > c1.r + c2.r and c1.r + c2.r >= 0 <=>\
-    \ d ^ 2 > (c1.r + c2.r) ^ 2\n    if (sign(d2 - (c1.r + c2.r) * (c1.r + c2.r))\
-    \ == 0) return 3;  // d = c1.r + c2.r and c1.r + c2.r >= 0 <=> d ^ 2 = (c1.r +\
-    \ c2.r) ^ 2\n    if (sign(d2 - (c1.r - c2.r) * (c1.r - c2.r)) == 1) return 2;\
-    \  // d > c1.r - c2.r and c1.r - c2.r >= 0 <=> d ^ 2 > (c1.r - c2.r) ^ 2\n   \
-    \ if (sign(d2 - (c1.r - c2.r) * (c1.r - c2.r)) == 0) return 1;  // d = c1.r -\
-    \ c2.r and c1.r - c2.r >= 0 <=> d ^ 2 = (c1.r - c2.r) ^ 2\n    return 0;\n}"
+    \ Ccw::ON_SEGMENT;\n}\n#line 4 \"geometry/polygon.hpp\"\n\n#include <vector>\n\
+    #line 7 \"geometry/polygon.hpp\"\n\n// polygon\ntemplate <class T> using Polygon\
+    \ = std::vector<Point<T>>;\ntemplate <class T> std::istream& operator>>(std::istream&\
+    \ is, Polygon<T>& p) {\n    for (auto&& pi : p) is >> pi;\n    return is;\n}\n\
+    template <class T> std::ostream& operator<<(std::ostream& os, const Polygon<T>&\
+    \ p) {\n    for (auto&& pi : p) os << pi << \" -> \";\n    return os;\n}\n\n//\
+    \ \u591A\u89D2\u5F62\u306E\u9762\u7A4D (\u7B26\u53F7\u4ED8\u304D)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\n\
+    // return area * 2\ntemplate <class T> T polygon_area2(const Polygon<T>& p) {\n\
+    \    const int n = (int)(p.size());\n    assert(n >= 2);\n    T ret = T(0);\n\
+    \    for (int i = 0; i < n; i++) ret += cross(p[i], p[i + 1 == n ? 0 : i + 1]);\n\
+    \    // counter clockwise: ret > 0\n    // clockwise: ret < 0\n    return ret;\n\
+    }\ntemplate <class T> T polygon_area(const Polygon<T>& p) {\n    static_assert(is_geometry_floating_point<T>::value\
+    \ == true);\n    return polygon_area2(p) / T(2);\n}\n\n// \u591A\u89D2\u5F62\u306E\
+    \u51F8\u5224\u5B9A (\u89D2\u5EA6\u304C 0 \u3067\u3082 PI \u3067\u3082\u8A31\u5BB9\
+    )\n// \u8A31\u5BB9\u3057\u305F\u304F\u306A\u3044\u3068\u304D\u306B\u306F ON_SEGMENT,\
+    \ ONLINE_FRONT, ONLINE_BACK \u304C\u51FA\u3066\u304D\u305F\u3089 false \u3092\u8FD4\
+    \u305B\u3070 OK\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B\n\
+    template <class T> bool polygon_is_convex(const Polygon<T>& p) {\n    const int\
+    \ n = (int)(p.size());\n    assert(n >= 3);\n    bool okccw = true, okcw = true;\n\
+    \    for (int i = 0; i < n; i++) {\n        auto res = ccw(p[i], p[i + 1 >= n\
+    \ ? i + 1 - n : i + 1], p[i + 2 >= n ? i + 2 - n : i + 2]);\n        if (res ==\
+    \ Ccw::CLOCKWISE) okccw = false;\n        if (res == Ccw::COUNTER_CLOCKWISE) okcw\
+    \ = false;\n        if (!okccw and !okcw) return false;\n    }\n    return true;\n\
+    }\n#line 4 \"geometry/convex_hull_monotone_chain.hpp\"\n\n#include <algorithm>\n\
+    \n// \u51F8\u5305 (Andrew's Monotone Chain algorithm)\n// O(n log n)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A\n\
+    // (x, y) \u3092\u8F9E\u66F8\u5F0F\u9806\u5E8F\u3067\u30BD\u30FC\u30C8\u3057,\
+    \ \u30B9\u30BF\u30C3\u30AF\u3092\u4F7F\u3063\u3066\u4E0A\u5074\u51F8\u5305\u3068\
+    \u4E0B\u5074\u51F8\u5305\u3092\u6C42\u3081\u308B\n// \u53CD\u6642\u8A08\u56DE\u308A\
+    \n// strict \u3092 true \u306B\u3059\u308B\u3068\u51F8\u5305\u306E\u8FBA\u4E0A\
+    \u306B\u4E26\u3076\u9802\u70B9\u306F\u542B\u3081\u306A\u3044 (\u9802\u70B9\u6570\
+    \u304C\u6700\u5C0F\u306B\u306A\u308B)\ntemplate <class T> Polygon<T> convex_hull_monotone_chain(std::vector<Point<T>>&\
+    \ p, bool strict = true) {\n    const int n = (int)(p.size());\n    if (n <= 2)\
+    \ return p;\n    std::sort(p.begin(), p.end(), compare_x<T>);\n    Polygon<T>\
+    \ r;\n    r.reserve(n * 2);\n    auto f = [&strict](Ccw ccwres) -> bool { return\
+    \ strict ? ccwres != Ccw::CLOCKWISE : ccwres == Ccw::COUNTER_CLOCKWISE; };\n \
+    \   for (int i = 0; i < n; i++) {\n        while (r.size() >= 2 and f(ccw(r[r.size()\
+    \ - 2], r[r.size() - 1], p[i]))) {\n            r.pop_back();\n        }\n   \
+    \     r.push_back(p[i]);\n    }\n    int t = r.size() + 1;\n    for (int i = n\
+    \ - 2; i >= 0; i--) {\n        while (r.size() >= t and f(ccw(r[r.size() - 2],\
+    \ r[r.size() - 1], p[i]))) {\n            r.pop_back();\n        }\n        r.push_back(p[i]);\n\
+    \    }\n    r.pop_back();\n    std::reverse(r.begin(), r.end());\n    return r;\n\
+    }\n#line 6 \"verify/geometry/convex_hull_monotone_chain.test.cpp\"\n\nint main()\
+    \ {\n    int N;\n    std::cin >> N;\n    Polygon<long long> P(N);\n    std::cin\
+    \ >> P;\n    auto res = convex_hull_monotone_chain(P, false);\n    int minidx\
+    \ = 0;\n    for (int i = 0; i < res.size(); i++) {\n        if (compare_y(res[i],\
+    \ res[minidx])) {\n            minidx = i;\n        }\n    }\n    std::rotate(res.begin(),\
+    \ res.begin() + minidx, res.end());\n    std::cout << res.size() << '\\n';\n \
+    \   for (int i = 0; i < res.size(); i++) std::cout << res[i].x << ' ' << res[i].y\
+    \ << '\\n';\n    return 0;\n}\n"
+  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A\"\
+    \n\n#include <iostream>\n\n#include \"geometry/convex_hull_monotone_chain.hpp\"\
+    \n\nint main() {\n    int N;\n    std::cin >> N;\n    Polygon<long long> P(N);\n\
+    \    std::cin >> P;\n    auto res = convex_hull_monotone_chain(P, false);\n  \
+    \  int minidx = 0;\n    for (int i = 0; i < res.size(); i++) {\n        if (compare_y(res[i],\
+    \ res[minidx])) {\n            minidx = i;\n        }\n    }\n    std::rotate(res.begin(),\
+    \ res.begin() + minidx, res.end());\n    std::cout << res.size() << '\\n';\n \
+    \   for (int i = 0; i < res.size(); i++) std::cout << res[i].x << ' ' << res[i].y\
+    \ << '\\n';\n    return 0;\n}"
   dependsOn:
+  - geometry/convex_hull_monotone_chain.hpp
+  - geometry/polygon.hpp
   - geometry/point.hpp
   - geometry/geometry_template.hpp
-  isVerificationFile: false
-  path: geometry/circle.hpp
-  requiredBy:
-  - geometry/distance.hpp
-  - geometry/circumscribed_circle.hpp
-  - geometry/is_intersect.hpp
-  - geometry/incircle.hpp
-  - geometry/cross_point.hpp
-  - geometry/all.hpp
-  - geometry/convex_polygon_cut.hpp
-  - geometry/polygon_contain.hpp
-  - geometry/tangent_point.hpp
+  isVerificationFile: true
+  path: verify/geometry/convex_hull_monotone_chain.test.cpp
+  requiredBy: []
   timestamp: '2024-08-02 21:55:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/geometry/tangent_point.test.cpp
-  - verify/geometry/cross_point_ss.test.cpp
-  - verify/geometry/polygon_contain.test.cpp
-  - verify/geometry/cross_point_cl.test.cpp
-  - verify/geometry/cross_point_cc.test.cpp
-  - verify/geometry/incircle.test.cpp
-  - verify/geometry/tangent_number.test.cpp
-  - verify/geometry/is_intersect_ss.test.cpp
-  - verify/geometry/distance_ss.test.cpp
-  - verify/geometry/convex_polygon_cut.test.cpp
-  - verify/geometry/circumscribed_circle.test.cpp
-documentation_of: geometry/circle.hpp
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: verify/geometry/convex_hull_monotone_chain.test.cpp
 layout: document
-title: "Circle (\u5186)"
+redirect_from:
+- /verify/verify/geometry/convex_hull_monotone_chain.test.cpp
+- /verify/verify/geometry/convex_hull_monotone_chain.test.cpp.html
+title: verify/geometry/convex_hull_monotone_chain.test.cpp
 ---
-
-## 使い方
-
-```cpp
-using Cc = Circle<T>;
-```
-
-## 参考文献

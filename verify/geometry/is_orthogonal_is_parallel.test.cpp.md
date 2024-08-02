@@ -5,86 +5,32 @@ data:
     path: geometry/geometry_template.hpp
     title: "\u5E7E\u4F55\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   - icon: ':heavy_check_mark:'
+    path: geometry/line.hpp
+    title: "Line / Segment (\u76F4\u7DDA\u30FB\u7DDA\u5206)"
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: "Point (\u70B9)"
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: geometry/all.hpp
-    title: geometry/all.hpp
-  - icon: ':heavy_check_mark:'
-    path: geometry/circumscribed_circle.hpp
-    title: "Circumscribed Circle (\u5916\u63A5\u5186)"
-  - icon: ':heavy_check_mark:'
-    path: geometry/convex_polygon_cut.hpp
-    title: geometry/convex_polygon_cut.hpp
-  - icon: ':heavy_check_mark:'
-    path: geometry/cross_point.hpp
-    title: "Cross Point (\u4EA4\u70B9)"
-  - icon: ':heavy_check_mark:'
-    path: geometry/distance.hpp
-    title: "Distance (\u8DDD\u96E2)"
-  - icon: ':heavy_check_mark:'
-    path: geometry/incircle.hpp
-    title: "Incircle (\u5185\u63A5\u5186)"
-  - icon: ':heavy_check_mark:'
-    path: geometry/is_intersect.hpp
-    title: "Intersection (\u4EA4\u5DEE\u5224\u5B9A)"
-  - icon: ':heavy_check_mark:'
-    path: geometry/polygon_contain.hpp
-    title: "Polygon Contain (\u591A\u89D2\u5F62\u3068\u70B9\u306E\u4EA4\u5DEE\u5224\
-      \u5B9A)"
-  - icon: ':heavy_check_mark:'
-    path: geometry/tangent_point.hpp
-    title: "Tangent Point (\u5186\u306E\u63A5\u70B9)"
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/circumscribed_circle.test.cpp
-    title: verify/geometry/circumscribed_circle.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/convex_polygon_cut.test.cpp
-    title: verify/geometry/convex_polygon_cut.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/cross_point_cc.test.cpp
-    title: verify/geometry/cross_point_cc.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/cross_point_cl.test.cpp
-    title: verify/geometry/cross_point_cl.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/cross_point_ss.test.cpp
-    title: verify/geometry/cross_point_ss.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/distance_ss.test.cpp
-    title: verify/geometry/distance_ss.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/incircle.test.cpp
-    title: verify/geometry/incircle.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/is_intersect_ss.test.cpp
-    title: verify/geometry/is_intersect_ss.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/polygon_contain.test.cpp
-    title: verify/geometry/polygon_contain.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/tangent_number.test.cpp
-    title: verify/geometry/tangent_number.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/tangent_point.test.cpp
-    title: verify/geometry/tangent_point.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A
     links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A
-  bundledCode: "#line 2 \"geometry/circle.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\
-    \n#line 2 \"geometry/geometry_template.hpp\"\n\n#include <type_traits>\n\n// Constants\
-    \ (EPS, PI)\n// EPS \u306E\u5909\u66F4\u306F Constants<T>::set_eps(new_eps) \u3067\
-    \ntemplate <class T> struct Constants {\n    static T EPS;\n    static void set_eps(const\
-    \ T e) { EPS = e; }\n    static constexpr T PI = 3.14159'26535'89793L;\n};\n\n\
-    template <> double Constants<double>::EPS = 1e-9;\ntemplate <> long double Constants<long\
-    \ double>::EPS = 1e-12;\ntemplate <> long long Constants<long long>::EPS = 0;\n\
-    \n// base functions\ntemplate <class T> inline int sign(const T x) { return x\
-    \ < -Constants<T>::EPS ? -1 : (x > Constants<T>::EPS ? 1 : 0); }\ntemplate <class\
+    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A
+  bundledCode: "#line 1 \"verify/geometry/is_orthogonal_is_parallel.test.cpp\"\n#define\
+    \ PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A\"\
+    \n\n#include <iostream>\n\n#line 2 \"geometry/line.hpp\"\n\n#line 2 \"geometry/point.hpp\"\
+    \n\n#line 2 \"geometry/geometry_template.hpp\"\n\n#include <type_traits>\n\n//\
+    \ Constants (EPS, PI)\n// EPS \u306E\u5909\u66F4\u306F Constants<T>::set_eps(new_eps)\
+    \ \u3067\ntemplate <class T> struct Constants {\n    static T EPS;\n    static\
+    \ void set_eps(const T e) { EPS = e; }\n    static constexpr T PI = 3.14159'26535'89793L;\n\
+    };\n\ntemplate <> double Constants<double>::EPS = 1e-9;\ntemplate <> long double\
+    \ Constants<long double>::EPS = 1e-12;\ntemplate <> long long Constants<long long>::EPS\
+    \ = 0;\n\n// base functions\ntemplate <class T> inline int sign(const T x) { return\
+    \ x < -Constants<T>::EPS ? -1 : (x > Constants<T>::EPS ? 1 : 0); }\ntemplate <class\
     \ T> inline bool equal(const T a, const T b) { return sign(a - b) == 0; }\ntemplate\
     \ <class T> inline T radian_to_degree(const T r) { return r * 180.0 / Constants<T>::PI;\
     \ }\ntemplate <class T> inline T degree_to_radian(const T d) { return d * Constants<T>::PI\
@@ -174,76 +120,63 @@ data:
     \ ac)) == 1) return Ccw::COUNTER_CLOCKWISE;\n    if (sign(cross(ab, ac)) == -1)\
     \ return Ccw::CLOCKWISE;\n    if (sign(dot(ab, ac)) == -1) return Ccw::ONLINE_BACK;\n\
     \    if (sign(norm(ab) - norm(ac)) == -1) return Ccw::ONLINE_FRONT;\n    return\
-    \ Ccw::ON_SEGMENT;\n}\n#line 4 \"geometry/circle.hpp\"\n\n// circle\ntemplate\
-    \ <class T> struct Circle {\n    Point<T> o;\n    T r;\n\n    Circle() = default;\n\
-    \    Circle(const Point<T>& o, const T r) : o(o), r(r) {}\n\n    friend std::istream&\
-    \ operator>>(std::istream& is, Circle& c) { return is >> c.o >> c.r; }\n    friend\
-    \ std::ostream& operator<<(std::ostream& os, const Circle& c) { return os << c.o\
-    \ << \", \" << c.r; }\n};\n\n// \u5171\u901A\u63A5\u7DDA\u306E\u672C\u6570\n//\
-    \ http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A\ntemplate <class\
-    \ T> int tangent_number(Circle<T> c1, Circle<T> c2) {\n    if (c1.r < c2.r) std::swap(c1,\
-    \ c2);\n    const T d2 = norm(c1.o - c2.o);\n    if (sign(d2 - (c1.r + c2.r) *\
-    \ (c1.r + c2.r)) == 1) return 4;  // d > c1.r + c2.r and c1.r + c2.r >= 0 <=>\
-    \ d ^ 2 > (c1.r + c2.r) ^ 2\n    if (sign(d2 - (c1.r + c2.r) * (c1.r + c2.r))\
-    \ == 0) return 3;  // d = c1.r + c2.r and c1.r + c2.r >= 0 <=> d ^ 2 = (c1.r +\
-    \ c2.r) ^ 2\n    if (sign(d2 - (c1.r - c2.r) * (c1.r - c2.r)) == 1) return 2;\
-    \  // d > c1.r - c2.r and c1.r - c2.r >= 0 <=> d ^ 2 > (c1.r - c2.r) ^ 2\n   \
-    \ if (sign(d2 - (c1.r - c2.r) * (c1.r - c2.r)) == 0) return 1;  // d = c1.r -\
-    \ c2.r and c1.r - c2.r >= 0 <=> d ^ 2 = (c1.r - c2.r) ^ 2\n    return 0;\n}\n"
-  code: "#pragma once\n\n#include \"geometry/point.hpp\"\n\n// circle\ntemplate <class\
-    \ T> struct Circle {\n    Point<T> o;\n    T r;\n\n    Circle() = default;\n \
-    \   Circle(const Point<T>& o, const T r) : o(o), r(r) {}\n\n    friend std::istream&\
-    \ operator>>(std::istream& is, Circle& c) { return is >> c.o >> c.r; }\n    friend\
-    \ std::ostream& operator<<(std::ostream& os, const Circle& c) { return os << c.o\
-    \ << \", \" << c.r; }\n};\n\n// \u5171\u901A\u63A5\u7DDA\u306E\u672C\u6570\n//\
-    \ http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A\ntemplate <class\
-    \ T> int tangent_number(Circle<T> c1, Circle<T> c2) {\n    if (c1.r < c2.r) std::swap(c1,\
-    \ c2);\n    const T d2 = norm(c1.o - c2.o);\n    if (sign(d2 - (c1.r + c2.r) *\
-    \ (c1.r + c2.r)) == 1) return 4;  // d > c1.r + c2.r and c1.r + c2.r >= 0 <=>\
-    \ d ^ 2 > (c1.r + c2.r) ^ 2\n    if (sign(d2 - (c1.r + c2.r) * (c1.r + c2.r))\
-    \ == 0) return 3;  // d = c1.r + c2.r and c1.r + c2.r >= 0 <=> d ^ 2 = (c1.r +\
-    \ c2.r) ^ 2\n    if (sign(d2 - (c1.r - c2.r) * (c1.r - c2.r)) == 1) return 2;\
-    \  // d > c1.r - c2.r and c1.r - c2.r >= 0 <=> d ^ 2 > (c1.r - c2.r) ^ 2\n   \
-    \ if (sign(d2 - (c1.r - c2.r) * (c1.r - c2.r)) == 0) return 1;  // d = c1.r -\
-    \ c2.r and c1.r - c2.r >= 0 <=> d ^ 2 = (c1.r - c2.r) ^ 2\n    return 0;\n}"
+    \ Ccw::ON_SEGMENT;\n}\n#line 4 \"geometry/line.hpp\"\n\n// line\ntemplate <class\
+    \ T> struct Line {\n    Point<T> a, b;\n\n    Line() = default;\n    Line(const\
+    \ Point<T>& a, const Point<T>& b) : a(a), b(b) {}\n\n    // Ax + By = C\n    Line(const\
+    \ T A, const T B, const T C) {\n        static_assert(is_geometry_floating_point<T>::value\
+    \ == true);\n        assert(!(equal(A, T(0)) and equal(B, T(0))));\n        if\
+    \ (equal(A, T(0))) {\n            a = Point<T>(T(0), C / B), b = Point<T>(T(1),\
+    \ C / B);\n        } else if (equal(B, T(0))) {\n            a = Point<T>(C /\
+    \ A, T(0)), b = Point<T>(C / A, T(1));\n        } else if (equal(C, T(0))) {\n\
+    \            a = Point<T>(T(0), T(0)), b = Point<T>(T(1), -A / B);\n        }\
+    \ else {\n            a = Point<T>(T(0), C / B), b = Point<T>(C / A, T(0));\n\
+    \        }\n    }\n\n    friend std::istream& operator>>(std::istream& is, Line&\
+    \ p) { return is >> p.a >> p.b; }\n    friend std::ostream& operator<<(std::ostream&\
+    \ os, const Line& p) { return os << p.a << \"->\" << p.b; }\n};\n\n// segment\n\
+    template <class T> struct Segment : Line<T> {\n    Segment() = default;\n\n  \
+    \  Segment(const Point<T>& a, const Point<T>& b) : Line<T>(a, b) {}\n};\n\n//\
+    \ \u70B9 p \u304B\u3089\u76F4\u7DDA l \u306B\u4E0B\u308D\u3057\u305F\u5782\u7DDA\
+    \u3068\u76F4\u7DDA l \u306E\u4EA4\u70B9\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A\n\
+    template <class T> Point<T> projection(const Line<T>& l, const Point<T>& p) {\n\
+    \    static_assert(is_geometry_floating_point<T>::value == true);\n    T t = dot(p\
+    \ - l.a, l.b - l.a) / norm(l.b - l.a);\n    return l.a + (l.b - l.a) * t;\n}\n\
+    \n// \u76F4\u7DDA l \u306B\u95A2\u3057\u3066\u70B9 p \u3068\u5BFE\u8C61\u306A\u4F4D\
+    \u7F6E\u306B\u3042\u308B\u70B9\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_B\n\
+    template <class T> Point<T> reflection(const Line<T>& l, const Point<T>& p) {\n\
+    \    static_assert(is_geometry_floating_point<T>::value == true);\n    return\
+    \ p + (projection(l, p) - p) * T(2);\n}\n\n// \u76F4\u7DDA l1, l2 \u306E\u5782\
+    \u76F4\u5224\u5B9A\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A\n\
+    template <class T> inline bool is_orthogonal(const Line<T>& l1, const Line<T>&\
+    \ l2) { return sign(dot(l1.b - l1.a, l2.b - l2.a)) == 0; }\n\n// \u76F4\u7DDA\
+    \ l1, l2 \u306E\u5E73\u884C\u5224\u5B9A\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A\n\
+    template <class T> inline bool is_parallel(const Line<T>& l1, const Line<T>& l2)\
+    \ { return sign(cross(l1.b - l1.a, l2.b - l2.a)) == 0; }\n#line 6 \"verify/geometry/is_orthogonal_is_parallel.test.cpp\"\
+    \n\nint main() {\n    int Q;\n    std::cin >> Q;\n    while (Q--) {\n        Line<long\
+    \ long> L1, L2;\n        std::cin >> L1 >> L2;\n        if (is_parallel(L1, L2))\
+    \ {\n            std::cout << 2 << '\\n';\n        } else if (is_orthogonal(L1,\
+    \ L2)) {\n            std::cout << 1 << '\\n';\n        } else {\n           \
+    \ std::cout << 0 << '\\n';\n        }\n    }\n    return 0;\n}\n"
+  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A\"\
+    \n\n#include <iostream>\n\n#include \"geometry/line.hpp\"\n\nint main() {\n  \
+    \  int Q;\n    std::cin >> Q;\n    while (Q--) {\n        Line<long long> L1,\
+    \ L2;\n        std::cin >> L1 >> L2;\n        if (is_parallel(L1, L2)) {\n   \
+    \         std::cout << 2 << '\\n';\n        } else if (is_orthogonal(L1, L2))\
+    \ {\n            std::cout << 1 << '\\n';\n        } else {\n            std::cout\
+    \ << 0 << '\\n';\n        }\n    }\n    return 0;\n}"
   dependsOn:
+  - geometry/line.hpp
   - geometry/point.hpp
   - geometry/geometry_template.hpp
-  isVerificationFile: false
-  path: geometry/circle.hpp
-  requiredBy:
-  - geometry/distance.hpp
-  - geometry/circumscribed_circle.hpp
-  - geometry/is_intersect.hpp
-  - geometry/incircle.hpp
-  - geometry/cross_point.hpp
-  - geometry/all.hpp
-  - geometry/convex_polygon_cut.hpp
-  - geometry/polygon_contain.hpp
-  - geometry/tangent_point.hpp
+  isVerificationFile: true
+  path: verify/geometry/is_orthogonal_is_parallel.test.cpp
+  requiredBy: []
   timestamp: '2024-08-02 21:55:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/geometry/tangent_point.test.cpp
-  - verify/geometry/cross_point_ss.test.cpp
-  - verify/geometry/polygon_contain.test.cpp
-  - verify/geometry/cross_point_cl.test.cpp
-  - verify/geometry/cross_point_cc.test.cpp
-  - verify/geometry/incircle.test.cpp
-  - verify/geometry/tangent_number.test.cpp
-  - verify/geometry/is_intersect_ss.test.cpp
-  - verify/geometry/distance_ss.test.cpp
-  - verify/geometry/convex_polygon_cut.test.cpp
-  - verify/geometry/circumscribed_circle.test.cpp
-documentation_of: geometry/circle.hpp
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: verify/geometry/is_orthogonal_is_parallel.test.cpp
 layout: document
-title: "Circle (\u5186)"
+redirect_from:
+- /verify/verify/geometry/is_orthogonal_is_parallel.test.cpp
+- /verify/verify/geometry/is_orthogonal_is_parallel.test.cpp.html
+title: verify/geometry/is_orthogonal_is_parallel.test.cpp
 ---
-
-## 使い方
-
-```cpp
-using Cc = Circle<T>;
-```
-
-## 参考文献

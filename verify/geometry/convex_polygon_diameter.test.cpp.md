@@ -2,9 +2,6 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: geometry/convex_hull_monotone_chain.hpp
-    title: "Convex Hull (\u51F8\u5305)"
-  - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_diameter.hpp
     title: geometry/convex_polygon_diameter.hpp
   - icon: ':heavy_check_mark:'
@@ -16,35 +13,38 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/polygon.hpp
     title: "Polygon (\u591A\u89D2\u5F62)"
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: geometry/all.hpp
-    title: geometry/all.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _pathExtension: cpp
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"geometry/farthest_pair.hpp\"\n\n#line 2 \"geometry/convex_hull_monotone_chain.hpp\"\
-    \n\n#line 2 \"geometry/polygon.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n#line\
-    \ 2 \"geometry/geometry_template.hpp\"\n\n#include <type_traits>\n\n// Constants\
-    \ (EPS, PI)\n// EPS \u306E\u5909\u66F4\u306F Constants<T>::set_eps(new_eps) \u3067\
-    \ntemplate <class T> struct Constants {\n    static T EPS;\n    static void set_eps(const\
-    \ T e) { EPS = e; }\n    static constexpr T PI = 3.14159'26535'89793L;\n};\n\n\
-    template <> double Constants<double>::EPS = 1e-9;\ntemplate <> long double Constants<long\
-    \ double>::EPS = 1e-12;\ntemplate <> long long Constants<long long>::EPS = 0;\n\
-    \n// base functions\ntemplate <class T> inline int sign(const T x) { return x\
-    \ < -Constants<T>::EPS ? -1 : (x > Constants<T>::EPS ? 1 : 0); }\ntemplate <class\
-    \ T> inline bool equal(const T a, const T b) { return sign(a - b) == 0; }\ntemplate\
-    \ <class T> inline T radian_to_degree(const T r) { return r * 180.0 / Constants<T>::PI;\
-    \ }\ntemplate <class T> inline T degree_to_radian(const T d) { return d * Constants<T>::PI\
-    \ / 180.0; }\n\n// type traits\ntemplate <class T> using is_geometry_floating_point\
-    \ = typename std::conditional<std::is_same<T, double>::value || std::is_same<T,\
-    \ long double>::value, std::true_type, std::false_type>::type;\ntemplate <class\
-    \ T> using is_geometry_integer = typename std::conditional<std::is_same<T, long\
-    \ long>::value, std::true_type, std::false_type>::type;\ntemplate <class T> using\
-    \ is_geometry = typename std::conditional<is_geometry_floating_point<T>::value\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    ERROR: '0.000001'
+    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B
+    links:
+    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B
+  bundledCode: "#line 1 \"verify/geometry/convex_polygon_diameter.test.cpp\"\n#define\
+    \ PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B\"\
+    \n#define ERROR 0.000001\n\n#include <iostream>\n#include <iomanip>\n\n#line 2\
+    \ \"geometry/convex_polygon_diameter.hpp\"\n\n#line 2 \"geometry/polygon.hpp\"\
+    \n\n#line 2 \"geometry/point.hpp\"\n\n#line 2 \"geometry/geometry_template.hpp\"\
+    \n\n#include <type_traits>\n\n// Constants (EPS, PI)\n// EPS \u306E\u5909\u66F4\
+    \u306F Constants<T>::set_eps(new_eps) \u3067\ntemplate <class T> struct Constants\
+    \ {\n    static T EPS;\n    static void set_eps(const T e) { EPS = e; }\n    static\
+    \ constexpr T PI = 3.14159'26535'89793L;\n};\n\ntemplate <> double Constants<double>::EPS\
+    \ = 1e-9;\ntemplate <> long double Constants<long double>::EPS = 1e-12;\ntemplate\
+    \ <> long long Constants<long long>::EPS = 0;\n\n// base functions\ntemplate <class\
+    \ T> inline int sign(const T x) { return x < -Constants<T>::EPS ? -1 : (x > Constants<T>::EPS\
+    \ ? 1 : 0); }\ntemplate <class T> inline bool equal(const T a, const T b) { return\
+    \ sign(a - b) == 0; }\ntemplate <class T> inline T radian_to_degree(const T r)\
+    \ { return r * 180.0 / Constants<T>::PI; }\ntemplate <class T> inline T degree_to_radian(const\
+    \ T d) { return d * Constants<T>::PI / 180.0; }\n\n// type traits\ntemplate <class\
+    \ T> using is_geometry_floating_point = typename std::conditional<std::is_same<T,\
+    \ double>::value || std::is_same<T, long double>::value, std::true_type, std::false_type>::type;\n\
+    template <class T> using is_geometry_integer = typename std::conditional<std::is_same<T,\
+    \ long long>::value, std::true_type, std::false_type>::type;\ntemplate <class\
+    \ T> using is_geometry = typename std::conditional<is_geometry_floating_point<T>::value\
     \ || is_geometry_integer<T>::value, std::true_type, std::false_type>::type;\n\
     #line 4 \"geometry/point.hpp\"\n\n#include <cmath>\n#include <cassert>\n\n// \u70B9\
     \ntemplate <class T> struct Point {\n    T x, y;\n\n    Point() = default;\n \
@@ -148,28 +148,9 @@ data:
     \ ? i + 1 - n : i + 1], p[i + 2 >= n ? i + 2 - n : i + 2]);\n        if (res ==\
     \ Ccw::CLOCKWISE) okccw = false;\n        if (res == Ccw::COUNTER_CLOCKWISE) okcw\
     \ = false;\n        if (!okccw and !okcw) return false;\n    }\n    return true;\n\
-    }\n#line 4 \"geometry/convex_hull_monotone_chain.hpp\"\n\n#include <algorithm>\n\
-    \n// \u51F8\u5305 (Andrew's Monotone Chain algorithm)\n// O(n log n)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A\n\
-    // (x, y) \u3092\u8F9E\u66F8\u5F0F\u9806\u5E8F\u3067\u30BD\u30FC\u30C8\u3057,\
-    \ \u30B9\u30BF\u30C3\u30AF\u3092\u4F7F\u3063\u3066\u4E0A\u5074\u51F8\u5305\u3068\
-    \u4E0B\u5074\u51F8\u5305\u3092\u6C42\u3081\u308B\n// \u53CD\u6642\u8A08\u56DE\u308A\
-    \n// strict \u3092 true \u306B\u3059\u308B\u3068\u51F8\u5305\u306E\u8FBA\u4E0A\
-    \u306B\u4E26\u3076\u9802\u70B9\u306F\u542B\u3081\u306A\u3044 (\u9802\u70B9\u6570\
-    \u304C\u6700\u5C0F\u306B\u306A\u308B)\ntemplate <class T> Polygon<T> convex_hull_monotone_chain(std::vector<Point<T>>&\
-    \ p, bool strict = true) {\n    const int n = (int)(p.size());\n    if (n <= 2)\
-    \ return p;\n    std::sort(p.begin(), p.end(), compare_x<T>);\n    Polygon<T>\
-    \ r;\n    r.reserve(n * 2);\n    auto f = [&strict](Ccw ccwres) -> bool { return\
-    \ strict ? ccwres != Ccw::CLOCKWISE : ccwres == Ccw::COUNTER_CLOCKWISE; };\n \
-    \   for (int i = 0; i < n; i++) {\n        while (r.size() >= 2 and f(ccw(r[r.size()\
-    \ - 2], r[r.size() - 1], p[i]))) {\n            r.pop_back();\n        }\n   \
-    \     r.push_back(p[i]);\n    }\n    int t = r.size() + 1;\n    for (int i = n\
-    \ - 2; i >= 0; i--) {\n        while (r.size() >= t and f(ccw(r[r.size() - 2],\
-    \ r[r.size() - 1], p[i]))) {\n            r.pop_back();\n        }\n        r.push_back(p[i]);\n\
-    \    }\n    r.pop_back();\n    std::reverse(r.begin(), r.end());\n    return r;\n\
-    }\n#line 2 \"geometry/convex_polygon_diameter.hpp\"\n\n#line 4 \"geometry/convex_polygon_diameter.hpp\"\
-    \n\n#include <tuple>\n#line 7 \"geometry/convex_polygon_diameter.hpp\"\n\n// \u51F8\
-    \u591A\u89D2\u5F62\u306E\u76F4\u5F84 (rotating calipers)\n// https://en.wikipedia.org/wiki/Rotating_calipers\n\
-    // O(n)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B\n\
+    }\n#line 4 \"geometry/convex_polygon_diameter.hpp\"\n\n#include <tuple>\n#include\
+    \ <algorithm>\n\n// \u51F8\u591A\u89D2\u5F62\u306E\u76F4\u5F84 (rotating calipers)\n\
+    // https://en.wikipedia.org/wiki/Rotating_calipers\n// O(n)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B\n\
     // return {index1, index2, diameter}\ntemplate <class T> std::tuple<int, int,\
     \ T> convex_polygon_diameter(const Polygon<T>& p) {\n    assert(polygon_is_convex(p));\n\
     \    const int n = (int)(p.size());\n    assert(n >= 2);\n    if (n == 2) {\n\
@@ -182,50 +163,31 @@ data:
     \    i = ni;\n        } else {\n            j = nj;\n        }\n        if (norm(p[i]\
     \ - p[j]) > maxdis) {\n            maxdis = norm(p[i] - p[j]);\n            maxi\
     \ = i;\n            maxj = j;\n        }\n    } while (i != idx_min or j != idx_max);\n\
-    \    return {maxi, maxj, abs(p[maxi] - p[maxj])};\n}\n#line 5 \"geometry/farthest_pair.hpp\"\
-    \n\n#line 7 \"geometry/farthest_pair.hpp\"\n\n// \u6700\u9060\u70B9\u5BFE\n//\
-    \ return {index1, index2, distance}\n// \u51F8\u5305\u3092\u6C42\u3081\u3066\u304B\
-    \u3089\u51F8\u591A\u89D2\u5F62\u306E\u76F4\u5F84\u3092\u6C42\u3081\u3066\u3044\
-    \u308B\n// O(n log n)\ntemplate <class T> std::tuple<int, int, T> farthest_pair(const\
-    \ std::vector<Point<T>>& p) {\n    const int n = (int)(p.size());\n    assert(n\
-    \ >= 2);\n    if (n == 2) {\n        return {0, 1, abs(p[0] - p[1])};\n    }\n\
-    \    auto q = p;\n    auto ch = convex_hull_monotone_chain(q);       // O(n log\
-    \ n)\n    auto [i, j, d] = convex_polygon_diameter(ch);  // O(|ch|)\n    int resi,\
-    \ resj;\n    for (int k = 0; k < n; k++) {\n        if (p[k] == ch[i]) {\n   \
-    \         resi = k;\n        }\n        if (p[k] == ch[j]) {\n            resj\
-    \ = k;\n        }\n    }\n    return {resi, resj, d};\n}\n"
-  code: "#pragma once\n\n#include \"geometry/convex_hull_monotone_chain.hpp\"\n#include\
-    \ \"geometry/convex_polygon_diameter.hpp\"\n\n#include <tuple>\n\n// \u6700\u9060\
-    \u70B9\u5BFE\n// return {index1, index2, distance}\n// \u51F8\u5305\u3092\u6C42\
-    \u3081\u3066\u304B\u3089\u51F8\u591A\u89D2\u5F62\u306E\u76F4\u5F84\u3092\u6C42\
-    \u3081\u3066\u3044\u308B\n// O(n log n)\ntemplate <class T> std::tuple<int, int,\
-    \ T> farthest_pair(const std::vector<Point<T>>& p) {\n    const int n = (int)(p.size());\n\
-    \    assert(n >= 2);\n    if (n == 2) {\n        return {0, 1, abs(p[0] - p[1])};\n\
-    \    }\n    auto q = p;\n    auto ch = convex_hull_monotone_chain(q);       //\
-    \ O(n log n)\n    auto [i, j, d] = convex_polygon_diameter(ch);  // O(|ch|)\n\
-    \    int resi, resj;\n    for (int k = 0; k < n; k++) {\n        if (p[k] == ch[i])\
-    \ {\n            resi = k;\n        }\n        if (p[k] == ch[j]) {\n        \
-    \    resj = k;\n        }\n    }\n    return {resi, resj, d};\n}"
+    \    return {maxi, maxj, abs(p[maxi] - p[maxj])};\n}\n#line 8 \"verify/geometry/convex_polygon_diameter.test.cpp\"\
+    \n\nint main() {\n    int N;\n    std::cin >> N;\n    Polygon<double> P(N);\n\
+    \    std::cin >> P;\n    auto [i, j, d] = convex_polygon_diameter(P);\n    std::cout\
+    \ << std::fixed << std::setprecision(15) << d << '\\n';\n    return 0;\n}\n"
+  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B\"\
+    \n#define ERROR 0.000001\n\n#include <iostream>\n#include <iomanip>\n\n#include\
+    \ \"geometry/convex_polygon_diameter.hpp\"\n\nint main() {\n    int N;\n    std::cin\
+    \ >> N;\n    Polygon<double> P(N);\n    std::cin >> P;\n    auto [i, j, d] = convex_polygon_diameter(P);\n\
+    \    std::cout << std::fixed << std::setprecision(15) << d << '\\n';\n    return\
+    \ 0;\n}"
   dependsOn:
-  - geometry/convex_hull_monotone_chain.hpp
+  - geometry/convex_polygon_diameter.hpp
   - geometry/polygon.hpp
   - geometry/point.hpp
   - geometry/geometry_template.hpp
-  - geometry/convex_polygon_diameter.hpp
-  isVerificationFile: false
-  path: geometry/farthest_pair.hpp
-  requiredBy:
-  - geometry/all.hpp
+  isVerificationFile: true
+  path: verify/geometry/convex_polygon_diameter.test.cpp
+  requiredBy: []
   timestamp: '2024-08-02 21:55:10+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: geometry/farthest_pair.hpp
+documentation_of: verify/geometry/convex_polygon_diameter.test.cpp
 layout: document
-title: "Farthest Pair (\u6700\u9060\u70B9\u5BFE)"
+redirect_from:
+- /verify/verify/geometry/convex_polygon_diameter.test.cpp
+- /verify/verify/geometry/convex_polygon_diameter.test.cpp.html
+title: verify/geometry/convex_polygon_diameter.test.cpp
 ---
-
-## 使い方
-
-## 参考文献
-
-- [AtCoder Beginner Contest 022 D - Big Bang](https://atcoder.jp/contests/abc022/tasks/abc022_d)

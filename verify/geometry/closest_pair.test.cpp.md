@@ -2,33 +2,29 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: geometry/closest_pair.hpp
+    title: "Closest Pair (\u6700\u8FD1\u70B9\u5BFE)"
+  - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: "\u5E7E\u4F55\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: "Point (\u70B9)"
-  - icon: ':heavy_check_mark:'
-    path: geometry/polygon.hpp
-    title: "Polygon (\u591A\u89D2\u5F62)"
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: geometry/all.hpp
-    title: geometry/all.hpp
-  - icon: ':warning:'
-    path: geometry/farthest_pair.hpp
-    title: "Farthest Pair (\u6700\u9060\u70B9\u5BFE)"
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/convex_polygon_diameter.test.cpp
-    title: verify/geometry/convex_polygon_diameter.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    ERROR: '0.000001'
+    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_5_A
     links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B
-    - https://en.wikipedia.org/wiki/Rotating_calipers
-  bundledCode: "#line 2 \"geometry/convex_polygon_diameter.hpp\"\n\n#line 2 \"geometry/polygon.hpp\"\
+    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_5_A
+  bundledCode: "#line 1 \"verify/geometry/closest_pair.test.cpp\"\n#define PROBLEM\
+    \ \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_5_A\"\n#define\
+    \ ERROR 0.000001\n\n#include <iostream>\n#include <iomanip>\n#include <cassert>\n\
+    #include <vector>\n#include <numeric>\n\n#line 2 \"geometry/closest_pair.hpp\"\
     \n\n#line 2 \"geometry/point.hpp\"\n\n#line 2 \"geometry/geometry_template.hpp\"\
     \n\n#include <type_traits>\n\n// Constants (EPS, PI)\n// EPS \u306E\u5909\u66F4\
     \u306F Constants<T>::set_eps(new_eps) \u3067\ntemplate <class T> struct Constants\
@@ -47,9 +43,9 @@ data:
     \ long long>::value, std::true_type, std::false_type>::type;\ntemplate <class\
     \ T> using is_geometry = typename std::conditional<is_geometry_floating_point<T>::value\
     \ || is_geometry_integer<T>::value, std::true_type, std::false_type>::type;\n\
-    #line 4 \"geometry/point.hpp\"\n\n#include <cmath>\n#include <cassert>\n\n// \u70B9\
-    \ntemplate <class T> struct Point {\n    T x, y;\n\n    Point() = default;\n \
-    \   Point(const T x, const T y) : x(x), y(y) {}\n\n    Point& operator+=(const\
+    #line 4 \"geometry/point.hpp\"\n\n#include <cmath>\n#line 7 \"geometry/point.hpp\"\
+    \n\n// \u70B9\ntemplate <class T> struct Point {\n    T x, y;\n\n    Point() =\
+    \ default;\n    Point(const T x, const T y) : x(x), y(y) {}\n\n    Point& operator+=(const\
     \ Point& p) {\n        x += p.x, y += p.y;\n        return *this;\n    }\n   \
     \ Point& operator-=(const Point& p) {\n        x -= p.x, y -= p.y;\n        return\
     \ *this;\n    }\n    Point& operator*=(const Point& p) {\n        static_assert(is_geometry_floating_point<T>::value\
@@ -126,78 +122,61 @@ data:
     \ ac)) == 1) return Ccw::COUNTER_CLOCKWISE;\n    if (sign(cross(ab, ac)) == -1)\
     \ return Ccw::CLOCKWISE;\n    if (sign(dot(ab, ac)) == -1) return Ccw::ONLINE_BACK;\n\
     \    if (sign(norm(ab) - norm(ac)) == -1) return Ccw::ONLINE_FRONT;\n    return\
-    \ Ccw::ON_SEGMENT;\n}\n#line 4 \"geometry/polygon.hpp\"\n\n#include <vector>\n\
-    #line 7 \"geometry/polygon.hpp\"\n\n// polygon\ntemplate <class T> using Polygon\
-    \ = std::vector<Point<T>>;\ntemplate <class T> std::istream& operator>>(std::istream&\
-    \ is, Polygon<T>& p) {\n    for (auto&& pi : p) is >> pi;\n    return is;\n}\n\
-    template <class T> std::ostream& operator<<(std::ostream& os, const Polygon<T>&\
-    \ p) {\n    for (auto&& pi : p) os << pi << \" -> \";\n    return os;\n}\n\n//\
-    \ \u591A\u89D2\u5F62\u306E\u9762\u7A4D (\u7B26\u53F7\u4ED8\u304D)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\n\
-    // return area * 2\ntemplate <class T> T polygon_area2(const Polygon<T>& p) {\n\
-    \    const int n = (int)(p.size());\n    assert(n >= 2);\n    T ret = T(0);\n\
-    \    for (int i = 0; i < n; i++) ret += cross(p[i], p[i + 1 == n ? 0 : i + 1]);\n\
-    \    // counter clockwise: ret > 0\n    // clockwise: ret < 0\n    return ret;\n\
-    }\ntemplate <class T> T polygon_area(const Polygon<T>& p) {\n    static_assert(is_geometry_floating_point<T>::value\
-    \ == true);\n    return polygon_area2(p) / T(2);\n}\n\n// \u591A\u89D2\u5F62\u306E\
-    \u51F8\u5224\u5B9A (\u89D2\u5EA6\u304C 0 \u3067\u3082 PI \u3067\u3082\u8A31\u5BB9\
-    )\n// \u8A31\u5BB9\u3057\u305F\u304F\u306A\u3044\u3068\u304D\u306B\u306F ON_SEGMENT,\
-    \ ONLINE_FRONT, ONLINE_BACK \u304C\u51FA\u3066\u304D\u305F\u3089 false \u3092\u8FD4\
-    \u305B\u3070 OK\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B\n\
-    template <class T> bool polygon_is_convex(const Polygon<T>& p) {\n    const int\
-    \ n = (int)(p.size());\n    assert(n >= 3);\n    bool okccw = true, okcw = true;\n\
-    \    for (int i = 0; i < n; i++) {\n        auto res = ccw(p[i], p[i + 1 >= n\
-    \ ? i + 1 - n : i + 1], p[i + 2 >= n ? i + 2 - n : i + 2]);\n        if (res ==\
-    \ Ccw::CLOCKWISE) okccw = false;\n        if (res == Ccw::COUNTER_CLOCKWISE) okcw\
-    \ = false;\n        if (!okccw and !okcw) return false;\n    }\n    return true;\n\
-    }\n#line 4 \"geometry/convex_polygon_diameter.hpp\"\n\n#include <tuple>\n#include\
-    \ <algorithm>\n\n// \u51F8\u591A\u89D2\u5F62\u306E\u76F4\u5F84 (rotating calipers)\n\
-    // https://en.wikipedia.org/wiki/Rotating_calipers\n// O(n)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B\n\
-    // return {index1, index2, diameter}\ntemplate <class T> std::tuple<int, int,\
-    \ T> convex_polygon_diameter(const Polygon<T>& p) {\n    assert(polygon_is_convex(p));\n\
-    \    const int n = (int)(p.size());\n    assert(n >= 2);\n    if (n == 2) {\n\
-    \        return {0, 1, abs(p[0] - p[1])};\n    }\n    auto [it_min, it_max] =\
-    \ std::minmax_element(p.begin(), p.end(), compare_x<T>);\n    int idx_min = it_min\
-    \ - p.begin();\n    int idx_max = it_max - p.begin();\n\n    T maxdis = norm(p[idx_max]\
-    \ - p[idx_min]);\n    int maxi = idx_min, i = idx_min, maxj = idx_max, j = idx_max;\n\
-    \    do {\n        int ni = (i + 1 == n ? 0 : i + 1), nj = (j + 1 == n ? 0 : j\
-    \ + 1);\n        if (sign(cross(p[ni] - p[i], p[nj] - p[j])) < 0) {\n        \
-    \    i = ni;\n        } else {\n            j = nj;\n        }\n        if (norm(p[i]\
-    \ - p[j]) > maxdis) {\n            maxdis = norm(p[i] - p[j]);\n            maxi\
-    \ = i;\n            maxj = j;\n        }\n    } while (i != idx_min or j != idx_max);\n\
-    \    return {maxi, maxj, abs(p[maxi] - p[maxj])};\n}\n"
-  code: "#pragma once\n\n#include \"geometry/polygon.hpp\"\n\n#include <tuple>\n#include\
-    \ <algorithm>\n\n// \u51F8\u591A\u89D2\u5F62\u306E\u76F4\u5F84 (rotating calipers)\n\
-    // https://en.wikipedia.org/wiki/Rotating_calipers\n// O(n)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B\n\
-    // return {index1, index2, diameter}\ntemplate <class T> std::tuple<int, int,\
-    \ T> convex_polygon_diameter(const Polygon<T>& p) {\n    assert(polygon_is_convex(p));\n\
-    \    const int n = (int)(p.size());\n    assert(n >= 2);\n    if (n == 2) {\n\
-    \        return {0, 1, abs(p[0] - p[1])};\n    }\n    auto [it_min, it_max] =\
-    \ std::minmax_element(p.begin(), p.end(), compare_x<T>);\n    int idx_min = it_min\
-    \ - p.begin();\n    int idx_max = it_max - p.begin();\n\n    T maxdis = norm(p[idx_max]\
-    \ - p[idx_min]);\n    int maxi = idx_min, i = idx_min, maxj = idx_max, j = idx_max;\n\
-    \    do {\n        int ni = (i + 1 == n ? 0 : i + 1), nj = (j + 1 == n ? 0 : j\
-    \ + 1);\n        if (sign(cross(p[ni] - p[i], p[nj] - p[j])) < 0) {\n        \
-    \    i = ni;\n        } else {\n            j = nj;\n        }\n        if (norm(p[i]\
-    \ - p[j]) > maxdis) {\n            maxdis = norm(p[i] - p[j]);\n            maxi\
-    \ = i;\n            maxj = j;\n        }\n    } while (i != idx_min or j != idx_max);\n\
-    \    return {maxi, maxj, abs(p[maxi] - p[maxj])};\n}"
+    \ Ccw::ON_SEGMENT;\n}\n#line 4 \"geometry/closest_pair.hpp\"\n\n#include <tuple>\n\
+    #include <limits>\n#include <algorithm>\n\n// \u6700\u8FD1\u70B9\u5BFE (\u5206\
+    \u5272\u7D71\u6CBB\u6CD5)\n// O(n log n)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_5_A\n\
+    // return {index1, index2, distance}\ntemplate <class T> std::tuple<int, int,\
+    \ T> closest_pair(const std::vector<Point<T>>& p) {\n    const int n = (int)(p.size());\n\
+    \n    assert(n >= 2);\n    if (n == 2) {\n        return {0, 1, abs(p[0] - p[1])};\n\
+    \    }\n    // may not be efficient due to indirect references ...\n    std::vector<int>\
+    \ ind(n);\n    std::iota(ind.begin(), ind.end(), 0);\n    std::sort(ind.begin(),\
+    \ ind.end(), [&](int i, int j) { return compare_x(p[i], p[j]); });\n    auto dfs\
+    \ = [&](auto f, int l, int r) -> std::tuple<int, int, T> {\n        if (r - l\
+    \ <= 1) return {-1, -1, std::numeric_limits<T>::max()};\n        const int md\
+    \ = (l + r) / 2;\n        T x = p[ind[md]].x;\n        // \u5206\u5272\u7D71\u6CBB\
+    \u6CD5\n        auto [i1l, i2l, dl] = f(f, l, md);\n        auto [i1r, i2r, dr]\
+    \ = f(f, md, r);\n        int i1 = i1r, i2 = i2r;\n        T d = dr;\n       \
+    \ if (dl < dr) {\n            d = dl, i1 = i1l, i2 = i2l;\n        }\n       \
+    \ std::inplace_merge(ind.begin() + l, ind.begin() + md, ind.begin() + r, [&](int\
+    \ i, int j) { return compare_y(p[i], p[j]); });\n        // ind \u306F y \u3067\
+    \u30BD\u30FC\u30C8\u3055\u308C\u308B\n        std::vector<int> near_x;  // \u76F4\
+    \u7DDA x \u304B\u3089\u306E\u8DDD\u96E2\u304C d \u672A\u6E80\u306E\u9802\u70B9\
+    \u306E\u30A4\u30F3\u30C7\u30C3\u30AF\u30B9\n        for (int i = l; i < r; i++)\
+    \ {\n            if (sign(std::abs(p[ind[i]].x - x) - d) >= 0) continue;  // |p[ind[i]].x\
+    \ - x| >= d\n            const int sz = (int)(near_x.size());\n            //\
+    \ y\u5EA7\u6A19\u3068\u306E\u8DDD\u96E2\u304C d \u4EE5\u4E0A\u306B\u306A\u308B\
+    \u307E\u3067\u7E70\u308A\u8FD4\u3059\n            for (int j = sz - 1; j >= 0;\
+    \ j--) {\n                Point cp = p[ind[i]] - p[near_x[j]];\n             \
+    \   if (sign(cp.y - d) >= 0) break;  // cp.y >= d\n                T cd = abs(cp);\n\
+    \                if (cd < d) {\n                    d = cd, i1 = ind[i], i2 =\
+    \ near_x[j];\n                }\n            }\n            near_x.push_back(ind[i]);\n\
+    \        }\n        return {i1, i2, d};\n    };\n    return dfs(dfs, 0, n);\n\
+    }\n#line 11 \"verify/geometry/closest_pair.test.cpp\"\n\nint main() {\n    int\
+    \ N;\n    std::cin >> N;\n    std::vector<Point<double>> P(N);\n    for (int i\
+    \ = 0; i < N; i++) std::cin >> P[i];\n    auto [i, j, d] = closest_pair(P);\n\
+    \    assert(equal(d, abs(P[i] - P[j])));\n    std::cout << std::fixed << std::setprecision(15)\
+    \ << d << '\\n';\n    return 0;\n}\n"
+  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_5_A\"\
+    \n#define ERROR 0.000001\n\n#include <iostream>\n#include <iomanip>\n#include\
+    \ <cassert>\n#include <vector>\n#include <numeric>\n\n#include \"geometry/closest_pair.hpp\"\
+    \n\nint main() {\n    int N;\n    std::cin >> N;\n    std::vector<Point<double>>\
+    \ P(N);\n    for (int i = 0; i < N; i++) std::cin >> P[i];\n    auto [i, j, d]\
+    \ = closest_pair(P);\n    assert(equal(d, abs(P[i] - P[j])));\n    std::cout <<\
+    \ std::fixed << std::setprecision(15) << d << '\\n';\n    return 0;\n}"
   dependsOn:
-  - geometry/polygon.hpp
+  - geometry/closest_pair.hpp
   - geometry/point.hpp
   - geometry/geometry_template.hpp
-  isVerificationFile: false
-  path: geometry/convex_polygon_diameter.hpp
-  requiredBy:
-  - geometry/farthest_pair.hpp
-  - geometry/all.hpp
+  isVerificationFile: true
+  path: verify/geometry/closest_pair.test.cpp
+  requiredBy: []
   timestamp: '2024-08-02 21:55:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/geometry/convex_polygon_diameter.test.cpp
-documentation_of: geometry/convex_polygon_diameter.hpp
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: verify/geometry/closest_pair.test.cpp
 layout: document
 redirect_from:
-- /library/geometry/convex_polygon_diameter.hpp
-- /library/geometry/convex_polygon_diameter.hpp.html
-title: geometry/convex_polygon_diameter.hpp
+- /verify/verify/geometry/closest_pair.test.cpp
+- /verify/verify/geometry/closest_pair.test.cpp.html
+title: verify/geometry/closest_pair.test.cpp
 ---

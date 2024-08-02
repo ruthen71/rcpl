@@ -27,8 +27,8 @@ data:
   timestamp: '2024-03-24 17:04:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/euler_tour.test.cpp
   - verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
+  - verify/graph/euler_tour.test.cpp
 documentation_of: algebra/monoid_s/monoid_sum.hpp
 layout: document
 redirect_from:

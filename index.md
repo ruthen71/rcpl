@@ -199,17 +199,17 @@ data:
       path: geometry/all.hpp
       title: geometry/all.hpp
     - icon: ':heavy_check_mark:'
-      path: geometry/ccw.hpp
-      title: geometry/ccw.hpp
-    - icon: ':heavy_check_mark:'
       path: geometry/circle.hpp
-      title: geometry/circle.hpp
+      title: "Circle (\u5186)"
     - icon: ':heavy_check_mark:'
       path: geometry/circumscribed_circle.hpp
-      title: geometry/circumscribed_circle.hpp
+      title: "Circumscribed Circle (\u5916\u63A5\u5186)"
     - icon: ':heavy_check_mark:'
       path: geometry/closest_pair.hpp
-      title: "\u6700\u8FD1\u70B9\u5BFE"
+      title: "Closest Pair (\u6700\u8FD1\u70B9\u5BFE)"
+    - icon: ':heavy_check_mark:'
+      path: geometry/convex_hull_monotone_chain.hpp
+      title: "Convex Hull (\u51F8\u5305)"
     - icon: ':heavy_check_mark:'
       path: geometry/convex_polygon_cut.hpp
       title: geometry/convex_polygon_cut.hpp
@@ -217,95 +217,39 @@ data:
       path: geometry/convex_polygon_diameter.hpp
       title: geometry/convex_polygon_diameter.hpp
     - icon: ':heavy_check_mark:'
-      path: geometry/cross_point_cc.hpp
-      title: geometry/cross_point_cc.hpp
+      path: geometry/cross_point.hpp
+      title: "Cross Point (\u4EA4\u70B9)"
     - icon: ':heavy_check_mark:'
-      path: geometry/cross_point_cl.hpp
-      title: geometry/cross_point_cl.hpp
-    - icon: ':heavy_check_mark:'
-      path: geometry/cross_point_ll.hpp
-      title: geometry/cross_point_ll.hpp
-    - icon: ':heavy_check_mark:'
-      path: geometry/cross_point_ss.hpp
-      title: geometry/cross_point_ss.hpp
-    - icon: ':heavy_check_mark:'
-      path: geometry/distance_lp.hpp
-      title: geometry/distance_lp.hpp
-    - icon: ':heavy_check_mark:'
-      path: geometry/distance_sp.hpp
-      title: geometry/distance_sp.hpp
-    - icon: ':heavy_check_mark:'
-      path: geometry/distance_ss.hpp
-      title: geometry/distance_ss.hpp
+      path: geometry/distance.hpp
+      title: "Distance (\u8DDD\u96E2)"
     - icon: ':warning:'
       path: geometry/farthest_pair.hpp
-      title: "\u6700\u9060\u70B9\u5BFE"
+      title: "Farthest Pair (\u6700\u9060\u70B9\u5BFE)"
+    - icon: ':heavy_check_mark:'
+      path: geometry/geometry_template.hpp
+      title: "\u5E7E\u4F55\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':heavy_check_mark:'
       path: geometry/incircle.hpp
-      title: geometry/incircle.hpp
+      title: "Incircle (\u5185\u63A5\u5186)"
     - icon: ':heavy_check_mark:'
-      path: geometry/is_intersect_cc.hpp
-      title: geometry/is_intersect_cc.hpp
-    - icon: ':heavy_check_mark:'
-      path: geometry/is_intersect_cl.hpp
-      title: geometry/is_intersect_cl.hpp
-    - icon: ':warning:'
-      path: geometry/is_intersect_cp.hpp
-      title: geometry/is_intersect_cp.hpp
-    - icon: ':warning:'
-      path: geometry/is_intersect_ll.hpp
-      title: geometry/is_intersect_ll.hpp
-    - icon: ':warning:'
-      path: geometry/is_intersect_lp.hpp
-      title: geometry/is_intersect_lp.hpp
-    - icon: ':heavy_check_mark:'
-      path: geometry/is_intersect_sp.hpp
-      title: geometry/is_intersect_sp.hpp
-    - icon: ':heavy_check_mark:'
-      path: geometry/is_intersect_ss.hpp
-      title: geometry/is_intersect_ss.hpp
-    - icon: ':heavy_check_mark:'
-      path: geometry/is_orthogonal.hpp
-      title: geometry/is_orthogonal.hpp
-    - icon: ':heavy_check_mark:'
-      path: geometry/is_parallel.hpp
-      title: geometry/is_parallel.hpp
+      path: geometry/is_intersect.hpp
+      title: "Intersection (\u4EA4\u5DEE\u5224\u5B9A)"
     - icon: ':heavy_check_mark:'
       path: geometry/line.hpp
-      title: geometry/line.hpp
-    - icon: ':heavy_check_mark:'
-      path: geometry/monotone_chain.hpp
-      title: geometry/monotone_chain.hpp
+      title: "Line / Segment (\u76F4\u7DDA\u30FB\u7DDA\u5206)"
     - icon: ':heavy_check_mark:'
       path: geometry/point.hpp
-      title: geometry/point.hpp
+      title: "Point (\u70B9)"
     - icon: ':heavy_check_mark:'
       path: geometry/polygon.hpp
-      title: geometry/polygon.hpp
-    - icon: ':heavy_check_mark:'
-      path: geometry/polygon_area.hpp
-      title: geometry/polygon_area.hpp
+      title: "Polygon (\u591A\u89D2\u5F62)"
     - icon: ':heavy_check_mark:'
       path: geometry/polygon_contain.hpp
-      title: geometry/polygon_contain.hpp
+      title: "Polygon Contain (\u591A\u89D2\u5F62\u3068\u70B9\u306E\u4EA4\u5DEE\u5224\
+        \u5B9A)"
     - icon: ':heavy_check_mark:'
-      path: geometry/polygon_is_convex.hpp
-      title: geometry/polygon_is_convex.hpp
-    - icon: ':heavy_check_mark:'
-      path: geometry/projection.hpp
-      title: geometry/projection.hpp
-    - icon: ':heavy_check_mark:'
-      path: geometry/reflection.hpp
-      title: geometry/reflection.hpp
-    - icon: ':heavy_check_mark:'
-      path: geometry/segment.hpp
-      title: geometry/segment.hpp
-    - icon: ':heavy_check_mark:'
-      path: geometry/tangent_number_cc.hpp
-      title: geometry/tangent_number_cc.hpp
-    - icon: ':heavy_check_mark:'
-      path: geometry/tangent_point_cp.hpp
-      title: geometry/tangent_point_cp.hpp
+      path: geometry/tangent_point.hpp
+      title: "Tangent Point (\u5186\u306E\u63A5\u70B9)"
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
@@ -500,68 +444,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_alds1/aoj_alds1_5_d.test.cpp
       title: verify/aoj_alds1/aoj_alds1_5_d.test.cpp
-  - name: verify/aoj_cgl
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: verify/aoj_cgl/aoj_cgl_1_a.test.cpp
-      title: verify/aoj_cgl/aoj_cgl_1_a.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/aoj_cgl/aoj_cgl_1_b.test.cpp
-      title: verify/aoj_cgl/aoj_cgl_1_b.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/aoj_cgl/aoj_cgl_1_c.test.cpp
-      title: verify/aoj_cgl/aoj_cgl_1_c.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/aoj_cgl/aoj_cgl_2_a.test.cpp
-      title: verify/aoj_cgl/aoj_cgl_2_a.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/aoj_cgl/aoj_cgl_2_b.test.cpp
-      title: verify/aoj_cgl/aoj_cgl_2_b.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/aoj_cgl/aoj_cgl_2_c.test.cpp
-      title: verify/aoj_cgl/aoj_cgl_2_c.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/aoj_cgl/aoj_cgl_2_d.test.cpp
-      title: verify/aoj_cgl/aoj_cgl_2_d.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/aoj_cgl/aoj_cgl_3_a.test.cpp
-      title: verify/aoj_cgl/aoj_cgl_3_a.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/aoj_cgl/aoj_cgl_3_b.test.cpp
-      title: verify/aoj_cgl/aoj_cgl_3_b.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
-      title: verify/aoj_cgl/aoj_cgl_3_c.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/aoj_cgl/aoj_cgl_4_a.test.cpp
-      title: verify/aoj_cgl/aoj_cgl_4_a.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/aoj_cgl/aoj_cgl_4_b.test.cpp
-      title: verify/aoj_cgl/aoj_cgl_4_b.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
-      title: verify/aoj_cgl/aoj_cgl_4_c.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/aoj_cgl/aoj_cgl_5_a.test.cpp
-      title: verify/aoj_cgl/aoj_cgl_5_a.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/aoj_cgl/aoj_cgl_7_a.test.cpp
-      title: verify/aoj_cgl/aoj_cgl_7_a.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/aoj_cgl/aoj_cgl_7_b.test.cpp
-      title: verify/aoj_cgl/aoj_cgl_7_b.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/aoj_cgl/aoj_cgl_7_c.test.cpp
-      title: verify/aoj_cgl/aoj_cgl_7_c.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
-      title: verify/aoj_cgl/aoj_cgl_7_d.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/aoj_cgl/aoj_cgl_7_e.test.cpp
-      title: verify/aoj_cgl/aoj_cgl_7_e.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/aoj_cgl/aoj_cgl_7_f.test.cpp
-      title: verify/aoj_cgl/aoj_cgl_7_f.test.cpp
   - name: verify/aoj_dpl
     pages:
     - icon: ':heavy_check_mark:'
@@ -644,6 +526,71 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_other/aoj_3206.test.cpp
       title: verify/aoj_other/aoj_3206.test.cpp
+  - name: verify/geometry
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/ccw.test.cpp
+      title: verify/geometry/ccw.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/circumscribed_circle.test.cpp
+      title: verify/geometry/circumscribed_circle.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/closest_pair.test.cpp
+      title: verify/geometry/closest_pair.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/compare_atan2.test.cpp
+      title: verify/geometry/compare_atan2.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/convex_hull_monotone_chain.test.cpp
+      title: verify/geometry/convex_hull_monotone_chain.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/convex_polygon_cut.test.cpp
+      title: verify/geometry/convex_polygon_cut.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/convex_polygon_diameter.test.cpp
+      title: verify/geometry/convex_polygon_diameter.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/cross_point_cc.test.cpp
+      title: verify/geometry/cross_point_cc.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/cross_point_cl.test.cpp
+      title: verify/geometry/cross_point_cl.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/cross_point_ss.test.cpp
+      title: verify/geometry/cross_point_ss.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/distance_ss.test.cpp
+      title: verify/geometry/distance_ss.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/incircle.test.cpp
+      title: verify/geometry/incircle.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/is_intersect_ss.test.cpp
+      title: verify/geometry/is_intersect_ss.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/is_orthogonal_is_parallel.test.cpp
+      title: verify/geometry/is_orthogonal_is_parallel.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/polygon_area.test.cpp
+      title: verify/geometry/polygon_area.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/polygon_contain.test.cpp
+      title: verify/geometry/polygon_contain.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/polygon_is_convex.test.cpp
+      title: verify/geometry/polygon_is_convex.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/projection.test.cpp
+      title: verify/geometry/projection.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/reflection.test.cpp
+      title: verify/geometry/reflection.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/tangent_number.test.cpp
+      title: verify/geometry/tangent_number.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/tangent_point.test.cpp
+      title: verify/geometry/tangent_point.test.cpp
   - name: verify/graph
     pages:
     - icon: ':heavy_check_mark:'
@@ -719,11 +666,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/lc_math/lc_enumerate_primes.test.cpp
       title: verify/lc_math/lc_enumerate_primes.test.cpp
-  - name: verify/lc_other
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: verify/lc_other/lc_aplusb_compare_arg.test.cpp
-      title: verify/lc_other/lc_aplusb_compare_arg.test.cpp
   - name: verify/yuki
     pages:
     - icon: ':heavy_check_mark:'
