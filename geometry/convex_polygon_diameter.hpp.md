@@ -196,8 +196,15 @@ data:
   - verify/geometry/convex_polygon_diameter.test.cpp
 documentation_of: geometry/convex_polygon_diameter.hpp
 layout: document
-redirect_from:
-- /library/geometry/convex_polygon_diameter.hpp
-- /library/geometry/convex_polygon_diameter.hpp.html
-title: geometry/convex_polygon_diameter.hpp
+title: "Convex Polygon Diameter (\u51F8\u591A\u89D2\u5F62\u306E\u76F4\u5F84)"
 ---
+
+## 使い方
+
+```cpp
+Polygon<T> P;
+// i, j は直径となる頂点のインデックス
+auto [i, j, d] = convex_polygon_diameter(P);
+```
+
+## 参考文献

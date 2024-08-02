@@ -364,8 +364,18 @@ data:
   - verify/geometry/convex_polygon_cut.test.cpp
 documentation_of: geometry/convex_polygon_cut.hpp
 layout: document
-redirect_from:
-- /library/geometry/convex_polygon_cut.hpp
-- /library/geometry/convex_polygon_cut.hpp.html
-title: geometry/convex_polygon_cut.hpp
+title: "Convex Polygon Cut (\u51F8\u591A\u89D2\u5F62\u306E\u76F4\u7DDA\u3067\u306E\
+  \u5207\u65AD)"
 ---
+
+## 使い方
+
+直線の進行方向から見て, 左側の凸多角形, 右側の凸多角形の順で返す
+
+```cpp
+Polygon<T> P;
+Line<T> L;
+auto [polyl, polyr] = convex_polygon_cut(P, L);
+```
+
+## 参考文献

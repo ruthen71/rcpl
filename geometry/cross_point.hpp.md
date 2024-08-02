@@ -25,7 +25,8 @@ data:
     title: "Circumscribed Circle (\u5916\u63A5\u5186)"
   - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_cut.hpp
-    title: geometry/convex_polygon_cut.hpp
+    title: "Convex Polygon Cut (\u51F8\u591A\u89D2\u5F62\u306E\u76F4\u7DDA\u3067\u306E\
+      \u5207\u65AD)"
   - icon: ':heavy_check_mark:'
     path: geometry/incircle.hpp
     title: "Incircle (\u5185\u63A5\u5186)"
