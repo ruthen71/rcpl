@@ -249,8 +249,8 @@ data:
       title: "Polygon Contain (\u591A\u89D2\u5F62\u3068\u70B9\u306E\u4EA4\u5DEE\u5224\
         \u5B9A)"
     - icon: ':heavy_check_mark:'
-      path: geometry/tangent_point.hpp
-      title: "Tangent Point (\u5186\u306E\u63A5\u70B9)"
+      path: geometry/tangent.hpp
+      title: "Tangent (\u63A5\u7DDA)"
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
@@ -587,11 +587,14 @@ data:
       path: verify/geometry/reflection.test.cpp
       title: verify/geometry/reflection.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/geometry/tangent_cc.test.cpp
+      title: verify/geometry/tangent_cc.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/tangent_cp.test.cpp
+      title: verify/geometry/tangent_cp.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/geometry/tangent_number.test.cpp
       title: verify/geometry/tangent_number.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/geometry/tangent_point.test.cpp
-      title: verify/geometry/tangent_point.test.cpp
   - name: verify/graph
     pages:
     - icon: ':heavy_check_mark:'

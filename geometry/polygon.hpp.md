@@ -8,9 +8,6 @@ data:
     path: geometry/point.hpp
     title: "Point (\u70B9)"
   _extendedRequiredBy:
-  - icon: ':warning:'
-    path: geometry/all.hpp
-    title: geometry/all.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/convex_hull_monotone_chain.hpp
     title: "Convex Hull (\u51F8\u5305)"
@@ -208,7 +205,6 @@ data:
   requiredBy:
   - geometry/farthest_pair.hpp
   - geometry/convex_polygon_diameter.hpp
-  - geometry/all.hpp
   - geometry/convex_polygon_cut.hpp
   - geometry/polygon_contain.hpp
   - geometry/convex_hull_monotone_chain.hpp

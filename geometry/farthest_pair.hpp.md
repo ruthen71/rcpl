@@ -16,10 +16,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/polygon.hpp
     title: "Polygon (\u591A\u89D2\u5F62)"
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: geometry/all.hpp
-    title: geometry/all.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -214,8 +211,7 @@ data:
   - geometry/convex_polygon_diameter.hpp
   isVerificationFile: false
   path: geometry/farthest_pair.hpp
-  requiredBy:
-  - geometry/all.hpp
+  requiredBy: []
   timestamp: '2024-08-02 21:55:10+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

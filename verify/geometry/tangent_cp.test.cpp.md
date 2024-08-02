@@ -19,29 +19,32 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: "Point (\u70B9)"
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: geometry/all.hpp
-    title: geometry/all.hpp
-  _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/geometry/tangent_point.test.cpp
-    title: verify/geometry/tangent_point.test.cpp
+    path: geometry/tangent.hpp
+    title: "Tangent (\u63A5\u7DDA)"
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    ERROR: '0.00001'
+    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_F
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_F
-  bundledCode: "#line 2 \"geometry/tangent_point.hpp\"\n\n#line 2 \"geometry/point.hpp\"\
-    \n\n#line 2 \"geometry/geometry_template.hpp\"\n\n#include <type_traits>\n\n//\
-    \ Constants (EPS, PI)\n// EPS \u306E\u5909\u66F4\u306F Constants<T>::set_eps(new_eps)\
-    \ \u3067\ntemplate <class T> struct Constants {\n    static T EPS;\n    static\
-    \ void set_eps(const T e) { EPS = e; }\n    static constexpr T PI = 3.14159'26535'89793L;\n\
-    };\n\ntemplate <> double Constants<double>::EPS = 1e-9;\ntemplate <> long double\
-    \ Constants<long double>::EPS = 1e-12;\ntemplate <> long long Constants<long long>::EPS\
-    \ = 0;\n\n// base functions\ntemplate <class T> inline int sign(const T x) { return\
-    \ x < -Constants<T>::EPS ? -1 : (x > Constants<T>::EPS ? 1 : 0); }\ntemplate <class\
+  bundledCode: "#line 1 \"verify/geometry/tangent_cp.test.cpp\"\n#define PROBLEM \"\
+    http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_F\"\n#define ERROR\
+    \ 0.00001\n\n#include <iostream>\n#include <iomanip>\n#include <algorithm>\n\n\
+    #line 2 \"geometry/tangent.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n#line 2\
+    \ \"geometry/geometry_template.hpp\"\n\n#include <type_traits>\n\n// Constants\
+    \ (EPS, PI)\n// EPS \u306E\u5909\u66F4\u306F Constants<T>::set_eps(new_eps) \u3067\
+    \ntemplate <class T> struct Constants {\n    static T EPS;\n    static void set_eps(const\
+    \ T e) { EPS = e; }\n    static constexpr T PI = 3.14159'26535'89793L;\n};\n\n\
+    template <> double Constants<double>::EPS = 1e-9;\ntemplate <> long double Constants<long\
+    \ double>::EPS = 1e-12;\ntemplate <> long long Constants<long long>::EPS = 0;\n\
+    \n// base functions\ntemplate <class T> inline int sign(const T x) { return x\
+    \ < -Constants<T>::EPS ? -1 : (x > Constants<T>::EPS ? 1 : 0); }\ntemplate <class\
     \ T> inline bool equal(const T a, const T b) { return sign(a - b) == 0; }\ntemplate\
     \ <class T> inline T radian_to_degree(const T r) { return r * 180.0 / Constants<T>::PI;\
     \ }\ntemplate <class T> inline T degree_to_radian(const T d) { return d * Constants<T>::PI\
@@ -294,49 +297,69 @@ data:
     \ T a = std::acos((c1.r * c1.r - c2.r * c2.r + d * d) / (T(2) * c1.r * d));\n\
     \    T t = arg(c2.o - c1.o);\n    Point<T> p = c1.o + polar(c1.r, t + a);\n  \
     \  Point<T> q = c1.o + polar(c1.r, t - a);\n    if (equal(p, q)) return {p};\n\
-    \    return {p, q};\n}\n#line 6 \"geometry/tangent_point.hpp\"\n\n#line 8 \"geometry/tangent_point.hpp\"\
-    \n\n// \u5186\u306E\u63A5\u70B9 (\u5186\u306E\u5916\u5074\u306E\u70B9\u306B\u5BFE\
-    \u3059\u308B\u5186\u306E\u63A5\u7DDA\u306E\u5186\u3068\u306E\u4EA4\u70B9)\n//\
-    \ http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_F\ntemplate <class\
-    \ T> std::vector<Point<T>> tangent_point(const Circle<T>& c, const Point<T>& p)\
-    \ {\n    static_assert(is_geometry_floating_point<T>::value == true);\n    assert(sign(abs(c.o\
-    \ - p) - c.r) == 1);\n    return cross_point(c, Circle(p, std::sqrt(norm(c.o -\
-    \ p) - c.r * c.r)));\n}\n"
-  code: "#pragma once\n\n#include \"geometry/point.hpp\"\n#include \"geometry/circle.hpp\"\
-    \n#include \"geometry/cross_point.hpp\"\n\n#include <vector>\n\n// \u5186\u306E\
-    \u63A5\u70B9 (\u5186\u306E\u5916\u5074\u306E\u70B9\u306B\u5BFE\u3059\u308B\u5186\
-    \u306E\u63A5\u7DDA\u306E\u5186\u3068\u306E\u4EA4\u70B9)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_F\n\
-    template <class T> std::vector<Point<T>> tangent_point(const Circle<T>& c, const\
-    \ Point<T>& p) {\n    static_assert(is_geometry_floating_point<T>::value == true);\n\
-    \    assert(sign(abs(c.o - p) - c.r) == 1);\n    return cross_point(c, Circle(p,\
-    \ std::sqrt(norm(c.o - p) - c.r * c.r)));\n}"
+    \    return {p, q};\n}\n#line 6 \"geometry/tangent.hpp\"\n\n#line 8 \"geometry/tangent.hpp\"\
+    \n\n// \u5186 c \u306E\u70B9 p \u306B\u5BFE\u3059\u308B\u63A5\u7DDA\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_F\n\
+    template <class T> std::vector<Line<T>> tangent(const Circle<T>& c, const Point<T>&\
+    \ p) {\n    static_assert(is_geometry_floating_point<T>::value == true);\n   \
+    \ assert(sign(norm(c.o - p) - c.r * c.r) == 1);\n    auto tangent_points = cross_point(c,\
+    \ Circle(p, std::sqrt(norm(c.o - p) - c.r * c.r)));\n    std::vector<Line<T>>\
+    \ res;\n    for (auto&& tp : tangent_points) {\n        res.emplace_back(p, tp);\n\
+    \    }\n    return res;\n}\n\n// \u5186 c1, c2 \u306E\u5171\u901A\u63A5\u7DDA\n\
+    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_G\ntemplate\
+    \ <class T> std::vector<Line<T>> tangent(Circle<T> c1, Circle<T> c2) {\n    assert(!(equal(c1.r,\
+    \ c2.r) and equal(c1.o, c2.o)));  // 2 \u3064\u306E\u5186\u306F\u540C\u4E00\u306A\
+    \u306E\u3067\u63A5\u7DDA\u304C\u7121\u6570\u306B\u3042\u308B\n    std::vector<Line<T>>\
+    \ res;\n    if (c1.r < c2.r) std::swap(c1, c2);\n    // c1.r >= c2.r\n    T g2\
+    \ = norm(c1.o - c2.o);\n    T g = abs(c1.o - c2.o);\n    if (equal(g2, T(0)))\
+    \ return res;               // \u4E2D\u5FC3\u306F\u4E00\u81F4\u3057\u3066\u3044\
+    \u308B\u304C\u534A\u5F84\u304C\u7570\u306A\u308B\n    Point<T> u = (c2.o - c1.o)\
+    \ / g;                // c1.o \u304B\u3089 c2.o \u3078\u306E\u5358\u4F4D\u30D9\
+    \u30AF\u30C8\u30EB\n    Point<T> v = rotate(u, Constants<T>::PI / 2);  // u \u3068\
+    \u76F4\u884C\u3059\u308B\u5358\u4F4D\u30D9\u30AF\u30C8\u30EB\n    for (int s :\
+    \ {-1, 1}) {\n        T h = (c1.r + s * c2.r) / g;\n        if (equal(1 - h *\
+    \ h, T(0))) {\n            res.emplace_back(c1.o + u * c1.r, c1.o + (u + v) *\
+    \ c1.r);\n        } else if (sign(1 - h * h) == 1) {\n            Point<T> uu\
+    \ = u * h, vv = v * std::sqrt(1 - h * h);\n            res.emplace_back(c1.o +\
+    \ (uu + vv) * c1.r, c2.o - (uu + vv) * c2.r * s);\n            res.emplace_back(c1.o\
+    \ + (uu - vv) * c1.r, c2.o - (uu - vv) * c2.r * s);\n        }\n    }\n    return\
+    \ res;\n}\n#line 9 \"verify/geometry/tangent_cp.test.cpp\"\n\nint main() {\n \
+    \   Point<double> P;\n    Circle<double> C;\n    std::cin >> P >> C;\n    auto\
+    \ lines = tangent(C, P);\n    std::vector<Point<double>> ans;\n    for (auto&&\
+    \ l : lines) {\n        if (is_intersect(C, l.a)) {\n            ans.push_back(l.a);\n\
+    \        }\n        if (is_intersect(C, l.b)) {\n            ans.push_back(l.b);\n\
+    \        }\n    }\n    assert(ans.size() == 2);\n    std::sort(ans.begin(), ans.end(),\
+    \ compare_x<double>);\n    std::cout << std::fixed << std::setprecision(15) <<\
+    \ ans[0].x << ' ' << ans[0].y << '\\n';\n    std::cout << std::fixed << std::setprecision(15)\
+    \ << ans[1].x << ' ' << ans[1].y << '\\n';\n    return 0;\n}\n"
+  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_F\"\
+    \n#define ERROR 0.00001\n\n#include <iostream>\n#include <iomanip>\n#include <algorithm>\n\
+    \n#include \"geometry/tangent.hpp\"\n\nint main() {\n    Point<double> P;\n  \
+    \  Circle<double> C;\n    std::cin >> P >> C;\n    auto lines = tangent(C, P);\n\
+    \    std::vector<Point<double>> ans;\n    for (auto&& l : lines) {\n        if\
+    \ (is_intersect(C, l.a)) {\n            ans.push_back(l.a);\n        }\n     \
+    \   if (is_intersect(C, l.b)) {\n            ans.push_back(l.b);\n        }\n\
+    \    }\n    assert(ans.size() == 2);\n    std::sort(ans.begin(), ans.end(), compare_x<double>);\n\
+    \    std::cout << std::fixed << std::setprecision(15) << ans[0].x << ' ' << ans[0].y\
+    \ << '\\n';\n    std::cout << std::fixed << std::setprecision(15) << ans[1].x\
+    \ << ' ' << ans[1].y << '\\n';\n    return 0;\n}"
   dependsOn:
+  - geometry/tangent.hpp
   - geometry/point.hpp
   - geometry/geometry_template.hpp
   - geometry/circle.hpp
   - geometry/cross_point.hpp
   - geometry/line.hpp
   - geometry/is_intersect.hpp
-  isVerificationFile: false
-  path: geometry/tangent_point.hpp
-  requiredBy:
-  - geometry/all.hpp
-  timestamp: '2024-08-02 21:55:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/geometry/tangent_point.test.cpp
-documentation_of: geometry/tangent_point.hpp
+  isVerificationFile: true
+  path: verify/geometry/tangent_cp.test.cpp
+  requiredBy: []
+  timestamp: '2024-08-03 03:01:41+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: verify/geometry/tangent_cp.test.cpp
 layout: document
-title: "Tangent Point (\u5186\u306E\u63A5\u70B9)"
+redirect_from:
+- /verify/verify/geometry/tangent_cp.test.cpp
+- /verify/verify/geometry/tangent_cp.test.cpp.html
+title: verify/geometry/tangent_cp.test.cpp
 ---
-
-## 使い方
-
-```cpp
-Point<T> P;
-Circle<T> C;
-auto res = tangent_point(C, P);
-   
-```
-
-## 参考文献

@@ -8,9 +8,6 @@ data:
     path: geometry/point.hpp
     title: "Point (\u70B9)"
   _extendedRequiredBy:
-  - icon: ':warning:'
-    path: geometry/all.hpp
-    title: geometry/all.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/circumscribed_circle.hpp
     title: "Circumscribed Circle (\u5916\u63A5\u5186)"
@@ -35,8 +32,8 @@ data:
     title: "Polygon Contain (\u591A\u89D2\u5F62\u3068\u70B9\u306E\u4EA4\u5DEE\u5224\
       \u5B9A)"
   - icon: ':heavy_check_mark:'
-    path: geometry/tangent_point.hpp
-    title: "Tangent Point (\u5186\u306E\u63A5\u70B9)"
+    path: geometry/tangent.hpp
+    title: "Tangent (\u63A5\u7DDA)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/circumscribed_circle.test.cpp
@@ -66,11 +63,14 @@ data:
     path: verify/geometry/polygon_contain.test.cpp
     title: verify/geometry/polygon_contain.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/geometry/tangent_cc.test.cpp
+    title: verify/geometry/tangent_cc.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/tangent_cp.test.cpp
+    title: verify/geometry/tangent_cp.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/tangent_number.test.cpp
     title: verify/geometry/tangent_number.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/tangent_point.test.cpp
-    title: verify/geometry/tangent_point.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -218,14 +218,12 @@ data:
   - geometry/is_intersect.hpp
   - geometry/incircle.hpp
   - geometry/cross_point.hpp
-  - geometry/all.hpp
   - geometry/convex_polygon_cut.hpp
   - geometry/polygon_contain.hpp
-  - geometry/tangent_point.hpp
+  - geometry/tangent.hpp
   timestamp: '2024-08-02 21:55:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/geometry/tangent_point.test.cpp
   - verify/geometry/cross_point_ss.test.cpp
   - verify/geometry/polygon_contain.test.cpp
   - verify/geometry/cross_point_cl.test.cpp
@@ -233,8 +231,10 @@ data:
   - verify/geometry/incircle.test.cpp
   - verify/geometry/tangent_number.test.cpp
   - verify/geometry/is_intersect_ss.test.cpp
+  - verify/geometry/tangent_cc.test.cpp
   - verify/geometry/distance_ss.test.cpp
   - verify/geometry/convex_polygon_cut.test.cpp
+  - verify/geometry/tangent_cp.test.cpp
   - verify/geometry/circumscribed_circle.test.cpp
 documentation_of: geometry/circle.hpp
 layout: document

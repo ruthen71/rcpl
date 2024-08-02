@@ -12,9 +12,6 @@ data:
     title: "Polygon (\u591A\u89D2\u5F62)"
   _extendedRequiredBy:
   - icon: ':warning:'
-    path: geometry/all.hpp
-    title: geometry/all.hpp
-  - icon: ':warning:'
     path: geometry/farthest_pair.hpp
     title: "Farthest Pair (\u6700\u9060\u70B9\u5BFE)"
   _extendedVerifiedWith:
@@ -194,7 +191,6 @@ data:
   path: geometry/convex_hull_monotone_chain.hpp
   requiredBy:
   - geometry/farthest_pair.hpp
-  - geometry/all.hpp
   timestamp: '2024-08-02 21:55:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

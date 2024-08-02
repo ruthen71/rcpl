@@ -22,10 +22,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: "Point (\u70B9)"
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: geometry/all.hpp
-    title: geometry/all.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/incircle.test.cpp
@@ -348,8 +345,7 @@ data:
   - geometry/distance.hpp
   isVerificationFile: false
   path: geometry/incircle.hpp
-  requiredBy:
-  - geometry/all.hpp
+  requiredBy: []
   timestamp: '2024-08-02 21:55:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

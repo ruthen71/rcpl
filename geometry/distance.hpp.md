@@ -17,9 +17,6 @@ data:
     path: geometry/point.hpp
     title: "Point (\u70B9)"
   _extendedRequiredBy:
-  - icon: ':warning:'
-    path: geometry/all.hpp
-    title: geometry/all.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/incircle.hpp
     title: "Incircle (\u5185\u63A5\u5186)"
@@ -310,7 +307,6 @@ data:
   path: geometry/distance.hpp
   requiredBy:
   - geometry/incircle.hpp
-  - geometry/all.hpp
   timestamp: '2024-08-02 21:55:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
