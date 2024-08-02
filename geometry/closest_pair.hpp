@@ -5,6 +5,7 @@
 #include <tuple>
 #include <limits>
 #include <algorithm>
+#include <numeric>
 
 // 最近点対 (分割統治法)
 // O(n log n)
