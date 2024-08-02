@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: "\u5E7E\u4F55\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy:
@@ -14,17 +14,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/circumscribed_circle.hpp
     title: "Circumscribed Circle (\u5916\u63A5\u5186)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/closest_pair.hpp
     title: "Closest Pair (\u6700\u8FD1\u70B9\u5BFE)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_hull_monotone_chain.hpp
     title: "Convex Hull (\u51F8\u5305)"
   - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_cut.hpp
     title: "Convex Polygon Cut (\u51F8\u591A\u89D2\u5F62\u306E\u76F4\u7DDA\u3067\u306E\
       \u5207\u65AD)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_diameter.hpp
     title: "Convex Polygon Diameter (\u51F8\u591A\u89D2\u5F62\u306E\u76F4\u5F84)"
   - icon: ':heavy_check_mark:'
@@ -33,7 +33,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/distance.hpp
     title: "Distance (\u8DDD\u96E2)"
-  - icon: ':x:'
+  - icon: ':warning:'
     path: geometry/farthest_pair.hpp
     title: "Farthest Pair (\u6700\u9060\u70B9\u5BFE)"
   - icon: ':heavy_check_mark:'
@@ -45,7 +45,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: "Line / Segment (\u76F4\u7DDA\u30FB\u7DDA\u5206)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon.hpp
     title: "Polygon (\u591A\u89D2\u5F62)"
   - icon: ':heavy_check_mark:'
@@ -65,9 +65,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/closest_pair.test.cpp
     title: verify/geometry/closest_pair.test.cpp
-  - icon: ':x:'
-    path: verify/geometry/closest_pair_farthest_pair.test.cpp
-    title: verify/geometry/closest_pair_farthest_pair.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/geometry/compare_atan2.test.cpp
     title: verify/geometry/compare_atan2.test.cpp
@@ -122,9 +119,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/tangent_point.test.cpp
     title: verify/geometry/tangent_point.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C
@@ -331,7 +328,7 @@ data:
   - geometry/polygon.hpp
   - geometry/tangent_point.hpp
   timestamp: '2024-08-02 21:55:10+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/geometry/tangent_point.test.cpp
   - verify/geometry/convex_polygon_diameter.test.cpp
@@ -342,7 +339,6 @@ data:
   - verify/geometry/incircle.test.cpp
   - verify/geometry/ccw.test.cpp
   - verify/geometry/tangent_number.test.cpp
-  - verify/geometry/closest_pair_farthest_pair.test.cpp
   - verify/geometry/reflection.test.cpp
   - verify/geometry/projection.test.cpp
   - verify/geometry/polygon_is_convex.test.cpp

@@ -7,17 +7,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/circumscribed_circle.hpp
     title: "Circumscribed Circle (\u5916\u63A5\u5186)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/closest_pair.hpp
     title: "Closest Pair (\u6700\u8FD1\u70B9\u5BFE)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_hull_monotone_chain.hpp
     title: "Convex Hull (\u51F8\u5305)"
   - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_cut.hpp
     title: "Convex Polygon Cut (\u51F8\u591A\u89D2\u5F62\u306E\u76F4\u7DDA\u3067\u306E\
       \u5207\u65AD)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_diameter.hpp
     title: "Convex Polygon Diameter (\u51F8\u591A\u89D2\u5F62\u306E\u76F4\u5F84)"
   - icon: ':heavy_check_mark:'
@@ -26,10 +26,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/distance.hpp
     title: "Distance (\u8DDD\u96E2)"
-  - icon: ':x:'
+  - icon: ':warning:'
     path: geometry/farthest_pair.hpp
     title: "Farthest Pair (\u6700\u9060\u70B9\u5BFE)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: "\u5E7E\u4F55\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   - icon: ':heavy_check_mark:'
@@ -41,10 +41,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: "Line / Segment (\u76F4\u7DDA\u30FB\u7DDA\u5206)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: "Point (\u70B9)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon.hpp
     title: "Polygon (\u591A\u89D2\u5F62)"
   - icon: ':heavy_check_mark:'

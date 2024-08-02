@@ -1,27 +1,27 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: "\u5E7E\u4F55\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: "Point (\u70B9)"
   _extendedRequiredBy:
   - icon: ':warning:'
     path: geometry/all.hpp
     title: geometry/all.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_hull_monotone_chain.hpp
     title: "Convex Hull (\u51F8\u5305)"
   - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_cut.hpp
     title: "Convex Polygon Cut (\u51F8\u591A\u89D2\u5F62\u306E\u76F4\u7DDA\u3067\u306E\
       \u5207\u65AD)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_diameter.hpp
     title: "Convex Polygon Diameter (\u51F8\u591A\u89D2\u5F62\u306E\u76F4\u5F84)"
-  - icon: ':x:'
+  - icon: ':warning:'
     path: geometry/farthest_pair.hpp
     title: "Farthest Pair (\u6700\u9060\u70B9\u5BFE)"
   - icon: ':heavy_check_mark:'
@@ -29,9 +29,6 @@ data:
     title: "Polygon Contain (\u591A\u89D2\u5F62\u3068\u70B9\u306E\u4EA4\u5DEE\u5224\
       \u5B9A)"
   _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/geometry/closest_pair_farthest_pair.test.cpp
-    title: verify/geometry/closest_pair_farthest_pair.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/geometry/convex_hull_monotone_chain.test.cpp
     title: verify/geometry/convex_hull_monotone_chain.test.cpp
@@ -50,9 +47,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/polygon_is_convex.test.cpp
     title: verify/geometry/polygon_is_convex.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A
@@ -216,11 +213,10 @@ data:
   - geometry/polygon_contain.hpp
   - geometry/convex_hull_monotone_chain.hpp
   timestamp: '2024-08-02 21:55:10+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/geometry/convex_polygon_diameter.test.cpp
   - verify/geometry/polygon_contain.test.cpp
-  - verify/geometry/closest_pair_farthest_pair.test.cpp
   - verify/geometry/polygon_is_convex.test.cpp
   - verify/geometry/polygon_area.test.cpp
   - verify/geometry/convex_polygon_cut.test.cpp

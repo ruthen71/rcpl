@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: "\u5E7E\u4F55\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: "Point (\u70B9)"
   _extendedRequiredBy:
@@ -15,12 +15,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/closest_pair.test.cpp
     title: verify/geometry/closest_pair.test.cpp
-  - icon: ':x:'
-    path: verify/geometry/closest_pair_farthest_pair.test.cpp
-    title: verify/geometry/closest_pair_farthest_pair.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_5_A
@@ -189,9 +186,8 @@ data:
   requiredBy:
   - geometry/all.hpp
   timestamp: '2024-08-03 01:19:23+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/geometry/closest_pair_farthest_pair.test.cpp
   - verify/geometry/closest_pair.test.cpp
 documentation_of: geometry/closest_pair.hpp
 layout: document
