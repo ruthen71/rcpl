@@ -31,6 +31,7 @@
 "verify/geometry/ccw.test.cpp": "2024-08-03 20:33:13 +0900",
 "verify/geometry/circumscribed_circle.test.cpp": "2024-08-03 20:33:13 +0900",
 "verify/geometry/closest_pair.test.cpp": "2024-08-03 20:33:13 +0900",
+"verify/geometry/common_area_cp.test.cpp": "2024-08-04 01:49:16 +0900",
 "verify/geometry/compare_atan2.test.cpp": "2024-08-03 20:33:13 +0900",
 "verify/geometry/convex_hull_monotone_chain_1.test.cpp": "2024-08-03 20:33:13 +0900",
 "verify/geometry/convex_hull_monotone_chain_2.test.cpp": "2024-08-03 20:33:13 +0900",
