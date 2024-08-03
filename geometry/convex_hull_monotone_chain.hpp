@@ -11,11 +11,15 @@
 // 反時計回り
 // strict を true にすると凸包の辺上に並ぶ頂点は含めない (頂点数が最小になる)
 template <class T> Polygon<T> convex_hull_monotone_chain(std::vector<Point<T>>& p, bool strict = true) {
-    std::sort(p.begin(), p.end());
+    if (is_geometry_integer<T>::value) {
+        std::sort(p.begin(), p.end());
+    } else {
+        assert(is_geometry_floating_point<T>::value);
+        std::sort(p.begin(), p.end(), compare_x<T>);
+    }
     p.erase(std::unique(p.begin(), p.end()), p.end());
     const int n = (int)(p.size());
     if (n <= 2) return p;
-    std::sort(p.begin(), p.end(), compare_x<T>);
     Polygon<T> r;
     r.reserve(n * 2);
     auto f = [&strict](Ccw ccwres) -> bool { return strict ? ccwres != Ccw::CLOCKWISE : ccwres == Ccw::COUNTER_CLOCKWISE; };
