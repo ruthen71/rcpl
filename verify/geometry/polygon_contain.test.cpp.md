@@ -113,38 +113,40 @@ data:
     \ -b.x);\n}\n// \u7D76\u5BFE\u5024\u306E 2 \u4E57\ntemplate <class T> inline T\
     \ norm(const Point<T>& p) { return p.x * p.x + p.y * p.y; }\n// \u7D76\u5BFE\u5024\
     \ntemplate <class T> inline T abs(const Point<T>& p) {\n    static_assert(is_geometry_floating_point<T>::value\
-    \ == true);\n    return std::sqrt(norm(p));\n}\n// \u504F\u89D2 (-PI, PI]\ntemplate\
-    \ <class T> inline T arg(const Point<T>& p) {\n    static_assert(is_geometry_floating_point<T>::value\
-    \ == true);\n    return std::atan2(p.y, p.x);\n}\n// \u5171\u5F79\u8907\u7D20\u6570\
-    \ (x \u8EF8\u306B\u3064\u3044\u3066\u5BFE\u8C61\u306A\u70B9)\ntemplate <class\
-    \ T> inline Point<T> conj(const Point<T>& p) { return Point(p.x, -p.y); }\n//\
-    \ \u6975\u5EA7\u6A19\u7CFB -> \u76F4\u4EA4\u5EA7\u6A19\u7CFB (\u7D76\u5BFE\u5024\
-    \u304C rho \u3067\u504F\u89D2\u304C theta \u30E9\u30B8\u30A2\u30F3)\ntemplate\
-    \ <class T> inline Point<T> polar(const T rho, const T theta = T(0)) {\n    static_assert(is_geometry_floating_point<T>::value\
-    \ == true);\n    assert(sign(rho) >= 0);\n    return Point<T>(std::cos(theta),\
-    \ std::sin(theta)) * rho;\n}\n\n// ccw \u306E\u623B\u308A\u5024\nenum class Ccw\
-    \ {\n    COUNTER_CLOCKWISE = 1,  // a->b->c \u53CD\u6642\u8A08\u56DE\u308A\n \
-    \   CLOCKWISE = -1,         // a->b->c \u6642\u8A08\u56DE\u308A\n    ONLINE_BACK\
-    \ = 2,        // c->a->b \u76F4\u7DDA\n    ONLINE_FRONT = -2,      // a->b->c\
-    \ \u76F4\u7DDA\n    ON_SEGMENT = 0          // a->c->b \u76F4\u7DDA\n};\n// \u70B9\
-    \ a, b, c \u306E\u4F4D\u7F6E\u95A2\u4FC2\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C\n\
+    \ == true);\n    return std::sqrt(norm(p));\n}\n// \u504F\u89D2\ntemplate <class\
+    \ T> inline T arg(const Point<T>& p) {\n    static_assert(is_geometry_floating_point<T>::value\
+    \ == true);\n    return std::atan2(p.y, p.x);  // (-PI, PI]\n}\n// \u5171\u5F79\
+    \u8907\u7D20\u6570 (x \u8EF8\u306B\u3064\u3044\u3066\u5BFE\u8C61\u306A\u70B9)\n\
+    template <class T> inline Point<T> conj(const Point<T>& p) { return Point(p.x,\
+    \ -p.y); }\n// \u6975\u5EA7\u6A19\u7CFB -> \u76F4\u4EA4\u5EA7\u6A19\u7CFB (\u7D76\
+    \u5BFE\u5024\u304C rho \u3067\u504F\u89D2\u304C theta \u30E9\u30B8\u30A2\u30F3\
+    )\ntemplate <class T> inline Point<T> polar(const T rho, const T theta = T(0))\
+    \ {\n    static_assert(is_geometry_floating_point<T>::value == true);\n    assert(sign(rho)\
+    \ >= 0);\n    return Point<T>(std::cos(theta), std::sin(theta)) * rho;\n}\n//\
+    \ ccw \u306E\u623B\u308A\u5024\nenum class Ccw {\n    COUNTER_CLOCKWISE = 1, \
+    \ // a->b->c \u53CD\u6642\u8A08\u56DE\u308A\n    CLOCKWISE = -1,         // a->b->c\
+    \ \u6642\u8A08\u56DE\u308A\n    ONLINE_BACK = 2,        // c->a->b \u76F4\u7DDA\
+    \n    ONLINE_FRONT = -2,      // a->b->c \u76F4\u7DDA\n    ON_SEGMENT = 0    \
+    \      // a->c->b \u76F4\u7DDA\n};\n// \u70B9 a, b, c \u306E\u4F4D\u7F6E\u95A2\
+    \u4FC2\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C\n\
     template <class T> Ccw ccw(const Point<T>& a, const Point<T>& b, const Point<T>&\
     \ c) {\n    Point<T> ab = b - a;\n    Point<T> ac = c - a;\n    if (sign(cross(ab,\
     \ ac)) == 1) return Ccw::COUNTER_CLOCKWISE;\n    if (sign(cross(ab, ac)) == -1)\
     \ return Ccw::CLOCKWISE;\n    if (sign(dot(ab, ac)) == -1) return Ccw::ONLINE_BACK;\n\
     \    if (sign(norm(ab) - norm(ac)) == -1) return Ccw::ONLINE_FRONT;\n    return\
-    \ Ccw::ON_SEGMENT;\n}\n\n// \u7DDA\u5206 a->b \u304B\u3089 \u7DDA\u5206 a->c \u307E\
-    \u3067\u306E\u89D2\u5EA6 (\u30E9\u30B8\u30A2\u30F3, \u7B26\u53F7\u4ED8\u304D)\n\
-    template <class T> T get_angle(const Point<T>& a, const Point<T>& b, const Point<T>&\
-    \ c) {\n    Point<T> ab = b - a;\n    Point<T> ac = c - a;\n    ac *= conj(ab)\
-    \ / norm(ab);  // a-b\u304C x \u8EF8\u306B\u306A\u308B\u3088\u3046\u306B\u56DE\
-    \u8EE2\n    return arg(ac);\n}\n#line 4 \"geometry/polygon.hpp\"\n\n#include <vector>\n\
-    #line 7 \"geometry/polygon.hpp\"\n\n// \u591A\u89D2\u5F62\ntemplate <class T>\
-    \ using Polygon = std::vector<Point<T>>;\ntemplate <class T> std::istream& operator>>(std::istream&\
-    \ is, Polygon<T>& p) {\n    for (auto&& pi : p) is >> pi;\n    return is;\n}\n\
-    template <class T> std::ostream& operator<<(std::ostream& os, const Polygon<T>&\
-    \ p) {\n    for (auto&& pi : p) os << pi << \" -> \";\n    return os;\n}\n\n//\
-    \ \u591A\u89D2\u5F62\u306E\u9762\u7A4D (\u7B26\u53F7\u4ED8\u304D)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\n\
+    \ Ccw::ON_SEGMENT;\n}\n// \u7DDA\u5206 a -> b \u304B\u3089 \u7DDA\u5206 a -> c\
+    \ \u307E\u3067\u306E\u53CD\u6642\u8A08\u56DE\u308A\u306E\u89D2\u5EA6 (\u30E9\u30B8\
+    \u30A2\u30F3)\ntemplate <class T> T get_angle(const Point<T>& a, const Point<T>&\
+    \ b, const Point<T>& c) {\n    Point<T> ab = b - a;\n    Point<T> ac = c - a;\n\
+    \    // a-b\u304C x \u8EF8\u306B\u306A\u308B\u3088\u3046\u306B\u56DE\u8EE2\n \
+    \   ac *= conj(ab) / norm(ab);\n    return arg(ac);  // (-PI, PI]\n}\n#line 4\
+    \ \"geometry/polygon.hpp\"\n\n#include <vector>\n#line 7 \"geometry/polygon.hpp\"\
+    \n\n// \u591A\u89D2\u5F62\ntemplate <class T> using Polygon = std::vector<Point<T>>;\n\
+    template <class T> std::istream& operator>>(std::istream& is, Polygon<T>& p) {\n\
+    \    for (auto&& pi : p) is >> pi;\n    return is;\n}\ntemplate <class T> std::ostream&\
+    \ operator<<(std::ostream& os, const Polygon<T>& p) {\n    for (auto&& pi : p)\
+    \ os << pi << \" -> \";\n    return os;\n}\n\n// \u591A\u89D2\u5F62\u306E\u9762\
+    \u7A4D (\u7B26\u53F7\u4ED8\u304D)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\n\
     // return area * 2\ntemplate <class T> T polygon_area2(const Polygon<T>& p) {\n\
     \    const int n = (int)(p.size());\n    assert(n >= 2);\n    T res = T(0);\n\
     \    for (int i = 0; i < n; i++) res += cross(p[i], p[i + 1 == n ? 0 : i + 1]);\n\
@@ -254,13 +256,13 @@ data:
     \ T> inline bool is_intersect(const Point<T>& p1, const Point<T>& p2) { return\
     \ equal(p1, p2); }\n\n// \u5186 c1, c2 \u306E\u4EA4\u5DEE\u5224\u5B9A\ntemplate\
     \ <class T> inline bool is_intersect(const Circle<T>& c1, const Circle<T>& c2)\
-    \ {\n    int num = tangent_number(c1, c2);\n    return 1 <= num and num <= 3;\n\
-    }\n\n// \u5186 c, \u70B9 p \u306E\u4EA4\u5DEE\u5224\u5B9A\ntemplate <class T>\
-    \ inline bool is_intersect(const Circle<T>& c, const Point<T>& p) { return equal(norm(p\
-    \ - c.o), c.r * c.r); }\ntemplate <class T> inline bool is_intersect(const Point<T>&\
-    \ p, const Circle<T>& c) { return equal(norm(p - c.o), c.r * c.r); }\n\n// \u5186\
-    \ c, \u76F4\u7DDA l \u306E\u4EA4\u5DEE\u5224\u5B9A\ntemplate <class T> inline\
-    \ bool is_intersect(const Circle<T>& c, const Line<T>& l) {\n    static_assert(is_geometry_floating_point<T>::value\
+    \ {\n    const int num = tangent_number(c1, c2);\n    return 1 <= num and num\
+    \ <= 3;\n}\n\n// \u5186 c, \u70B9 p \u306E\u4EA4\u5DEE\u5224\u5B9A\ntemplate <class\
+    \ T> inline bool is_intersect(const Circle<T>& c, const Point<T>& p) { return\
+    \ equal(norm(p - c.o), c.r * c.r); }\ntemplate <class T> inline bool is_intersect(const\
+    \ Point<T>& p, const Circle<T>& c) { return equal(norm(p - c.o), c.r * c.r); }\n\
+    \n// \u5186 c, \u76F4\u7DDA l \u306E\u4EA4\u5DEE\u5224\u5B9A\ntemplate <class\
+    \ T> inline bool is_intersect(const Circle<T>& c, const Line<T>& l) {\n    static_assert(is_geometry_floating_point<T>::value\
     \ == true);\n    // norm(c.o - projection(l, c.o)) \u304C\u76F4\u7DDA l \u3068\
     \ \u5186 c \u306E\u4E2D\u5FC3 c.o \u306E\u8DDD\u96E2\u306E 2 \u4E57\n    return\
     \ sign(c.r * c.r - norm(c.o - projection(l, c.o))) >= 0;\n}\ntemplate <class T>\
@@ -315,7 +317,7 @@ data:
   isVerificationFile: true
   path: verify/geometry/polygon_contain.test.cpp
   requiredBy: []
-  timestamp: '2024-08-03 20:33:13+09:00'
+  timestamp: '2024-08-04 03:17:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/polygon_contain.test.cpp

@@ -69,6 +69,9 @@ data:
     path: verify/geometry/closest_pair.test.cpp
     title: verify/geometry/closest_pair.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/geometry/common_area_cc.test.cpp
+    title: verify/geometry/common_area_cc.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/common_area_cp.test.cpp
     title: verify/geometry/common_area_cp.test.cpp
   - icon: ':heavy_check_mark:'
@@ -200,6 +203,7 @@ data:
   - verify/geometry/convex_polygon_diameter.test.cpp
   - verify/geometry/cross_point_ss.test.cpp
   - verify/geometry/polygon_contain.test.cpp
+  - verify/geometry/common_area_cc.test.cpp
   - verify/geometry/convex_hull_monotone_chain_1.test.cpp
   - verify/geometry/cross_point_cl.test.cpp
   - verify/geometry/cross_point_cc.test.cpp

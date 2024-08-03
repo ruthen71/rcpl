@@ -5,6 +5,9 @@ data:
     path: geometry/circle.hpp
     title: "Circle (\u5186)"
   - icon: ':heavy_check_mark:'
+    path: geometry/common_area.hpp
+    title: "Common Area (\u5171\u901A\u90E8\u5206\u306E\u9762\u7A4D)"
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point.hpp
     title: "Cross Point (\u4EA4\u70B9)"
   - icon: ':heavy_check_mark:'
@@ -19,6 +22,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: "Point (\u70B9)"
+  - icon: ':heavy_check_mark:'
+    path: geometry/polygon.hpp
+    title: "Polygon (\u591A\u89D2\u5F62)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -26,25 +32,26 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    ERROR: '0.00000001'
-    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_C
+    ERROR: '0.000001'
+    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_I
     links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_C
-  bundledCode: "#line 1 \"verify/geometry/cross_point_ss.test.cpp\"\n#define PROBLEM\
-    \ \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_C\"\n#define\
-    \ ERROR 0.00000001\n\n#include <iostream>\n#include <iomanip>\n\n#line 2 \"geometry/cross_point.hpp\"\
-    \n\n#line 2 \"geometry/point.hpp\"\n\n#line 2 \"geometry/geometry_template.hpp\"\
-    \n\n#include <type_traits>\n\n// Constants (EPS, PI)\n// EPS \u306E\u5909\u66F4\
-    \u306F Constants<T>::set_eps(new_eps) \u3067\ntemplate <class T> struct Constants\
-    \ {\n    static T EPS;\n    static void set_eps(const T e) { EPS = e; }\n    static\
-    \ constexpr T PI = 3.14159'26535'89793L;\n};\n\ntemplate <> double Constants<double>::EPS\
-    \ = 1e-9;\ntemplate <> long double Constants<long double>::EPS = 1e-12;\ntemplate\
-    \ <> long long Constants<long long>::EPS = 0;\n\n// \u6C4E\u7528\u95A2\u6570\n\
-    template <class T> inline int sign(const T x) { return x < -Constants<T>::EPS\
-    \ ? -1 : (x > Constants<T>::EPS ? 1 : 0); }\ntemplate <class T> inline bool equal(const\
-    \ T a, const T b) { return sign(a - b) == 0; }\ntemplate <class T> inline T radian_to_degree(const\
-    \ T r) { return r * 180.0 / Constants<T>::PI; }\ntemplate <class T> inline T degree_to_radian(const\
-    \ T d) { return d * Constants<T>::PI / 180.0; }\n\n// type traits\ntemplate <class\
+    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_I
+  bundledCode: "#line 1 \"verify/geometry/common_area_cc.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_I\"\n#define\
+    \ ERROR 0.000001\n\n#include <iostream>\n#include <iomanip>\n\n#line 2 \"geometry/common_area.hpp\"\
+    \n\n#line 2 \"geometry/circle.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n#line\
+    \ 2 \"geometry/geometry_template.hpp\"\n\n#include <type_traits>\n\n// Constants\
+    \ (EPS, PI)\n// EPS \u306E\u5909\u66F4\u306F Constants<T>::set_eps(new_eps) \u3067\
+    \ntemplate <class T> struct Constants {\n    static T EPS;\n    static void set_eps(const\
+    \ T e) { EPS = e; }\n    static constexpr T PI = 3.14159'26535'89793L;\n};\n\n\
+    template <> double Constants<double>::EPS = 1e-9;\ntemplate <> long double Constants<long\
+    \ double>::EPS = 1e-12;\ntemplate <> long long Constants<long long>::EPS = 0;\n\
+    \n// \u6C4E\u7528\u95A2\u6570\ntemplate <class T> inline int sign(const T x) {\
+    \ return x < -Constants<T>::EPS ? -1 : (x > Constants<T>::EPS ? 1 : 0); }\ntemplate\
+    \ <class T> inline bool equal(const T a, const T b) { return sign(a - b) == 0;\
+    \ }\ntemplate <class T> inline T radian_to_degree(const T r) { return r * 180.0\
+    \ / Constants<T>::PI; }\ntemplate <class T> inline T degree_to_radian(const T\
+    \ d) { return d * Constants<T>::PI / 180.0; }\n\n// type traits\ntemplate <class\
     \ T> using is_geometry_floating_point = typename std::conditional<std::is_same<T,\
     \ double>::value || std::is_same<T, long double>::value, std::true_type, std::false_type>::type;\n\
     template <class T> using is_geometry_integer = typename std::conditional<std::is_same<T,\
@@ -136,40 +143,9 @@ data:
     \u30A2\u30F3)\ntemplate <class T> T get_angle(const Point<T>& a, const Point<T>&\
     \ b, const Point<T>& c) {\n    Point<T> ab = b - a;\n    Point<T> ac = c - a;\n\
     \    // a-b\u304C x \u8EF8\u306B\u306A\u308B\u3088\u3046\u306B\u56DE\u8EE2\n \
-    \   ac *= conj(ab) / norm(ab);\n    return arg(ac);  // (-PI, PI]\n}\n#line 2\
-    \ \"geometry/line.hpp\"\n\n#line 4 \"geometry/line.hpp\"\n\n// \u76F4\u7DDA\n\
-    template <class T> struct Line {\n    Point<T> a, b;\n\n    Line() = default;\n\
-    \    Line(const Point<T>& a, const Point<T>& b) : a(a), b(b) {}\n\n    // Ax +\
-    \ By = C\n    Line(const T A, const T B, const T C) {\n        static_assert(is_geometry_floating_point<T>::value\
-    \ == true);\n        assert(!(equal(A, T(0)) and equal(B, T(0))));\n        if\
-    \ (equal(A, T(0))) {\n            a = Point<T>(T(0), C / B), b = Point<T>(T(1),\
-    \ C / B);\n        } else if (equal(B, T(0))) {\n            a = Point<T>(C /\
-    \ A, T(0)), b = Point<T>(C / A, T(1));\n        } else if (equal(C, T(0))) {\n\
-    \            a = Point<T>(T(0), T(0)), b = Point<T>(T(1), -A / B);\n        }\
-    \ else {\n            a = Point<T>(T(0), C / B), b = Point<T>(C / A, T(0));\n\
-    \        }\n    }\n\n    friend std::istream& operator>>(std::istream& is, Line&\
-    \ p) { return is >> p.a >> p.b; }\n    friend std::ostream& operator<<(std::ostream&\
-    \ os, const Line& p) { return os << p.a << \"->\" << p.b; }\n};\n\n// \u7DDA\u5206\
-    \ntemplate <class T> struct Segment : Line<T> {\n    Segment() = default;\n\n\
-    \    Segment(const Point<T>& a, const Point<T>& b) : Line<T>(a, b) {}\n};\n\n\
-    // \u70B9 p \u304B\u3089\u76F4\u7DDA l \u306B\u4E0B\u308D\u3057\u305F\u5782\u7DDA\
-    \u3068\u76F4\u7DDA l \u306E\u4EA4\u70B9\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A\n\
-    template <class T> Point<T> projection(const Line<T>& l, const Point<T>& p) {\n\
-    \    static_assert(is_geometry_floating_point<T>::value == true);\n    T t = dot(p\
-    \ - l.a, l.b - l.a) / norm(l.b - l.a);\n    return l.a + (l.b - l.a) * t;\n}\n\
-    \n// \u76F4\u7DDA l \u306B\u95A2\u3057\u3066\u70B9 p \u3068\u5BFE\u8C61\u306A\u4F4D\
-    \u7F6E\u306B\u3042\u308B\u70B9\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_B\n\
-    template <class T> Point<T> reflection(const Line<T>& l, const Point<T>& p) {\n\
-    \    static_assert(is_geometry_floating_point<T>::value == true);\n    return\
-    \ p + (projection(l, p) - p) * T(2);\n}\n\n// \u76F4\u7DDA l1, l2 \u306E\u5782\
-    \u76F4\u5224\u5B9A\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A\n\
-    template <class T> inline bool is_orthogonal(const Line<T>& l1, const Line<T>&\
-    \ l2) { return sign(dot(l1.b - l1.a, l2.b - l2.a)) == 0; }\n\n// \u76F4\u7DDA\
-    \ l1, l2 \u306E\u5E73\u884C\u5224\u5B9A\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A\n\
-    template <class T> inline bool is_parallel(const Line<T>& l1, const Line<T>& l2)\
-    \ { return sign(cross(l1.b - l1.a, l2.b - l2.a)) == 0; }\n#line 2 \"geometry/circle.hpp\"\
-    \n\n#line 4 \"geometry/circle.hpp\"\n\n// \u5186\ntemplate <class T> struct Circle\
-    \ {\n    Point<T> o;\n    T r;\n\n    Circle() = default;\n    Circle(const Point<T>&\
+    \   ac *= conj(ab) / norm(ab);\n    return arg(ac);  // (-PI, PI]\n}\n#line 4\
+    \ \"geometry/circle.hpp\"\n\n// \u5186\ntemplate <class T> struct Circle {\n \
+    \   Point<T> o;\n    T r;\n\n    Circle() = default;\n    Circle(const Point<T>&\
     \ o, const T r) : o(o), r(r) {}\n\n    friend std::istream& operator>>(std::istream&\
     \ is, Circle& c) { return is >> c.o >> c.r; }\n    friend std::ostream& operator<<(std::ostream&\
     \ os, const Circle& c) { return os << c.o << \", \" << c.r; }\n};\n\n// \u5171\
@@ -183,32 +159,88 @@ data:
     \ == 1) return 2;  // d > c1.r - c2.r and c1.r - c2.r >= 0 <=> d ^ 2 > (c1.r -\
     \ c2.r) ^ 2\n    if (sign(d2 - (c1.r - c2.r) * (c1.r - c2.r)) == 0) return 1;\
     \  // d = c1.r - c2.r and c1.r - c2.r >= 0 <=> d ^ 2 = (c1.r - c2.r) ^ 2\n   \
-    \ return 0;\n}\n#line 2 \"geometry/is_intersect.hpp\"\n\n#line 6 \"geometry/is_intersect.hpp\"\
-    \n\n// \u4EA4\u5DEE\u5224\u5B9A (\u76F4\u7DDA, \u7DDA\u5206, \u5186, \u70B9)\n\
-    // \u76F4\u7DDA l1, l2 \u306E\u4EA4\u5DEE\u5224\u5B9A\ntemplate <class T> bool\
-    \ is_intersect(const Line<T>& l1, const Line<T>& l2) {\n    Point<T> base = l1.b\
-    \ - l1.a;\n    T d12 = cross(base, l2.b - l2.a);\n    T d1 = cross(base, l1.b\
-    \ - l2.a);\n    // sign(d12) != 0 -> \u5E73\u884C\u3067\u306A\u3044\u306E\u3067\
-    \u4EA4\u5DEE\u3059\u308B\n    // sign(d12) == 0 and sign(d1) == 0 -> \u4E00\u81F4\
-    \u3059\u308B\u306E\u3067\u4EA4\u5DEE\u3059\u308B\n    return sign(d12) != 0 or\
-    \ sign(d1) == 0;\n}\n// \u76F4\u7DDA l, \u70B9 p \u306E\u4EA4\u5DEE\u5224\u5B9A\
-    \ntemplate <class T> inline bool is_intersect(const Line<T>& l, const Point<T>&\
-    \ p) {\n    auto res = ccw(l.a, l.b, p);\n    return res == Ccw::ONLINE_BACK or\
-    \ res == Ccw::ONLINE_FRONT or res == Ccw::ON_SEGMENT;\n}\ntemplate <class T> bool\
-    \ is_intersect(const Point<T>& p, const Line<T>& l) { return is_intersect(l, p);\
-    \ }\n\n// \u7DDA\u5206 s, \u70B9 p \u306E\u4EA4\u5DEE\u5224\u5B9A\ntemplate <class\
-    \ T> inline bool is_intersect(const Segment<T>& s, const Point<T>& p) { return\
-    \ ccw(s.a, s.b, p) == Ccw::ON_SEGMENT; }\ntemplate <class T> inline bool is_intersect(const\
-    \ Point<T>& p, const Segment<T>& s) { return ccw(s.a, s.b, p) == Ccw::ON_SEGMENT;\
-    \ }\n\n// \u76F4\u7DDA l, \u7DDA\u5206 s \u306E\u4EA4\u5DEE\u5224\u5B9A\ntemplate\
-    \ <class T> bool is_intersect(const Line<T>& l, const Segment<T>& s) {\n    //\
-    \ s.a \u3068 s.b \u304C\u76F4\u7DDA l \u306B\u95A2\u3057\u3066\u540C\u3058\u5074\
-    \ (\u76F4\u7DDA\u4E0A\u3092\u9664\u304D) \u306B\u3042\u308B\u5834\u5408\u306B\u9650\
-    \u308A\u4EA4\u5DEE\u3057\u306A\u3044\n    auto c1 = ccw(l.a, l.b, s.a);\n    auto\
-    \ c2 = ccw(l.a, l.b, s.b);\n    return !((c1 == c2) and (c1 == Ccw::CLOCKWISE\
-    \ or c1 == Ccw::COUNTER_CLOCKWISE));\n}\ntemplate <class T> bool is_intersect(const\
-    \ Segment<T>& s, const Line<T>& l) { return is_intersect(l, s); }\n\n// \u7DDA\
-    \u5206 s1, s2 \u306E\u4EA4\u5DEE\u5224\u5B9A\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_B\n\
+    \ return 0;\n}\n#line 2 \"geometry/line.hpp\"\n\n#line 4 \"geometry/line.hpp\"\
+    \n\n// \u76F4\u7DDA\ntemplate <class T> struct Line {\n    Point<T> a, b;\n\n\
+    \    Line() = default;\n    Line(const Point<T>& a, const Point<T>& b) : a(a),\
+    \ b(b) {}\n\n    // Ax + By = C\n    Line(const T A, const T B, const T C) {\n\
+    \        static_assert(is_geometry_floating_point<T>::value == true);\n      \
+    \  assert(!(equal(A, T(0)) and equal(B, T(0))));\n        if (equal(A, T(0)))\
+    \ {\n            a = Point<T>(T(0), C / B), b = Point<T>(T(1), C / B);\n     \
+    \   } else if (equal(B, T(0))) {\n            a = Point<T>(C / A, T(0)), b = Point<T>(C\
+    \ / A, T(1));\n        } else if (equal(C, T(0))) {\n            a = Point<T>(T(0),\
+    \ T(0)), b = Point<T>(T(1), -A / B);\n        } else {\n            a = Point<T>(T(0),\
+    \ C / B), b = Point<T>(C / A, T(0));\n        }\n    }\n\n    friend std::istream&\
+    \ operator>>(std::istream& is, Line& p) { return is >> p.a >> p.b; }\n    friend\
+    \ std::ostream& operator<<(std::ostream& os, const Line& p) { return os << p.a\
+    \ << \"->\" << p.b; }\n};\n\n// \u7DDA\u5206\ntemplate <class T> struct Segment\
+    \ : Line<T> {\n    Segment() = default;\n\n    Segment(const Point<T>& a, const\
+    \ Point<T>& b) : Line<T>(a, b) {}\n};\n\n// \u70B9 p \u304B\u3089\u76F4\u7DDA\
+    \ l \u306B\u4E0B\u308D\u3057\u305F\u5782\u7DDA\u3068\u76F4\u7DDA l \u306E\u4EA4\
+    \u70B9\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A\n\
+    template <class T> Point<T> projection(const Line<T>& l, const Point<T>& p) {\n\
+    \    static_assert(is_geometry_floating_point<T>::value == true);\n    T t = dot(p\
+    \ - l.a, l.b - l.a) / norm(l.b - l.a);\n    return l.a + (l.b - l.a) * t;\n}\n\
+    \n// \u76F4\u7DDA l \u306B\u95A2\u3057\u3066\u70B9 p \u3068\u5BFE\u8C61\u306A\u4F4D\
+    \u7F6E\u306B\u3042\u308B\u70B9\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_B\n\
+    template <class T> Point<T> reflection(const Line<T>& l, const Point<T>& p) {\n\
+    \    static_assert(is_geometry_floating_point<T>::value == true);\n    return\
+    \ p + (projection(l, p) - p) * T(2);\n}\n\n// \u76F4\u7DDA l1, l2 \u306E\u5782\
+    \u76F4\u5224\u5B9A\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A\n\
+    template <class T> inline bool is_orthogonal(const Line<T>& l1, const Line<T>&\
+    \ l2) { return sign(dot(l1.b - l1.a, l2.b - l2.a)) == 0; }\n\n// \u76F4\u7DDA\
+    \ l1, l2 \u306E\u5E73\u884C\u5224\u5B9A\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A\n\
+    template <class T> inline bool is_parallel(const Line<T>& l1, const Line<T>& l2)\
+    \ { return sign(cross(l1.b - l1.a, l2.b - l2.a)) == 0; }\n#line 2 \"geometry/polygon.hpp\"\
+    \n\n#line 4 \"geometry/polygon.hpp\"\n\n#include <vector>\n#line 7 \"geometry/polygon.hpp\"\
+    \n\n// \u591A\u89D2\u5F62\ntemplate <class T> using Polygon = std::vector<Point<T>>;\n\
+    template <class T> std::istream& operator>>(std::istream& is, Polygon<T>& p) {\n\
+    \    for (auto&& pi : p) is >> pi;\n    return is;\n}\ntemplate <class T> std::ostream&\
+    \ operator<<(std::ostream& os, const Polygon<T>& p) {\n    for (auto&& pi : p)\
+    \ os << pi << \" -> \";\n    return os;\n}\n\n// \u591A\u89D2\u5F62\u306E\u9762\
+    \u7A4D (\u7B26\u53F7\u4ED8\u304D)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\n\
+    // return area * 2\ntemplate <class T> T polygon_area2(const Polygon<T>& p) {\n\
+    \    const int n = (int)(p.size());\n    assert(n >= 2);\n    T res = T(0);\n\
+    \    for (int i = 0; i < n; i++) res += cross(p[i], p[i + 1 == n ? 0 : i + 1]);\n\
+    \    // counter clockwise: res > 0\n    // clockwise: res < 0\n    return res;\n\
+    }\ntemplate <class T> T polygon_area(const Polygon<T>& p) {\n    static_assert(is_geometry_floating_point<T>::value\
+    \ == true);\n    return polygon_area2(p) / T(2);\n}\n\n// \u591A\u89D2\u5F62\u306E\
+    \u51F8\u5224\u5B9A (\u89D2\u5EA6\u304C 0 \u3067\u3082 PI \u3067\u3082\u8A31\u5BB9\
+    )\n// \u8A31\u5BB9\u3057\u305F\u304F\u306A\u3044\u3068\u304D\u306B\u306F ON_SEGMENT,\
+    \ ONLINE_FRONT, ONLINE_BACK \u304C\u51FA\u3066\u304D\u305F\u3089 false \u3092\u8FD4\
+    \u305B\u3070 OK\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B\n\
+    template <class T> bool polygon_is_convex(const Polygon<T>& p) {\n    const int\
+    \ n = (int)(p.size());\n    assert(n >= 3);\n    bool okccw = true, okcw = true;\n\
+    \    for (int i = 0; i < n; i++) {\n        auto res = ccw(p[i], p[i + 1 >= n\
+    \ ? i + 1 - n : i + 1], p[i + 2 >= n ? i + 2 - n : i + 2]);\n        if (res ==\
+    \ Ccw::CLOCKWISE) okccw = false;\n        if (res == Ccw::COUNTER_CLOCKWISE) okcw\
+    \ = false;\n        if (!okccw and !okcw) return false;\n    }\n    return true;\n\
+    }\n#line 2 \"geometry/cross_point.hpp\"\n\n#line 2 \"geometry/is_intersect.hpp\"\
+    \n\n#line 6 \"geometry/is_intersect.hpp\"\n\n// \u4EA4\u5DEE\u5224\u5B9A (\u76F4\
+    \u7DDA, \u7DDA\u5206, \u5186, \u70B9)\n// \u76F4\u7DDA l1, l2 \u306E\u4EA4\u5DEE\
+    \u5224\u5B9A\ntemplate <class T> bool is_intersect(const Line<T>& l1, const Line<T>&\
+    \ l2) {\n    Point<T> base = l1.b - l1.a;\n    T d12 = cross(base, l2.b - l2.a);\n\
+    \    T d1 = cross(base, l1.b - l2.a);\n    // sign(d12) != 0 -> \u5E73\u884C\u3067\
+    \u306A\u3044\u306E\u3067\u4EA4\u5DEE\u3059\u308B\n    // sign(d12) == 0 and sign(d1)\
+    \ == 0 -> \u4E00\u81F4\u3059\u308B\u306E\u3067\u4EA4\u5DEE\u3059\u308B\n    return\
+    \ sign(d12) != 0 or sign(d1) == 0;\n}\n// \u76F4\u7DDA l, \u70B9 p \u306E\u4EA4\
+    \u5DEE\u5224\u5B9A\ntemplate <class T> inline bool is_intersect(const Line<T>&\
+    \ l, const Point<T>& p) {\n    auto res = ccw(l.a, l.b, p);\n    return res ==\
+    \ Ccw::ONLINE_BACK or res == Ccw::ONLINE_FRONT or res == Ccw::ON_SEGMENT;\n}\n\
+    template <class T> bool is_intersect(const Point<T>& p, const Line<T>& l) { return\
+    \ is_intersect(l, p); }\n\n// \u7DDA\u5206 s, \u70B9 p \u306E\u4EA4\u5DEE\u5224\
+    \u5B9A\ntemplate <class T> inline bool is_intersect(const Segment<T>& s, const\
+    \ Point<T>& p) { return ccw(s.a, s.b, p) == Ccw::ON_SEGMENT; }\ntemplate <class\
+    \ T> inline bool is_intersect(const Point<T>& p, const Segment<T>& s) { return\
+    \ ccw(s.a, s.b, p) == Ccw::ON_SEGMENT; }\n\n// \u76F4\u7DDA l, \u7DDA\u5206 s\
+    \ \u306E\u4EA4\u5DEE\u5224\u5B9A\ntemplate <class T> bool is_intersect(const Line<T>&\
+    \ l, const Segment<T>& s) {\n    // s.a \u3068 s.b \u304C\u76F4\u7DDA l \u306B\
+    \u95A2\u3057\u3066\u540C\u3058\u5074 (\u76F4\u7DDA\u4E0A\u3092\u9664\u304D) \u306B\
+    \u3042\u308B\u5834\u5408\u306B\u9650\u308A\u4EA4\u5DEE\u3057\u306A\u3044\n   \
+    \ auto c1 = ccw(l.a, l.b, s.a);\n    auto c2 = ccw(l.a, l.b, s.b);\n    return\
+    \ !((c1 == c2) and (c1 == Ccw::CLOCKWISE or c1 == Ccw::COUNTER_CLOCKWISE));\n\
+    }\ntemplate <class T> bool is_intersect(const Segment<T>& s, const Line<T>& l)\
+    \ { return is_intersect(l, s); }\n\n// \u7DDA\u5206 s1, s2 \u306E\u4EA4\u5DEE\u5224\
+    \u5B9A\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_B\n\
     template <class T> inline bool is_intersect(const Segment<T>& s1, const Segment<T>&\
     \ s2) {\n    auto c1 = ccw(s1.a, s1.b, s2.a);\n    auto c2 = ccw(s1.a, s1.b, s2.b);\n\
     \    auto c3 = ccw(s2.a, s2.b, s1.a);\n    auto c4 = ccw(s2.a, s2.b, s1.b);\n\
@@ -252,17 +284,16 @@ data:
     \ c.o);\n    return ccw(s.a, s.b, h) == Ccw::ON_SEGMENT;  // s.a -> h -> s.b \u306E\
     \u9806\u3067\u4E26\u3093\u3067\u3044\u308B\n}\ntemplate <class T> inline bool\
     \ is_intersect(const Segment<T>& s, const Circle<T>& c) { return is_intersect(c,\
-    \ s); }\n#line 7 \"geometry/cross_point.hpp\"\n\n#include <vector>\n#line 10 \"\
-    geometry/cross_point.hpp\"\n\n// \u4EA4\u70B9 (\u76F4\u7DDA, \u7DDA\u5206, \u5186\
-    )\n// \u4EA4\u70B9\u3092\u6301\u305F\u306A\u3044\u5834\u5408\u306E\u6319\u52D5\
-    \u306F\u672A\u5B9A\u7FA9\n// \u76F4\u7DDA l1, l2 \u306E\u4EA4\u70B9 1 \u3064\n\
-    template <class T> Point<T> cross_point(const Line<T>& l1, const Line<T>& l2)\
-    \ {\n    static_assert(is_geometry_floating_point<T>::value == true);\n    Point<T>\
-    \ base = l1.b - l1.a;\n    T d12 = cross(base, l2.b - l2.a);\n    T d1 = cross(base,\
-    \ l1.b - l2.a);\n    if (sign(d12) == 0) {\n        assert(sign(d1) == 0);  //\
-    \ \u5E73\u884C\u304B\u3064\u4E00\u81F4\u3057\u306A\u3044\n        return l2.a;\n\
-    \    }\n    return l2.a + (l2.b - l2.a) * (d1 / d12);\n}\n\n// \u7DDA\u5206 s1,\
-    \ s2 \u306E\u4EA4\u70B9 1 \u3064\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_C\n\
+    \ s); }\n#line 7 \"geometry/cross_point.hpp\"\n\n#line 10 \"geometry/cross_point.hpp\"\
+    \n\n// \u4EA4\u70B9 (\u76F4\u7DDA, \u7DDA\u5206, \u5186)\n// \u4EA4\u70B9\u3092\
+    \u6301\u305F\u306A\u3044\u5834\u5408\u306E\u6319\u52D5\u306F\u672A\u5B9A\u7FA9\
+    \n// \u76F4\u7DDA l1, l2 \u306E\u4EA4\u70B9 1 \u3064\ntemplate <class T> Point<T>\
+    \ cross_point(const Line<T>& l1, const Line<T>& l2) {\n    static_assert(is_geometry_floating_point<T>::value\
+    \ == true);\n    Point<T> base = l1.b - l1.a;\n    T d12 = cross(base, l2.b -\
+    \ l2.a);\n    T d1 = cross(base, l1.b - l2.a);\n    if (sign(d12) == 0) {\n  \
+    \      assert(sign(d1) == 0);  // \u5E73\u884C\u304B\u3064\u4E00\u81F4\u3057\u306A\
+    \u3044\n        return l2.a;\n    }\n    return l2.a + (l2.b - l2.a) * (d1 / d12);\n\
+    }\n\n// \u7DDA\u5206 s1, s2 \u306E\u4EA4\u70B9 1 \u3064\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_C\n\
     template <class T> Point<T> cross_point(const Segment<T>& s1, const Segment<T>&\
     \ s2) {\n    static_assert(is_geometry_floating_point<T>::value == true);\n  \
     \  Point<T> base = s1.b - s1.a;\n    T d12 = cross(base, s2.b - s2.a);\n    T\
@@ -299,51 +330,79 @@ data:
     \ T a = std::acos((c1.r * c1.r - c2.r * c2.r + d * d) / (T(2) * c1.r * d));\n\
     \    T t = arg(c2.o - c1.o);\n    Point<T> p = c1.o + polar(c1.r, t + a);\n  \
     \  Point<T> q = c1.o + polar(c1.r, t - a);\n    if (equal(p, q)) return {p};\n\
-    \    return {p, q};\n}\n#line 8 \"verify/geometry/cross_point_ss.test.cpp\"\n\n\
-    int main() {\n    int Q;\n    std::cin >> Q;\n    while (Q--) {\n        // 1\
-    \ \u70B9\u3067\u4EA4\u308F\u308B\u3053\u3068\u304C\u4FDD\u8A3C\u3055\u308C\u3066\
-    \u3044\u308B\u305F\u3081\u76F4\u7DDA\u3068\u7DDA\u5206\u306E\u3069\u306E\u7D44\
-    \u5408\u305B\u306B\u5BFE\u3057\u3066\u3082\u540C\u3058\u7B54\u3048\u3068\u306A\
-    \u308B\n        Line<double> L1, L2;\n        std::cin >> L1 >> L2;\n        Segment<double>\
-    \ S1(L1.a, L1.b), S2(L2.a, L2.b);\n        auto pll = cross_point(L1, L2);\n \
-    \       auto pls = cross_point(L1, S2);\n        auto psl = cross_point(S1, L2);\n\
-    \        auto pss = cross_point(S1, S2);\n        std::vector<Point<double>> ps\
-    \ = {pll, pls, psl, pss};\n        for (int i = 0; i < 4; i++) {\n           \
-    \ for (int j = 0; j < 4; j++) {\n                assert(equal(ps[i], ps[j]));\n\
-    \            }\n        }\n        std::cout << std::fixed << std::setprecision(15)\
-    \ << ps[0].x << ' ' << ps[0].y << '\\n';\n    }\n    return 0;\n}\n"
-  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_C\"\
-    \n#define ERROR 0.00000001\n\n#include <iostream>\n#include <iomanip>\n\n#include\
-    \ \"geometry/cross_point.hpp\"\n\nint main() {\n    int Q;\n    std::cin >> Q;\n\
-    \    while (Q--) {\n        // 1 \u70B9\u3067\u4EA4\u308F\u308B\u3053\u3068\u304C\
-    \u4FDD\u8A3C\u3055\u308C\u3066\u3044\u308B\u305F\u3081\u76F4\u7DDA\u3068\u7DDA\
-    \u5206\u306E\u3069\u306E\u7D44\u5408\u305B\u306B\u5BFE\u3057\u3066\u3082\u540C\
-    \u3058\u7B54\u3048\u3068\u306A\u308B\n        Line<double> L1, L2;\n        std::cin\
-    \ >> L1 >> L2;\n        Segment<double> S1(L1.a, L1.b), S2(L2.a, L2.b);\n    \
-    \    auto pll = cross_point(L1, L2);\n        auto pls = cross_point(L1, S2);\n\
-    \        auto psl = cross_point(S1, L2);\n        auto pss = cross_point(S1, S2);\n\
-    \        std::vector<Point<double>> ps = {pll, pls, psl, pss};\n        for (int\
-    \ i = 0; i < 4; i++) {\n            for (int j = 0; j < 4; j++) {\n          \
-    \      assert(equal(ps[i], ps[j]));\n            }\n        }\n        std::cout\
-    \ << std::fixed << std::setprecision(15) << ps[0].x << ' ' << ps[0].y << '\\n';\n\
-    \    }\n    return 0;\n}"
+    \    return {p, q};\n}\n#line 7 \"geometry/common_area.hpp\"\n\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_H\n\
+    // https://drken1215.hatenablog.com/entry/2020/02/02/091000\n// \u5186 c \u306E\
+    \u4E2D\u5FC3 o, \u7DDA\u5206 s \u306E\u306A\u3059\u4E09\u89D2\u5F62\u3068\u5186\
+    \ c \u306E\u5171\u901A\u90E8\u5206\u306E\u9762\u7A4D\ntemplate <class T> T common_area(Circle<T>\
+    \ c, Segment<T> s) {\n    // c.o \u3092\u539F\u70B9\u3068\u898B\u3066\u5E73\u884C\
+    \u79FB\u52D5\n    s.a -= c.o;\n    s.b -= c.o;\n    c.o -= c.o;\n    // c.o, s.a,\
+    \ s.b \u304C\u4E00\u76F4\u7DDA\u306B\u4E26\u3076\u5834\u5408\n    if (sign(norm(s.a\
+    \ - s.b)) == 0) return 0;\n    bool a_in_c = sign(norm(s.a) - c.r * c.r) == -1;\n\
+    \    bool b_in_c = sign(norm(s.b) - c.r * c.r) == -1;\n    // s.a, s.b \u304C\u3068\
+    \u3082\u306B\u5186 c \u306E\u5185\u90E8\u306B\u3042\u308B\u5834\u5408 -> \u4E09\
+    \u89D2\u5F62\n    if (a_in_c and b_in_c) return cross(s.a, s.b) / 2;\n    // s.a,\
+    \ s.b \u304C\u3068\u3082\u306B\u5186 c \u306E\u5916\u90E8\u306B\u3042\u308B\u5834\
+    \u5408 -> \u6247\u5F62\n    if (!is_intersect(c, s)) return c.r * c.r * get_angle(c.o,\
+    \ s.a, s.b) / 2;\n    auto cp = cross_point(c, s);\n    // \u4EA4\u70B9\u3092\
+    \ cp1, cp2 \u3068\u3059\u308B (1 \u3064\u306E\u5834\u5408\u306F cp1 == cp2)\n\
+    \    auto cp1 = cp.front(), cp2 = cp.back();\n    // \u7DDA\u5206 s.a -> cp1,\
+    \ cp1 -> cp2, cp2 -> s.b \u306B\u3064\u3044\u3066, \u6247\u5F62\u304B\u4E09\u89D2\
+    \u5F62\u304B\u5834\u5408\u5206\u3051\u3057\u306A\u304C\u3089\u6C42\u3081\u3066\
+    \u3044\u304F\n    T res = 0;\n    // s.a -> cp1\n    if (a_in_c) {\n        res\
+    \ += cross(s.a, cp1) / 2;\n    } else {\n        res += c.r * c.r * get_angle(c.o,\
+    \ s.a, cp1) / 2;\n    }\n    // cp1 -> cp2\n    res += cross(cp1, cp2) / 2;\n\
+    \    // cp2 -> s.b\n    if (b_in_c) {\n        res += cross(cp2, s.b) / 2;\n \
+    \   } else {\n        res += c.r * c.r * get_angle(c.o, cp2, s.b) / 2;\n    }\n\
+    \    return res;\n}\n\n// \u5186 c, \u591A\u89D2\u5F62 p \u306E\u5171\u901A\u90E8\
+    \u5206\u306E\u9762\u7A4D (\u7B26\u53F7\u4ED8\u304D)\ntemplate <class T> T common_area(const\
+    \ Circle<T>& c, const Polygon<T>& p) {\n    static_assert(is_geometry_floating_point<T>::value\
+    \ == true);\n    const int n = (int)(p.size());\n    assert(n >= 2);\n    T res\
+    \ = T(0);\n    for (int i = 0; i < n; i++) res += common_area(c, Segment(p[i],\
+    \ p[(i + 1) % n]));\n    // counter clockwise: res > 0\n    // clockwise: res\
+    \ < 0\n    return res;\n}\ntemplate <class T> T common_area(const Polygon<T>&\
+    \ p, const Circle<T>& c) { return common_area(c, p); }\n\n// \u5186 c1, c2 \u306E\
+    \u5171\u901A\u90E8\u5206\u306E\u9762\u7A4D\n// \u6247\u5F62 2 \u3064\u306E\u9762\
+    \u7A4D\u306E\u548C\u304B\u3089\u3072\u3057\u5F62\u306E\u9762\u7A4D\u3092\u5F15\
+    \u304F\ntemplate <class T> T common_area(const Circle<T>& c1, const Circle<T>&\
+    \ c2) {\n    static_assert(is_geometry_floating_point<T>::value == true);\n  \
+    \  const int num = tangent_number(c1, c2);\n    if (num >= 3) return 0;\n    if\
+    \ (num <= 1) {\n        // \u4E00\u65B9\u306B\u4ED6\u65B9\u304C\u5B8C\u5168\u306B\
+    \u542B\u307E\u308C\u308B\n        T r = std::min(c1.r, c2.r);\n        return\
+    \ r * r * Constants<T>::PI;\n    }\n    auto cp = cross_point(c1, c2);\n    T\
+    \ res = T(0);\n    // get_angle(c1.o, cp[0], cp[1]) \u306B\u3059\u308B\u3068\u6247\
+    \u5F62\u306E\u4E2D\u5FC3\u89D2\u304C\u76F4\u89D2\u3088\u308A\u5927\u304D\u3044\
+    \u3068\u304D\u306B\u30C0\u30E1\n    // \u5186 c1 \u3092\u542B\u3080\u6247\u5F62\
+    \n    res += c1.r * c1.r * std::abs(get_angle(c1.o, c2.o, cp[0]));\n    // \u5186\
+    \ c2 \u3092\u542B\u3080\u6247\u5F62\n    res += c2.r * c2.r * std::abs(get_angle(c2.o,\
+    \ c1.o, cp[0]));\n    // \u3072\u3057\u5F62\n    res -= abs(cp[1] - cp[0]) * abs(c1.o\
+    \ - c2.o) / 2;\n    return res;\n}\n#line 8 \"verify/geometry/common_area_cc.test.cpp\"\
+    \n\nint main() {\n    Circle<double> c1, c2;\n    std::cin >> c1 >> c2;\n    std::cout\
+    \ << std::fixed << std::setprecision(15) << common_area(c1, c2) << '\\n';\n  \
+    \  return 0;\n}\n"
+  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_I\"\
+    \n#define ERROR 0.000001\n\n#include <iostream>\n#include <iomanip>\n\n#include\
+    \ \"geometry/common_area.hpp\"\n\nint main() {\n    Circle<double> c1, c2;\n \
+    \   std::cin >> c1 >> c2;\n    std::cout << std::fixed << std::setprecision(15)\
+    \ << common_area(c1, c2) << '\\n';\n    return 0;\n}"
   dependsOn:
-  - geometry/cross_point.hpp
+  - geometry/common_area.hpp
+  - geometry/circle.hpp
   - geometry/point.hpp
   - geometry/geometry_template.hpp
   - geometry/line.hpp
-  - geometry/circle.hpp
+  - geometry/polygon.hpp
+  - geometry/cross_point.hpp
   - geometry/is_intersect.hpp
   isVerificationFile: true
-  path: verify/geometry/cross_point_ss.test.cpp
+  path: verify/geometry/common_area_cc.test.cpp
   requiredBy: []
   timestamp: '2024-08-04 03:17:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/geometry/cross_point_ss.test.cpp
+documentation_of: verify/geometry/common_area_cc.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/geometry/cross_point_ss.test.cpp
-- /verify/verify/geometry/cross_point_ss.test.cpp.html
-title: verify/geometry/cross_point_ss.test.cpp
+- /verify/verify/geometry/common_area_cc.test.cpp
+- /verify/verify/geometry/common_area_cc.test.cpp.html
+title: verify/geometry/common_area_cc.test.cpp
 ---

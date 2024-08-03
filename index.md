@@ -542,6 +542,9 @@ data:
       path: verify/geometry/closest_pair.test.cpp
       title: verify/geometry/closest_pair.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/geometry/common_area_cc.test.cpp
+      title: verify/geometry/common_area_cc.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/geometry/common_area_cp.test.cpp
       title: verify/geometry/common_area_cp.test.cpp
     - icon: ':heavy_check_mark:'
