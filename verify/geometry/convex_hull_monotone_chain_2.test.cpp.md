@@ -1,44 +1,43 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_hull_monotone_chain.hpp
     title: "Convex Hull (\u51F8\u5305)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: "\u5E7E\u4F55\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: "Point (\u70B9)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon.hpp
     title: "Polygon (\u591A\u89D2\u5F62)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A
+    PROBLEM: https://judge.yosupo.jp/problem/static_convex_hull
     links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A
+    - https://judge.yosupo.jp/problem/static_convex_hull
   bundledCode: "#line 1 \"verify/geometry/convex_hull_monotone_chain_2.test.cpp\"\n\
-    #define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A\"\
-    \n\n#include <iostream>\n\n#line 2 \"geometry/convex_hull_monotone_chain.hpp\"\
-    \n\n#line 2 \"geometry/polygon.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n#line\
-    \ 2 \"geometry/geometry_template.hpp\"\n\n#include <type_traits>\n\n// Constants\
-    \ (EPS, PI)\n// EPS \u306E\u5909\u66F4\u306F Constants<T>::set_eps(new_eps) \u3067\
-    \ntemplate <class T> struct Constants {\n    static T EPS;\n    static void set_eps(const\
-    \ T e) { EPS = e; }\n    static constexpr T PI = 3.14159'26535'89793L;\n};\n\n\
-    template <> double Constants<double>::EPS = 1e-9;\ntemplate <> long double Constants<long\
-    \ double>::EPS = 1e-12;\ntemplate <> long long Constants<long long>::EPS = 0;\n\
-    \n// \u6C4E\u7528\u95A2\u6570\ntemplate <class T> inline int sign(const T x) {\
-    \ return x < -Constants<T>::EPS ? -1 : (x > Constants<T>::EPS ? 1 : 0); }\ntemplate\
-    \ <class T> inline bool equal(const T a, const T b) { return sign(a - b) == 0;\
-    \ }\ntemplate <class T> inline T radian_to_degree(const T r) { return r * 180.0\
-    \ / Constants<T>::PI; }\ntemplate <class T> inline T degree_to_radian(const T\
-    \ d) { return d * Constants<T>::PI / 180.0; }\n\n// type traits\ntemplate <class\
+    #define PROBLEM \"https://judge.yosupo.jp/problem/static_convex_hull\"\n\n#include\
+    \ <iostream>\n\n#line 2 \"geometry/convex_hull_monotone_chain.hpp\"\n\n#line 2\
+    \ \"geometry/polygon.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n#line 2 \"geometry/geometry_template.hpp\"\
+    \n\n#include <type_traits>\n\n// Constants (EPS, PI)\n// EPS \u306E\u5909\u66F4\
+    \u306F Constants<T>::set_eps(new_eps) \u3067\ntemplate <class T> struct Constants\
+    \ {\n    static T EPS;\n    static void set_eps(const T e) { EPS = e; }\n    static\
+    \ constexpr T PI = 3.14159'26535'89793L;\n};\n\ntemplate <> double Constants<double>::EPS\
+    \ = 1e-9;\ntemplate <> long double Constants<long double>::EPS = 1e-12;\ntemplate\
+    \ <> long long Constants<long long>::EPS = 0;\n\n// \u6C4E\u7528\u95A2\u6570\n\
+    template <class T> inline int sign(const T x) { return x < -Constants<T>::EPS\
+    \ ? -1 : (x > Constants<T>::EPS ? 1 : 0); }\ntemplate <class T> inline bool equal(const\
+    \ T a, const T b) { return sign(a - b) == 0; }\ntemplate <class T> inline T radian_to_degree(const\
+    \ T r) { return r * 180.0 / Constants<T>::PI; }\ntemplate <class T> inline T degree_to_radian(const\
+    \ T d) { return d * Constants<T>::PI / 180.0; }\n\n// type traits\ntemplate <class\
     \ T> using is_geometry_floating_point = typename std::conditional<std::is_same<T,\
     \ double>::value || std::is_same<T, long double>::value, std::true_type, std::false_type>::type;\n\
     template <class T> using is_geometry_integer = typename std::conditional<std::is_same<T,\
@@ -176,9 +175,9 @@ data:
     \ res.end());\n        std::cout << res.size() << '\\n';\n        for (int i =\
     \ 0; i < res.size(); i++) std::cout << res[i].x << ' ' << res[i].y << '\\n';\n\
     \    }\n    return 0;\n}\n"
-  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A\"\
-    \n\n#include <iostream>\n\n#include \"geometry/convex_hull_monotone_chain.hpp\"\
-    \n\nint main() {\n    int T;\n    std::cin >> T;\n    for (int t = 0; t < T; t++)\
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_convex_hull\"\n\n\
+    #include <iostream>\n\n#include \"geometry/convex_hull_monotone_chain.hpp\"\n\n\
+    int main() {\n    int T;\n    std::cin >> T;\n    for (int t = 0; t < T; t++)\
     \ {\n        int N;\n        std::cin >> N;\n        Polygon<long long> P(N);\n\
     \        std::cin >> P;\n        auto res = convex_hull_monotone_chain(P, true);\n\
     \        int minidx = 0;\n        for (int i = 0; i < res.size(); i++) {\n   \
@@ -195,8 +194,8 @@ data:
   isVerificationFile: true
   path: verify/geometry/convex_hull_monotone_chain_2.test.cpp
   requiredBy: []
-  timestamp: '2024-08-03 15:34:22+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-08-03 15:44:11+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/convex_hull_monotone_chain_2.test.cpp
 layout: document
