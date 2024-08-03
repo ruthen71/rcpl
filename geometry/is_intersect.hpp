@@ -41,11 +41,10 @@ template <class T> inline bool is_intersect(const Segment<T>& s1, const Segment<
     auto c2 = ccw(s1.a, s1.b, s2.b);
     auto c3 = ccw(s2.a, s2.b, s1.a);
     auto c4 = ccw(s2.a, s2.b, s1.b);
-    // 線分が平行なケースは 1 次元的に考えると必ず端点のどれかがもう一方の線分上にある
-    if (c1 == Ccw::ON_SEGMENT or c2 == Ccw::ON_SEGMENT or c3 == Ccw::ON_SEGMENT or c4 == Ccw::ON_SEGMENT) {
-        return true;
-    }
+    // 平行な場合: 重なるなら 1 次元で考えると必ず端点のどれかがもう一方の線分上にある
+    if (c1 == Ccw::ON_SEGMENT or c2 == Ccw::ON_SEGMENT or c3 == Ccw::ON_SEGMENT or c4 == Ccw::ON_SEGMENT) return true;
     // 平行でない場合: 一方の線分の両側にもう一方の線分の端点がある, を線分を入れ替えても成立
+    // 平行だが重ならない場合は以下の条件は成立しない
     bool ok1 = ((c1 == Ccw::CLOCKWISE and c2 == Ccw::COUNTER_CLOCKWISE) or (c1 == Ccw::COUNTER_CLOCKWISE and c2 == Ccw::CLOCKWISE));
     bool ok2 = ((c3 == Ccw::CLOCKWISE and c4 == Ccw::COUNTER_CLOCKWISE) or (c3 == Ccw::COUNTER_CLOCKWISE and c4 == Ccw::CLOCKWISE));
     return ok1 and ok2;

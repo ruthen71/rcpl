@@ -22,11 +22,11 @@ template <class T> std::ostream& operator<<(std::ostream& os, const Polygon<T>& 
 template <class T> T polygon_area2(const Polygon<T>& p) {
     const int n = (int)(p.size());
     assert(n >= 2);
-    T ret = T(0);
-    for (int i = 0; i < n; i++) ret += cross(p[i], p[i + 1 == n ? 0 : i + 1]);
-    // counter clockwise: ret > 0
-    // clockwise: ret < 0
-    return ret;
+    T res = T(0);
+    for (int i = 0; i < n; i++) res += cross(p[i], p[i + 1 == n ? 0 : i + 1]);
+    // counter clockwise: res > 0
+    // clockwise: res < 0
+    return res;
 }
 template <class T> T polygon_area(const Polygon<T>& p) {
     static_assert(is_geometry_floating_point<T>::value == true);

@@ -12,20 +12,14 @@
 template <class T> std::tuple<int, int, T> farthest_pair(const std::vector<Point<T>>& p) {
     const int n = (int)(p.size());
     assert(n >= 2);
-    if (n == 2) {
-        return {0, 1, abs(p[0] - p[1])};
-    }
+    if (n == 2) return {0, 1, abs(p[0] - p[1])};
     auto q = p;
     auto ch = convex_hull_monotone_chain(q);       // O(n log n)
     auto [i, j, d] = convex_polygon_diameter(ch);  // O(|ch|)
-    int resi, resj;
+    int resi = -1, resj = -1;
     for (int k = 0; k < n; k++) {
-        if (p[k] == ch[i]) {
-            resi = k;
-        }
-        if (p[k] == ch[j]) {
-            resj = k;
-        }
+        if (p[k] == ch[i]) resi = k;
+        if (p[k] == ch[j]) resj = k;
     }
     return {resi, resj, d};
 }

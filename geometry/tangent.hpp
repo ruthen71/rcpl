@@ -31,11 +31,14 @@ template <class T> std::vector<Line<T>> tangent(Circle<T> c1, Circle<T> c2) {
     if (equal(g2, T(0))) return res;               // 中心は一致しているが半径が異なる
     Point<T> u = (c2.o - c1.o) / g;                // c1.o から c2.o への単位ベクトル
     Point<T> v = rotate(u, Constants<T>::PI / 2);  // u と直行する単位ベクトル
+    // 中心間距離と半径の和/差の比を用いて, 各円の中心から接点へのベクトルを求める
     for (int s : {-1, 1}) {
         T h = (c1.r + s * c2.r) / g;
         if (equal(1 - h * h, T(0))) {
+            // 円が内接/外接する場合 -> 接線は 1 本
             res.emplace_back(c1.o + u * c1.r, c1.o + (u + v) * c1.r);
         } else if (sign(1 - h * h) == 1) {
+            // uu + vv, uu - vv が中心から接点方向への単位ベクトル
             Point<T> uu = u * h, vv = v * std::sqrt(1 - h * h);
             res.emplace_back(c1.o + (uu + vv) * c1.r, c2.o - (uu + vv) * c2.r * s);
             res.emplace_back(c1.o + (uu - vv) * c1.r, c2.o - (uu - vv) * c2.r * s);

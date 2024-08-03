@@ -124,7 +124,7 @@ documentation_of: ./segment_tree.hpp
 ## 使い方
 
 ```cpp
-説明
+// 構造体の宣言方法や関数の利用方法を実際のコードを使い説明
 ```
 
 ## 参考文献

@@ -94,7 +94,7 @@ template <class T> inline T abs(const Point<T>& p) {
     static_assert(is_geometry_floating_point<T>::value == true);
     return std::sqrt(norm(p));
 }
-// 偏角
+// 偏角 (-PI, PI]
 template <class T> inline T arg(const Point<T>& p) {
     static_assert(is_geometry_floating_point<T>::value == true);
     return std::atan2(p.y, p.x);
