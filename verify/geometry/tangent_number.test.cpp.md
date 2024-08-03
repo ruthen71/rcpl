@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/circle.hpp
     title: "Circle (\u5186)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/geometry_template.hpp
     title: "\u5E7E\u4F55\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/point.hpp
     title: "Point (\u70B9)"
   _extendedRequiredBy: []
@@ -100,8 +100,8 @@ data:
     \ -b.x);\n}\n// \u7D76\u5BFE\u5024\u306E 2 \u4E57\ntemplate <class T> inline T\
     \ norm(const Point<T>& p) { return p.x * p.x + p.y * p.y; }\n// \u7D76\u5BFE\u5024\
     \ntemplate <class T> inline T abs(const Point<T>& p) {\n    static_assert(is_geometry_floating_point<T>::value\
-    \ == true);\n    return std::sqrt(norm(p));\n}\n// \u504F\u89D2\ntemplate <class\
-    \ T> inline T arg(const Point<T>& p) {\n    static_assert(is_geometry_floating_point<T>::value\
+    \ == true);\n    return std::sqrt(norm(p));\n}\n// \u504F\u89D2 (-PI, PI]\ntemplate\
+    \ <class T> inline T arg(const Point<T>& p) {\n    static_assert(is_geometry_floating_point<T>::value\
     \ == true);\n    return std::atan2(p.y, p.x);\n}\n// \u5171\u5F79\u8907\u7D20\u6570\
     \ (x \u8EF8\u306B\u3064\u3044\u3066\u5BFE\u8C61\u306A\u70B9)\ntemplate <class\
     \ T> inline Point<T> conj(const Point<T>& p) { return Point(p.x, -p.y); }\n//\
@@ -120,25 +120,30 @@ data:
     \ ac)) == 1) return Ccw::COUNTER_CLOCKWISE;\n    if (sign(cross(ab, ac)) == -1)\
     \ return Ccw::CLOCKWISE;\n    if (sign(dot(ab, ac)) == -1) return Ccw::ONLINE_BACK;\n\
     \    if (sign(norm(ab) - norm(ac)) == -1) return Ccw::ONLINE_FRONT;\n    return\
-    \ Ccw::ON_SEGMENT;\n}\n#line 4 \"geometry/circle.hpp\"\n\n// \u5186\ntemplate\
-    \ <class T> struct Circle {\n    Point<T> o;\n    T r;\n\n    Circle() = default;\n\
-    \    Circle(const Point<T>& o, const T r) : o(o), r(r) {}\n\n    friend std::istream&\
-    \ operator>>(std::istream& is, Circle& c) { return is >> c.o >> c.r; }\n    friend\
-    \ std::ostream& operator<<(std::ostream& os, const Circle& c) { return os << c.o\
-    \ << \", \" << c.r; }\n};\n\n// \u5171\u901A\u63A5\u7DDA\u306E\u672C\u6570\n//\
-    \ http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A\ntemplate <class\
-    \ T> int tangent_number(Circle<T> c1, Circle<T> c2) {\n    if (c1.r < c2.r) std::swap(c1,\
-    \ c2);\n    const T d2 = norm(c1.o - c2.o);\n    if (sign(d2 - (c1.r + c2.r) *\
-    \ (c1.r + c2.r)) == 1) return 4;  // d > c1.r + c2.r and c1.r + c2.r >= 0 <=>\
-    \ d ^ 2 > (c1.r + c2.r) ^ 2\n    if (sign(d2 - (c1.r + c2.r) * (c1.r + c2.r))\
-    \ == 0) return 3;  // d = c1.r + c2.r and c1.r + c2.r >= 0 <=> d ^ 2 = (c1.r +\
-    \ c2.r) ^ 2\n    if (sign(d2 - (c1.r - c2.r) * (c1.r - c2.r)) == 1) return 2;\
-    \  // d > c1.r - c2.r and c1.r - c2.r >= 0 <=> d ^ 2 > (c1.r - c2.r) ^ 2\n   \
-    \ if (sign(d2 - (c1.r - c2.r) * (c1.r - c2.r)) == 0) return 1;  // d = c1.r -\
-    \ c2.r and c1.r - c2.r >= 0 <=> d ^ 2 = (c1.r - c2.r) ^ 2\n    return 0;\n}\n\
-    #line 6 \"verify/geometry/tangent_number.test.cpp\"\n\nint main() {\n    Circle<long\
-    \ long> C1, C2;\n    std::cin >> C1 >> C2;\n    std::cout << tangent_number(C1,\
-    \ C2) << '\\n';\n    return 0;\n}\n"
+    \ Ccw::ON_SEGMENT;\n}\n\n// \u7DDA\u5206 a->b \u304B\u3089 \u7DDA\u5206 a->c \u307E\
+    \u3067\u306E\u89D2\u5EA6 (\u30E9\u30B8\u30A2\u30F3, \u7B26\u53F7\u4ED8\u304D)\n\
+    template <class T> T get_angle(const Point<T>& a, const Point<T>& b, const Point<T>&\
+    \ c) {\n    Point<T> ab = b - a;\n    Point<T> ac = c - a;\n    ac *= conj(ab)\
+    \ / norm(ab);  // a-b\u304C x \u8EF8\u306B\u306A\u308B\u3088\u3046\u306B\u56DE\
+    \u8EE2\n    return arg(ac);\n}\n#line 4 \"geometry/circle.hpp\"\n\n// \u5186\n\
+    template <class T> struct Circle {\n    Point<T> o;\n    T r;\n\n    Circle()\
+    \ = default;\n    Circle(const Point<T>& o, const T r) : o(o), r(r) {}\n\n   \
+    \ friend std::istream& operator>>(std::istream& is, Circle& c) { return is >>\
+    \ c.o >> c.r; }\n    friend std::ostream& operator<<(std::ostream& os, const Circle&\
+    \ c) { return os << c.o << \", \" << c.r; }\n};\n\n// \u5171\u901A\u63A5\u7DDA\
+    \u306E\u672C\u6570\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A\n\
+    template <class T> int tangent_number(Circle<T> c1, Circle<T> c2) {\n    if (c1.r\
+    \ < c2.r) std::swap(c1, c2);\n    const T d2 = norm(c1.o - c2.o);\n    if (sign(d2\
+    \ - (c1.r + c2.r) * (c1.r + c2.r)) == 1) return 4;  // d > c1.r + c2.r and c1.r\
+    \ + c2.r >= 0 <=> d ^ 2 > (c1.r + c2.r) ^ 2\n    if (sign(d2 - (c1.r + c2.r) *\
+    \ (c1.r + c2.r)) == 0) return 3;  // d = c1.r + c2.r and c1.r + c2.r >= 0 <=>\
+    \ d ^ 2 = (c1.r + c2.r) ^ 2\n    if (sign(d2 - (c1.r - c2.r) * (c1.r - c2.r))\
+    \ == 1) return 2;  // d > c1.r - c2.r and c1.r - c2.r >= 0 <=> d ^ 2 > (c1.r -\
+    \ c2.r) ^ 2\n    if (sign(d2 - (c1.r - c2.r) * (c1.r - c2.r)) == 0) return 1;\
+    \  // d = c1.r - c2.r and c1.r - c2.r >= 0 <=> d ^ 2 = (c1.r - c2.r) ^ 2\n   \
+    \ return 0;\n}\n#line 6 \"verify/geometry/tangent_number.test.cpp\"\n\nint main()\
+    \ {\n    Circle<long long> C1, C2;\n    std::cin >> C1 >> C2;\n    std::cout <<\
+    \ tangent_number(C1, C2) << '\\n';\n    return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A\"\
     \n\n#include <iostream>\n\n#include \"geometry/circle.hpp\"\n\nint main() {\n\
     \    Circle<long long> C1, C2;\n    std::cin >> C1 >> C2;\n    std::cout << tangent_number(C1,\
@@ -150,7 +155,7 @@ data:
   isVerificationFile: true
   path: verify/geometry/tangent_number.test.cpp
   requiredBy: []
-  timestamp: '2024-08-03 15:34:22+09:00'
+  timestamp: '2024-08-03 20:33:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/tangent_number.test.cpp

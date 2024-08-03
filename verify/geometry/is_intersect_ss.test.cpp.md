@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/circle.hpp
     title: "Circle (\u5186)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/geometry_template.hpp
     title: "\u5E7E\u4F55\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/is_intersect.hpp
     title: "Intersection (\u4EA4\u5DEE\u5224\u5B9A)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/line.hpp
     title: "Line / Segment (\u76F4\u7DDA\u30FB\u7DDA\u5206)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/point.hpp
     title: "Point (\u70B9)"
   _extendedRequiredBy: []
@@ -106,8 +106,8 @@ data:
     \ -b.x);\n}\n// \u7D76\u5BFE\u5024\u306E 2 \u4E57\ntemplate <class T> inline T\
     \ norm(const Point<T>& p) { return p.x * p.x + p.y * p.y; }\n// \u7D76\u5BFE\u5024\
     \ntemplate <class T> inline T abs(const Point<T>& p) {\n    static_assert(is_geometry_floating_point<T>::value\
-    \ == true);\n    return std::sqrt(norm(p));\n}\n// \u504F\u89D2\ntemplate <class\
-    \ T> inline T arg(const Point<T>& p) {\n    static_assert(is_geometry_floating_point<T>::value\
+    \ == true);\n    return std::sqrt(norm(p));\n}\n// \u504F\u89D2 (-PI, PI]\ntemplate\
+    \ <class T> inline T arg(const Point<T>& p) {\n    static_assert(is_geometry_floating_point<T>::value\
     \ == true);\n    return std::atan2(p.y, p.x);\n}\n// \u5171\u5F79\u8907\u7D20\u6570\
     \ (x \u8EF8\u306B\u3064\u3044\u3066\u5BFE\u8C61\u306A\u70B9)\ntemplate <class\
     \ T> inline Point<T> conj(const Point<T>& p) { return Point(p.x, -p.y); }\n//\
@@ -126,7 +126,12 @@ data:
     \ ac)) == 1) return Ccw::COUNTER_CLOCKWISE;\n    if (sign(cross(ab, ac)) == -1)\
     \ return Ccw::CLOCKWISE;\n    if (sign(dot(ab, ac)) == -1) return Ccw::ONLINE_BACK;\n\
     \    if (sign(norm(ab) - norm(ac)) == -1) return Ccw::ONLINE_FRONT;\n    return\
-    \ Ccw::ON_SEGMENT;\n}\n#line 2 \"geometry/line.hpp\"\n\n#line 4 \"geometry/line.hpp\"\
+    \ Ccw::ON_SEGMENT;\n}\n\n// \u7DDA\u5206 a->b \u304B\u3089 \u7DDA\u5206 a->c \u307E\
+    \u3067\u306E\u89D2\u5EA6 (\u30E9\u30B8\u30A2\u30F3, \u7B26\u53F7\u4ED8\u304D)\n\
+    template <class T> T get_angle(const Point<T>& a, const Point<T>& b, const Point<T>&\
+    \ c) {\n    Point<T> ab = b - a;\n    Point<T> ac = c - a;\n    ac *= conj(ab)\
+    \ / norm(ab);  // a-b\u304C x \u8EF8\u306B\u306A\u308B\u3088\u3046\u306B\u56DE\
+    \u8EE2\n    return arg(ac);\n}\n#line 2 \"geometry/line.hpp\"\n\n#line 4 \"geometry/line.hpp\"\
     \n\n// \u76F4\u7DDA\ntemplate <class T> struct Line {\n    Point<T> a, b;\n\n\
     \    Line() = default;\n    Line(const Point<T>& a, const Point<T>& b) : a(a),\
     \ b(b) {}\n\n    // Ax + By = C\n    Line(const T A, const T B, const T C) {\n\
@@ -202,29 +207,30 @@ data:
     template <class T> inline bool is_intersect(const Segment<T>& s1, const Segment<T>&\
     \ s2) {\n    auto c1 = ccw(s1.a, s1.b, s2.a);\n    auto c2 = ccw(s1.a, s1.b, s2.b);\n\
     \    auto c3 = ccw(s2.a, s2.b, s1.a);\n    auto c4 = ccw(s2.a, s2.b, s1.b);\n\
-    \    // \u7DDA\u5206\u304C\u5E73\u884C\u306A\u30B1\u30FC\u30B9\u306F 1 \u6B21\u5143\
-    \u7684\u306B\u8003\u3048\u308B\u3068\u5FC5\u305A\u7AEF\u70B9\u306E\u3069\u308C\
+    \    // \u5E73\u884C\u306A\u5834\u5408: \u91CD\u306A\u308B\u306A\u3089 1 \u6B21\
+    \u5143\u3067\u8003\u3048\u308B\u3068\u5FC5\u305A\u7AEF\u70B9\u306E\u3069\u308C\
     \u304B\u304C\u3082\u3046\u4E00\u65B9\u306E\u7DDA\u5206\u4E0A\u306B\u3042\u308B\
     \n    if (c1 == Ccw::ON_SEGMENT or c2 == Ccw::ON_SEGMENT or c3 == Ccw::ON_SEGMENT\
-    \ or c4 == Ccw::ON_SEGMENT) {\n        return true;\n    }\n    // \u5E73\u884C\
-    \u3067\u306A\u3044\u5834\u5408: \u4E00\u65B9\u306E\u7DDA\u5206\u306E\u4E21\u5074\
-    \u306B\u3082\u3046\u4E00\u65B9\u306E\u7DDA\u5206\u306E\u7AEF\u70B9\u304C\u3042\
-    \u308B, \u3092\u7DDA\u5206\u3092\u5165\u308C\u66FF\u3048\u3066\u3082\u6210\u7ACB\
-    \n    bool ok1 = ((c1 == Ccw::CLOCKWISE and c2 == Ccw::COUNTER_CLOCKWISE) or (c1\
-    \ == Ccw::COUNTER_CLOCKWISE and c2 == Ccw::CLOCKWISE));\n    bool ok2 = ((c3 ==\
-    \ Ccw::CLOCKWISE and c4 == Ccw::COUNTER_CLOCKWISE) or (c3 == Ccw::COUNTER_CLOCKWISE\
-    \ and c4 == Ccw::CLOCKWISE));\n    return ok1 and ok2;\n}\n\n// \u70B9 p1, p2\
-    \ \u306E\u4EA4\u5DEE\u5224\u5B9A\ntemplate <class T> inline bool is_intersect(const\
-    \ Point<T>& p1, const Point<T>& p2) { return equal(p1, p2); }\n\n// \u5186 c1,\
-    \ c2 \u306E\u4EA4\u5DEE\u5224\u5B9A\ntemplate <class T> inline bool is_intersect(const\
-    \ Circle<T>& c1, const Circle<T>& c2) {\n    int num = tangent_number(c1, c2);\n\
-    \    return 1 <= num and num <= 3;\n}\n\n// \u5186 c, \u70B9 p \u306E\u4EA4\u5DEE\
-    \u5224\u5B9A\ntemplate <class T> inline bool is_intersect(const Circle<T>& c,\
-    \ const Point<T>& p) { return equal(norm(p - c.o), c.r * c.r); }\ntemplate <class\
-    \ T> inline bool is_intersect(const Point<T>& p, const Circle<T>& c) { return\
-    \ equal(norm(p - c.o), c.r * c.r); }\n\n// \u5186 c, \u76F4\u7DDA l \u306E\u4EA4\
-    \u5DEE\u5224\u5B9A\ntemplate <class T> inline bool is_intersect(const Circle<T>&\
-    \ c, const Line<T>& l) {\n    static_assert(is_geometry_floating_point<T>::value\
+    \ or c4 == Ccw::ON_SEGMENT) return true;\n    // \u5E73\u884C\u3067\u306A\u3044\
+    \u5834\u5408: \u4E00\u65B9\u306E\u7DDA\u5206\u306E\u4E21\u5074\u306B\u3082\u3046\
+    \u4E00\u65B9\u306E\u7DDA\u5206\u306E\u7AEF\u70B9\u304C\u3042\u308B, \u3092\u7DDA\
+    \u5206\u3092\u5165\u308C\u66FF\u3048\u3066\u3082\u6210\u7ACB\n    // \u5E73\u884C\
+    \u3060\u304C\u91CD\u306A\u3089\u306A\u3044\u5834\u5408\u306F\u4EE5\u4E0B\u306E\
+    \u6761\u4EF6\u306F\u6210\u7ACB\u3057\u306A\u3044\n    bool ok1 = ((c1 == Ccw::CLOCKWISE\
+    \ and c2 == Ccw::COUNTER_CLOCKWISE) or (c1 == Ccw::COUNTER_CLOCKWISE and c2 ==\
+    \ Ccw::CLOCKWISE));\n    bool ok2 = ((c3 == Ccw::CLOCKWISE and c4 == Ccw::COUNTER_CLOCKWISE)\
+    \ or (c3 == Ccw::COUNTER_CLOCKWISE and c4 == Ccw::CLOCKWISE));\n    return ok1\
+    \ and ok2;\n}\n\n// \u70B9 p1, p2 \u306E\u4EA4\u5DEE\u5224\u5B9A\ntemplate <class\
+    \ T> inline bool is_intersect(const Point<T>& p1, const Point<T>& p2) { return\
+    \ equal(p1, p2); }\n\n// \u5186 c1, c2 \u306E\u4EA4\u5DEE\u5224\u5B9A\ntemplate\
+    \ <class T> inline bool is_intersect(const Circle<T>& c1, const Circle<T>& c2)\
+    \ {\n    int num = tangent_number(c1, c2);\n    return 1 <= num and num <= 3;\n\
+    }\n\n// \u5186 c, \u70B9 p \u306E\u4EA4\u5DEE\u5224\u5B9A\ntemplate <class T>\
+    \ inline bool is_intersect(const Circle<T>& c, const Point<T>& p) { return equal(norm(p\
+    \ - c.o), c.r * c.r); }\ntemplate <class T> inline bool is_intersect(const Point<T>&\
+    \ p, const Circle<T>& c) { return equal(norm(p - c.o), c.r * c.r); }\n\n// \u5186\
+    \ c, \u76F4\u7DDA l \u306E\u4EA4\u5DEE\u5224\u5B9A\ntemplate <class T> inline\
+    \ bool is_intersect(const Circle<T>& c, const Line<T>& l) {\n    static_assert(is_geometry_floating_point<T>::value\
     \ == true);\n    // norm(c.o - projection(l, c.o)) \u304C\u76F4\u7DDA l \u3068\
     \ \u5186 c \u306E\u4E2D\u5FC3 c.o \u306E\u8DDD\u96E2\u306E 2 \u4E57\n    return\
     \ sign(c.r * c.r - norm(c.o - projection(l, c.o))) >= 0;\n}\ntemplate <class T>\
@@ -259,7 +265,7 @@ data:
   isVerificationFile: true
   path: verify/geometry/is_intersect_ss.test.cpp
   requiredBy: []
-  timestamp: '2024-08-03 15:34:22+09:00'
+  timestamp: '2024-08-03 20:33:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/is_intersect_ss.test.cpp

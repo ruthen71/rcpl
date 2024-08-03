@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/geometry_template.hpp
     title: "\u5E7E\u4F55\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/point.hpp
     title: "Point (\u70B9)"
   _extendedRequiredBy: []
@@ -95,8 +95,8 @@ data:
     \ -b.x);\n}\n// \u7D76\u5BFE\u5024\u306E 2 \u4E57\ntemplate <class T> inline T\
     \ norm(const Point<T>& p) { return p.x * p.x + p.y * p.y; }\n// \u7D76\u5BFE\u5024\
     \ntemplate <class T> inline T abs(const Point<T>& p) {\n    static_assert(is_geometry_floating_point<T>::value\
-    \ == true);\n    return std::sqrt(norm(p));\n}\n// \u504F\u89D2\ntemplate <class\
-    \ T> inline T arg(const Point<T>& p) {\n    static_assert(is_geometry_floating_point<T>::value\
+    \ == true);\n    return std::sqrt(norm(p));\n}\n// \u504F\u89D2 (-PI, PI]\ntemplate\
+    \ <class T> inline T arg(const Point<T>& p) {\n    static_assert(is_geometry_floating_point<T>::value\
     \ == true);\n    return std::atan2(p.y, p.x);\n}\n// \u5171\u5F79\u8907\u7D20\u6570\
     \ (x \u8EF8\u306B\u3064\u3044\u3066\u5BFE\u8C61\u306A\u70B9)\ntemplate <class\
     \ T> inline Point<T> conj(const Point<T>& p) { return Point(p.x, -p.y); }\n//\
@@ -115,10 +115,15 @@ data:
     \ ac)) == 1) return Ccw::COUNTER_CLOCKWISE;\n    if (sign(cross(ab, ac)) == -1)\
     \ return Ccw::CLOCKWISE;\n    if (sign(dot(ab, ac)) == -1) return Ccw::ONLINE_BACK;\n\
     \    if (sign(norm(ab) - norm(ac)) == -1) return Ccw::ONLINE_FRONT;\n    return\
-    \ Ccw::ON_SEGMENT;\n}\n#line 6 \"verify/geometry/ccw.test.cpp\"\n\nint main()\
-    \ {\n    Point<long long> P1, P2;\n    int Q;\n    std::cin >> P1 >> P2 >> Q;\n\
-    \    while (Q--) {\n        Point<long long> P3;\n        std::cin >> P3;\n  \
-    \      auto ans = ccw(P1, P2, P3);\n        if (ans == Ccw::COUNTER_CLOCKWISE)\
+    \ Ccw::ON_SEGMENT;\n}\n\n// \u7DDA\u5206 a->b \u304B\u3089 \u7DDA\u5206 a->c \u307E\
+    \u3067\u306E\u89D2\u5EA6 (\u30E9\u30B8\u30A2\u30F3, \u7B26\u53F7\u4ED8\u304D)\n\
+    template <class T> T get_angle(const Point<T>& a, const Point<T>& b, const Point<T>&\
+    \ c) {\n    Point<T> ab = b - a;\n    Point<T> ac = c - a;\n    ac *= conj(ab)\
+    \ / norm(ab);  // a-b\u304C x \u8EF8\u306B\u306A\u308B\u3088\u3046\u306B\u56DE\
+    \u8EE2\n    return arg(ac);\n}\n#line 6 \"verify/geometry/ccw.test.cpp\"\n\nint\
+    \ main() {\n    Point<long long> P1, P2;\n    int Q;\n    std::cin >> P1 >> P2\
+    \ >> Q;\n    while (Q--) {\n        Point<long long> P3;\n        std::cin >>\
+    \ P3;\n        auto ans = ccw(P1, P2, P3);\n        if (ans == Ccw::COUNTER_CLOCKWISE)\
     \ {\n            std::cout << \"COUNTER_CLOCKWISE\\n\";\n        } else if (ans\
     \ == Ccw::CLOCKWISE) {\n            std::cout << \"CLOCKWISE\\n\";\n        }\
     \ else if (ans == Ccw::ONLINE_BACK) {\n            std::cout << \"ONLINE_BACK\\\
@@ -142,7 +147,7 @@ data:
   isVerificationFile: true
   path: verify/geometry/ccw.test.cpp
   requiredBy: []
-  timestamp: '2024-08-03 15:34:22+09:00'
+  timestamp: '2024-08-03 20:33:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/ccw.test.cpp
