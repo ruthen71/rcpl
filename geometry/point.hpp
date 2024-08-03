@@ -94,10 +94,10 @@ template <class T> inline T abs(const Point<T>& p) {
     static_assert(is_geometry_floating_point<T>::value == true);
     return std::sqrt(norm(p));
 }
-// 偏角 (-PI, PI]
+// 偏角
 template <class T> inline T arg(const Point<T>& p) {
     static_assert(is_geometry_floating_point<T>::value == true);
-    return std::atan2(p.y, p.x);
+    return std::atan2(p.y, p.x);  // (-PI, PI]
 }
 // 共役複素数 (x 軸について対象な点)
 template <class T> inline Point<T> conj(const Point<T>& p) { return Point(p.x, -p.y); }
@@ -107,7 +107,6 @@ template <class T> inline Point<T> polar(const T rho, const T theta = T(0)) {
     assert(sign(rho) >= 0);
     return Point<T>(std::cos(theta), std::sin(theta)) * rho;
 }
-
 // ccw の戻り値
 enum class Ccw {
     COUNTER_CLOCKWISE = 1,  // a->b->c 反時計回り
@@ -127,11 +126,11 @@ template <class T> Ccw ccw(const Point<T>& a, const Point<T>& b, const Point<T>&
     if (sign(norm(ab) - norm(ac)) == -1) return Ccw::ONLINE_FRONT;
     return Ccw::ON_SEGMENT;
 }
-
-// 線分 a->b から 線分 a->c までの角度 (ラジアン, 符号付き)
+// 線分 a -> b から 線分 a -> c までの反時計回りの角度 (ラジアン)
 template <class T> T get_angle(const Point<T>& a, const Point<T>& b, const Point<T>& c) {
     Point<T> ab = b - a;
     Point<T> ac = c - a;
-    ac *= conj(ab) / norm(ab);  // a-bが x 軸になるように回転
-    return arg(ac);
+    // a-bが x 軸になるように回転
+    ac *= conj(ab) / norm(ab);
+    return arg(ac);  // (-PI, PI]
 }

@@ -55,7 +55,7 @@ template <class T> inline bool is_intersect(const Point<T>& p1, const Point<T>& 
 
 // 円 c1, c2 の交差判定
 template <class T> inline bool is_intersect(const Circle<T>& c1, const Circle<T>& c2) {
-    int num = tangent_number(c1, c2);
+    const int num = tangent_number(c1, c2);
     return 1 <= num and num <= 3;
 }
 

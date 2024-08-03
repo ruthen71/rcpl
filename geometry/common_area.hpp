@@ -55,3 +55,26 @@ template <class T> T common_area(const Circle<T>& c, const Polygon<T>& p) {
     return res;
 }
 template <class T> T common_area(const Polygon<T>& p, const Circle<T>& c) { return common_area(c, p); }
+
+// 円 c1, c2 の共通部分の面積
+// 扇形 2 つの面積の和からひし形の面積を引く
+template <class T> T common_area(const Circle<T>& c1, const Circle<T>& c2) {
+    static_assert(is_geometry_floating_point<T>::value == true);
+    const int num = tangent_number(c1, c2);
+    if (num >= 3) return 0;
+    if (num <= 1) {
+        // 一方に他方が完全に含まれる
+        T r = std::min(c1.r, c2.r);
+        return r * r * Constants<T>::PI;
+    }
+    auto cp = cross_point(c1, c2);
+    T res = T(0);
+    // get_angle(c1.o, cp[0], cp[1]) にすると扇形の中心角が直角より大きいときにダメ
+    // 円 c1 を含む扇形
+    res += c1.r * c1.r * std::abs(get_angle(c1.o, c2.o, cp[0]));
+    // 円 c2 を含む扇形
+    res += c2.r * c2.r * std::abs(get_angle(c2.o, c1.o, cp[0]));
+    // ひし形
+    res -= abs(cp[1] - cp[0]) * abs(c1.o - c2.o) / 2;
+    return res;
+}
