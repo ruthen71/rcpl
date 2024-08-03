@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: geometry/all.hpp
+    title: geometry/all.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/circle.hpp
     title: "Circle (\u5186)"
@@ -11,7 +14,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/closest_pair.hpp
     title: "Closest Pair (\u6700\u8FD1\u70B9\u5BFE)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/convex_hull_monotone_chain.hpp
     title: "Convex Hull (\u51F8\u5305)"
   - icon: ':heavy_check_mark:'
@@ -39,10 +42,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: "Line / Segment (\u76F4\u7DDA\u30FB\u7DDA\u5206)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/point.hpp
     title: "Point (\u70B9)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/polygon.hpp
     title: "Polygon (\u591A\u89D2\u5F62)"
   - icon: ':heavy_check_mark:'
@@ -66,8 +69,11 @@ data:
     path: verify/geometry/compare_atan2.test.cpp
     title: verify/geometry/compare_atan2.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/geometry/convex_hull_monotone_chain.test.cpp
-    title: verify/geometry/convex_hull_monotone_chain.test.cpp
+    path: verify/geometry/convex_hull_monotone_chain_1.test.cpp
+    title: verify/geometry/convex_hull_monotone_chain_1.test.cpp
+  - icon: ':x:'
+    path: verify/geometry/convex_hull_monotone_chain_2.test.cpp
+    title: verify/geometry/convex_hull_monotone_chain_2.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/geometry/convex_polygon_cut.test.cpp
     title: verify/geometry/convex_polygon_cut.test.cpp
@@ -119,9 +125,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/tangent_number.test.cpp
     title: verify/geometry/tangent_number.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/geometry_template.hpp\"\n\n#include <type_traits>\n\
@@ -130,17 +136,17 @@ data:
     \ void set_eps(const T e) { EPS = e; }\n    static constexpr T PI = 3.14159'26535'89793L;\n\
     };\n\ntemplate <> double Constants<double>::EPS = 1e-9;\ntemplate <> long double\
     \ Constants<long double>::EPS = 1e-12;\ntemplate <> long long Constants<long long>::EPS\
-    \ = 0;\n\n// base functions\ntemplate <class T> inline int sign(const T x) { return\
-    \ x < -Constants<T>::EPS ? -1 : (x > Constants<T>::EPS ? 1 : 0); }\ntemplate <class\
-    \ T> inline bool equal(const T a, const T b) { return sign(a - b) == 0; }\ntemplate\
-    \ <class T> inline T radian_to_degree(const T r) { return r * 180.0 / Constants<T>::PI;\
-    \ }\ntemplate <class T> inline T degree_to_radian(const T d) { return d * Constants<T>::PI\
-    \ / 180.0; }\n\n// type traits\ntemplate <class T> using is_geometry_floating_point\
-    \ = typename std::conditional<std::is_same<T, double>::value || std::is_same<T,\
-    \ long double>::value, std::true_type, std::false_type>::type;\ntemplate <class\
-    \ T> using is_geometry_integer = typename std::conditional<std::is_same<T, long\
-    \ long>::value, std::true_type, std::false_type>::type;\ntemplate <class T> using\
-    \ is_geometry = typename std::conditional<is_geometry_floating_point<T>::value\
+    \ = 0;\n\n// \u6C4E\u7528\u95A2\u6570\ntemplate <class T> inline int sign(const\
+    \ T x) { return x < -Constants<T>::EPS ? -1 : (x > Constants<T>::EPS ? 1 : 0);\
+    \ }\ntemplate <class T> inline bool equal(const T a, const T b) { return sign(a\
+    \ - b) == 0; }\ntemplate <class T> inline T radian_to_degree(const T r) { return\
+    \ r * 180.0 / Constants<T>::PI; }\ntemplate <class T> inline T degree_to_radian(const\
+    \ T d) { return d * Constants<T>::PI / 180.0; }\n\n// type traits\ntemplate <class\
+    \ T> using is_geometry_floating_point = typename std::conditional<std::is_same<T,\
+    \ double>::value || std::is_same<T, long double>::value, std::true_type, std::false_type>::type;\n\
+    template <class T> using is_geometry_integer = typename std::conditional<std::is_same<T,\
+    \ long long>::value, std::true_type, std::false_type>::type;\ntemplate <class\
+    \ T> using is_geometry = typename std::conditional<is_geometry_floating_point<T>::value\
     \ || is_geometry_integer<T>::value, std::true_type, std::false_type>::type;\n"
   code: "#pragma once\n\n#include <type_traits>\n\n// Constants (EPS, PI)\n// EPS\
     \ \u306E\u5909\u66F4\u306F Constants<T>::set_eps(new_eps) \u3067\ntemplate <class\
@@ -148,17 +154,17 @@ data:
     \ { EPS = e; }\n    static constexpr T PI = 3.14159'26535'89793L;\n};\n\ntemplate\
     \ <> double Constants<double>::EPS = 1e-9;\ntemplate <> long double Constants<long\
     \ double>::EPS = 1e-12;\ntemplate <> long long Constants<long long>::EPS = 0;\n\
-    \n// base functions\ntemplate <class T> inline int sign(const T x) { return x\
-    \ < -Constants<T>::EPS ? -1 : (x > Constants<T>::EPS ? 1 : 0); }\ntemplate <class\
-    \ T> inline bool equal(const T a, const T b) { return sign(a - b) == 0; }\ntemplate\
-    \ <class T> inline T radian_to_degree(const T r) { return r * 180.0 / Constants<T>::PI;\
-    \ }\ntemplate <class T> inline T degree_to_radian(const T d) { return d * Constants<T>::PI\
-    \ / 180.0; }\n\n// type traits\ntemplate <class T> using is_geometry_floating_point\
-    \ = typename std::conditional<std::is_same<T, double>::value || std::is_same<T,\
-    \ long double>::value, std::true_type, std::false_type>::type;\ntemplate <class\
-    \ T> using is_geometry_integer = typename std::conditional<std::is_same<T, long\
-    \ long>::value, std::true_type, std::false_type>::type;\ntemplate <class T> using\
-    \ is_geometry = typename std::conditional<is_geometry_floating_point<T>::value\
+    \n// \u6C4E\u7528\u95A2\u6570\ntemplate <class T> inline int sign(const T x) {\
+    \ return x < -Constants<T>::EPS ? -1 : (x > Constants<T>::EPS ? 1 : 0); }\ntemplate\
+    \ <class T> inline bool equal(const T a, const T b) { return sign(a - b) == 0;\
+    \ }\ntemplate <class T> inline T radian_to_degree(const T r) { return r * 180.0\
+    \ / Constants<T>::PI; }\ntemplate <class T> inline T degree_to_radian(const T\
+    \ d) { return d * Constants<T>::PI / 180.0; }\n\n// type traits\ntemplate <class\
+    \ T> using is_geometry_floating_point = typename std::conditional<std::is_same<T,\
+    \ double>::value || std::is_same<T, long double>::value, std::true_type, std::false_type>::type;\n\
+    template <class T> using is_geometry_integer = typename std::conditional<std::is_same<T,\
+    \ long long>::value, std::true_type, std::false_type>::type;\ntemplate <class\
+    \ T> using is_geometry = typename std::conditional<is_geometry_floating_point<T>::value\
     \ || is_geometry_integer<T>::value, std::true_type, std::false_type>::type;\n"
   dependsOn: []
   isVerificationFile: false
@@ -175,17 +181,19 @@ data:
   - geometry/incircle.hpp
   - geometry/circle.hpp
   - geometry/cross_point.hpp
+  - geometry/all.hpp
   - geometry/convex_polygon_cut.hpp
   - geometry/polygon_contain.hpp
   - geometry/tangent.hpp
   - geometry/convex_hull_monotone_chain.hpp
   - geometry/polygon.hpp
-  timestamp: '2024-08-02 05:40:42+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-08-03 15:34:22+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/geometry/convex_polygon_diameter.test.cpp
   - verify/geometry/cross_point_ss.test.cpp
   - verify/geometry/polygon_contain.test.cpp
+  - verify/geometry/convex_hull_monotone_chain_1.test.cpp
   - verify/geometry/cross_point_cl.test.cpp
   - verify/geometry/cross_point_cc.test.cpp
   - verify/geometry/incircle.test.cpp
@@ -194,6 +202,7 @@ data:
   - verify/geometry/reflection.test.cpp
   - verify/geometry/projection.test.cpp
   - verify/geometry/polygon_is_convex.test.cpp
+  - verify/geometry/convex_hull_monotone_chain_2.test.cpp
   - verify/geometry/compare_atan2.test.cpp
   - verify/geometry/is_intersect_ss.test.cpp
   - verify/geometry/closest_pair.test.cpp
@@ -202,7 +211,6 @@ data:
   - verify/geometry/is_orthogonal_is_parallel.test.cpp
   - verify/geometry/distance_ss.test.cpp
   - verify/geometry/convex_polygon_cut.test.cpp
-  - verify/geometry/convex_hull_monotone_chain.test.cpp
   - verify/geometry/tangent_cp.test.cpp
   - verify/geometry/circumscribed_circle.test.cpp
 documentation_of: geometry/geometry_template.hpp

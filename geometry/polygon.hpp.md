@@ -1,14 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/geometry_template.hpp
     title: "\u5E7E\u4F55\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/point.hpp
     title: "Point (\u70B9)"
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
+    path: geometry/all.hpp
+    title: geometry/all.hpp
+  - icon: ':question:'
     path: geometry/convex_hull_monotone_chain.hpp
     title: "Convex Hull (\u51F8\u5305)"
   - icon: ':heavy_check_mark:'
@@ -27,8 +30,11 @@ data:
       \u5B9A)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/geometry/convex_hull_monotone_chain.test.cpp
-    title: verify/geometry/convex_hull_monotone_chain.test.cpp
+    path: verify/geometry/convex_hull_monotone_chain_1.test.cpp
+    title: verify/geometry/convex_hull_monotone_chain_1.test.cpp
+  - icon: ':x:'
+    path: verify/geometry/convex_hull_monotone_chain_2.test.cpp
+    title: verify/geometry/convex_hull_monotone_chain_2.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/geometry/convex_polygon_cut.test.cpp
     title: verify/geometry/convex_polygon_cut.test.cpp
@@ -44,9 +50,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/polygon_is_convex.test.cpp
     title: verify/geometry/polygon_is_convex.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A
@@ -58,17 +64,17 @@ data:
     \ void set_eps(const T e) { EPS = e; }\n    static constexpr T PI = 3.14159'26535'89793L;\n\
     };\n\ntemplate <> double Constants<double>::EPS = 1e-9;\ntemplate <> long double\
     \ Constants<long double>::EPS = 1e-12;\ntemplate <> long long Constants<long long>::EPS\
-    \ = 0;\n\n// base functions\ntemplate <class T> inline int sign(const T x) { return\
-    \ x < -Constants<T>::EPS ? -1 : (x > Constants<T>::EPS ? 1 : 0); }\ntemplate <class\
-    \ T> inline bool equal(const T a, const T b) { return sign(a - b) == 0; }\ntemplate\
-    \ <class T> inline T radian_to_degree(const T r) { return r * 180.0 / Constants<T>::PI;\
-    \ }\ntemplate <class T> inline T degree_to_radian(const T d) { return d * Constants<T>::PI\
-    \ / 180.0; }\n\n// type traits\ntemplate <class T> using is_geometry_floating_point\
-    \ = typename std::conditional<std::is_same<T, double>::value || std::is_same<T,\
-    \ long double>::value, std::true_type, std::false_type>::type;\ntemplate <class\
-    \ T> using is_geometry_integer = typename std::conditional<std::is_same<T, long\
-    \ long>::value, std::true_type, std::false_type>::type;\ntemplate <class T> using\
-    \ is_geometry = typename std::conditional<is_geometry_floating_point<T>::value\
+    \ = 0;\n\n// \u6C4E\u7528\u95A2\u6570\ntemplate <class T> inline int sign(const\
+    \ T x) { return x < -Constants<T>::EPS ? -1 : (x > Constants<T>::EPS ? 1 : 0);\
+    \ }\ntemplate <class T> inline bool equal(const T a, const T b) { return sign(a\
+    \ - b) == 0; }\ntemplate <class T> inline T radian_to_degree(const T r) { return\
+    \ r * 180.0 / Constants<T>::PI; }\ntemplate <class T> inline T degree_to_radian(const\
+    \ T d) { return d * Constants<T>::PI / 180.0; }\n\n// type traits\ntemplate <class\
+    \ T> using is_geometry_floating_point = typename std::conditional<std::is_same<T,\
+    \ double>::value || std::is_same<T, long double>::value, std::true_type, std::false_type>::type;\n\
+    template <class T> using is_geometry_integer = typename std::conditional<std::is_same<T,\
+    \ long long>::value, std::true_type, std::false_type>::type;\ntemplate <class\
+    \ T> using is_geometry = typename std::conditional<is_geometry_floating_point<T>::value\
     \ || is_geometry_integer<T>::value, std::true_type, std::false_type>::type;\n\
     #line 4 \"geometry/point.hpp\"\n\n#include <cmath>\n#include <cassert>\n\n// \u70B9\
     \ntemplate <class T> struct Point {\n    T x, y;\n\n    Point() = default;\n \
@@ -97,15 +103,15 @@ data:
     \ Point& a, const Point& b) { return a.x == b.x and a.y == b.y; }\n\n    // I/O\n\
     \    friend std::istream& operator>>(std::istream& is, Point& p) { return is >>\
     \ p.x >> p.y; }\n    friend std::ostream& operator<<(std::ostream& os, const Point&\
-    \ p) { return os << '(' << p.x << ' ' << p.y << ')'; }\n};\n\n// point base functions\n\
-    // \u70B9\u306E\u4E00\u81F4\u5224\u5B9A\ntemplate <class T> inline bool equal(const\
-    \ Point<T>& a, const Point<T>& b) { return equal(a.x, b.x) and equal(a.y, b.y);\
-    \ }\n// \u5185\u7A4D\ntemplate <class T> inline T dot(const Point<T>& a, const\
-    \ Point<T>& b) { return a.x * b.x + a.y * b.y; }\n// \u5916\u7A4D\ntemplate <class\
-    \ T> inline T cross(const Point<T>& a, const Point<T>& b) { return a.x * b.y -\
-    \ a.y * b.x; }\n// rad \u30E9\u30B8\u30A2\u30F3\u3060\u3051\u53CD\u6642\u8A08\u56DE\
-    \u308A\u306B\u56DE\u8EE2\ntemplate <class T> inline Point<T> rotate(const Point<T>&\
-    \ p, const T theta) {\n    static_assert(is_geometry_floating_point<T>::value\
+    \ p) { return os << '(' << p.x << ' ' << p.y << ')'; }\n};\n\n// \u6C4E\u7528\u95A2\
+    \u6570\n// \u70B9\u306E\u4E00\u81F4\u5224\u5B9A\ntemplate <class T> inline bool\
+    \ equal(const Point<T>& a, const Point<T>& b) { return equal(a.x, b.x) and equal(a.y,\
+    \ b.y); }\n// \u5185\u7A4D\ntemplate <class T> inline T dot(const Point<T>& a,\
+    \ const Point<T>& b) { return a.x * b.x + a.y * b.y; }\n// \u5916\u7A4D\ntemplate\
+    \ <class T> inline T cross(const Point<T>& a, const Point<T>& b) { return a.x\
+    \ * b.y - a.y * b.x; }\n// rad \u30E9\u30B8\u30A2\u30F3\u3060\u3051\u53CD\u6642\
+    \u8A08\u56DE\u308A\u306B\u56DE\u8EE2\ntemplate <class T> inline Point<T> rotate(const\
+    \ Point<T>& p, const T theta) {\n    static_assert(is_geometry_floating_point<T>::value\
     \ == true);\n    return p * Point<T>(std::cos(theta), std::sin(theta));\n}\n//\
     \ (x, y) \u306E\u8F9E\u66F8\u5F0F\u9806\u5E8F (\u8AA4\u5DEE\u8A31\u5BB9)\ntemplate\
     \ <class T> inline bool compare_x(const Point<T>& a, const Point<T>& b) { return\
@@ -150,8 +156,8 @@ data:
     \ return Ccw::CLOCKWISE;\n    if (sign(dot(ab, ac)) == -1) return Ccw::ONLINE_BACK;\n\
     \    if (sign(norm(ab) - norm(ac)) == -1) return Ccw::ONLINE_FRONT;\n    return\
     \ Ccw::ON_SEGMENT;\n}\n#line 4 \"geometry/polygon.hpp\"\n\n#include <vector>\n\
-    #line 7 \"geometry/polygon.hpp\"\n\n// polygon\ntemplate <class T> using Polygon\
-    \ = std::vector<Point<T>>;\ntemplate <class T> std::istream& operator>>(std::istream&\
+    #line 7 \"geometry/polygon.hpp\"\n\n// \u591A\u89D2\u5F62\ntemplate <class T>\
+    \ using Polygon = std::vector<Point<T>>;\ntemplate <class T> std::istream& operator>>(std::istream&\
     \ is, Polygon<T>& p) {\n    for (auto&& pi : p) is >> pi;\n    return is;\n}\n\
     template <class T> std::ostream& operator<<(std::ostream& os, const Polygon<T>&\
     \ p) {\n    for (auto&& pi : p) os << pi << \" -> \";\n    return os;\n}\n\n//\
@@ -174,7 +180,7 @@ data:
     \ = false;\n        if (!okccw and !okcw) return false;\n    }\n    return true;\n\
     }\n"
   code: "#pragma once\n\n#include \"geometry/point.hpp\"\n\n#include <vector>\n#include\
-    \ <cassert>\n\n// polygon\ntemplate <class T> using Polygon = std::vector<Point<T>>;\n\
+    \ <cassert>\n\n// \u591A\u89D2\u5F62\ntemplate <class T> using Polygon = std::vector<Point<T>>;\n\
     template <class T> std::istream& operator>>(std::istream& is, Polygon<T>& p) {\n\
     \    for (auto&& pi : p) is >> pi;\n    return is;\n}\ntemplate <class T> std::ostream&\
     \ operator<<(std::ostream& os, const Polygon<T>& p) {\n    for (auto&& pi : p)\
@@ -205,18 +211,20 @@ data:
   requiredBy:
   - geometry/farthest_pair.hpp
   - geometry/convex_polygon_diameter.hpp
+  - geometry/all.hpp
   - geometry/convex_polygon_cut.hpp
   - geometry/polygon_contain.hpp
   - geometry/convex_hull_monotone_chain.hpp
-  timestamp: '2024-08-02 21:55:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-08-03 15:34:22+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/geometry/convex_polygon_diameter.test.cpp
   - verify/geometry/polygon_contain.test.cpp
+  - verify/geometry/convex_hull_monotone_chain_1.test.cpp
   - verify/geometry/polygon_is_convex.test.cpp
+  - verify/geometry/convex_hull_monotone_chain_2.test.cpp
   - verify/geometry/polygon_area.test.cpp
   - verify/geometry/convex_polygon_cut.test.cpp
-  - verify/geometry/convex_hull_monotone_chain.test.cpp
 documentation_of: geometry/polygon.hpp
 layout: document
 title: "Polygon (\u591A\u89D2\u5F62)"

@@ -2,14 +2,17 @@
 data:
   _extendedDependsOn:
   - icon: ':question:'
+    path: geometry/convex_hull_monotone_chain.hpp
+    title: "Convex Hull (\u51F8\u5305)"
+  - icon: ':question:'
     path: geometry/geometry_template.hpp
     title: "\u5E7E\u4F55\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-  - icon: ':heavy_check_mark:'
-    path: geometry/line.hpp
-    title: "Line / Segment (\u76F4\u7DDA\u30FB\u7DDA\u5206)"
   - icon: ':question:'
     path: geometry/point.hpp
     title: "Point (\u70B9)"
+  - icon: ':question:'
+    path: geometry/polygon.hpp
+    title: "Polygon (\u591A\u89D2\u5F62)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -17,25 +20,25 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    ERROR: '0.00000001'
-    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_B
+    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A
     links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_B
-  bundledCode: "#line 1 \"verify/geometry/reflection.test.cpp\"\n#define PROBLEM \"\
-    http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_B\"\n#define ERROR\
-    \ 0.00000001\n\n#include <iostream>\n#include <iomanip>\n\n#line 2 \"geometry/line.hpp\"\
-    \n\n#line 2 \"geometry/point.hpp\"\n\n#line 2 \"geometry/geometry_template.hpp\"\
-    \n\n#include <type_traits>\n\n// Constants (EPS, PI)\n// EPS \u306E\u5909\u66F4\
-    \u306F Constants<T>::set_eps(new_eps) \u3067\ntemplate <class T> struct Constants\
-    \ {\n    static T EPS;\n    static void set_eps(const T e) { EPS = e; }\n    static\
-    \ constexpr T PI = 3.14159'26535'89793L;\n};\n\ntemplate <> double Constants<double>::EPS\
-    \ = 1e-9;\ntemplate <> long double Constants<long double>::EPS = 1e-12;\ntemplate\
-    \ <> long long Constants<long long>::EPS = 0;\n\n// \u6C4E\u7528\u95A2\u6570\n\
-    template <class T> inline int sign(const T x) { return x < -Constants<T>::EPS\
-    \ ? -1 : (x > Constants<T>::EPS ? 1 : 0); }\ntemplate <class T> inline bool equal(const\
-    \ T a, const T b) { return sign(a - b) == 0; }\ntemplate <class T> inline T radian_to_degree(const\
-    \ T r) { return r * 180.0 / Constants<T>::PI; }\ntemplate <class T> inline T degree_to_radian(const\
-    \ T d) { return d * Constants<T>::PI / 180.0; }\n\n// type traits\ntemplate <class\
+    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A
+  bundledCode: "#line 1 \"verify/geometry/convex_hull_monotone_chain_1.test.cpp\"\n\
+    #define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A\"\
+    \n\n#include <iostream>\n\n#line 2 \"geometry/convex_hull_monotone_chain.hpp\"\
+    \n\n#line 2 \"geometry/polygon.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n#line\
+    \ 2 \"geometry/geometry_template.hpp\"\n\n#include <type_traits>\n\n// Constants\
+    \ (EPS, PI)\n// EPS \u306E\u5909\u66F4\u306F Constants<T>::set_eps(new_eps) \u3067\
+    \ntemplate <class T> struct Constants {\n    static T EPS;\n    static void set_eps(const\
+    \ T e) { EPS = e; }\n    static constexpr T PI = 3.14159'26535'89793L;\n};\n\n\
+    template <> double Constants<double>::EPS = 1e-9;\ntemplate <> long double Constants<long\
+    \ double>::EPS = 1e-12;\ntemplate <> long long Constants<long long>::EPS = 0;\n\
+    \n// \u6C4E\u7528\u95A2\u6570\ntemplate <class T> inline int sign(const T x) {\
+    \ return x < -Constants<T>::EPS ? -1 : (x > Constants<T>::EPS ? 1 : 0); }\ntemplate\
+    \ <class T> inline bool equal(const T a, const T b) { return sign(a - b) == 0;\
+    \ }\ntemplate <class T> inline T radian_to_degree(const T r) { return r * 180.0\
+    \ / Constants<T>::PI; }\ntemplate <class T> inline T degree_to_radian(const T\
+    \ d) { return d * Constants<T>::PI / 180.0; }\n\n// type traits\ntemplate <class\
     \ T> using is_geometry_floating_point = typename std::conditional<std::is_same<T,\
     \ double>::value || std::is_same<T, long double>::value, std::true_type, std::false_type>::type;\n\
     template <class T> using is_geometry_integer = typename std::conditional<std::is_same<T,\
@@ -121,62 +124,80 @@ data:
     \ ac)) == 1) return Ccw::COUNTER_CLOCKWISE;\n    if (sign(cross(ab, ac)) == -1)\
     \ return Ccw::CLOCKWISE;\n    if (sign(dot(ab, ac)) == -1) return Ccw::ONLINE_BACK;\n\
     \    if (sign(norm(ab) - norm(ac)) == -1) return Ccw::ONLINE_FRONT;\n    return\
-    \ Ccw::ON_SEGMENT;\n}\n#line 4 \"geometry/line.hpp\"\n\n// \u76F4\u7DDA\ntemplate\
-    \ <class T> struct Line {\n    Point<T> a, b;\n\n    Line() = default;\n    Line(const\
-    \ Point<T>& a, const Point<T>& b) : a(a), b(b) {}\n\n    // Ax + By = C\n    Line(const\
-    \ T A, const T B, const T C) {\n        static_assert(is_geometry_floating_point<T>::value\
-    \ == true);\n        assert(!(equal(A, T(0)) and equal(B, T(0))));\n        if\
-    \ (equal(A, T(0))) {\n            a = Point<T>(T(0), C / B), b = Point<T>(T(1),\
-    \ C / B);\n        } else if (equal(B, T(0))) {\n            a = Point<T>(C /\
-    \ A, T(0)), b = Point<T>(C / A, T(1));\n        } else if (equal(C, T(0))) {\n\
-    \            a = Point<T>(T(0), T(0)), b = Point<T>(T(1), -A / B);\n        }\
-    \ else {\n            a = Point<T>(T(0), C / B), b = Point<T>(C / A, T(0));\n\
-    \        }\n    }\n\n    friend std::istream& operator>>(std::istream& is, Line&\
-    \ p) { return is >> p.a >> p.b; }\n    friend std::ostream& operator<<(std::ostream&\
-    \ os, const Line& p) { return os << p.a << \"->\" << p.b; }\n};\n\n// \u7DDA\u5206\
-    \ntemplate <class T> struct Segment : Line<T> {\n    Segment() = default;\n\n\
-    \    Segment(const Point<T>& a, const Point<T>& b) : Line<T>(a, b) {}\n};\n\n\
-    // \u70B9 p \u304B\u3089\u76F4\u7DDA l \u306B\u4E0B\u308D\u3057\u305F\u5782\u7DDA\
-    \u3068\u76F4\u7DDA l \u306E\u4EA4\u70B9\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A\n\
-    template <class T> Point<T> projection(const Line<T>& l, const Point<T>& p) {\n\
-    \    static_assert(is_geometry_floating_point<T>::value == true);\n    T t = dot(p\
-    \ - l.a, l.b - l.a) / norm(l.b - l.a);\n    return l.a + (l.b - l.a) * t;\n}\n\
-    \n// \u76F4\u7DDA l \u306B\u95A2\u3057\u3066\u70B9 p \u3068\u5BFE\u8C61\u306A\u4F4D\
-    \u7F6E\u306B\u3042\u308B\u70B9\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_B\n\
-    template <class T> Point<T> reflection(const Line<T>& l, const Point<T>& p) {\n\
-    \    static_assert(is_geometry_floating_point<T>::value == true);\n    return\
-    \ p + (projection(l, p) - p) * T(2);\n}\n\n// \u76F4\u7DDA l1, l2 \u306E\u5782\
-    \u76F4\u5224\u5B9A\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A\n\
-    template <class T> inline bool is_orthogonal(const Line<T>& l1, const Line<T>&\
-    \ l2) { return sign(dot(l1.b - l1.a, l2.b - l2.a)) == 0; }\n\n// \u76F4\u7DDA\
-    \ l1, l2 \u306E\u5E73\u884C\u5224\u5B9A\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A\n\
-    template <class T> inline bool is_parallel(const Line<T>& l1, const Line<T>& l2)\
-    \ { return sign(cross(l1.b - l1.a, l2.b - l2.a)) == 0; }\n#line 8 \"verify/geometry/reflection.test.cpp\"\
-    \n\nint main() {\n    Line<double> L;\n    int Q;\n    std::cin >> L >> Q;\n \
-    \   while (Q--) {\n        Point<double> P;\n        std::cin >> P;\n        auto\
-    \ ans = reflection(L, P);\n        std::cout << std::fixed << std::setprecision(15)\
-    \ << ans.x << ' ' << ans.y << '\\n';\n    }\n    return 0;\n}\n"
-  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_B\"\
-    \n#define ERROR 0.00000001\n\n#include <iostream>\n#include <iomanip>\n\n#include\
-    \ \"geometry/line.hpp\"\n\nint main() {\n    Line<double> L;\n    int Q;\n   \
-    \ std::cin >> L >> Q;\n    while (Q--) {\n        Point<double> P;\n        std::cin\
-    \ >> P;\n        auto ans = reflection(L, P);\n        std::cout << std::fixed\
-    \ << std::setprecision(15) << ans.x << ' ' << ans.y << '\\n';\n    }\n    return\
-    \ 0;\n}"
+    \ Ccw::ON_SEGMENT;\n}\n#line 4 \"geometry/polygon.hpp\"\n\n#include <vector>\n\
+    #line 7 \"geometry/polygon.hpp\"\n\n// \u591A\u89D2\u5F62\ntemplate <class T>\
+    \ using Polygon = std::vector<Point<T>>;\ntemplate <class T> std::istream& operator>>(std::istream&\
+    \ is, Polygon<T>& p) {\n    for (auto&& pi : p) is >> pi;\n    return is;\n}\n\
+    template <class T> std::ostream& operator<<(std::ostream& os, const Polygon<T>&\
+    \ p) {\n    for (auto&& pi : p) os << pi << \" -> \";\n    return os;\n}\n\n//\
+    \ \u591A\u89D2\u5F62\u306E\u9762\u7A4D (\u7B26\u53F7\u4ED8\u304D)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\n\
+    // return area * 2\ntemplate <class T> T polygon_area2(const Polygon<T>& p) {\n\
+    \    const int n = (int)(p.size());\n    assert(n >= 2);\n    T ret = T(0);\n\
+    \    for (int i = 0; i < n; i++) ret += cross(p[i], p[i + 1 == n ? 0 : i + 1]);\n\
+    \    // counter clockwise: ret > 0\n    // clockwise: ret < 0\n    return ret;\n\
+    }\ntemplate <class T> T polygon_area(const Polygon<T>& p) {\n    static_assert(is_geometry_floating_point<T>::value\
+    \ == true);\n    return polygon_area2(p) / T(2);\n}\n\n// \u591A\u89D2\u5F62\u306E\
+    \u51F8\u5224\u5B9A (\u89D2\u5EA6\u304C 0 \u3067\u3082 PI \u3067\u3082\u8A31\u5BB9\
+    )\n// \u8A31\u5BB9\u3057\u305F\u304F\u306A\u3044\u3068\u304D\u306B\u306F ON_SEGMENT,\
+    \ ONLINE_FRONT, ONLINE_BACK \u304C\u51FA\u3066\u304D\u305F\u3089 false \u3092\u8FD4\
+    \u305B\u3070 OK\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B\n\
+    template <class T> bool polygon_is_convex(const Polygon<T>& p) {\n    const int\
+    \ n = (int)(p.size());\n    assert(n >= 3);\n    bool okccw = true, okcw = true;\n\
+    \    for (int i = 0; i < n; i++) {\n        auto res = ccw(p[i], p[i + 1 >= n\
+    \ ? i + 1 - n : i + 1], p[i + 2 >= n ? i + 2 - n : i + 2]);\n        if (res ==\
+    \ Ccw::CLOCKWISE) okccw = false;\n        if (res == Ccw::COUNTER_CLOCKWISE) okcw\
+    \ = false;\n        if (!okccw and !okcw) return false;\n    }\n    return true;\n\
+    }\n#line 4 \"geometry/convex_hull_monotone_chain.hpp\"\n\n#include <algorithm>\n\
+    \n// \u51F8\u5305 (Andrew's Monotone Chain algorithm)\n// O(n log n)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A\n\
+    // (x, y) \u3092\u8F9E\u66F8\u5F0F\u9806\u5E8F\u3067\u30BD\u30FC\u30C8\u3057,\
+    \ \u30B9\u30BF\u30C3\u30AF\u3092\u4F7F\u3063\u3066\u4E0A\u5074\u51F8\u5305\u3068\
+    \u4E0B\u5074\u51F8\u5305\u3092\u6C42\u3081\u308B\n// \u53CD\u6642\u8A08\u56DE\u308A\
+    \n// strict \u3092 true \u306B\u3059\u308B\u3068\u51F8\u5305\u306E\u8FBA\u4E0A\
+    \u306B\u4E26\u3076\u9802\u70B9\u306F\u542B\u3081\u306A\u3044 (\u9802\u70B9\u6570\
+    \u304C\u6700\u5C0F\u306B\u306A\u308B)\ntemplate <class T> Polygon<T> convex_hull_monotone_chain(std::vector<Point<T>>&\
+    \ p, bool strict = true) {\n    std::sort(p.begin(), p.end());\n    p.erase(std::unique(p.begin(),\
+    \ p.end()), p.end());\n    const int n = (int)(p.size());\n    if (n <= 2) return\
+    \ p;\n    std::sort(p.begin(), p.end(), compare_x<T>);\n    Polygon<T> r;\n  \
+    \  r.reserve(n * 2);\n    auto f = [&strict](Ccw ccwres) -> bool { return strict\
+    \ ? ccwres != Ccw::CLOCKWISE : ccwres == Ccw::COUNTER_CLOCKWISE; };\n    for (int\
+    \ i = 0; i < n; i++) {\n        while (r.size() >= 2 and f(ccw(r[r.size() - 2],\
+    \ r[r.size() - 1], p[i]))) {\n            r.pop_back();\n        }\n        r.push_back(p[i]);\n\
+    \    }\n    int t = r.size() + 1;\n    for (int i = n - 2; i >= 0; i--) {\n  \
+    \      while (r.size() >= t and f(ccw(r[r.size() - 2], r[r.size() - 1], p[i])))\
+    \ {\n            r.pop_back();\n        }\n        r.push_back(p[i]);\n    }\n\
+    \    r.pop_back();\n    std::reverse(r.begin(), r.end());\n    return r;\n}\n\
+    #line 6 \"verify/geometry/convex_hull_monotone_chain_1.test.cpp\"\n\nint main()\
+    \ {\n    int N;\n    std::cin >> N;\n    Polygon<long long> P(N);\n    std::cin\
+    \ >> P;\n    auto res = convex_hull_monotone_chain(P, false);\n    int minidx\
+    \ = 0;\n    for (int i = 0; i < res.size(); i++) {\n        if (compare_y(res[i],\
+    \ res[minidx])) {\n            minidx = i;\n        }\n    }\n    std::rotate(res.begin(),\
+    \ res.begin() + minidx, res.end());\n    std::cout << res.size() << '\\n';\n \
+    \   for (int i = 0; i < res.size(); i++) std::cout << res[i].x << ' ' << res[i].y\
+    \ << '\\n';\n    return 0;\n}\n"
+  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A\"\
+    \n\n#include <iostream>\n\n#include \"geometry/convex_hull_monotone_chain.hpp\"\
+    \n\nint main() {\n    int N;\n    std::cin >> N;\n    Polygon<long long> P(N);\n\
+    \    std::cin >> P;\n    auto res = convex_hull_monotone_chain(P, false);\n  \
+    \  int minidx = 0;\n    for (int i = 0; i < res.size(); i++) {\n        if (compare_y(res[i],\
+    \ res[minidx])) {\n            minidx = i;\n        }\n    }\n    std::rotate(res.begin(),\
+    \ res.begin() + minidx, res.end());\n    std::cout << res.size() << '\\n';\n \
+    \   for (int i = 0; i < res.size(); i++) std::cout << res[i].x << ' ' << res[i].y\
+    \ << '\\n';\n    return 0;\n}"
   dependsOn:
-  - geometry/line.hpp
+  - geometry/convex_hull_monotone_chain.hpp
+  - geometry/polygon.hpp
   - geometry/point.hpp
   - geometry/geometry_template.hpp
   isVerificationFile: true
-  path: verify/geometry/reflection.test.cpp
+  path: verify/geometry/convex_hull_monotone_chain_1.test.cpp
   requiredBy: []
   timestamp: '2024-08-03 15:34:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/geometry/reflection.test.cpp
+documentation_of: verify/geometry/convex_hull_monotone_chain_1.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/geometry/reflection.test.cpp
-- /verify/verify/geometry/reflection.test.cpp.html
-title: verify/geometry/reflection.test.cpp
+- /verify/verify/geometry/convex_hull_monotone_chain_1.test.cpp
+- /verify/verify/geometry/convex_hull_monotone_chain_1.test.cpp.html
+title: verify/geometry/convex_hull_monotone_chain_1.test.cpp
 ---

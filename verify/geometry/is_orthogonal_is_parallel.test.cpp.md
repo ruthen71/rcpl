@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/geometry_template.hpp
     title: "\u5E7E\u4F55\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: "Line / Segment (\u76F4\u7DDA\u30FB\u7DDA\u5206)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/point.hpp
     title: "Point (\u70B9)"
   _extendedRequiredBy: []
@@ -29,17 +29,17 @@ data:
     \ void set_eps(const T e) { EPS = e; }\n    static constexpr T PI = 3.14159'26535'89793L;\n\
     };\n\ntemplate <> double Constants<double>::EPS = 1e-9;\ntemplate <> long double\
     \ Constants<long double>::EPS = 1e-12;\ntemplate <> long long Constants<long long>::EPS\
-    \ = 0;\n\n// base functions\ntemplate <class T> inline int sign(const T x) { return\
-    \ x < -Constants<T>::EPS ? -1 : (x > Constants<T>::EPS ? 1 : 0); }\ntemplate <class\
-    \ T> inline bool equal(const T a, const T b) { return sign(a - b) == 0; }\ntemplate\
-    \ <class T> inline T radian_to_degree(const T r) { return r * 180.0 / Constants<T>::PI;\
-    \ }\ntemplate <class T> inline T degree_to_radian(const T d) { return d * Constants<T>::PI\
-    \ / 180.0; }\n\n// type traits\ntemplate <class T> using is_geometry_floating_point\
-    \ = typename std::conditional<std::is_same<T, double>::value || std::is_same<T,\
-    \ long double>::value, std::true_type, std::false_type>::type;\ntemplate <class\
-    \ T> using is_geometry_integer = typename std::conditional<std::is_same<T, long\
-    \ long>::value, std::true_type, std::false_type>::type;\ntemplate <class T> using\
-    \ is_geometry = typename std::conditional<is_geometry_floating_point<T>::value\
+    \ = 0;\n\n// \u6C4E\u7528\u95A2\u6570\ntemplate <class T> inline int sign(const\
+    \ T x) { return x < -Constants<T>::EPS ? -1 : (x > Constants<T>::EPS ? 1 : 0);\
+    \ }\ntemplate <class T> inline bool equal(const T a, const T b) { return sign(a\
+    \ - b) == 0; }\ntemplate <class T> inline T radian_to_degree(const T r) { return\
+    \ r * 180.0 / Constants<T>::PI; }\ntemplate <class T> inline T degree_to_radian(const\
+    \ T d) { return d * Constants<T>::PI / 180.0; }\n\n// type traits\ntemplate <class\
+    \ T> using is_geometry_floating_point = typename std::conditional<std::is_same<T,\
+    \ double>::value || std::is_same<T, long double>::value, std::true_type, std::false_type>::type;\n\
+    template <class T> using is_geometry_integer = typename std::conditional<std::is_same<T,\
+    \ long long>::value, std::true_type, std::false_type>::type;\ntemplate <class\
+    \ T> using is_geometry = typename std::conditional<is_geometry_floating_point<T>::value\
     \ || is_geometry_integer<T>::value, std::true_type, std::false_type>::type;\n\
     #line 4 \"geometry/point.hpp\"\n\n#include <cmath>\n#include <cassert>\n\n// \u70B9\
     \ntemplate <class T> struct Point {\n    T x, y;\n\n    Point() = default;\n \
@@ -68,15 +68,15 @@ data:
     \ Point& a, const Point& b) { return a.x == b.x and a.y == b.y; }\n\n    // I/O\n\
     \    friend std::istream& operator>>(std::istream& is, Point& p) { return is >>\
     \ p.x >> p.y; }\n    friend std::ostream& operator<<(std::ostream& os, const Point&\
-    \ p) { return os << '(' << p.x << ' ' << p.y << ')'; }\n};\n\n// point base functions\n\
-    // \u70B9\u306E\u4E00\u81F4\u5224\u5B9A\ntemplate <class T> inline bool equal(const\
-    \ Point<T>& a, const Point<T>& b) { return equal(a.x, b.x) and equal(a.y, b.y);\
-    \ }\n// \u5185\u7A4D\ntemplate <class T> inline T dot(const Point<T>& a, const\
-    \ Point<T>& b) { return a.x * b.x + a.y * b.y; }\n// \u5916\u7A4D\ntemplate <class\
-    \ T> inline T cross(const Point<T>& a, const Point<T>& b) { return a.x * b.y -\
-    \ a.y * b.x; }\n// rad \u30E9\u30B8\u30A2\u30F3\u3060\u3051\u53CD\u6642\u8A08\u56DE\
-    \u308A\u306B\u56DE\u8EE2\ntemplate <class T> inline Point<T> rotate(const Point<T>&\
-    \ p, const T theta) {\n    static_assert(is_geometry_floating_point<T>::value\
+    \ p) { return os << '(' << p.x << ' ' << p.y << ')'; }\n};\n\n// \u6C4E\u7528\u95A2\
+    \u6570\n// \u70B9\u306E\u4E00\u81F4\u5224\u5B9A\ntemplate <class T> inline bool\
+    \ equal(const Point<T>& a, const Point<T>& b) { return equal(a.x, b.x) and equal(a.y,\
+    \ b.y); }\n// \u5185\u7A4D\ntemplate <class T> inline T dot(const Point<T>& a,\
+    \ const Point<T>& b) { return a.x * b.x + a.y * b.y; }\n// \u5916\u7A4D\ntemplate\
+    \ <class T> inline T cross(const Point<T>& a, const Point<T>& b) { return a.x\
+    \ * b.y - a.y * b.x; }\n// rad \u30E9\u30B8\u30A2\u30F3\u3060\u3051\u53CD\u6642\
+    \u8A08\u56DE\u308A\u306B\u56DE\u8EE2\ntemplate <class T> inline Point<T> rotate(const\
+    \ Point<T>& p, const T theta) {\n    static_assert(is_geometry_floating_point<T>::value\
     \ == true);\n    return p * Point<T>(std::cos(theta), std::sin(theta));\n}\n//\
     \ (x, y) \u306E\u8F9E\u66F8\u5F0F\u9806\u5E8F (\u8AA4\u5DEE\u8A31\u5BB9)\ntemplate\
     \ <class T> inline bool compare_x(const Point<T>& a, const Point<T>& b) { return\
@@ -120,8 +120,8 @@ data:
     \ ac)) == 1) return Ccw::COUNTER_CLOCKWISE;\n    if (sign(cross(ab, ac)) == -1)\
     \ return Ccw::CLOCKWISE;\n    if (sign(dot(ab, ac)) == -1) return Ccw::ONLINE_BACK;\n\
     \    if (sign(norm(ab) - norm(ac)) == -1) return Ccw::ONLINE_FRONT;\n    return\
-    \ Ccw::ON_SEGMENT;\n}\n#line 4 \"geometry/line.hpp\"\n\n// line\ntemplate <class\
-    \ T> struct Line {\n    Point<T> a, b;\n\n    Line() = default;\n    Line(const\
+    \ Ccw::ON_SEGMENT;\n}\n#line 4 \"geometry/line.hpp\"\n\n// \u76F4\u7DDA\ntemplate\
+    \ <class T> struct Line {\n    Point<T> a, b;\n\n    Line() = default;\n    Line(const\
     \ Point<T>& a, const Point<T>& b) : a(a), b(b) {}\n\n    // Ax + By = C\n    Line(const\
     \ T A, const T B, const T C) {\n        static_assert(is_geometry_floating_point<T>::value\
     \ == true);\n        assert(!(equal(A, T(0)) and equal(B, T(0))));\n        if\
@@ -132,10 +132,10 @@ data:
     \ else {\n            a = Point<T>(T(0), C / B), b = Point<T>(C / A, T(0));\n\
     \        }\n    }\n\n    friend std::istream& operator>>(std::istream& is, Line&\
     \ p) { return is >> p.a >> p.b; }\n    friend std::ostream& operator<<(std::ostream&\
-    \ os, const Line& p) { return os << p.a << \"->\" << p.b; }\n};\n\n// segment\n\
-    template <class T> struct Segment : Line<T> {\n    Segment() = default;\n\n  \
-    \  Segment(const Point<T>& a, const Point<T>& b) : Line<T>(a, b) {}\n};\n\n//\
-    \ \u70B9 p \u304B\u3089\u76F4\u7DDA l \u306B\u4E0B\u308D\u3057\u305F\u5782\u7DDA\
+    \ os, const Line& p) { return os << p.a << \"->\" << p.b; }\n};\n\n// \u7DDA\u5206\
+    \ntemplate <class T> struct Segment : Line<T> {\n    Segment() = default;\n\n\
+    \    Segment(const Point<T>& a, const Point<T>& b) : Line<T>(a, b) {}\n};\n\n\
+    // \u70B9 p \u304B\u3089\u76F4\u7DDA l \u306B\u4E0B\u308D\u3057\u305F\u5782\u7DDA\
     \u3068\u76F4\u7DDA l \u306E\u4EA4\u70B9\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A\n\
     template <class T> Point<T> projection(const Line<T>& l, const Point<T>& p) {\n\
     \    static_assert(is_geometry_floating_point<T>::value == true);\n    T t = dot(p\
@@ -170,7 +170,7 @@ data:
   isVerificationFile: true
   path: verify/geometry/is_orthogonal_is_parallel.test.cpp
   requiredBy: []
-  timestamp: '2024-08-02 21:55:10+09:00'
+  timestamp: '2024-08-03 15:34:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/is_orthogonal_is_parallel.test.cpp
