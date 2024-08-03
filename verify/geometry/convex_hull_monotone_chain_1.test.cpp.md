@@ -155,18 +155,19 @@ data:
     \n// strict \u3092 true \u306B\u3059\u308B\u3068\u51F8\u5305\u306E\u8FBA\u4E0A\
     \u306B\u4E26\u3076\u9802\u70B9\u306F\u542B\u3081\u306A\u3044 (\u9802\u70B9\u6570\
     \u304C\u6700\u5C0F\u306B\u306A\u308B)\ntemplate <class T> Polygon<T> convex_hull_monotone_chain(std::vector<Point<T>>&\
-    \ p, bool strict = true) {\n    std::sort(p.begin(), p.end());\n    p.erase(std::unique(p.begin(),\
+    \ p, bool strict = true) {\n    if (is_geometry_integer<T>::value) {\n       \
+    \ std::sort(p.begin(), p.end());\n    } else {\n        assert(is_geometry_floating_point<T>::value);\n\
+    \        std::sort(p.begin(), p.end(), compare_x<T>);\n    }\n    p.erase(std::unique(p.begin(),\
     \ p.end()), p.end());\n    const int n = (int)(p.size());\n    if (n <= 2) return\
-    \ p;\n    std::sort(p.begin(), p.end(), compare_x<T>);\n    Polygon<T> r;\n  \
-    \  r.reserve(n * 2);\n    auto f = [&strict](Ccw ccwres) -> bool { return strict\
-    \ ? ccwres != Ccw::CLOCKWISE : ccwres == Ccw::COUNTER_CLOCKWISE; };\n    for (int\
-    \ i = 0; i < n; i++) {\n        while (r.size() >= 2 and f(ccw(r[r.size() - 2],\
+    \ p;\n    Polygon<T> r;\n    r.reserve(n * 2);\n    auto f = [&strict](Ccw ccwres)\
+    \ -> bool { return strict ? ccwres != Ccw::CLOCKWISE : ccwres == Ccw::COUNTER_CLOCKWISE;\
+    \ };\n    for (int i = 0; i < n; i++) {\n        while (r.size() >= 2 and f(ccw(r[r.size()\
+    \ - 2], r[r.size() - 1], p[i]))) {\n            r.pop_back();\n        }\n   \
+    \     r.push_back(p[i]);\n    }\n    int t = r.size() + 1;\n    for (int i = n\
+    \ - 2; i >= 0; i--) {\n        while (r.size() >= t and f(ccw(r[r.size() - 2],\
     \ r[r.size() - 1], p[i]))) {\n            r.pop_back();\n        }\n        r.push_back(p[i]);\n\
-    \    }\n    int t = r.size() + 1;\n    for (int i = n - 2; i >= 0; i--) {\n  \
-    \      while (r.size() >= t and f(ccw(r[r.size() - 2], r[r.size() - 1], p[i])))\
-    \ {\n            r.pop_back();\n        }\n        r.push_back(p[i]);\n    }\n\
-    \    r.pop_back();\n    std::reverse(r.begin(), r.end());\n    return r;\n}\n\
-    #line 6 \"verify/geometry/convex_hull_monotone_chain_1.test.cpp\"\n\nint main()\
+    \    }\n    r.pop_back();\n    std::reverse(r.begin(), r.end());\n    return r;\n\
+    }\n#line 6 \"verify/geometry/convex_hull_monotone_chain_1.test.cpp\"\n\nint main()\
     \ {\n    int N;\n    std::cin >> N;\n    Polygon<long long> P(N);\n    std::cin\
     \ >> P;\n    auto res = convex_hull_monotone_chain(P, false);\n    int minidx\
     \ = 0;\n    for (int i = 0; i < res.size(); i++) {\n        if (compare_y(res[i],\
@@ -191,7 +192,7 @@ data:
   isVerificationFile: true
   path: verify/geometry/convex_hull_monotone_chain_1.test.cpp
   requiredBy: []
-  timestamp: '2024-08-03 15:34:22+09:00'
+  timestamp: '2024-08-03 16:29:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/convex_hull_monotone_chain_1.test.cpp
