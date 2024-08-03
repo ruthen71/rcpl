@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/circle.hpp
     title: "Circle (\u5186)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point.hpp
     title: "Cross Point (\u4EA4\u70B9)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: "\u5E7E\u4F55\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/is_intersect.hpp
     title: "Intersection (\u4EA4\u5DEE\u5224\u5B9A)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: "Line / Segment (\u76F4\u7DDA\u30FB\u7DDA\u5206)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: "Point (\u70B9)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon.hpp
     title: "Polygon (\u591A\u89D2\u5F62)"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/common_area_cp.test.cpp
     title: verify/geometry/common_area_cp.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_H
@@ -400,13 +400,24 @@ data:
   path: geometry/common_area.hpp
   requiredBy: []
   timestamp: '2024-08-03 20:33:13+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/geometry/common_area_cp.test.cpp
 documentation_of: geometry/common_area.hpp
 layout: document
-redirect_from:
-- /library/geometry/common_area.hpp
-- /library/geometry/common_area.hpp.html
-title: geometry/common_area.hpp
+title: "Common Area (\u5171\u901A\u90E8\u5206\u306E\u9762\u7A4D)"
 ---
+
+## 使い方
+
+円と多角形 (凸とは限らない) の共通部分の面積を求める
+
+```cpp
+Circle<T> C;
+Polygon<T> P;
+T s = common_area(C, P);
+```
+
+## 参考文献
+
+- [けんちょんの競プロ精進記録, 円と多角形の共通部分の面積 (AOJ Course CGL_7_H)](https://drken1215.hatenablog.com/entry/2020/02/02/091000)

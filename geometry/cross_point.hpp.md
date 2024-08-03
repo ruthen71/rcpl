@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/circle.hpp
     title: "Circle (\u5186)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: "\u5E7E\u4F55\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/is_intersect.hpp
     title: "Intersection (\u4EA4\u5DEE\u5224\u5B9A)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: "Line / Segment (\u76F4\u7DDA\u30FB\u7DDA\u5206)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: "Point (\u70B9)"
   _extendedRequiredBy:
@@ -23,9 +23,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/circumscribed_circle.hpp
     title: "Circumscribed Circle (\u5916\u63A5\u5186)"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/common_area.hpp
-    title: geometry/common_area.hpp
+    title: "Common Area (\u5171\u901A\u90E8\u5206\u306E\u9762\u7A4D)"
   - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_cut.hpp
     title: "Convex Polygon Cut (\u51F8\u591A\u89D2\u5F62\u306E\u76F4\u7DDA\u3067\u306E\
@@ -40,7 +40,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/circumscribed_circle.test.cpp
     title: verify/geometry/circumscribed_circle.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/common_area_cp.test.cpp
     title: verify/geometry/common_area_cp.test.cpp
   - icon: ':heavy_check_mark:'
@@ -64,9 +64,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/tangent_cp.test.cpp
     title: verify/geometry/tangent_cp.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_C
@@ -404,7 +404,7 @@ data:
   - geometry/common_area.hpp
   - geometry/tangent.hpp
   timestamp: '2024-08-03 20:33:13+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/geometry/cross_point_ss.test.cpp
   - verify/geometry/cross_point_cl.test.cpp

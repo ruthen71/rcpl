@@ -5,7 +5,7 @@ data:
   - icon: ':warning:'
     path: geometry/all.hpp
     title: geometry/all.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/circle.hpp
     title: "Circle (\u5186)"
   - icon: ':heavy_check_mark:'
@@ -14,9 +14,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/closest_pair.hpp
     title: "Closest Pair (\u6700\u8FD1\u70B9\u5BFE)"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/common_area.hpp
-    title: geometry/common_area.hpp
+    title: "Common Area (\u5171\u901A\u90E8\u5206\u306E\u9762\u7A4D)"
   - icon: ':heavy_check_mark:'
     path: geometry/convex_hull_monotone_chain.hpp
     title: "Convex Hull (\u51F8\u5305)"
@@ -27,7 +27,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/convex_polygon_diameter.hpp
     title: "Convex Polygon Diameter (\u51F8\u591A\u89D2\u5F62\u306E\u76F4\u5F84)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point.hpp
     title: "Cross Point (\u4EA4\u70B9)"
   - icon: ':heavy_check_mark:'
@@ -39,16 +39,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/incircle.hpp
     title: "Incircle (\u5185\u63A5\u5186)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/is_intersect.hpp
     title: "Intersection (\u4EA4\u5DEE\u5224\u5B9A)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: "Line / Segment (\u76F4\u7DDA\u30FB\u7DDA\u5206)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: "Point (\u70B9)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon.hpp
     title: "Polygon (\u591A\u89D2\u5F62)"
   - icon: ':heavy_check_mark:'
@@ -68,7 +68,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/closest_pair.test.cpp
     title: verify/geometry/closest_pair.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/common_area_cp.test.cpp
     title: verify/geometry/common_area_cp.test.cpp
   - icon: ':heavy_check_mark:'
@@ -131,9 +131,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/tangent_number.test.cpp
     title: verify/geometry/tangent_number.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/geometry_template.hpp\"\n\n#include <type_traits>\n\
@@ -195,7 +195,7 @@ data:
   - geometry/convex_hull_monotone_chain.hpp
   - geometry/polygon.hpp
   timestamp: '2024-08-03 15:34:22+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/geometry/convex_polygon_diameter.test.cpp
   - verify/geometry/cross_point_ss.test.cpp

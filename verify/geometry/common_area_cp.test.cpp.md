@@ -1,55 +1,57 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/circle.hpp
     title: "Circle (\u5186)"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/common_area.hpp
-    title: geometry/common_area.hpp
-  - icon: ':question:'
+    title: "Common Area (\u5171\u901A\u90E8\u5206\u306E\u9762\u7A4D)"
+  - icon: ':heavy_check_mark:'
     path: geometry/cross_point.hpp
     title: "Cross Point (\u4EA4\u70B9)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/geometry_template.hpp
     title: "\u5E7E\u4F55\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/is_intersect.hpp
     title: "Intersection (\u4EA4\u5DEE\u5224\u5B9A)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: "Line / Segment (\u76F4\u7DDA\u30FB\u7DDA\u5206)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: "Point (\u70B9)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon.hpp
     title: "Polygon (\u591A\u89D2\u5F62)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
+    ERROR: '0.00001'
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_H
     links:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_H
   bundledCode: "#line 1 \"verify/geometry/common_area_cp.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_H\"\n\n#include\
-    \ <iostream>\n#include <iomanip>\n\n#line 2 \"geometry/common_area.hpp\"\n\n#line\
-    \ 2 \"geometry/circle.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n#line 2 \"geometry/geometry_template.hpp\"\
-    \n\n#include <type_traits>\n\n// Constants (EPS, PI)\n// EPS \u306E\u5909\u66F4\
-    \u306F Constants<T>::set_eps(new_eps) \u3067\ntemplate <class T> struct Constants\
-    \ {\n    static T EPS;\n    static void set_eps(const T e) { EPS = e; }\n    static\
-    \ constexpr T PI = 3.14159'26535'89793L;\n};\n\ntemplate <> double Constants<double>::EPS\
-    \ = 1e-9;\ntemplate <> long double Constants<long double>::EPS = 1e-12;\ntemplate\
-    \ <> long long Constants<long long>::EPS = 0;\n\n// \u6C4E\u7528\u95A2\u6570\n\
-    template <class T> inline int sign(const T x) { return x < -Constants<T>::EPS\
-    \ ? -1 : (x > Constants<T>::EPS ? 1 : 0); }\ntemplate <class T> inline bool equal(const\
-    \ T a, const T b) { return sign(a - b) == 0; }\ntemplate <class T> inline T radian_to_degree(const\
-    \ T r) { return r * 180.0 / Constants<T>::PI; }\ntemplate <class T> inline T degree_to_radian(const\
-    \ T d) { return d * Constants<T>::PI / 180.0; }\n\n// type traits\ntemplate <class\
+    \ \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_H\"\n#define\
+    \ ERROR 0.00001\n\n#include <iostream>\n#include <iomanip>\n\n#line 2 \"geometry/common_area.hpp\"\
+    \n\n#line 2 \"geometry/circle.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n#line\
+    \ 2 \"geometry/geometry_template.hpp\"\n\n#include <type_traits>\n\n// Constants\
+    \ (EPS, PI)\n// EPS \u306E\u5909\u66F4\u306F Constants<T>::set_eps(new_eps) \u3067\
+    \ntemplate <class T> struct Constants {\n    static T EPS;\n    static void set_eps(const\
+    \ T e) { EPS = e; }\n    static constexpr T PI = 3.14159'26535'89793L;\n};\n\n\
+    template <> double Constants<double>::EPS = 1e-9;\ntemplate <> long double Constants<long\
+    \ double>::EPS = 1e-12;\ntemplate <> long long Constants<long long>::EPS = 0;\n\
+    \n// \u6C4E\u7528\u95A2\u6570\ntemplate <class T> inline int sign(const T x) {\
+    \ return x < -Constants<T>::EPS ? -1 : (x > Constants<T>::EPS ? 1 : 0); }\ntemplate\
+    \ <class T> inline bool equal(const T a, const T b) { return sign(a - b) == 0;\
+    \ }\ntemplate <class T> inline T radian_to_degree(const T r) { return r * 180.0\
+    \ / Constants<T>::PI; }\ntemplate <class T> inline T degree_to_radian(const T\
+    \ d) { return d * Constants<T>::PI / 180.0; }\n\n// type traits\ntemplate <class\
     \ T> using is_geometry_floating_point = typename std::conditional<std::is_same<T,\
     \ double>::value || std::is_same<T, long double>::value, std::true_type, std::false_type>::type;\n\
     template <class T> using is_geometry_integer = typename std::conditional<std::is_same<T,\
@@ -357,19 +359,20 @@ data:
     \ = T(0);\n    for (int i = 0; i < n; i++) res += common_area(c, Segment(p[i],\
     \ p[(i + 1) % n]));\n    // counter clockwise: res > 0\n    // clockwise: res\
     \ < 0\n    return res;\n}\ntemplate <class T> T common_area(const Polygon<T>&\
-    \ p, const Circle<T>& c) { return common_area(c, p); }\n#line 7 \"verify/geometry/common_area_cp.test.cpp\"\
+    \ p, const Circle<T>& c) { return common_area(c, p); }\n#line 8 \"verify/geometry/common_area_cp.test.cpp\"\
     \n\nint main() {\n    int n;\n    double r;\n    std::cin >> n >> r;\n    Polygon<double>\
     \ p(n);\n    std::cin >> p;\n    // \u9069\u5F53\u306B\u5E73\u884C\u79FB\u52D5\
     \u3057\u3066\u304A\u304F\n    Circle<double> c(Point<double>(100, 100), r);\n\
     \    for (auto&& pt : p) pt.x += 100, pt.y += 100;\n    std::cout << std::fixed\
     \ << std::setprecision(15) << common_area(c, p) << '\\n';\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_H\"\
-    \n\n#include <iostream>\n#include <iomanip>\n\n#include \"geometry/common_area.hpp\"\
-    \n\nint main() {\n    int n;\n    double r;\n    std::cin >> n >> r;\n    Polygon<double>\
-    \ p(n);\n    std::cin >> p;\n    // \u9069\u5F53\u306B\u5E73\u884C\u79FB\u52D5\
-    \u3057\u3066\u304A\u304F\n    Circle<double> c(Point<double>(100, 100), r);\n\
-    \    for (auto&& pt : p) pt.x += 100, pt.y += 100;\n    std::cout << std::fixed\
-    \ << std::setprecision(15) << common_area(c, p) << '\\n';\n    return 0;\n}"
+    \n#define ERROR 0.00001\n\n#include <iostream>\n#include <iomanip>\n\n#include\
+    \ \"geometry/common_area.hpp\"\n\nint main() {\n    int n;\n    double r;\n  \
+    \  std::cin >> n >> r;\n    Polygon<double> p(n);\n    std::cin >> p;\n    //\
+    \ \u9069\u5F53\u306B\u5E73\u884C\u79FB\u52D5\u3057\u3066\u304A\u304F\n    Circle<double>\
+    \ c(Point<double>(100, 100), r);\n    for (auto&& pt : p) pt.x += 100, pt.y +=\
+    \ 100;\n    std::cout << std::fixed << std::setprecision(15) << common_area(c,\
+    \ p) << '\\n';\n    return 0;\n}"
   dependsOn:
   - geometry/common_area.hpp
   - geometry/circle.hpp
@@ -382,8 +385,8 @@ data:
   isVerificationFile: true
   path: verify/geometry/common_area_cp.test.cpp
   requiredBy: []
-  timestamp: '2024-08-03 20:33:13+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-08-04 01:49:16+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/common_area_cp.test.cpp
 layout: document
