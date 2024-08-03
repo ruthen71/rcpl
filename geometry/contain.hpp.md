@@ -19,23 +19,26 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/polygon.hpp
     title: "Polygon (\u591A\u89D2\u5F62)"
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: geometry/all.hpp
+    title: geometry/all.hpp
+  _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: geometry/polygon_contain.hpp
-    title: "Polygon Contain (\u591A\u89D2\u5F62\u3068\u70B9\u306E\u4EA4\u5DEE\u5224\
-      \u5B9A)"
-  _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+    path: verify/geometry/contain.test.cpp
+    title: verify/geometry/contain.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/convex_contain.test.cpp
+    title: verify/geometry/convex_contain.test.cpp
   _isVerificationFailed: false
-  _pathExtension: cpp
+  _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C
-  bundledCode: "#line 1 \"verify/geometry/polygon_contain.test.cpp\"\n#define PROBLEM\
-    \ \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C\"\n\n#include\
-    \ <iostream>\n\n#line 2 \"geometry/polygon_contain.hpp\"\n\n#line 2 \"geometry/polygon.hpp\"\
+    - https://atcoder.jp/contests/abc296/tasks/abc296_g
+    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0412
+  bundledCode: "#line 2 \"geometry/contain.hpp\"\n\n#line 2 \"geometry/polygon.hpp\"\
     \n\n#line 2 \"geometry/point.hpp\"\n\n#line 2 \"geometry/geometry_template.hpp\"\
     \n\n#include <type_traits>\n\n// Constants (EPS, PI)\n// EPS \u306E\u5909\u66F4\
     \u306F Constants<T>::set_eps(new_eps) \u3067\ntemplate <class T> struct Constants\
@@ -135,38 +138,38 @@ data:
     \ return Ccw::CLOCKWISE;\n    if (sign(dot(ab, ac)) == -1) return Ccw::ONLINE_BACK;\n\
     \    if (sign(norm(ab) - norm(ac)) == -1) return Ccw::ONLINE_FRONT;\n    return\
     \ Ccw::ON_SEGMENT;\n}\n// \u7DDA\u5206 a -> b \u304B\u3089 \u7DDA\u5206 a -> c\
-    \ \u307E\u3067\u306E\u53CD\u6642\u8A08\u56DE\u308A\u306E\u89D2\u5EA6 (\u30E9\u30B8\
-    \u30A2\u30F3)\ntemplate <class T> T get_angle(const Point<T>& a, const Point<T>&\
-    \ b, const Point<T>& c) {\n    Point<T> ab = b - a;\n    Point<T> ac = c - a;\n\
-    \    // a-b\u304C x \u8EF8\u306B\u306A\u308B\u3088\u3046\u306B\u56DE\u8EE2\n \
-    \   ac *= conj(ab) / norm(ab);\n    return arg(ac);  // (-PI, PI]\n}\n#line 4\
-    \ \"geometry/polygon.hpp\"\n\n#include <vector>\n#line 7 \"geometry/polygon.hpp\"\
+    \ \u307E\u3067\u306E\u89D2\u5EA6 (\u30E9\u30B8\u30A2\u30F3\u3067 -PI \u3088\u308A\
+    \u5927\u304D\u304F PI \u4EE5\u4E0B)\ntemplate <class T> T get_angle(const Point<T>&\
+    \ a, const Point<T>& b, const Point<T>& c) {\n    Point<T> ab = b - a;\n    Point<T>\
+    \ ac = c - a;\n    // a-b\u304C x \u8EF8\u306B\u306A\u308B\u3088\u3046\u306B\u56DE\
+    \u8EE2\n    ac *= conj(ab) / norm(ab);\n    return arg(ac);  // (-PI, PI]\n}\n\
+    #line 4 \"geometry/polygon.hpp\"\n\n#include <vector>\n#line 7 \"geometry/polygon.hpp\"\
     \n\n// \u591A\u89D2\u5F62\ntemplate <class T> using Polygon = std::vector<Point<T>>;\n\
     template <class T> std::istream& operator>>(std::istream& is, Polygon<T>& p) {\n\
     \    for (auto&& pi : p) is >> pi;\n    return is;\n}\ntemplate <class T> std::ostream&\
     \ operator<<(std::ostream& os, const Polygon<T>& p) {\n    for (auto&& pi : p)\
     \ os << pi << \" -> \";\n    return os;\n}\n\n// \u591A\u89D2\u5F62\u306E\u9762\
     \u7A4D (\u7B26\u53F7\u4ED8\u304D)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\n\
-    // return area * 2\ntemplate <class T> T polygon_area2(const Polygon<T>& p) {\n\
-    \    const int n = (int)(p.size());\n    assert(n >= 2);\n    T res = T(0);\n\
-    \    for (int i = 0; i < n; i++) res += cross(p[i], p[i + 1 == n ? 0 : i + 1]);\n\
-    \    // counter clockwise: res > 0\n    // clockwise: res < 0\n    return res;\n\
-    }\ntemplate <class T> T polygon_area(const Polygon<T>& p) {\n    static_assert(is_geometry_floating_point<T>::value\
-    \ == true);\n    return polygon_area2(p) / T(2);\n}\n\n// \u591A\u89D2\u5F62\u306E\
-    \u51F8\u5224\u5B9A (\u89D2\u5EA6\u304C 0 \u3067\u3082 PI \u3067\u3082\u8A31\u5BB9\
-    )\n// \u8A31\u5BB9\u3057\u305F\u304F\u306A\u3044\u3068\u304D\u306B\u306F ON_SEGMENT,\
+    // return area * 2\ntemplate <class T> T area2(const Polygon<T>& p) {\n    const\
+    \ int n = (int)(p.size());\n    assert(n >= 2);\n    T res = T(0);\n    for (int\
+    \ i = 0; i < n; i++) res += cross(p[i], p[i + 1 == n ? 0 : i + 1]);\n    // counter\
+    \ clockwise: res > 0\n    // clockwise: res < 0\n    return res;\n}\ntemplate\
+    \ <class T> T area(const Polygon<T>& p) {\n    static_assert(is_geometry_floating_point<T>::value\
+    \ == true);\n    return area2(p) / T(2);\n}\n\n// \u591A\u89D2\u5F62\u306E\u51F8\
+    \u5224\u5B9A (\u89D2\u5EA6\u304C 0 \u3067\u3082 PI \u3067\u3082\u8A31\u5BB9)\n\
+    // \u8A31\u5BB9\u3057\u305F\u304F\u306A\u3044\u3068\u304D\u306B\u306F ON_SEGMENT,\
     \ ONLINE_FRONT, ONLINE_BACK \u304C\u51FA\u3066\u304D\u305F\u3089 false \u3092\u8FD4\
     \u305B\u3070 OK\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B\n\
-    template <class T> bool polygon_is_convex(const Polygon<T>& p) {\n    const int\
-    \ n = (int)(p.size());\n    assert(n >= 3);\n    bool okccw = true, okcw = true;\n\
-    \    for (int i = 0; i < n; i++) {\n        auto res = ccw(p[i], p[i + 1 >= n\
-    \ ? i + 1 - n : i + 1], p[i + 2 >= n ? i + 2 - n : i + 2]);\n        if (res ==\
-    \ Ccw::CLOCKWISE) okccw = false;\n        if (res == Ccw::COUNTER_CLOCKWISE) okcw\
-    \ = false;\n        if (!okccw and !okcw) return false;\n    }\n    return true;\n\
-    }\n#line 2 \"geometry/line.hpp\"\n\n#line 4 \"geometry/line.hpp\"\n\n// \u76F4\
-    \u7DDA\ntemplate <class T> struct Line {\n    Point<T> a, b;\n\n    Line() = default;\n\
-    \    Line(const Point<T>& a, const Point<T>& b) : a(a), b(b) {}\n\n    // Ax +\
-    \ By = C\n    Line(const T A, const T B, const T C) {\n        static_assert(is_geometry_floating_point<T>::value\
+    template <class T> bool is_convex(const Polygon<T>& p) {\n    const int n = (int)(p.size());\n\
+    \    assert(n >= 3);\n    bool okccw = true, okcw = true;\n    for (int i = 0;\
+    \ i < n; i++) {\n        auto res = ccw(p[i], p[i + 1 >= n ? i + 1 - n : i + 1],\
+    \ p[i + 2 >= n ? i + 2 - n : i + 2]);\n        if (res == Ccw::CLOCKWISE) okccw\
+    \ = false;\n        if (res == Ccw::COUNTER_CLOCKWISE) okcw = false;\n       \
+    \ if (!okccw and !okcw) return false;\n    }\n    return true;\n}\n#line 2 \"\
+    geometry/line.hpp\"\n\n#line 4 \"geometry/line.hpp\"\n\n// \u76F4\u7DDA\ntemplate\
+    \ <class T> struct Line {\n    Point<T> a, b;\n\n    Line() = default;\n    Line(const\
+    \ Point<T>& a, const Point<T>& b) : a(a), b(b) {}\n\n    // Ax + By = C\n    Line(const\
+    \ T A, const T B, const T C) {\n        static_assert(is_geometry_floating_point<T>::value\
     \ == true);\n        assert(!(equal(A, T(0)) and equal(B, T(0))));\n        if\
     \ (equal(A, T(0))) {\n            a = Point<T>(T(0), C / B), b = Point<T>(T(1),\
     \ C / B);\n        } else if (equal(B, T(0))) {\n            a = Point<T>(C /\
@@ -279,51 +282,106 @@ data:
     \ c.o);\n    return ccw(s.a, s.b, h) == Ccw::ON_SEGMENT;  // s.a -> h -> s.b \u306E\
     \u9806\u3067\u4E26\u3093\u3067\u3044\u308B\n}\ntemplate <class T> inline bool\
     \ is_intersect(const Segment<T>& s, const Circle<T>& c) { return is_intersect(c,\
-    \ s); }\n#line 6 \"geometry/polygon_contain.hpp\"\n\nenum class Contain { IN,\
-    \ ON, OUT };\n\n// \u591A\u89D2\u5F62\u304C\u70B9\u3092\u5305\u542B\u3059\u308B\
-    \u304B\u5224\u5B9A\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C\n\
-    template <class T> Contain polygon_contain(const Polygon<T>& q, const Point<T>&\
-    \ p) {\n    bool x = false;\n    const int n = (int)(q.size());\n    for (int\
-    \ i = 0; i < n; i++) {\n        int ni = i + 1 == n ? 0 : i + 1;\n        if (is_intersect(Segment(q[i],\
-    \ q[ni]), p)) return Contain::ON;\n        Point a = q[i] - p, b = q[ni] - p;\n\
-    \        if (a.y > b.y) std::swap(a, b);\n        // a.y < b.y\n        // check\
-    \ each point's y is 0 at most 1 times\n        if (sign(a.y) <= 0 and sign(b.y)\
-    \ > 0 and sign(cross(a, b)) > 0) x = !x;\n    }\n    return (x ? Contain::IN :\
-    \ Contain::OUT);\n}\n#line 6 \"verify/geometry/polygon_contain.test.cpp\"\n\n\
-    int main() {\n    int N;\n    std::cin >> N;\n    Polygon<long long> P(N);\n \
-    \   std::cin >> P;\n    int Q;\n    std::cin >> Q;\n    while (Q--) {\n      \
-    \  Point<long long> p;\n        std::cin >> p;\n        auto ans = polygon_contain(P,\
-    \ p);\n        if (ans == Contain::IN) {\n            std::cout << \"2\\n\";\n\
-    \        } else if (ans == Contain::ON) {\n            std::cout << \"1\\n\";\n\
-    \        } else {\n            std::cout << \"0\\n\";\n        }\n    }\n    return\
-    \ 0;\n}\n"
-  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C\"\
-    \n\n#include <iostream>\n\n#include \"geometry/polygon_contain.hpp\"\n\nint main()\
-    \ {\n    int N;\n    std::cin >> N;\n    Polygon<long long> P(N);\n    std::cin\
-    \ >> P;\n    int Q;\n    std::cin >> Q;\n    while (Q--) {\n        Point<long\
-    \ long> p;\n        std::cin >> p;\n        auto ans = polygon_contain(P, p);\n\
-    \        if (ans == Contain::IN) {\n            std::cout << \"2\\n\";\n     \
-    \   } else if (ans == Contain::ON) {\n            std::cout << \"1\\n\";\n   \
-    \     } else {\n            std::cout << \"0\\n\";\n        }\n    }\n    return\
-    \ 0;\n}"
+    \ s); }\n#line 6 \"geometry/contain.hpp\"\n\nenum class Contain { IN, ON, OUT\
+    \ };\n\n// \u5186 c \u3068\u70B9 p \u306E\u4F4D\u7F6E\u95A2\u4FC2\ntemplate <class\
+    \ T> Contain contain(const Circle<T>& c, const Point<T>& p) {\n    int sgn = sign(norm(p\
+    \ - c.o) - c.r * c.r);\n    return sgn == 1 ? Contain::OUT : (sgn == 0 ? Contain::ON\
+    \ : Contain::IN);\n}\n\n// \u591A\u89D2\u5F62 (\u51F8\u3068\u306F\u9650\u3089\u306A\
+    \u3044) q \u3068\u70B9 p \u306E\u4F4D\u7F6E\u95A2\u4FC2\n// \u9802\u70B9\u306F\
+    \u53CD\u6642\u8A08\u56DE\u308A\u306B\u4E26\u3093\u3067\u3044\u308B\n// O(n)\n\
+    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C\ntemplate\
+    \ <class T> Contain contain(const Polygon<T>& q, const Point<T>& p) {\n    const\
+    \ int n = (int)(q.size());\n    assert(n >= 3);\n    bool x = false;\n    for\
+    \ (int i = 0; i < n; i++) {\n        if (is_intersect(Segment(q[i], q[(i + 1)\
+    \ % n]), p)) return Contain::ON;\n        Point a = q[i] - p, b = q[(i + 1) %\
+    \ n] - p;\n        if (a.y > b.y) std::swap(a, b);\n        // a.y < b.y\n   \
+    \     // check each point's y is 0 at most 1 times\n        if (sign(a.y) <= 0\
+    \ and sign(b.y) > 0 and sign(cross(a, b)) > 0) x = !x;\n    }\n    return (x ?\
+    \ Contain::IN : Contain::OUT);\n}\n\n// \u51F8\u591A\u89D2\u5F62 (\u3059\u3079\
+    \u3066\u306E\u5185\u89D2\u304C 180\xB0 \u672A\u6E80) q \u3068\u70B9 p \u306E\u4F4D\
+    \u7F6E\u95A2\u4FC2\n// \u9802\u70B9\u306F\u53CD\u6642\u8A08\u56DE\u308A\u306B\u4E26\
+    \u3093\u3067\u3044\u308B\n// O(log n)\n// https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0412\n\
+    // https://atcoder.jp/contests/abc296/tasks/abc296_g\ntemplate <class T> Contain\
+    \ convex_contain(const Polygon<T>& q, const Point<T>& p) {\n    const int n =\
+    \ (int)(q.size());\n    assert(n >= 3);\n    auto c1 = ccw(q[0], q[1], p);\n \
+    \   auto c2 = ccw(q[0], q[n - 1], p);\n    if (c1 == Ccw::CLOCKWISE or c2 == Ccw::COUNTER_CLOCKWISE)\
+    \ return Contain::OUT;\n    if (c1 == Ccw::ON_SEGMENT or c2 == Ccw::ON_SEGMENT)\
+    \ return Contain::ON;\n    if (c1 == Ccw::ONLINE_FRONT or c2 == Ccw::ONLINE_FRONT)\
+    \ return Contain::OUT;\n    // \u4E8C\u5206\u63A2\u7D22 (q[0] -> q[i] -> p \u304C\
+    \u53CD\u6642\u8A08\u56DE\u308A\u306B\u306A\u308B\u3088\u3046\u306A\u6700\u5927\
+    \u306E i)\n    int ok = 1, ng = n - 1;\n    while (ng - ok > 1) {\n        int\
+    \ md = (ok + ng) / 2;\n        if (ccw(q[0], q[md], p) == Ccw::COUNTER_CLOCKWISE)\
+    \ {\n            ok = md;\n        } else {\n            ng = md;\n        }\n\
+    \    }\n    // \u76F4\u7DDA q[ok] -> q[ok + 1] \u3092\u57FA\u6E96\u306B\u8003\u3048\
+    \u308B\n    auto c3 = ccw(q[ok], q[ok + 1], p);\n    assert(c3 != Ccw::ONLINE_FRONT);\n\
+    \    assert(c3 != Ccw::ONLINE_BACK);\n    return c3 == Ccw::ON_SEGMENT ? Contain::ON\
+    \ : (c3 == Ccw::COUNTER_CLOCKWISE ? Contain::IN : Contain::OUT);\n}\n"
+  code: "#pragma once\n\n#include \"geometry/polygon.hpp\"\n#include \"geometry/line.hpp\"\
+    \n#include \"geometry/is_intersect.hpp\"\n\nenum class Contain { IN, ON, OUT };\n\
+    \n// \u5186 c \u3068\u70B9 p \u306E\u4F4D\u7F6E\u95A2\u4FC2\ntemplate <class T>\
+    \ Contain contain(const Circle<T>& c, const Point<T>& p) {\n    int sgn = sign(norm(p\
+    \ - c.o) - c.r * c.r);\n    return sgn == 1 ? Contain::OUT : (sgn == 0 ? Contain::ON\
+    \ : Contain::IN);\n}\n\n// \u591A\u89D2\u5F62 (\u51F8\u3068\u306F\u9650\u3089\u306A\
+    \u3044) q \u3068\u70B9 p \u306E\u4F4D\u7F6E\u95A2\u4FC2\n// \u9802\u70B9\u306F\
+    \u53CD\u6642\u8A08\u56DE\u308A\u306B\u4E26\u3093\u3067\u3044\u308B\n// O(n)\n\
+    // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C\ntemplate\
+    \ <class T> Contain contain(const Polygon<T>& q, const Point<T>& p) {\n    const\
+    \ int n = (int)(q.size());\n    assert(n >= 3);\n    bool x = false;\n    for\
+    \ (int i = 0; i < n; i++) {\n        if (is_intersect(Segment(q[i], q[(i + 1)\
+    \ % n]), p)) return Contain::ON;\n        Point a = q[i] - p, b = q[(i + 1) %\
+    \ n] - p;\n        if (a.y > b.y) std::swap(a, b);\n        // a.y < b.y\n   \
+    \     // check each point's y is 0 at most 1 times\n        if (sign(a.y) <= 0\
+    \ and sign(b.y) > 0 and sign(cross(a, b)) > 0) x = !x;\n    }\n    return (x ?\
+    \ Contain::IN : Contain::OUT);\n}\n\n// \u51F8\u591A\u89D2\u5F62 (\u3059\u3079\
+    \u3066\u306E\u5185\u89D2\u304C 180\xB0 \u672A\u6E80) q \u3068\u70B9 p \u306E\u4F4D\
+    \u7F6E\u95A2\u4FC2\n// \u9802\u70B9\u306F\u53CD\u6642\u8A08\u56DE\u308A\u306B\u4E26\
+    \u3093\u3067\u3044\u308B\n// O(log n)\n// https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0412\n\
+    // https://atcoder.jp/contests/abc296/tasks/abc296_g\ntemplate <class T> Contain\
+    \ convex_contain(const Polygon<T>& q, const Point<T>& p) {\n    const int n =\
+    \ (int)(q.size());\n    assert(n >= 3);\n    auto c1 = ccw(q[0], q[1], p);\n \
+    \   auto c2 = ccw(q[0], q[n - 1], p);\n    if (c1 == Ccw::CLOCKWISE or c2 == Ccw::COUNTER_CLOCKWISE)\
+    \ return Contain::OUT;\n    if (c1 == Ccw::ON_SEGMENT or c2 == Ccw::ON_SEGMENT)\
+    \ return Contain::ON;\n    if (c1 == Ccw::ONLINE_FRONT or c2 == Ccw::ONLINE_FRONT)\
+    \ return Contain::OUT;\n    // \u4E8C\u5206\u63A2\u7D22 (q[0] -> q[i] -> p \u304C\
+    \u53CD\u6642\u8A08\u56DE\u308A\u306B\u306A\u308B\u3088\u3046\u306A\u6700\u5927\
+    \u306E i)\n    int ok = 1, ng = n - 1;\n    while (ng - ok > 1) {\n        int\
+    \ md = (ok + ng) / 2;\n        if (ccw(q[0], q[md], p) == Ccw::COUNTER_CLOCKWISE)\
+    \ {\n            ok = md;\n        } else {\n            ng = md;\n        }\n\
+    \    }\n    // \u76F4\u7DDA q[ok] -> q[ok + 1] \u3092\u57FA\u6E96\u306B\u8003\u3048\
+    \u308B\n    auto c3 = ccw(q[ok], q[ok + 1], p);\n    assert(c3 != Ccw::ONLINE_FRONT);\n\
+    \    assert(c3 != Ccw::ONLINE_BACK);\n    return c3 == Ccw::ON_SEGMENT ? Contain::ON\
+    \ : (c3 == Ccw::COUNTER_CLOCKWISE ? Contain::IN : Contain::OUT);\n}"
   dependsOn:
-  - geometry/polygon_contain.hpp
   - geometry/polygon.hpp
   - geometry/point.hpp
   - geometry/geometry_template.hpp
   - geometry/line.hpp
   - geometry/is_intersect.hpp
   - geometry/circle.hpp
-  isVerificationFile: true
-  path: verify/geometry/polygon_contain.test.cpp
-  requiredBy: []
-  timestamp: '2024-08-04 03:17:17+09:00'
-  verificationStatus: TEST_ACCEPTED
-  verifiedWith: []
-documentation_of: verify/geometry/polygon_contain.test.cpp
+  isVerificationFile: false
+  path: geometry/contain.hpp
+  requiredBy:
+  - geometry/all.hpp
+  timestamp: '2024-08-04 06:15:03+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/geometry/convex_contain.test.cpp
+  - verify/geometry/contain.test.cpp
+documentation_of: geometry/contain.hpp
 layout: document
-redirect_from:
-- /verify/verify/geometry/polygon_contain.test.cpp
-- /verify/verify/geometry/polygon_contain.test.cpp.html
-title: verify/geometry/polygon_contain.test.cpp
+title: "Contain (\u591A\u89D2\u5F62\u3084\u5186\u3068\u70B9\u306E\u4F4D\u7F6E\u95A2\
+  \u4FC2)"
 ---
+
+## 使い方
+
+```cpp
+Polygon<T> P;
+Point<T> p;
+// ans は Contain::IN, Contain::ON, Contain::OUT のいずれか
+auto ans = contain(P, p);
+```
+
+## 参考文献
+
+- [Wikipedia, Rotating calipers](https://en.wikipedia.org/wiki/Rotating_calipers)

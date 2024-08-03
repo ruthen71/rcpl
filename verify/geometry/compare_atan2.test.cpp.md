@@ -119,12 +119,12 @@ data:
     \ return Ccw::CLOCKWISE;\n    if (sign(dot(ab, ac)) == -1) return Ccw::ONLINE_BACK;\n\
     \    if (sign(norm(ab) - norm(ac)) == -1) return Ccw::ONLINE_FRONT;\n    return\
     \ Ccw::ON_SEGMENT;\n}\n// \u7DDA\u5206 a -> b \u304B\u3089 \u7DDA\u5206 a -> c\
-    \ \u307E\u3067\u306E\u53CD\u6642\u8A08\u56DE\u308A\u306E\u89D2\u5EA6 (\u30E9\u30B8\
-    \u30A2\u30F3)\ntemplate <class T> T get_angle(const Point<T>& a, const Point<T>&\
-    \ b, const Point<T>& c) {\n    Point<T> ab = b - a;\n    Point<T> ac = c - a;\n\
-    \    // a-b\u304C x \u8EF8\u306B\u306A\u308B\u3088\u3046\u306B\u56DE\u8EE2\n \
-    \   ac *= conj(ab) / norm(ab);\n    return arg(ac);  // (-PI, PI]\n}\n#line 8\
-    \ \"verify/geometry/compare_atan2.test.cpp\"\n\nint main() {\n    assert(std::atan2(0LL,\
+    \ \u307E\u3067\u306E\u89D2\u5EA6 (\u30E9\u30B8\u30A2\u30F3\u3067 -PI \u3088\u308A\
+    \u5927\u304D\u304F PI \u4EE5\u4E0B)\ntemplate <class T> T get_angle(const Point<T>&\
+    \ a, const Point<T>& b, const Point<T>& c) {\n    Point<T> ab = b - a;\n    Point<T>\
+    \ ac = c - a;\n    // a-b\u304C x \u8EF8\u306B\u306A\u308B\u3088\u3046\u306B\u56DE\
+    \u8EE2\n    ac *= conj(ab) / norm(ab);\n    return arg(ac);  // (-PI, PI]\n}\n\
+    #line 8 \"verify/geometry/compare_atan2.test.cpp\"\n\nint main() {\n    assert(std::atan2(0LL,\
     \ 0LL) == 0.0);\n    assert(std::atan2(0.0, 0.0) == 0.0);\n    assert(std::atan2(0.0L,\
     \ 0.0L) == 0.0L);\n    {\n        // x < 0, y = 0 (270\xB0) \u306E\u534A\u76F4\
     \u7DDA\u30B9\u30BF\u30FC\u30C8, x < 0, y = 0 \u81EA\u4F53\u306F\u6700\u5F8C\u306B\
@@ -166,7 +166,7 @@ data:
   isVerificationFile: true
   path: verify/geometry/compare_atan2.test.cpp
   requiredBy: []
-  timestamp: '2024-08-04 03:17:17+09:00'
+  timestamp: '2024-08-04 06:15:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/compare_atan2.test.cpp

@@ -11,6 +11,13 @@ data:
     path: geometry/closest_pair.hpp
     title: "Closest Pair (\u6700\u8FD1\u70B9\u5BFE)"
   - icon: ':heavy_check_mark:'
+    path: geometry/common_area.hpp
+    title: "Common Area (\u5171\u901A\u90E8\u5206\u306E\u9762\u7A4D)"
+  - icon: ':heavy_check_mark:'
+    path: geometry/contain.hpp
+    title: "Contain (\u591A\u89D2\u5F62\u3084\u5186\u3068\u70B9\u306E\u4F4D\u7F6E\u95A2\
+      \u4FC2)"
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_hull_monotone_chain.hpp
     title: "Convex Hull (\u51F8\u5305)"
   - icon: ':heavy_check_mark:'
@@ -47,10 +54,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/polygon.hpp
     title: "Polygon (\u591A\u89D2\u5F62)"
-  - icon: ':heavy_check_mark:'
-    path: geometry/polygon_contain.hpp
-    title: "Polygon Contain (\u591A\u89D2\u5F62\u3068\u70B9\u306E\u4EA4\u5DEE\u5224\
-      \u5B9A)"
   - icon: ':heavy_check_mark:'
     path: geometry/tangent.hpp
     title: "Tangent (\u63A5\u7DDA)"
@@ -161,13 +164,13 @@ data:
     \ return Ccw::CLOCKWISE;\n    if (sign(dot(ab, ac)) == -1) return Ccw::ONLINE_BACK;\n\
     \    if (sign(norm(ab) - norm(ac)) == -1) return Ccw::ONLINE_FRONT;\n    return\
     \ Ccw::ON_SEGMENT;\n}\n// \u7DDA\u5206 a -> b \u304B\u3089 \u7DDA\u5206 a -> c\
-    \ \u307E\u3067\u306E\u53CD\u6642\u8A08\u56DE\u308A\u306E\u89D2\u5EA6 (\u30E9\u30B8\
-    \u30A2\u30F3)\ntemplate <class T> T get_angle(const Point<T>& a, const Point<T>&\
-    \ b, const Point<T>& c) {\n    Point<T> ab = b - a;\n    Point<T> ac = c - a;\n\
-    \    // a-b\u304C x \u8EF8\u306B\u306A\u308B\u3088\u3046\u306B\u56DE\u8EE2\n \
-    \   ac *= conj(ab) / norm(ab);\n    return arg(ac);  // (-PI, PI]\n}\n#line 2\
-    \ \"geometry/line.hpp\"\n\n#line 4 \"geometry/line.hpp\"\n\n// \u76F4\u7DDA\n\
-    template <class T> struct Line {\n    Point<T> a, b;\n\n    Line() = default;\n\
+    \ \u307E\u3067\u306E\u89D2\u5EA6 (\u30E9\u30B8\u30A2\u30F3\u3067 -PI \u3088\u308A\
+    \u5927\u304D\u304F PI \u4EE5\u4E0B)\ntemplate <class T> T get_angle(const Point<T>&\
+    \ a, const Point<T>& b, const Point<T>& c) {\n    Point<T> ab = b - a;\n    Point<T>\
+    \ ac = c - a;\n    // a-b\u304C x \u8EF8\u306B\u306A\u308B\u3088\u3046\u306B\u56DE\
+    \u8EE2\n    ac *= conj(ab) / norm(ab);\n    return arg(ac);  // (-PI, PI]\n}\n\
+    #line 2 \"geometry/line.hpp\"\n\n#line 4 \"geometry/line.hpp\"\n\n// \u76F4\u7DDA\
+    \ntemplate <class T> struct Line {\n    Point<T> a, b;\n\n    Line() = default;\n\
     \    Line(const Point<T>& a, const Point<T>& b) : a(a), b(b) {}\n\n    // Ax +\
     \ By = C\n    Line(const T A, const T B, const T C) {\n        static_assert(is_geometry_floating_point<T>::value\
     \ == true);\n        assert(!(equal(A, T(0)) and equal(B, T(0))));\n        if\
@@ -410,35 +413,59 @@ data:
     \ operator<<(std::ostream& os, const Polygon<T>& p) {\n    for (auto&& pi : p)\
     \ os << pi << \" -> \";\n    return os;\n}\n\n// \u591A\u89D2\u5F62\u306E\u9762\
     \u7A4D (\u7B26\u53F7\u4ED8\u304D)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A\n\
-    // return area * 2\ntemplate <class T> T polygon_area2(const Polygon<T>& p) {\n\
-    \    const int n = (int)(p.size());\n    assert(n >= 2);\n    T res = T(0);\n\
-    \    for (int i = 0; i < n; i++) res += cross(p[i], p[i + 1 == n ? 0 : i + 1]);\n\
-    \    // counter clockwise: res > 0\n    // clockwise: res < 0\n    return res;\n\
-    }\ntemplate <class T> T polygon_area(const Polygon<T>& p) {\n    static_assert(is_geometry_floating_point<T>::value\
-    \ == true);\n    return polygon_area2(p) / T(2);\n}\n\n// \u591A\u89D2\u5F62\u306E\
-    \u51F8\u5224\u5B9A (\u89D2\u5EA6\u304C 0 \u3067\u3082 PI \u3067\u3082\u8A31\u5BB9\
-    )\n// \u8A31\u5BB9\u3057\u305F\u304F\u306A\u3044\u3068\u304D\u306B\u306F ON_SEGMENT,\
+    // return area * 2\ntemplate <class T> T area2(const Polygon<T>& p) {\n    const\
+    \ int n = (int)(p.size());\n    assert(n >= 2);\n    T res = T(0);\n    for (int\
+    \ i = 0; i < n; i++) res += cross(p[i], p[i + 1 == n ? 0 : i + 1]);\n    // counter\
+    \ clockwise: res > 0\n    // clockwise: res < 0\n    return res;\n}\ntemplate\
+    \ <class T> T area(const Polygon<T>& p) {\n    static_assert(is_geometry_floating_point<T>::value\
+    \ == true);\n    return area2(p) / T(2);\n}\n\n// \u591A\u89D2\u5F62\u306E\u51F8\
+    \u5224\u5B9A (\u89D2\u5EA6\u304C 0 \u3067\u3082 PI \u3067\u3082\u8A31\u5BB9)\n\
+    // \u8A31\u5BB9\u3057\u305F\u304F\u306A\u3044\u3068\u304D\u306B\u306F ON_SEGMENT,\
     \ ONLINE_FRONT, ONLINE_BACK \u304C\u51FA\u3066\u304D\u305F\u3089 false \u3092\u8FD4\
     \u305B\u3070 OK\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B\n\
-    template <class T> bool polygon_is_convex(const Polygon<T>& p) {\n    const int\
-    \ n = (int)(p.size());\n    assert(n >= 3);\n    bool okccw = true, okcw = true;\n\
-    \    for (int i = 0; i < n; i++) {\n        auto res = ccw(p[i], p[i + 1 >= n\
-    \ ? i + 1 - n : i + 1], p[i + 2 >= n ? i + 2 - n : i + 2]);\n        if (res ==\
-    \ Ccw::CLOCKWISE) okccw = false;\n        if (res == Ccw::COUNTER_CLOCKWISE) okcw\
-    \ = false;\n        if (!okccw and !okcw) return false;\n    }\n    return true;\n\
-    }\n#line 2 \"geometry/polygon_contain.hpp\"\n\n#line 6 \"geometry/polygon_contain.hpp\"\
-    \n\nenum class Contain { IN, ON, OUT };\n\n// \u591A\u89D2\u5F62\u304C\u70B9\u3092\
-    \u5305\u542B\u3059\u308B\u304B\u5224\u5B9A\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C\n\
-    template <class T> Contain polygon_contain(const Polygon<T>& q, const Point<T>&\
-    \ p) {\n    bool x = false;\n    const int n = (int)(q.size());\n    for (int\
-    \ i = 0; i < n; i++) {\n        int ni = i + 1 == n ? 0 : i + 1;\n        if (is_intersect(Segment(q[i],\
-    \ q[ni]), p)) return Contain::ON;\n        Point a = q[i] - p, b = q[ni] - p;\n\
-    \        if (a.y > b.y) std::swap(a, b);\n        // a.y < b.y\n        // check\
-    \ each point's y is 0 at most 1 times\n        if (sign(a.y) <= 0 and sign(b.y)\
-    \ > 0 and sign(cross(a, b)) > 0) x = !x;\n    }\n    return (x ? Contain::IN :\
-    \ Contain::OUT);\n}\n#line 2 \"geometry/convex_hull_monotone_chain.hpp\"\n\n#line\
-    \ 4 \"geometry/convex_hull_monotone_chain.hpp\"\n\n#line 6 \"geometry/convex_hull_monotone_chain.hpp\"\
-    \n\n// \u51F8\u5305 (Andrew's Monotone Chain algorithm)\n// O(n log n)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A\n\
+    template <class T> bool is_convex(const Polygon<T>& p) {\n    const int n = (int)(p.size());\n\
+    \    assert(n >= 3);\n    bool okccw = true, okcw = true;\n    for (int i = 0;\
+    \ i < n; i++) {\n        auto res = ccw(p[i], p[i + 1 >= n ? i + 1 - n : i + 1],\
+    \ p[i + 2 >= n ? i + 2 - n : i + 2]);\n        if (res == Ccw::CLOCKWISE) okccw\
+    \ = false;\n        if (res == Ccw::COUNTER_CLOCKWISE) okcw = false;\n       \
+    \ if (!okccw and !okcw) return false;\n    }\n    return true;\n}\n#line 2 \"\
+    geometry/contain.hpp\"\n\n#line 6 \"geometry/contain.hpp\"\n\nenum class Contain\
+    \ { IN, ON, OUT };\n\n// \u5186 c \u3068\u70B9 p \u306E\u4F4D\u7F6E\u95A2\u4FC2\
+    \ntemplate <class T> Contain contain(const Circle<T>& c, const Point<T>& p) {\n\
+    \    int sgn = sign(norm(p - c.o) - c.r * c.r);\n    return sgn == 1 ? Contain::OUT\
+    \ : (sgn == 0 ? Contain::ON : Contain::IN);\n}\n\n// \u591A\u89D2\u5F62 (\u51F8\
+    \u3068\u306F\u9650\u3089\u306A\u3044) q \u3068\u70B9 p \u306E\u4F4D\u7F6E\u95A2\
+    \u4FC2\n// \u9802\u70B9\u306F\u53CD\u6642\u8A08\u56DE\u308A\u306B\u4E26\u3093\u3067\
+    \u3044\u308B\n// O(n)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C\n\
+    template <class T> Contain contain(const Polygon<T>& q, const Point<T>& p) {\n\
+    \    const int n = (int)(q.size());\n    assert(n >= 3);\n    bool x = false;\n\
+    \    for (int i = 0; i < n; i++) {\n        if (is_intersect(Segment(q[i], q[(i\
+    \ + 1) % n]), p)) return Contain::ON;\n        Point a = q[i] - p, b = q[(i +\
+    \ 1) % n] - p;\n        if (a.y > b.y) std::swap(a, b);\n        // a.y < b.y\n\
+    \        // check each point's y is 0 at most 1 times\n        if (sign(a.y) <=\
+    \ 0 and sign(b.y) > 0 and sign(cross(a, b)) > 0) x = !x;\n    }\n    return (x\
+    \ ? Contain::IN : Contain::OUT);\n}\n\n// \u51F8\u591A\u89D2\u5F62 (\u3059\u3079\
+    \u3066\u306E\u5185\u89D2\u304C 180\xB0 \u672A\u6E80) q \u3068\u70B9 p \u306E\u4F4D\
+    \u7F6E\u95A2\u4FC2\n// \u9802\u70B9\u306F\u53CD\u6642\u8A08\u56DE\u308A\u306B\u4E26\
+    \u3093\u3067\u3044\u308B\n// O(log n)\n// https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0412\n\
+    // https://atcoder.jp/contests/abc296/tasks/abc296_g\ntemplate <class T> Contain\
+    \ convex_contain(const Polygon<T>& q, const Point<T>& p) {\n    const int n =\
+    \ (int)(q.size());\n    assert(n >= 3);\n    auto c1 = ccw(q[0], q[1], p);\n \
+    \   auto c2 = ccw(q[0], q[n - 1], p);\n    if (c1 == Ccw::CLOCKWISE or c2 == Ccw::COUNTER_CLOCKWISE)\
+    \ return Contain::OUT;\n    if (c1 == Ccw::ON_SEGMENT or c2 == Ccw::ON_SEGMENT)\
+    \ return Contain::ON;\n    if (c1 == Ccw::ONLINE_FRONT or c2 == Ccw::ONLINE_FRONT)\
+    \ return Contain::OUT;\n    // \u4E8C\u5206\u63A2\u7D22 (q[0] -> q[i] -> p \u304C\
+    \u53CD\u6642\u8A08\u56DE\u308A\u306B\u306A\u308B\u3088\u3046\u306A\u6700\u5927\
+    \u306E i)\n    int ok = 1, ng = n - 1;\n    while (ng - ok > 1) {\n        int\
+    \ md = (ok + ng) / 2;\n        if (ccw(q[0], q[md], p) == Ccw::COUNTER_CLOCKWISE)\
+    \ {\n            ok = md;\n        } else {\n            ng = md;\n        }\n\
+    \    }\n    // \u76F4\u7DDA q[ok] -> q[ok + 1] \u3092\u57FA\u6E96\u306B\u8003\u3048\
+    \u308B\n    auto c3 = ccw(q[ok], q[ok + 1], p);\n    assert(c3 != Ccw::ONLINE_FRONT);\n\
+    \    assert(c3 != Ccw::ONLINE_BACK);\n    return c3 == Ccw::ON_SEGMENT ? Contain::ON\
+    \ : (c3 == Ccw::COUNTER_CLOCKWISE ? Contain::IN : Contain::OUT);\n}\n#line 2 \"\
+    geometry/convex_hull_monotone_chain.hpp\"\n\n#line 4 \"geometry/convex_hull_monotone_chain.hpp\"\
+    \n\n#line 6 \"geometry/convex_hull_monotone_chain.hpp\"\n\n// \u51F8\u5305 (Andrew's\
+    \ Monotone Chain algorithm)\n// O(n log n)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A\n\
     // (x, y) \u3092\u8F9E\u66F8\u5F0F\u9806\u5E8F\u3067\u30BD\u30FC\u30C8\u3057,\
     \ \u30B9\u30BF\u30C3\u30AF\u3092\u4F7F\u3063\u3066\u4E0A\u5074\u51F8\u5305\u3068\
     \u4E0B\u5074\u51F8\u5305\u3092\u6C42\u3081\u308B\n// \u53CD\u6642\u8A08\u56DE\u308A\
@@ -462,7 +489,7 @@ data:
     \u591A\u89D2\u5F62\u306E\u76F4\u5F84 (rotating calipers)\n// https://en.wikipedia.org/wiki/Rotating_calipers\n\
     // O(n)\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B\n\
     // return {index1, index2, diameter}\ntemplate <class T> std::tuple<int, int,\
-    \ T> convex_polygon_diameter(const Polygon<T>& p) {\n    assert(polygon_is_convex(p));\n\
+    \ T> convex_polygon_diameter(const Polygon<T>& p) {\n    assert(is_convex(p));\n\
     \    const int n = (int)(p.size());\n    assert(n >= 2);\n    if (n == 2) {\n\
     \        return {0, 1, abs(p[0] - p[1])};\n    }\n    auto [it_min, it_max] =\
     \ std::minmax_element(p.begin(), p.end(), compare_x<T>);\n    int idx_min = it_min\
@@ -486,8 +513,54 @@ data:
     \        }\n        if (s1 <= 0) {\n            pr.push_back(p[i]);\n        }\n\
     \        if (s1 * s2 < 0) {\n            auto pc = cross_point(Line(p[i], p[ni]),\
     \ l);\n            pl.push_back(pc);\n            pr.push_back(pc);\n        }\n\
-    \    }\n    return {pl, pr};\n}\n#line 20 \"geometry/all.hpp\"\n\n#line 2 \"geometry/closest_pair.hpp\"\
-    \n\n#line 4 \"geometry/closest_pair.hpp\"\n\n#line 6 \"geometry/closest_pair.hpp\"\
+    \    }\n    return {pl, pr};\n}\n#line 20 \"geometry/all.hpp\"\n\n#line 2 \"geometry/common_area.hpp\"\
+    \n\n#line 7 \"geometry/common_area.hpp\"\n\n// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_H\n\
+    // https://drken1215.hatenablog.com/entry/2020/02/02/091000\n// \u5186 c \u306E\
+    \u4E2D\u5FC3 o, \u7DDA\u5206 s \u306E\u306A\u3059\u4E09\u89D2\u5F62\u3068\u5186\
+    \ c \u306E\u5171\u901A\u90E8\u5206\u306E\u9762\u7A4D\ntemplate <class T> T common_area(Circle<T>\
+    \ c, Segment<T> s) {\n    // c.o \u3092\u539F\u70B9\u3068\u898B\u3066\u5E73\u884C\
+    \u79FB\u52D5\n    s.a -= c.o;\n    s.b -= c.o;\n    c.o -= c.o;\n    // c.o, s.a,\
+    \ s.b \u304C\u4E00\u76F4\u7DDA\u306B\u4E26\u3076\u5834\u5408\n    if (sign(norm(s.a\
+    \ - s.b)) == 0) return 0;\n    bool a_in_c = sign(norm(s.a) - c.r * c.r) == -1;\n\
+    \    bool b_in_c = sign(norm(s.b) - c.r * c.r) == -1;\n    // s.a, s.b \u304C\u3068\
+    \u3082\u306B\u5186 c \u306E\u5185\u90E8\u306B\u3042\u308B\u5834\u5408 -> \u4E09\
+    \u89D2\u5F62\n    if (a_in_c and b_in_c) return cross(s.a, s.b) / 2;\n    // s.a,\
+    \ s.b \u304C\u3068\u3082\u306B\u5186 c \u306E\u5916\u90E8\u306B\u3042\u308B\u5834\
+    \u5408 -> \u6247\u5F62\n    if (!is_intersect(c, s)) return c.r * c.r * get_angle(c.o,\
+    \ s.a, s.b) / 2;\n    auto cp = cross_point(c, s);\n    // \u4EA4\u70B9\u3092\
+    \ cp1, cp2 \u3068\u3059\u308B (1 \u3064\u306E\u5834\u5408\u306F cp1 == cp2)\n\
+    \    auto cp1 = cp.front(), cp2 = cp.back();\n    // \u7DDA\u5206 s.a -> cp1,\
+    \ cp1 -> cp2, cp2 -> s.b \u306B\u3064\u3044\u3066, \u6247\u5F62\u304B\u4E09\u89D2\
+    \u5F62\u304B\u5834\u5408\u5206\u3051\u3057\u306A\u304C\u3089\u6C42\u3081\u3066\
+    \u3044\u304F\n    T res = 0;\n    // s.a -> cp1\n    if (a_in_c) {\n        res\
+    \ += cross(s.a, cp1) / 2;\n    } else {\n        res += c.r * c.r * get_angle(c.o,\
+    \ s.a, cp1) / 2;\n    }\n    // cp1 -> cp2\n    res += cross(cp1, cp2) / 2;\n\
+    \    // cp2 -> s.b\n    if (b_in_c) {\n        res += cross(cp2, s.b) / 2;\n \
+    \   } else {\n        res += c.r * c.r * get_angle(c.o, cp2, s.b) / 2;\n    }\n\
+    \    return res;\n}\n\n// \u5186 c, \u591A\u89D2\u5F62 p \u306E\u5171\u901A\u90E8\
+    \u5206\u306E\u9762\u7A4D (\u7B26\u53F7\u4ED8\u304D)\ntemplate <class T> T common_area(const\
+    \ Circle<T>& c, const Polygon<T>& p) {\n    static_assert(is_geometry_floating_point<T>::value\
+    \ == true);\n    const int n = (int)(p.size());\n    assert(n >= 2);\n    T res\
+    \ = T(0);\n    for (int i = 0; i < n; i++) res += common_area(c, Segment(p[i],\
+    \ p[(i + 1) % n]));\n    // counter clockwise: res > 0\n    // clockwise: res\
+    \ < 0\n    return res;\n}\ntemplate <class T> T common_area(const Polygon<T>&\
+    \ p, const Circle<T>& c) { return common_area(c, p); }\n\n// \u5186 c1, c2 \u306E\
+    \u5171\u901A\u90E8\u5206\u306E\u9762\u7A4D\n// \u6247\u5F62 2 \u3064\u306E\u9762\
+    \u7A4D\u306E\u548C\u304B\u3089\u3072\u3057\u5F62\u306E\u9762\u7A4D\u3092\u5F15\
+    \u304F\ntemplate <class T> T common_area(const Circle<T>& c1, const Circle<T>&\
+    \ c2) {\n    static_assert(is_geometry_floating_point<T>::value == true);\n  \
+    \  const int num = tangent_number(c1, c2);\n    if (num >= 3) return 0;\n    if\
+    \ (num <= 1) {\n        // \u4E00\u65B9\u306B\u4ED6\u65B9\u304C\u5B8C\u5168\u306B\
+    \u542B\u307E\u308C\u308B\n        T r = std::min(c1.r, c2.r);\n        return\
+    \ r * r * Constants<T>::PI;\n    }\n    auto cp = cross_point(c1, c2);\n    T\
+    \ res = T(0);\n    // get_angle(c1.o, cp[0], cp[1]) \u306B\u3059\u308B\u3068\u6247\
+    \u5F62\u306E\u4E2D\u5FC3\u89D2\u304C\u76F4\u89D2\u3088\u308A\u5927\u304D\u3044\
+    \u3068\u304D\u306B\u30C0\u30E1\n    // \u5186 c1 \u3092\u542B\u3080\u6247\u5F62\
+    \n    res += c1.r * c1.r * std::abs(get_angle(c1.o, c2.o, cp[0]));\n    // \u5186\
+    \ c2 \u3092\u542B\u3080\u6247\u5F62\n    res += c2.r * c2.r * std::abs(get_angle(c2.o,\
+    \ c1.o, cp[0]));\n    // \u3072\u3057\u5F62\n    res -= abs(cp[1] - cp[0]) * abs(c1.o\
+    \ - c2.o) / 2;\n    return res;\n}\n#line 2 \"geometry/closest_pair.hpp\"\n\n\
+    #line 4 \"geometry/closest_pair.hpp\"\n\n#line 6 \"geometry/closest_pair.hpp\"\
     \n#include <limits>\n#line 8 \"geometry/closest_pair.hpp\"\n#include <numeric>\n\
     \n// \u6700\u8FD1\u70B9\u5BFE (\u5206\u5272\u7D71\u6CBB\u6CD5)\n// O(n log n)\n\
     // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_5_A\n// return\
@@ -528,7 +601,7 @@ data:
     \ j, d] = convex_polygon_diameter(ch);  // O(|ch|)\n    int resi = -1, resj =\
     \ -1;\n    for (int k = 0; k < n; k++) {\n        if (p[k] == ch[i]) resi = k;\n\
     \        if (p[k] == ch[j]) resj = k;\n    }\n    return {resi, resj, d};\n}\n\
-    #line 23 \"geometry/all.hpp\"\n"
+    #line 24 \"geometry/all.hpp\"\n"
   code: '#include "geometry/geometry_template.hpp"
 
 
@@ -555,7 +628,7 @@ data:
 
     #include "geometry/polygon.hpp"
 
-    #include "geometry/polygon_contain.hpp"
+    #include "geometry/contain.hpp"
 
     #include "geometry/convex_hull_monotone_chain.hpp"
 
@@ -563,6 +636,8 @@ data:
 
     #include "geometry/convex_polygon_cut.hpp"
 
+
+    #include "geometry/common_area.hpp"
 
     #include "geometry/closest_pair.hpp"
 
@@ -581,16 +656,17 @@ data:
   - geometry/incircle.hpp
   - geometry/circumscribed_circle.hpp
   - geometry/polygon.hpp
-  - geometry/polygon_contain.hpp
+  - geometry/contain.hpp
   - geometry/convex_hull_monotone_chain.hpp
   - geometry/convex_polygon_diameter.hpp
   - geometry/convex_polygon_cut.hpp
+  - geometry/common_area.hpp
   - geometry/closest_pair.hpp
   - geometry/farthest_pair.hpp
   isVerificationFile: false
   path: geometry/all.hpp
   requiredBy: []
-  timestamp: '2024-08-04 03:17:17+09:00'
+  timestamp: '2024-08-04 06:15:03+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/all.hpp

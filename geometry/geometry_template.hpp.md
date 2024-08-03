@@ -18,6 +18,10 @@ data:
     path: geometry/common_area.hpp
     title: "Common Area (\u5171\u901A\u90E8\u5206\u306E\u9762\u7A4D)"
   - icon: ':heavy_check_mark:'
+    path: geometry/contain.hpp
+    title: "Contain (\u591A\u89D2\u5F62\u3084\u5186\u3068\u70B9\u306E\u4F4D\u7F6E\u95A2\
+      \u4FC2)"
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_hull_monotone_chain.hpp
     title: "Convex Hull (\u51F8\u5305)"
   - icon: ':heavy_check_mark:'
@@ -52,13 +56,12 @@ data:
     path: geometry/polygon.hpp
     title: "Polygon (\u591A\u89D2\u5F62)"
   - icon: ':heavy_check_mark:'
-    path: geometry/polygon_contain.hpp
-    title: "Polygon Contain (\u591A\u89D2\u5F62\u3068\u70B9\u306E\u4EA4\u5DEE\u5224\
-      \u5B9A)"
-  - icon: ':heavy_check_mark:'
     path: geometry/tangent.hpp
     title: "Tangent (\u63A5\u7DDA)"
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/area.test.cpp
+    title: verify/geometry/area.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/geometry/ccw.test.cpp
     title: verify/geometry/ccw.test.cpp
@@ -77,6 +80,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/compare_atan2.test.cpp
     title: verify/geometry/compare_atan2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/contain.test.cpp
+    title: verify/geometry/contain.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/convex_contain.test.cpp
+    title: verify/geometry/convex_contain.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/geometry/convex_hull_monotone_chain_1.test.cpp
     title: verify/geometry/convex_hull_monotone_chain_1.test.cpp
@@ -105,20 +114,14 @@ data:
     path: verify/geometry/incircle.test.cpp
     title: verify/geometry/incircle.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/geometry/is_convex.test.cpp
+    title: verify/geometry/is_convex.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/is_intersect_ss.test.cpp
     title: verify/geometry/is_intersect_ss.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/geometry/is_orthogonal_is_parallel.test.cpp
     title: verify/geometry/is_orthogonal_is_parallel.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/polygon_area.test.cpp
-    title: verify/geometry/polygon_area.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/polygon_contain.test.cpp
-    title: verify/geometry/polygon_contain.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/polygon_is_convex.test.cpp
-    title: verify/geometry/polygon_is_convex.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/geometry/projection.test.cpp
     title: verify/geometry/projection.test.cpp
@@ -189,10 +192,10 @@ data:
   - geometry/line.hpp
   - geometry/incircle.hpp
   - geometry/circle.hpp
+  - geometry/contain.hpp
   - geometry/cross_point.hpp
   - geometry/all.hpp
   - geometry/convex_polygon_cut.hpp
-  - geometry/polygon_contain.hpp
   - geometry/common_area.hpp
   - geometry/tangent.hpp
   - geometry/convex_hull_monotone_chain.hpp
@@ -202,22 +205,22 @@ data:
   verifiedWith:
   - verify/geometry/convex_polygon_diameter.test.cpp
   - verify/geometry/cross_point_ss.test.cpp
-  - verify/geometry/polygon_contain.test.cpp
   - verify/geometry/common_area_cc.test.cpp
   - verify/geometry/convex_hull_monotone_chain_1.test.cpp
   - verify/geometry/cross_point_cl.test.cpp
   - verify/geometry/cross_point_cc.test.cpp
+  - verify/geometry/is_convex.test.cpp
   - verify/geometry/incircle.test.cpp
   - verify/geometry/ccw.test.cpp
   - verify/geometry/tangent_number.test.cpp
   - verify/geometry/reflection.test.cpp
   - verify/geometry/projection.test.cpp
-  - verify/geometry/polygon_is_convex.test.cpp
   - verify/geometry/convex_hull_monotone_chain_2.test.cpp
   - verify/geometry/compare_atan2.test.cpp
   - verify/geometry/is_intersect_ss.test.cpp
+  - verify/geometry/convex_contain.test.cpp
   - verify/geometry/closest_pair.test.cpp
-  - verify/geometry/polygon_area.test.cpp
+  - verify/geometry/area.test.cpp
   - verify/geometry/tangent_cc.test.cpp
   - verify/geometry/common_area_cp.test.cpp
   - verify/geometry/is_orthogonal_is_parallel.test.cpp
@@ -225,6 +228,7 @@ data:
   - verify/geometry/convex_polygon_cut.test.cpp
   - verify/geometry/tangent_cp.test.cpp
   - verify/geometry/circumscribed_circle.test.cpp
+  - verify/geometry/contain.test.cpp
 documentation_of: geometry/geometry_template.hpp
 layout: document
 title: "\u5E7E\u4F55\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"

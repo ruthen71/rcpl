@@ -211,6 +211,10 @@ data:
       path: geometry/common_area.hpp
       title: "Common Area (\u5171\u901A\u90E8\u5206\u306E\u9762\u7A4D)"
     - icon: ':heavy_check_mark:'
+      path: geometry/contain.hpp
+      title: "Contain (\u591A\u89D2\u5F62\u3084\u5186\u3068\u70B9\u306E\u4F4D\u7F6E\
+        \u95A2\u4FC2)"
+    - icon: ':heavy_check_mark:'
       path: geometry/convex_hull_monotone_chain.hpp
       title: "Convex Hull (\u51F8\u5305)"
     - icon: ':heavy_check_mark:'
@@ -247,10 +251,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: geometry/polygon.hpp
       title: "Polygon (\u591A\u89D2\u5F62)"
-    - icon: ':heavy_check_mark:'
-      path: geometry/polygon_contain.hpp
-      title: "Polygon Contain (\u591A\u89D2\u5F62\u3068\u70B9\u306E\u4EA4\u5DEE\u5224\
-        \u5B9A)"
     - icon: ':heavy_check_mark:'
       path: geometry/tangent.hpp
       title: "Tangent (\u63A5\u7DDA)"
@@ -533,6 +533,9 @@ data:
   - name: verify/geometry
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/geometry/area.test.cpp
+      title: verify/geometry/area.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/geometry/ccw.test.cpp
       title: verify/geometry/ccw.test.cpp
     - icon: ':heavy_check_mark:'
@@ -550,6 +553,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/geometry/compare_atan2.test.cpp
       title: verify/geometry/compare_atan2.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/contain.test.cpp
+      title: verify/geometry/contain.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/geometry/convex_contain.test.cpp
+      title: verify/geometry/convex_contain.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/geometry/convex_hull_monotone_chain_1.test.cpp
       title: verify/geometry/convex_hull_monotone_chain_1.test.cpp
@@ -578,20 +587,14 @@ data:
       path: verify/geometry/incircle.test.cpp
       title: verify/geometry/incircle.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/geometry/is_convex.test.cpp
+      title: verify/geometry/is_convex.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/geometry/is_intersect_ss.test.cpp
       title: verify/geometry/is_intersect_ss.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/geometry/is_orthogonal_is_parallel.test.cpp
       title: verify/geometry/is_orthogonal_is_parallel.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/geometry/polygon_area.test.cpp
-      title: verify/geometry/polygon_area.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/geometry/polygon_contain.test.cpp
-      title: verify/geometry/polygon_contain.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/geometry/polygon_is_convex.test.cpp
-      title: verify/geometry/polygon_is_convex.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/geometry/projection.test.cpp
       title: verify/geometry/projection.test.cpp

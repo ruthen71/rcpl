@@ -21,6 +21,10 @@ data:
     path: geometry/common_area.hpp
     title: "Common Area (\u5171\u901A\u90E8\u5206\u306E\u9762\u7A4D)"
   - icon: ':heavy_check_mark:'
+    path: geometry/contain.hpp
+    title: "Contain (\u591A\u89D2\u5F62\u3084\u5186\u3068\u70B9\u306E\u4F4D\u7F6E\u95A2\
+      \u4FC2)"
+  - icon: ':heavy_check_mark:'
     path: geometry/convex_hull_monotone_chain.hpp
     title: "Convex Hull (\u51F8\u5305)"
   - icon: ':heavy_check_mark:'
@@ -52,13 +56,12 @@ data:
     path: geometry/polygon.hpp
     title: "Polygon (\u591A\u89D2\u5F62)"
   - icon: ':heavy_check_mark:'
-    path: geometry/polygon_contain.hpp
-    title: "Polygon Contain (\u591A\u89D2\u5F62\u3068\u70B9\u306E\u4EA4\u5DEE\u5224\
-      \u5B9A)"
-  - icon: ':heavy_check_mark:'
     path: geometry/tangent.hpp
     title: "Tangent (\u63A5\u7DDA)"
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/area.test.cpp
+    title: verify/geometry/area.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/geometry/ccw.test.cpp
     title: verify/geometry/ccw.test.cpp
@@ -77,6 +80,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/geometry/compare_atan2.test.cpp
     title: verify/geometry/compare_atan2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/contain.test.cpp
+    title: verify/geometry/contain.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/geometry/convex_contain.test.cpp
+    title: verify/geometry/convex_contain.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/geometry/convex_hull_monotone_chain_1.test.cpp
     title: verify/geometry/convex_hull_monotone_chain_1.test.cpp
@@ -105,20 +114,14 @@ data:
     path: verify/geometry/incircle.test.cpp
     title: verify/geometry/incircle.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/geometry/is_convex.test.cpp
+    title: verify/geometry/is_convex.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/geometry/is_intersect_ss.test.cpp
     title: verify/geometry/is_intersect_ss.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/geometry/is_orthogonal_is_parallel.test.cpp
     title: verify/geometry/is_orthogonal_is_parallel.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/polygon_area.test.cpp
-    title: verify/geometry/polygon_area.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/polygon_contain.test.cpp
-    title: verify/geometry/polygon_contain.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/geometry/polygon_is_convex.test.cpp
-    title: verify/geometry/polygon_is_convex.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/geometry/projection.test.cpp
     title: verify/geometry/projection.test.cpp
@@ -241,11 +244,11 @@ data:
     \ return Ccw::CLOCKWISE;\n    if (sign(dot(ab, ac)) == -1) return Ccw::ONLINE_BACK;\n\
     \    if (sign(norm(ab) - norm(ac)) == -1) return Ccw::ONLINE_FRONT;\n    return\
     \ Ccw::ON_SEGMENT;\n}\n// \u7DDA\u5206 a -> b \u304B\u3089 \u7DDA\u5206 a -> c\
-    \ \u307E\u3067\u306E\u53CD\u6642\u8A08\u56DE\u308A\u306E\u89D2\u5EA6 (\u30E9\u30B8\
-    \u30A2\u30F3)\ntemplate <class T> T get_angle(const Point<T>& a, const Point<T>&\
-    \ b, const Point<T>& c) {\n    Point<T> ab = b - a;\n    Point<T> ac = c - a;\n\
-    \    // a-b\u304C x \u8EF8\u306B\u306A\u308B\u3088\u3046\u306B\u56DE\u8EE2\n \
-    \   ac *= conj(ab) / norm(ab);\n    return arg(ac);  // (-PI, PI]\n}\n"
+    \ \u307E\u3067\u306E\u89D2\u5EA6 (\u30E9\u30B8\u30A2\u30F3\u3067 -PI \u3088\u308A\
+    \u5927\u304D\u304F PI \u4EE5\u4E0B)\ntemplate <class T> T get_angle(const Point<T>&\
+    \ a, const Point<T>& b, const Point<T>& c) {\n    Point<T> ab = b - a;\n    Point<T>\
+    \ ac = c - a;\n    // a-b\u304C x \u8EF8\u306B\u306A\u308B\u3088\u3046\u306B\u56DE\
+    \u8EE2\n    ac *= conj(ab) / norm(ab);\n    return arg(ac);  // (-PI, PI]\n}\n"
   code: "#pragma once\n\n#include \"geometry/geometry_template.hpp\"\n\n#include <cmath>\n\
     #include <cassert>\n\n// \u70B9\ntemplate <class T> struct Point {\n    T x, y;\n\
     \n    Point() = default;\n    Point(const T x, const T y) : x(x), y(y) {}\n\n\
@@ -328,11 +331,11 @@ data:
     \ return Ccw::CLOCKWISE;\n    if (sign(dot(ab, ac)) == -1) return Ccw::ONLINE_BACK;\n\
     \    if (sign(norm(ab) - norm(ac)) == -1) return Ccw::ONLINE_FRONT;\n    return\
     \ Ccw::ON_SEGMENT;\n}\n// \u7DDA\u5206 a -> b \u304B\u3089 \u7DDA\u5206 a -> c\
-    \ \u307E\u3067\u306E\u53CD\u6642\u8A08\u56DE\u308A\u306E\u89D2\u5EA6 (\u30E9\u30B8\
-    \u30A2\u30F3)\ntemplate <class T> T get_angle(const Point<T>& a, const Point<T>&\
-    \ b, const Point<T>& c) {\n    Point<T> ab = b - a;\n    Point<T> ac = c - a;\n\
-    \    // a-b\u304C x \u8EF8\u306B\u306A\u308B\u3088\u3046\u306B\u56DE\u8EE2\n \
-    \   ac *= conj(ab) / norm(ab);\n    return arg(ac);  // (-PI, PI]\n}"
+    \ \u307E\u3067\u306E\u89D2\u5EA6 (\u30E9\u30B8\u30A2\u30F3\u3067 -PI \u3088\u308A\
+    \u5927\u304D\u304F PI \u4EE5\u4E0B)\ntemplate <class T> T get_angle(const Point<T>&\
+    \ a, const Point<T>& b, const Point<T>& c) {\n    Point<T> ab = b - a;\n    Point<T>\
+    \ ac = c - a;\n    // a-b\u304C x \u8EF8\u306B\u306A\u308B\u3088\u3046\u306B\u56DE\
+    \u8EE2\n    ac *= conj(ab) / norm(ab);\n    return arg(ac);  // (-PI, PI]\n}"
   dependsOn:
   - geometry/geometry_template.hpp
   isVerificationFile: false
@@ -347,35 +350,35 @@ data:
   - geometry/line.hpp
   - geometry/incircle.hpp
   - geometry/circle.hpp
+  - geometry/contain.hpp
   - geometry/cross_point.hpp
   - geometry/all.hpp
   - geometry/convex_polygon_cut.hpp
-  - geometry/polygon_contain.hpp
   - geometry/common_area.hpp
   - geometry/tangent.hpp
   - geometry/convex_hull_monotone_chain.hpp
   - geometry/polygon.hpp
-  timestamp: '2024-08-04 03:17:17+09:00'
+  timestamp: '2024-08-04 06:15:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/geometry/convex_polygon_diameter.test.cpp
   - verify/geometry/cross_point_ss.test.cpp
-  - verify/geometry/polygon_contain.test.cpp
   - verify/geometry/common_area_cc.test.cpp
   - verify/geometry/convex_hull_monotone_chain_1.test.cpp
   - verify/geometry/cross_point_cl.test.cpp
   - verify/geometry/cross_point_cc.test.cpp
+  - verify/geometry/is_convex.test.cpp
   - verify/geometry/incircle.test.cpp
   - verify/geometry/ccw.test.cpp
   - verify/geometry/tangent_number.test.cpp
   - verify/geometry/reflection.test.cpp
   - verify/geometry/projection.test.cpp
-  - verify/geometry/polygon_is_convex.test.cpp
   - verify/geometry/convex_hull_monotone_chain_2.test.cpp
   - verify/geometry/compare_atan2.test.cpp
   - verify/geometry/is_intersect_ss.test.cpp
+  - verify/geometry/convex_contain.test.cpp
   - verify/geometry/closest_pair.test.cpp
-  - verify/geometry/polygon_area.test.cpp
+  - verify/geometry/area.test.cpp
   - verify/geometry/tangent_cc.test.cpp
   - verify/geometry/common_area_cp.test.cpp
   - verify/geometry/is_orthogonal_is_parallel.test.cpp
@@ -383,6 +386,7 @@ data:
   - verify/geometry/convex_polygon_cut.test.cpp
   - verify/geometry/tangent_cp.test.cpp
   - verify/geometry/circumscribed_circle.test.cpp
+  - verify/geometry/contain.test.cpp
 documentation_of: geometry/point.hpp
 layout: document
 title: "Point (\u70B9)"
