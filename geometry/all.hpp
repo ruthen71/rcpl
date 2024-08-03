@@ -13,10 +13,11 @@
 #include "geometry/circumscribed_circle.hpp"
 
 #include "geometry/polygon.hpp"
-#include "geometry/polygon_contain.hpp"
+#include "geometry/contain.hpp"
 #include "geometry/convex_hull_monotone_chain.hpp"
 #include "geometry/convex_polygon_diameter.hpp"
 #include "geometry/convex_polygon_cut.hpp"
 
+#include "geometry/common_area.hpp"
 #include "geometry/closest_pair.hpp"
 #include "geometry/farthest_pair.hpp"

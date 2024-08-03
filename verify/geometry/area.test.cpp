@@ -9,7 +9,7 @@ int main() {
     std::cin >> N;
     Polygon<long long> P(N);
     std::cin >> P;
-    long long s = polygon_area2(P);
+    long long s = area2(P);
     if (s % 2 == 0) {
         std::cout << s / 2 << ".0\n";
     } else {

@@ -126,7 +126,7 @@ template <class T> Ccw ccw(const Point<T>& a, const Point<T>& b, const Point<T>&
     if (sign(norm(ab) - norm(ac)) == -1) return Ccw::ONLINE_FRONT;
     return Ccw::ON_SEGMENT;
 }
-// 線分 a -> b から 線分 a -> c までの反時計回りの角度 (ラジアン)
+// 線分 a -> b から 線分 a -> c までの角度 (ラジアンで -PI より大きく PI 以下)
 template <class T> T get_angle(const Point<T>& a, const Point<T>& b, const Point<T>& c) {
     Point<T> ab = b - a;
     Point<T> ac = c - a;

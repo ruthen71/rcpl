@@ -10,9 +10,9 @@ int main() {
     std::cin >> N;
     Polygon<long long> P(N);
     std::cin >> P;
-    bool ans = polygon_is_convex(P);
+    bool ans = is_convex(P);
     std::reverse(P.begin(), P.end());
-    assert(ans == polygon_is_convex(P));
+    assert(ans == is_convex(P));
     std::cout << ans << '\n';
     return 0;
 }

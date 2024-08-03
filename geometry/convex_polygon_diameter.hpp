@@ -11,7 +11,7 @@
 // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B
 // return {index1, index2, diameter}
 template <class T> std::tuple<int, int, T> convex_polygon_diameter(const Polygon<T>& p) {
-    assert(polygon_is_convex(p));
+    assert(is_convex(p));
     const int n = (int)(p.size());
     assert(n >= 2);
     if (n == 2) {

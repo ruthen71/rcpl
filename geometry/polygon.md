@@ -7,8 +7,8 @@ documentation_of: ./polygon.hpp
 
 ```cpp
 Polygon<T> P;
-T s = polygon_area(P);
-bool ans = polygon_is_convex(P);
+T s = area(P);
+bool ans = is_convex(P);
 ```
 
 ## 参考文献

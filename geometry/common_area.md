@@ -5,12 +5,16 @@ documentation_of: ./common_area.hpp
 
 ## 使い方
 
-円と多角形 (凸とは限らない) の共通部分の面積を求める
+共通部分の面積を求める
+
+- 円と (凸とは限らない) 多角形
+- 円と円
 
 ```cpp
-Circle<T> C;
+Circle<T> C1, C2;
 Polygon<T> P;
-T s = common_area(C, P);
+T scp = common_area(C1, P);
+T scc = common_area(C1, C2);
 ```
 
 ## 参考文献
