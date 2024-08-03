@@ -2,7 +2,7 @@
 
 #include "geometry/point.hpp"
 
-// line
+// 直線
 template <class T> struct Line {
     Point<T> a, b;
 
@@ -28,7 +28,7 @@ template <class T> struct Line {
     friend std::ostream& operator<<(std::ostream& os, const Line& p) { return os << p.a << "->" << p.b; }
 };
 
-// segment
+// 線分
 template <class T> struct Segment : Line<T> {
     Segment() = default;
 

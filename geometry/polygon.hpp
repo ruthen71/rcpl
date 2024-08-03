@@ -5,7 +5,7 @@
 #include <vector>
 #include <cassert>
 
-// polygon
+// 多角形
 template <class T> using Polygon = std::vector<Point<T>>;
 template <class T> std::istream& operator>>(std::istream& is, Polygon<T>& p) {
     for (auto&& pi : p) is >> pi;

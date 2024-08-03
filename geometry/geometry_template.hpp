@@ -14,7 +14,7 @@ template <> double Constants<double>::EPS = 1e-9;
 template <> long double Constants<long double>::EPS = 1e-12;
 template <> long long Constants<long long>::EPS = 0;
 
-// base functions
+// 汎用関数
 template <class T> inline int sign(const T x) { return x < -Constants<T>::EPS ? -1 : (x > Constants<T>::EPS ? 1 : 0); }
 template <class T> inline bool equal(const T a, const T b) { return sign(a - b) == 0; }
 template <class T> inline T radian_to_degree(const T r) { return r * 180.0 / Constants<T>::PI; }

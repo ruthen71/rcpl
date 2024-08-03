@@ -8,7 +8,7 @@
 #include "geometry/cross_point.hpp"
 #include "geometry/distance.hpp"
 
-#include "geometry/tangent_point.hpp"
+#include "geometry/tangent.hpp"
 #include "geometry/incircle.hpp"
 #include "geometry/circumscribed_circle.hpp"
 

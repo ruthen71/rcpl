@@ -2,7 +2,7 @@
 
 #include "geometry/point.hpp"
 
-// circle
+// 円
 template <class T> struct Circle {
     Point<T> o;
     T r;

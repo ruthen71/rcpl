@@ -58,7 +58,7 @@ template <class T> struct Point {
     friend std::ostream& operator<<(std::ostream& os, const Point& p) { return os << '(' << p.x << ' ' << p.y << ')'; }
 };
 
-// point base functions
+// 汎用関数
 // 点の一致判定
 template <class T> inline bool equal(const Point<T>& a, const Point<T>& b) { return equal(a.x, b.x) and equal(a.y, b.y); }
 // 内積
