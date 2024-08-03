@@ -11,6 +11,8 @@
 // 反時計回り
 // strict を true にすると凸包の辺上に並ぶ頂点は含めない (頂点数が最小になる)
 template <class T> Polygon<T> convex_hull_monotone_chain(std::vector<Point<T>>& p, bool strict = true) {
+    std::sort(p.begin(), p.end());
+    p.erase(std::unique(p.begin(), p.end()), p.end());
     const int n = (int)(p.size());
     if (n <= 2) return p;
     std::sort(p.begin(), p.end(), compare_x<T>);
