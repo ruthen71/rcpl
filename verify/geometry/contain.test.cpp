@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "geometry/polygon_contain.hpp"
+#include "geometry/contain.hpp"
 
 int main() {
     int N;
@@ -14,7 +14,7 @@ int main() {
     while (Q--) {
         Point<long long> p;
         std::cin >> p;
-        auto ans = polygon_contain(P, p);
+        auto ans = contain(P, p);
         if (ans == Contain::IN) {
             std::cout << "2\n";
         } else if (ans == Contain::ON) {

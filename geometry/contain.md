@@ -1,6 +1,6 @@
 ---
-title: Polygon Contain (多角形と点の交差判定)
-documentation_of: ./polygon_contain.hpp
+title: Contain (多角形や円と点の位置関係)
+documentation_of: ./contain.hpp
 ---
 
 ## 使い方
@@ -9,7 +9,7 @@ documentation_of: ./polygon_contain.hpp
 Polygon<T> P;
 Point<T> p;
 // ans は Contain::IN, Contain::ON, Contain::OUT のいずれか
-auto ans = polygon_contain(P, p);
+auto ans = contain(P, p);
 ```
 
 ## 参考文献
