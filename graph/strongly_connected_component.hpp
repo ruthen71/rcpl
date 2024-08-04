@@ -3,7 +3,7 @@
 #include "graph/graph_template.hpp"
 
 template <class T> std::vector<std::vector<int>> strongly_connected_component(Graph<T>& g) {
-    const int n = int(g.size());
+    const int n = (int)(g.size());
     int now_ord = 0, group_num = 0;
     std::vector<int> visited, low(n), ord(n, -1), ids(n);
     visited.reserve(n);
@@ -38,11 +38,7 @@ template <class T> std::vector<std::vector<int>> strongly_connected_component(Gr
     std::vector<int> counts(group_num);
     for (auto&& x : ids) counts[x]++;
     std::vector<std::vector<int>> groups(group_num);
-    for (int i = 0; i < group_num; i++) {
-        groups[i].reserve(counts[i]);
-    }
-    for (int i = 0; i < n; i++) {
-        groups[ids[i]].push_back(i);
-    }
+    for (int i = 0; i < group_num; i++) groups[i].reserve(counts[i]);
+    for (int i = 0; i < n; i++) groups[ids[i]].push_back(i);
     return groups;
 }
