@@ -10,9 +10,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/read_graph.hpp
     title: "\u30B0\u30E9\u30D5\u5165\u529B\u30E9\u30A4\u30D6\u30E9\u30EA"
-  - icon: ':heavy_check_mark:'
-    path: graph/restore_path.hpp
-    title: Restore path
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -20,10 +17,10 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/shortest_path
+    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A
     links:
-    - https://judge.yosupo.jp/problem/shortest_path
-  bundledCode: "#line 1 \"verify/graph/dijkstra.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/shortest_path\"\
+    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A
+  bundledCode: "#line 1 \"verify/graph/dijkstra_1.test.cpp\"\n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\
     \n\n#include <iostream>\n\n#line 2 \"graph/dijkstra.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
     \n\n#include <vector>\n#include <cassert>\n\ntemplate <class T> struct Edge {\n\
     \    int from, to;\n    T cost;\n    int id;\n\n    Edge() = default;\n    Edge(const\
@@ -89,44 +86,35 @@ data:
     \ = false, const int offset = 1) {\n    Graph<T> g(n, directed);\n    for (int\
     \ i = 1; i < n; i++) {\n        int p;\n        std::cin >> p;\n        p -= offset;\n\
     \        T c = 1;\n        if (weight) std::cin >> c;\n        g.add_edge(p, i,\
-    \ c);\n    }\n    g.build();\n    return g;\n}\n#line 2 \"graph/restore_path.hpp\"\
-    \n\n#line 4 \"graph/restore_path.hpp\"\n#include <algorithm>\n\n// restore path\
-    \ from root[t] to t\nstd::vector<int> restore_path(std::vector<int>& par, int\
-    \ t) {\n    std::vector<int> path = {t};\n    while (par[path.back()] != -1) path.emplace_back(par[path.back()]);\n\
-    \    std::reverse(path.begin(), path.end());\n    return path;\n}\n#line 8 \"\
-    verify/graph/dijkstra.test.cpp\"\n\nint main() {\n    int N, M, s, t;\n    std::cin\
-    \ >> N >> M >> s >> t;\n    auto g = read_graph<long long>(N, M, true, true, 0);\n\
-    \    std::vector<int> ss = {s};\n    const long long INF = 1LL << 60;\n    auto\
-    \ [d, p, r] = dijkstra(g, ss, INF);\n    if (d[t] == INF) {\n        std::cout\
-    \ << -1 << '\\n';\n        return 0;\n    }\n    auto ans = restore_path(p, t);\n\
-    \    std::cout << d[t] << ' ' << ans.size() - 1 << '\\n';\n    for (int i = 0;\
-    \ i < ans.size() - 1; i++) std::cout << ans[i] << ' ' << ans[i + 1] << '\\n';\n\
-    \    return 0;\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/shortest_path\"\n\n#include\
-    \ <iostream>\n\n#include \"graph/dijkstra.hpp\"\n#include \"graph/read_graph.hpp\"\
-    \n#include \"graph/restore_path.hpp\"\n\nint main() {\n    int N, M, s, t;\n \
-    \   std::cin >> N >> M >> s >> t;\n    auto g = read_graph<long long>(N, M, true,\
-    \ true, 0);\n    std::vector<int> ss = {s};\n    const long long INF = 1LL <<\
-    \ 60;\n    auto [d, p, r] = dijkstra(g, ss, INF);\n    if (d[t] == INF) {\n  \
-    \      std::cout << -1 << '\\n';\n        return 0;\n    }\n    auto ans = restore_path(p,\
-    \ t);\n    std::cout << d[t] << ' ' << ans.size() - 1 << '\\n';\n    for (int\
-    \ i = 0; i < ans.size() - 1; i++) std::cout << ans[i] << ' ' << ans[i + 1] <<\
-    \ '\\n';\n    return 0;\n}"
+    \ c);\n    }\n    g.build();\n    return g;\n}\n#line 7 \"verify/graph/dijkstra_1.test.cpp\"\
+    \n\nint main() {\n    int V, E, r;\n    std::cin >> V >> E >> r;\n    auto g =\
+    \ read_graph<long long>(V, E, true, true, 0);\n    std::vector<int> s = {r};\n\
+    \    const long long INF = 1LL << 60;\n    auto [dist, par, root] = dijkstra(g,\
+    \ s, INF);\n    for (int i = 0; i < V; i++) {\n        if (dist[i] == INF) {\n\
+    \            std::cout << \"INF\\n\";\n        } else {\n            std::cout\
+    \ << dist[i] << '\\n';\n        }\n    }\n    return 0;\n}\n"
+  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\
+    \n\n#include <iostream>\n\n#include \"graph/dijkstra.hpp\"\n#include \"graph/read_graph.hpp\"\
+    \n\nint main() {\n    int V, E, r;\n    std::cin >> V >> E >> r;\n    auto g =\
+    \ read_graph<long long>(V, E, true, true, 0);\n    std::vector<int> s = {r};\n\
+    \    const long long INF = 1LL << 60;\n    auto [dist, par, root] = dijkstra(g,\
+    \ s, INF);\n    for (int i = 0; i < V; i++) {\n        if (dist[i] == INF) {\n\
+    \            std::cout << \"INF\\n\";\n        } else {\n            std::cout\
+    \ << dist[i] << '\\n';\n        }\n    }\n    return 0;\n}"
   dependsOn:
   - graph/dijkstra.hpp
   - graph/graph_template.hpp
   - graph/read_graph.hpp
-  - graph/restore_path.hpp
   isVerificationFile: true
-  path: verify/graph/dijkstra.test.cpp
+  path: verify/graph/dijkstra_1.test.cpp
   requiredBy: []
-  timestamp: '2024-08-01 13:43:30+09:00'
+  timestamp: '2024-08-04 19:37:08+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/graph/dijkstra.test.cpp
+documentation_of: verify/graph/dijkstra_1.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/graph/dijkstra.test.cpp
-- /verify/verify/graph/dijkstra.test.cpp.html
-title: verify/graph/dijkstra.test.cpp
+- /verify/verify/graph/dijkstra_1.test.cpp
+- /verify/verify/graph/dijkstra_1.test.cpp.html
+title: verify/graph/dijkstra_1.test.cpp
 ---

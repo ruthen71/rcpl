@@ -49,6 +49,10 @@ data:
     path: graph/tree_diameter.hpp
     title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"
   - icon: ':heavy_check_mark:'
+    path: graph/warshall_floyd.hpp
+    title: "Warshall-Floyd algorithm (\u30EF\u30FC\u30B7\u30E3\u30EB\u30D5\u30ED\u30A4\
+      \u30C9\u6CD5)"
+  - icon: ':heavy_check_mark:'
     path: graph/zero_one_bfs.hpp
     title: 01-BFS
   _extendedVerifiedWith:
@@ -59,8 +63,11 @@ data:
     path: verify/graph/bellman_ford.test.cpp
     title: verify/graph/bellman_ford.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/graph/dijkstra.test.cpp
-    title: verify/graph/dijkstra.test.cpp
+    path: verify/graph/dijkstra_1.test.cpp
+    title: verify/graph/dijkstra_1.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/dijkstra_2.test.cpp
+    title: verify/graph/dijkstra_2.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/graph/euler_tour.test.cpp
     title: verify/graph/euler_tour.test.cpp
@@ -91,6 +98,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/tree_diameter.test.cpp
     title: verify/graph/tree_diameter.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/warshall_floyd.test.cpp
+    title: verify/graph/warshall_floyd.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/graph/zero_one_bfs.test.cpp
     title: verify/graph/zero_one_bfs.test.cpp
@@ -201,6 +211,7 @@ data:
   - graph/lowest_common_ancestor.hpp
   - graph/read_graph.hpp
   - graph/strongly_connected_component.hpp
+  - graph/warshall_floyd.hpp
   - graph/kruskal.hpp
   - graph/shortest_path_tree.hpp
   - graph/dijkstra.hpp
@@ -209,8 +220,10 @@ data:
   verifiedWith:
   - verify/graph/kruskal.test.cpp
   - verify/graph/traveling_salesman_problem.test.cpp
-  - verify/graph/dijkstra.test.cpp
+  - verify/graph/warshall_floyd.test.cpp
+  - verify/graph/dijkstra_2.test.cpp
   - verify/graph/zero_one_bfs.test.cpp
+  - verify/graph/dijkstra_1.test.cpp
   - verify/graph/lowest_common_ancestor.test.cpp
   - verify/graph/low_link_1.test.cpp
   - verify/graph/minimum_steiner_tree.test.cpp

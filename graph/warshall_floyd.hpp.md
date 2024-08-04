@@ -7,17 +7,14 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/graph/dijkstra_1.test.cpp
-    title: verify/graph/dijkstra_1.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/graph/dijkstra_2.test.cpp
-    title: verify/graph/dijkstra_2.test.cpp
+    path: verify/graph/warshall_floyd.test.cpp
+    title: verify/graph/warshall_floyd.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"graph/dijkstra.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
+  bundledCode: "#line 2 \"graph/warshall_floyd.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
     \n\n#include <vector>\n#include <cassert>\n\ntemplate <class T> struct Edge {\n\
     \    int from, to;\n    T cost;\n    int id;\n\n    Edge() = default;\n    Edge(const\
     \ int from, const int to, const T cost = T(1), const int id = -1) : from(from),\
@@ -59,57 +56,69 @@ data:
     \ j++) {\n                os << g[i][j];\n                if (j + 1 != (int)(g[i].size()))\
     \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
     \ 1 != (int)(g.size())) os << \", \";\n        }\n        return os << \"]\";\n\
-    \    }\n};\n#line 4 \"graph/dijkstra.hpp\"\n\n#include <tuple>\n#include <queue>\n\
-    \ntemplate <class T> std::tuple<std::vector<T>, std::vector<int>, std::vector<int>>\
-    \ dijkstra(Graph<T>& g, std::vector<int>& s, const T inf) {\n    const int n =\
-    \ (int)(g.size());\n    std::vector<T> dist(n, inf);\n    std::vector<int> par(n,\
-    \ -1), root(n, -1);\n\n    std::priority_queue<std::pair<T, int>, std::vector<std::pair<T,\
-    \ int>>, std::greater<>> que;\n\n    for (auto&& v : s) {\n        dist[v] = 0;\n\
-    \        root[v] = v;\n        que.emplace(T(0), v);\n    }\n\n    while (!que.empty())\
-    \ {\n        auto [d, v] = que.top();\n        que.pop();\n        if (dist[v]\
-    \ != d) continue;  // dist[v] < d\n        for (auto&& e : g[v]) {\n         \
-    \   if (dist[e.to] > d + e.cost) {\n                dist[e.to] = d + e.cost;\n\
-    \                root[e.to] = root[v];\n                par[e.to] = v;\n     \
-    \           que.emplace(dist[e.to], e.to);\n            }\n        }\n    }\n\
-    \    return {dist, par, root};\n}\n"
-  code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\n#include <tuple>\n\
-    #include <queue>\n\ntemplate <class T> std::tuple<std::vector<T>, std::vector<int>,\
-    \ std::vector<int>> dijkstra(Graph<T>& g, std::vector<int>& s, const T inf) {\n\
-    \    const int n = (int)(g.size());\n    std::vector<T> dist(n, inf);\n    std::vector<int>\
-    \ par(n, -1), root(n, -1);\n\n    std::priority_queue<std::pair<T, int>, std::vector<std::pair<T,\
-    \ int>>, std::greater<>> que;\n\n    for (auto&& v : s) {\n        dist[v] = 0;\n\
-    \        root[v] = v;\n        que.emplace(T(0), v);\n    }\n\n    while (!que.empty())\
-    \ {\n        auto [d, v] = que.top();\n        que.pop();\n        if (dist[v]\
-    \ != d) continue;  // dist[v] < d\n        for (auto&& e : g[v]) {\n         \
-    \   if (dist[e.to] > d + e.cost) {\n                dist[e.to] = d + e.cost;\n\
-    \                root[e.to] = root[v];\n                par[e.to] = v;\n     \
-    \           que.emplace(dist[e.to], e.to);\n            }\n        }\n    }\n\
-    \    return {dist, par, root};\n}"
+    \    }\n};\n#line 4 \"graph/warshall_floyd.hpp\"\n\ntemplate <class T> std::vector<std::vector<T>>\
+    \ warshall_floyd(Graph<T>& g, const T inf) {\n    const int n = (int)(g.size());\n\
+    \n    std::vector dist(n, std::vector<T>(n, inf));\n    for (int i = 0; i < n;\
+    \ i++) {\n        dist[i][i] = 0;\n        for (auto&& e : g[i]) {\n         \
+    \   dist[e.from][e.to] = std::min(dist[e.from][e.to], e.cost);\n        }\n  \
+    \  }\n\n    for (int k = 0; k < n; k++) {\n        for (int i = 0; i < n; i++)\
+    \ {\n            if (dist[i][k] == inf) continue;\n            for (int j = 0;\
+    \ j < n; j++) {\n                if (dist[k][j] == inf) continue;\n          \
+    \      dist[i][j] = std::min(dist[i][j], dist[i][k] + dist[k][j]);\n         \
+    \   }\n        }\n    }\n\n    // \u8CA0\u9589\u8DEF\u691C\u51FA\n    for (int\
+    \ i = 0; i < n; i++) {\n        if (dist[i][i] < 0) dist[i][i] = -inf;\n    }\n\
+    \n    // \u8CA0\u9589\u8DEF\u3092\u3082\u3068\u306B\u5C0F\u3055\u304F\u3067\u304D\
+    \u308B\u30D1\u30B9\u306B\u3064\u3044\u3066\u8ABF\u3079\u308B\n    for (int k =\
+    \ 0; k < n; k++) {\n        for (int i = 0; i < n; i++) {\n            if (dist[i][k]\
+    \ == inf) continue;\n            for (int j = 0; j < n; j++) {\n             \
+    \   if (dist[k][j] == inf) continue;\n                T nd = dist[i][k] + dist[k][j];\n\
+    \                if (dist[i][k] == -inf or dist[k][j] == -inf) nd = -inf;\n  \
+    \              dist[i][j] = std::min(dist[i][j], nd);\n            }\n       \
+    \ }\n    }\n    return dist;\n}\n"
+  code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\ntemplate <class\
+    \ T> std::vector<std::vector<T>> warshall_floyd(Graph<T>& g, const T inf) {\n\
+    \    const int n = (int)(g.size());\n\n    std::vector dist(n, std::vector<T>(n,\
+    \ inf));\n    for (int i = 0; i < n; i++) {\n        dist[i][i] = 0;\n       \
+    \ for (auto&& e : g[i]) {\n            dist[e.from][e.to] = std::min(dist[e.from][e.to],\
+    \ e.cost);\n        }\n    }\n\n    for (int k = 0; k < n; k++) {\n        for\
+    \ (int i = 0; i < n; i++) {\n            if (dist[i][k] == inf) continue;\n  \
+    \          for (int j = 0; j < n; j++) {\n                if (dist[k][j] == inf)\
+    \ continue;\n                dist[i][j] = std::min(dist[i][j], dist[i][k] + dist[k][j]);\n\
+    \            }\n        }\n    }\n\n    // \u8CA0\u9589\u8DEF\u691C\u51FA\n  \
+    \  for (int i = 0; i < n; i++) {\n        if (dist[i][i] < 0) dist[i][i] = -inf;\n\
+    \    }\n\n    // \u8CA0\u9589\u8DEF\u3092\u3082\u3068\u306B\u5C0F\u3055\u304F\u3067\
+    \u304D\u308B\u30D1\u30B9\u306B\u3064\u3044\u3066\u8ABF\u3079\u308B\n    for (int\
+    \ k = 0; k < n; k++) {\n        for (int i = 0; i < n; i++) {\n            if\
+    \ (dist[i][k] == inf) continue;\n            for (int j = 0; j < n; j++) {\n \
+    \               if (dist[k][j] == inf) continue;\n                T nd = dist[i][k]\
+    \ + dist[k][j];\n                if (dist[i][k] == -inf or dist[k][j] == -inf)\
+    \ nd = -inf;\n                dist[i][j] = std::min(dist[i][j], nd);\n       \
+    \     }\n        }\n    }\n    return dist;\n}"
   dependsOn:
   - graph/graph_template.hpp
   isVerificationFile: false
-  path: graph/dijkstra.hpp
+  path: graph/warshall_floyd.hpp
   requiredBy: []
-  timestamp: '2024-08-01 13:43:30+09:00'
+  timestamp: '2024-08-04 19:37:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/dijkstra_2.test.cpp
-  - verify/graph/dijkstra_1.test.cpp
-documentation_of: graph/dijkstra.hpp
+  - verify/graph/warshall_floyd.test.cpp
+documentation_of: graph/warshall_floyd.hpp
 layout: document
-title: "Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
+title: "Warshall-Floyd algorithm (\u30EF\u30FC\u30B7\u30E3\u30EB\u30D5\u30ED\u30A4\
+  \u30C9\u6CD5)"
 ---
 
 ## 使い方
 
 ```cpp
 Graph<T> g;
-std::vector<int> s = {0};   // 始点の集合
 const T INF;
-auto [dist, par, root] = dijkstra(g, s, INF);
+auto dist = warshall_floyd(g, INF);
 ```
 
-`dist[i]` について
+`dist[i][j]` について
 - 到達できない場合は `INF`
+- 負閉路を使っていくらでも小さくできる場合は `-INF`
 
 ## 参考文献

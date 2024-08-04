@@ -2,22 +2,29 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: graph/dijkstra.hpp
+    title: "Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
+  - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
+  - icon: ':heavy_check_mark:'
+    path: graph/read_graph.hpp
+    title: "\u30B0\u30E9\u30D5\u5165\u529B\u30E9\u30A4\u30D6\u30E9\u30EA"
+  - icon: ':heavy_check_mark:'
+    path: graph/restore_path.hpp
+    title: Restore path
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/graph/dijkstra_1.test.cpp
-    title: verify/graph/dijkstra_1.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/graph/dijkstra_2.test.cpp
-    title: verify/graph/dijkstra_2.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"graph/dijkstra.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/shortest_path
+    links:
+    - https://judge.yosupo.jp/problem/shortest_path
+  bundledCode: "#line 1 \"verify/graph/dijkstra_2.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/shortest_path\"\
+    \n\n#include <iostream>\n\n#line 2 \"graph/dijkstra.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
     \n\n#include <vector>\n#include <cassert>\n\ntemplate <class T> struct Edge {\n\
     \    int from, to;\n    T cost;\n    int id;\n\n    Edge() = default;\n    Edge(const\
     \ int from, const int to, const T cost = T(1), const int id = -1) : from(from),\
@@ -71,45 +78,55 @@ data:
     \   if (dist[e.to] > d + e.cost) {\n                dist[e.to] = d + e.cost;\n\
     \                root[e.to] = root[v];\n                par[e.to] = v;\n     \
     \           que.emplace(dist[e.to], e.to);\n            }\n        }\n    }\n\
-    \    return {dist, par, root};\n}\n"
-  code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\n#include <tuple>\n\
-    #include <queue>\n\ntemplate <class T> std::tuple<std::vector<T>, std::vector<int>,\
-    \ std::vector<int>> dijkstra(Graph<T>& g, std::vector<int>& s, const T inf) {\n\
-    \    const int n = (int)(g.size());\n    std::vector<T> dist(n, inf);\n    std::vector<int>\
-    \ par(n, -1), root(n, -1);\n\n    std::priority_queue<std::pair<T, int>, std::vector<std::pair<T,\
-    \ int>>, std::greater<>> que;\n\n    for (auto&& v : s) {\n        dist[v] = 0;\n\
-    \        root[v] = v;\n        que.emplace(T(0), v);\n    }\n\n    while (!que.empty())\
-    \ {\n        auto [d, v] = que.top();\n        que.pop();\n        if (dist[v]\
-    \ != d) continue;  // dist[v] < d\n        for (auto&& e : g[v]) {\n         \
-    \   if (dist[e.to] > d + e.cost) {\n                dist[e.to] = d + e.cost;\n\
-    \                root[e.to] = root[v];\n                par[e.to] = v;\n     \
-    \           que.emplace(dist[e.to], e.to);\n            }\n        }\n    }\n\
-    \    return {dist, par, root};\n}"
+    \    return {dist, par, root};\n}\n#line 2 \"graph/read_graph.hpp\"\n\n#line 4\
+    \ \"graph/read_graph.hpp\"\n\ntemplate <class T> Graph<T> read_graph(const int\
+    \ n, const int m, const bool weight = false, const bool directed = false, const\
+    \ int offset = 1) {\n    Graph<T> g(n, directed);\n    for (int i = 0; i < m;\
+    \ i++) {\n        int a, b;\n        std::cin >> a >> b;\n        a -= offset,\
+    \ b -= offset;\n        T c = 1;\n        if (weight) std::cin >> c;\n       \
+    \ g.add_edge(a, b, c);\n    }\n    g.build();\n    return g;\n}\n\ntemplate <class\
+    \ T> Graph<T> read_parent(const int n, const bool weight = false, const bool directed\
+    \ = false, const int offset = 1) {\n    Graph<T> g(n, directed);\n    for (int\
+    \ i = 1; i < n; i++) {\n        int p;\n        std::cin >> p;\n        p -= offset;\n\
+    \        T c = 1;\n        if (weight) std::cin >> c;\n        g.add_edge(p, i,\
+    \ c);\n    }\n    g.build();\n    return g;\n}\n#line 2 \"graph/restore_path.hpp\"\
+    \n\n#line 4 \"graph/restore_path.hpp\"\n#include <algorithm>\n\n// restore path\
+    \ from root[t] to t\nstd::vector<int> restore_path(std::vector<int>& par, int\
+    \ t) {\n    std::vector<int> path = {t};\n    while (par[path.back()] != -1) path.emplace_back(par[path.back()]);\n\
+    \    std::reverse(path.begin(), path.end());\n    return path;\n}\n#line 8 \"\
+    verify/graph/dijkstra_2.test.cpp\"\n\nint main() {\n    int N, M, s, t;\n    std::cin\
+    \ >> N >> M >> s >> t;\n    auto g = read_graph<long long>(N, M, true, true, 0);\n\
+    \    std::vector<int> ss = {s};\n    const long long INF = 1LL << 60;\n    auto\
+    \ [d, p, r] = dijkstra(g, ss, INF);\n    if (d[t] == INF) {\n        std::cout\
+    \ << -1 << '\\n';\n        return 0;\n    }\n    auto ans = restore_path(p, t);\n\
+    \    std::cout << d[t] << ' ' << ans.size() - 1 << '\\n';\n    for (int i = 0;\
+    \ i < ans.size() - 1; i++) std::cout << ans[i] << ' ' << ans[i + 1] << '\\n';\n\
+    \    return 0;\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/shortest_path\"\n\n#include\
+    \ <iostream>\n\n#include \"graph/dijkstra.hpp\"\n#include \"graph/read_graph.hpp\"\
+    \n#include \"graph/restore_path.hpp\"\n\nint main() {\n    int N, M, s, t;\n \
+    \   std::cin >> N >> M >> s >> t;\n    auto g = read_graph<long long>(N, M, true,\
+    \ true, 0);\n    std::vector<int> ss = {s};\n    const long long INF = 1LL <<\
+    \ 60;\n    auto [d, p, r] = dijkstra(g, ss, INF);\n    if (d[t] == INF) {\n  \
+    \      std::cout << -1 << '\\n';\n        return 0;\n    }\n    auto ans = restore_path(p,\
+    \ t);\n    std::cout << d[t] << ' ' << ans.size() - 1 << '\\n';\n    for (int\
+    \ i = 0; i < ans.size() - 1; i++) std::cout << ans[i] << ' ' << ans[i + 1] <<\
+    \ '\\n';\n    return 0;\n}"
   dependsOn:
+  - graph/dijkstra.hpp
   - graph/graph_template.hpp
-  isVerificationFile: false
-  path: graph/dijkstra.hpp
+  - graph/read_graph.hpp
+  - graph/restore_path.hpp
+  isVerificationFile: true
+  path: verify/graph/dijkstra_2.test.cpp
   requiredBy: []
-  timestamp: '2024-08-01 13:43:30+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/graph/dijkstra_2.test.cpp
-  - verify/graph/dijkstra_1.test.cpp
-documentation_of: graph/dijkstra.hpp
+  timestamp: '2024-08-04 19:37:08+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: verify/graph/dijkstra_2.test.cpp
 layout: document
-title: "Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
+redirect_from:
+- /verify/verify/graph/dijkstra_2.test.cpp
+- /verify/verify/graph/dijkstra_2.test.cpp.html
+title: verify/graph/dijkstra_2.test.cpp
 ---
-
-## 使い方
-
-```cpp
-Graph<T> g;
-std::vector<int> s = {0};   // 始点の集合
-const T INF;
-auto [dist, par, root] = dijkstra(g, s, INF);
-```
-
-`dist[i]` について
-- 到達できない場合は `INF`
-
-## 参考文献
