@@ -1,18 +1,15 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   - icon: ':heavy_check_mark:'
+    path: graph/lowest_common_ancestor.hpp
+    title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
+  - icon: ':question:'
     path: graph/read_graph.hpp
     title: "\u30B0\u30E9\u30D5\u5165\u529B\u30E9\u30A4\u30D6\u30E9\u30EA"
-  - icon: ':heavy_check_mark:'
-    path: graph/restore_path.hpp
-    title: Restore path
-  - icon: ':heavy_check_mark:'
-    path: graph/tree_diameter.hpp
-    title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -20,11 +17,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/tree_diameter
+    PROBLEM: https://judge.yosupo.jp/problem/lca
     links:
-    - https://judge.yosupo.jp/problem/tree_diameter
-  bundledCode: "#line 1 \"verify/graph/tree_diameter.test.cpp\"\n#define PROBLEM \"\
-    https://judge.yosupo.jp/problem/tree_diameter\"\n\n#include <iostream>\n\n#line\
+    - https://judge.yosupo.jp/problem/lca
+  bundledCode: "#line 1 \"verify/graph/lowest_common_ancestor_2.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include <iostream>\n\n#line\
     \ 2 \"graph/read_graph.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\n\n#include\
     \ <vector>\n#include <cassert>\n\ntemplate <class T> struct Edge {\n    int from,\
     \ to;\n    T cost;\n    int id;\n\n    Edge() = default;\n    Edge(const int from,\
@@ -77,51 +74,54 @@ data:
     \ = false, const int offset = 1) {\n    Graph<T> g(n, directed);\n    for (int\
     \ i = 1; i < n; i++) {\n        int p;\n        std::cin >> p;\n        p -= offset;\n\
     \        T c = 1;\n        if (weight) std::cin >> c;\n        g.add_edge(p, i,\
-    \ c);\n    }\n    g.build();\n    return g;\n}\n#line 2 \"graph/tree_diameter.hpp\"\
-    \n\n#line 2 \"graph/restore_path.hpp\"\n\n#line 4 \"graph/restore_path.hpp\"\n\
-    #include <algorithm>\n\n// restore path from root[t] to t\nstd::vector<int> restore_path(std::vector<int>&\
-    \ par, int t) {\n    std::vector<int> path = {t};\n    while (par[path.back()]\
-    \ != -1) path.emplace_back(par[path.back()]);\n    std::reverse(path.begin(),\
-    \ path.end());\n    return path;\n}\n#line 5 \"graph/tree_diameter.hpp\"\n\n#include\
-    \ <utility>\n#line 8 \"graph/tree_diameter.hpp\"\n\n// {\u76F4\u5F84\u306E\u8FBA\
-    \u306E\u91CD\u307F\u306E\u7DCF\u548C, \u901A\u308B\u9802\u70B9\u96C6\u5408}\n\
-    template <class T> std::pair<T, std::vector<int>> tree_diameter(Graph<T>& g) {\n\
-    \    const int n = (int)(g.size());\n    std::vector<int> parent(n, -1);\n   \
-    \ std::vector<T> dist(n);\n\n    auto dfs = [&](auto f, int cur, int par) -> void\
-    \ {\n        for (auto&& e : g[cur]) {\n            if (e.to == par) continue;\n\
-    \            dist[e.to] = dist[cur] + e.cost;\n            parent[e.to] = cur;\n\
-    \            f(f, e.to, cur);\n        }\n        return;\n    };\n\n    dfs(dfs,\
-    \ 0, -1);\n    int s = std::max_element(dist.begin(), dist.end()) - dist.begin();\n\
-    \    dist.assign(n, 0);\n    parent.assign(n, -1);\n    dfs(dfs, s, -1);\n   \
-    \ int t = std::max_element(dist.begin(), dist.end()) - dist.begin();\n    auto\
-    \ path = restore_path(parent, t);\n    return {dist[t], path};\n}\n#line 7 \"\
-    verify/graph/tree_diameter.test.cpp\"\n\nint main() {\n    int N;\n    std::cin\
-    \ >> N;\n    auto g = read_graph<long long>(N, N - 1, true, false, 0);\n    auto\
-    \ [d, path] = tree_diameter(g);\n    std::cout << d << ' ' << path.size() << '\\\
-    n';\n    for (int i = 0; i < (int)(path.size()); i++) {\n        std::cout <<\
-    \ path[i] << \" \\n\"[i + 1 == (int)(path.size())];\n    }\n    return 0;\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tree_diameter\"\n\n#include\
-    \ <iostream>\n\n#include \"graph/read_graph.hpp\"\n#include \"graph/tree_diameter.hpp\"\
-    \n\nint main() {\n    int N;\n    std::cin >> N;\n    auto g = read_graph<long\
-    \ long>(N, N - 1, true, false, 0);\n    auto [d, path] = tree_diameter(g);\n \
-    \   std::cout << d << ' ' << path.size() << '\\n';\n    for (int i = 0; i < (int)(path.size());\
-    \ i++) {\n        std::cout << path[i] << \" \\n\"[i + 1 == (int)(path.size())];\n\
-    \    }\n    return 0;\n}"
+    \ c);\n    }\n    g.build();\n    return g;\n}\n#line 2 \"graph/lowest_common_ancestor.hpp\"\
+    \n\n#line 4 \"graph/lowest_common_ancestor.hpp\"\n\n#line 6 \"graph/lowest_common_ancestor.hpp\"\
+    \n\ntemplate <class T> struct LowestCommonAncestor {\n    int n, lg;\n    std::vector<int>\
+    \ depth;\n    std::vector<std::vector<int>> parent;\n\n    LowestCommonAncestor(Graph<T>&\
+    \ g, const int root = 0) : n((int)(g.size())), lg(32 - __builtin_clz(n)), depth(n,\
+    \ 0), parent(lg, std::vector<int>(n)) {\n        auto dfs = [&](auto f, int cur,\
+    \ int par) -> void {\n            parent[0][cur] = par;\n            for (auto&&\
+    \ e : g[cur]) {\n                if (e.to == par) continue;\n                depth[e.to]\
+    \ = depth[cur] + 1;\n                f(f, e.to, cur);\n            }\n       \
+    \ };\n        dfs(dfs, root, -1);\n        for (int k = 0; k + 1 < lg; k++) {\n\
+    \            for (int v = 0; v < n; v++) {\n                parent[k + 1][v] =\
+    \ parent[k][v] < 0 ? -1 : parent[k][parent[k][v]];\n            }\n        }\n\
+    \    }\n\n    int lca(int u, int v) {\n        assert((int)(depth.size()) == n);\n\
+    \        if (depth[u] > depth[v]) std::swap(u, v);\n        // depth[u] <= depth[v]\n\
+    \        for (int k = 0; k < lg; k++) {\n            if ((depth[v] - depth[u])\
+    \ >> k & 1) v = parent[k][v];\n        }\n        if (u == v) return u;\n    \
+    \    for (int k = lg - 1; k >= 0; k--) {\n            if (parent[k][u] != parent[k][v])\
+    \ {\n                u = parent[k][u];\n                v = parent[k][v];\n  \
+    \          }\n        }\n        return parent[0][u];\n    }\n\n    int level_ancestor(int\
+    \ u, const int d) {\n        assert((int)(depth.size()) == n);\n        if (depth[u]\
+    \ < d) return -1;\n        for (int k = 0; k < lg; k++) {\n            if (d >>\
+    \ k & 1) u = parent[k][u];\n        }\n        return u;\n    }\n\n    int distance(const\
+    \ int u, const int v) const { return depth[u] + depth[v] - 2 * depth[lca(u, v)];\
+    \ }\n};\n#line 7 \"verify/graph/lowest_common_ancestor_2.test.cpp\"\n\nint main()\
+    \ {\n    int N, Q;\n    std::cin >> N >> Q;\n    auto g = read_parent<int>(N,\
+    \ false, false, 0);\n    LowestCommonAncestor tq(g, 0);\n    while (Q--) {\n \
+    \       int u, v;\n        std::cin >> u >> v;\n        std::cout << tq.lca(u,\
+    \ v) << '\\n';\n    }\n    return 0;\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include <iostream>\n\
+    \n#include \"graph/read_graph.hpp\"\n#include \"graph/lowest_common_ancestor.hpp\"\
+    \n\nint main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    auto g = read_parent<int>(N,\
+    \ false, false, 0);\n    LowestCommonAncestor tq(g, 0);\n    while (Q--) {\n \
+    \       int u, v;\n        std::cin >> u >> v;\n        std::cout << tq.lca(u,\
+    \ v) << '\\n';\n    }\n    return 0;\n}"
   dependsOn:
   - graph/read_graph.hpp
   - graph/graph_template.hpp
-  - graph/tree_diameter.hpp
-  - graph/restore_path.hpp
+  - graph/lowest_common_ancestor.hpp
   isVerificationFile: true
-  path: verify/graph/tree_diameter.test.cpp
+  path: verify/graph/lowest_common_ancestor_2.test.cpp
   requiredBy: []
-  timestamp: '2024-07-31 21:19:59+09:00'
+  timestamp: '2024-08-05 02:30:47+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/graph/tree_diameter.test.cpp
+documentation_of: verify/graph/lowest_common_ancestor_2.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/graph/tree_diameter.test.cpp
-- /verify/verify/graph/tree_diameter.test.cpp.html
-title: verify/graph/tree_diameter.test.cpp
+- /verify/verify/graph/lowest_common_ancestor_2.test.cpp
+- /verify/verify/graph/lowest_common_ancestor_2.test.cpp.html
+title: verify/graph/lowest_common_ancestor_2.test.cpp
 ---

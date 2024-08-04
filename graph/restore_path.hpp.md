@@ -10,8 +10,14 @@ data:
     path: verify/graph/dijkstra_2.test.cpp
     title: verify/graph/dijkstra_2.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/graph/tree_diameter.test.cpp
-    title: verify/graph/tree_diameter.test.cpp
+    path: verify/graph/tree_diameter_1.test.cpp
+    title: verify/graph/tree_diameter_1.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/tree_diameter_2.test.cpp
+    title: verify/graph/tree_diameter_2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/zero_one_bfs.test.cpp
+    title: verify/graph/zero_one_bfs.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -35,7 +41,9 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/dijkstra_2.test.cpp
-  - verify/graph/tree_diameter.test.cpp
+  - verify/graph/zero_one_bfs.test.cpp
+  - verify/graph/tree_diameter_2.test.cpp
+  - verify/graph/tree_diameter_1.test.cpp
 documentation_of: graph/restore_path.hpp
 layout: document
 title: Restore path

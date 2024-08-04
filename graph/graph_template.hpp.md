@@ -28,7 +28,7 @@ data:
     path: graph/minimum_steiner_tree.hpp
     title: "Minimum Steiner Tree (\u6700\u5C0F\u30B7\u30E5\u30BF\u30A4\u30CA\u30FC\
       \u6728)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/read_graph.hpp
     title: "\u30B0\u30E9\u30D5\u5165\u529B\u30E9\u30A4\u30D6\u30E9\u30EA"
   - icon: ':warning:'
@@ -37,7 +37,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/strongly_connected_component.hpp
     title: "Strongly Connected Component (\u5F37\u9023\u7D50\u6210\u5206)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/topological_sort.hpp
     title: "Topological Sort (\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8\
       )"
@@ -81,32 +81,44 @@ data:
     path: verify/graph/low_link_2.test.cpp
     title: verify/graph/low_link_2.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/graph/lowest_common_ancestor.test.cpp
-    title: verify/graph/lowest_common_ancestor.test.cpp
+    path: verify/graph/lowest_common_ancestor_1.test.cpp
+    title: verify/graph/lowest_common_ancestor_1.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/lowest_common_ancestor_2.test.cpp
+    title: verify/graph/lowest_common_ancestor_2.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/graph/minimum_steiner_tree.test.cpp
     title: verify/graph/minimum_steiner_tree.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/graph/strongly_connected_component.test.cpp
-    title: verify/graph/strongly_connected_component.test.cpp
+    path: verify/graph/strongly_connected_component_1.test.cpp
+    title: verify/graph/strongly_connected_component_1.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/graph/topological_sort.test.cpp
-    title: verify/graph/topological_sort.test.cpp
+    path: verify/graph/strongly_connected_component_2.test.cpp
+    title: verify/graph/strongly_connected_component_2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/topological_sort_1.test.cpp
+    title: verify/graph/topological_sort_1.test.cpp
+  - icon: ':x:'
+    path: verify/graph/topological_sort_2.test.cpp
+    title: verify/graph/topological_sort_2.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/graph/traveling_salesman_problem.test.cpp
     title: verify/graph/traveling_salesman_problem.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/graph/tree_diameter.test.cpp
-    title: verify/graph/tree_diameter.test.cpp
+    path: verify/graph/tree_diameter_1.test.cpp
+    title: verify/graph/tree_diameter_1.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/tree_diameter_2.test.cpp
+    title: verify/graph/tree_diameter_2.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/graph/warshall_floyd.test.cpp
     title: verify/graph/warshall_floyd.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/graph/zero_one_bfs.test.cpp
     title: verify/graph/zero_one_bfs.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/graph_template.hpp\"\n\n#include <vector>\n#include\
@@ -216,24 +228,28 @@ data:
   - graph/shortest_path_tree.hpp
   - graph/dijkstra.hpp
   timestamp: '2024-07-31 21:19:59+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/graph/kruskal.test.cpp
   - verify/graph/traveling_salesman_problem.test.cpp
+  - verify/graph/strongly_connected_component_2.test.cpp
   - verify/graph/warshall_floyd.test.cpp
   - verify/graph/dijkstra_2.test.cpp
+  - verify/graph/topological_sort_2.test.cpp
+  - verify/graph/strongly_connected_component_1.test.cpp
   - verify/graph/zero_one_bfs.test.cpp
+  - verify/graph/lowest_common_ancestor_2.test.cpp
   - verify/graph/dijkstra_1.test.cpp
-  - verify/graph/lowest_common_ancestor.test.cpp
   - verify/graph/low_link_1.test.cpp
+  - verify/graph/lowest_common_ancestor_1.test.cpp
   - verify/graph/minimum_steiner_tree.test.cpp
+  - verify/graph/topological_sort_1.test.cpp
   - verify/graph/low_link_2.test.cpp
-  - verify/graph/strongly_connected_component.test.cpp
+  - verify/graph/tree_diameter_2.test.cpp
   - verify/graph/bellman_ford.test.cpp
-  - verify/graph/tree_diameter.test.cpp
-  - verify/graph/topological_sort.test.cpp
   - verify/graph/auxiliary_tree.test.cpp
   - verify/graph/euler_tour.test.cpp
+  - verify/graph/tree_diameter_1.test.cpp
 documentation_of: graph/graph_template.hpp
 layout: document
 title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"

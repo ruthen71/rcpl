@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/read_graph.hpp
     title: "\u30B0\u30E9\u30D5\u5165\u529B\u30E9\u30A4\u30D6\u30E9\u30EA"
   - icon: ':heavy_check_mark:'
@@ -20,10 +20,10 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/scc
     links:
     - https://judge.yosupo.jp/problem/scc
-  bundledCode: "#line 1 \"verify/graph/strongly_connected_component.test.cpp\"\n#define\
-    \ PROBLEM \"https://judge.yosupo.jp/problem/scc\"\n\n#include <iostream>\n\n#line\
-    \ 2 \"graph/graph_template.hpp\"\n\n#include <vector>\n#include <cassert>\n\n\
-    template <class T> struct Edge {\n    int from, to;\n    T cost;\n    int id;\n\
+  bundledCode: "#line 1 \"verify/graph/strongly_connected_component_2.test.cpp\"\n\
+    #define PROBLEM \"https://judge.yosupo.jp/problem/scc\"\n\n#include <iostream>\n\
+    \n#line 2 \"graph/graph_template.hpp\"\n\n#include <vector>\n#include <cassert>\n\
+    \ntemplate <class T> struct Edge {\n    int from, to;\n    T cost;\n    int id;\n\
     \n    Edge() = default;\n    Edge(const int from, const int to, const T cost =\
     \ T(1), const int id = -1) : from(from), to(to), cost(cost), id(id) {}\n\n   \
     \ friend bool operator<(const Edge<T>& a, const Edge<T>& b) { return a.cost <\
@@ -77,7 +77,7 @@ data:
     \        if (weight) std::cin >> c;\n        g.add_edge(p, i, c);\n    }\n   \
     \ g.build();\n    return g;\n}\n#line 2 \"graph/strongly_connected_component.hpp\"\
     \n\n#line 4 \"graph/strongly_connected_component.hpp\"\n\ntemplate <class T> std::vector<std::vector<int>>\
-    \ strongly_connected_component(Graph<T>& g) {\n    const int n = int(g.size());\n\
+    \ strongly_connected_component(Graph<T>& g) {\n    const int n = (int)(g.size());\n\
     \    int now_ord = 0, group_num = 0;\n    std::vector<int> visited, low(n), ord(n,\
     \ -1), ids(n);\n    visited.reserve(n);\n    auto dfs = [&](auto f, int cur) ->\
     \ void {\n        low[cur] = ord[cur] = now_ord++;\n        visited.push_back(cur);\n\
@@ -92,10 +92,9 @@ data:
     \ i);\n    }\n    for (auto&& x : ids) {\n        x = group_num - 1 - x;\n   \
     \ }\n    std::vector<int> counts(group_num);\n    for (auto&& x : ids) counts[x]++;\n\
     \    std::vector<std::vector<int>> groups(group_num);\n    for (int i = 0; i <\
-    \ group_num; i++) {\n        groups[i].reserve(counts[i]);\n    }\n    for (int\
-    \ i = 0; i < n; i++) {\n        groups[ids[i]].push_back(i);\n    }\n    return\
-    \ groups;\n}\n#line 8 \"verify/graph/strongly_connected_component.test.cpp\"\n\
-    \nint main() {\n    int N, M;\n    std::cin >> N >> M;\n    auto g = read_graph<int>(N,\
+    \ group_num; i++) groups[i].reserve(counts[i]);\n    for (int i = 0; i < n; i++)\
+    \ groups[ids[i]].push_back(i);\n    return groups;\n}\n#line 8 \"verify/graph/strongly_connected_component_2.test.cpp\"\
+    \n\nint main() {\n    int N, M;\n    std::cin >> N >> M;\n    auto g = read_graph<int>(N,\
     \ M, false, true, 0);\n    auto scc = strongly_connected_component(g);\n    std::cout\
     \ << scc.size() << '\\n';\n    for (auto&& vec : scc) {\n        std::cout <<\
     \ vec.size();\n        for (auto&& vi : vec) std::cout << ' ' << vi;\n       \
@@ -113,15 +112,15 @@ data:
   - graph/read_graph.hpp
   - graph/strongly_connected_component.hpp
   isVerificationFile: true
-  path: verify/graph/strongly_connected_component.test.cpp
+  path: verify/graph/strongly_connected_component_2.test.cpp
   requiredBy: []
-  timestamp: '2024-07-31 21:19:59+09:00'
+  timestamp: '2024-08-05 02:13:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/graph/strongly_connected_component.test.cpp
+documentation_of: verify/graph/strongly_connected_component_2.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/graph/strongly_connected_component.test.cpp
-- /verify/verify/graph/strongly_connected_component.test.cpp.html
-title: verify/graph/strongly_connected_component.test.cpp
+- /verify/verify/graph/strongly_connected_component_2.test.cpp
+- /verify/verify/graph/strongly_connected_component_2.test.cpp.html
+title: verify/graph/strongly_connected_component_2.test.cpp
 ---

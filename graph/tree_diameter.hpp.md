@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   - icon: ':heavy_check_mark:'
@@ -10,8 +10,14 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/graph/tree_diameter.test.cpp
-    title: verify/graph/tree_diameter.test.cpp
+    path: verify/graph/tree_diameter_1.test.cpp
+    title: verify/graph/tree_diameter_1.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/tree_diameter_2.test.cpp
+    title: verify/graph/tree_diameter_2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/zero_one_bfs.test.cpp
+    title: verify/graph/zero_one_bfs.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -98,7 +104,9 @@ data:
   timestamp: '2024-07-31 21:19:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/tree_diameter.test.cpp
+  - verify/graph/zero_one_bfs.test.cpp
+  - verify/graph/tree_diameter_2.test.cpp
+  - verify/graph/tree_diameter_1.test.cpp
 documentation_of: graph/tree_diameter.hpp
 layout: document
 title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy:
@@ -13,8 +13,11 @@ data:
     path: verify/graph/auxiliary_tree.test.cpp
     title: verify/graph/auxiliary_tree.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/graph/lowest_common_ancestor.test.cpp
-    title: verify/graph/lowest_common_ancestor.test.cpp
+    path: verify/graph/lowest_common_ancestor_1.test.cpp
+    title: verify/graph/lowest_common_ancestor_1.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/lowest_common_ancestor_2.test.cpp
+    title: verify/graph/lowest_common_ancestor_2.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -117,7 +120,8 @@ data:
   timestamp: '2024-08-01 13:43:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/lowest_common_ancestor.test.cpp
+  - verify/graph/lowest_common_ancestor_2.test.cpp
+  - verify/graph/lowest_common_ancestor_1.test.cpp
   - verify/graph/auxiliary_tree.test.cpp
 documentation_of: graph/lowest_common_ancestor.hpp
 layout: document

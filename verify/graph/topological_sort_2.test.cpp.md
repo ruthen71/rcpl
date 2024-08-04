@@ -1,29 +1,31 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: graph/dijkstra.hpp
-    title: "Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
   - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   - icon: ':question:'
     path: graph/read_graph.hpp
     title: "\u30B0\u30E9\u30D5\u5165\u529B\u30E9\u30A4\u30D6\u30E9\u30EA"
+  - icon: ':question:'
+    path: graph/topological_sort.hpp
+    title: "Topological Sort (\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8\
+      )"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A
+    PROBLEM: https://atcoder.jp/contests/abc223/tasks/abc223_d
     links:
-    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A
-  bundledCode: "#line 1 \"verify/graph/dijkstra_1.test.cpp\"\n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\
-    \n\n#include <iostream>\n\n#line 2 \"graph/dijkstra.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
-    \n\n#include <vector>\n#include <cassert>\n\ntemplate <class T> struct Edge {\n\
-    \    int from, to;\n    T cost;\n    int id;\n\n    Edge() = default;\n    Edge(const\
+    - https://atcoder.jp/contests/abc223/tasks/abc223_d
+  bundledCode: "#line 1 \"verify/graph/topological_sort_2.test.cpp\"\n#define PROBLEM\
+    \ \"https://atcoder.jp/contests/abc223/tasks/abc223_d\"\n\n#include <iostream>\n\
+    \n#line 2 \"graph/read_graph.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\n\n\
+    #include <vector>\n#include <cassert>\n\ntemplate <class T> struct Edge {\n  \
+    \  int from, to;\n    T cost;\n    int id;\n\n    Edge() = default;\n    Edge(const\
     \ int from, const int to, const T cost = T(1), const int id = -1) : from(from),\
     \ to(to), cost(cost), id(id) {}\n\n    friend bool operator<(const Edge<T>& a,\
     \ const Edge<T>& b) { return a.cost < b.cost; }\n\n    friend std::ostream& operator<<(std::ostream&\
@@ -63,58 +65,60 @@ data:
     \ j++) {\n                os << g[i][j];\n                if (j + 1 != (int)(g[i].size()))\
     \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
     \ 1 != (int)(g.size())) os << \", \";\n        }\n        return os << \"]\";\n\
-    \    }\n};\n#line 4 \"graph/dijkstra.hpp\"\n\n#include <tuple>\n#include <queue>\n\
-    \ntemplate <class T> std::tuple<std::vector<T>, std::vector<int>, std::vector<int>>\
-    \ dijkstra(Graph<T>& g, std::vector<int>& s, const T inf) {\n    const int n =\
-    \ (int)(g.size());\n    std::vector<T> dist(n, inf);\n    std::vector<int> par(n,\
-    \ -1), root(n, -1);\n\n    std::priority_queue<std::pair<T, int>, std::vector<std::pair<T,\
-    \ int>>, std::greater<>> que;\n\n    for (auto&& v : s) {\n        dist[v] = 0;\n\
-    \        root[v] = v;\n        que.emplace(T(0), v);\n    }\n\n    while (!que.empty())\
-    \ {\n        auto [d, v] = que.top();\n        que.pop();\n        if (dist[v]\
-    \ != d) continue;  // dist[v] < d\n        for (auto&& e : g[v]) {\n         \
-    \   if (dist[e.to] > d + e.cost) {\n                dist[e.to] = d + e.cost;\n\
-    \                root[e.to] = root[v];\n                par[e.to] = v;\n     \
-    \           que.emplace(dist[e.to], e.to);\n            }\n        }\n    }\n\
-    \    return {dist, par, root};\n}\n#line 2 \"graph/read_graph.hpp\"\n\n#line 4\
-    \ \"graph/read_graph.hpp\"\n\ntemplate <class T> Graph<T> read_graph(const int\
-    \ n, const int m, const bool weight = false, const bool directed = false, const\
-    \ int offset = 1) {\n    Graph<T> g(n, directed);\n    for (int i = 0; i < m;\
-    \ i++) {\n        int a, b;\n        std::cin >> a >> b;\n        a -= offset,\
+    \    }\n};\n#line 4 \"graph/read_graph.hpp\"\n\ntemplate <class T> Graph<T> read_graph(const\
+    \ int n, const int m, const bool weight = false, const bool directed = false,\
+    \ const int offset = 1) {\n    Graph<T> g(n, directed);\n    for (int i = 0; i\
+    \ < m; i++) {\n        int a, b;\n        std::cin >> a >> b;\n        a -= offset,\
     \ b -= offset;\n        T c = 1;\n        if (weight) std::cin >> c;\n       \
     \ g.add_edge(a, b, c);\n    }\n    g.build();\n    return g;\n}\n\ntemplate <class\
     \ T> Graph<T> read_parent(const int n, const bool weight = false, const bool directed\
     \ = false, const int offset = 1) {\n    Graph<T> g(n, directed);\n    for (int\
     \ i = 1; i < n; i++) {\n        int p;\n        std::cin >> p;\n        p -= offset;\n\
     \        T c = 1;\n        if (weight) std::cin >> c;\n        g.add_edge(p, i,\
-    \ c);\n    }\n    g.build();\n    return g;\n}\n#line 7 \"verify/graph/dijkstra_1.test.cpp\"\
-    \n\nint main() {\n    int V, E, r;\n    std::cin >> V >> E >> r;\n    auto g =\
-    \ read_graph<long long>(V, E, true, true, 0);\n    std::vector<int> s = {r};\n\
-    \    const long long INF = 1LL << 60;\n    auto [dist, par, root] = dijkstra(g,\
-    \ s, INF);\n    for (int i = 0; i < V; i++) {\n        if (dist[i] == INF) {\n\
-    \            std::cout << \"INF\\n\";\n        } else {\n            std::cout\
-    \ << dist[i] << '\\n';\n        }\n    }\n    return 0;\n}\n"
-  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\
-    \n\n#include <iostream>\n\n#include \"graph/dijkstra.hpp\"\n#include \"graph/read_graph.hpp\"\
-    \n\nint main() {\n    int V, E, r;\n    std::cin >> V >> E >> r;\n    auto g =\
-    \ read_graph<long long>(V, E, true, true, 0);\n    std::vector<int> s = {r};\n\
-    \    const long long INF = 1LL << 60;\n    auto [dist, par, root] = dijkstra(g,\
-    \ s, INF);\n    for (int i = 0; i < V; i++) {\n        if (dist[i] == INF) {\n\
-    \            std::cout << \"INF\\n\";\n        } else {\n            std::cout\
-    \ << dist[i] << '\\n';\n        }\n    }\n    return 0;\n}"
+    \ c);\n    }\n    g.build();\n    return g;\n}\n#line 2 \"graph/topological_sort.hpp\"\
+    \n\n#line 4 \"graph/topological_sort.hpp\"\n\n#line 6 \"graph/topological_sort.hpp\"\
+    \n#include <queue>\n\n// topological sort \u304C\u5B58\u5728\u3059\u308B\u306A\
+    \u3089, \u8F9E\u66F8\u9806\u6700\u5C0F\u306E\u3082\u306E\u3092\u8FD4\u3059\n//\
+    \ O((n + m) log n)\n// topological sort \u304C\u4E00\u610F\u306B\u5B9A\u307E\u308B\
+    \ <=> \u6700\u9577\u30D1\u30B9\u306E\u9577\u3055\u304C n - 1\ntemplate <class\
+    \ T> std::vector<int> topological_sort(Graph<T>& g) {\n    const int n = (int)(g.size());\n\
+    \    assert(n > 0);\n    std::vector<int> indeg(n, 0);\n    for (int i = 0; i\
+    \ < n; i++) {\n        for (auto&& e : g[i]) indeg[e.to]++;\n    }\n    // O(n\
+    \ + m) \u306B\u3057\u305F\u3044\u5834\u5408\u306F std::queue \u306B\u3059\u308B\
+    \n    std::priority_queue<int, std::vector<int>, std::greater<>> que;\n    for\
+    \ (int i = 0; i < n; i++) {\n        if (indeg[i] == 0) {\n            que.push(i);\n\
+    \        }\n    }\n    std::vector<int> res;\n    while (!que.empty()) {\n   \
+    \     auto v = que.top();\n        que.pop();\n        res.push_back(v);\n   \
+    \     for (auto&& e : g[v]) {\n            indeg[e.to]--;\n            if (indeg[e.to]\
+    \ == 0) que.push(e.to);\n        }\n    }\n    // topological sort \u3067\u304D\
+    \u306A\u3044\n    if ((int)(res.size()) != n) {\n        return std::vector<int>();\n\
+    \    }\n    return res;\n}\n#line 7 \"verify/graph/topological_sort_2.test.cpp\"\
+    \n\nint main() {\n    int N, M;\n    std::cin >> N >> M;\n    auto g = read_graph<int>(N,\
+    \ M, false, true, 1);\n    auto vec = topological_sort(g);\n    if ((int)(vec.size())\
+    \ != N) {\n        std::cout << -1 << '\\n';\n    } else {\n        for (int i\
+    \ = 0; i < N; i++) std::cout << vec[i] + 1 << \" \\n\"[i + 1 == N];\n    }\n \
+    \   return 0;\n}\n"
+  code: "#define PROBLEM \"https://atcoder.jp/contests/abc223/tasks/abc223_d\"\n\n\
+    #include <iostream>\n\n#include \"graph/read_graph.hpp\"\n#include \"graph/topological_sort.hpp\"\
+    \n\nint main() {\n    int N, M;\n    std::cin >> N >> M;\n    auto g = read_graph<int>(N,\
+    \ M, false, true, 1);\n    auto vec = topological_sort(g);\n    if ((int)(vec.size())\
+    \ != N) {\n        std::cout << -1 << '\\n';\n    } else {\n        for (int i\
+    \ = 0; i < N; i++) std::cout << vec[i] + 1 << \" \\n\"[i + 1 == N];\n    }\n \
+    \   return 0;\n}"
   dependsOn:
-  - graph/dijkstra.hpp
-  - graph/graph_template.hpp
   - graph/read_graph.hpp
+  - graph/graph_template.hpp
+  - graph/topological_sort.hpp
   isVerificationFile: true
-  path: verify/graph/dijkstra_1.test.cpp
+  path: verify/graph/topological_sort_2.test.cpp
   requiredBy: []
-  timestamp: '2024-08-04 19:37:08+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-08-05 02:15:06+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: verify/graph/dijkstra_1.test.cpp
+documentation_of: verify/graph/topological_sort_2.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/graph/dijkstra_1.test.cpp
-- /verify/verify/graph/dijkstra_1.test.cpp.html
-title: verify/graph/dijkstra_1.test.cpp
+- /verify/verify/graph/topological_sort_2.test.cpp
+- /verify/verify/graph/topological_sort_2.test.cpp.html
+title: verify/graph/topological_sort_2.test.cpp
 ---
