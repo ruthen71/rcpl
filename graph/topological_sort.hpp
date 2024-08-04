@@ -6,7 +6,7 @@
 #include <queue>
 
 // topological sort が存在するなら, 辞書順最小のものを返す
-// O((N + M)log N)
+// O((n + m) log n)
 // topological sort が一意に定まる <=> 最長パスの長さが n - 1
 template <class T> std::vector<int> topological_sort(Graph<T>& g) {
     const int n = (int)(g.size());
@@ -15,7 +15,7 @@ template <class T> std::vector<int> topological_sort(Graph<T>& g) {
     for (int i = 0; i < n; i++) {
         for (auto&& e : g[i]) indeg[e.to]++;
     }
-    // O(N + M) にしたい場合は std::queue にする
+    // O(n + m) にしたい場合は std::queue にする
     std::priority_queue<int, std::vector<int>, std::greater<>> que;
     for (int i = 0; i < n; i++) {
         if (indeg[i] == 0) {
