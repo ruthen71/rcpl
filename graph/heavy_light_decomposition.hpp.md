@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -57,44 +57,46 @@ data:
     \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
     \ 1 != (int)(g.size())) os << \", \";\n        }\n        return os << \"]\";\n\
     \    }\n};\n#line 4 \"graph/heavy_light_decomposition.hpp\"\n\n// Heavy-Light\
-    \ Decomposition\n// \u30D1\u30B9\u30AF\u30A8\u30EA\u306B\u5BFE\u5FDC\ntemplate\
-    \ <class T> struct HeavyLightDecomposition {\n    int n;\n    std::vector<int>\
-    \ subsize;   // subsize[v] = v \u3092\u6839\u3068\u3059\u308B\u90E8\u5206\u6728\
-    \u306E\u30B5\u30A4\u30BA\n    std::vector<int> vertices;  // Heavy-Edge \u304B\
-    \u3089\u512A\u5148\u7684\u306B DFS \u3057\u305F\u3068\u304D\u306E\u9802\u70B9\u3092\
-    \u8A2A\u554F\u9806\u306B\u4E26\u3079\u305F\u3082\u306E\n    std::vector<int> indexes;\
-    \   // \u5404\u9802\u70B9\u304C vertives \u3067\u4F55\u756A\u76EE\u306B\u767B\u5834\
-    \u3059\u308B\u304B\n    std::vector<int> pathtop;   // \u5404\u9802\u70B9\u3092\
-    \u542B\u3080\u30D1\u30B9\u4E0A\u306E\u6700\u3082\u7956\u5148\u306E\u9802\u70B9\
-    \n    std::vector<int> parent;    // \u89AA\u306E\u9802\u70B9\n\n    HeavyLightDecomposition(Graph<T>&\
-    \ g, const int root = 0) : n((int)(g.size())), subsize(n, 1), indexes(n, -1),\
-    \ pathtop(n, -1), parent(n, -1) {\n        auto dfs = [&](auto f, int cur, int\
-    \ par) -> void {\n            // \u89AA\u65B9\u5411\u3078\u306E\u8FBA\u3092\u672B\
-    \u5C3E\u306B\u79FB\u52D5\n            for (int i = 0; i < (int)(g[cur].size());\
-    \ i++) {\n                if (g[cur][i].to == par) {\n                    if (i\
-    \ + 1 == (int)(g[cur].size())) continue;\n                    std::swap(g[cur][i],\
-    \ g[cur][i + 1]);\n                    i--;\n                }\n            }\n\
-    \            // \u90E8\u5206\u6728\u306E\u30B5\u30A4\u30BA\u304C\u6700\u5927\u306E\
-    \u3082\u306E\u3092\u5148\u982D\u306B\u79FB\u52D5\n            for (auto&& e :\
-    \ g[cur]) {\n                if (e.to == par) continue;\n                f(f,\
-    \ e.to, cur);\n                subsize[cur] += subsize[e.to];\n              \
-    \  if (subsize[e.to] > subsize[g[cur][0].to]) {\n                    std::swap(e,\
-    \ g[cur][0]);\n                }\n            }\n        };\n        dfs(dfs,\
-    \ root, -1);\n        // \u9802\u70B9\u3092\u4E26\u3079\u308B\n        auto hld\
-    \ = [&](auto f, int cur, int par, int top) -> void {\n            indexes[cur]\
-    \ = (int)(vertices.size());\n            pathtop[cur] = top;\n            vertices.push_back(cur);\n\
-    \n            for (int i = 0; i < (int)(g[cur].size()); i++) {\n             \
-    \   if (g[cur][i].to == par) {\n                    assert(i + 1 == (int)(g[cur].size()));\n\
-    \                    continue;\n                }\n                parent[g[cur][i].to]\
-    \ = cur;\n                f(f, g[cur][i].to, cur, (i == 0 ? top : g[cur][i].to));\n\
-    \            }\n        };\n        hld(hld, root, -1, root);\n    }\n\n    int\
-    \ lca(int u, int v) {\n        // \u540C\u3058\u30D1\u30B9\u307E\u3067\u4E0A\u304C\
-    \u308B\n        while (pathtop[u] != pathtop[v]) {\n            if (indexes[u]\
-    \ > indexes[v]) {\n                u = parent[pathtop[u]];\n            } else\
-    \ {\n                v = parent[pathtop[v]];\n            }\n        }\n     \
-    \   if (indexes[u] > indexes[v]) std::swap(u, v);\n        return u;\n    }\n\n\
-    \    // u - v \u30D1\u30B9\u306B\u64CD\u4F5C\u3092\u884C\u3046\u3068\u304D\u306B\
-    \u4F7F\u3046\u533A\u9593\u3092\u5217\u6319\u3059\u308B\n    std::vector<std::pair<int,\
+    \ Decomposition\n// \u30D1\u30B9\u30AF\u30A8\u30EA\u306B\u5BFE\u5FDC\n// \u8FBA\
+    \u306E\u4E26\u3079\u66FF\u3048\u3092\u5185\u90E8\u3067\u884C\u3046\u306E\u3067\
+    \u6CE8\u610F\ntemplate <class T> struct HeavyLightDecomposition {\n    int n;\n\
+    \    std::vector<int> subsize;   // subsize[v] = v \u3092\u6839\u3068\u3059\u308B\
+    \u90E8\u5206\u6728\u306E\u30B5\u30A4\u30BA\n    std::vector<int> vertices;  //\
+    \ Heavy-Edge \u304B\u3089\u512A\u5148\u7684\u306B DFS \u3057\u305F\u3068\u304D\
+    \u306E\u9802\u70B9\u3092\u8A2A\u554F\u9806\u306B\u4E26\u3079\u305F\u3082\u306E\
+    \n    std::vector<int> parent;    // \u89AA\u306E\u9802\u70B9\n    std::vector<int>\
+    \ pathtop;   // \u5404\u9802\u70B9\u3092\u542B\u3080\u30D1\u30B9\u4E0A\u306E\u6700\
+    \u3082\u7956\u5148\u306E\u9802\u70B9\n    std::vector<int> indexes;   // \u5404\
+    \u9802\u70B9\u304C vertives \u3067\u4F55\u756A\u76EE\u306B\u767B\u5834\u3059\u308B\
+    \u304B\n\n    HeavyLightDecomposition(Graph<T>& g, const int root = 0) : n((int)(g.size())),\
+    \ subsize(n, 1), parent(n, -1), pathtop(n, -1), indexes(n, -1) {\n        // \u90E8\
+    \u5206\u6728\u306E\u30B5\u30A4\u30BA\u3092\u8A08\u7B97\n        auto dfs_size\
+    \ = [&](auto f, int cur, int par) -> void {\n            // \u89AA\u65B9\u5411\
+    \u3078\u306E\u8FBA\u3092\u672B\u5C3E\u306B\u79FB\u52D5\n            for (int i\
+    \ = 0; i < (int)(g[cur].size()); i++) {\n                if (g[cur][i].to == par)\
+    \ {\n                    std::swap(g[cur][i], g[cur][(int)(g[cur].size()) - 1]);\n\
+    \                    break;\n                }\n            }\n            //\
+    \ \u90E8\u5206\u6728\u306E\u30B5\u30A4\u30BA\u304C\u6700\u5927\u306E\u3082\u306E\
+    \u3092\u5148\u982D\u306B\u79FB\u52D5\n            for (auto&& e : g[cur]) {\n\
+    \                if (e.to == par) continue;\n                f(f, e.to, cur);\n\
+    \                subsize[cur] += subsize[e.to];\n                if (subsize[e.to]\
+    \ > subsize[g[cur][0].to]) {\n                    std::swap(e, g[cur][0]);\n \
+    \               }\n            }\n        };\n        dfs_size(dfs_size, root,\
+    \ -1);\n\n        // \u9802\u70B9\u3092\u4E26\u3079\u308B\n        auto dfs_hld\
+    \ = [&](auto f, int cur, int par, int top) -> void {\n            parent[cur]\
+    \ = par;\n            pathtop[cur] = top;\n            indexes[cur] = (int)(vertices.size());\n\
+    \            vertices.emplace_back(cur);\n\n            for (int i = 0; i < (int)(g[cur].size());\
+    \ i++) {\n                if (g[cur][i].to == par) continue;\n               \
+    \ // top \u306F heavy-edge \u306B\u5BFE\u3057\u3066\u306E\u307F\u5F15\u304D\u7D99\
+    \u304C\u308C\u308B\n                f(f, g[cur][i].to, cur, (i == 0 ? top : g[cur][i].to));\n\
+    \            }\n        };\n        dfs_hld(dfs_hld, root, -1, root);\n    }\n\
+    \n    int lca(int u, int v) {\n        // \u540C\u3058\u30D1\u30B9\u307E\u3067\
+    \u4E0A\u304C\u308B\n        while (pathtop[u] != pathtop[v]) {\n            if\
+    \ (indexes[u] > indexes[v]) {\n                u = parent[pathtop[u]];\n     \
+    \       } else {\n                v = parent[pathtop[v]];\n            }\n   \
+    \     }\n        if (indexes[u] > indexes[v]) std::swap(u, v);\n        return\
+    \ u;\n    }\n\n    // u - v \u30D1\u30B9\u306B\u64CD\u4F5C\u3092\u884C\u3046\u3068\
+    \u304D\u306B\u4F7F\u3046\u533A\u9593\u3092\u5217\u6319\u3059\u308B\n    std::vector<std::pair<int,\
     \ int>> query(int u, int v) {\n        std::vector<std::pair<int, int>> res;\n\
     \        while (pathtop[u] != pathtop[v]) {\n            // \u8FBA\u306B\u5BFE\
     \u3059\u308B\u64CD\u4F5C\u306A\u306E\u3067 pathtop[u] \u304B\u3089 parent[pathtop[u]]\
@@ -106,39 +108,41 @@ data:
     \ (indexes[u] > indexes[v]) std::swap(u, v);\n        res.emplace_back(indexes[u],\
     \ indexes[v]);\n        return res;\n    }\n};\n"
   code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\n// Heavy-Light Decomposition\n\
-    // \u30D1\u30B9\u30AF\u30A8\u30EA\u306B\u5BFE\u5FDC\ntemplate <class T> struct\
-    \ HeavyLightDecomposition {\n    int n;\n    std::vector<int> subsize;   // subsize[v]\
-    \ = v \u3092\u6839\u3068\u3059\u308B\u90E8\u5206\u6728\u306E\u30B5\u30A4\u30BA\
-    \n    std::vector<int> vertices;  // Heavy-Edge \u304B\u3089\u512A\u5148\u7684\
-    \u306B DFS \u3057\u305F\u3068\u304D\u306E\u9802\u70B9\u3092\u8A2A\u554F\u9806\u306B\
-    \u4E26\u3079\u305F\u3082\u306E\n    std::vector<int> indexes;   // \u5404\u9802\
-    \u70B9\u304C vertives \u3067\u4F55\u756A\u76EE\u306B\u767B\u5834\u3059\u308B\u304B\
-    \n    std::vector<int> pathtop;   // \u5404\u9802\u70B9\u3092\u542B\u3080\u30D1\
-    \u30B9\u4E0A\u306E\u6700\u3082\u7956\u5148\u306E\u9802\u70B9\n    std::vector<int>\
-    \ parent;    // \u89AA\u306E\u9802\u70B9\n\n    HeavyLightDecomposition(Graph<T>&\
-    \ g, const int root = 0) : n((int)(g.size())), subsize(n, 1), indexes(n, -1),\
-    \ pathtop(n, -1), parent(n, -1) {\n        auto dfs = [&](auto f, int cur, int\
-    \ par) -> void {\n            // \u89AA\u65B9\u5411\u3078\u306E\u8FBA\u3092\u672B\
-    \u5C3E\u306B\u79FB\u52D5\n            for (int i = 0; i < (int)(g[cur].size());\
-    \ i++) {\n                if (g[cur][i].to == par) {\n                    if (i\
-    \ + 1 == (int)(g[cur].size())) continue;\n                    std::swap(g[cur][i],\
-    \ g[cur][i + 1]);\n                    i--;\n                }\n            }\n\
-    \            // \u90E8\u5206\u6728\u306E\u30B5\u30A4\u30BA\u304C\u6700\u5927\u306E\
-    \u3082\u306E\u3092\u5148\u982D\u306B\u79FB\u52D5\n            for (auto&& e :\
-    \ g[cur]) {\n                if (e.to == par) continue;\n                f(f,\
-    \ e.to, cur);\n                subsize[cur] += subsize[e.to];\n              \
-    \  if (subsize[e.to] > subsize[g[cur][0].to]) {\n                    std::swap(e,\
-    \ g[cur][0]);\n                }\n            }\n        };\n        dfs(dfs,\
-    \ root, -1);\n        // \u9802\u70B9\u3092\u4E26\u3079\u308B\n        auto hld\
-    \ = [&](auto f, int cur, int par, int top) -> void {\n            indexes[cur]\
-    \ = (int)(vertices.size());\n            pathtop[cur] = top;\n            vertices.push_back(cur);\n\
+    // \u30D1\u30B9\u30AF\u30A8\u30EA\u306B\u5BFE\u5FDC\n// \u8FBA\u306E\u4E26\u3079\
+    \u66FF\u3048\u3092\u5185\u90E8\u3067\u884C\u3046\u306E\u3067\u6CE8\u610F\ntemplate\
+    \ <class T> struct HeavyLightDecomposition {\n    int n;\n    std::vector<int>\
+    \ subsize;   // subsize[v] = v \u3092\u6839\u3068\u3059\u308B\u90E8\u5206\u6728\
+    \u306E\u30B5\u30A4\u30BA\n    std::vector<int> vertices;  // Heavy-Edge \u304B\
+    \u3089\u512A\u5148\u7684\u306B DFS \u3057\u305F\u3068\u304D\u306E\u9802\u70B9\u3092\
+    \u8A2A\u554F\u9806\u306B\u4E26\u3079\u305F\u3082\u306E\n    std::vector<int> parent;\
+    \    // \u89AA\u306E\u9802\u70B9\n    std::vector<int> pathtop;   // \u5404\u9802\
+    \u70B9\u3092\u542B\u3080\u30D1\u30B9\u4E0A\u306E\u6700\u3082\u7956\u5148\u306E\
+    \u9802\u70B9\n    std::vector<int> indexes;   // \u5404\u9802\u70B9\u304C vertives\
+    \ \u3067\u4F55\u756A\u76EE\u306B\u767B\u5834\u3059\u308B\u304B\n\n    HeavyLightDecomposition(Graph<T>&\
+    \ g, const int root = 0) : n((int)(g.size())), subsize(n, 1), parent(n, -1), pathtop(n,\
+    \ -1), indexes(n, -1) {\n        // \u90E8\u5206\u6728\u306E\u30B5\u30A4\u30BA\
+    \u3092\u8A08\u7B97\n        auto dfs_size = [&](auto f, int cur, int par) -> void\
+    \ {\n            // \u89AA\u65B9\u5411\u3078\u306E\u8FBA\u3092\u672B\u5C3E\u306B\
+    \u79FB\u52D5\n            for (int i = 0; i < (int)(g[cur].size()); i++) {\n \
+    \               if (g[cur][i].to == par) {\n                    std::swap(g[cur][i],\
+    \ g[cur][(int)(g[cur].size()) - 1]);\n                    break;\n           \
+    \     }\n            }\n            // \u90E8\u5206\u6728\u306E\u30B5\u30A4\u30BA\
+    \u304C\u6700\u5927\u306E\u3082\u306E\u3092\u5148\u982D\u306B\u79FB\u52D5\n   \
+    \         for (auto&& e : g[cur]) {\n                if (e.to == par) continue;\n\
+    \                f(f, e.to, cur);\n                subsize[cur] += subsize[e.to];\n\
+    \                if (subsize[e.to] > subsize[g[cur][0].to]) {\n              \
+    \      std::swap(e, g[cur][0]);\n                }\n            }\n        };\n\
+    \        dfs_size(dfs_size, root, -1);\n\n        // \u9802\u70B9\u3092\u4E26\u3079\
+    \u308B\n        auto dfs_hld = [&](auto f, int cur, int par, int top) -> void\
+    \ {\n            parent[cur] = par;\n            pathtop[cur] = top;\n       \
+    \     indexes[cur] = (int)(vertices.size());\n            vertices.emplace_back(cur);\n\
     \n            for (int i = 0; i < (int)(g[cur].size()); i++) {\n             \
-    \   if (g[cur][i].to == par) {\n                    assert(i + 1 == (int)(g[cur].size()));\n\
-    \                    continue;\n                }\n                parent[g[cur][i].to]\
-    \ = cur;\n                f(f, g[cur][i].to, cur, (i == 0 ? top : g[cur][i].to));\n\
-    \            }\n        };\n        hld(hld, root, -1, root);\n    }\n\n    int\
-    \ lca(int u, int v) {\n        // \u540C\u3058\u30D1\u30B9\u307E\u3067\u4E0A\u304C\
-    \u308B\n        while (pathtop[u] != pathtop[v]) {\n            if (indexes[u]\
+    \   if (g[cur][i].to == par) continue;\n                // top \u306F heavy-edge\
+    \ \u306B\u5BFE\u3057\u3066\u306E\u307F\u5F15\u304D\u7D99\u304C\u308C\u308B\n \
+    \               f(f, g[cur][i].to, cur, (i == 0 ? top : g[cur][i].to));\n    \
+    \        }\n        };\n        dfs_hld(dfs_hld, root, -1, root);\n    }\n\n \
+    \   int lca(int u, int v) {\n        // \u540C\u3058\u30D1\u30B9\u307E\u3067\u4E0A\
+    \u304C\u308B\n        while (pathtop[u] != pathtop[v]) {\n            if (indexes[u]\
     \ > indexes[v]) {\n                u = parent[pathtop[u]];\n            } else\
     \ {\n                v = parent[pathtop[v]];\n            }\n        }\n     \
     \   if (indexes[u] > indexes[v]) std::swap(u, v);\n        return u;\n    }\n\n\
@@ -159,7 +163,7 @@ data:
   isVerificationFile: false
   path: graph/heavy_light_decomposition.hpp
   requiredBy: []
-  timestamp: '2024-08-06 14:48:44+09:00'
+  timestamp: '2024-08-06 17:45:53+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/heavy_light_decomposition.test.cpp
@@ -173,10 +177,13 @@ HL分解とも呼ばれる
 ## 使い方
 
 ```cpp
+Graph<int> g;
 int root;
 HeavyLightDecomposition hld(g, root);
 auto intervals = hld.query(u, v);   // u - v パスに対応する区間を列挙 (長さ 0 の場合もあり)
 ```
 
 ## 参考文献
+- [【図解】木のパスに関するクエリは HL 分解！ その仕組みと実装を図で理解する｜Heavy-Light Decomposition](https://qiita.com/Pro_ktmr/items/4e1e051ea0561772afa3)
+- [My algorithm, HL Decomposition](https://kopricky.github.io/code/DataStructure_OnGraph/hl_decomposition.html)
 - [math314のブログ, Heavy-Light Decomposition](https://math314.hateblo.jp/entry/2014/06/24/220107)

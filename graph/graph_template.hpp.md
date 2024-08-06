@@ -31,7 +31,7 @@ data:
     path: graph/minimum_steiner_tree.hpp
     title: "Minimum Steiner Tree (\u6700\u5C0F\u30B7\u30E5\u30BF\u30A4\u30CA\u30FC\
       \u6728)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/read_graph.hpp
     title: "\u30B0\u30E9\u30D5\u5165\u529B\u30E9\u30A4\u30D6\u30E9\u30EA"
   - icon: ':warning:'
@@ -40,7 +40,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/strongly_connected_component.hpp
     title: "Strongly Connected Component (\u5F37\u9023\u7D50\u6210\u5206)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/topological_sort.hpp
     title: "Topological Sort (\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8\
       )"
@@ -104,7 +104,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/topological_sort_1.test.cpp
     title: verify/graph/topological_sort_1.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/topological_sort_2.test.cpp
     title: verify/graph/topological_sort_2.test.cpp
   - icon: ':heavy_check_mark:'
@@ -122,9 +122,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/zero_one_bfs.test.cpp
     title: verify/graph/zero_one_bfs.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/graph_template.hpp\"\n\n#include <vector>\n#include\
@@ -235,7 +235,7 @@ data:
   - graph/shortest_path_tree.hpp
   - graph/dijkstra.hpp
   timestamp: '2024-07-31 21:19:59+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/kruskal.test.cpp
   - verify/graph/traveling_salesman_problem.test.cpp
