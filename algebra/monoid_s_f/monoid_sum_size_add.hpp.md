@@ -12,6 +12,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp
     title: verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/heavy_light_decomposition.test.cpp
+    title: verify/graph/heavy_light_decomposition.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -42,6 +45,7 @@ data:
   timestamp: '2024-03-24 17:04:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/graph/heavy_light_decomposition.test.cpp
   - verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp
 documentation_of: algebra/monoid_s_f/monoid_sum_size_add.hpp
 layout: document

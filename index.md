@@ -273,6 +273,9 @@ data:
       path: graph/graph_template.hpp
       title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':heavy_check_mark:'
+      path: graph/heavy_light_decomposition.hpp
+      title: "Heavy-Light Decomposition (\u91CD\u8EFD\u5206\u89E3)"
+    - icon: ':heavy_check_mark:'
       path: graph/kruskal.hpp
       title: "Kruskal's algorithm (\u30AF\u30E9\u30B9\u30AB\u30EB\u6CD5)"
     - icon: ':heavy_check_mark:'
@@ -631,6 +634,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/euler_tour.test.cpp
       title: verify/graph/euler_tour.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/heavy_light_decomposition.test.cpp
+      title: verify/graph/heavy_light_decomposition.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/graph/kruskal.test.cpp
       title: verify/graph/kruskal.test.cpp

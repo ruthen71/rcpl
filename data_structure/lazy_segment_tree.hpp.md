@@ -16,6 +16,9 @@ data:
     path: verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
     title: verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/graph/heavy_light_decomposition.test.cpp
+    title: verify/graph/heavy_light_decomposition.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
     title: verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
   _isVerificationFailed: false
@@ -170,6 +173,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
+  - verify/graph/heavy_light_decomposition.test.cpp
   - verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
   - verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp
   - verify/aoj_dsl/aoj_dsl_2_h_lazy_segment_tree.test.cpp

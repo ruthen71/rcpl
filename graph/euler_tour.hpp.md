@@ -57,7 +57,39 @@ data:
     \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
     \ 1 != (int)(g.size())) os << \", \";\n        }\n        return os << \"]\";\n\
     \    }\n};\n#line 4 \"graph/euler_tour.hpp\"\n\n#include <tuple>\n\n// Euler Tour\n\
-    // complexity: O(N + M)\n// \u8FBA\u3068\u9802\u70B9\u306E\u3046\u3061, \u5909\
+    // O(n + m)\n// \u8FBA\u3068\u9802\u70B9\u306E\u3046\u3061, \u5909\u5316\u3055\
+    \u305B\u308B\u3082\u306E\u3092\u8981\u7D20\u3068\u898B\u3066, \u305D\u3046\u3067\
+    \u306A\u3044\u3082\u306E\u3067\u8981\u7D20\u3092\u533A\u5207\u308B\u3068\u8003\
+    \u3048\u308B\u3068\u826F\u3044\ntemplate <class T> struct EulerTour {\n    int\
+    \ n;\n    std::vector<int> vertices;  // DFS \u3067\u8A2A\u554F\u3059\u308B\u9802\
+    \u70B9\u306E\u756A\u53F7\u3092\u4E26\u3079\u305F\u3082\u306E, 2 * n - 1 \u8981\
+    \u7D20\n    std::vector<int> edges;     // DFS \u3067\u901A\u308B\u8FBA\u306E\u756A\
+    \u53F7\u3092\u4E26\u3079\u305F\u3082\u306E, 2 * n - 2 \u8981\u7D20\n    std::vector<int>\
+    \ dir;       // DFS \u3067\u901A\u308B\u8FBA\u306E\u5411\u304D\u304C 0 = \u5B50\
+    \u4F9B\u65B9\u5411, 1 = \u89AA\u65B9\u5411\n    std::vector<int> vsl;       //\
+    \ vsl[v]: vertices[i] = v \u3068\u306A\u308B i \u306E\u6700\u5C0F\u5024\n    std::vector<int>\
+    \ vsr;       // vsr[v]: vertices[i] = v \u3068\u306A\u308B i \u306E\u6700\u5927\
+    \u5024\n    std::vector<int> esl;       // esl[e]: edges[i] = e \u304B\u3064 dir[i]\
+    \ = 0 \u3068\u306A\u308B i\n    std::vector<int> esr;       // esr[e]: edges[i]\
+    \ = e \u304B\u3064 dir[i] = 1 \u3068\u306A\u308B i\n\n    EulerTour(Graph<T>&\
+    \ g, const int root = 0) : n((int)(g.size())), vsl(n, 2 * n - 1), vsr(n, -1),\
+    \ esl(n - 1, -1), esr(n - 1, -1) {\n        vertices.reserve(2 * n - 1);\n   \
+    \     edges.reserve(2 * n - 2);\n        dir.reserve(2 * n - 2);\n\n        auto\
+    \ dfs = [&](auto f, int cur, int par) -> void {\n            for (auto&& e : g[cur])\
+    \ {\n                if (e.to == par) continue;\n                // \u9802\u70B9\
+    \u3092\u8FFD\u52A0\n                vertices.emplace_back(cur);\n            \
+    \    // \u5B50\u4F9B\u65B9\u5411\u306E\u8FBA\u3092\u8FFD\u52A0\n             \
+    \   edges.emplace_back(e.id);\n                dir.emplace_back(0);\n        \
+    \        // DFS\n                f(f, e.to, cur);\n                // \u89AA\u65B9\
+    \u5411\u306E\u8FBA\u3092\u8FFD\u52A0\n                edges.emplace_back(e.id);\n\
+    \                dir.emplace_back(1);\n            }\n            // \u9802\u70B9\
+    \u3092\u8FFD\u52A0\n            vertices.emplace_back(cur);\n        };\n    \
+    \    dfs(dfs, root, -1);\n        for (int i = 2 * n - 2; i >= 0; i--) vsl[vertices[i]]\
+    \ = i;\n        for (int i = 0; i < 2 * n - 1; i++) vsr[vertices[i]] = i;\n  \
+    \      for (int i = 0; i < 2 * n - 2; i++) (dir[i] == 0 ? esl[edges[i]] : esr[edges[i]])\
+    \ = i;\n    }\n};\n"
+  code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\n#include <tuple>\n\
+    \n// Euler Tour\n// O(n + m)\n// \u8FBA\u3068\u9802\u70B9\u306E\u3046\u3061, \u5909\
     \u5316\u3055\u305B\u308B\u3082\u306E\u3092\u8981\u7D20\u3068\u898B\u3066, \u305D\
     \u3046\u3067\u306A\u3044\u3082\u306E\u3067\u8981\u7D20\u3092\u533A\u5207\u308B\
     \u3068\u8003\u3048\u308B\u3068\u826F\u3044\ntemplate <class T> struct EulerTour\
@@ -87,45 +119,13 @@ data:
     \    dfs(dfs, root, -1);\n        for (int i = 2 * n - 2; i >= 0; i--) vsl[vertices[i]]\
     \ = i;\n        for (int i = 0; i < 2 * n - 1; i++) vsr[vertices[i]] = i;\n  \
     \      for (int i = 0; i < 2 * n - 2; i++) (dir[i] == 0 ? esl[edges[i]] : esr[edges[i]])\
-    \ = i;\n    }\n};\n"
-  code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\n#include <tuple>\n\
-    \n// Euler Tour\n// complexity: O(N + M)\n// \u8FBA\u3068\u9802\u70B9\u306E\u3046\
-    \u3061, \u5909\u5316\u3055\u305B\u308B\u3082\u306E\u3092\u8981\u7D20\u3068\u898B\
-    \u3066, \u305D\u3046\u3067\u306A\u3044\u3082\u306E\u3067\u8981\u7D20\u3092\u533A\
-    \u5207\u308B\u3068\u8003\u3048\u308B\u3068\u826F\u3044\ntemplate <class T> struct\
-    \ EulerTour {\n    int n;\n    std::vector<int> vertices;  // DFS \u3067\u8A2A\
-    \u554F\u3059\u308B\u9802\u70B9\u306E\u756A\u53F7\u3092\u4E26\u3079\u305F\u3082\
-    \u306E, 2 * n - 1 \u8981\u7D20\n    std::vector<int> edges;     // DFS \u3067\u901A\
-    \u308B\u8FBA\u306E\u756A\u53F7\u3092\u4E26\u3079\u305F\u3082\u306E, 2 * n - 2\
-    \ \u8981\u7D20\n    std::vector<int> dir;       // DFS \u3067\u901A\u308B\u8FBA\
-    \u306E\u5411\u304D\u304C 0 = \u5B50\u4F9B\u65B9\u5411, 1 = \u89AA\u65B9\u5411\n\
-    \    std::vector<int> vsl;       // vsl[v]: vertices[i] = v \u3068\u306A\u308B\
-    \ i \u306E\u6700\u5C0F\u5024\n    std::vector<int> vsr;       // vsr[v]: vertices[i]\
-    \ = v \u3068\u306A\u308B i \u306E\u6700\u5927\u5024\n    std::vector<int> esl;\
-    \       // esl[e]: edges[i] = e \u304B\u3064 dir[i] = 0 \u3068\u306A\u308B i\n\
-    \    std::vector<int> esr;       // esr[e]: edges[i] = e \u304B\u3064 dir[i] =\
-    \ 1 \u3068\u306A\u308B i\n\n    EulerTour(Graph<T>& g, const int root = 0) : n((int)(g.size())),\
-    \ vsl(n, 2 * n - 1), vsr(n, -1), esl(n - 1, -1), esr(n - 1, -1) {\n        vertices.reserve(2\
-    \ * n - 1);\n        edges.reserve(2 * n - 2);\n        dir.reserve(2 * n - 2);\n\
-    \n        auto dfs = [&](auto f, int cur, int par) -> void {\n            for\
-    \ (auto&& e : g[cur]) {\n                if (e.to == par) continue;\n        \
-    \        // \u9802\u70B9\u3092\u8FFD\u52A0\n                vertices.emplace_back(cur);\n\
-    \                // \u5B50\u4F9B\u65B9\u5411\u306E\u8FBA\u3092\u8FFD\u52A0\n \
-    \               edges.emplace_back(e.id);\n                dir.emplace_back(0);\n\
-    \                // DFS\n                f(f, e.to, cur);\n                //\
-    \ \u89AA\u65B9\u5411\u306E\u8FBA\u3092\u8FFD\u52A0\n                edges.emplace_back(e.id);\n\
-    \                dir.emplace_back(1);\n            }\n            // \u9802\u70B9\
-    \u3092\u8FFD\u52A0\n            vertices.emplace_back(cur);\n        };\n    \
-    \    dfs(dfs, root, -1);\n        for (int i = 2 * n - 2; i >= 0; i--) vsl[vertices[i]]\
-    \ = i;\n        for (int i = 0; i < 2 * n - 1; i++) vsr[vertices[i]] = i;\n  \
-    \      for (int i = 0; i < 2 * n - 2; i++) (dir[i] == 0 ? esl[edges[i]] : esr[edges[i]])\
     \ = i;\n    }\n};"
   dependsOn:
   - graph/graph_template.hpp
   isVerificationFile: false
   path: graph/euler_tour.hpp
   requiredBy: []
-  timestamp: '2024-08-01 05:24:03+09:00'
+  timestamp: '2024-08-06 14:48:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/euler_tour.test.cpp

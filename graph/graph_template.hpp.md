@@ -16,6 +16,9 @@ data:
     path: graph/euler_tour.hpp
     title: "Euler Tour (\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
   - icon: ':heavy_check_mark:'
+    path: graph/heavy_light_decomposition.hpp
+    title: "Heavy-Light Decomposition (\u91CD\u8EFD\u5206\u89E3)"
+  - icon: ':heavy_check_mark:'
     path: graph/kruskal.hpp
     title: "Kruskal's algorithm (\u30AF\u30E9\u30B9\u30AB\u30EB\u6CD5)"
   - icon: ':heavy_check_mark:'
@@ -71,6 +74,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/euler_tour.test.cpp
     title: verify/graph/euler_tour.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/heavy_light_decomposition.test.cpp
+    title: verify/graph/heavy_light_decomposition.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/graph/kruskal.test.cpp
     title: verify/graph/kruskal.test.cpp
@@ -213,6 +219,7 @@ data:
   requiredBy:
   - graph/bellman_ford.hpp
   - graph/euler_tour.hpp
+  - graph/heavy_light_decomposition.hpp
   - graph/tree_diameter.hpp
   - graph/minimum_steiner_tree.hpp
   - graph/topological_sort.hpp
@@ -244,6 +251,7 @@ data:
   - verify/graph/lowest_common_ancestor_1.test.cpp
   - verify/graph/minimum_steiner_tree.test.cpp
   - verify/graph/topological_sort_1.test.cpp
+  - verify/graph/heavy_light_decomposition.test.cpp
   - verify/graph/low_link_2.test.cpp
   - verify/graph/tree_diameter_2.test.cpp
   - verify/graph/bellman_ford.test.cpp
