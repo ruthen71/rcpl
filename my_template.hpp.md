@@ -7,6 +7,9 @@ data:
     title: my_template_int128.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/graph/heavy_light_decomposition_2.test.cpp
+    title: verify/graph/heavy_light_decomposition_2.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/graph/heavy_light_decomposition_3.test.cpp
     title: verify/graph/heavy_light_decomposition_3.test.cpp
   _isVerificationFailed: false
@@ -299,6 +302,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/heavy_light_decomposition_3.test.cpp
+  - verify/graph/heavy_light_decomposition_2.test.cpp
 documentation_of: my_template.hpp
 layout: document
 redirect_from:

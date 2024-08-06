@@ -127,7 +127,13 @@ data:
     \   if (subbegin[u] > subbegin[v]) std::swap(u, v);\n        if (is_edges) {\n\
     \            res.emplace_back(subbegin[u], subbegin[v]);\n        } else {\n \
     \           res.emplace_back(subbegin[u], subbegin[v] + 1);\n        }\n     \
-    \   return res;\n    }\n};\n"
+    \   return res;\n    }\n\n    // u \u3092\u6839\u3068\u3059\u308B\u90E8\u5206\u6728\
+    \u306B\u5BFE\u5FDC\u3059\u308B\u533A\u9593\n    // is_edges = true \u306A\u3089\
+    \ edges \u306B\u5BFE\u5FDC\u3059\u308B\u533A\u9593, false \u306A\u3089 vertices\
+    \ \u306B\u5BFE\u5FDC\u3059\u308B\u533A\u9593\n    std::pair<int, int> subtree_query(int\
+    \ u, const bool is_edges) {\n        if (is_edges) {\n            return {subbegin[u],\
+    \ subend[u] - 1};\n        } else {\n            return {subbegin[u], subend[u]};\n\
+    \        }\n    }\n};\n"
   code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\n// Heavy-Light Decomposition\
     \ (\u30D1\u30B9\u30AF\u30A8\u30EA)\ntemplate <class T> struct HeavyLightDecomposition\
     \ {\n    int n;\n    // dfs_size\n    std::vector<int> subsize;  // subsize[v]\
@@ -193,13 +199,19 @@ data:
     \   if (subbegin[u] > subbegin[v]) std::swap(u, v);\n        if (is_edges) {\n\
     \            res.emplace_back(subbegin[u], subbegin[v]);\n        } else {\n \
     \           res.emplace_back(subbegin[u], subbegin[v] + 1);\n        }\n     \
-    \   return res;\n    }\n};\n"
+    \   return res;\n    }\n\n    // u \u3092\u6839\u3068\u3059\u308B\u90E8\u5206\u6728\
+    \u306B\u5BFE\u5FDC\u3059\u308B\u533A\u9593\n    // is_edges = true \u306A\u3089\
+    \ edges \u306B\u5BFE\u5FDC\u3059\u308B\u533A\u9593, false \u306A\u3089 vertices\
+    \ \u306B\u5BFE\u5FDC\u3059\u308B\u533A\u9593\n    std::pair<int, int> subtree_query(int\
+    \ u, const bool is_edges) {\n        if (is_edges) {\n            return {subbegin[u],\
+    \ subend[u] - 1};\n        } else {\n            return {subbegin[u], subend[u]};\n\
+    \        }\n    }\n};"
   dependsOn:
   - graph/graph_template.hpp
   isVerificationFile: false
   path: graph/heavy_light_decomposition.hpp
   requiredBy: []
-  timestamp: '2024-08-06 23:44:28+09:00'
+  timestamp: '2024-08-07 00:14:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/heavy_light_decomposition_3.test.cpp

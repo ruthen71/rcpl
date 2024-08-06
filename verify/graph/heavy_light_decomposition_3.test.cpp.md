@@ -26,11 +26,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/vertex_add_path_sum
+    PROBLEM: https://judge.yosupo.jp/problem/vertex_add_subtree_sum
     links:
-    - https://judge.yosupo.jp/problem/vertex_add_path_sum
+    - https://judge.yosupo.jp/problem/vertex_add_subtree_sum
   bundledCode: "#line 1 \"verify/graph/heavy_light_decomposition_3.test.cpp\"\n#define\
-    \ PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_path_sum\"\n\n#include\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_subtree_sum\"\n\n#include\
     \ <iostream>\n\n#line 2 \"my_template.hpp\"\n#include <algorithm>\n#include <array>\n\
     #include <bitset>\n#include <cassert>\n#include <chrono>\n#include <cmath>\n#include\
     \ <complex>\n#include <deque>\n#include <forward_list>\n#include <fstream>\n#include\
@@ -286,9 +286,15 @@ data:
     \   if (subbegin[u] > subbegin[v]) std::swap(u, v);\n        if (is_edges) {\n\
     \            res.emplace_back(subbegin[u], subbegin[v]);\n        } else {\n \
     \           res.emplace_back(subbegin[u], subbegin[v] + 1);\n        }\n     \
-    \   return res;\n    }\n};\n#line 4 \"data_structure/segment_tree.hpp\"\ntemplate\
-    \ <class MS> struct SegmentTree {\n   public:\n    using S = typename MS::S;\n\
-    \    SegmentTree() : SegmentTree(0) {}\n    SegmentTree(int n) : SegmentTree(std::vector<S>(n,\
+    \   return res;\n    }\n\n    // u \u3092\u6839\u3068\u3059\u308B\u90E8\u5206\u6728\
+    \u306B\u5BFE\u5FDC\u3059\u308B\u533A\u9593\n    // is_edges = true \u306A\u3089\
+    \ edges \u306B\u5BFE\u5FDC\u3059\u308B\u533A\u9593, false \u306A\u3089 vertices\
+    \ \u306B\u5BFE\u5FDC\u3059\u308B\u533A\u9593\n    std::pair<int, int> subtree_query(int\
+    \ u, const bool is_edges) {\n        if (is_edges) {\n            return {subbegin[u],\
+    \ subend[u] - 1};\n        } else {\n            return {subbegin[u], subend[u]};\n\
+    \        }\n    }\n};\n#line 4 \"data_structure/segment_tree.hpp\"\ntemplate <class\
+    \ MS> struct SegmentTree {\n   public:\n    using S = typename MS::S;\n    SegmentTree()\
+    \ : SegmentTree(0) {}\n    SegmentTree(int n) : SegmentTree(std::vector<S>(n,\
     \ MS::e())) {}\n    SegmentTree(const std::vector<S>& v) : n((int)(v.size()))\
     \ {\n        log = 0;\n        while ((1U << log) < (unsigned int)(n)) log++;\n\
     \        size = 1 << log;\n        d = std::vector<S>(size << 1, MS::e());\n \
@@ -333,37 +339,31 @@ data:
     \ S op(S a, S b) { return a + b; }\n    static constexpr S e() { return T(0);\
     \ }\n};\n#line 10 \"verify/graph/heavy_light_decomposition_3.test.cpp\"\n\nint\
     \ main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    std::vector<long long>\
-    \ a(N);\n    for (int i = 0; i < N; i++) std::cin >> a[i];\n    auto g = read_graph<long\
-    \ long>(N, N - 1, false, false, 0);\n\n    const int root = N / 2;  // verify\
-    \ \u306E\u305F\u3081\u306B\u9069\u5F53\u306B\u6C7A\u3081\u308B\n    HeavyLightDecomposition\
+    \ a(N);\n    for (int i = 0; i < N; i++) std::cin >> a[i];\n    auto g = read_parent<long\
+    \ long>(N, false, false, 0);\n\n    const int root = 0;\n    HeavyLightDecomposition\
     \ hld(g, root);\n    std::vector<long long> segi(N);\n    for (int i = 0; i <\
     \ N; i++) segi[i] = a[hld.vertices[i]];\n    SegmentTree<MonoidSum<long long>>\
     \ seg(segi);\n\n    for (int i = 0; i < Q; i++) {\n        int type;\n       \
-    \ std::cin >> type;\n        if (type == 0) {\n            int p, x;\n       \
-    \     std::cin >> p >> x;\n            seg.chset(hld.subbegin[p], x);\n      \
-    \  } else {\n            int u, v;\n            std::cin >> u >> v;\n        \
-    \    auto intervals = hld.path_query(u, v, false);\n            auto res = MonoidSum<long\
-    \ long>::e();\n            for (auto&& [l, r] : intervals) {\n               \
-    \ res = MonoidSum<long long>::op(res, seg.prod(l, r));\n            }\n      \
-    \      std::cout << res << '\\n';\n        }\n    }\n    return 0;\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_path_sum\"\n\
-    \n#include <iostream>\n\n#include \"my_template.hpp\"\n#include \"graph/read_graph.hpp\"\
+    \ std::cin >> type;\n        if (type == 0) {\n            int u, x;\n       \
+    \     std::cin >> u >> x;\n            seg.chset(hld.subbegin[u], x);\n      \
+    \  } else {\n            int u;\n            std::cin >> u;\n            auto\
+    \ [l, r] = hld.subtree_query(u, false);\n            std::cout << seg.prod(l,\
+    \ r) << '\\n';\n        }\n    }\n    return 0;\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_subtree_sum\"\
+    \n\n#include <iostream>\n\n#include \"my_template.hpp\"\n#include \"graph/read_graph.hpp\"\
     \n#include \"graph/heavy_light_decomposition.hpp\"\n#include \"data_structure/segment_tree.hpp\"\
     \n#include \"algebra/monoid_s/monoid_sum.hpp\"\n\nint main() {\n    int N, Q;\n\
     \    std::cin >> N >> Q;\n    std::vector<long long> a(N);\n    for (int i = 0;\
-    \ i < N; i++) std::cin >> a[i];\n    auto g = read_graph<long long>(N, N - 1,\
-    \ false, false, 0);\n\n    const int root = N / 2;  // verify \u306E\u305F\u3081\
-    \u306B\u9069\u5F53\u306B\u6C7A\u3081\u308B\n    HeavyLightDecomposition hld(g,\
-    \ root);\n    std::vector<long long> segi(N);\n    for (int i = 0; i < N; i++)\
-    \ segi[i] = a[hld.vertices[i]];\n    SegmentTree<MonoidSum<long long>> seg(segi);\n\
-    \n    for (int i = 0; i < Q; i++) {\n        int type;\n        std::cin >> type;\n\
-    \        if (type == 0) {\n            int p, x;\n            std::cin >> p >>\
-    \ x;\n            seg.chset(hld.subbegin[p], x);\n        } else {\n         \
-    \   int u, v;\n            std::cin >> u >> v;\n            auto intervals = hld.path_query(u,\
-    \ v, false);\n            auto res = MonoidSum<long long>::e();\n            for\
-    \ (auto&& [l, r] : intervals) {\n                res = MonoidSum<long long>::op(res,\
-    \ seg.prod(l, r));\n            }\n            std::cout << res << '\\n';\n  \
-    \      }\n    }\n    return 0;\n}"
+    \ i < N; i++) std::cin >> a[i];\n    auto g = read_parent<long long>(N, false,\
+    \ false, 0);\n\n    const int root = 0;\n    HeavyLightDecomposition hld(g, root);\n\
+    \    std::vector<long long> segi(N);\n    for (int i = 0; i < N; i++) segi[i]\
+    \ = a[hld.vertices[i]];\n    SegmentTree<MonoidSum<long long>> seg(segi);\n\n\
+    \    for (int i = 0; i < Q; i++) {\n        int type;\n        std::cin >> type;\n\
+    \        if (type == 0) {\n            int u, x;\n            std::cin >> u >>\
+    \ x;\n            seg.chset(hld.subbegin[u], x);\n        } else {\n         \
+    \   int u;\n            std::cin >> u;\n            auto [l, r] = hld.subtree_query(u,\
+    \ false);\n            std::cout << seg.prod(l, r) << '\\n';\n        }\n    }\n\
+    \    return 0;\n}"
   dependsOn:
   - my_template.hpp
   - graph/read_graph.hpp
@@ -374,7 +374,7 @@ data:
   isVerificationFile: true
   path: verify/graph/heavy_light_decomposition_3.test.cpp
   requiredBy: []
-  timestamp: '2024-08-06 23:44:28+09:00'
+  timestamp: '2024-08-07 00:14:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/heavy_light_decomposition_3.test.cpp
