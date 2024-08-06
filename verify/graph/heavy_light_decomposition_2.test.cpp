@@ -2,7 +2,6 @@
 
 #include <iostream>
 
-#include "my_template.hpp"
 #include "graph/read_graph.hpp"
 #include "graph/heavy_light_decomposition.hpp"
 #include "data_structure/segment_tree.hpp"

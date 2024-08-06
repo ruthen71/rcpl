@@ -11,7 +11,7 @@ HL分解とも呼ばれる
 Graph<int> g;
 int root;
 HeavyLightDecomposition hld(g, root);
-auto intervals = hld.path_query(u, v);   // u - v パスに対応する区間を列挙 (区間の長さが 0 の場合もあり)
+auto intervals = hld.path_query(u, v, true);   // u - v パスに対応する区間を列挙 (区間の長さが 0 の場合もあり)
 ```
 
 ## 参考文献
