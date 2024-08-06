@@ -5,7 +5,7 @@
 #include <tuple>
 
 // Euler Tour
-// complexity: O(N + M)
+// O(n + m)
 // 辺と頂点のうち, 変化させるものを要素と見て, そうでないもので要素を区切ると考えると良い
 template <class T> struct EulerTour {
     int n;
