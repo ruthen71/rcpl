@@ -4,22 +4,23 @@
 
 // Heavy-Light Decomposition
 // パスクエリに対応
+// 辺の並べ替えを内部で行うので注意
 template <class T> struct HeavyLightDecomposition {
     int n;
     std::vector<int> subsize;   // subsize[v] = v を根とする部分木のサイズ
     std::vector<int> vertices;  // Heavy-Edge から優先的に DFS したときの頂点を訪問順に並べたもの
-    std::vector<int> indexes;   // 各頂点が vertives で何番目に登場するか
-    std::vector<int> pathtop;   // 各頂点を含むパス上の最も祖先の頂点
     std::vector<int> parent;    // 親の頂点
+    std::vector<int> pathtop;   // 各頂点を含むパス上の最も祖先の頂点
+    std::vector<int> indexes;   // 各頂点が vertives で何番目に登場するか
 
-    HeavyLightDecomposition(Graph<T>& g, const int root = 0) : n((int)(g.size())), subsize(n, 1), indexes(n, -1), pathtop(n, -1), parent(n, -1) {
-        auto dfs = [&](auto f, int cur, int par) -> void {
+    HeavyLightDecomposition(Graph<T>& g, const int root = 0) : n((int)(g.size())), subsize(n, 1), parent(n, -1), pathtop(n, -1), indexes(n, -1) {
+        // 部分木のサイズを計算
+        auto dfs_size = [&](auto f, int cur, int par) -> void {
             // 親方向への辺を末尾に移動
             for (int i = 0; i < (int)(g[cur].size()); i++) {
                 if (g[cur][i].to == par) {
-                    if (i + 1 == (int)(g[cur].size())) continue;
-                    std::swap(g[cur][i], g[cur][i + 1]);
-                    i--;
+                    std::swap(g[cur][i], g[cur][(int)(g[cur].size()) - 1]);
+                    break;
                 }
             }
             // 部分木のサイズが最大のものを先頭に移動
@@ -32,23 +33,22 @@ template <class T> struct HeavyLightDecomposition {
                 }
             }
         };
-        dfs(dfs, root, -1);
+        dfs_size(dfs_size, root, -1);
+
         // 頂点を並べる
-        auto hld = [&](auto f, int cur, int par, int top) -> void {
-            indexes[cur] = (int)(vertices.size());
+        auto dfs_hld = [&](auto f, int cur, int par, int top) -> void {
+            parent[cur] = par;
             pathtop[cur] = top;
-            vertices.push_back(cur);
+            indexes[cur] = (int)(vertices.size());
+            vertices.emplace_back(cur);
 
             for (int i = 0; i < (int)(g[cur].size()); i++) {
-                if (g[cur][i].to == par) {
-                    assert(i + 1 == (int)(g[cur].size()));
-                    continue;
-                }
-                parent[g[cur][i].to] = cur;
+                if (g[cur][i].to == par) continue;
+                // top は heavy-edge に対してのみ引き継がれる
                 f(f, g[cur][i].to, cur, (i == 0 ? top : g[cur][i].to));
             }
         };
-        hld(hld, root, -1, root);
+        dfs_hld(dfs_hld, root, -1, root);
     }
 
     int lca(int u, int v) {
