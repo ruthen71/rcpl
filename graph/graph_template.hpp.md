@@ -75,8 +75,14 @@ data:
     path: verify/graph/euler_tour.test.cpp
     title: verify/graph/euler_tour.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/graph/heavy_light_decomposition.test.cpp
-    title: verify/graph/heavy_light_decomposition.test.cpp
+    path: verify/graph/heavy_light_decomposition_1.test.cpp
+    title: verify/graph/heavy_light_decomposition_1.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/heavy_light_decomposition_2.test.cpp
+    title: verify/graph/heavy_light_decomposition_2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/heavy_light_decomposition_3.test.cpp
+    title: verify/graph/heavy_light_decomposition_3.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/graph/kruskal.test.cpp
     title: verify/graph/kruskal.test.cpp
@@ -241,9 +247,11 @@ data:
   - verify/graph/traveling_salesman_problem.test.cpp
   - verify/graph/strongly_connected_component_2.test.cpp
   - verify/graph/warshall_floyd.test.cpp
+  - verify/graph/heavy_light_decomposition_3.test.cpp
   - verify/graph/dijkstra_2.test.cpp
   - verify/graph/topological_sort_2.test.cpp
   - verify/graph/strongly_connected_component_1.test.cpp
+  - verify/graph/heavy_light_decomposition_1.test.cpp
   - verify/graph/zero_one_bfs.test.cpp
   - verify/graph/lowest_common_ancestor_2.test.cpp
   - verify/graph/dijkstra_1.test.cpp
@@ -251,12 +259,12 @@ data:
   - verify/graph/lowest_common_ancestor_1.test.cpp
   - verify/graph/minimum_steiner_tree.test.cpp
   - verify/graph/topological_sort_1.test.cpp
-  - verify/graph/heavy_light_decomposition.test.cpp
   - verify/graph/low_link_2.test.cpp
   - verify/graph/tree_diameter_2.test.cpp
   - verify/graph/bellman_ford.test.cpp
   - verify/graph/auxiliary_tree.test.cpp
   - verify/graph/euler_tour.test.cpp
+  - verify/graph/heavy_light_decomposition_2.test.cpp
   - verify/graph/tree_diameter_1.test.cpp
 documentation_of: graph/graph_template.hpp
 layout: document

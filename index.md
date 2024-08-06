@@ -160,7 +160,7 @@ data:
     - icon: ':warning:'
       path: debug.hpp
       title: debug.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: my_template.hpp
       title: my_template.hpp
     - icon: ':warning:'
@@ -635,8 +635,14 @@ data:
       path: verify/graph/euler_tour.test.cpp
       title: verify/graph/euler_tour.test.cpp
     - icon: ':heavy_check_mark:'
-      path: verify/graph/heavy_light_decomposition.test.cpp
-      title: verify/graph/heavy_light_decomposition.test.cpp
+      path: verify/graph/heavy_light_decomposition_1.test.cpp
+      title: verify/graph/heavy_light_decomposition_1.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/heavy_light_decomposition_2.test.cpp
+      title: verify/graph/heavy_light_decomposition_2.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/graph/heavy_light_decomposition_3.test.cpp
+      title: verify/graph/heavy_light_decomposition_3.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/graph/kruskal.test.cpp
       title: verify/graph/kruskal.test.cpp
