@@ -1,4 +1,4 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/vertex_add_path_sum"
+#define PROBLEM "https://judge.yosupo.jp/problem/vertex_add_subtree_sum"
 
 #include <iostream>
 
@@ -13,9 +13,9 @@ int main() {
     std::cin >> N >> Q;
     std::vector<long long> a(N);
     for (int i = 0; i < N; i++) std::cin >> a[i];
-    auto g = read_graph<long long>(N, N - 1, false, false, 0);
+    auto g = read_parent<long long>(N, false, false, 0);
 
-    const int root = N / 2;  // verify のために適当に決める
+    const int root = 0;
     HeavyLightDecomposition hld(g, root);
     std::vector<long long> segi(N);
     for (int i = 0; i < N; i++) segi[i] = a[hld.vertices[i]];
@@ -25,18 +25,14 @@ int main() {
         int type;
         std::cin >> type;
         if (type == 0) {
-            int p, x;
-            std::cin >> p >> x;
-            seg.chset(hld.subbegin[p], x);
+            int u, x;
+            std::cin >> u >> x;
+            seg.chset(hld.subbegin[u], x);
         } else {
-            int u, v;
-            std::cin >> u >> v;
-            auto intervals = hld.path_query(u, v, false);
-            auto res = MonoidSum<long long>::e();
-            for (auto&& [l, r] : intervals) {
-                res = MonoidSum<long long>::op(res, seg.prod(l, r));
-            }
-            std::cout << res << '\n';
+            int u;
+            std::cin >> u;
+            auto [l, r] = hld.subtree_query(u, false);
+            std::cout << seg.prod(l, r) << '\n';
         }
     }
     return 0;

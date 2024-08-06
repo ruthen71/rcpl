@@ -99,4 +99,14 @@ template <class T> struct HeavyLightDecomposition {
         }
         return res;
     }
+
+    // u を根とする部分木に対応する区間
+    // is_edges = true なら edges に対応する区間, false なら vertices に対応する区間
+    std::pair<int, int> subtree_query(int u, const bool is_edges) {
+        if (is_edges) {
+            return {subbegin[u], subend[u] - 1};
+        } else {
+            return {subbegin[u], subend[u]};
+        }
+    }
 };
