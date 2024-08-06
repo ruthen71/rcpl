@@ -160,7 +160,7 @@ data:
     - icon: ':warning:'
       path: debug.hpp
       title: debug.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: my_template.hpp
       title: my_template.hpp
     - icon: ':warning:'

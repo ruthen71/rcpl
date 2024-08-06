@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: my_template.hpp
     title: my_template.hpp
   _extendedRequiredBy: []
