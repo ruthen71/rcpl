@@ -121,8 +121,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/lowest_common_ancestor_2.test.cpp
-  - verify/graph/lowest_common_ancestor_1.test.cpp
   - verify/graph/auxiliary_tree.test.cpp
+  - verify/graph/lowest_common_ancestor_1.test.cpp
 documentation_of: graph/lowest_common_ancestor.hpp
 layout: document
 title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"

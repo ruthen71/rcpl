@@ -122,12 +122,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/dual_segment_tree.hpp
       title: "Dual Segment Tree (\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/enumerate_segment_tree_nodes.hpp
       title: "Segment Tree \u306E 1 \u70B9\u5909\u66F4\u3084\u533A\u9593\u7DCF\u7A4D\
         \u3092\u884C\u3046\u969B\u306B\u30A2\u30AF\u30BB\u30B9\u3059\u308B\u30CE\u30FC\
         \u30C9\u756A\u53F7\u306E\u5217\u6319"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/erasable_priority_queue.hpp
       title: "Erasable Priority Queue (\u524A\u9664\u53EF\u80FD\u512A\u5148\u5EA6\u4ED8\
         \u304D\u30AD\u30E5\u30FC)"
@@ -537,6 +537,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_other/aoj_3206.test.cpp
       title: verify/aoj_other/aoj_3206.test.cpp
+  - name: verify/data_structure
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/data_structure/enumerate_segment_tree_nodes.test.cpp
+      title: verify/data_structure/enumerate_segment_tree_nodes.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/data_structure/erasable_priority_queue.test.cpp
+      title: verify/data_structure/erasable_priority_queue.test.cpp
   - name: verify/geometry
     pages:
     - icon: ':heavy_check_mark:'
