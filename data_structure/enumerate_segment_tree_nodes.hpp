@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <cassert>
+#include <algorithm>
 
 // 長さ size (2べき) の Segment Tree において区間 [l, r) をカバーする区間のノード番号を返す
 // 区間の位置が小さい順に (左から) 返す
@@ -20,6 +21,15 @@ template <class T> std::vector<T> enumerate_segment_tree_range_covering_nodes(co
     return ret;
 }
 
+// 長さ size (2べき) の Segment Tree において seg[p] が含まれる区間のノード番号を返す
+// 区間の幅が小さい順に (下から) 返す
+template <class T> std::vector<T> enumerate_segment_tree_point_containing_nodes(const T size, T p) {
+    p += size;
+    std::vector<T> ret;
+    for (int i = 0; (1LL << i) <= size; i++) ret.push_back(p >> i);
+    return ret;
+}
+
 // 長さ size (2べき) の Segment Tree においてノード番号 i に対応する区間 [l, r) を返す
 // https://atcoder.jp/contests/abc349/tasks/abc349_d
 // https://atcoder.jp/contests/abc355/tasks/abc355_e
@@ -33,13 +43,4 @@ template <class T> std::pair<T, T> segment_tree_node_to_range(const T size, cons
     const int x = n - topbiti;
     const T y = i - (1LL << topbiti);
     return {(1LL << x) * y, (1LL << x) * (y + 1)};
-}
-
-// 長さ size (2べき) の Segment Tree において seg[p] が含まれる区間のノード番号を返す
-// 区間の幅が小さい順に (下から) 返す
-template <class T> std::vector<T> enumerate_segment_tree_point_containing_nodes(const T size, T p) {
-    p += size;
-    std::vector<T> ret;
-    for (int i = 0; (1LL << i) <= size; i++) ret.push_back(p >> i);
-    return ret;
 }
