@@ -12,3 +12,5 @@ auto [i, j, d] = convex_polygon_diameter(P);
 ```
 
 ## 参考文献
+
+- [Wikipedia, Rotating calipers](https://en.wikipedia.org/wiki/Rotating_calipers)

@@ -13,5 +13,3 @@ auto ans = contain(P, p);
 ```
 
 ## 参考文献
-
-- [Wikipedia, Rotating calipers](https://en.wikipedia.org/wiki/Rotating_calipers)

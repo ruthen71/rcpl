@@ -2,7 +2,7 @@
 
 #include "graph/graph_template.hpp"
 
-// Heavy-Light Decomposition (パスクエリ)
+// Heavy-Light Decomposition
 template <class T> struct HeavyLightDecomposition {
     int n;
     // dfs_size
