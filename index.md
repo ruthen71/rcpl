@@ -360,7 +360,7 @@ data:
       title: math/baby_step_giant_step.hpp
     - icon: ':warning:'
       path: math/binomial.hpp
-      title: "Binomial (\u4E8C\u9805\u4FC2\u6570, \u524D\u8A08\u7B97\u3042\u308A)"
+      title: "Binomial (\u4E8C\u9805\u4FC2\u6570\u30E9\u30A4\u30D6\u30E9\u30EA)"
     - icon: ':heavy_check_mark:'
       path: math/chinese_remainder_theorem.hpp
       title: "Chinese Remainder Theorem (\u4E2D\u56FD\u5270\u4F59\u5B9A\u7406)"
