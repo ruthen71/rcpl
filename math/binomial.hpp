@@ -1,63 +1,87 @@
 #pragma once
 
-template <class Mint> struct Binomial {
-    std::vector<Mint> f, g;
+#include <vector>
+#include <algorithm>
 
-    Binomial(int N = 0) {
+// 二項係数ライブラリ
+template <class Mint> struct Binomial {
+    std::vector<Mint> f, g, h;
+
+    Binomial(const int n_max = 0) {
         f.resize(1, Mint(1));
         g.resize(1, Mint(1));
-        while (N >= (int)f.size()) extend();
+        h.resize(1, Mint(1));
+        if (n_max > 0) extend(n_max);
     }
 
-    void extend() {
-        int n = (int)f.size();
-        int m = n * 2;
+    // 基本は長さを倍にする
+    void extend(int m = -1) {
+        const int n = (int)(f.size());  // n >= 1
+        if (m == -1) m = n * 2;         // m >= 2
+        m = std::min(m, Mint::mod());
+        if (n >= m) return;
         f.resize(m);
         g.resize(m);
+        h.resize(m);
+        // calc f
         for (int i = n; i < m; i++) f[i] = f[i - 1] * Mint(i);
+        // calc g
         g[m - 1] = 1 / f[m - 1];
         for (int i = m - 2; i >= n; i--) g[i] = g[i + 1] * Mint(i + 1);
+        // calc h
+        h[m - 1] = g[m - 1] * f[m - 2];
+        for (int i = m - 2; i >= n; i--) h[i] = g[i] * f[i - 1];
     }
 
-    Mint fact(int i) {
-        if (i < 0) return Mint(0);
-        while (i >= (int)f.size()) extend();
-        return f[i];
+    // fact(n) = n!
+    Mint fact(const int n) {
+        if (n < 0) return Mint(0);
+        while (n >= (int)(f.size())) extend();
+        return f[n];
     }
 
-    Mint finv(int i) {
-        if (i < 0) return Mint(0);
-        while (i >= (int)g.size()) extend();
-        return g[i];
+    // finv(n) = 1 / n!
+    Mint finv(const int n) {
+        if (n < 0) return Mint(0);
+        while (n >= (int)(g.size())) extend();
+        return g[n];
     }
 
-    Mint C(int N, int K) {
-        // N 個から重複を許さずに K 個取る
-        if (N < 0 or K < 0 or N < K) return Mint(0);
-        return fact(N) * finv(N - K) * finv(K);
+    // inv(n) = 1 / n
+    Mint inv(const int n) {
+        if (n < 0) return Mint(0);
+        while (n >= (int)(h.size())) extend();
     }
 
-    Mint P(int N, int K) {
-        // N 個から重複を許さずに K 個取って並べる
-        if (N < 0 or K < 0 or N < K) return Mint(0);
-        return fact(N) * finv(N - K);
+    // n C k
+    Mint C(const int n, const int k) {
+        if (n < 0 or k < 0 or n < k) return Mint(0);
+        return fact(n) * finv(n - k) * finv(k);
     }
 
-    Mint H(int N, int K) {
-        // N 個から重複を許して K 個取る
-        if (N < 0 or K < 0) return Mint(0);
-        if (K == 0) return Mint(1);
-        return C(N + K - 1, K);
+    // n P k
+    Mint P(const int n, const int k) {
+        if (n < 0 or k < 0 or n < k) return Mint(0);
+        return fact(n) * finv(n - k);
     }
 
-    Mint C_naive(int N, int K) {
-        if (N < 0 or K < 0 or N < K) return Mint(0);
-        Mint res = 1;
-        K = std::min(K, N - K);
-        for (int i = 1; i <= K; i++) {
-            res *= N--;
-            res /= i;
+    // n H k
+    // n 個から k 個重複を許して取る組合せ
+    Mint H(const int n, const int k) {
+        if (n < 0 or k < 0) return Mint(0);
+        if (k == 0) return Mint(1);
+        return C(n + k - 1, k);
+    }
+
+    Mint C_naive(int n, int k) {
+        if (n < 0 or k < 0 or n < k) return Mint(0);
+        Mint res = Mint(1), res_inv = Mint(1);
+        k = std::min(k, n - k);
+        for (int i = 1; i <= k; i++) {
+            res *= (n--);
+            res_inv *= i;
         }
+        res /= res_inv;
         return res;
     }
 };
