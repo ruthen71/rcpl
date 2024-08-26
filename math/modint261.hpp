@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cassert>
+
 struct Modint261 {
     static constexpr unsigned long long m = (1ULL << 61) - 1;
     using mint = Modint261;

@@ -2,6 +2,10 @@
 
 #include "math/modint261.hpp"
 
+#include <algorithm>
+#include <cassert>
+#include <chrono>
+#include <random>
 #include <vector>
 
 // Rolling Hash
@@ -23,7 +27,7 @@ template <class Mint> struct RollingHash {
     void extend(int m = -1) {
         const int n = (int)(pwr.size());  // n >= 1
         if (m == -1) m = n * 2;           // m >= 2
-        m = std::min(m, Mint::mod());
+        if (m > Mint::mod()) m = Mint::mod();
         if (n >= m) return;
         pwr.resize(m);
         for (int i = n; i < m; i++) pwr[i] = pwr[i - 1] * base;
