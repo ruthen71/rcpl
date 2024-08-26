@@ -384,7 +384,7 @@ data:
       title: "\u7DDA\u5F62\u30C7\u30A3\u30AA\u30D5\u30A1\u30F3\u30C8\u30B9\u65B9\u7A0B\
         \u5F0F ($ ax + by = c $) / \u7DDA\u5F62\u5408\u540C\u5F0F ( $ ax \\equiv b\
         \ \\pmod m $ )"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/modint261.hpp
       title: Modint $\pmod{2^{61}-1} $
     - icon: ':heavy_check_mark:'
@@ -427,7 +427,7 @@ data:
     - icon: ':warning:'
       path: string/is_palindrome.hpp
       title: "\u56DE\u6587\u5224\u5B9A"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: string/rolling_hash.hpp
       title: "Rolling Hash (\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5\
         )"
@@ -444,9 +444,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_alds1/aoj_alds1_10_c.test.cpp
       title: verify/aoj_alds1/aoj_alds1_10_c.test.cpp
-    - icon: ':x:'
-      path: verify/aoj_alds1/aoj_alds1_14_b.test.cpp
-      title: verify/aoj_alds1/aoj_alds1_14_b.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj_alds1/aoj_alds1_1_c.test.cpp
       title: verify/aoj_alds1/aoj_alds1_1_c.test.cpp
@@ -725,6 +722,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/lc_math/lc_enumerate_primes.test.cpp
       title: verify/lc_math/lc_enumerate_primes.test.cpp
+  - name: verify/string
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/string/rolling_hash.test.cpp
+      title: verify/string/rolling_hash.test.cpp
   - name: verify/yuki
     pages:
     - icon: ':heavy_check_mark:'

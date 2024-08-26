@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/modint261.hpp
     title: Modint $\pmod{2^{61}-1} $
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
     title: "Rolling Hash (\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B
     links:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B
-  bundledCode: "#line 1 \"verify/aoj_alds1/aoj_alds1_14_b.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B\"\n\n\
-    #include <bits/stdc++.h>\n\n#line 2 \"string/rolling_hash.hpp\"\n\n#line 2 \"\
-    math/modint261.hpp\"\n\nstruct Modint261 {\n    static constexpr unsigned long\
+  bundledCode: "#line 1 \"verify/string/rolling_hash.test.cpp\"\n#define PROBLEM \"\
+    https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B\"\n\n#include\
+    \ <iostream>\n\n#line 2 \"string/rolling_hash.hpp\"\n\n#line 2 \"math/modint261.hpp\"\
+    \n\n#include <cassert>\n\nstruct Modint261 {\n    static constexpr unsigned long\
     \ long m = (1ULL << 61) - 1;\n    using mint = Modint261;\n    unsigned long long\
     \ _v;\n\n    static constexpr long long mod() { return m; }\n    static constexpr\
     \ unsigned long long umod() { return m; }\n\n    Modint261() : _v(0ULL) {}\n\n\
@@ -52,55 +52,56 @@ data:
     \ mint &lhs, const mint &rhs) { return lhs._v == rhs._v; }\n    friend bool operator!=(const\
     \ mint &lhs, const mint &rhs) { return lhs._v != rhs._v; }\n    friend std::ostream\
     \ &operator<<(std::ostream &os, const mint &v) { return os << v.val(); }\n};\n\
-    using mint261 = Modint261;\n#line 4 \"string/rolling_hash.hpp\"\n\n#line 6 \"\
-    string/rolling_hash.hpp\"\n\n// Rolling Hash\ntemplate <class Mint> struct RollingHash\
-    \ {\n    std::vector<Mint> pwr;\n    const Mint base;\n\n    RollingHash(const\
-    \ int n_max = 0, Mint base = generate_base()) : base(base) {\n        pwr.resize(1,\
-    \ Mint(1));\n        if (n_max > 0) extend(n_max);\n    }\n\n    static inline\
-    \ Mint generate_base() {\n        std::mt19937_64 mt(std::chrono::steady_clock::now().time_since_epoch().count());\n\
+    using mint261 = Modint261;\n#line 4 \"string/rolling_hash.hpp\"\n\n#include <algorithm>\n\
+    #line 7 \"string/rolling_hash.hpp\"\n#include <chrono>\n#include <random>\n#include\
+    \ <vector>\n\n// Rolling Hash\ntemplate <class Mint> struct RollingHash {\n  \
+    \  std::vector<Mint> pwr;\n    const Mint base;\n\n    RollingHash(const int n_max\
+    \ = 0, Mint base = generate_base()) : base(base) {\n        pwr.resize(1, Mint(1));\n\
+    \        if (n_max > 0) extend(n_max);\n    }\n\n    static inline Mint generate_base()\
+    \ {\n        std::mt19937_64 mt(std::chrono::steady_clock::now().time_since_epoch().count());\n\
     \        std::uniform_int_distribution<uint64_t> rand(1, Mint::mod() - 1);\n \
     \       return Mint(rand(mt));\n    }\n\n    void extend(int m = -1) {\n     \
     \   const int n = (int)(pwr.size());  // n >= 1\n        if (m == -1) m = n *\
-    \ 2;           // m >= 2\n        m = std::min(m, Mint::mod());\n        if (n\
-    \ >= m) return;\n        pwr.resize(m);\n        for (int i = n; i < m; i++) pwr[i]\
-    \ = pwr[i - 1] * base;\n    }\n\n    // return base ^ n\n    Mint power(const\
-    \ int n) {\n        assert(n >= 0);\n        while (n >= (int)(pwr.size())) extend();\n\
-    \        return pwr[n];\n    }\n\n    template <class T> std::vector<Mint> build(const\
-    \ std::vector<T>& s) const {\n        const int n = (int)(s.size());\n       \
-    \ std::vector<Mint> res(n + 1);\n        for (int i = 0; i < n; i++) {\n     \
-    \       res[i + 1] = res[i] * base + s[i];\n        }\n        return res;\n \
-    \   }\n\n    std::vector<Mint> build(const std::string& s) const {\n        const\
+    \ 2;           // m >= 2\n        if (m > Mint::mod()) m = Mint::mod();\n    \
+    \    if (n >= m) return;\n        pwr.resize(m);\n        for (int i = n; i <\
+    \ m; i++) pwr[i] = pwr[i - 1] * base;\n    }\n\n    // return base ^ n\n    Mint\
+    \ power(const int n) {\n        assert(n >= 0);\n        while (n >= (int)(pwr.size()))\
+    \ extend();\n        return pwr[n];\n    }\n\n    template <class T> std::vector<Mint>\
+    \ build(const std::vector<T>& s) const {\n        const int n = (int)(s.size());\n\
+    \        std::vector<Mint> res(n + 1);\n        for (int i = 0; i < n; i++) {\n\
+    \            res[i + 1] = res[i] * base + s[i];\n        }\n        return res;\n\
+    \    }\n\n    std::vector<Mint> build(const std::string& s) const {\n        const\
     \ int n = (int)(s.size());\n        std::vector<int> s2(n);\n        for (int\
     \ i = 0; i < n; i++) s2[i] = s[i];\n        return build(s2);\n    }\n\n    Mint\
     \ prod(const std::vector<Mint>& hs, const int l, const int r) {\n        assert(0\
     \ <= l and l <= r and r <= (int)(hs.size()));\n        return hs[r] - hs[l] *\
     \ power(r - l);\n    }\n\n    Mint combine(Mint h1, Mint h2, int h2len) { return\
-    \ h1 * power(h2len) + h2; }\n};\n#line 6 \"verify/aoj_alds1/aoj_alds1_14_b.test.cpp\"\
+    \ h1 * power(h2len) + h2; }\n};\n#line 6 \"verify/string/rolling_hash.test.cpp\"\
     \n\nint main() {\n    std::string T, P;\n    std::cin >> T >> P;\n    RollingHash<mint261>\
     \ rh;\n    auto rht = rh.build(T);\n    auto rhp = rh.build(P);\n    for (int\
     \ i = 0; i + P.size() <= T.size(); i++) {\n        if (rh.prod(rht, i, i + P.size())\
     \ == rh.prod(rhp, 0, P.size())) {\n            std::cout << i << '\\n';\n    \
     \    }\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B\"\
-    \n\n#include <bits/stdc++.h>\n\n#include \"string/rolling_hash.hpp\"\n\nint main()\
+    \n\n#include <iostream>\n\n#include \"string/rolling_hash.hpp\"\n\nint main()\
     \ {\n    std::string T, P;\n    std::cin >> T >> P;\n    RollingHash<mint261>\
     \ rh;\n    auto rht = rh.build(T);\n    auto rhp = rh.build(P);\n    for (int\
     \ i = 0; i + P.size() <= T.size(); i++) {\n        if (rh.prod(rht, i, i + P.size())\
     \ == rh.prod(rhp, 0, P.size())) {\n            std::cout << i << '\\n';\n    \
-    \    }\n    }\n    return 0;\n}\n"
+    \    }\n    }\n    return 0;\n}"
   dependsOn:
   - string/rolling_hash.hpp
   - math/modint261.hpp
   isVerificationFile: true
-  path: verify/aoj_alds1/aoj_alds1_14_b.test.cpp
+  path: verify/string/rolling_hash.test.cpp
   requiredBy: []
-  timestamp: '2024-08-27 02:21:06+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-08-27 02:34:27+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/aoj_alds1/aoj_alds1_14_b.test.cpp
+documentation_of: verify/string/rolling_hash.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/aoj_alds1/aoj_alds1_14_b.test.cpp
-- /verify/verify/aoj_alds1/aoj_alds1_14_b.test.cpp.html
-title: verify/aoj_alds1/aoj_alds1_14_b.test.cpp
+- /verify/verify/string/rolling_hash.test.cpp
+- /verify/verify/string/rolling_hash.test.cpp.html
+title: verify/string/rolling_hash.test.cpp
 ---
