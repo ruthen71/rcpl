@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/modint261.hpp
     title: Modint $\pmod{2^{61}-1} $
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj_alds1/aoj_alds1_14_b.test.cpp
     title: verify/aoj_alds1/aoj_alds1_14_b.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"string/rolling_hash.hpp\"\n\n#line 2 \"math/modint261.hpp\"\
@@ -47,61 +47,74 @@ data:
     \ mint &lhs, const mint &rhs) { return lhs._v == rhs._v; }\n    friend bool operator!=(const\
     \ mint &lhs, const mint &rhs) { return lhs._v != rhs._v; }\n    friend std::ostream\
     \ &operator<<(std::ostream &os, const mint &v) { return os << v.val(); }\n};\n\
-    using mint261 = Modint261;\n#line 4 \"string/rolling_hash.hpp\"\n\ntemplate <class\
-    \ Mint> struct RollingHash {\n    std::vector<Mint> pwr;\n    const Mint base;\n\
-    \n    static inline Mint generate_base() {\n        std::mt19937_64 mt(std::chrono::steady_clock::now().time_since_epoch().count());\n\
+    using mint261 = Modint261;\n#line 4 \"string/rolling_hash.hpp\"\n\n#include <vector>\n\
+    \n// Rolling Hash\ntemplate <class Mint> struct RollingHash {\n    std::vector<Mint>\
+    \ pwr;\n    const Mint base;\n\n    RollingHash(const int n_max = 0, Mint base\
+    \ = generate_base()) : base(base) {\n        pwr.resize(1, Mint(1));\n       \
+    \ if (n_max > 0) extend(n_max);\n    }\n\n    static inline Mint generate_base()\
+    \ {\n        std::mt19937_64 mt(std::chrono::steady_clock::now().time_since_epoch().count());\n\
     \        std::uniform_int_distribution<uint64_t> rand(1, Mint::mod() - 1);\n \
-    \       return Mint(rand(mt));\n    }\n\n    void extend() {\n        int n =\
-    \ pwr.size();\n        int m = n * 2;\n        pwr.resize(m);\n        for (int\
-    \ i = n; i < m; i++) pwr[i] = pwr[i - 1] * base;\n    }\n\n    RollingHash(int\
-    \ N = 0, Mint base = generate_base()) : base(base) {\n        pwr.resize(1, Mint(1));\n\
-    \        while (N >= (int)pwr.size()) extend();\n    }\n\n    Mint power(int i)\
-    \ {  // return base ^ i\n        assert(i >= 0);\n        while (i >= (int)pwr.size())\
-    \ extend();\n        return pwr[i];\n    }\n\n    std::vector<Mint> build(const\
-    \ std::string &s) const {\n        int N = (int)s.size();\n        std::vector<Mint>\
-    \ res(N + 1);\n        for (int i = 0; i < N; i++) {\n            res[i + 1] =\
-    \ res[i] * base + s[i];\n        }\n        return res;\n    }\n\n    template\
-    \ <class T> std::vector<Mint> build(const std::vector<T> &s) const {\n       \
-    \ int N = (int)s.size();\n        std::vector<Mint> res(N + 1);\n        for (int\
-    \ i = 0; i < N; i++) {\n            res[i + 1] = res[i] * base + s[i];\n     \
-    \   }\n        return res;\n    }\n\n    Mint prod(const std::vector<Mint> &hs,\
-    \ int l, int r) {\n        assert(0 <= l and l <= r and r < hs.size());\n    \
-    \    return hs[r] - hs[l] * power(r - l);\n    }\n\n    Mint combine(Mint h1,\
-    \ Mint h2, int h2len) { return h1 * power(h2len) + h2; }\n};\n"
-  code: "#pragma once\n\n#include \"math/modint261.hpp\"\n\ntemplate <class Mint>\
-    \ struct RollingHash {\n    std::vector<Mint> pwr;\n    const Mint base;\n\n \
-    \   static inline Mint generate_base() {\n        std::mt19937_64 mt(std::chrono::steady_clock::now().time_since_epoch().count());\n\
+    \       return Mint(rand(mt));\n    }\n\n    void extend(int m = -1) {\n     \
+    \   const int n = (int)(pwr.size());  // n >= 1\n        if (m == -1) m = n *\
+    \ 2;           // m >= 2\n        m = std::min(m, Mint::mod());\n        if (n\
+    \ >= m) return;\n        pwr.resize(m);\n        for (int i = n; i < m; i++) pwr[i]\
+    \ = pwr[i - 1] * base;\n    }\n\n    // return base ^ n\n    Mint power(const\
+    \ int n) {\n        assert(n >= 0);\n        while (n >= (int)(pwr.size())) extend();\n\
+    \        return pwr[n];\n    }\n\n    template <class T> std::vector<Mint> build(const\
+    \ std::vector<T>& s) const {\n        const int n = (int)(s.size());\n       \
+    \ std::vector<Mint> res(n + 1);\n        for (int i = 0; i < n; i++) {\n     \
+    \       res[i + 1] = res[i] * base + s[i];\n        }\n        return res;\n \
+    \   }\n\n    std::vector<Mint> build(const std::string& s) const {\n        const\
+    \ int n = (int)(s.size());\n        std::vector<int> s2(n);\n        for (int\
+    \ i = 0; i < n; i++) s2[i] = s[i];\n        return build(s2);\n    }\n\n    Mint\
+    \ prod(const std::vector<Mint>& hs, const int l, const int r) {\n        assert(0\
+    \ <= l and l <= r and r <= (int)(hs.size()));\n        return hs[r] - hs[l] *\
+    \ power(r - l);\n    }\n\n    Mint combine(Mint h1, Mint h2, int h2len) { return\
+    \ h1 * power(h2len) + h2; }\n};\n"
+  code: "#pragma once\n\n#include \"math/modint261.hpp\"\n\n#include <vector>\n\n\
+    // Rolling Hash\ntemplate <class Mint> struct RollingHash {\n    std::vector<Mint>\
+    \ pwr;\n    const Mint base;\n\n    RollingHash(const int n_max = 0, Mint base\
+    \ = generate_base()) : base(base) {\n        pwr.resize(1, Mint(1));\n       \
+    \ if (n_max > 0) extend(n_max);\n    }\n\n    static inline Mint generate_base()\
+    \ {\n        std::mt19937_64 mt(std::chrono::steady_clock::now().time_since_epoch().count());\n\
     \        std::uniform_int_distribution<uint64_t> rand(1, Mint::mod() - 1);\n \
-    \       return Mint(rand(mt));\n    }\n\n    void extend() {\n        int n =\
-    \ pwr.size();\n        int m = n * 2;\n        pwr.resize(m);\n        for (int\
-    \ i = n; i < m; i++) pwr[i] = pwr[i - 1] * base;\n    }\n\n    RollingHash(int\
-    \ N = 0, Mint base = generate_base()) : base(base) {\n        pwr.resize(1, Mint(1));\n\
-    \        while (N >= (int)pwr.size()) extend();\n    }\n\n    Mint power(int i)\
-    \ {  // return base ^ i\n        assert(i >= 0);\n        while (i >= (int)pwr.size())\
-    \ extend();\n        return pwr[i];\n    }\n\n    std::vector<Mint> build(const\
-    \ std::string &s) const {\n        int N = (int)s.size();\n        std::vector<Mint>\
-    \ res(N + 1);\n        for (int i = 0; i < N; i++) {\n            res[i + 1] =\
-    \ res[i] * base + s[i];\n        }\n        return res;\n    }\n\n    template\
-    \ <class T> std::vector<Mint> build(const std::vector<T> &s) const {\n       \
-    \ int N = (int)s.size();\n        std::vector<Mint> res(N + 1);\n        for (int\
-    \ i = 0; i < N; i++) {\n            res[i + 1] = res[i] * base + s[i];\n     \
-    \   }\n        return res;\n    }\n\n    Mint prod(const std::vector<Mint> &hs,\
-    \ int l, int r) {\n        assert(0 <= l and l <= r and r < hs.size());\n    \
-    \    return hs[r] - hs[l] * power(r - l);\n    }\n\n    Mint combine(Mint h1,\
-    \ Mint h2, int h2len) { return h1 * power(h2len) + h2; }\n};\n"
+    \       return Mint(rand(mt));\n    }\n\n    void extend(int m = -1) {\n     \
+    \   const int n = (int)(pwr.size());  // n >= 1\n        if (m == -1) m = n *\
+    \ 2;           // m >= 2\n        m = std::min(m, Mint::mod());\n        if (n\
+    \ >= m) return;\n        pwr.resize(m);\n        for (int i = n; i < m; i++) pwr[i]\
+    \ = pwr[i - 1] * base;\n    }\n\n    // return base ^ n\n    Mint power(const\
+    \ int n) {\n        assert(n >= 0);\n        while (n >= (int)(pwr.size())) extend();\n\
+    \        return pwr[n];\n    }\n\n    template <class T> std::vector<Mint> build(const\
+    \ std::vector<T>& s) const {\n        const int n = (int)(s.size());\n       \
+    \ std::vector<Mint> res(n + 1);\n        for (int i = 0; i < n; i++) {\n     \
+    \       res[i + 1] = res[i] * base + s[i];\n        }\n        return res;\n \
+    \   }\n\n    std::vector<Mint> build(const std::string& s) const {\n        const\
+    \ int n = (int)(s.size());\n        std::vector<int> s2(n);\n        for (int\
+    \ i = 0; i < n; i++) s2[i] = s[i];\n        return build(s2);\n    }\n\n    Mint\
+    \ prod(const std::vector<Mint>& hs, const int l, const int r) {\n        assert(0\
+    \ <= l and l <= r and r <= (int)(hs.size()));\n        return hs[r] - hs[l] *\
+    \ power(r - l);\n    }\n\n    Mint combine(Mint h1, Mint h2, int h2len) { return\
+    \ h1 * power(h2len) + h2; }\n};\n"
   dependsOn:
   - math/modint261.hpp
   isVerificationFile: false
   path: string/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2024-01-11 16:01:19+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-08-27 02:21:06+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/aoj_alds1/aoj_alds1_14_b.test.cpp
 documentation_of: string/rolling_hash.hpp
 layout: document
-redirect_from:
-- /library/string/rolling_hash.hpp
-- /library/string/rolling_hash.hpp.html
-title: string/rolling_hash.hpp
+title: "Rolling Hash (\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5)"
 ---
+
+## 使い方
+
+```cpp
+RollingHash<mint261> rh;
+auto rhs = rh.build(s);
+mint261 hs = rh.prod(rhs, l, r);    // [l, r) のハッシュ値
+```
+
+## 参考文献

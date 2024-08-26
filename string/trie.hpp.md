@@ -8,8 +8,8 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"string/trie.hpp\"\n\n#include <array>\n#include <vector>\n\
-    #include <string>\n\ntemplate <int CharSize = 26, int Base = 'a'> struct Trie\
+  bundledCode: "#line 2 \"string/trie.hpp\"\n\n#include <array>\n#include <string>\n\
+    #include <vector>\n\ntemplate <int CharSize = 26, int Base = 'a'> struct Trie\
     \ {\n    struct Node {\n        std::array<int, CharSize> next;  // \u5B50 Node\
     \ \u306E id (-1 \u3067\u521D\u671F\u5316)\n        std::vector<int> accept;  \
     \       // \u3053\u306E Node \u3067\u7D42\u308F\u308B\u6587\u5B57\u5217\u306E\
@@ -41,9 +41,9 @@ data:
     \ \u3067\u59CB\u307E\u308B\u6587\u5B57\u5217\u306E\u500B\u6570\n    int count_prefix(const\
     \ std::string& s) { return count(s, true); }\n\n    // \u8FFD\u52A0\u3057\u305F\
     \u6587\u5B57\u5217\u306E\u500B\u6570\n    int count() const { return nodes[root].common;\
-    \ }\n\n    // Trie \u306E Node \u6570\n    int size() const { return (int)(nodes.size());\
+    \ }\n\n    // \u30CE\u30FC\u30C9\u6570\n    int size() const { return (int)(nodes.size());\
     \ }\n};\n"
-  code: "#pragma once\n\n#include <array>\n#include <vector>\n#include <string>\n\n\
+  code: "#pragma once\n\n#include <array>\n#include <string>\n#include <vector>\n\n\
     template <int CharSize = 26, int Base = 'a'> struct Trie {\n    struct Node {\n\
     \        std::array<int, CharSize> next;  // \u5B50 Node \u306E id (-1 \u3067\u521D\
     \u671F\u5316)\n        std::vector<int> accept;         // \u3053\u306E Node \u3067\
@@ -76,13 +76,13 @@ data:
     \ \u3067\u59CB\u307E\u308B\u6587\u5B57\u5217\u306E\u500B\u6570\n    int count_prefix(const\
     \ std::string& s) { return count(s, true); }\n\n    // \u8FFD\u52A0\u3057\u305F\
     \u6587\u5B57\u5217\u306E\u500B\u6570\n    int count() const { return nodes[root].common;\
-    \ }\n\n    // Trie \u306E Node \u6570\n    int size() const { return (int)(nodes.size());\
+    \ }\n\n    // \u30CE\u30FC\u30C9\u6570\n    int size() const { return (int)(nodes.size());\
     \ }\n};"
   dependsOn: []
   isVerificationFile: false
   path: string/trie.hpp
   requiredBy: []
-  timestamp: '2024-05-12 08:12:15+09:00'
+  timestamp: '2024-08-27 02:16:06+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: string/trie.hpp
@@ -90,13 +90,17 @@ layout: document
 title: "Trie (\u30C8\u30E9\u30A4\u6728)"
 ---
 
-`Trie<CharSize, Base>` で文字の種類数が `CharSize` で開始文字が `Base` である Trie を作成
+## 使い方
 
-使い方
-- `insert(s)`: 文字列 `s` を追加
-- `count(s)`: 文字列 `s` の個数を求める
-- `count_prefix(s)`: 文字列 `s` で始まる文字列の個数を求める
-- `size()`: ノード数を求める
-- `count()`: 追加した文字列の個数を求める
+```cpp
+Trie<26, 'a'> trie;     // a ~ z の Trie を作成
+trie.insert(s);         // 文字列 s を追加
+trie.count(s);          // 文字列 s の個数
+trie.count_prefix(s);   // 文字列 s で始まる文字列の個数
+trie.size();            // ノード数
+trie.count();           // 追加した文字列の個数
+```
 
-`update_child()` と `update_direct()` は `insert` 内の処理と並行して何かしらの処理を行いたい際に書き換える
+`update_child()` と `update_direct()` は `insert()` 内の処理と並行して何かしらの処理を行いたい際に書き換える
+
+## 参考文献

@@ -384,7 +384,7 @@ data:
       title: "\u7DDA\u5F62\u30C7\u30A3\u30AA\u30D5\u30A1\u30F3\u30C8\u30B9\u65B9\u7A0B\
         \u5F0F ($ ax + by = c $) / \u7DDA\u5F62\u5408\u540C\u5F0F ( $ ax \\equiv b\
         \ \\pmod m $ )"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/modint261.hpp
       title: Modint $\pmod{2^{61}-1} $
     - icon: ':heavy_check_mark:'
@@ -426,10 +426,11 @@ data:
     pages:
     - icon: ':warning:'
       path: string/is_palindrome.hpp
-      title: string/is_palindrome.hpp
-    - icon: ':heavy_check_mark:'
+      title: "\u56DE\u6587\u5224\u5B9A"
+    - icon: ':x:'
       path: string/rolling_hash.hpp
-      title: string/rolling_hash.hpp
+      title: "Rolling Hash (\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5\
+        )"
     - icon: ':warning:'
       path: string/run_length_encoding.hpp
       title: "Run Length Encoding (\u30E9\u30F3\u30EC\u30F3\u30B0\u30B9\u5727\u7E2E\
@@ -443,7 +444,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_alds1/aoj_alds1_10_c.test.cpp
       title: verify/aoj_alds1/aoj_alds1_10_c.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/aoj_alds1/aoj_alds1_14_b.test.cpp
       title: verify/aoj_alds1/aoj_alds1_14_b.test.cpp
     - icon: ':heavy_check_mark:'

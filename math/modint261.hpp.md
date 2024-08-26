@@ -2,16 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: string/rolling_hash.hpp
-    title: string/rolling_hash.hpp
+    title: "Rolling Hash (\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5)"
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj_alds1/aoj_alds1_14_b.test.cpp
     title: verify/aoj_alds1/aoj_alds1_14_b.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/modint261.hpp\"\n\nstruct Modint261 {\n    static constexpr\
@@ -86,7 +86,7 @@ data:
   requiredBy:
   - string/rolling_hash.hpp
   timestamp: '2024-01-11 16:01:19+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/aoj_alds1/aoj_alds1_14_b.test.cpp
 documentation_of: math/modint261.hpp
