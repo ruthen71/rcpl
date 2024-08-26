@@ -1,8 +1,8 @@
 #pragma once
 
 #include <array>
-#include <vector>
 #include <string>
+#include <vector>
 
 template <int CharSize = 26, int Base = 'a'> struct Trie {
     struct Node {
@@ -70,6 +70,6 @@ template <int CharSize = 26, int Base = 'a'> struct Trie {
     // 追加した文字列の個数
     int count() const { return nodes[root].common; }
 
-    // Trie の Node 数
+    // ノード数
     int size() const { return (int)(nodes.size()); }
 };
