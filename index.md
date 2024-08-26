@@ -425,6 +425,10 @@ data:
   - name: string
     pages:
     - icon: ':warning:'
+      path: string/element_next_index.hpp
+      title: "Element Next Index (\u8981\u7D20\u306E\u6B21\u306E\u767B\u5834\u4F4D\
+        \u7F6E)"
+    - icon: ':warning:'
       path: string/is_palindrome.hpp
       title: "\u56DE\u6587\u5224\u5B9A"
     - icon: ':heavy_check_mark:'
