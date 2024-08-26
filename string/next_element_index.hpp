@@ -3,9 +3,9 @@
 #include <string>
 #include <vector>
 
-// element next index
+// nextelement index
 // res[i][c] = s[i, n) において次の c の登場位置を返す
-template <class T> std::vector<std::vector<int>> element_next_index(const std::vector<T>& s) {
+template <class T> std::vector<std::vector<int>> next_element_index(const std::vector<T>& s) {
     const int n = (int)(s.size());
     T lb = std::numeric_limits<T>::max(), ub = std::numeric_limits<T>::min();
     for (int i = 0; i < n; i++) {
@@ -21,9 +21,9 @@ template <class T> std::vector<std::vector<int>> element_next_index(const std::v
     return res;
 }
 
-std::vector<std::vector<int>> element_next_index(const std::string& s) {
+std::vector<std::vector<int>> next_element_index(const std::string& s) {
     const int n = (int)(s.size());
     std::vector<int> s2(n);
     for (int i = 0; i < n; i++) s2[i] = s[i];
-    return element_next_index(s2);
+    return next_element_index(s2);
 }
