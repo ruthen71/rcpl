@@ -425,12 +425,12 @@ data:
   - name: string
     pages:
     - icon: ':warning:'
-      path: string/element_next_index.hpp
-      title: "Element Next Index (\u8981\u7D20\u306E\u6B21\u306E\u767B\u5834\u4F4D\
-        \u7F6E)"
-    - icon: ':warning:'
       path: string/is_palindrome.hpp
       title: "\u56DE\u6587\u5224\u5B9A"
+    - icon: ':warning:'
+      path: string/next_element_index.hpp
+      title: "Next Element Index (\u6B21\u306E\u5404\u8981\u7D20\u306E\u767B\u5834\
+        \u4F4D\u7F6E)"
     - icon: ':heavy_check_mark:'
       path: string/rolling_hash.hpp
       title: "Rolling Hash (\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5\
