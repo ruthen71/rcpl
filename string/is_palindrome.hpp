@@ -1,7 +1,7 @@
 #pragma once
 
-#include <vector>
 #include <string>
+#include <vector>
 
 template <class T> bool is_palindrome(const std::vector<T>& s) {
     const int n = (int)(s.size());
