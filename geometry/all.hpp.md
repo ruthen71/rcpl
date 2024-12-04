@@ -85,12 +85,13 @@ data:
     #line 2 \"geometry/all.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\n#line 4 \"geometry/point.hpp\"\
     \n\n#include <cmath>\n#include <cassert>\n\n// \u70B9\ntemplate <class T> struct\
     \ Point {\n    T x, y;\n\n    Point() = default;\n    Point(const T x, const T\
-    \ y) : x(x), y(y) {}\n\n    Point& operator+=(const Point& p) {\n        x +=\
-    \ p.x, y += p.y;\n        return *this;\n    }\n    Point& operator-=(const Point&\
-    \ p) {\n        x -= p.x, y -= p.y;\n        return *this;\n    }\n    Point&\
-    \ operator*=(const Point& p) {\n        static_assert(is_geometry_floating_point<T>::value\
-    \ == true);\n        return *this = Point(x * p.x - y * p.y, x * p.y + y * p.x);\n\
-    \    }\n    Point& operator/=(const Point& p) {\n        static_assert(is_geometry_floating_point<T>::value\
+    \ y) : x(x), y(y) {}\n    template <class U> Point(const Point<U> p) : x(p.x),\
+    \ y(p.y) {}\n\n    Point& operator+=(const Point& p) {\n        x += p.x, y +=\
+    \ p.y;\n        return *this;\n    }\n    Point& operator-=(const Point& p) {\n\
+    \        x -= p.x, y -= p.y;\n        return *this;\n    }\n    Point& operator*=(const\
+    \ Point& p) {\n        static_assert(is_geometry_floating_point<T>::value == true);\n\
+    \        return *this = Point(x * p.x - y * p.y, x * p.y + y * p.x);\n    }\n\
+    \    Point& operator/=(const Point& p) {\n        static_assert(is_geometry_floating_point<T>::value\
     \ == true);\n        return *this = Point(x * p.x + y * p.y, -x * p.y + y * p.x)\
     \ / (p.x * p.x + p.y * p.y);\n    }\n    Point& operator*=(const T k) {\n    \
     \    x *= k, y *= k;\n        return *this;\n    }\n    Point& operator/=(const\
@@ -666,7 +667,7 @@ data:
   isVerificationFile: false
   path: geometry/all.hpp
   requiredBy: []
-  timestamp: '2024-08-04 06:15:03+09:00'
+  timestamp: '2024-12-04 12:30:48+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/all.hpp

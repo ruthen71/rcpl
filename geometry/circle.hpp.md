@@ -113,10 +113,11 @@ data:
     \ || is_geometry_integer<T>::value, std::true_type, std::false_type>::type;\n\
     #line 4 \"geometry/point.hpp\"\n\n#include <cmath>\n#include <cassert>\n\n// \u70B9\
     \ntemplate <class T> struct Point {\n    T x, y;\n\n    Point() = default;\n \
-    \   Point(const T x, const T y) : x(x), y(y) {}\n\n    Point& operator+=(const\
-    \ Point& p) {\n        x += p.x, y += p.y;\n        return *this;\n    }\n   \
-    \ Point& operator-=(const Point& p) {\n        x -= p.x, y -= p.y;\n        return\
-    \ *this;\n    }\n    Point& operator*=(const Point& p) {\n        static_assert(is_geometry_floating_point<T>::value\
+    \   Point(const T x, const T y) : x(x), y(y) {}\n    template <class U> Point(const\
+    \ Point<U> p) : x(p.x), y(p.y) {}\n\n    Point& operator+=(const Point& p) {\n\
+    \        x += p.x, y += p.y;\n        return *this;\n    }\n    Point& operator-=(const\
+    \ Point& p) {\n        x -= p.x, y -= p.y;\n        return *this;\n    }\n   \
+    \ Point& operator*=(const Point& p) {\n        static_assert(is_geometry_floating_point<T>::value\
     \ == true);\n        return *this = Point(x * p.x - y * p.y, x * p.y + y * p.x);\n\
     \    }\n    Point& operator/=(const Point& p) {\n        static_assert(is_geometry_floating_point<T>::value\
     \ == true);\n        return *this = Point(x * p.x + y * p.y, -x * p.y + y * p.x)\
@@ -235,34 +236,34 @@ data:
   isVerificationFile: false
   path: geometry/circle.hpp
   requiredBy:
-  - geometry/is_intersect.hpp
-  - geometry/convex_polygon_cut.hpp
-  - geometry/distance.hpp
-  - geometry/all.hpp
-  - geometry/cross_point.hpp
-  - geometry/tangent.hpp
-  - geometry/common_area.hpp
-  - geometry/incircle.hpp
   - geometry/circumscribed_circle.hpp
   - geometry/contain.hpp
-  timestamp: '2024-08-04 06:15:03+09:00'
+  - geometry/tangent.hpp
+  - geometry/common_area.hpp
+  - geometry/distance.hpp
+  - geometry/convex_polygon_cut.hpp
+  - geometry/incircle.hpp
+  - geometry/all.hpp
+  - geometry/is_intersect.hpp
+  - geometry/cross_point.hpp
+  timestamp: '2024-12-04 12:30:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/geometry/common_area_cc.test.cpp
-  - verify/geometry/cross_point_cl.test.cpp
-  - verify/geometry/incircle.test.cpp
-  - verify/geometry/cross_point_cc.test.cpp
-  - verify/geometry/is_intersect_ss.test.cpp
-  - verify/geometry/common_area_cp.test.cpp
-  - verify/geometry/cross_point_ss.test.cpp
-  - verify/geometry/tangent_cc.test.cpp
-  - verify/geometry/tangent_number.test.cpp
   - verify/geometry/convex_polygon_cut.test.cpp
-  - verify/geometry/tangent_cp.test.cpp
-  - verify/geometry/convex_contain.test.cpp
   - verify/geometry/contain.test.cpp
+  - verify/geometry/is_intersect_ss.test.cpp
+  - verify/geometry/tangent_cc.test.cpp
+  - verify/geometry/cross_point_cl.test.cpp
   - verify/geometry/distance_ss.test.cpp
+  - verify/geometry/tangent_cp.test.cpp
+  - verify/geometry/common_area_cc.test.cpp
+  - verify/geometry/cross_point_cc.test.cpp
+  - verify/geometry/convex_contain.test.cpp
+  - verify/geometry/tangent_number.test.cpp
+  - verify/geometry/common_area_cp.test.cpp
   - verify/geometry/circumscribed_circle.test.cpp
+  - verify/geometry/incircle.test.cpp
+  - verify/geometry/cross_point_ss.test.cpp
 documentation_of: geometry/circle.hpp
 layout: document
 title: "Circle (\u5186)"

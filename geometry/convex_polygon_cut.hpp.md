@@ -57,10 +57,11 @@ data:
     \ || is_geometry_integer<T>::value, std::true_type, std::false_type>::type;\n\
     #line 4 \"geometry/point.hpp\"\n\n#include <cmath>\n#include <cassert>\n\n// \u70B9\
     \ntemplate <class T> struct Point {\n    T x, y;\n\n    Point() = default;\n \
-    \   Point(const T x, const T y) : x(x), y(y) {}\n\n    Point& operator+=(const\
-    \ Point& p) {\n        x += p.x, y += p.y;\n        return *this;\n    }\n   \
-    \ Point& operator-=(const Point& p) {\n        x -= p.x, y -= p.y;\n        return\
-    \ *this;\n    }\n    Point& operator*=(const Point& p) {\n        static_assert(is_geometry_floating_point<T>::value\
+    \   Point(const T x, const T y) : x(x), y(y) {}\n    template <class U> Point(const\
+    \ Point<U> p) : x(p.x), y(p.y) {}\n\n    Point& operator+=(const Point& p) {\n\
+    \        x += p.x, y += p.y;\n        return *this;\n    }\n    Point& operator-=(const\
+    \ Point& p) {\n        x -= p.x, y -= p.y;\n        return *this;\n    }\n   \
+    \ Point& operator*=(const Point& p) {\n        static_assert(is_geometry_floating_point<T>::value\
     \ == true);\n        return *this = Point(x * p.x - y * p.y, x * p.y + y * p.x);\n\
     \    }\n    Point& operator/=(const Point& p) {\n        static_assert(is_geometry_floating_point<T>::value\
     \ == true);\n        return *this = Point(x * p.x + y * p.y, -x * p.y + y * p.x)\
@@ -366,7 +367,7 @@ data:
   path: geometry/convex_polygon_cut.hpp
   requiredBy:
   - geometry/all.hpp
-  timestamp: '2024-08-04 06:15:03+09:00'
+  timestamp: '2024-12-04 12:30:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/geometry/convex_polygon_cut.test.cpp

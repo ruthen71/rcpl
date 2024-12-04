@@ -165,10 +165,11 @@ data:
     \ || is_geometry_integer<T>::value, std::true_type, std::false_type>::type;\n\
     #line 4 \"geometry/point.hpp\"\n\n#include <cmath>\n#include <cassert>\n\n// \u70B9\
     \ntemplate <class T> struct Point {\n    T x, y;\n\n    Point() = default;\n \
-    \   Point(const T x, const T y) : x(x), y(y) {}\n\n    Point& operator+=(const\
-    \ Point& p) {\n        x += p.x, y += p.y;\n        return *this;\n    }\n   \
-    \ Point& operator-=(const Point& p) {\n        x -= p.x, y -= p.y;\n        return\
-    \ *this;\n    }\n    Point& operator*=(const Point& p) {\n        static_assert(is_geometry_floating_point<T>::value\
+    \   Point(const T x, const T y) : x(x), y(y) {}\n    template <class U> Point(const\
+    \ Point<U> p) : x(p.x), y(p.y) {}\n\n    Point& operator+=(const Point& p) {\n\
+    \        x += p.x, y += p.y;\n        return *this;\n    }\n    Point& operator-=(const\
+    \ Point& p) {\n        x -= p.x, y -= p.y;\n        return *this;\n    }\n   \
+    \ Point& operator*=(const Point& p) {\n        static_assert(is_geometry_floating_point<T>::value\
     \ == true);\n        return *this = Point(x * p.x - y * p.y, x * p.y + y * p.x);\n\
     \    }\n    Point& operator/=(const Point& p) {\n        static_assert(is_geometry_floating_point<T>::value\
     \ == true);\n        return *this = Point(x * p.x + y * p.y, -x * p.y + y * p.x)\
@@ -251,20 +252,21 @@ data:
     \u8EE2\n    ac *= conj(ab) / norm(ab);\n    return arg(ac);  // (-PI, PI]\n}\n"
   code: "#pragma once\n\n#include \"geometry/geometry_template.hpp\"\n\n#include <cmath>\n\
     #include <cassert>\n\n// \u70B9\ntemplate <class T> struct Point {\n    T x, y;\n\
-    \n    Point() = default;\n    Point(const T x, const T y) : x(x), y(y) {}\n\n\
-    \    Point& operator+=(const Point& p) {\n        x += p.x, y += p.y;\n      \
-    \  return *this;\n    }\n    Point& operator-=(const Point& p) {\n        x -=\
-    \ p.x, y -= p.y;\n        return *this;\n    }\n    Point& operator*=(const Point&\
-    \ p) {\n        static_assert(is_geometry_floating_point<T>::value == true);\n\
-    \        return *this = Point(x * p.x - y * p.y, x * p.y + y * p.x);\n    }\n\
-    \    Point& operator/=(const Point& p) {\n        static_assert(is_geometry_floating_point<T>::value\
-    \ == true);\n        return *this = Point(x * p.x + y * p.y, -x * p.y + y * p.x)\
-    \ / (p.x * p.x + p.y * p.y);\n    }\n    Point& operator*=(const T k) {\n    \
-    \    x *= k, y *= k;\n        return *this;\n    }\n    Point& operator/=(const\
-    \ T k) {\n        static_assert(is_geometry_floating_point<T>::value == true);\n\
-    \        x /= k, y /= k;\n        return *this;\n    }\n\n    Point operator+()\
-    \ const { return *this; }\n    Point operator-() const { return Point(-x, -y);\
-    \ }\n\n    friend Point operator+(const Point& a, const Point& b) { return Point(a)\
+    \n    Point() = default;\n    Point(const T x, const T y) : x(x), y(y) {}\n  \
+    \  template <class U> Point(const Point<U> p) : x(p.x), y(p.y) {}\n\n    Point&\
+    \ operator+=(const Point& p) {\n        x += p.x, y += p.y;\n        return *this;\n\
+    \    }\n    Point& operator-=(const Point& p) {\n        x -= p.x, y -= p.y;\n\
+    \        return *this;\n    }\n    Point& operator*=(const Point& p) {\n     \
+    \   static_assert(is_geometry_floating_point<T>::value == true);\n        return\
+    \ *this = Point(x * p.x - y * p.y, x * p.y + y * p.x);\n    }\n    Point& operator/=(const\
+    \ Point& p) {\n        static_assert(is_geometry_floating_point<T>::value == true);\n\
+    \        return *this = Point(x * p.x + y * p.y, -x * p.y + y * p.x) / (p.x *\
+    \ p.x + p.y * p.y);\n    }\n    Point& operator*=(const T k) {\n        x *= k,\
+    \ y *= k;\n        return *this;\n    }\n    Point& operator/=(const T k) {\n\
+    \        static_assert(is_geometry_floating_point<T>::value == true);\n      \
+    \  x /= k, y /= k;\n        return *this;\n    }\n\n    Point operator+() const\
+    \ { return *this; }\n    Point operator-() const { return Point(-x, -y); }\n\n\
+    \    friend Point operator+(const Point& a, const Point& b) { return Point(a)\
     \ += b; }\n    friend Point operator-(const Point& a, const Point& b) { return\
     \ Point(a) -= b; }\n    friend Point operator*(const Point& a, const Point& b)\
     \ { return Point(a) *= b; }\n    friend Point operator/(const Point& a, const\
@@ -341,52 +343,52 @@ data:
   isVerificationFile: false
   path: geometry/point.hpp
   requiredBy:
-  - geometry/is_intersect.hpp
-  - geometry/convex_polygon_cut.hpp
-  - geometry/distance.hpp
-  - geometry/convex_hull_monotone_chain.hpp
-  - geometry/polygon.hpp
-  - geometry/circle.hpp
-  - geometry/all.hpp
-  - geometry/line.hpp
-  - geometry/cross_point.hpp
-  - geometry/convex_polygon_diameter.hpp
-  - geometry/tangent.hpp
-  - geometry/common_area.hpp
-  - geometry/closest_pair.hpp
-  - geometry/incircle.hpp
   - geometry/circumscribed_circle.hpp
   - geometry/contain.hpp
+  - geometry/tangent.hpp
+  - geometry/circle.hpp
+  - geometry/common_area.hpp
+  - geometry/polygon.hpp
+  - geometry/closest_pair.hpp
+  - geometry/convex_polygon_diameter.hpp
+  - geometry/distance.hpp
+  - geometry/convex_polygon_cut.hpp
+  - geometry/line.hpp
+  - geometry/incircle.hpp
+  - geometry/all.hpp
+  - geometry/is_intersect.hpp
   - geometry/farthest_pair.hpp
-  timestamp: '2024-08-04 06:15:03+09:00'
+  - geometry/cross_point.hpp
+  - geometry/convex_hull_monotone_chain.hpp
+  timestamp: '2024-12-04 12:30:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/geometry/is_convex.test.cpp
-  - verify/geometry/common_area_cc.test.cpp
-  - verify/geometry/ccw.test.cpp
-  - verify/geometry/convex_hull_monotone_chain_1.test.cpp
-  - verify/geometry/cross_point_cl.test.cpp
-  - verify/geometry/reflection.test.cpp
-  - verify/geometry/is_orthogonal_is_parallel.test.cpp
-  - verify/geometry/incircle.test.cpp
-  - verify/geometry/convex_polygon_diameter.test.cpp
-  - verify/geometry/closest_pair.test.cpp
-  - verify/geometry/cross_point_cc.test.cpp
-  - verify/geometry/is_intersect_ss.test.cpp
-  - verify/geometry/common_area_cp.test.cpp
-  - verify/geometry/convex_hull_monotone_chain_2.test.cpp
-  - verify/geometry/cross_point_ss.test.cpp
-  - verify/geometry/tangent_cc.test.cpp
-  - verify/geometry/tangent_number.test.cpp
   - verify/geometry/convex_polygon_cut.test.cpp
-  - verify/geometry/tangent_cp.test.cpp
-  - verify/geometry/convex_contain.test.cpp
   - verify/geometry/contain.test.cpp
+  - verify/geometry/is_convex.test.cpp
+  - verify/geometry/convex_polygon_diameter.test.cpp
+  - verify/geometry/reflection.test.cpp
+  - verify/geometry/is_intersect_ss.test.cpp
+  - verify/geometry/ccw.test.cpp
+  - verify/geometry/tangent_cc.test.cpp
+  - verify/geometry/cross_point_cl.test.cpp
+  - verify/geometry/convex_hull_monotone_chain_2.test.cpp
   - verify/geometry/distance_ss.test.cpp
-  - verify/geometry/circumscribed_circle.test.cpp
-  - verify/geometry/area.test.cpp
-  - verify/geometry/compare_atan2.test.cpp
   - verify/geometry/projection.test.cpp
+  - verify/geometry/tangent_cp.test.cpp
+  - verify/geometry/common_area_cc.test.cpp
+  - verify/geometry/area.test.cpp
+  - verify/geometry/cross_point_cc.test.cpp
+  - verify/geometry/convex_contain.test.cpp
+  - verify/geometry/tangent_number.test.cpp
+  - verify/geometry/compare_atan2.test.cpp
+  - verify/geometry/common_area_cp.test.cpp
+  - verify/geometry/is_orthogonal_is_parallel.test.cpp
+  - verify/geometry/closest_pair.test.cpp
+  - verify/geometry/circumscribed_circle.test.cpp
+  - verify/geometry/convex_hull_monotone_chain_1.test.cpp
+  - verify/geometry/incircle.test.cpp
+  - verify/geometry/cross_point_ss.test.cpp
 documentation_of: geometry/point.hpp
 layout: document
 title: "Point (\u70B9)"

@@ -214,8 +214,8 @@ data:
   timestamp: '2024-08-09 02:04:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/heavy_light_decomposition_3.test.cpp
   - verify/graph/heavy_light_decomposition_2.test.cpp
+  - verify/graph/heavy_light_decomposition_3.test.cpp
   - verify/graph/heavy_light_decomposition_1.test.cpp
 documentation_of: graph/heavy_light_decomposition.hpp
 layout: document

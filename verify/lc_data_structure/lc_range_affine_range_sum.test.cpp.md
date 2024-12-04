@@ -113,7 +113,7 @@ data:
     \  d[k] = MSF::mapping(f, d[k]);\n        if (k < size) lz[k] = MF::composition(f,\
     \ lz[k]);\n    }\n    void push(int k) {\n        all_apply(k << 1, lz[k]);\n\
     \        all_apply((k << 1) | 1, lz[k]);\n        lz[k] = MF::id();\n    }\n};\n\
-    #line 2 \"math/static_modint.hpp\"\n\n#line 4 \"math/static_modint.hpp\"\n\n//\
+    #line 2 \"math/static_modint.hpp\"\n\n#line 5 \"math/static_modint.hpp\"\n\n//\
     \ constexpr ... for constexpr bool prime()\ntemplate <int m> struct StaticModint\
     \ {\n    using mint = StaticModint;\n    unsigned int _v;\n\n    static constexpr\
     \ int mod() { return m; }\n    static constexpr unsigned int umod() { return m;\
@@ -195,7 +195,7 @@ data:
   isVerificationFile: true
   path: verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
   requiredBy: []
-  timestamp: '2024-07-13 11:37:49+09:00'
+  timestamp: '2024-12-04 12:30:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_data_structure/lc_range_affine_range_sum.test.cpp

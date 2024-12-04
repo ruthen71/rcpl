@@ -30,8 +30,8 @@ data:
   isVerificationFile: false
   path: algebra/monoid_s/monoid_min_index.hpp
   requiredBy:
-  - algebra/monoid_s_f/monoid_min_index_add.hpp
   - algebra/monoid_s_f/monoid_min_index_set.hpp
+  - algebra/monoid_s_f/monoid_min_index_add.hpp
   timestamp: '2024-03-24 17:04:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

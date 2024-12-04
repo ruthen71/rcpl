@@ -8,11 +8,11 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"string/next_element_index.hpp\"\n\n#include <string>\n#include\
-    \ <vector>\n\n// nextelement index\n// res[i][c] = s[i, n) \u306B\u304A\u3044\u3066\
-    \u6B21\u306E c \u306E\u767B\u5834\u4F4D\u7F6E\u3092\u8FD4\u3059\ntemplate <class\
-    \ T> std::vector<std::vector<int>> next_element_index(const std::vector<T>& s)\
-    \ {\n    const int n = (int)(s.size());\n    T lb = std::numeric_limits<T>::max(),\
+  bundledCode: "#line 2 \"string/next_element_index.hpp\"\n\n#include <limits>\n#include\
+    \ <string>\n#include <vector>\n\n// nextelement index\n// res[i][c] = s[i, n)\
+    \ \u306B\u304A\u3044\u3066\u6B21\u306E c \u306E\u767B\u5834\u4F4D\u7F6E\u3092\u8FD4\
+    \u3059\ntemplate <class T> std::vector<std::vector<int>> next_element_index(const\
+    \ std::vector<T>& s) {\n    const int n = (int)(s.size());\n    T lb = std::numeric_limits<T>::max(),\
     \ ub = std::numeric_limits<T>::min();\n    for (int i = 0; i < n; i++) {\n   \
     \     if (lb > s[i]) lb = s[i];\n        if (ub < s[i]) ub = s[i];\n    }\n  \
     \  const int sigma = ub - lb + 1;\n    std::vector res(n + 1, std::vector<int>(sigma,\
@@ -21,9 +21,9 @@ data:
     \ next_element_index(const std::string& s) {\n    const int n = (int)(s.size());\n\
     \    std::vector<int> s2(n);\n    for (int i = 0; i < n; i++) s2[i] = s[i];\n\
     \    return next_element_index(s2);\n}\n"
-  code: "#pragma once\n\n#include <string>\n#include <vector>\n\n// nextelement index\n\
-    // res[i][c] = s[i, n) \u306B\u304A\u3044\u3066\u6B21\u306E c \u306E\u767B\u5834\
-    \u4F4D\u7F6E\u3092\u8FD4\u3059\ntemplate <class T> std::vector<std::vector<int>>\
+  code: "#pragma once\n\n#include <limits>\n#include <string>\n#include <vector>\n\
+    \n// nextelement index\n// res[i][c] = s[i, n) \u306B\u304A\u3044\u3066\u6B21\u306E\
+    \ c \u306E\u767B\u5834\u4F4D\u7F6E\u3092\u8FD4\u3059\ntemplate <class T> std::vector<std::vector<int>>\
     \ next_element_index(const std::vector<T>& s) {\n    const int n = (int)(s.size());\n\
     \    T lb = std::numeric_limits<T>::max(), ub = std::numeric_limits<T>::min();\n\
     \    for (int i = 0; i < n; i++) {\n        if (lb > s[i]) lb = s[i];\n      \
@@ -38,7 +38,7 @@ data:
   isVerificationFile: false
   path: string/next_element_index.hpp
   requiredBy: []
-  timestamp: '2024-08-27 03:25:59+09:00'
+  timestamp: '2024-12-04 12:30:48+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: string/next_element_index.hpp

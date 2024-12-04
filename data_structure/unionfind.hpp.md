@@ -64,14 +64,14 @@ data:
   isVerificationFile: false
   path: data_structure/unionfind.hpp
   requiredBy:
-  - graph/kruskal.hpp
   - graph/minimum_steiner_tree.hpp
+  - graph/kruskal.hpp
   timestamp: '2024-07-31 17:25:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/lc_data_structure/lc_unionfind.test.cpp
   - verify/graph/minimum_steiner_tree.test.cpp
   - verify/graph/kruskal.test.cpp
-  - verify/lc_data_structure/lc_unionfind.test.cpp
 documentation_of: data_structure/unionfind.hpp
 layout: document
 title: UnionFind

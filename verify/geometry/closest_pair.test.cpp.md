@@ -45,7 +45,8 @@ data:
     \ || is_geometry_integer<T>::value, std::true_type, std::false_type>::type;\n\
     #line 4 \"geometry/point.hpp\"\n\n#include <cmath>\n#line 7 \"geometry/point.hpp\"\
     \n\n// \u70B9\ntemplate <class T> struct Point {\n    T x, y;\n\n    Point() =\
-    \ default;\n    Point(const T x, const T y) : x(x), y(y) {}\n\n    Point& operator+=(const\
+    \ default;\n    Point(const T x, const T y) : x(x), y(y) {}\n    template <class\
+    \ U> Point(const Point<U> p) : x(p.x), y(p.y) {}\n\n    Point& operator+=(const\
     \ Point& p) {\n        x += p.x, y += p.y;\n        return *this;\n    }\n   \
     \ Point& operator-=(const Point& p) {\n        x -= p.x, y -= p.y;\n        return\
     \ *this;\n    }\n    Point& operator*=(const Point& p) {\n        static_assert(is_geometry_floating_point<T>::value\
@@ -177,7 +178,7 @@ data:
   isVerificationFile: true
   path: verify/geometry/closest_pair.test.cpp
   requiredBy: []
-  timestamp: '2024-08-04 06:15:03+09:00'
+  timestamp: '2024-12-04 12:30:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/geometry/closest_pair.test.cpp

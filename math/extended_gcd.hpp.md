@@ -42,14 +42,14 @@ data:
   path: math/extended_gcd.hpp
   requiredBy:
   - math/inv_mod.hpp
-  - math/linear_diophantine.hpp
   - math/baby_step_giant_step.hpp
+  - math/linear_diophantine.hpp
   - math/chinese_remainder_theorem.hpp
   timestamp: '2024-02-23 10:34:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj_ntl/aoj_ntl_1_e.test.cpp
   - verify/yuki/yuki_186_chinese_remainder_theorem.test.cpp
+  - verify/aoj_ntl/aoj_ntl_1_e.test.cpp
 documentation_of: math/extended_gcd.hpp
 layout: document
 redirect_from:

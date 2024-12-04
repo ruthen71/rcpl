@@ -46,17 +46,17 @@ data:
   path: algebra/monoid_f/monoid_add.hpp
   requiredBy:
   - algebra/monoid_s_f/monoid_max_add.hpp
-  - algebra/monoid_s_f/monoid_max_index_add.hpp
-  - algebra/monoid_s_f/monoid_min_index_add.hpp
-  - algebra/monoid_s_f/monoid_min_add.hpp
   - algebra/monoid_s_f/monoid_sum_size_add.hpp
+  - algebra/monoid_s_f/monoid_min_add.hpp
+  - algebra/monoid_s_f/monoid_min_index_add.hpp
+  - algebra/monoid_s_f/monoid_max_index_add.hpp
   timestamp: '2024-03-24 17:04:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp
+  - verify/graph/heavy_light_decomposition_1.test.cpp
   - verify/aoj_dsl/aoj_dsl_2_e_dual_segment_tree.test.cpp
   - verify/aoj_dsl/aoj_dsl_2_h_lazy_segment_tree.test.cpp
-  - verify/graph/heavy_light_decomposition_1.test.cpp
+  - verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp
 documentation_of: algebra/monoid_f/monoid_add.hpp
 layout: document
 redirect_from:
