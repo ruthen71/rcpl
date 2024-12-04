@@ -11,6 +11,7 @@ template <class T> struct Point {
 
     Point() = default;
     Point(const T x, const T y) : x(x), y(y) {}
+    template <class U> Point(const Point<U> p) : x(p.x), y(p.y) {}
 
     Point& operator+=(const Point& p) {
         x += p.x, y += p.y;

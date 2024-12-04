@@ -1,6 +1,7 @@
 #pragma once
 
 #include <utility>
+#include <cassert>
 
 // constexpr ... for constexpr bool prime()
 template <int m> struct StaticModint {
