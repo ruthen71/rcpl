@@ -3,6 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <numeric>
+#include <cmath>
 
 // Mo's Algorithm
 // https://snuke.hatenablog.com/entry/2016/07/01/000000
