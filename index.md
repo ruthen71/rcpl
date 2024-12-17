@@ -131,7 +131,7 @@ data:
       path: data_structure/erasable_priority_queue.hpp
       title: "Erasable Priority Queue (\u524A\u9664\u53EF\u80FD\u512A\u5148\u5EA6\u4ED8\
         \u304D\u30AD\u30E5\u30FC)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/fenwick_tree.hpp
       title: Fenwick Tree (Binary Indexed Tree)
     - icon: ':heavy_check_mark:'
@@ -413,7 +413,7 @@ data:
     - icon: ':warning:'
       path: misc/custom_hash.hpp
       title: misc/custom_hash.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: misc/mo.hpp
       title: Mo's Algorithm
     - icon: ':warning:'
@@ -725,7 +725,7 @@ data:
       title: verify/lc_math/lc_enumerate_primes.test.cpp
   - name: verify/misc
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/misc/mo.test.cpp
       title: verify/misc/mo.test.cpp
   - name: verify/string

@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/fenwick_tree.hpp
     title: Fenwick Tree (Binary Indexed Tree)
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: misc/mo.hpp
     title: Mo's Algorithm
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/static_range_inversions_query
@@ -19,7 +19,7 @@ data:
     - https://judge.yosupo.jp/problem/static_range_inversions_query
   bundledCode: "#line 1 \"verify/misc/mo.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_inversions_query\"\
     \n\n#include <iostream>\n\n#line 2 \"misc/mo.hpp\"\n\n#include <vector>\n#include\
-    \ <algorithm>\n#include <numeric>\n\n// Mo's Algorithm\n// https://snuke.hatenablog.com/entry/2016/07/01/000000\n\
+    \ <algorithm>\n#include <numeric>\n#include <cmath>\n\n// Mo's Algorithm\n// https://snuke.hatenablog.com/entry/2016/07/01/000000\n\
     // complexity: O(N * N / B + Q * B)\n// -> O(N sqrt(Q)) (B := N / sqrt(Q))\ntemplate\
     \ <class AddLeft, class AddRight, class DelLeft, class DelRight, class Out>\n\
     void mo(const int n, const std::vector<int> l, const std::vector<int> r, const\
@@ -103,8 +103,8 @@ data:
   isVerificationFile: true
   path: verify/misc/mo.test.cpp
   requiredBy: []
-  timestamp: '2024-12-17 21:01:55+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-12-17 21:10:31+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/misc/mo.test.cpp
 layout: document

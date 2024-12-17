@@ -12,12 +12,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/lc_data_structure/lc_point_add_range_sum_fenwick_tree.test.cpp
     title: verify/lc_data_structure/lc_point_add_range_sum_fenwick_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/misc/mo.test.cpp
     title: verify/misc/mo.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/fenwick_tree.hpp\"\n\n#include <vector>\n\
@@ -59,7 +59,7 @@ data:
   requiredBy:
   - dp/inversion_number.hpp
   timestamp: '2024-12-17 21:01:55+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_data_structure/lc_point_add_range_sum_fenwick_tree.test.cpp
   - verify/misc/mo.test.cpp

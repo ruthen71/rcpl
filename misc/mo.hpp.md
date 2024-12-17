@@ -3,18 +3,18 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/misc/mo.test.cpp
     title: verify/misc/mo.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://nyaannyaan.github.io/library/misc/mo.hpp
     - https://snuke.hatenablog.com/entry/2016/07/01/000000
   bundledCode: "#line 2 \"misc/mo.hpp\"\n\n#include <vector>\n#include <algorithm>\n\
-    #include <numeric>\n\n// Mo's Algorithm\n// https://snuke.hatenablog.com/entry/2016/07/01/000000\n\
+    #include <numeric>\n#include <cmath>\n\n// Mo's Algorithm\n// https://snuke.hatenablog.com/entry/2016/07/01/000000\n\
     // complexity: O(N * N / B + Q * B)\n// -> O(N sqrt(Q)) (B := N / sqrt(Q))\ntemplate\
     \ <class AddLeft, class AddRight, class DelLeft, class DelRight, class Out>\n\
     void mo(const int n, const std::vector<int> l, const std::vector<int> r, const\
@@ -44,7 +44,7 @@ data:
     \ &out, const int bucket_size_value = -1) {\n    mo(n, l, r, add, add, del, del,\
     \ out, bucket_size_value);\n}\n"
   code: "#pragma once\n\n#include <vector>\n#include <algorithm>\n#include <numeric>\n\
-    \n// Mo's Algorithm\n// https://snuke.hatenablog.com/entry/2016/07/01/000000\n\
+    #include <cmath>\n\n// Mo's Algorithm\n// https://snuke.hatenablog.com/entry/2016/07/01/000000\n\
     // complexity: O(N * N / B + Q * B)\n// -> O(N sqrt(Q)) (B := N / sqrt(Q))\ntemplate\
     \ <class AddLeft, class AddRight, class DelLeft, class DelRight, class Out>\n\
     void mo(const int n, const std::vector<int> l, const std::vector<int> r, const\
@@ -77,8 +77,8 @@ data:
   isVerificationFile: false
   path: misc/mo.hpp
   requiredBy: []
-  timestamp: '2024-12-17 21:01:55+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2024-12-17 21:10:31+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/misc/mo.test.cpp
 documentation_of: misc/mo.hpp
@@ -86,8 +86,10 @@ layout: document
 title: Mo's Algorithm
 ---
 
-## 使用例
+## 参考文献
 
+- [あなたは嘘つきですかと聞かれたら「YES」と答えるブログ, Mo's algorithm とその上位互換の話](https://snuke.hatenablog.com/entry/2016/07/01/000000)
+- [Nyaan's Library, Mo's algorithm](https://nyaannyaan.github.io/library/misc/mo.hpp)
 - [AtCoder Beginner Contest 384 G - Abs Sum](https://atcoder.jp/contests/abc384/tasks/abc384_g)
     - 区間 $ [l, r) $ に対するクエリではなく, 区間 $ [0, l) $ と区間 $ [0, r) $ に対するクエリと考えると, `add_left` と `del_left` の渡し方を逆にすれば良い
     - [提出例](https://atcoder.jp/contests/abc384/submissions/60852613)
