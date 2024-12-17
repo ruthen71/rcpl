@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/fenwick_tree.hpp
     title: Fenwick Tree (Binary Indexed Tree)
   _extendedRequiredBy: []
@@ -17,7 +17,7 @@ data:
   bundledCode: "#line 1 \"verify/lc_data_structure/lc_point_add_range_sum_fenwick_tree.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\n\
     #include <bits/stdc++.h>\n\n#line 2 \"data_structure/fenwick_tree.hpp\"\n\n#line\
-    \ 4 \"data_structure/fenwick_tree.hpp\"\ntemplate <class T> struct FenwickTree\
+    \ 5 \"data_structure/fenwick_tree.hpp\"\n\ntemplate <class T> struct FenwickTree\
     \ {\n    int n;\n    std::vector<T> seg;\n    FenwickTree() : n(0) {}\n    FenwickTree(int\
     \ n) : n(n), seg(n + 1, 0) {}\n    FenwickTree(std::vector<T>& arr) {\n      \
     \  n = int(arr.size());\n        seg.resize(n + 1);\n        for (int i = 0; i\
@@ -55,7 +55,7 @@ data:
   isVerificationFile: true
   path: verify/lc_data_structure/lc_point_add_range_sum_fenwick_tree.test.cpp
   requiredBy: []
-  timestamp: '2024-07-13 11:37:49+09:00'
+  timestamp: '2024-12-17 21:01:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lc_data_structure/lc_point_add_range_sum_fenwick_tree.test.cpp

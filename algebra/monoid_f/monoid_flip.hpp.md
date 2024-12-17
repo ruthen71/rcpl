@@ -24,8 +24,8 @@ data:
   isVerificationFile: false
   path: algebra/monoid_f/monoid_flip.hpp
   requiredBy:
-  - algebra/monoid_s_f/monoid_inversion_flip.hpp
   - algebra/monoid_s_f/monoid_max01_flip.hpp
+  - algebra/monoid_s_f/monoid_inversion_flip.hpp
   timestamp: '2024-03-24 19:02:42+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

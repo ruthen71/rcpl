@@ -131,7 +131,7 @@ data:
       path: data_structure/erasable_priority_queue.hpp
       title: "Erasable Priority Queue (\u524A\u9664\u53EF\u80FD\u512A\u5148\u5EA6\u4ED8\
         \u304D\u30AD\u30E5\u30FC)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/fenwick_tree.hpp
       title: Fenwick Tree (Binary Indexed Tree)
     - icon: ':heavy_check_mark:'
@@ -413,7 +413,7 @@ data:
     - icon: ':warning:'
       path: misc/custom_hash.hpp
       title: misc/custom_hash.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: misc/mo.hpp
       title: Mo's Algorithm
     - icon: ':warning:'
@@ -710,9 +710,6 @@ data:
       path: verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
       title: verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
     - icon: ':heavy_check_mark:'
-      path: verify/lc_data_structure/lc_static_range_inversions_query.test.cpp
-      title: verify/lc_data_structure/lc_static_range_inversions_query.test.cpp
-    - icon: ':heavy_check_mark:'
       path: verify/lc_data_structure/lc_static_range_sum.test.cpp
       title: verify/lc_data_structure/lc_static_range_sum.test.cpp
     - icon: ':heavy_check_mark:'
@@ -726,6 +723,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/lc_math/lc_enumerate_primes.test.cpp
       title: verify/lc_math/lc_enumerate_primes.test.cpp
+  - name: verify/misc
+    pages:
+    - icon: ':x:'
+      path: verify/misc/mo.test.cpp
+      title: verify/misc/mo.test.cpp
   - name: verify/string
     pages:
     - icon: ':heavy_check_mark:'

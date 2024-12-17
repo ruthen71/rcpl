@@ -70,8 +70,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_data_structure/lc_unionfind.test.cpp
-  - verify/graph/minimum_steiner_tree.test.cpp
   - verify/graph/kruskal.test.cpp
+  - verify/graph/minimum_steiner_tree.test.cpp
 documentation_of: data_structure/unionfind.hpp
 layout: document
 title: UnionFind
