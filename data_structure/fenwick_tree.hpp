@@ -1,6 +1,8 @@
 #pragma once
 
 #include <vector>
+#include <cassert>
+
 template <class T> struct FenwickTree {
     int n;
     std::vector<T> seg;

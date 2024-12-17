@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/static_range_inversions_query"
 
-#include <bits/stdc++.h>
+#include <iostream>
 
 #include "misc/mo.hpp"
 #include "data_structure/fenwick_tree.hpp"
@@ -18,7 +18,7 @@ int main() {
     B.erase(std::unique(B.begin(), B.end()), B.end());
     for (auto &&e : A) e = std::lower_bound(B.begin(), B.end(), e) - B.begin();
 
-    const int M = (int)B.size();
+    const int M = (int)(B.size());
     FenwickTree<long long> fen(M);
     std::vector<long long> ans(Q);
     long long cur = 0;
