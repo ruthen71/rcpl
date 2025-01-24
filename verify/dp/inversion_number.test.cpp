@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_D"
 
-#include <bits/stdc++.h>
+#include <iostream>
 
 #include "dp/inversion_number.hpp"
 

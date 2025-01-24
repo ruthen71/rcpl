@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_10_C"
 
-#include <bits/stdc++.h>
+#include <iostream>
 #include "dp/longest_common_subsequence.hpp"
 
 int main() {
