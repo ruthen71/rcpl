@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <string>
+#include <algorithm>
 
 template <class T> std::vector<T> longest_common_subsequence(std::vector<T>& a, std::vector<T>& b) {
     const int n = (int)(a.size()), m = (int)(b.size());

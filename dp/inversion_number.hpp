@@ -1,6 +1,7 @@
 #pragma once
 
 #include "data_structure/fenwick_tree.hpp"
+#include <algorithm>
 
 template <class T> long long inversion_number(std::vector<T>& A) {
     auto B = A;
