@@ -32,25 +32,25 @@ data:
     \   std::vector<T> make_vector() {\n        std::vector<T> vec(n);\n        for\
     \ (int i = 0; i < n; i++) vec[i] = get(i);\n        return vec;\n    }\n};\n#line\
     \ 4 \"dp/inversion_number.hpp\"\n#include <algorithm>\n\ntemplate <class T> long\
-    \ long inversion_number(std::vector<T>& A) {\n    auto B = A;\n    sort(B.begin(),\
-    \ B.end());\n    B.erase(unique(B.begin(), B.end()), B.end());\n    int N = (int)B.size();\n\
-    \    FenwickTree<int> fen(N);\n    long long ret = 0;\n    for (auto& ai : A)\
-    \ {\n        int i = lower_bound(B.begin(), B.end(), ai) - B.begin();\n      \
-    \  ret += fen.sum(i + 1, N);\n        fen.add(i, 1);\n    }\n    return ret;\n\
-    }\n"
+    \ long inversion_number(std::vector<T>& a) {\n    auto z = a;\n    std::sort(z.begin(),\
+    \ z.end());\n    z.erase(std::unique(z.begin(), z.end()), z.end());\n    const\
+    \ int n = (int)(z.size());\n    FenwickTree<int> fen(n);\n    long long ret =\
+    \ 0;\n    for (auto& ai : a) {\n        int i = lower_bound(z.begin(), z.end(),\
+    \ ai) - z.begin();\n        ret += fen.sum(i + 1, n);\n        fen.add(i, 1);\n\
+    \    }\n    return ret;\n}\n"
   code: "#pragma once\n\n#include \"data_structure/fenwick_tree.hpp\"\n#include <algorithm>\n\
-    \ntemplate <class T> long long inversion_number(std::vector<T>& A) {\n    auto\
-    \ B = A;\n    sort(B.begin(), B.end());\n    B.erase(unique(B.begin(), B.end()),\
-    \ B.end());\n    int N = (int)B.size();\n    FenwickTree<int> fen(N);\n    long\
-    \ long ret = 0;\n    for (auto& ai : A) {\n        int i = lower_bound(B.begin(),\
-    \ B.end(), ai) - B.begin();\n        ret += fen.sum(i + 1, N);\n        fen.add(i,\
+    \ntemplate <class T> long long inversion_number(std::vector<T>& a) {\n    auto\
+    \ z = a;\n    std::sort(z.begin(), z.end());\n    z.erase(std::unique(z.begin(),\
+    \ z.end()), z.end());\n    const int n = (int)(z.size());\n    FenwickTree<int>\
+    \ fen(n);\n    long long ret = 0;\n    for (auto& ai : a) {\n        int i = lower_bound(z.begin(),\
+    \ z.end(), ai) - z.begin();\n        ret += fen.sum(i + 1, n);\n        fen.add(i,\
     \ 1);\n    }\n    return ret;\n}"
   dependsOn:
   - data_structure/fenwick_tree.hpp
   isVerificationFile: false
   path: dp/inversion_number.hpp
   requiredBy: []
-  timestamp: '2025-01-24 21:06:48+09:00'
+  timestamp: '2025-01-24 21:13:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/dp/inversion_number.test.cpp
