@@ -4,17 +4,22 @@ data:
   - icon: ':question:'
     path: data_structure/fenwick_tree.hpp
     title: Fenwick Tree (Binary Indexed Tree)
-  _extendedRequiredBy: []
-  _extendedVerifiedWith:
   - icon: ':x:'
-    path: verify/dp/inversion_number.test.cpp
-    title: verify/dp/inversion_number.test.cpp
+    path: dp/inversion_number.hpp
+    title: "Inversion Number (\u8EE2\u5012\u6570)"
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: true
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"dp/inversion_number.hpp\"\n\n#line 2 \"data_structure/fenwick_tree.hpp\"\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_D
+    links:
+    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_D
+  bundledCode: "#line 1 \"verify/dp/inversion_number.test.cpp\"\n#define PROBLEM \"\
+    https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_D\"\n\n#include\
+    \ <iostream>\n\n#line 2 \"dp/inversion_number.hpp\"\n\n#line 2 \"data_structure/fenwick_tree.hpp\"\
     \n\n#include <vector>\n#include <cassert>\n\ntemplate <class T> struct FenwickTree\
     \ {\n    int n;\n    std::vector<T> seg;\n    FenwickTree() : n(0) {}\n    FenwickTree(int\
     \ n) : n(n), seg(n + 1, 0) {}\n    FenwickTree(std::vector<T>& arr) {\n      \
@@ -36,29 +41,28 @@ data:
     \ B.end()), B.end());\n    int N = (int)B.size();\n    FenwickTree<int> fen(N);\n\
     \    long long ret = 0;\n    for (auto& ai : A) {\n        int i = lower_bound(B.begin(),\
     \ B.end(), ai) - B.begin();\n        ret += fen.sum(i + 1, N);\n        fen.add(i,\
-    \ 1);\n    }\n    return ret;\n}\n"
-  code: "#pragma once\n\n#include \"data_structure/fenwick_tree.hpp\"\n\ntemplate\
-    \ <class T> long long inversion_number(std::vector<T>& A) {\n    auto B = A;\n\
-    \    sort(B.begin(), B.end());\n    B.erase(unique(B.begin(), B.end()), B.end());\n\
-    \    int N = (int)B.size();\n    FenwickTree<int> fen(N);\n    long long ret =\
-    \ 0;\n    for (auto& ai : A) {\n        int i = lower_bound(B.begin(), B.end(),\
-    \ ai) - B.begin();\n        ret += fen.sum(i + 1, N);\n        fen.add(i, 1);\n\
-    \    }\n    return ret;\n}"
+    \ 1);\n    }\n    return ret;\n}\n#line 6 \"verify/dp/inversion_number.test.cpp\"\
+    \n\nint main() {\n    int N;\n    std::cin >> N;\n    std::vector<int> A(N);\n\
+    \    for (int i = 0; i < N; i++) std::cin >> A[i];\n    std::cout << inversion_number<int>(A)\
+    \ << '\\n';\n    return 0;\n}\n"
+  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_D\"\
+    \n\n#include <iostream>\n\n#include \"dp/inversion_number.hpp\"\n\nint main()\
+    \ {\n    int N;\n    std::cin >> N;\n    std::vector<int> A(N);\n    for (int\
+    \ i = 0; i < N; i++) std::cin >> A[i];\n    std::cout << inversion_number<int>(A)\
+    \ << '\\n';\n    return 0;\n}\n"
   dependsOn:
+  - dp/inversion_number.hpp
   - data_structure/fenwick_tree.hpp
-  isVerificationFile: false
-  path: dp/inversion_number.hpp
+  isVerificationFile: true
+  path: verify/dp/inversion_number.test.cpp
   requiredBy: []
-  timestamp: '2024-12-17 21:01:55+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - verify/dp/inversion_number.test.cpp
-documentation_of: dp/inversion_number.hpp
+  timestamp: '2025-01-24 21:00:23+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
+  verifiedWith: []
+documentation_of: verify/dp/inversion_number.test.cpp
 layout: document
-title: "Inversion Number (\u8EE2\u5012\u6570)"
+redirect_from:
+- /verify/verify/dp/inversion_number.test.cpp
+- /verify/verify/dp/inversion_number.test.cpp.html
+title: verify/dp/inversion_number.test.cpp
 ---
-
-$ O(N \log N) $ で転倒数を求める。
-座圧する。
-転倒数はバブルソートの交換回数と等しい。
-

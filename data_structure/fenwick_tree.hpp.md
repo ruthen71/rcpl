@@ -2,22 +2,22 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: dp/inversion_number.hpp
     title: "Inversion Number (\u8EE2\u5012\u6570)"
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj_alds1/aoj_alds1_5_d.test.cpp
-    title: verify/aoj_alds1/aoj_alds1_5_d.test.cpp
+  - icon: ':x:'
+    path: verify/dp/inversion_number.test.cpp
+    title: verify/dp/inversion_number.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/lc_data_structure/lc_point_add_range_sum_fenwick_tree.test.cpp
     title: verify/lc_data_structure/lc_point_add_range_sum_fenwick_tree.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/misc/mo.test.cpp
     title: verify/misc/mo.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/fenwick_tree.hpp\"\n\n#include <vector>\n\
@@ -59,11 +59,11 @@ data:
   requiredBy:
   - dp/inversion_number.hpp
   timestamp: '2024-12-17 21:01:55+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/lc_data_structure/lc_point_add_range_sum_fenwick_tree.test.cpp
   - verify/misc/mo.test.cpp
-  - verify/aoj_alds1/aoj_alds1_5_d.test.cpp
+  - verify/dp/inversion_number.test.cpp
+  - verify/lc_data_structure/lc_point_add_range_sum_fenwick_tree.test.cpp
 documentation_of: data_structure/fenwick_tree.hpp
 layout: document
 title: Fenwick Tree (Binary Indexed Tree)

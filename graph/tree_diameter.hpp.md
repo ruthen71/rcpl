@@ -104,9 +104,9 @@ data:
   timestamp: '2024-07-31 21:19:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/tree_diameter_1.test.cpp
-  - verify/graph/tree_diameter_2.test.cpp
   - verify/graph/zero_one_bfs.test.cpp
+  - verify/graph/tree_diameter_2.test.cpp
+  - verify/graph/tree_diameter_1.test.cpp
 documentation_of: graph/tree_diameter.hpp
 layout: document
 title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"

@@ -131,7 +131,7 @@ data:
       path: data_structure/erasable_priority_queue.hpp
       title: "Erasable Priority Queue (\u524A\u9664\u53EF\u80FD\u512A\u5148\u5EA6\u4ED8\
         \u304D\u30AD\u30E5\u30FC)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/fenwick_tree.hpp
       title: Fenwick Tree (Binary Indexed Tree)
     - icon: ':heavy_check_mark:'
@@ -172,7 +172,7 @@ data:
       path: dp/histogram_largest_rectangle.hpp
       title: "Histogram Largest Rectangle (\u30D2\u30B9\u30C8\u30B0\u30E9\u30E0\u306E\
         \u6700\u5927\u9577\u65B9\u5F62)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: dp/inversion_number.hpp
       title: "Inversion Number (\u8EE2\u5012\u6570)"
     - icon: ':heavy_check_mark:'
@@ -180,6 +180,10 @@ data:
       title: "Knapsack Limitations (\u500B\u6570\u5236\u9650\u4ED8\u304D\u30CA\u30C3\
         \u30D7\u30B5\u30C3\u30AF\u554F\u984C)"
     - icon: ':heavy_check_mark:'
+      path: dp/levenshtein_distance.hpp
+      title: "Levenshtein Distance (\u30EC\u30FC\u30D9\u30F3\u30B7\u30E5\u30BF\u30A4\
+        \u30F3\u8DDD\u96E2)"
+    - icon: ':x:'
       path: dp/longest_common_subsequence.hpp
       title: "Longest Common Subsequence (\u6700\u9577\u5171\u901A\u90E8\u5206\u5217\
         )"
@@ -446,22 +450,13 @@ data:
   - name: verify/aoj_alds1
     pages:
     - icon: ':heavy_check_mark:'
-      path: verify/aoj_alds1/aoj_alds1_10_c.test.cpp
-      title: verify/aoj_alds1/aoj_alds1_10_c.test.cpp
-    - icon: ':heavy_check_mark:'
       path: verify/aoj_alds1/aoj_alds1_1_c.test.cpp
       title: verify/aoj_alds1/aoj_alds1_1_c.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj_alds1/aoj_alds1_1_c_osa_k.test.cpp
       title: verify/aoj_alds1/aoj_alds1_1_c_osa_k.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/aoj_alds1/aoj_alds1_5_d.test.cpp
-      title: verify/aoj_alds1/aoj_alds1_5_d.test.cpp
   - name: verify/aoj_dpl
     pages:
-    - icon: ':heavy_check_mark:'
-      path: verify/aoj_dpl/aoj_dpl_1_d.test.cpp
-      title: verify/aoj_dpl/aoj_dpl_1_d.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj_dpl/aoj_dpl_1_g.test.cpp
       title: verify/aoj_dpl/aoj_dpl_1_g.test.cpp
@@ -547,6 +542,20 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/data_structure/erasable_priority_queue.test.cpp
       title: verify/data_structure/erasable_priority_queue.test.cpp
+  - name: verify/dp
+    pages:
+    - icon: ':x:'
+      path: verify/dp/inversion_number.test.cpp
+      title: verify/dp/inversion_number.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/dp/levenshtein_distance.test.cpp
+      title: verify/dp/levenshtein_distance.test.cpp
+    - icon: ':x:'
+      path: verify/dp/longest_common_subsequence.test.cpp
+      title: verify/dp/longest_common_subsequence.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/dp/longest_increasing_subsequence.test.cpp
+      title: verify/dp/longest_increasing_subsequence.test.cpp
   - name: verify/geometry
     pages:
     - icon: ':heavy_check_mark:'

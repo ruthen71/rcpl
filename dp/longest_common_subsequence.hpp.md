@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj_alds1/aoj_alds1_10_c.test.cpp
-    title: verify/aoj_alds1/aoj_alds1_10_c.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: verify/dp/longest_common_subsequence.test.cpp
+    title: verify/dp/longest_common_subsequence.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"dp/longest_common_subsequence.hpp\"\n\n#include <vector>\n\
@@ -68,9 +68,9 @@ data:
   path: dp/longest_common_subsequence.hpp
   requiredBy: []
   timestamp: '2024-04-30 21:09:18+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - verify/aoj_alds1/aoj_alds1_10_c.test.cpp
+  - verify/dp/longest_common_subsequence.test.cpp
 documentation_of: dp/longest_common_subsequence.hpp
 layout: document
 title: "Longest Common Subsequence (\u6700\u9577\u5171\u901A\u90E8\u5206\u5217)"

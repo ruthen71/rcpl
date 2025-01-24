@@ -386,8 +386,8 @@ data:
   timestamp: '2024-12-04 12:30:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/geometry/tangent_cp.test.cpp
   - verify/geometry/tangent_cc.test.cpp
+  - verify/geometry/tangent_cp.test.cpp
 documentation_of: geometry/tangent.hpp
 layout: document
 title: "Tangent (\u63A5\u7DDA)"

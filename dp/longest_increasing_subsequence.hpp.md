@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/aoj_dpl/aoj_dpl_1_d.test.cpp
-    title: verify/aoj_dpl/aoj_dpl_1_d.test.cpp
+    path: verify/dp/longest_increasing_subsequence.test.cpp
+    title: verify/dp/longest_increasing_subsequence.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -46,7 +46,7 @@ data:
   timestamp: '2024-07-04 21:01:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj_dpl/aoj_dpl_1_d.test.cpp
+  - verify/dp/longest_increasing_subsequence.test.cpp
 documentation_of: dp/longest_increasing_subsequence.hpp
 layout: document
 title: "Longest Increasing Subsequence (\u6700\u9577\u5897\u52A0\u90E8\u5206\u5217\

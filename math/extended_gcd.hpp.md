@@ -41,10 +41,10 @@ data:
   isVerificationFile: false
   path: math/extended_gcd.hpp
   requiredBy:
-  - math/chinese_remainder_theorem.hpp
+  - math/linear_diophantine.hpp
   - math/inv_mod.hpp
   - math/baby_step_giant_step.hpp
-  - math/linear_diophantine.hpp
+  - math/chinese_remainder_theorem.hpp
   timestamp: '2024-02-23 10:34:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

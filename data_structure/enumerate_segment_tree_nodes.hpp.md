@@ -75,8 +75,8 @@ data:
   timestamp: '2024-08-09 02:21:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/data_structure/erasable_priority_queue.test.cpp
   - verify/data_structure/enumerate_segment_tree_nodes.test.cpp
+  - verify/data_structure/erasable_priority_queue.test.cpp
 documentation_of: data_structure/enumerate_segment_tree_nodes.hpp
 layout: document
 title: "Segment Tree \u306E 1 \u70B9\u5909\u66F4\u3084\u533A\u9593\u7DCF\u7A4D\u3092\

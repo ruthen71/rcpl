@@ -43,9 +43,9 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj_other/aoj_1068.test.cpp
-  - verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp
   - verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
   - verify/aoj_dsl/aoj_dsl_2_h_lazy_segment_tree.test.cpp
+  - verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp
 documentation_of: algebra/monoid_s/monoid_min.hpp
 layout: document
 redirect_from:
