@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/fenwick_tree.hpp
     title: Fenwick Tree (Binary Indexed Tree)
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: dp/inversion_number.hpp
     title: "Inversion Number (\u8EE2\u5012\u6570)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_D
@@ -36,15 +36,16 @@ data:
     \    // A[i] = x\n    void set(int i, const T x) { add(i, x - get(i)); }\n\n \
     \   std::vector<T> make_vector() {\n        std::vector<T> vec(n);\n        for\
     \ (int i = 0; i < n; i++) vec[i] = get(i);\n        return vec;\n    }\n};\n#line\
-    \ 4 \"dp/inversion_number.hpp\"\n\ntemplate <class T> long long inversion_number(std::vector<T>&\
-    \ A) {\n    auto B = A;\n    sort(B.begin(), B.end());\n    B.erase(unique(B.begin(),\
-    \ B.end()), B.end());\n    int N = (int)B.size();\n    FenwickTree<int> fen(N);\n\
-    \    long long ret = 0;\n    for (auto& ai : A) {\n        int i = lower_bound(B.begin(),\
-    \ B.end(), ai) - B.begin();\n        ret += fen.sum(i + 1, N);\n        fen.add(i,\
-    \ 1);\n    }\n    return ret;\n}\n#line 6 \"verify/dp/inversion_number.test.cpp\"\
-    \n\nint main() {\n    int N;\n    std::cin >> N;\n    std::vector<int> A(N);\n\
-    \    for (int i = 0; i < N; i++) std::cin >> A[i];\n    std::cout << inversion_number<int>(A)\
-    \ << '\\n';\n    return 0;\n}\n"
+    \ 4 \"dp/inversion_number.hpp\"\n#include <algorithm>\n\ntemplate <class T> long\
+    \ long inversion_number(std::vector<T>& A) {\n    auto B = A;\n    sort(B.begin(),\
+    \ B.end());\n    B.erase(unique(B.begin(), B.end()), B.end());\n    int N = (int)B.size();\n\
+    \    FenwickTree<int> fen(N);\n    long long ret = 0;\n    for (auto& ai : A)\
+    \ {\n        int i = lower_bound(B.begin(), B.end(), ai) - B.begin();\n      \
+    \  ret += fen.sum(i + 1, N);\n        fen.add(i, 1);\n    }\n    return ret;\n\
+    }\n#line 6 \"verify/dp/inversion_number.test.cpp\"\n\nint main() {\n    int N;\n\
+    \    std::cin >> N;\n    std::vector<int> A(N);\n    for (int i = 0; i < N; i++)\
+    \ std::cin >> A[i];\n    std::cout << inversion_number<int>(A) << '\\n';\n   \
+    \ return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_D\"\
     \n\n#include <iostream>\n\n#include \"dp/inversion_number.hpp\"\n\nint main()\
     \ {\n    int N;\n    std::cin >> N;\n    std::vector<int> A(N);\n    for (int\
@@ -56,8 +57,8 @@ data:
   isVerificationFile: true
   path: verify/dp/inversion_number.test.cpp
   requiredBy: []
-  timestamp: '2025-01-24 21:00:23+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-01-24 21:06:48+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/dp/inversion_number.test.cpp
 layout: document

@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/fenwick_tree.hpp
     title: Fenwick Tree (Binary Indexed Tree)
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/dp/inversion_number.test.cpp
     title: verify/dp/inversion_number.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"dp/inversion_number.hpp\"\n\n#line 2 \"data_structure/fenwick_tree.hpp\"\
@@ -31,26 +31,27 @@ data:
     \    // A[i] = x\n    void set(int i, const T x) { add(i, x - get(i)); }\n\n \
     \   std::vector<T> make_vector() {\n        std::vector<T> vec(n);\n        for\
     \ (int i = 0; i < n; i++) vec[i] = get(i);\n        return vec;\n    }\n};\n#line\
-    \ 4 \"dp/inversion_number.hpp\"\n\ntemplate <class T> long long inversion_number(std::vector<T>&\
-    \ A) {\n    auto B = A;\n    sort(B.begin(), B.end());\n    B.erase(unique(B.begin(),\
-    \ B.end()), B.end());\n    int N = (int)B.size();\n    FenwickTree<int> fen(N);\n\
-    \    long long ret = 0;\n    for (auto& ai : A) {\n        int i = lower_bound(B.begin(),\
+    \ 4 \"dp/inversion_number.hpp\"\n#include <algorithm>\n\ntemplate <class T> long\
+    \ long inversion_number(std::vector<T>& A) {\n    auto B = A;\n    sort(B.begin(),\
+    \ B.end());\n    B.erase(unique(B.begin(), B.end()), B.end());\n    int N = (int)B.size();\n\
+    \    FenwickTree<int> fen(N);\n    long long ret = 0;\n    for (auto& ai : A)\
+    \ {\n        int i = lower_bound(B.begin(), B.end(), ai) - B.begin();\n      \
+    \  ret += fen.sum(i + 1, N);\n        fen.add(i, 1);\n    }\n    return ret;\n\
+    }\n"
+  code: "#pragma once\n\n#include \"data_structure/fenwick_tree.hpp\"\n#include <algorithm>\n\
+    \ntemplate <class T> long long inversion_number(std::vector<T>& A) {\n    auto\
+    \ B = A;\n    sort(B.begin(), B.end());\n    B.erase(unique(B.begin(), B.end()),\
+    \ B.end());\n    int N = (int)B.size();\n    FenwickTree<int> fen(N);\n    long\
+    \ long ret = 0;\n    for (auto& ai : A) {\n        int i = lower_bound(B.begin(),\
     \ B.end(), ai) - B.begin();\n        ret += fen.sum(i + 1, N);\n        fen.add(i,\
-    \ 1);\n    }\n    return ret;\n}\n"
-  code: "#pragma once\n\n#include \"data_structure/fenwick_tree.hpp\"\n\ntemplate\
-    \ <class T> long long inversion_number(std::vector<T>& A) {\n    auto B = A;\n\
-    \    sort(B.begin(), B.end());\n    B.erase(unique(B.begin(), B.end()), B.end());\n\
-    \    int N = (int)B.size();\n    FenwickTree<int> fen(N);\n    long long ret =\
-    \ 0;\n    for (auto& ai : A) {\n        int i = lower_bound(B.begin(), B.end(),\
-    \ ai) - B.begin();\n        ret += fen.sum(i + 1, N);\n        fen.add(i, 1);\n\
-    \    }\n    return ret;\n}"
+    \ 1);\n    }\n    return ret;\n}"
   dependsOn:
   - data_structure/fenwick_tree.hpp
   isVerificationFile: false
   path: dp/inversion_number.hpp
   requiredBy: []
-  timestamp: '2024-12-17 21:01:55+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2025-01-24 21:06:48+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/dp/inversion_number.test.cpp
 documentation_of: dp/inversion_number.hpp

@@ -2,11 +2,11 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: dp/inversion_number.hpp
     title: "Inversion Number (\u8EE2\u5012\u6570)"
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/dp/inversion_number.test.cpp
     title: verify/dp/inversion_number.test.cpp
   - icon: ':heavy_check_mark:'
@@ -15,9 +15,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/misc/mo.test.cpp
     title: verify/misc/mo.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/fenwick_tree.hpp\"\n\n#include <vector>\n\
@@ -59,7 +59,7 @@ data:
   requiredBy:
   - dp/inversion_number.hpp
   timestamp: '2024-12-17 21:01:55+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/misc/mo.test.cpp
   - verify/dp/inversion_number.test.cpp

@@ -131,7 +131,7 @@ data:
       path: data_structure/erasable_priority_queue.hpp
       title: "Erasable Priority Queue (\u524A\u9664\u53EF\u80FD\u512A\u5148\u5EA6\u4ED8\
         \u304D\u30AD\u30E5\u30FC)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/fenwick_tree.hpp
       title: Fenwick Tree (Binary Indexed Tree)
     - icon: ':heavy_check_mark:'
@@ -172,7 +172,7 @@ data:
       path: dp/histogram_largest_rectangle.hpp
       title: "Histogram Largest Rectangle (\u30D2\u30B9\u30C8\u30B0\u30E9\u30E0\u306E\
         \u6700\u5927\u9577\u65B9\u5F62)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: dp/inversion_number.hpp
       title: "Inversion Number (\u8EE2\u5012\u6570)"
     - icon: ':heavy_check_mark:'
@@ -183,7 +183,7 @@ data:
       path: dp/levenshtein_distance.hpp
       title: "Levenshtein Distance (\u30EC\u30FC\u30D9\u30F3\u30B7\u30E5\u30BF\u30A4\
         \u30F3\u8DDD\u96E2)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: dp/longest_common_subsequence.hpp
       title: "Longest Common Subsequence (\u6700\u9577\u5171\u901A\u90E8\u5206\u5217\
         )"
@@ -544,13 +544,13 @@ data:
       title: verify/data_structure/erasable_priority_queue.test.cpp
   - name: verify/dp
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/dp/inversion_number.test.cpp
       title: verify/dp/inversion_number.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/dp/levenshtein_distance.test.cpp
       title: verify/dp/levenshtein_distance.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/dp/longest_common_subsequence.test.cpp
       title: verify/dp/longest_common_subsequence.test.cpp
     - icon: ':heavy_check_mark:'

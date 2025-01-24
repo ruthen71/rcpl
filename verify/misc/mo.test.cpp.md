@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/fenwick_tree.hpp
     title: Fenwick Tree (Binary Indexed Tree)
   - icon: ':heavy_check_mark:'
