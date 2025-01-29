@@ -8,8 +8,10 @@ int levenshtein_distance(std::vector<T>& a, std::vector<T>& b, const int inf = 1
     const int n = (int)(a.size()), m = (int)(b.size());
     std::vector dp(n + 1, std::vector<int>(m + 1, inf));
     // initialize
-    for (int i = 0; i < n + 1; i++) dp[i][0] = i;
-    for (int j = 0; j < m + 1; j++) dp[0][j] = j;
+    dp[0][0] = 0;
+    // もらう DP だと dp[i][0], dp[0][j] について初期化が必要
+    // for (int i = 0; i < n + 1; i++) dp[i][0] = i;
+    // for (int j = 0; j < m + 1; j++) dp[0][j] = j;
     // dp
     for (int i = 0; i <= n; i++) {
         for (int j = 0; j <= m; j++) {
