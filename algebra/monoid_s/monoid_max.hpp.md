@@ -25,8 +25,8 @@ data:
   isVerificationFile: false
   path: algebra/monoid_s/monoid_max.hpp
   requiredBy:
-  - algebra/monoid_s_f/monoid_max_set.hpp
   - algebra/monoid_s_f/monoid_max_add.hpp
+  - algebra/monoid_s_f/monoid_max_set.hpp
   timestamp: '2024-03-24 17:04:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

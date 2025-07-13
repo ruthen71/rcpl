@@ -403,6 +403,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/prime_table.hpp
       title: math/prime_table.hpp
+    - icon: ':warning:'
+      path: math/quotient_enumeration.hpp
+      title: math/quotient_enumeration.hpp
     - icon: ':heavy_check_mark:'
       path: math/static_modint.hpp
       title: Static Modint

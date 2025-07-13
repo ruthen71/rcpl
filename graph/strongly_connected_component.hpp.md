@@ -105,8 +105,8 @@ data:
   timestamp: '2024-08-05 02:13:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/strongly_connected_component_1.test.cpp
   - verify/graph/strongly_connected_component_2.test.cpp
+  - verify/graph/strongly_connected_component_1.test.cpp
 documentation_of: graph/strongly_connected_component.hpp
 layout: document
 title: "Strongly Connected Component (\u5F37\u9023\u7D50\u6210\u5206)"

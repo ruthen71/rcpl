@@ -61,8 +61,8 @@ data:
   timestamp: '2024-12-17 21:01:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/misc/mo.test.cpp
   - verify/dp/inversion_number.test.cpp
+  - verify/misc/mo.test.cpp
   - verify/lc_data_structure/lc_point_add_range_sum_fenwick_tree.test.cpp
 documentation_of: data_structure/fenwick_tree.hpp
 layout: document

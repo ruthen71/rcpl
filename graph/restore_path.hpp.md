@@ -41,9 +41,9 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/zero_one_bfs.test.cpp
-  - verify/graph/tree_diameter_2.test.cpp
   - verify/graph/tree_diameter_1.test.cpp
   - verify/graph/dijkstra_2.test.cpp
+  - verify/graph/tree_diameter_2.test.cpp
 documentation_of: graph/restore_path.hpp
 layout: document
 title: Restore path
