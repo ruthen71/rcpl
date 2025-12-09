@@ -318,13 +318,13 @@ data:
   isVerificationFile: false
   path: geometry/distance.hpp
   requiredBy:
-  - geometry/all.hpp
   - geometry/incircle.hpp
+  - geometry/all.hpp
   timestamp: '2024-12-04 12:30:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/geometry/distance_ss.test.cpp
   - verify/geometry/incircle.test.cpp
+  - verify/geometry/distance_ss.test.cpp
 documentation_of: geometry/distance.hpp
 layout: document
 title: "Distance (\u8DDD\u96E2)"

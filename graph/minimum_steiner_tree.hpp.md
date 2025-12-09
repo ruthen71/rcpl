@@ -2,11 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: data_structure/unionfind.hpp
-    title: UnionFind
-  - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
+  - icon: ':heavy_check_mark:'
+    path: unionfind/unionfind.hpp
+    title: Unionfind
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -63,24 +63,30 @@ data:
     \ j++) {\n                os << g[i][j];\n                if (j + 1 != (int)(g[i].size()))\
     \ os << \", \";\n            }\n            os << \"]\";\n            if (i +\
     \ 1 != (int)(g.size())) os << \", \";\n        }\n        return os << \"]\";\n\
-    \    }\n};\n#line 2 \"data_structure/unionfind.hpp\"\n\n#line 4 \"data_structure/unionfind.hpp\"\
-    \n#include <algorithm>\n\nstruct UnionFind {\n    int n;\n    std::vector<int>\
-    \ parents;\n\n    UnionFind() {}\n    UnionFind(int n) : n(n), parents(n, -1)\
-    \ {}\n\n    int leader(int x) { return parents[x] < 0 ? x : parents[x] = leader(parents[x]);\
-    \ }\n\n    bool merge(int x, int y) {\n        x = leader(x), y = leader(y);\n\
-    \        if (x == y) return false;\n        if (parents[x] > parents[y]) std::swap(x,\
-    \ y);\n        parents[x] += parents[y];\n        parents[y] = x;\n        return\
-    \ true;\n    }\n\n    bool same(int x, int y) { return leader(x) == leader(y);\
-    \ }\n\n    int size(int x) { return -parents[leader(x)]; }\n\n    std::vector<std::vector<int>>\
-    \ groups() {\n        std::vector<int> leader_buf(n), group_size(n);\n       \
-    \ for (int i = 0; i < n; i++) {\n            leader_buf[i] = leader(i);\n    \
-    \        group_size[leader_buf[i]]++;\n        }\n        std::vector<std::vector<int>>\
-    \ result(n);\n        for (int i = 0; i < n; i++) {\n            result[i].reserve(group_size[i]);\n\
-    \        }\n        for (int i = 0; i < n; i++) {\n            result[leader_buf[i]].push_back(i);\n\
-    \        }\n        result.erase(std::remove_if(result.begin(), result.end(),\
-    \ [&](const std::vector<int>& v) { return v.empty(); }), result.end());\n    \
-    \    return result;\n    }\n\n    void init(int n) { parents.assign(n, -1); }\
-    \  // reset\n};\n#line 5 \"graph/minimum_steiner_tree.hpp\"\n\n#line 7 \"graph/minimum_steiner_tree.hpp\"\
+    \    }\n};\n#line 2 \"unionfind/unionfind.hpp\"\n\n#include <algorithm>\n#line\
+    \ 6 \"unionfind/unionfind.hpp\"\n\n// Unionfind\nstruct Unionfind {\n    int n;\n\
+    \    std::vector<int> parent;\n\n    Unionfind() = default;\n\n    explicit Unionfind(int\
+    \ n) : n(n), parent(n, -1) {}\n\n    int leader(int x) {\n        assert(0 <=\
+    \ x and x < n);\n        if (parent[x] < 0) {\n            return x;\n       \
+    \ } else {\n            return parent[x] = leader(parent[x]);\n        }\n   \
+    \ }\n\n    int merge(int x, int y) {\n        assert(0 <= x and x < n);\n    \
+    \    assert(0 <= y and y < n);\n        x = leader(x);\n        y = leader(y);\n\
+    \        if (x == y) {\n            return x;\n        }\n        if (-parent[x]\
+    \ < -parent[y]) {\n            std::swap(x, y);\n        }\n        parent[x]\
+    \ += parent[y];\n        parent[y] = x;\n        return x;\n    }\n\n    bool\
+    \ same(int x, int y) {\n        assert(0 <= x and x < n);\n        assert(0 <=\
+    \ y and y < n);\n        return leader(x) == leader(y);\n    }\n\n    int size(int\
+    \ x) {\n        assert(0 <= x and x < n);\n        return -parent[leader(x)];\n\
+    \    }\n\n    std::vector<std::vector<int>> groups() {\n        std::vector<int>\
+    \ leader_buf(n), group_size(n);\n        for (int i = 0; i < n; i++) {\n     \
+    \       leader_buf[i] = leader(i);\n            group_size[leader_buf[i]]++;\n\
+    \        }\n        std::vector<std::vector<int>> result(n);\n        for (int\
+    \ i = 0; i < n; i++) {\n            result[i].reserve(group_size[i]);\n      \
+    \  }\n        for (int i = 0; i < n; i++) {\n            result[leader_buf[i]].push_back(i);\n\
+    \        }\n        result.erase(std::remove_if(\n                         result.begin(),\
+    \ result.end(),\n                         [&](const std::vector<int>& v) { return\
+    \ v.empty(); }),\n                     result.end());\n        return result;\n\
+    \    }\n};\n#line 5 \"graph/minimum_steiner_tree.hpp\"\n\n#line 7 \"graph/minimum_steiner_tree.hpp\"\
     \n#include <queue>\n#line 10 \"graph/minimum_steiner_tree.hpp\"\n\n// minimum\
     \ steiner tree\n// O(3 ^ k n + 2 ^ k m \\log m) (n = |V|, m = |E|, k = |terminals|)\n\
     // https://www.slideshare.net/wata_orz/ss-12131479#50\n// https://kopricky.github.io/code/Academic/steiner_tree.html\n\
@@ -129,7 +135,7 @@ data:
     \ (1 << (n - k)); bit++) {\n        // \u4F7F\u3046\u9802\u70B9\u96C6\u5408 (used)\
     \ \u3092\u8A08\u7B97\n        for (int i = 0; i < n - k; i++) used[others[i]]\
     \ = bit >> i & 1;\n\n        // Minimum Spanning Tree \u3092\u8A08\u7B97\n   \
-    \     UnionFind uf(n);\n        T cur = 0;\n        int connected = 0;\n     \
+    \     Unionfind uf(n);\n        T cur = 0;\n        int connected = 0;\n     \
     \   for (auto&& e : edges) {\n            // subv \u306B\u5BFE\u3059\u308B g \u306E\
     \u8A98\u5C0E\u90E8\u5206\u30B0\u30E9\u30D5\u306B\u542B\u307E\u308C\u308B\u8FBA\
     \u306E\u307F\u8A66\u3059\n            if (!(used[e.from] and used[e.to])) continue;\n\
@@ -139,7 +145,7 @@ data:
     \u5B9A\n        if (connected + 1 == k + __builtin_popcount(bit)) ans = std::min(ans,\
     \ cur);\n\n        // used \u3092\u3082\u3068\u306B\u623B\u3059\n        for (int\
     \ i = 0; i < n - k; i++) used[others[i]] = 0;\n    }\n    return ans;\n}\n"
-  code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n#include \"data_structure/unionfind.hpp\"\
+  code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n#include \"unionfind/unionfind.hpp\"\
     \n\n#include <vector>\n#include <queue>\n#include <algorithm>\n#include <cassert>\n\
     \n// minimum steiner tree\n// O(3 ^ k n + 2 ^ k m \\log m) (n = |V|, m = |E|,\
     \ k = |terminals|)\n// https://www.slideshare.net/wata_orz/ss-12131479#50\n//\
@@ -189,7 +195,7 @@ data:
     \ (1 << (n - k)); bit++) {\n        // \u4F7F\u3046\u9802\u70B9\u96C6\u5408 (used)\
     \ \u3092\u8A08\u7B97\n        for (int i = 0; i < n - k; i++) used[others[i]]\
     \ = bit >> i & 1;\n\n        // Minimum Spanning Tree \u3092\u8A08\u7B97\n   \
-    \     UnionFind uf(n);\n        T cur = 0;\n        int connected = 0;\n     \
+    \     Unionfind uf(n);\n        T cur = 0;\n        int connected = 0;\n     \
     \   for (auto&& e : edges) {\n            // subv \u306B\u5BFE\u3059\u308B g \u306E\
     \u8A98\u5C0E\u90E8\u5206\u30B0\u30E9\u30D5\u306B\u542B\u307E\u308C\u308B\u8FBA\
     \u306E\u307F\u8A66\u3059\n            if (!(used[e.from] and used[e.to])) continue;\n\
@@ -198,14 +204,14 @@ data:
     \        }\n\n        // \u5168\u57DF\u6728\u304C\u4F5C\u308C\u305F\u304B\u5224\
     \u5B9A\n        if (connected + 1 == k + __builtin_popcount(bit)) ans = std::min(ans,\
     \ cur);\n\n        // used \u3092\u3082\u3068\u306B\u623B\u3059\n        for (int\
-    \ i = 0; i < n - k; i++) used[others[i]] = 0;\n    }\n    return ans;\n}"
+    \ i = 0; i < n - k; i++) used[others[i]] = 0;\n    }\n    return ans;\n}\n"
   dependsOn:
   - graph/graph_template.hpp
-  - data_structure/unionfind.hpp
+  - unionfind/unionfind.hpp
   isVerificationFile: false
   path: graph/minimum_steiner_tree.hpp
   requiredBy: []
-  timestamp: '2024-08-01 13:43:30+09:00'
+  timestamp: '2025-12-10 04:21:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/minimum_steiner_tree.test.cpp

@@ -43,11 +43,11 @@ data:
   isVerificationFile: false
   path: algebra/monoid_f/monoid_set.hpp
   requiredBy:
-  - algebra/monoid_s_f/monoid_min_index_set.hpp
   - algebra/monoid_s_f/monoid_max_set.hpp
-  - algebra/monoid_s_f/monoid_min_set.hpp
-  - algebra/monoid_s_f/monoid_max_index_set.hpp
   - algebra/monoid_s_f/monoid_sum_size_set.hpp
+  - algebra/monoid_s_f/monoid_min_index_set.hpp
+  - algebra/monoid_s_f/monoid_max_index_set.hpp
+  - algebra/monoid_s_f/monoid_min_set.hpp
   timestamp: '2024-03-24 17:04:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

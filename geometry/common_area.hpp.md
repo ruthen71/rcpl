@@ -440,8 +440,8 @@ data:
   timestamp: '2024-12-04 12:30:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/geometry/common_area_cp.test.cpp
   - verify/geometry/common_area_cc.test.cpp
+  - verify/geometry/common_area_cp.test.cpp
 documentation_of: geometry/common_area.hpp
 layout: document
 title: "Common Area (\u5171\u901A\u90E8\u5206\u306E\u9762\u7A4D)"

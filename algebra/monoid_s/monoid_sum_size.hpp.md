@@ -41,16 +41,16 @@ data:
   isVerificationFile: false
   path: algebra/monoid_s/monoid_sum_size.hpp
   requiredBy:
+  - algebra/monoid_s_f/monoid_sum_size_set.hpp
   - algebra/monoid_s_f/monoid_sum_size_add.hpp
   - algebra/monoid_s_f/monoid_sum_size_affine.hpp
-  - algebra/monoid_s_f/monoid_sum_size_set.hpp
   timestamp: '2024-03-24 17:04:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/heavy_light_decomposition_1.test.cpp
-  - verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
-  - verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp
   - verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
+  - verify/graph/heavy_light_decomposition_1.test.cpp
+  - verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp
+  - verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
 documentation_of: algebra/monoid_s/monoid_sum_size.hpp
 layout: document
 redirect_from:

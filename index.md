@@ -1,6 +1,11 @@
 ---
 data:
   libraryCategories:
+  - name: algebra/monoid
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: algebra/monoid/monoid_plus.hpp
+      title: algebra/monoid/monoid_plus.hpp
   - name: algebra/monoid_f
     pages:
     - icon: ':heavy_check_mark:'
@@ -149,12 +154,6 @@ data:
     - icon: ':warning:'
       path: data_structure/static_matrix.hpp
       title: "Static Matrix (\u884C\u5217, \u30B5\u30A4\u30BA\u56FA\u5B9A)"
-    - icon: ':heavy_check_mark:'
-      path: data_structure/unionfind.hpp
-      title: UnionFind
-    - icon: ':heavy_check_mark:'
-      path: data_structure/weighted_unionfind.hpp
-      title: "Weighted UnionFind (\u91CD\u307F\u3064\u304D UnionFind)"
   - name: .
     pages:
     - icon: ':warning:'
@@ -449,7 +448,29 @@ data:
     - icon: ':warning:'
       path: string/trie.hpp
       title: "Trie (\u30C8\u30E9\u30A4\u6728)"
+  - name: unionfind
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: unionfind/potentialized_unionfind.hpp
+      title: "Potentialized Unionfind\uFF08\u91CD\u307F\u4ED8\u304D Unionfind\uFF09"
+    - icon: ':heavy_check_mark:'
+      path: unionfind/unionfind.hpp
+      title: Unionfind
   verificationCategories:
+  - name: unionfind/test
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: unionfind/test/potentialized_unionfind.test.cpp
+      title: unionfind/test/potentialized_unionfind.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: unionfind/test/potentialized_unionfind_groups.test.cpp
+      title: unionfind/test/potentialized_unionfind_groups.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: unionfind/test/unionfind.test.cpp
+      title: unionfind/test/unionfind.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: unionfind/test/unionfind_groups.test.cpp
+      title: unionfind/test/unionfind_groups.test.cpp
   - name: verify/aoj_alds1
     pages:
     - icon: ':heavy_check_mark:'
@@ -468,9 +489,6 @@ data:
       title: verify/aoj_dpl/aoj_dpl_3_c.test.cpp
   - name: verify/aoj_dsl
     pages:
-    - icon: ':heavy_check_mark:'
-      path: verify/aoj_dsl/aoj_dsl_1_b.test.cpp
-      title: verify/aoj_dsl/aoj_dsl_1_b.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp
       title: verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp
@@ -727,9 +745,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp
       title: verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/lc_data_structure/lc_unionfind.test.cpp
-      title: verify/lc_data_structure/lc_unionfind.test.cpp
   - name: verify/lc_math
     pages:
     - icon: ':heavy_check_mark:'
