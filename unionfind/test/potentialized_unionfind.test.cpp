@@ -1,14 +1,16 @@
-#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B"
+#define PROBLEM \
+    "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B"
 
-#include <bits/stdc++.h>
+#include <iostream>
 
-#include "data_structure/weighted_unionfind.hpp"
+#include "../../algebra/monoid/monoid_plus.hpp"
+#include "../../unionfind/potentialized_unionfind.hpp"
 
 int main() {
-    int N, Q;
-    std::cin >> N >> Q;
-    WeightedUnionFind<long long> uf(N);
-    while (Q--) {
+    int n, q;
+    std::cin >> n >> q;
+    PotentializedUnionfind<MonoidPlus<long long>> uf(n);
+    for (int i = 0; i < q; i++) {
         int t;
         std::cin >> t;
         if (t == 0) {
@@ -21,7 +23,7 @@ int main() {
             int x, y;
             std::cin >> x >> y;
             if (uf.same(x, y)) {
-                std::cout << uf.diff(x, y) << '\n';
+                std::cout << uf.distance(x, y) << '\n';
             } else {
                 std::cout << '?' << '\n';
             }

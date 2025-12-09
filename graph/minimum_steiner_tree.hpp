@@ -1,7 +1,7 @@
 #pragma once
 
 #include "graph/graph_template.hpp"
-#include "data_structure/unionfind.hpp"
+#include "unionfind/unionfind.hpp"
 
 #include <vector>
 #include <queue>
@@ -86,7 +86,7 @@ template <class T> T minimum_steiner_tree_mst(Graph<T>& g, const std::vector<int
         for (int i = 0; i < n - k; i++) used[others[i]] = bit >> i & 1;
 
         // Minimum Spanning Tree を計算
-        UnionFind uf(n);
+        Unionfind uf(n);
         T cur = 0;
         int connected = 0;
         for (auto&& e : edges) {

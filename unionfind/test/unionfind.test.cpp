@@ -1,14 +1,14 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/unionfind"
 
-#include <bits/stdc++.h>
+#include <iostream>
 
-#include "data_structure/unionfind.hpp"
+#include "../../unionfind/unionfind.hpp"
 
 int main() {
-    int N, Q;
-    std::cin >> N >> Q;
-    UnionFind uf(N);
-    while (Q--) {
+    int n, q;
+    std::cin >> n >> q;
+    Unionfind uf(n);
+    for (int i = 0; i < q; i++) {
         int t, u, v;
         std::cin >> t >> u >> v;
         if (t == 0) {
