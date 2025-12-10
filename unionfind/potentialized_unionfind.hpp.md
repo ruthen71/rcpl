@@ -125,6 +125,8 @@ title: "Potentialized Unionfind\uFF08\u91CD\u307F\u4ED8\u304D Unionfind\uFF09"
 
 例えば、$\cdot$ として和を計算する可換群は [ここ](../algebra/monoid/monoid_plus.hpp) に定義されています。
 
+計算量は $\cdot$, $e$, $a^{-1}$ が定数時間で計算できると仮定したときのものを記述します。
+
 ## コンストラクタ
 
 ```cpp
