@@ -22,6 +22,8 @@ documentation_of: ./potentialized_unionfind.hpp
 
 例えば、$\cdot$ として和を計算する可換群は [ここ](../algebra/monoid/monoid_plus.hpp) に定義されています。
 
+計算量は $\cdot$, $e$, $a^{-1}$ が定数時間で計算できると仮定したときのものを記述します。
+
 ## コンストラクタ
 
 ```cpp
