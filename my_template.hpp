@@ -33,7 +33,7 @@
 #include <vector>
 
 #ifdef RUTHEN_LOCAL
-#include <debug.hpp>
+#include <rcpl/debug.hpp>
 #else
 #define show(x) true
 #endif
@@ -46,7 +46,8 @@ using f32 = float;
 using f64 = double;
 using f128 = long double;
 template <class T> using pque = std::priority_queue<T>;
-template <class T> using pqueg = std::priority_queue<T, std::vector<T>, std::greater<T>>;
+template <class T>
+using pqueg = std::priority_queue<T, std::vector<T>, std::greater<T>>;
 // overload
 #define overload4(_1, _2, _3, _4, name, ...) name
 #define overload3(_1, _2, _3, name, ...) name
@@ -57,15 +58,16 @@ template <class T> using pqueg = std::priority_queue<T, std::vector<T>, std::gre
 #define REP3(i, a, b) for (long long i = (a); i < (b); i++)
 #define REP4(i, a, b, c) for (long long i = (a); i < (b); i += (c))
 #define REP(...) overload4(__VA_ARGS__, REP4, REP3, REP2, REP1)(__VA_ARGS__)
-#define RREP1(a) for (long long _ = (a)-1; _ >= 0; _--)
-#define RREP2(i, a) for (long long i = (a)-1; i >= 0; i--)
-#define RREP3(i, a, b) for (long long i = (b)-1; i >= (a); i--)
+#define RREP1(a) for (long long _ = (a) - 1; _ >= 0; _--)
+#define RREP2(i, a) for (long long i = (a) - 1; i >= 0; i--)
+#define RREP3(i, a, b) for (long long i = (b) - 1; i >= (a); i--)
 #define RREP(...) overload3(__VA_ARGS__, RREP3, RREP2, RREP1)(__VA_ARGS__)
 #define FORE1(x, a) for (auto&& x : a)
 #define FORE2(x, y, a) for (auto&& [x, y] : a)
 #define FORE3(x, y, z, a) for (auto&& [x, y, z] : a)
 #define FORE(...) overload4(__VA_ARGS__, FORE3, FORE2, FORE1)(__VA_ARGS__)
-#define FORSUB(t, s) for (long long t = (s); t >= 0; t = (t == 0 ? -1 : (t - 1) & (s)))
+#define FORSUB(t, s) \
+    for (long long t = (s); t >= 0; t = (t == 0 ? -1 : (t - 1) & (s)))
 // function
 #define ALL(a) (a).begin(), (a).end()
 #define RALL(a) (a).rbegin(), (a).rend()
@@ -81,19 +83,27 @@ template <class T> using pqueg = std::priority_queue<T, std::vector<T>, std::gre
 #define SUM1(a) std::accumulate((a).begin(), (a).end(), 0LL)
 #define SUM2(a, x) std::accumulate((a).begin(), (a).end(), (x))
 #define SUM(...) overload2(__VA_ARGS__, SUM2, SUM1)(__VA_ARGS__)
-#define LB(a, x) std::distance((a).begin(), std::lower_bound((a).begin(), (a).end(), (x)))
-#define UB(a, x) std::distance((a).begin(), std::upper_bound((a).begin(), (a).end(), (x)))
-template <class T, class U> inline bool chmin(T& a, const U& b) { return (a > T(b) ? a = b, 1 : 0); }
-template <class T, class U> inline bool chmax(T& a, const U& b) { return (a < T(b) ? a = b, 1 : 0); }
+#define LB(a, x) \
+    std::distance((a).begin(), std::lower_bound((a).begin(), (a).end(), (x)))
+#define UB(a, x) \
+    std::distance((a).begin(), std::upper_bound((a).begin(), (a).end(), (x)))
+template <class T, class U> inline bool chmin(T& a, const U& b) {
+    return (a > T(b) ? a = b, 1 : 0);
+}
+template <class T, class U> inline bool chmax(T& a, const U& b) {
+    return (a < T(b) ? a = b, 1 : 0);
+}
 template <class T, class S> inline T floor(const T x, const S y) {
     assert(y);
-    return (y < 0 ? floor(-x, -y) : (x > 0 ? x / y : x / y - (x % y == 0 ? 0 : 1)));
+    return (y < 0 ? floor(-x, -y)
+                  : (x > 0 ? x / y : x / y - (x % y == 0 ? 0 : 1)));
 }
 template <class T, class S> inline T ceil(const T x, const S y) {
     assert(y);
     return (y < 0 ? ceil(-x, -y) : (x > 0 ? (x + y - 1) / y : x / y));
 }
-template <class T, class S> std::pair<T, T> inline divmod(const T x, const S y) {
+template <class T, class S>
+std::pair<T, T> inline divmod(const T x, const S y) {
     T q = floor(x, y);
     return {q, x - q * y};
 }
@@ -110,24 +120,12 @@ constexpr long long TEN(int n) { return (n == 0) ? 1 : 10LL * TEN(n - 1); }
 // (0, 1, 2, 3, 4) -> (0, 1, 3, 7, 15)
 #define MASK(n) ((1LL << (n)) - 1)
 #define POW2(n) (1LL << (n))
-// (0, 1, 2, 3, 4) -> (0, 1, 1, 2, 1)
-int popcnt(int x) { return __builtin_popcount(x); }
-int popcnt(u32 x) { return __builtin_popcount(x); }
-int popcnt(i64 x) { return __builtin_popcountll(x); }
-int popcnt(u64 x) { return __builtin_popcountll(x); }
-// (0, 1, 2, 3, 4) -> (-1, 0, 1, 1, 2)
-int topbit(int x) { return (x == 0 ? -1 : 31 - __builtin_clz(x)); }
-int topbit(u32 x) { return (x == 0 ? -1 : 31 - __builtin_clz(x)); }
-int topbit(i64 x) { return (x == 0 ? -1 : 63 - __builtin_clzll(x)); }
-int topbit(u64 x) { return (x == 0 ? -1 : 63 - __builtin_clzll(x)); }
-// (0, 1, 2, 3, 4) -> (-1, 0, 1, 0, 2)
-int lowbit(int x) { return (x == 0 ? -1 : __builtin_ctz(x)); }
-int lowbit(u32 x) { return (x == 0 ? -1 : __builtin_ctz(x)); }
-int lowbit(i64 x) { return (x == 0 ? -1 : __builtin_ctzll(x)); }
-int lowbit(u64 x) { return (x == 0 ? -1 : __builtin_ctzll(x)); }
+#include "./misc/lowbit.hpp"
+#include "./misc/popcount.hpp"
+#include "./misc/topbit.hpp"
 // binary search (integer)
 template <class T, class F> T bin_search(T ok, T ng, F& f) {
-    assert(f(ok) and !f(ng));
+    // assert(f(ok) and !f(ng));
     while ((ok > ng ? ok - ng : ng - ok) > 1) {
         T md = (ng + ok) >> 1;
         (f(md) ? ok : ng) = md;
@@ -135,8 +133,9 @@ template <class T, class F> T bin_search(T ok, T ng, F& f) {
     return ok;
 }
 // binary search (real number)
-template <class T, class F> T bin_search_real(T ok, T ng, F& f, const int iter = 100) {
-    assert(f(ok) and !f(ng));
+template <class T, class F>
+T bin_search_real(T ok, T ng, F& f, const int iter = 100) {
+    // assert(f(ok) and !f(ng));
     for (int _ = 0; _ < iter; _++) {
         T md = (ng + ok) / 2;
         (f(md) ? ok : ng) = md;
@@ -146,9 +145,15 @@ template <class T, class F> T bin_search_real(T ok, T ng, F& f, const int iter =
 // floor(sqrt(x))
 template <class T> constexpr T sqrt_floor(T x) { return T(sqrtl(x)); }
 // check if [l1, r1) and [l2, r2) intersect
-template <class T> constexpr bool intersect(const T l1, const T r1, const T l2, const T r2) { return std::max(l1, l2) < std::min(r1, r2); }
+template <class T>
+constexpr bool intersect(const T l1, const T r1, const T l2, const T r2) {
+    return std::max(l1, l2) < std::min(r1, r2);
+}
 // check if [a.first, a.second) and [b.first, b.second) intersect
-template <class T> constexpr bool intersect(const std::pair<T, T>& a, const std::pair<T, T>& b) { return intersect(a.first, a.second, b.first, b.second); }
+template <class T>
+constexpr bool intersect(const std::pair<T, T>& a, const std::pair<T, T>& b) {
+    return intersect(a.first, a.second, b.first, b.second);
+}
 // rotate matrix counterclockwise by pi / 2
 template <class T> void rot(std::vector<std::vector<T>>& a) {
     if ((int)(a.size()) == 0) return;
@@ -176,7 +181,8 @@ template <> constexpr f64 INF<f64> = INF<i64>;                      // 2e18
 template <> constexpr f128 INF<f128> = INF<i64>;                    // 2e18
 // I/O
 // input
-template <class T> std::istream& operator>>(std::istream& is, std::vector<T>& v) {
+template <class T>
+std::istream& operator>>(std::istream& is, std::vector<T>& v) {
     for (auto&& i : v) is >> i;
     return is;
 }
@@ -230,7 +236,8 @@ template <class Head, class... Tail> void scan(Head& head, Tail&... tail) {
     std::vector name((h), std::vector<type>((w))); \
     scan(name)
 // output
-template <class T> std::ostream& operator<<(std::ostream& os, const std::vector<T>& v) {
+template <class T>
+std::ostream& operator<<(std::ostream& os, const std::vector<T>& v) {
     auto n = v.size();
     for (size_t i = 0; i < n; i++) {
         if (i) os << ' ';
