@@ -1,5 +1,5 @@
 ---
-title: Count Trailing Zeros
+title: Countr Zero
 documentation_of: ./countr_zero.hpp
 ---
 

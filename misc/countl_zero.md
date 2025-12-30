@@ -1,5 +1,5 @@
 ---
-title: Count Leading Zeros
+title: Countl Zero
 documentation_of: ./countl_zero.hpp
 ---
 
