@@ -259,7 +259,7 @@ data:
       title: "Tangent (\u63A5\u7DDA)"
   - name: graph
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/auxiliary_tree.hpp
       title: "Auxiliary Tree (\u865A\u6811)"
     - icon: ':heavy_check_mark:'
@@ -272,7 +272,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/euler_tour.hpp
       title: "Euler Tour (\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/graph_template.hpp
       title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':heavy_check_mark:'
@@ -284,14 +284,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/low_link.hpp
       title: "Low Link (\u95A2\u7BC0\u70B9\u30FB\u6A4B)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/lowest_common_ancestor.hpp
       title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
     - icon: ':heavy_check_mark:'
       path: graph/minimum_steiner_tree.hpp
       title: "Minimum Steiner Tree (\u6700\u5C0F\u30B7\u30E5\u30BF\u30A4\u30CA\u30FC\
         \u6728)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/read_graph.hpp
       title: "\u30B0\u30E9\u30D5\u5165\u529B\u30E9\u30A4\u30D6\u30E9\u30EA"
     - icon: ':heavy_check_mark:'
@@ -416,15 +416,33 @@ data:
       title: math/totient_table.hpp
   - name: misc
     pages:
+    - icon: ':heavy_check_mark:'
+      path: misc/bit_ceil.hpp
+      title: Bit Ceil
+    - icon: ':question:'
+      path: misc/countl_zero.hpp
+      title: Countl Zero
+    - icon: ':heavy_check_mark:'
+      path: misc/countr_zero.hpp
+      title: Countr Zero
     - icon: ':warning:'
       path: misc/custom_hash.hpp
       title: misc/custom_hash.hpp
     - icon: ':heavy_check_mark:'
+      path: misc/lowbit.hpp
+      title: Lowbit
+    - icon: ':heavy_check_mark:'
       path: misc/mo.hpp
       title: Mo's Algorithm
+    - icon: ':heavy_check_mark:'
+      path: misc/popcount.hpp
+      title: Popcount
     - icon: ':warning:'
       path: misc/timer.hpp
       title: misc/timer.hpp
+    - icon: ':question:'
+      path: misc/topbit.hpp
+      title: Topbit
     - icon: ':warning:'
       path: misc/xor_shift.hpp
       title: misc/xor_shift.hpp
@@ -457,6 +475,11 @@ data:
       path: unionfind/unionfind.hpp
       title: Unionfind
   verificationCategories:
+  - name: misc/test
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: misc/test/bit_operation.test.cpp
+      title: misc/test/bit_operation.test.cpp
   - name: unionfind/test
     pages:
     - icon: ':heavy_check_mark:'
@@ -659,7 +682,7 @@ data:
       title: verify/geometry/tangent_number.test.cpp
   - name: verify/graph
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/graph/auxiliary_tree.test.cpp
       title: verify/graph/auxiliary_tree.test.cpp
     - icon: ':heavy_check_mark:'

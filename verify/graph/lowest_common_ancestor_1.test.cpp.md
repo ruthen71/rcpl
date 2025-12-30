@@ -1,15 +1,21 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/lowest_common_ancestor.hpp
     title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/read_graph.hpp
     title: "\u30B0\u30E9\u30D5\u5165\u529B\u30E9\u30A4\u30D6\u30E9\u30EA"
+  - icon: ':question:'
+    path: misc/countl_zero.hpp
+    title: Countl Zero
+  - icon: ':question:'
+    path: misc/topbit.hpp
+    title: Topbit
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -75,36 +81,48 @@ data:
     \ i = 1; i < n; i++) {\n        int p;\n        std::cin >> p;\n        p -= offset;\n\
     \        T c = 1;\n        if (weight) std::cin >> c;\n        g.add_edge(p, i,\
     \ c);\n    }\n    g.build();\n    return g;\n}\n#line 2 \"graph/lowest_common_ancestor.hpp\"\
-    \n\n#line 4 \"graph/lowest_common_ancestor.hpp\"\n\n#line 6 \"graph/lowest_common_ancestor.hpp\"\
-    \n\ntemplate <class T> struct LowestCommonAncestor {\n    int n, lg;\n    std::vector<int>\
-    \ depth;\n    std::vector<std::vector<int>> parent;\n\n    LowestCommonAncestor(Graph<T>&\
-    \ g, const int root = 0) : n((int)(g.size())), lg(32 - __builtin_clz(n)), depth(n,\
-    \ 0), parent(lg, std::vector<int>(n)) {\n        auto dfs = [&](auto f, int cur,\
-    \ int par) -> void {\n            parent[0][cur] = par;\n            for (auto&&\
-    \ e : g[cur]) {\n                if (e.to == par) continue;\n                depth[e.to]\
-    \ = depth[cur] + 1;\n                f(f, e.to, cur);\n            }\n       \
-    \ };\n        dfs(dfs, root, -1);\n        for (int k = 0; k + 1 < lg; k++) {\n\
-    \            for (int v = 0; v < n; v++) {\n                parent[k + 1][v] =\
-    \ parent[k][v] < 0 ? -1 : parent[k][parent[k][v]];\n            }\n        }\n\
-    \    }\n\n    int lca(int u, int v) {\n        assert((int)(depth.size()) == n);\n\
-    \        if (depth[u] > depth[v]) std::swap(u, v);\n        // depth[u] <= depth[v]\n\
-    \        for (int k = 0; k < lg; k++) {\n            if ((depth[v] - depth[u])\
-    \ >> k & 1) v = parent[k][v];\n        }\n        if (u == v) return u;\n    \
-    \    for (int k = lg - 1; k >= 0; k--) {\n            if (parent[k][u] != parent[k][v])\
-    \ {\n                u = parent[k][u];\n                v = parent[k][v];\n  \
-    \          }\n        }\n        return parent[0][u];\n    }\n\n    int level_ancestor(int\
+    \n\n#line 2 \"misc/topbit.hpp\"\n\n#line 2 \"misc/countl_zero.hpp\"\n\n#if __cplusplus\
+    \ >= 202002L\n#include <bit>\n#endif\n\n// countl_zero\n// (000, 001, 010, 011,\
+    \ 100) -> (32, 31, 30, 30, 29)\n#if __cplusplus >= 202002L\nusing std::countl_zero;\n\
+    #else\nint countl_zero(unsigned int x) {\n    return x == 0 ? 32 : __builtin_clz(x);\n\
+    }\nint countl_zero(unsigned long long int x) {\n    return x == 0 ? 64 : __builtin_clzll(x);\n\
+    }\n#endif\nint countl_zero(int x) { return countl_zero((unsigned int)(x)); }\n\
+    int countl_zero(long long int x) {\n    return countl_zero((unsigned long long\
+    \ int)(x));\n}\n#line 4 \"misc/topbit.hpp\"\n\n// topbit\n// (000, 001, 010, 011,\
+    \ 100) -> (-1, 0, 1, 1, 2)\nint topbit(int x) { return 31 - countl_zero(x); }\n\
+    int topbit(unsigned int x) { return 31 - countl_zero(x); }\nint topbit(long long\
+    \ int x) { return 63 - countl_zero(x); }\nint topbit(unsigned long long int x)\
+    \ { return 63 - countl_zero(x); }\n#line 5 \"graph/lowest_common_ancestor.hpp\"\
+    \n\n#line 7 \"graph/lowest_common_ancestor.hpp\"\n\ntemplate <class T> struct\
+    \ LowestCommonAncestor {\n    int n, lg;\n    std::vector<int> depth;\n    std::vector<std::vector<int>>\
+    \ parent;\n\n    LowestCommonAncestor(Graph<T>& g, const int root = 0)\n     \
+    \   : n((int)(g.size())),\n          lg(topbit(n) + 1),\n          depth(n, 0),\n\
+    \          parent(lg, std::vector<int>(n)) {\n        auto dfs = [&](auto f, int\
+    \ cur, int par) -> void {\n            parent[0][cur] = par;\n            for\
+    \ (auto&& e : g[cur]) {\n                if (e.to == par) continue;\n        \
+    \        depth[e.to] = depth[cur] + 1;\n                f(f, e.to, cur);\n   \
+    \         }\n        };\n        dfs(dfs, root, -1);\n        for (int k = 0;\
+    \ k + 1 < lg; k++) {\n            for (int v = 0; v < n; v++) {\n            \
+    \    parent[k + 1][v] =\n                    parent[k][v] < 0 ? -1 : parent[k][parent[k][v]];\n\
+    \            }\n        }\n    }\n\n    int lca(int u, int v) {\n        assert((int)(depth.size())\
+    \ == n);\n        if (depth[u] > depth[v]) std::swap(u, v);\n        // depth[u]\
+    \ <= depth[v]\n        for (int k = 0; k < lg; k++) {\n            if ((depth[v]\
+    \ - depth[u]) >> k & 1) v = parent[k][v];\n        }\n        if (u == v) return\
+    \ u;\n        for (int k = lg - 1; k >= 0; k--) {\n            if (parent[k][u]\
+    \ != parent[k][v]) {\n                u = parent[k][u];\n                v = parent[k][v];\n\
+    \            }\n        }\n        return parent[0][u];\n    }\n\n    int level_ancestor(int\
     \ u, const int d) {\n        assert((int)(depth.size()) == n);\n        if (depth[u]\
     \ < d) return -1;\n        for (int k = 0; k < lg; k++) {\n            if (d >>\
     \ k & 1) u = parent[k][u];\n        }\n        return u;\n    }\n\n    int distance(const\
-    \ int u, const int v) const { return depth[u] + depth[v] - 2 * depth[lca(u, v)];\
-    \ }\n};\n#line 7 \"verify/graph/lowest_common_ancestor_1.test.cpp\"\n\nint main()\
-    \ {\n    int n;\n    std::cin >> n;\n    Graph<int> g(n, false);\n    for (int\
-    \ i = 0; i < n; i++) {\n        int k;\n        std::cin >> k;\n        for (int\
-    \ j = 0; j < k; j++) {\n            int c;\n            std::cin >> c;\n     \
-    \       g.add_edge(i, c, 1);\n        }\n    }\n    LowestCommonAncestor tq(g,\
-    \ 0);\n    int q;\n    std::cin >> q;\n    while (q--) {\n        int u, v;\n\
-    \        std::cin >> u >> v;\n        std::cout << tq.lca(u, v) << '\\n';\n  \
-    \  }\n    return 0;\n}\n"
+    \ int u, const int v) {\n        return depth[u] + depth[v] - 2 * depth[lca(u,\
+    \ v)];\n    }\n};\n#line 7 \"verify/graph/lowest_common_ancestor_1.test.cpp\"\n\
+    \nint main() {\n    int n;\n    std::cin >> n;\n    Graph<int> g(n, false);\n\
+    \    for (int i = 0; i < n; i++) {\n        int k;\n        std::cin >> k;\n \
+    \       for (int j = 0; j < k; j++) {\n            int c;\n            std::cin\
+    \ >> c;\n            g.add_edge(i, c, 1);\n        }\n    }\n    LowestCommonAncestor\
+    \ tq(g, 0);\n    int q;\n    std::cin >> q;\n    while (q--) {\n        int u,\
+    \ v;\n        std::cin >> u >> v;\n        std::cout << tq.lca(u, v) << '\\n';\n\
+    \    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_C\"\
     \n\n#include <iostream>\n\n#include \"graph/read_graph.hpp\"\n#include \"graph/lowest_common_ancestor.hpp\"\
     \n\nint main() {\n    int n;\n    std::cin >> n;\n    Graph<int> g(n, false);\n\
@@ -118,10 +136,12 @@ data:
   - graph/read_graph.hpp
   - graph/graph_template.hpp
   - graph/lowest_common_ancestor.hpp
+  - misc/topbit.hpp
+  - misc/countl_zero.hpp
   isVerificationFile: true
   path: verify/graph/lowest_common_ancestor_1.test.cpp
   requiredBy: []
-  timestamp: '2024-08-05 02:30:47+09:00'
+  timestamp: '2025-12-31 07:11:44+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/lowest_common_ancestor_1.test.cpp
