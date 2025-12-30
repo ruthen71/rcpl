@@ -7,7 +7,7 @@
 #endif
 
 // bit_ceil
-// (0, 1, 2, 3, 4) -> (1, 1, 2, 2, 4)
+// (0, 1, 2, 3, 4) -> (1, 1, 2, 4, 4)
 #if __cplusplus >= 202002L
 using std::bit_ceil;
 #else
