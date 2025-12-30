@@ -1,6 +1,7 @@
 #pragma once
 
-#include "graph/graph_template.hpp"
+#include "../graph/graph_template.hpp"
+#include "../misc/topbit.hpp"
 
 #include <vector>
 
@@ -9,7 +10,11 @@ template <class T> struct LowestCommonAncestor {
     std::vector<int> depth;
     std::vector<std::vector<int>> parent;
 
-    LowestCommonAncestor(Graph<T>& g, const int root = 0) : n((int)(g.size())), lg(32 - __builtin_clz(n)), depth(n, 0), parent(lg, std::vector<int>(n)) {
+    LowestCommonAncestor(Graph<T>& g, const int root = 0)
+        : n((int)(g.size())),
+          lg(topbit(n) + 1),
+          depth(n, 0),
+          parent(lg, std::vector<int>(n)) {
         auto dfs = [&](auto f, int cur, int par) -> void {
             parent[0][cur] = par;
             for (auto&& e : g[cur]) {
@@ -21,7 +26,8 @@ template <class T> struct LowestCommonAncestor {
         dfs(dfs, root, -1);
         for (int k = 0; k + 1 < lg; k++) {
             for (int v = 0; v < n; v++) {
-                parent[k + 1][v] = parent[k][v] < 0 ? -1 : parent[k][parent[k][v]];
+                parent[k + 1][v] =
+                    parent[k][v] < 0 ? -1 : parent[k][parent[k][v]];
             }
         }
     }
@@ -52,5 +58,7 @@ template <class T> struct LowestCommonAncestor {
         return u;
     }
 
-    int distance(const int u, const int v) const { return depth[u] + depth[v] - 2 * depth[lca(u, v)]; }
+    int distance(const int u, const int v) {
+        return depth[u] + depth[v] - 2 * depth[lca(u, v)];
+    }
 };
