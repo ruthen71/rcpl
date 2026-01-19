@@ -1,7 +1,7 @@
 #pragma once
 
-#include <vector>
 #include <cassert>
+#include <vector>
 
 template <class T> struct Edge {
     int from, to;
@@ -9,29 +9,34 @@ template <class T> struct Edge {
     int id;
 
     Edge() = default;
-    Edge(const int from, const int to, const T cost = T(1), const int id = -1) : from(from), to(to), cost(cost), id(id) {}
+    Edge(const int from, const int to, const T cost = T(1), const int id = -1)
+        : from(from), to(to), cost(cost), id(id) {}
 
-    friend bool operator<(const Edge<T>& a, const Edge<T>& b) { return a.cost < b.cost; }
+    friend bool operator<(const Edge<T>& a, const Edge<T>& b) {
+        return a.cost < b.cost;
+    }
 
     friend std::ostream& operator<<(std::ostream& os, const Edge<T>& e) {
         // output format: {id: cost(from, to) = cost}
-        return os << "{" << e.id << ": cost(" << e.from << ", " << e.to << ") = " << e.cost << "}";
+        return os << "{" << e.id << ": cost(" << e.from << ", " << e.to
+                  << ") = " << e.cost << "}";
     }
 };
 template <class T> using Edges = std::vector<Edge<T>>;
 
 template <class T> struct Graph {
     struct EdgeIterators {
-       public:
+      public:
         using Iterator = typename std::vector<Edge<T>>::iterator;
         EdgeIterators() = default;
-        EdgeIterators(const Iterator& begit, const Iterator& endit) : begit(begit), endit(endit) {}
+        EdgeIterators(const Iterator& begit, const Iterator& endit)
+            : begit(begit), endit(endit) {}
         Iterator begin() const { return begit; }
         Iterator end() const { return endit; }
         size_t size() const { return std::distance(begit, endit); }
         Edge<T>& operator[](int i) const { return begit[i]; }
 
-       private:
+      private:
         Iterator begit, endit;
     };
 
@@ -44,10 +49,14 @@ template <class T> struct Graph {
     std::vector<Edge<T>> csr_edges;
 
     Graph() = default;
-    Graph(const int n, const bool directed = false) : n(n), m(0), is_build(false), is_directed(directed), start(n + 1, 0) {}
+    Graph(const int n, const bool directed = false)
+        : n(n), m(0), is_build(false), is_directed(directed), start(n + 1, 0) {}
 
     // 辺を追加し, その辺が何番目に追加されたかを返す
-    int add_edge(const int from, const int to, const T cost = T(1), int id = -1) {
+    int add_edge(const int from,
+                 const int to,
+                 const T cost = T(1),
+                 int id = -1) {
         assert(!is_build);
         assert(0 <= from and from < n);
         assert(0 <= to and to < n);
@@ -68,14 +77,16 @@ template <class T> struct Graph {
         csr_edges.resize(start.back() + 1);
         for (auto&& e : edges) {
             csr_edges[counter[e.from]++] = e;
-            if (!is_directed) csr_edges[counter[e.to]++] = Edge(e.to, e.from, e.cost, e.id);
+            if (!is_directed)
+                csr_edges[counter[e.to]++] = Edge(e.to, e.from, e.cost, e.id);
         }
         is_build = true;
     }
 
     EdgeIterators operator[](int i) {
         if (!is_build) build();
-        return EdgeIterators(csr_edges.begin() + start[i], csr_edges.begin() + start[i + 1]);
+        return EdgeIterators(csr_edges.begin() + start[i],
+                             csr_edges.begin() + start[i + 1]);
     }
 
     size_t size() const { return (size_t)(n); }

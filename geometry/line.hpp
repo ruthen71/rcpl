@@ -1,6 +1,6 @@
 #pragma once
 
-#include "geometry/point.hpp"
+#include "../geometry/point.hpp"
 
 // 直線
 template <class T> struct Line {
@@ -24,8 +24,12 @@ template <class T> struct Line {
         }
     }
 
-    friend std::istream& operator>>(std::istream& is, Line& p) { return is >> p.a >> p.b; }
-    friend std::ostream& operator<<(std::ostream& os, const Line& p) { return os << p.a << "->" << p.b; }
+    friend std::istream& operator>>(std::istream& is, Line& p) {
+        return is >> p.a >> p.b;
+    }
+    friend std::ostream& operator<<(std::ostream& os, const Line& p) {
+        return os << p.a << "->" << p.b;
+    }
 };
 
 // 線分
@@ -52,8 +56,14 @@ template <class T> Point<T> reflection(const Line<T>& l, const Point<T>& p) {
 
 // 直線 l1, l2 の垂直判定
 // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A
-template <class T> inline bool is_orthogonal(const Line<T>& l1, const Line<T>& l2) { return sign(dot(l1.b - l1.a, l2.b - l2.a)) == 0; }
+template <class T>
+inline bool is_orthogonal(const Line<T>& l1, const Line<T>& l2) {
+    return sign(dot(l1.b - l1.a, l2.b - l2.a)) == 0;
+}
 
 // 直線 l1, l2 の平行判定
 // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A
-template <class T> inline bool is_parallel(const Line<T>& l1, const Line<T>& l2) { return sign(cross(l1.b - l1.a, l2.b - l2.a)) == 0; }
+template <class T>
+inline bool is_parallel(const Line<T>& l1, const Line<T>& l2) {
+    return sign(cross(l1.b - l1.a, l2.b - l2.a)) == 0;
+}

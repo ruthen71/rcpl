@@ -6,7 +6,8 @@
 
 // nextelement index
 // res[i][c] = s[i, n) において次の c の登場位置を返す
-template <class T> std::vector<std::vector<int>> next_element_index(const std::vector<T>& s) {
+template <class T>
+std::vector<std::vector<int>> next_element_index(const std::vector<T>& s) {
     const int n = (int)(s.size());
     T lb = std::numeric_limits<T>::max(), ub = std::numeric_limits<T>::min();
     for (int i = 0; i < n; i++) {
@@ -14,7 +15,7 @@ template <class T> std::vector<std::vector<int>> next_element_index(const std::v
         if (ub < s[i]) ub = s[i];
     }
     const int sigma = ub - lb + 1;
-    std::vector res(n + 1, std::vector<int>(sigma, -1));
+    std::vector res(n + 1, std::vector<int>(sigma, n));
     for (int i = n - 1; i >= 0; i--) {
         res[i] = res[i + 1];
         res[i][s[i] - lb] = i;

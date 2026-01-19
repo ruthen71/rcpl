@@ -1,12 +1,12 @@
 #pragma once
 
-#include "math/modint261.hpp"
-
 #include <algorithm>
 #include <cassert>
 #include <chrono>
 #include <random>
 #include <vector>
+
+#include "../math/modint261.hpp"
 
 // Rolling Hash
 template <class Mint> struct RollingHash {
@@ -19,7 +19,8 @@ template <class Mint> struct RollingHash {
     }
 
     static inline Mint generate_base() {
-        std::mt19937_64 mt(std::chrono::steady_clock::now().time_since_epoch().count());
+        std::mt19937_64 mt(
+            std::chrono::steady_clock::now().time_since_epoch().count());
         std::uniform_int_distribution<uint64_t> rand(1, Mint::mod() - 1);
         return Mint(rand(mt));
     }

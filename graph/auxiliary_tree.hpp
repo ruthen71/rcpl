@@ -1,7 +1,7 @@
 #pragma once
 
-#include "graph/graph_template.hpp"
-#include "graph/lowest_common_ancestor.hpp"
+#include "../graph/graph_template.hpp"
+#include "../graph/lowest_common_ancestor.hpp"
 
 #include <algorithm>
 
@@ -11,7 +11,12 @@ template <class T> struct AuxiliaryTree {
     std::vector<T> depth;
     LowestCommonAncestor<T> lca;
 
-    AuxiliaryTree(Graph<T>& g, const int root = 0) : n((int)(g.size())), root(root), depth(n, T(0)), rank(n), lca(g, root) {
+    AuxiliaryTree(Graph<T>& g, const int root = 0)
+        : n((int)(g.size())),
+          root(root),
+          depth(n, T(0)),
+          rank(n),
+          lca(g, root) {
         // DFS して行きがけ順に頂点を並べる
         auto dfs = [&](auto f, int cur, int par) -> void {
             preorder.push_back(cur);
@@ -43,7 +48,8 @@ template <class T> struct AuxiliaryTree {
         rs.push_back(0);
 
         // i は新しい頂点番号, vs[i] はもとの頂点番号
-        // vs は Auxiliary Tree の行きがけ順になっているのでループが DFS になっている
+        // vs は Auxiliary Tree の行きがけ順になっているのでループが DFS
+        // になっている
         for (int i = 1; i < (int)(vs.size()); i++) {
             // LCA まで遡ってから辺を追加する
             int l = lca.lca(vs[rs.back()], vs[i]);
