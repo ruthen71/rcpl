@@ -3,9 +3,6 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
-    path: algebra/monoid_s_f/monoid_max_add.hpp
-    title: algebra/monoid_s_f/monoid_max_add.hpp
-  - icon: ':warning:'
     path: algebra/monoid_s_f/monoid_max_index_add.hpp
     title: algebra/monoid_s_f/monoid_max_index_add.hpp
   - icon: ':heavy_check_mark:'
@@ -49,7 +46,6 @@ data:
   - algebra/monoid_s_f/monoid_sum_size_add.hpp
   - algebra/monoid_s_f/monoid_min_index_add.hpp
   - algebra/monoid_s_f/monoid_min_add.hpp
-  - algebra/monoid_s_f/monoid_max_add.hpp
   timestamp: '2024-03-24 17:04:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

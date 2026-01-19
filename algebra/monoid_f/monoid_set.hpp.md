@@ -14,9 +14,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: algebra/monoid_s_f/monoid_min_set.hpp
     title: algebra/monoid_s_f/monoid_min_set.hpp
-  - icon: ':heavy_check_mark:'
-    path: algebra/monoid_s_f/monoid_sum_size_set.hpp
-    title: algebra/monoid_s_f/monoid_sum_size_set.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp
@@ -24,9 +21,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
     title: verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
-    title: verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -44,7 +38,6 @@ data:
   path: algebra/monoid_f/monoid_set.hpp
   requiredBy:
   - algebra/monoid_s_f/monoid_max_set.hpp
-  - algebra/monoid_s_f/monoid_sum_size_set.hpp
   - algebra/monoid_s_f/monoid_min_index_set.hpp
   - algebra/monoid_s_f/monoid_max_index_set.hpp
   - algebra/monoid_s_f/monoid_min_set.hpp
@@ -53,7 +46,6 @@ data:
   verifiedWith:
   - verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
   - verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp
-  - verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
 documentation_of: algebra/monoid_f/monoid_set.hpp
 layout: document
 redirect_from:

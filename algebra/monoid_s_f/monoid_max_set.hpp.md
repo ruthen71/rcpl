@@ -35,7 +35,7 @@ data:
   isVerificationFile: false
   path: algebra/monoid_s_f/monoid_max_set.hpp
   requiredBy: []
-  timestamp: '2024-03-24 17:04:51+09:00'
+  timestamp: '2026-01-20 04:06:16+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: algebra/monoid_s_f/monoid_max_set.hpp

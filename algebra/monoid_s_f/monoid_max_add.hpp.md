@@ -1,12 +1,6 @@
 ---
 data:
-  _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: algebra/monoid_f/monoid_add.hpp
-    title: algebra/monoid_f/monoid_add.hpp
-  - icon: ':warning:'
-    path: algebra/monoid_s/monoid_max.hpp
-    title: algebra/monoid_s/monoid_max.hpp
+  _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -14,27 +8,29 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"algebra/monoid_s/monoid_max.hpp\"\n// MS\ntemplate <class\
-    \ T> struct MonoidMax {\n    using S = T;\n    static constexpr S op(S a, S b)\
-    \ { return std::max(a, b); }\n    static constexpr S e() { return std::numeric_limits<T>::lowest();\
-    \ }\n};\n#line 2 \"algebra/monoid_f/monoid_add.hpp\"\n// MF\ntemplate <class T>\
-    \ struct MonoidAdd {\n    using F = T;\n    static constexpr F composition(F f,\
-    \ F g) { return f + g; }\n    static constexpr F id() { return T(0); }\n};\n#line\
-    \ 4 \"algebra/monoid_s_f/monoid_max_add.hpp\"\n// MSF\ntemplate <class T> struct\
-    \ MonoidMaxAdd {\n    using MS = MonoidMax<T>;\n    using MF = MonoidAdd<T>;\n\
-    \    using S = typename MS::S;\n    using F = typename MF::F;\n    static constexpr\
-    \ S mapping(F f, S x) { return f + x; }\n};\n"
-  code: "#pragma once\n#include \"algebra/monoid_s/monoid_max.hpp\"\n#include \"algebra/monoid_f/monoid_add.hpp\"\
-    \n// MSF\ntemplate <class T> struct MonoidMaxAdd {\n    using MS = MonoidMax<T>;\n\
-    \    using MF = MonoidAdd<T>;\n    using S = typename MS::S;\n    using F = typename\
-    \ MF::F;\n    static constexpr S mapping(F f, S x) { return f + x; }\n};"
-  dependsOn:
-  - algebra/monoid_s/monoid_max.hpp
-  - algebra/monoid_f/monoid_add.hpp
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
+    , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/onlinejudge_verify/languages/cplusplus.py\"\
+    , line 187, in bundle\n    bundler.update(path)\n    ~~~~~~~~~~~~~~^^^^^^\n  File\
+    \ \"/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
+    , line 401, in update\n    self.update(self._resolve(pathlib.Path(included), included_from=path))\n\
+    \                ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n \
+    \ File \"/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
+    , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
+    )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: ../algebra/monoid_f/monoid_add.hpp:\
+    \ line -1: no such header\n"
+  code: "#pragma once\n#include \"../algebra/monoid_f/monoid_add.hpp\"\n#include \"\
+    ../algebra/monoid_s/monoid_max.hpp\"\n// MSF\ntemplate <class T> struct MonoidMaxAdd\
+    \ {\n    using MS = MonoidMax<T>;\n    using MF = MonoidAdd<T>;\n    using S =\
+    \ typename MS::S;\n    using F = typename MF::F;\n    static constexpr S mapping(F\
+    \ f, S x) { return f + x; }\n};\n"
+  dependsOn: []
   isVerificationFile: false
   path: algebra/monoid_s_f/monoid_max_add.hpp
   requiredBy: []
-  timestamp: '2024-03-24 17:04:51+09:00'
+  timestamp: '1970-01-01 00:00:00+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: algebra/monoid_s_f/monoid_max_add.hpp
