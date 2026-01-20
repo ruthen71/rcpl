@@ -1,39 +1,50 @@
 ---
 data:
-  _extendedDependsOn: []
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: algebra/monoid_f/monoid_set.hpp
+    title: algebra/monoid_f/monoid_set.hpp
+  - icon: ':heavy_check_mark:'
+    path: algebra/monoid_s/monoid_sum_size.hpp
+    title: algebra/monoid_s/monoid_sum_size.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
+    title: verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
-    , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/onlinejudge_verify/languages/cplusplus.py\"\
-    , line 187, in bundle\n    bundler.update(path)\n    ~~~~~~~~~~~~~~^^^^^^\n  File\
-    \ \"/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
-    , line 401, in update\n    self.update(self._resolve(pathlib.Path(included), included_from=path))\n\
-    \                ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n \
-    \ File \"/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
-    , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
-    )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: ../algebra/monoid_f/monoid_set.hpp:\
-    \ line -1: no such header\n"
-  code: "#pragma once\n#include \"../algebra/monoid_f/monoid_set.hpp\"\n#include \"\
-    ../algebra/monoid_s/monoid_sum_size.hpp\"\n// MSF\ntemplate <class T> struct MonoidSumSizeSet\
-    \ {\n    using MS = MonoidSumSize<T>;\n    using MF = MonoidSet<T>;\n    using\
-    \ S = typename MS::S;\n    using F = typename MF::F;\n    static constexpr S mapping(F\
-    \ f, S x) {\n        return (f == MF::id() ? x : std::make_pair(f * x.second,\
-    \ x.second));\n    }\n};\n"
-  dependsOn: []
+  bundledCode: "#line 2 \"algebra/monoid_f/monoid_set.hpp\"\n// MF\ntemplate <class\
+    \ T> struct MonoidSet {\n    using F = T;\n    static constexpr F composition(F\
+    \ f, F g) { return f == id() ? g : f; }\n    static constexpr F id() { return\
+    \ std::numeric_limits<F>::max(); }\n};\n#line 2 \"algebra/monoid_s/monoid_sum_size.hpp\"\
+    \n// MS\ntemplate <class T> struct MonoidSumSize {\n    using S = std::pair<T,\
+    \ int>;\n    static constexpr S op(S a, S b) { return {a.first + b.first, a.second\
+    \ + b.second}; }\n    static constexpr S e() { return {T(0), 0}; }\n};\n#line\
+    \ 4 \"algebra/monoid_s_f/monoid_sum_size_set.hpp\"\n// MSF\ntemplate <class T>\
+    \ struct MonoidSumSizeSet {\n    using MS = MonoidSumSize<T>;\n    using MF =\
+    \ MonoidSet<T>;\n    using S = typename MS::S;\n    using F = typename MF::F;\n\
+    \    static constexpr S mapping(F f, S x) {\n        return (f == MF::id() ? x\
+    \ : std::make_pair(f * x.second, x.second));\n    }\n};\n"
+  code: "#pragma once\n#include \"../../algebra/monoid_f/monoid_set.hpp\"\n#include\
+    \ \"../../algebra/monoid_s/monoid_sum_size.hpp\"\n// MSF\ntemplate <class T> struct\
+    \ MonoidSumSizeSet {\n    using MS = MonoidSumSize<T>;\n    using MF = MonoidSet<T>;\n\
+    \    using S = typename MS::S;\n    using F = typename MF::F;\n    static constexpr\
+    \ S mapping(F f, S x) {\n        return (f == MF::id() ? x : std::make_pair(f\
+    \ * x.second, x.second));\n    }\n};\n"
+  dependsOn:
+  - algebra/monoid_f/monoid_set.hpp
+  - algebra/monoid_s/monoid_sum_size.hpp
   isVerificationFile: false
   path: algebra/monoid_s_f/monoid_sum_size_set.hpp
   requiredBy: []
-  timestamp: '1970-01-01 00:00:00+00:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2026-01-20 14:43:22+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
 documentation_of: algebra/monoid_s_f/monoid_sum_size_set.hpp
 layout: document
 redirect_from:

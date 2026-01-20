@@ -25,16 +25,16 @@ data:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H
   bundledCode: "#line 1 \"verify/aoj_dsl/aoj_dsl_2_h_lazy_segment_tree.test.cpp\"\n\
     #define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H\"\
-    \n\n#include <bits/stdc++.h>\n\n#line 2 \"algebra/monoid_s/monoid_min.hpp\"\n\
-    // MS\ntemplate <class T> struct MonoidMin {\n    using S = T;\n    static constexpr\
-    \ S op(S a, S b) { return std::min(a, b); }\n    static constexpr S e() { return\
-    \ std::numeric_limits<T>::max(); }\n};\n#line 2 \"algebra/monoid_f/monoid_add.hpp\"\
-    \n// MF\ntemplate <class T> struct MonoidAdd {\n    using F = T;\n    static constexpr\
+    \n\n#include <bits/stdc++.h>\n\n#line 2 \"algebra/monoid_f/monoid_add.hpp\"\n\
+    // MF\ntemplate <class T> struct MonoidAdd {\n    using F = T;\n    static constexpr\
     \ F composition(F f, F g) { return f + g; }\n    static constexpr F id() { return\
-    \ T(0); }\n};\n#line 4 \"algebra/monoid_s_f/monoid_min_add.hpp\"\n// MSF\ntemplate\
-    \ <class T> struct MonoidMinAdd {\n    using MS = MonoidMin<T>;\n    using MF\
-    \ = MonoidAdd<T>;\n    using S = typename MS::S;\n    using F = typename MF::F;\n\
-    \    static constexpr S mapping(F f, S x) { return f + x; }\n};\n#line 4 \"data_structure/lazy_segment_tree.hpp\"\
+    \ T(0); }\n};\n#line 2 \"algebra/monoid_s/monoid_min.hpp\"\n// MS\ntemplate <class\
+    \ T> struct MonoidMin {\n    using S = T;\n    static constexpr S op(S a, S b)\
+    \ { return std::min(a, b); }\n    static constexpr S e() { return std::numeric_limits<T>::max();\
+    \ }\n};\n#line 4 \"algebra/monoid_s_f/monoid_min_add.hpp\"\n// MSF\ntemplate <class\
+    \ T> struct MonoidMinAdd {\n    using MS = MonoidMin<T>;\n    using MF = MonoidAdd<T>;\n\
+    \    using S = typename MS::S;\n    using F = typename MF::F;\n    static constexpr\
+    \ S mapping(F f, S x) { return f + x; }\n};\n#line 4 \"data_structure/lazy_segment_tree.hpp\"\
     \ntemplate <class MSF> struct LazySegmentTree {\n   public:\n    using S = typename\
     \ MSF::S;\n    using F = typename MSF::F;\n    using MS = typename MSF::MS;\n\
     \    using MF = typename MSF::MF;\n    LazySegmentTree() : LazySegmentTree(0)\
@@ -123,13 +123,13 @@ data:
     \ r + 1) << '\\n';\n        }\n    }\n    return 0;\n}\n"
   dependsOn:
   - algebra/monoid_s_f/monoid_min_add.hpp
-  - algebra/monoid_s/monoid_min.hpp
   - algebra/monoid_f/monoid_add.hpp
+  - algebra/monoid_s/monoid_min.hpp
   - data_structure/lazy_segment_tree.hpp
   isVerificationFile: true
   path: verify/aoj_dsl/aoj_dsl_2_h_lazy_segment_tree.test.cpp
   requiredBy: []
-  timestamp: '2024-07-13 11:37:49+09:00'
+  timestamp: '2026-01-20 14:43:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_dsl/aoj_dsl_2_h_lazy_segment_tree.test.cpp

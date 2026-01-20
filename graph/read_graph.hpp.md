@@ -45,34 +45,34 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/lowest_common_ancestor_2.test.cpp
     title: verify/graph/lowest_common_ancestor_2.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/minimum_steiner_tree.test.cpp
     title: verify/graph/minimum_steiner_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/strongly_connected_component_1.test.cpp
     title: verify/graph/strongly_connected_component_1.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/strongly_connected_component_2.test.cpp
     title: verify/graph/strongly_connected_component_2.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/topological_sort_1.test.cpp
     title: verify/graph/topological_sort_1.test.cpp
   - icon: ':x:'
     path: verify/graph/topological_sort_2.test.cpp
     title: verify/graph/topological_sort_2.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/traveling_salesman_problem.test.cpp
     title: verify/graph/traveling_salesman_problem.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/tree_diameter_1.test.cpp
     title: verify/graph/tree_diameter_1.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/tree_diameter_2.test.cpp
     title: verify/graph/tree_diameter_2.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/warshall_floyd.test.cpp
     title: verify/graph/warshall_floyd.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/zero_one_bfs.test.cpp
     title: verify/graph/zero_one_bfs.test.cpp
   _isVerificationFailed: true

@@ -20,29 +20,30 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"algebra/monoid_s/monoid_sum_size.hpp\"\n// MS\ntemplate\
-    \ <class T> struct MonoidSumSize {\n    using S = std::pair<T, int>;\n    static\
-    \ constexpr S op(S a, S b) { return {a.first + b.first, a.second + b.second};\
-    \ }\n    static constexpr S e() { return {T(0), 0}; }\n};\n#line 2 \"algebra/monoid_f/monoid_add.hpp\"\
-    \n// MF\ntemplate <class T> struct MonoidAdd {\n    using F = T;\n    static constexpr\
-    \ F composition(F f, F g) { return f + g; }\n    static constexpr F id() { return\
-    \ T(0); }\n};\n#line 4 \"algebra/monoid_s_f/monoid_sum_size_add.hpp\"\n// MSF\n\
-    template <class T> struct MonoidSumSizeAdd {\n    using MS = MonoidSumSize<T>;\n\
+  bundledCode: "#line 2 \"algebra/monoid_f/monoid_add.hpp\"\n// MF\ntemplate <class\
+    \ T> struct MonoidAdd {\n    using F = T;\n    static constexpr F composition(F\
+    \ f, F g) { return f + g; }\n    static constexpr F id() { return T(0); }\n};\n\
+    #line 2 \"algebra/monoid_s/monoid_sum_size.hpp\"\n// MS\ntemplate <class T> struct\
+    \ MonoidSumSize {\n    using S = std::pair<T, int>;\n    static constexpr S op(S\
+    \ a, S b) { return {a.first + b.first, a.second + b.second}; }\n    static constexpr\
+    \ S e() { return {T(0), 0}; }\n};\n#line 4 \"algebra/monoid_s_f/monoid_sum_size_add.hpp\"\
+    \n// MSF\ntemplate <class T> struct MonoidSumSizeAdd {\n    using MS = MonoidSumSize<T>;\n\
     \    using MF = MonoidAdd<T>;\n    using S = typename MS::S;\n    using F = typename\
-    \ MF::F;\n    static constexpr S mapping(F f, S x) { return {x.first + f * x.second,\
-    \ x.second}; }\n};\n"
-  code: "#pragma once\n#include \"algebra/monoid_s/monoid_sum_size.hpp\"\n#include\
-    \ \"algebra/monoid_f/monoid_add.hpp\"\n// MSF\ntemplate <class T> struct MonoidSumSizeAdd\
-    \ {\n    using MS = MonoidSumSize<T>;\n    using MF = MonoidAdd<T>;\n    using\
-    \ S = typename MS::S;\n    using F = typename MF::F;\n    static constexpr S mapping(F\
-    \ f, S x) { return {x.first + f * x.second, x.second}; }\n};"
+    \ MF::F;\n    static constexpr S mapping(F f, S x) {\n        return {x.first\
+    \ + f * x.second, x.second};\n    }\n};\n"
+  code: "#pragma once\n#include \"../../algebra/monoid_f/monoid_add.hpp\"\n#include\
+    \ \"../../algebra/monoid_s/monoid_sum_size.hpp\"\n// MSF\ntemplate <class T> struct\
+    \ MonoidSumSizeAdd {\n    using MS = MonoidSumSize<T>;\n    using MF = MonoidAdd<T>;\n\
+    \    using S = typename MS::S;\n    using F = typename MF::F;\n    static constexpr\
+    \ S mapping(F f, S x) {\n        return {x.first + f * x.second, x.second};\n\
+    \    }\n};\n"
   dependsOn:
-  - algebra/monoid_s/monoid_sum_size.hpp
   - algebra/monoid_f/monoid_add.hpp
+  - algebra/monoid_s/monoid_sum_size.hpp
   isVerificationFile: false
   path: algebra/monoid_s_f/monoid_sum_size_add.hpp
   requiredBy: []
-  timestamp: '2024-03-24 17:04:51+09:00'
+  timestamp: '2026-01-20 14:43:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/heavy_light_decomposition_1.test.cpp

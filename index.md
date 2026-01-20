@@ -90,7 +90,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: algebra/monoid_s_f/monoid_sum_size_affine.hpp
       title: algebra/monoid_s_f/monoid_sum_size_affine.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: algebra/monoid_s_f/monoid_sum_size_set.hpp
       title: algebra/monoid_s_f/monoid_sum_size_set.hpp
   - name: algebra
@@ -287,38 +287,38 @@ data:
     - icon: ':question:'
       path: graph/lowest_common_ancestor.hpp
       title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/minimum_steiner_tree.hpp
       title: "Minimum Steiner Tree (\u6700\u5C0F\u30B7\u30E5\u30BF\u30A4\u30CA\u30FC\
         \u6728)"
     - icon: ':question:'
       path: graph/read_graph.hpp
       title: "\u30B0\u30E9\u30D5\u5165\u529B\u30E9\u30A4\u30D6\u30E9\u30EA"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: graph/restore_path.hpp
       title: Restore path
     - icon: ':warning:'
       path: graph/shortest_path_tree.hpp
       title: "Shortest Path Tree (\u6700\u77ED\u7D4C\u8DEF\u6728)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/strongly_connected_component.hpp
       title: "Strongly Connected Component (\u5F37\u9023\u7D50\u6210\u5206)"
-    - icon: ':x:'
+    - icon: ':question:'
       path: graph/topological_sort.hpp
       title: "Topological Sort (\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8\
         )"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/traveling_salesman_problem.hpp
       title: "Traveling Salesman Problem (\u5DE1\u56DE\u30BB\u30FC\u30EB\u30B9\u30DE\
         \u30F3\u554F\u984C)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/tree_diameter.hpp
       title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/warshall_floyd.hpp
       title: "Warshall-Floyd algorithm (\u30EF\u30FC\u30B7\u30E3\u30EB\u30D5\u30ED\
         \u30A4\u30C9\u6CD5)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/zero_one_bfs.hpp
       title: 01-BFS
   - name: icpc
@@ -387,7 +387,7 @@ data:
       title: "\u7DDA\u5F62\u30C7\u30A3\u30AA\u30D5\u30A1\u30F3\u30C8\u30B9\u65B9\u7A0B\
         \u5F0F ($ ax + by = c $) / \u7DDA\u5F62\u5408\u540C\u5F0F ( $ ax \\equiv b\
         \ \\pmod m $ )"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/modint261.hpp
       title: Modint $\pmod{2^{61}-1} $
     - icon: ':heavy_check_mark:'
@@ -455,7 +455,7 @@ data:
       path: string/next_element_index.hpp
       title: "Next Element Index (\u6B21\u306E\u5404\u8981\u7D20\u306E\u767B\u5834\
         \u4F4D\u7F6E)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: string/rolling_hash.hpp
       title: "Rolling Hash (\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5\
         )"
@@ -471,7 +471,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: unionfind/potentialized_unionfind.hpp
       title: "Potentialized Unionfind\uFF08\u91CD\u307F\u4ED8\u304D Unionfind\uFF09"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: unionfind/unionfind.hpp
       title: Unionfind
   verificationCategories:
@@ -527,7 +527,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_dsl/aoj_dsl_2_h_lazy_segment_tree.test.cpp
       title: verify/aoj_dsl/aoj_dsl_2_h_lazy_segment_tree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
       title: verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
     - icon: ':heavy_check_mark:'
@@ -721,34 +721,34 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/lowest_common_ancestor_2.test.cpp
       title: verify/graph/lowest_common_ancestor_2.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/minimum_steiner_tree.test.cpp
       title: verify/graph/minimum_steiner_tree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/strongly_connected_component_1.test.cpp
       title: verify/graph/strongly_connected_component_1.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/strongly_connected_component_2.test.cpp
       title: verify/graph/strongly_connected_component_2.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/topological_sort_1.test.cpp
       title: verify/graph/topological_sort_1.test.cpp
     - icon: ':x:'
       path: verify/graph/topological_sort_2.test.cpp
       title: verify/graph/topological_sort_2.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/traveling_salesman_problem.test.cpp
       title: verify/graph/traveling_salesman_problem.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/tree_diameter_1.test.cpp
       title: verify/graph/tree_diameter_1.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/tree_diameter_2.test.cpp
       title: verify/graph/tree_diameter_2.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/warshall_floyd.test.cpp
       title: verify/graph/warshall_floyd.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/graph/zero_one_bfs.test.cpp
       title: verify/graph/zero_one_bfs.test.cpp
   - name: verify/lc_data_structure
@@ -780,7 +780,7 @@ data:
       title: verify/misc/mo.test.cpp
   - name: verify/string
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/string/rolling_hash.test.cpp
       title: verify/string/rolling_hash.test.cpp
   - name: verify/yuki

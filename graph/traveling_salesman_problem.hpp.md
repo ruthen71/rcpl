@@ -6,12 +6,12 @@ data:
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/traveling_salesman_problem.test.cpp
     title: verify/graph/traveling_salesman_problem.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/traveling_salesman_problem.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
@@ -82,7 +82,7 @@ data:
   path: graph/traveling_salesman_problem.hpp
   requiredBy: []
   timestamp: '2026-01-20 04:06:16+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/traveling_salesman_problem.test.cpp
 documentation_of: graph/traveling_salesman_problem.hpp

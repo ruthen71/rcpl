@@ -6,7 +6,7 @@ data:
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/topological_sort_1.test.cpp
     title: verify/graph/topological_sort_1.test.cpp
   - icon: ':x:'
@@ -14,7 +14,7 @@ data:
     title: verify/graph/topological_sort_2.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/topological_sort.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
@@ -101,7 +101,7 @@ data:
   path: graph/topological_sort.hpp
   requiredBy: []
   timestamp: '2026-01-20 04:06:16+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/graph/topological_sort_1.test.cpp
   - verify/graph/topological_sort_2.test.cpp

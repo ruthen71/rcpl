@@ -25,13 +25,13 @@ data:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_F
   bundledCode: "#line 1 \"verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp\"\n\
     #define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_F\"\
-    \n\n#include <bits/stdc++.h>\n\n#line 2 \"algebra/monoid_s/monoid_min.hpp\"\n\
-    // MS\ntemplate <class T> struct MonoidMin {\n    using S = T;\n    static constexpr\
-    \ S op(S a, S b) { return std::min(a, b); }\n    static constexpr S e() { return\
-    \ std::numeric_limits<T>::max(); }\n};\n#line 2 \"algebra/monoid_f/monoid_set.hpp\"\
-    \n// MF\ntemplate <class T> struct MonoidSet {\n    using F = T;\n    static constexpr\
+    \n\n#include <bits/stdc++.h>\n\n#line 2 \"algebra/monoid_f/monoid_set.hpp\"\n\
+    // MF\ntemplate <class T> struct MonoidSet {\n    using F = T;\n    static constexpr\
     \ F composition(F f, F g) { return f == id() ? g : f; }\n    static constexpr\
-    \ F id() { return std::numeric_limits<F>::max(); }\n};\n#line 4 \"algebra/monoid_s_f/monoid_min_set.hpp\"\
+    \ F id() { return std::numeric_limits<F>::max(); }\n};\n#line 2 \"algebra/monoid_s/monoid_min.hpp\"\
+    \n// MS\ntemplate <class T> struct MonoidMin {\n    using S = T;\n    static constexpr\
+    \ S op(S a, S b) { return std::min(a, b); }\n    static constexpr S e() { return\
+    \ std::numeric_limits<T>::max(); }\n};\n#line 4 \"algebra/monoid_s_f/monoid_min_set.hpp\"\
     \n// MSF\ntemplate <class T> struct MonoidMinSet {\n    using MS = MonoidMin<T>;\n\
     \    using MF = MonoidSet<T>;\n    using S = typename MS::S;\n    using F = typename\
     \ MF::F;\n    static constexpr S mapping(F f, S x) { return f == MF::id() ? x\
@@ -122,13 +122,13 @@ data:
     n';\n        }\n    }\n    return 0;\n}\n"
   dependsOn:
   - algebra/monoid_s_f/monoid_min_set.hpp
-  - algebra/monoid_s/monoid_min.hpp
   - algebra/monoid_f/monoid_set.hpp
+  - algebra/monoid_s/monoid_min.hpp
   - data_structure/lazy_segment_tree.hpp
   isVerificationFile: true
   path: verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
   requiredBy: []
-  timestamp: '2024-07-13 11:37:49+09:00'
+  timestamp: '2026-01-20 14:43:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp

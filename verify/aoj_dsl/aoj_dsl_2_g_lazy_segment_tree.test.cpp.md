@@ -25,36 +25,37 @@ data:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G
   bundledCode: "#line 1 \"verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp\"\n\
     #define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G\"\
-    \n\n#include <bits/stdc++.h>\n\n#line 2 \"algebra/monoid_s/monoid_sum_size.hpp\"\
-    \n// MS\ntemplate <class T> struct MonoidSumSize {\n    using S = std::pair<T,\
-    \ int>;\n    static constexpr S op(S a, S b) { return {a.first + b.first, a.second\
-    \ + b.second}; }\n    static constexpr S e() { return {T(0), 0}; }\n};\n#line\
-    \ 2 \"algebra/monoid_f/monoid_add.hpp\"\n// MF\ntemplate <class T> struct MonoidAdd\
-    \ {\n    using F = T;\n    static constexpr F composition(F f, F g) { return f\
-    \ + g; }\n    static constexpr F id() { return T(0); }\n};\n#line 4 \"algebra/monoid_s_f/monoid_sum_size_add.hpp\"\
+    \n\n#include <bits/stdc++.h>\n\n#line 2 \"algebra/monoid_f/monoid_add.hpp\"\n\
+    // MF\ntemplate <class T> struct MonoidAdd {\n    using F = T;\n    static constexpr\
+    \ F composition(F f, F g) { return f + g; }\n    static constexpr F id() { return\
+    \ T(0); }\n};\n#line 2 \"algebra/monoid_s/monoid_sum_size.hpp\"\n// MS\ntemplate\
+    \ <class T> struct MonoidSumSize {\n    using S = std::pair<T, int>;\n    static\
+    \ constexpr S op(S a, S b) { return {a.first + b.first, a.second + b.second};\
+    \ }\n    static constexpr S e() { return {T(0), 0}; }\n};\n#line 4 \"algebra/monoid_s_f/monoid_sum_size_add.hpp\"\
     \n// MSF\ntemplate <class T> struct MonoidSumSizeAdd {\n    using MS = MonoidSumSize<T>;\n\
     \    using MF = MonoidAdd<T>;\n    using S = typename MS::S;\n    using F = typename\
-    \ MF::F;\n    static constexpr S mapping(F f, S x) { return {x.first + f * x.second,\
-    \ x.second}; }\n};\n#line 4 \"data_structure/lazy_segment_tree.hpp\"\ntemplate\
-    \ <class MSF> struct LazySegmentTree {\n   public:\n    using S = typename MSF::S;\n\
-    \    using F = typename MSF::F;\n    using MS = typename MSF::MS;\n    using MF\
-    \ = typename MSF::MF;\n    LazySegmentTree() : LazySegmentTree(0) {}\n    LazySegmentTree(int\
-    \ n) : LazySegmentTree(std::vector<S>(n, MS::e())) {}\n    LazySegmentTree(const\
-    \ std::vector<S>& v) : n((int)(v.size())) {\n        log = 0;\n        while ((1U\
-    \ << log) < (unsigned int)(n)) log++;\n        size = 1 << log;\n        d = std::vector<S>(size\
-    \ << 1, MS::e());\n        lz = std::vector<F>(size, MF::id());\n        for (int\
-    \ i = 0; i < n; i++) d[i + size] = v[i];\n        for (int i = size - 1; i >=\
-    \ 1; i--) {\n            update(i);\n        }\n    }\n\n    void set(int p, const\
-    \ S& x) {\n        assert(0 <= p and p < n);\n        p += size;\n        for\
-    \ (int i = log; i >= 1; i--) push(p >> i);\n        d[p] = x;\n        for (int\
-    \ i = 1; i <= log; i++) update(p >> i);\n    }\n\n    void chset(int p, const\
-    \ S& x) {\n        assert(0 <= p and p < n);\n        p += size;\n        for\
-    \ (int i = log; i >= 1; i--) push(p >> i);\n        d[p] = MS::op(d[p], x);\n\
-    \        for (int i = 1; i <= log; i++) update(p >> i);\n    }\n\n    S operator[](int\
-    \ p) {\n        assert(0 <= p and p < n);\n        p += size;\n        for (int\
-    \ i = log; i >= 1; i--) push(p >> i);\n        return d[p];\n    }\n\n    S get(int\
-    \ p) {\n        assert(0 <= p and p < n);\n        p += size;\n        for (int\
-    \ i = log; i >= 1; i--) push(p >> i);\n        return d[p];\n    }\n\n    S prod(int\
+    \ MF::F;\n    static constexpr S mapping(F f, S x) {\n        return {x.first\
+    \ + f * x.second, x.second};\n    }\n};\n#line 4 \"data_structure/lazy_segment_tree.hpp\"\
+    \ntemplate <class MSF> struct LazySegmentTree {\n   public:\n    using S = typename\
+    \ MSF::S;\n    using F = typename MSF::F;\n    using MS = typename MSF::MS;\n\
+    \    using MF = typename MSF::MF;\n    LazySegmentTree() : LazySegmentTree(0)\
+    \ {}\n    LazySegmentTree(int n) : LazySegmentTree(std::vector<S>(n, MS::e()))\
+    \ {}\n    LazySegmentTree(const std::vector<S>& v) : n((int)(v.size())) {\n  \
+    \      log = 0;\n        while ((1U << log) < (unsigned int)(n)) log++;\n    \
+    \    size = 1 << log;\n        d = std::vector<S>(size << 1, MS::e());\n     \
+    \   lz = std::vector<F>(size, MF::id());\n        for (int i = 0; i < n; i++)\
+    \ d[i + size] = v[i];\n        for (int i = size - 1; i >= 1; i--) {\n       \
+    \     update(i);\n        }\n    }\n\n    void set(int p, const S& x) {\n    \
+    \    assert(0 <= p and p < n);\n        p += size;\n        for (int i = log;\
+    \ i >= 1; i--) push(p >> i);\n        d[p] = x;\n        for (int i = 1; i <=\
+    \ log; i++) update(p >> i);\n    }\n\n    void chset(int p, const S& x) {\n  \
+    \      assert(0 <= p and p < n);\n        p += size;\n        for (int i = log;\
+    \ i >= 1; i--) push(p >> i);\n        d[p] = MS::op(d[p], x);\n        for (int\
+    \ i = 1; i <= log; i++) update(p >> i);\n    }\n\n    S operator[](int p) {\n\
+    \        assert(0 <= p and p < n);\n        p += size;\n        for (int i = log;\
+    \ i >= 1; i--) push(p >> i);\n        return d[p];\n    }\n\n    S get(int p)\
+    \ {\n        assert(0 <= p and p < n);\n        p += size;\n        for (int i\
+    \ = log; i >= 1; i--) push(p >> i);\n        return d[p];\n    }\n\n    S prod(int\
     \ l, int r) {\n        assert(0 <= l and l <= r and r <= n);\n        if (l ==\
     \ r) return MS::e();\n\n        l += size;\n        r += size;\n\n        for\
     \ (int i = log; i >= 1; i--) {\n            if (((l >> i) << i) != l) push(l >>\
@@ -124,13 +125,13 @@ data:
     \ r).first << '\\n';\n        }\n    }\n    return 0;\n}\n"
   dependsOn:
   - algebra/monoid_s_f/monoid_sum_size_add.hpp
-  - algebra/monoid_s/monoid_sum_size.hpp
   - algebra/monoid_f/monoid_add.hpp
+  - algebra/monoid_s/monoid_sum_size.hpp
   - data_structure/lazy_segment_tree.hpp
   isVerificationFile: true
   path: verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp
   requiredBy: []
-  timestamp: '2024-07-13 11:37:49+09:00'
+  timestamp: '2026-01-20 14:43:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp

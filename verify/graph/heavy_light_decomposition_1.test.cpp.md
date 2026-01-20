@@ -232,17 +232,17 @@ data:
     \  d[k] = MSF::mapping(f, d[k]);\n        if (k < size) lz[k] = MF::composition(f,\
     \ lz[k]);\n    }\n    void push(int k) {\n        all_apply(k << 1, lz[k]);\n\
     \        all_apply((k << 1) | 1, lz[k]);\n        lz[k] = MF::id();\n    }\n};\n\
-    #line 2 \"algebra/monoid_s/monoid_sum_size.hpp\"\n// MS\ntemplate <class T> struct\
-    \ MonoidSumSize {\n    using S = std::pair<T, int>;\n    static constexpr S op(S\
-    \ a, S b) { return {a.first + b.first, a.second + b.second}; }\n    static constexpr\
-    \ S e() { return {T(0), 0}; }\n};\n#line 2 \"algebra/monoid_f/monoid_add.hpp\"\
-    \n// MF\ntemplate <class T> struct MonoidAdd {\n    using F = T;\n    static constexpr\
-    \ F composition(F f, F g) { return f + g; }\n    static constexpr F id() { return\
-    \ T(0); }\n};\n#line 4 \"algebra/monoid_s_f/monoid_sum_size_add.hpp\"\n// MSF\n\
-    template <class T> struct MonoidSumSizeAdd {\n    using MS = MonoidSumSize<T>;\n\
+    #line 2 \"algebra/monoid_f/monoid_add.hpp\"\n// MF\ntemplate <class T> struct\
+    \ MonoidAdd {\n    using F = T;\n    static constexpr F composition(F f, F g)\
+    \ { return f + g; }\n    static constexpr F id() { return T(0); }\n};\n#line 2\
+    \ \"algebra/monoid_s/monoid_sum_size.hpp\"\n// MS\ntemplate <class T> struct MonoidSumSize\
+    \ {\n    using S = std::pair<T, int>;\n    static constexpr S op(S a, S b) { return\
+    \ {a.first + b.first, a.second + b.second}; }\n    static constexpr S e() { return\
+    \ {T(0), 0}; }\n};\n#line 4 \"algebra/monoid_s_f/monoid_sum_size_add.hpp\"\n//\
+    \ MSF\ntemplate <class T> struct MonoidSumSizeAdd {\n    using MS = MonoidSumSize<T>;\n\
     \    using MF = MonoidAdd<T>;\n    using S = typename MS::S;\n    using F = typename\
-    \ MF::F;\n    static constexpr S mapping(F f, S x) { return {x.first + f * x.second,\
-    \ x.second}; }\n};\n#line 9 \"verify/graph/heavy_light_decomposition_1.test.cpp\"\
+    \ MF::F;\n    static constexpr S mapping(F f, S x) {\n        return {x.first\
+    \ + f * x.second, x.second};\n    }\n};\n#line 9 \"verify/graph/heavy_light_decomposition_1.test.cpp\"\
     \n\nint main() {\n    int N;\n    std::cin >> N;\n    Graph<int> g(N, false);\n\
     \n    for (int i = 0; i < N; i++) {\n        int K;\n        std::cin >> K;\n\
     \        for (int j = 0; j < K; j++) {\n            int c;\n            std::cin\
@@ -286,12 +286,12 @@ data:
   - graph/heavy_light_decomposition.hpp
   - data_structure/lazy_segment_tree.hpp
   - algebra/monoid_s_f/monoid_sum_size_add.hpp
-  - algebra/monoid_s/monoid_sum_size.hpp
   - algebra/monoid_f/monoid_add.hpp
+  - algebra/monoid_s/monoid_sum_size.hpp
   isVerificationFile: true
   path: verify/graph/heavy_light_decomposition_1.test.cpp
   requiredBy: []
-  timestamp: '2026-01-20 04:06:16+09:00'
+  timestamp: '2026-01-20 14:43:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/heavy_light_decomposition_1.test.cpp
