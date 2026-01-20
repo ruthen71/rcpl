@@ -1,6 +1,6 @@
 #pragma once
-#include "../algebra/monoid_f/monoid_set.hpp"
-#include "../algebra/monoid_s/monoid_sum_size.hpp"
+#include "../../algebra/monoid_f/monoid_set.hpp"
+#include "../../algebra/monoid_s/monoid_sum_size.hpp"
 // MSF
 template <class T> struct MonoidSumSizeSet {
     using MS = MonoidSumSize<T>;

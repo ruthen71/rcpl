@@ -3,7 +3,8 @@
 // https://atcoder.jp/contests/abc322/tasks/abc322_f
 // MS
 template <class T> struct MonoidMax01 {
-    using S = std::array<T, 7>;  // {max0, left0, right0, max1, left1, right1, length}
+    using S =
+        std::array<T, 7>;  // {max0, left0, right0, max1, left1, right1, length}
     static constexpr S op(S a, S b) {
         S res;
         for (int i = 0; i < 6; i += 3) {
@@ -18,7 +19,7 @@ template <class T> struct MonoidMax01 {
     static constexpr S e0() { return {1, 1, 1, 0, 0, 0, 1}; }
     static constexpr S e1() { return {0, 0, 0, 1, 1, 1, 1}; }
 };
-#include "algebra/monoid_f/monoid_flip.hpp"
+#include "../../algebra/monoid_f/monoid_flip.hpp"
 // MSF
 template <class T> struct MonoidMax01Flip {
     using MS = MonoidMax01<T>;

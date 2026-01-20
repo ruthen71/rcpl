@@ -1,6 +1,6 @@
 #pragma once
-#include "algebra/monoid_s/monoid_max.hpp"
-#include "algebra/monoid_f/monoid_set.hpp"
+#include "../../algebra/monoid_f/monoid_set.hpp"
+#include "../../algebra/monoid_s/monoid_max.hpp"
 // MSF
 template <class T> struct MonoidMaxSet {
     using MS = MonoidMax<T>;

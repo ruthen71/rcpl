@@ -1,6 +1,6 @@
 #pragma once
-#include "algebra/monoid_s/monoid_min_index.hpp"
-#include "algebra/monoid_f/monoid_add.hpp"
+#include "../../algebra/monoid_f/monoid_add.hpp"
+#include "../../algebra/monoid_s/monoid_min_index.hpp"
 // MSF
 template <class T, bool left = true> struct LazyMinIndexAdd {
     using MS = MonoidMinIndex<T, left>;

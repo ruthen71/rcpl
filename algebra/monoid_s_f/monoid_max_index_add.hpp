@@ -1,6 +1,6 @@
 #pragma once
-#include "algebra/monoid_s/monoid_max_index.hpp"
-#include "algebra/monoid_f/monoid_add.hpp"
+#include "../../algebra/monoid_f/monoid_add.hpp"
+#include "../../algebra/monoid_s/monoid_max_index.hpp"
 // MSF
 template <class T, bool left = true> struct MonoidMaxIndexAdd {
     using MS = MonoidMaxIndex<T, left>;

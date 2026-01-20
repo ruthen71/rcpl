@@ -1,6 +1,6 @@
 #pragma once
-#include "algebra/monoid_s/monoid_min.hpp"
-#include "algebra/monoid_f/monoid_set.hpp"
+#include "../../algebra/monoid_f/monoid_set.hpp"
+#include "../../algebra/monoid_s/monoid_min.hpp"
 // MSF
 template <class T> struct MonoidMinSet {
     using MS = MonoidMin<T>;
