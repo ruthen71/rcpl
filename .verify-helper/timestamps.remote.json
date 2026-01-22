@@ -1,5 +1,6 @@
 {
 "misc/test/bit_operation.test.cpp": "2025-12-31 07:11:44 +0900",
+"random/test/base.test.cpp": "2026-01-23 04:54:40 +0900",
 "unionfind/test/potentialized_unionfind.test.cpp": "2025-12-10 04:21:17 +0900",
 "unionfind/test/potentialized_unionfind_groups.test.cpp": "2025-12-10 04:21:17 +0900",
 "unionfind/test/unionfind.test.cpp": "2025-12-10 04:21:17 +0900",
