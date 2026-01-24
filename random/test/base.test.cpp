@@ -20,7 +20,7 @@ void test1_same_seed() {
     }
 }
 
-void test2_different_seed() {
+void test2_not_same_seed() {
     for (int seed = 0; seed < 10; seed++) {
         RandomFixed rng_a(seed);
         RandomFixed rng_b(seed + 1);
@@ -46,8 +46,8 @@ void test3_auto_seed() {
 
 void test4_negative() {
     RandomAuto rng;
-    auto v = rng.rand_int(-10, -1);
-    assert(-10 <= v and v <= -1);
+    auto v = rng.rand_int(-100, -1);
+    assert(-100 <= v and v <= -1);
 }
 
 void test5_big() {
@@ -57,12 +57,19 @@ void test5_big() {
     assert(-BIG_INT <= v and v <= BIG_INT);
 }
 
+void test6_double() {
+    RandomAuto rng;
+    auto v = rng.rand_double();
+    assert(0.0 <= v and v <= 1.0);
+}
+
 int main() {
     test1_same_seed();
-    test2_different_seed();
+    test2_not_same_seed();
     test3_auto_seed();
     test4_negative();
     test5_big();
+    test6_double();
     int a, b;
     std::cin >> a >> b;
     std::cout << a + b << '\n';
