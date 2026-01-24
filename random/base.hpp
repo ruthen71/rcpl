@@ -4,18 +4,18 @@
 #include <chrono>
 #include <cstdint>
 
-template <bool set_seed> struct Random {
+template <bool auto_seed> struct Random {
     uint64_t x_seed;
 
     Random(uint64_t seed = 0) {
-        if (set_seed) {
-            // set seed
-            x_seed = seed;
-        } else {
+        if (auto_seed) {
             // set random seed
             assert(seed == 0);
             x_seed =
                 std::chrono::steady_clock::now().time_since_epoch().count();
+        } else {
+            // set seed
+            x_seed = seed;
         }
     }
 
@@ -28,6 +28,7 @@ template <bool set_seed> struct Random {
     }
 
     // [0, mod - 1]
+    // mod が 2 べきでないときに偏るらしいので注意
     uint64_t rand_int(uint64_t mod) {
         assert(mod > 0);
         return rand_int() % mod;
@@ -40,5 +41,7 @@ template <bool set_seed> struct Random {
     }
 };
 
-Random<true> rng_fixed;
-Random<false> rng_test;
+using RandomFixed = Random<false>;
+using RandomAuto = Random<true>;
+
+RandomAuto rng_auto;
