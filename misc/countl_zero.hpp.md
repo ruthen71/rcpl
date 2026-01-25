@@ -17,10 +17,16 @@ data:
   - icon: ':warning:'
     path: my_template_int128.hpp
     title: my_template_int128.hpp
+  - icon: ':x:'
+    path: random/base.hpp
+    title: Random
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: misc/test/bit_operation.test.cpp
     title: misc/test/bit_operation.test.cpp
+  - icon: ':x:'
+    path: random/test/base.test.cpp
+    title: random/test/base.test.cpp
   - icon: ':x:'
     path: verify/graph/auxiliary_tree.test.cpp
     title: verify/graph/auxiliary_tree.test.cpp
@@ -55,12 +61,14 @@ data:
   requiredBy:
   - my_template_int128.hpp
   - my_template.hpp
+  - random/base.hpp
   - misc/topbit.hpp
   - graph/lowest_common_ancestor.hpp
   - graph/auxiliary_tree.hpp
   timestamp: '2025-12-31 07:11:44+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - random/test/base.test.cpp
   - misc/test/bit_operation.test.cpp
   - verify/graph/lowest_common_ancestor_2.test.cpp
   - verify/graph/auxiliary_tree.test.cpp

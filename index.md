@@ -446,6 +446,11 @@ data:
     - icon: ':warning:'
       path: misc/xor_shift.hpp
       title: misc/xor_shift.hpp
+  - name: random
+    pages:
+    - icon: ':x:'
+      path: random/base.hpp
+      title: Random
   - name: string
     pages:
     - icon: ':warning:'
@@ -480,6 +485,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: misc/test/bit_operation.test.cpp
       title: misc/test/bit_operation.test.cpp
+  - name: random/test
+    pages:
+    - icon: ':x:'
+      path: random/test/base.test.cpp
+      title: random/test/base.test.cpp
   - name: unionfind/test
     pages:
     - icon: ':heavy_check_mark:'
