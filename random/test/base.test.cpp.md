@@ -49,19 +49,19 @@ data:
     \        assert(mod > 0);\n        if ((mod & (mod - 1)) == 0) {\n           \
     \ // mod = 2^p\n            // (mod - 1) = 0...01...1\n            return rand_int()\
     \ & (mod - 1);\n        }\n        // mod >= 3 (1 = 2^0, 2 = 2^1)\n        int\
-    \ lg = topbit(mod);\n        uint64_t mask = (lg == 63) ? ~0ULL : (1ULL << (lg\
-    \ + 1)) - 1;\n        while (true) {\n            uint64_t r = rand_int() & mask;\n\
-    \            if (r < mod) return r;\n        }\n    }\n\n    // [l, r]\n    template\
-    \ <class T> T rand_int(T l, T r) {\n        assert(l <= r);\n        return T(l\
-    \ + rand_int(uint64_t(r - l + 1)));\n    }\n\n    // [0.0, 1.0]\n    double rand_double()\
-    \ {\n        uint64_t v = rand_int(1ULL << 63);\n        return double(v) / ((1ULL\
-    \ << 63) - 1);\n    }\n\n    // [l, r]\n    double rand_double(double l, double\
-    \ r) {\n        assert(l <= r);\n        return l + rand_double() * (r - l);\n\
-    \    }\n};\n\nusing RandomFixed = Random<false>;\nusing RandomAuto = Random<true>;\n\
-    \nRandomAuto rng_auto;\n#line 9 \"random/test/base.test.cpp\"\n\nvoid test1_same_seed()\
-    \ {\n    for (int seed = 0; seed < 10; seed++) {\n        RandomFixed rng_a(seed);\n\
-    \        RandomFixed rng_b(seed);\n        std::vector<uint64_t> a(10), b(10);\n\
-    \        for (int i = 0; i < 10; i++) {\n            a[i] = rng_a.rand_int();\n\
+    \ lg = topbit((uint64_t)mod);\n        uint64_t mask = (lg == 63) ? ~0ULL : (1ULL\
+    \ << (lg + 1)) - 1;\n        while (true) {\n            uint64_t r = rand_int()\
+    \ & mask;\n            if (r < mod) return r;\n        }\n    }\n\n    // [l,\
+    \ r]\n    template <class T> T rand_int(T l, T r) {\n        assert(l <= r);\n\
+    \        return T(l + rand_int(uint64_t(r - l + 1)));\n    }\n\n    // [0.0, 1.0]\n\
+    \    double rand_double() {\n        uint64_t v = rand_int(1ULL << 63);\n    \
+    \    return double(v) / ((1ULL << 63) - 1);\n    }\n\n    // [l, r]\n    double\
+    \ rand_double(double l, double r) {\n        assert(l <= r);\n        return l\
+    \ + rand_double() * (r - l);\n    }\n};\n\nusing RandomFixed = Random<false>;\n\
+    using RandomAuto = Random<true>;\n\nRandomAuto rng_auto;\n#line 9 \"random/test/base.test.cpp\"\
+    \n\nvoid test1_same_seed() {\n    for (int seed = 0; seed < 10; seed++) {\n  \
+    \      RandomFixed rng_a(seed);\n        RandomFixed rng_b(seed);\n        std::vector<uint64_t>\
+    \ a(10), b(10);\n        for (int i = 0; i < 10; i++) {\n            a[i] = rng_a.rand_int();\n\
     \            b[i] = rng_b.rand_int();\n        }\n        assert(a == b);\n  \
     \  }\n}\n\nvoid test2_different_seed() {\n    for (int seed = 0; seed < 10; seed++)\
     \ {\n        RandomFixed rng_a(seed);\n        RandomFixed rng_b(seed + 1);\n\
@@ -112,7 +112,7 @@ data:
   isVerificationFile: true
   path: random/test/base.test.cpp
   requiredBy: []
-  timestamp: '2026-01-26 00:49:28+09:00'
+  timestamp: '2026-01-26 01:08:18+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: random/test/base.test.cpp
