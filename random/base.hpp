@@ -59,7 +59,15 @@ template <bool auto_seed> struct Random {
         uint64_t v = rand_int(1ULL << 63);
         return double(v) / ((1ULL << 63) - 1);
     }
+
+    // [l, r]
+    double rand_double(double l, double r) {
+        assert(l <= r);
+        return l + rand_double() * (r - l);
+    }
 };
 
 using RandomFixed = Random<false>;
 using RandomAuto = Random<true>;
+
+RandomAuto rng_auto;
