@@ -3,6 +3,10 @@ title: Random
 documentation_of: ./base.hpp
 ---
 
+乱数生成用のライブラリです。
+`random/` 以下の他のライブラリなどで利用できるように `RandomAuto rng_auto` が定義されています。
+また、固定シードと実行時シードを切り替えることができます。
+
 ## コンストラクタ
 
 ```cpp
@@ -45,12 +49,24 @@ $[l, r]$ の一様乱数（整数）を返します。
 
 (3)
 - $l \leq r$
-- $r - l + 1$ がオーバーフローしない
+- $r - l + 1$ が型 `T` でオーバーフローしない
 
 ## rand_double
 
 ```cpp
 double rng.rand_double()
+double rng.rand_double(double l, double r)
 ```
 
-$[0, 1]$ の一様乱数（浮動小数点数）を返します。
+(1)
+
+$[0.0, 1.0]$ の一様乱数（浮動小数点数）を返します。
+
+(2)
+
+$[l, r]$ の一様乱数（浮動小数点数）を返します。
+
+### 制約
+
+(2)
+- $l \leq r$
