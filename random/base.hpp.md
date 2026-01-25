@@ -9,12 +9,12 @@ data:
     title: Topbit
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: random/test/base.test.cpp
     title: random/test/base.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - http://xorshift.di.unimi.it/splitmix64.c
@@ -45,15 +45,15 @@ data:
     \        assert(mod > 0);\n        if ((mod & (mod - 1)) == 0) {\n           \
     \ // mod = 2^p\n            // (mod - 1) = 0...01...1\n            return rand_int()\
     \ & (mod - 1);\n        }\n        // mod >= 3 (1 = 2^0, 2 = 2^1)\n        int\
-    \ lg = topbit((uint64_t)mod);\n        uint64_t mask = (lg == 63) ? ~0ULL : (1ULL\
-    \ << (lg + 1)) - 1;\n        while (true) {\n            uint64_t r = rand_int()\
-    \ & mask;\n            if (r < mod) return r;\n        }\n    }\n\n    // [l,\
-    \ r]\n    template <class T> T rand_int(T l, T r) {\n        assert(l <= r);\n\
-    \        return T(l + rand_int(uint64_t(r - l + 1)));\n    }\n\n    // [0.0, 1.0]\n\
-    \    double rand_double() {\n        uint64_t v = rand_int(1ULL << 63);\n    \
-    \    return double(v) / ((1ULL << 63) - 1);\n    }\n\n    // [l, r]\n    double\
-    \ rand_double(double l, double r) {\n        assert(l <= r);\n        return l\
-    \ + rand_double() * (r - l);\n    }\n};\n\nusing RandomFixed = Random<false>;\n\
+    \ lg = topbit((unsigned long long)mod);\n        uint64_t mask = (lg == 63) ?\
+    \ ~0ULL : (1ULL << (lg + 1)) - 1;\n        while (true) {\n            uint64_t\
+    \ r = rand_int() & mask;\n            if (r < mod) return r;\n        }\n    }\n\
+    \n    // [l, r]\n    template <class T> T rand_int(T l, T r) {\n        assert(l\
+    \ <= r);\n        return T(l + rand_int(uint64_t(r - l + 1)));\n    }\n\n    //\
+    \ [0.0, 1.0]\n    double rand_double() {\n        uint64_t v = rand_int(1ULL <<\
+    \ 63);\n        return double(v) / ((1ULL << 63) - 1);\n    }\n\n    // [l, r]\n\
+    \    double rand_double(double l, double r) {\n        assert(l <= r);\n     \
+    \   return l + rand_double() * (r - l);\n    }\n};\n\nusing RandomFixed = Random<false>;\n\
     using RandomAuto = Random<true>;\n\nRandomAuto rng_auto;\n"
   code: "#pragma once\n\n#include <cassert>\n#include <chrono>\n#include <cstdint>\n\
     \n#include \"../misc/topbit.hpp\"\n\ntemplate <bool auto_seed> struct Random {\n\
@@ -70,15 +70,15 @@ data:
     \        assert(mod > 0);\n        if ((mod & (mod - 1)) == 0) {\n           \
     \ // mod = 2^p\n            // (mod - 1) = 0...01...1\n            return rand_int()\
     \ & (mod - 1);\n        }\n        // mod >= 3 (1 = 2^0, 2 = 2^1)\n        int\
-    \ lg = topbit((uint64_t)mod);\n        uint64_t mask = (lg == 63) ? ~0ULL : (1ULL\
-    \ << (lg + 1)) - 1;\n        while (true) {\n            uint64_t r = rand_int()\
-    \ & mask;\n            if (r < mod) return r;\n        }\n    }\n\n    // [l,\
-    \ r]\n    template <class T> T rand_int(T l, T r) {\n        assert(l <= r);\n\
-    \        return T(l + rand_int(uint64_t(r - l + 1)));\n    }\n\n    // [0.0, 1.0]\n\
-    \    double rand_double() {\n        uint64_t v = rand_int(1ULL << 63);\n    \
-    \    return double(v) / ((1ULL << 63) - 1);\n    }\n\n    // [l, r]\n    double\
-    \ rand_double(double l, double r) {\n        assert(l <= r);\n        return l\
-    \ + rand_double() * (r - l);\n    }\n};\n\nusing RandomFixed = Random<false>;\n\
+    \ lg = topbit((unsigned long long)mod);\n        uint64_t mask = (lg == 63) ?\
+    \ ~0ULL : (1ULL << (lg + 1)) - 1;\n        while (true) {\n            uint64_t\
+    \ r = rand_int() & mask;\n            if (r < mod) return r;\n        }\n    }\n\
+    \n    // [l, r]\n    template <class T> T rand_int(T l, T r) {\n        assert(l\
+    \ <= r);\n        return T(l + rand_int(uint64_t(r - l + 1)));\n    }\n\n    //\
+    \ [0.0, 1.0]\n    double rand_double() {\n        uint64_t v = rand_int(1ULL <<\
+    \ 63);\n        return double(v) / ((1ULL << 63) - 1);\n    }\n\n    // [l, r]\n\
+    \    double rand_double(double l, double r) {\n        assert(l <= r);\n     \
+    \   return l + rand_double() * (r - l);\n    }\n};\n\nusing RandomFixed = Random<false>;\n\
     using RandomAuto = Random<true>;\n\nRandomAuto rng_auto;\n"
   dependsOn:
   - misc/topbit.hpp
@@ -86,8 +86,8 @@ data:
   isVerificationFile: false
   path: random/base.hpp
   requiredBy: []
-  timestamp: '2026-01-26 01:08:18+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2026-01-26 01:12:37+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - random/test/base.test.cpp
 documentation_of: random/base.hpp

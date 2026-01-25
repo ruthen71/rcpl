@@ -17,14 +17,14 @@ data:
   - icon: ':warning:'
     path: my_template_int128.hpp
     title: my_template_int128.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: random/base.hpp
     title: Random
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: misc/test/bit_operation.test.cpp
     title: misc/test/bit_operation.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: random/test/base.test.cpp
     title: random/test/base.test.cpp
   - icon: ':x:'

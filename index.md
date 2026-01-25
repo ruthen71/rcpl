@@ -448,7 +448,7 @@ data:
       title: misc/xor_shift.hpp
   - name: random
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: random/base.hpp
       title: Random
   - name: string
@@ -487,7 +487,7 @@ data:
       title: misc/test/bit_operation.test.cpp
   - name: random/test
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: random/test/base.test.cpp
       title: random/test/base.test.cpp
   - name: unionfind/test
