@@ -40,7 +40,7 @@ template <bool auto_seed> struct Random {
             return rand_int() & (mod - 1);
         }
         // mod >= 3 (1 = 2^0, 2 = 2^1)
-        int lg = topbit(mod);
+        int lg = topbit((uint64_t)mod);
         uint64_t mask = (lg == 63) ? ~0ULL : (1ULL << (lg + 1)) - 1;
         while (true) {
             uint64_t r = rand_int() & mask;
