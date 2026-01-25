@@ -20,7 +20,7 @@ void test1_same_seed() {
     }
 }
 
-void test2_not_same_seed() {
+void test2_different_seed() {
     for (int seed = 0; seed < 10; seed++) {
         RandomFixed rng_a(seed);
         RandomFixed rng_b(seed + 1);
@@ -61,11 +61,13 @@ void test6_double() {
     RandomAuto rng;
     auto v = rng.rand_double();
     assert(0.0 <= v and v <= 1.0);
+    auto v2 = rng.rand_double(-100.0, -1.0);
+    assert(-100.0 <= v2 and v2 <= -1.0);
 }
 
 int main() {
     test1_same_seed();
-    test2_not_same_seed();
+    test2_different_seed();
     test3_auto_seed();
     test4_negative();
     test5_big();
