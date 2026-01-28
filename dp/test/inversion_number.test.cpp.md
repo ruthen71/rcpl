@@ -109,9 +109,9 @@ data:
     }\n#line 10 \"dp/test/inversion_number.test.cpp\"\n\nint main() {\n    int n;\n\
     \    std::cin >> n;\n    std::vector<int> a(n);\n    for (auto&& e : a) std::cin\
     \ >> e;\n    long long ans1 = inversion_number<int>(a);\n    // a -> b \u3078\u306E\
-    \u5168\u5358\u5C04 f \u3092\u4F5C\u6210\n    std::map<int, long long> f;\n   \
-    \ std::set<long long> seen;\n    for (int i = 0; i < n; i++) {\n        if (f.count(a[i])\
-    \ > 0) continue;\n        while (true) {\n            auto val = rng_auto.rand_int();\n\
+    \u5358\u5C04 f \u3092\u4F5C\u6210\n    std::map<int, long long> f;\n    std::set<long\
+    \ long> seen;\n    for (int i = 0; i < n; i++) {\n        if (f.count(a[i]) >\
+    \ 0) continue;\n        while (true) {\n            auto val = rng_auto.rand_int();\n\
     \            if (seen.count(val) == 0) {\n                f[a[i]] = val;\n   \
     \             seen.insert(val);\n                break;\n            }\n     \
     \   }\n    }\n    // a -> a_sorted \u306E\u8EE2\u5012\u6570 (ans1) \u3068\n  \
@@ -125,8 +125,8 @@ data:
     \n\n#include <iostream>\n#include <map>\n#include <set>\n\n#include \"../../random/base.hpp\"\
     \n#include \"../inversion_number.hpp\"\n\nint main() {\n    int n;\n    std::cin\
     \ >> n;\n    std::vector<int> a(n);\n    for (auto&& e : a) std::cin >> e;\n \
-    \   long long ans1 = inversion_number<int>(a);\n    // a -> b \u3078\u306E\u5168\
-    \u5358\u5C04 f \u3092\u4F5C\u6210\n    std::map<int, long long> f;\n    std::set<long\
+    \   long long ans1 = inversion_number<int>(a);\n    // a -> b \u3078\u306E\u5358\
+    \u5C04 f \u3092\u4F5C\u6210\n    std::map<int, long long> f;\n    std::set<long\
     \ long> seen;\n    for (int i = 0; i < n; i++) {\n        if (f.count(a[i]) >\
     \ 0) continue;\n        while (true) {\n            auto val = rng_auto.rand_int();\n\
     \            if (seen.count(val) == 0) {\n                f[a[i]] = val;\n   \
@@ -147,7 +147,7 @@ data:
   isVerificationFile: true
   path: dp/test/inversion_number.test.cpp
   requiredBy: []
-  timestamp: '2026-01-28 15:17:41+09:00'
+  timestamp: '2026-01-28 15:34:26+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: dp/test/inversion_number.test.cpp
