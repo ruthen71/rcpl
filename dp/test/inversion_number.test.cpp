@@ -14,7 +14,7 @@ int main() {
     std::vector<int> a(n);
     for (auto&& e : a) std::cin >> e;
     long long ans1 = inversion_number<int>(a);
-    // a -> b への全単射 f を作成
+    // a -> b への単射 f を作成
     std::map<int, long long> f;
     std::set<long long> seen;
     for (int i = 0; i < n; i++) {
