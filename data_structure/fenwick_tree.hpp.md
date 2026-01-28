@@ -7,8 +7,8 @@ data:
     title: "Inversion Number (\u8EE2\u5012\u6570)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/dp/inversion_number.test.cpp
-    title: verify/dp/inversion_number.test.cpp
+    path: dp/test/inversion_number.test.cpp
+    title: dp/test/inversion_number.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/lc_data_structure/lc_point_add_range_sum_fenwick_tree.test.cpp
     title: verify/lc_data_structure/lc_point_add_range_sum_fenwick_tree.test.cpp
@@ -61,9 +61,9 @@ data:
   timestamp: '2024-12-17 21:01:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - dp/test/inversion_number.test.cpp
   - verify/lc_data_structure/lc_point_add_range_sum_fenwick_tree.test.cpp
   - verify/misc/mo.test.cpp
-  - verify/dp/inversion_number.test.cpp
 documentation_of: data_structure/fenwick_tree.hpp
 layout: document
 title: Fenwick Tree (Binary Indexed Tree)

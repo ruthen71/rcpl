@@ -10,6 +10,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: dp/test/inversion_number.test.cpp
+    title: dp/test/inversion_number.test.cpp
+  - icon: ':heavy_check_mark:'
     path: random/test/base.test.cpp
     title: random/test/base.test.cpp
   _isVerificationFailed: false
@@ -90,6 +93,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - random/test/base.test.cpp
+  - dp/test/inversion_number.test.cpp
 documentation_of: random/base.hpp
 layout: document
 title: Random

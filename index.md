@@ -480,6 +480,11 @@ data:
       path: unionfind/unionfind.hpp
       title: Unionfind
   verificationCategories:
+  - name: dp/test
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: dp/test/inversion_number.test.cpp
+      title: dp/test/inversion_number.test.cpp
   - name: misc/test
     pages:
     - icon: ':heavy_check_mark:'
@@ -598,9 +603,6 @@ data:
       title: verify/data_structure/erasable_priority_queue.test.cpp
   - name: verify/dp
     pages:
-    - icon: ':heavy_check_mark:'
-      path: verify/dp/inversion_number.test.cpp
-      title: verify/dp/inversion_number.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/dp/levenshtein_distance.test.cpp
       title: verify/dp/levenshtein_distance.test.cpp

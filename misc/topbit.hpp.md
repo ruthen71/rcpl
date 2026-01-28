@@ -22,6 +22,9 @@ data:
     title: Random
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: dp/test/inversion_number.test.cpp
+    title: dp/test/inversion_number.test.cpp
+  - icon: ':heavy_check_mark:'
     path: misc/test/bit_operation.test.cpp
     title: misc/test/bit_operation.test.cpp
   - icon: ':heavy_check_mark:'
@@ -87,6 +90,7 @@ data:
   verifiedWith:
   - random/test/base.test.cpp
   - misc/test/bit_operation.test.cpp
+  - dp/test/inversion_number.test.cpp
   - verify/graph/lowest_common_ancestor_2.test.cpp
   - verify/graph/auxiliary_tree.test.cpp
   - verify/graph/lowest_common_ancestor_1.test.cpp
