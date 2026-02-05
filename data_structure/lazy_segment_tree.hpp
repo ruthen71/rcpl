@@ -1,18 +1,26 @@
 #pragma once
-#include <vector>
+
+#include "../misc/bit_ceil.hpp"
+#include "../misc/countr_zero.hpp"
+
 #include <cassert>
-template <class MSF> struct LazySegmentTree {
-   public:
-    using S = typename MSF::S;
-    using F = typename MSF::F;
-    using MS = typename MSF::MS;
-    using MF = typename MSF::MF;
-    LazySegmentTree() : LazySegmentTree(0) {}
-    LazySegmentTree(int n) : LazySegmentTree(std::vector<S>(n, MS::e())) {}
-    LazySegmentTree(const std::vector<S>& v) : n((int)(v.size())) {
-        log = 0;
-        while ((1U << log) < (unsigned int)(n)) log++;
-        size = 1 << log;
+#include <vector>
+
+// Lazy Segment Tree
+template <class AM> struct LazySegmentTree {
+  public:
+    using MS = typename AM::MS;
+    using MF = typename AM::MF;
+    using S = typename MS::value_type;
+    using F = typename MF::value_type;
+
+    LazySegmentTree() = default;
+    explicit LazySegmentTree(int n)
+        : LazySegmentTree(std::vector<S>(n, MS::e())) {}
+
+    explicit LazySegmentTree(const std::vector<S>& v) : n((int)(v.size())) {
+        size = bit_ceil(n);
+        log = countr_zero(size);
         d = std::vector<S>(size << 1, MS::e());
         lz = std::vector<F>(size, MF::id());
         for (int i = 0; i < n; i++) d[i + size] = v[i];
@@ -79,7 +87,7 @@ template <class MSF> struct LazySegmentTree {
         assert(0 <= p and p < n);
         p += size;
         for (int i = log; i >= 1; i--) push(p >> i);
-        d[p] = MSF::mapping(f, d[p]);
+        d[p] = AM::mapping(f, d[p]);
         for (int i = 1; i <= log; i++) update(p >> i);
     }
 
@@ -171,15 +179,18 @@ template <class MSF> struct LazySegmentTree {
         return vec;
     }
 
-   private:
+  private:
     int n, log, size;
     std::vector<S> d;
     std::vector<F> lz;
+
     inline void update(int k) { d[k] = MS::op(d[k << 1], d[(k << 1) | 1]); }
+
     void all_apply(int k, const F& f) {
-        d[k] = MSF::mapping(f, d[k]);
+        d[k] = AM::mapping(f, d[k]);
         if (k < size) lz[k] = MF::composition(f, lz[k]);
     }
+
     void push(int k) {
         all_apply(k << 1, lz[k]);
         all_apply((k << 1) | 1, lz[k]);
