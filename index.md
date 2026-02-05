@@ -8,16 +8,16 @@ data:
       title: algebra/monoid/monoid_plus.hpp
   - name: algebra/monoid_f
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: algebra/monoid_f/monoid_add.hpp
       title: algebra/monoid_f/monoid_add.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: algebra/monoid_f/monoid_affine.hpp
       title: algebra/monoid_f/monoid_affine.hpp
     - icon: ':warning:'
       path: algebra/monoid_f/monoid_flip.hpp
       title: algebra/monoid_f/monoid_flip.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: algebra/monoid_f/monoid_set.hpp
       title: algebra/monoid_f/monoid_set.hpp
   - name: algebra/monoid_s
@@ -31,7 +31,7 @@ data:
     - icon: ':warning:'
       path: algebra/monoid_s/monoid_max_index.hpp
       title: algebra/monoid_s/monoid_max_index.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: algebra/monoid_s/monoid_min.hpp
       title: algebra/monoid_s/monoid_min.hpp
     - icon: ':warning:'
@@ -43,7 +43,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: algebra/monoid_s/monoid_sum.hpp
       title: algebra/monoid_s/monoid_sum.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: algebra/monoid_s/monoid_sum_size.hpp
       title: algebra/monoid_s/monoid_sum_size.hpp
     - icon: ':warning:'
@@ -69,7 +69,7 @@ data:
     - icon: ':warning:'
       path: algebra/monoid_s_f/monoid_max_set.hpp
       title: algebra/monoid_s_f/monoid_max_set.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: algebra/monoid_s_f/monoid_min_add.hpp
       title: algebra/monoid_s_f/monoid_min_add.hpp
     - icon: ':warning:'
@@ -78,19 +78,19 @@ data:
     - icon: ':warning:'
       path: algebra/monoid_s_f/monoid_min_index_set.hpp
       title: algebra/monoid_s_f/monoid_min_index_set.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: algebra/monoid_s_f/monoid_min_set.hpp
       title: algebra/monoid_s_f/monoid_min_set.hpp
     - icon: ':warning:'
       path: algebra/monoid_s_f/monoid_product_sum_add2.hpp
       title: algebra/monoid_s_f/monoid_product_sum_add2.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: algebra/monoid_s_f/monoid_sum_size_add.hpp
       title: algebra/monoid_s_f/monoid_sum_size_add.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: algebra/monoid_s_f/monoid_sum_size_affine.hpp
       title: algebra/monoid_s_f/monoid_sum_size_affine.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: algebra/monoid_s_f/monoid_sum_size_set.hpp
       title: algebra/monoid_s_f/monoid_sum_size_set.hpp
   - name: algebra
@@ -139,7 +139,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/fenwick_tree.hpp
       title: Fenwick Tree (Binary Indexed Tree)
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/lazy_segment_tree.hpp
       title: "Lazy Segment Tree (\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     - icon: ':warning:'
@@ -275,7 +275,7 @@ data:
     - icon: ':question:'
       path: graph/graph_template.hpp
       title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/heavy_light_decomposition.hpp
       title: "Heavy-Light Decomposition (\u91CD\u8EFD\u5206\u89E3)"
     - icon: ':heavy_check_mark:'
@@ -405,7 +405,7 @@ data:
     - icon: ':warning:'
       path: math/quotient_enumeration.hpp
       title: math/quotient_enumeration.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/static_modint.hpp
       title: Static Modint
     - icon: ':heavy_check_mark:'
@@ -416,13 +416,13 @@ data:
       title: math/totient_table.hpp
   - name: misc
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: misc/bit_ceil.hpp
       title: Bit Ceil
     - icon: ':question:'
       path: misc/countl_zero.hpp
       title: Countl Zero
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: misc/countr_zero.hpp
       title: Countr Zero
     - icon: ':warning:'
@@ -533,16 +533,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj_dsl/aoj_dsl_2_e_dual_segment_tree.test.cpp
       title: verify/aoj_dsl/aoj_dsl_2_e_dual_segment_tree.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
       title: verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp
       title: verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/aoj_dsl/aoj_dsl_2_h_lazy_segment_tree.test.cpp
       title: verify/aoj_dsl/aoj_dsl_2_h_lazy_segment_tree.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
       title: verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
     - icon: ':heavy_check_mark:'
@@ -709,7 +709,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/graph/euler_tour.test.cpp
       title: verify/graph/euler_tour.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/graph/heavy_light_decomposition_1.test.cpp
       title: verify/graph/heavy_light_decomposition_1.test.cpp
     - icon: ':heavy_check_mark:'
@@ -771,7 +771,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
       title: verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
       title: verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
     - icon: ':heavy_check_mark:'

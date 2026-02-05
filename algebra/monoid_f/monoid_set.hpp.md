@@ -11,25 +11,25 @@ data:
   - icon: ':warning:'
     path: algebra/monoid_s_f/monoid_min_index_set.hpp
     title: algebra/monoid_s_f/monoid_min_index_set.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: algebra/monoid_s_f/monoid_min_set.hpp
     title: algebra/monoid_s_f/monoid_min_set.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: algebra/monoid_s_f/monoid_sum_size_set.hpp
     title: algebra/monoid_s_f/monoid_sum_size_set.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp
     title: verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
     title: verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
     title: verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"algebra/monoid_f/monoid_set.hpp\"\n// MF\ntemplate <class\
@@ -49,7 +49,7 @@ data:
   - algebra/monoid_s_f/monoid_max_index_set.hpp
   - algebra/monoid_s_f/monoid_min_set.hpp
   timestamp: '2024-03-24 17:04:51+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
   - verify/aoj_dsl/aoj_dsl_2_d_dual_segment_tree.test.cpp

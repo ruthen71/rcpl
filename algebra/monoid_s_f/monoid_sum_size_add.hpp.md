@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: algebra/monoid_f/monoid_add.hpp
     title: algebra/monoid_f/monoid_add.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: algebra/monoid_s/monoid_sum_size.hpp
     title: algebra/monoid_s/monoid_sum_size.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp
     title: verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/heavy_light_decomposition_1.test.cpp
     title: verify/graph/heavy_light_decomposition_1.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"algebra/monoid_f/monoid_add.hpp\"\n// MF\ntemplate <class\
@@ -44,7 +44,7 @@ data:
   path: algebra/monoid_s_f/monoid_sum_size_add.hpp
   requiredBy: []
   timestamp: '2026-01-20 14:43:22+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/graph/heavy_light_decomposition_1.test.cpp
   - verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp

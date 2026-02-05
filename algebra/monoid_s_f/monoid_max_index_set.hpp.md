@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: algebra/monoid_f/monoid_set.hpp
     title: algebra/monoid_f/monoid_set.hpp
   - icon: ':warning:'

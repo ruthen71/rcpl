@@ -2,31 +2,31 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: algebra/monoid_s_f/monoid_sum_size_add.hpp
     title: algebra/monoid_s_f/monoid_sum_size_add.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: algebra/monoid_s_f/monoid_sum_size_affine.hpp
     title: algebra/monoid_s_f/monoid_sum_size_affine.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: algebra/monoid_s_f/monoid_sum_size_set.hpp
     title: algebra/monoid_s_f/monoid_sum_size_set.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp
     title: verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
     title: verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/heavy_light_decomposition_1.test.cpp
     title: verify/graph/heavy_light_decomposition_1.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
     title: verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"algebra/monoid_s/monoid_sum_size.hpp\"\n// MS\ntemplate\
@@ -45,7 +45,7 @@ data:
   - algebra/monoid_s_f/monoid_sum_size_add.hpp
   - algebra/monoid_s_f/monoid_sum_size_affine.hpp
   timestamp: '2024-03-24 17:04:51+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
   - verify/graph/heavy_light_decomposition_1.test.cpp

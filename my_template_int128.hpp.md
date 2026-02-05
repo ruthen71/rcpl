@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: misc/countl_zero.hpp
     title: Countl Zero
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/countr_zero.hpp
     title: Countr Zero
   - icon: ':heavy_check_mark:'

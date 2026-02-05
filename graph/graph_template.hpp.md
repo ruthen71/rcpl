@@ -15,7 +15,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/euler_tour.hpp
     title: "Euler Tour (\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/heavy_light_decomposition.hpp
     title: "Heavy-Light Decomposition (\u91CD\u8EFD\u5206\u89E3)"
   - icon: ':heavy_check_mark:'
@@ -74,7 +74,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/euler_tour.test.cpp
     title: verify/graph/euler_tour.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/heavy_light_decomposition_1.test.cpp
     title: verify/graph/heavy_light_decomposition_1.test.cpp
   - icon: ':heavy_check_mark:'

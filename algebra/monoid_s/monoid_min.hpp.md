@@ -2,17 +2,17 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: algebra/monoid_s_f/monoid_min_add.hpp
     title: algebra/monoid_s_f/monoid_min_add.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: algebra/monoid_s_f/monoid_min_set.hpp
     title: algebra/monoid_s_f/monoid_min_set.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
     title: verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj_dsl/aoj_dsl_2_h_lazy_segment_tree.test.cpp
     title: verify/aoj_dsl/aoj_dsl_2_h_lazy_segment_tree.test.cpp
   - icon: ':heavy_check_mark:'
@@ -21,9 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp
     title: verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"algebra/monoid_s/monoid_min.hpp\"\n// MS\ntemplate <class\
@@ -40,7 +40,7 @@ data:
   - algebra/monoid_s_f/monoid_min_add.hpp
   - algebra/monoid_s_f/monoid_min_set.hpp
   timestamp: '2024-03-24 17:04:51+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/lc_data_structure/lc_static_rmq_segment_tree.test.cpp
   - verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp

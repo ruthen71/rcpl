@@ -21,7 +21,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/euler_tour.test.cpp
     title: verify/graph/euler_tour.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/heavy_light_decomposition_1.test.cpp
     title: verify/graph/heavy_light_decomposition_1.test.cpp
   - icon: ':heavy_check_mark:'

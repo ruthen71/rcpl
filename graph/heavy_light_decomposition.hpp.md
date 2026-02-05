@@ -6,7 +6,7 @@ data:
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/graph/heavy_light_decomposition_1.test.cpp
     title: verify/graph/heavy_light_decomposition_1.test.cpp
   - icon: ':heavy_check_mark:'
@@ -15,9 +15,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/heavy_light_decomposition_3.test.cpp
     title: verify/graph/heavy_light_decomposition_3.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/heavy_light_decomposition.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
@@ -214,7 +214,7 @@ data:
   path: graph/heavy_light_decomposition.hpp
   requiredBy: []
   timestamp: '2026-01-20 04:06:16+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/graph/heavy_light_decomposition_1.test.cpp
   - verify/graph/heavy_light_decomposition_3.test.cpp

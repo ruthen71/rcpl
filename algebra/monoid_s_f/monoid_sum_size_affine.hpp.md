@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: algebra/monoid_f/monoid_affine.hpp
     title: algebra/monoid_f/monoid_affine.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: algebra/monoid_s/monoid_sum_size.hpp
     title: algebra/monoid_s/monoid_sum_size.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
     title: verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://atcoder.jp/contests/practice2/tasks/practice2_k
@@ -46,7 +46,7 @@ data:
   path: algebra/monoid_s_f/monoid_sum_size_affine.hpp
   requiredBy: []
   timestamp: '2026-01-20 14:43:22+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
 documentation_of: algebra/monoid_s_f/monoid_sum_size_affine.hpp
