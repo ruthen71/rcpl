@@ -12,8 +12,9 @@ int main() {
     int N, Q;
     std::cin >> N >> Q;
     constexpr long long INF = std::numeric_limits<long long>::max();
-    LazySegmentTree<ActedMonoidMinPlus<long long, INF>> segmin(N);
-    LazySegmentTree<ActedMonoidMaxPlus<long long, INF>> segmax(N);
+    std::vector<long long> a(N);
+    LazySegmentTree<ActedMonoidMinPlus<long long, INF>> segmin(a);
+    LazySegmentTree<ActedMonoidMaxPlus<long long, INF>> segmax(a);
     while (Q--) {
         int t;
         std::cin >> t;
