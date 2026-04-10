@@ -1,5 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/aplusb"
 
+#include <algorithm>
 #include <iostream>
 
 #include "../../graph/read_graph.hpp"
