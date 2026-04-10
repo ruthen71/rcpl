@@ -4,13 +4,15 @@
 
 template <class T, T inf, bool left> struct MonoidMinIndex {
     using value_type = ValueIndex<T>;
-    using S = value_type;
-    static constexpr S operation(const S& a, const S& b) {
+    static constexpr value_type operation(const value_type& a,
+                                          const value_type& b) {
         if (a.v < b.v) return a;
         if (a.v > b.v) return b;
         bool is_small = left ? (a.i < b.i) : (a.i >= b.i);
         return is_small ? a : b;
     }
-    static constexpr S identity() noexcept { return S(inf, -1); }
+    static constexpr value_type identity() noexcept {
+        return value_type(inf, -1);
+    }
     static constexpr bool commutative = true;
 };
