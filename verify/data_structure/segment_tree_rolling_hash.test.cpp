@@ -8,6 +8,7 @@
 
 using mint = mint261;
 using mrh = MonoidRollingHash<mint>;
+template <> mint mrh::base = 0;
 
 void test1_basic() {
     assert(mrh::commutative == false);
