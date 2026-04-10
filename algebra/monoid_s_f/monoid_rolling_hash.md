@@ -1,6 +1,6 @@
 ---
 title: ローリングハッシュ
-documentation_of: //algebra/monoid/monoid_rolling_hash.hpp
+documentation_of: ./monoid_rolling_hash.hpp
 ---
 
 clang でコンパイルするときには `-std=c++2b` をつける
