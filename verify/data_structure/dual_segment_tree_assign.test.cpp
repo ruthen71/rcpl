@@ -4,8 +4,8 @@
 #include <iostream>
 #include <limits>
 
-#include "algebra/monoid/monoid_assign.hpp"
-#include "data_structure/dual_segment_tree.hpp"
+#include "../../algebra/monoid/monoid_assign.hpp"
+#include "../../data_structure/dual_segment_tree.hpp"
 
 int main() {
     int N, Q;

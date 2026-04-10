@@ -1,9 +1,10 @@
 #define PROBLEM "https://yukicoder.me/problems/no/1036"
 
 #include <iostream>
+#include <numeric>
 
-#include "algebra/monoid/monoid_gcd.hpp"
-#include "data_structure/segment_tree.hpp"
+#include "../../algebra/monoid/monoid_gcd.hpp"
+#include "../../data_structure/segment_tree.hpp"
 
 int main() {
     int N;
