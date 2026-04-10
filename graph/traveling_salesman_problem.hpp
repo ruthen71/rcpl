@@ -1,8 +1,10 @@
 #pragma once
 
-#include "graph/graph_template.hpp"
+#include "../graph/graph_template.hpp"
 
-template <class T> std::vector<std::vector<T>> traveling_salesman_problem(Graph<T>& g, const T inf) {
+template <class T>
+std::vector<std::vector<T>> traveling_salesman_problem(Graph<T>& g,
+                                                       const T inf) {
     const int n = (int)(g.size());
     const int n2 = 1 << n;
 
@@ -13,7 +15,8 @@ template <class T> std::vector<std::vector<T>> traveling_salesman_problem(Graph<
             if (dp[bit][u] == inf) continue;
             for (auto&& e : g[u]) {
                 if (bit >> e.to & 1) continue;
-                dp[bit | (1 << e.to)][e.to] = std::min(dp[bit | (1 << e.to)][e.to], dp[bit][u] + e.cost);
+                dp[bit | (1 << e.to)][e.to] =
+                    std::min(dp[bit | (1 << e.to)][e.to], dp[bit][u] + e.cost);
             }
         }
     }

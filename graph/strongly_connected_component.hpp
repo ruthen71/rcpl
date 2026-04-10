@@ -1,8 +1,9 @@
 #pragma once
 
-#include "graph/graph_template.hpp"
+#include "../graph/graph_template.hpp"
 
-template <class T> std::vector<std::vector<int>> strongly_connected_component(Graph<T>& g) {
+template <class T>
+std::vector<std::vector<int>> strongly_connected_component(Graph<T>& g) {
     const int n = (int)(g.size());
     int now_ord = 0, group_num = 0;
     std::vector<int> visited, low(n), ord(n, -1), ids(n);

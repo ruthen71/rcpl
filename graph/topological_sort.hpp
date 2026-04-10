@@ -1,6 +1,6 @@
 #pragma once
 
-#include "graph/graph_template.hpp"
+#include "../graph/graph_template.hpp"
 
 #include <cassert>
 #include <queue>
