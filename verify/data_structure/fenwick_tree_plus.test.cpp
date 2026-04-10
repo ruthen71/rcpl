@@ -1,26 +1,27 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_add_range_sum"
 
-#include <bits/stdc++.h>
+#include <iostream>
 
-#include "data_structure/fenwick_tree.hpp"
+#include "../../algebra/monoid/monoid_plus.hpp"
+#include "../../segment_tree/fenwick_tree.hpp"
 
 int main() {
     int N, Q;
     std::cin >> N >> Q;
     std::vector<long long> a(N);
     for (int i = 0; i < N; i++) std::cin >> a[i];
-    FenwickTree<long long> fen(a);
+    FenwickTree<MonoidPlus<long long>> seg(a);
     while (Q--) {
         int t;
         std::cin >> t;
         if (t == 0) {
             int p, x;
             std::cin >> p >> x;
-            fen.add(p, x);
+            seg.add(p, x);
         } else {
             int l, r;
             std::cin >> l >> r;
-            std::cout << fen.sum(l, r) << '\n';
+            std::cout << seg.prod(l, r) << '\n';
         }
     }
     return 0;

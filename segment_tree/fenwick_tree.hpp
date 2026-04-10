@@ -1,50 +1,76 @@
 #pragma once
 
-#include <vector>
 #include <cassert>
+#include <vector>
 
-template <class T> struct FenwickTree {
-    int n;
-    std::vector<T> seg;
-    FenwickTree() : n(0) {}
-    FenwickTree(int n) : n(n), seg(n + 1, 0) {}
-    FenwickTree(std::vector<T>& arr) {
-        n = int(arr.size());
-        seg.resize(n + 1);
-        for (int i = 0; i < n; i++) add(i, arr[i]);
-    }
-    // A[i] += x
-    void add(int i, const T& x) {
-        assert(0 <= i and i < n);
-        i++;  // 1-indexed
-        while (i <= n) {
-            seg[i] += x;
-            i += i & -i;
+// Fenwick Tree
+template <class MS> struct FenwickTree {
+  public:
+    using S = typename MS::value_type;
+
+    FenwickTree() = default;
+
+    explicit FenwickTree(int n)
+        : FenwickTree(std::vector<S>(n, MS::identity())) {}
+
+    explicit FenwickTree(const std::vector<S>& v) : n((int)(v.size())) {
+        d = std::vector<S>(n + 1, MS::identity());
+        for (int i = 1; i <= n; i++) {
+            d[i] = MS::operation(d[i], v[i - 1]);
+            int j = i + (i & -i);
+            if (j <= n) {
+                d[j] = MS::operation(d[j], d[i]);
+            }
         }
     }
-    // A[0] + ... + A[i - 1]
-    T sum(int i) const {
-        assert(0 <= i and i <= n);
-        T s = T(0);
-        while (i > 0) {
-            s += seg[i];
-            i -= i & -i;
+
+    void set(int p, const S& x) {
+        assert(0 <= p and p < n);
+        add(p, MS::operation(MS::inverse(get(p)), x));
+    }
+    void add(int p, const S& x) {
+        assert(0 <= p and p < n);
+        p++;  // 1-indexed
+        while (p <= n) {
+            d[p] = MS::operation(d[p], x);
+            p += p & -p;
+        }
+    }
+
+    S operator[](int p) const {
+        assert(0 <= p and p < n);
+        return prod(p, p + 1);
+    }
+
+    S get(int p) const {
+        assert(0 <= p and p < n);
+        return prod(p, p + 1);
+    }
+
+    S prod(int l, int r) const {
+        assert(0 <= l and l <= r and r <= n);
+        return MS::operation(prod(r), MS::inverse(prod(l)));
+    }
+
+    S prod(int p) const {
+        assert(0 <= p and p <= n);
+        S s = MS::identity();
+        while (p > 0) {
+            s = MS::operation(s, d[p]);
+            p -= p & -p;
         }
         return s;
     }
-    // A[a] + ... + A[b - 1]
-    T sum(int a, int b) const {
-        assert(0 <= a and a <= b and b <= n);
-        return sum(b) - sum(a);
-    }
-    // return A[i]
-    T get(int i) const { return sum(i, i + 1); }
-    // A[i] = x
-    void set(int i, const T x) { add(i, x - get(i)); }
 
-    std::vector<T> make_vector() {
-        std::vector<T> vec(n);
+    S all_prod() const { return prod(n); }
+
+    std::vector<S> make_vector() {
+        std::vector<S> vec(n);
         for (int i = 0; i < n; i++) vec[i] = get(i);
         return vec;
     }
+
+  private:
+    int n;
+    std::vector<S> d;
 };
