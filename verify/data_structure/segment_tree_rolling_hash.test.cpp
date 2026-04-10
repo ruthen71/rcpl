@@ -26,7 +26,7 @@ void test2_sequence() {
     };
     SegmentTree<mrh> seg(a);
 
-    assert(seg.prod(0, 0).hash == mint(3));
+    assert(seg.prod(0, 0).hash == mint(0));
     assert(seg.prod(0, 0).power == mint(1));
 
     assert(seg.prod(0, 1).hash == mint(3));
