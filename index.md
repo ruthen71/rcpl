@@ -166,6 +166,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: dp/sliding_window_minimum.hpp
       title: "Sliding Window Minimum (\u30B9\u30E9\u30A4\u30C9\u6700\u5C0F\u5024)"
+  - name: enumerate
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: enumerate/enumerate_product.hpp
+      title: "$ 0 \\leq p_{i} < a_{i} $ \u3092\u6E80\u305F\u3059\u6574\u6570\u5217\
+        \ $p$ \u306E\u5217\u6319"
   - name: geometry
     pages:
     - icon: ':warning:'
@@ -350,6 +356,10 @@ data:
       path: math/extended_gcd.hpp
       title: math/extended_gcd.hpp
     - icon: ':warning:'
+      path: math/gauss_jordan_elimination.hpp
+      title: "Gauss-Jordan elimination (\u30AC\u30A6\u30B9\u30B8\u30E7\u30EB\u30C0\
+        \u30F3\u306E\u6383\u304D\u51FA\u3057\u6CD5)"
+    - icon: ':warning:'
       path: math/inv_mod.hpp
       title: math/inv_mod.hpp
     - icon: ':heavy_check_mark:'
@@ -357,6 +367,9 @@ data:
       title: "\u7DDA\u5F62\u30C7\u30A3\u30AA\u30D5\u30A1\u30F3\u30C8\u30B9\u65B9\u7A0B\
         \u5F0F ($ ax + by = c $) / \u7DDA\u5F62\u5408\u540C\u5F0F ( $ ax \\equiv b\
         \ \\pmod m $ )"
+    - icon: ':warning:'
+      path: math/linear_equation.hpp
+      title: "Linear Equation (\u7DDA\u5F62\u65B9\u7A0B\u5F0F)"
     - icon: ':heavy_check_mark:'
       path: math/modint261.hpp
       title: Modint $\pmod{2^{61}-1} $
@@ -466,6 +479,9 @@ data:
     - icon: ':warning:'
       path: string/trie.hpp
       title: "Trie (\u30C8\u30E9\u30A4\u6728)"
+    - icon: ':warning:'
+      path: string/z_algorithm.hpp
+      title: string/z_algorithm.hpp
   - name: unionfind
     pages:
     - icon: ':heavy_check_mark:'
@@ -485,6 +501,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: dp/test/inversion_number.test.cpp
       title: dp/test/inversion_number.test.cpp
+  - name: enumerate/test
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: enumerate/test/enumerate_product.test.cpp
+      title: enumerate/test/enumerate_product.test.cpp
   - name: misc/test
     pages:
     - icon: ':heavy_check_mark:'
