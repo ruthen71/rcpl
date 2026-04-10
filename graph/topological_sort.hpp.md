@@ -78,7 +78,7 @@ data:
     \            if (indeg[e.to] == 0) que.push(e.to);\n        }\n    }\n    // topological\
     \ sort \u3067\u304D\u306A\u3044\n    if ((int)(res.size()) != n) {\n        return\
     \ std::vector<int>();\n    }\n    return res;\n}\n"
-  code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\n#include <cassert>\n\
+  code: "#pragma once\n\n#include \"../graph/graph_template.hpp\"\n\n#include <cassert>\n\
     #include <queue>\n\n// topological sort \u304C\u5B58\u5728\u3059\u308B\u306A\u3089\
     , \u8F9E\u66F8\u9806\u6700\u5C0F\u306E\u3082\u306E\u3092\u8FD4\u3059\n// O((n\
     \ + m) log n)\n// topological sort \u304C\u4E00\u610F\u306B\u5B9A\u307E\u308B\
@@ -94,17 +94,17 @@ data:
     \     for (auto&& e : g[v]) {\n            indeg[e.to]--;\n            if (indeg[e.to]\
     \ == 0) que.push(e.to);\n        }\n    }\n    // topological sort \u3067\u304D\
     \u306A\u3044\n    if ((int)(res.size()) != n) {\n        return std::vector<int>();\n\
-    \    }\n    return res;\n}"
+    \    }\n    return res;\n}\n"
   dependsOn:
   - graph/graph_template.hpp
   isVerificationFile: false
   path: graph/topological_sort.hpp
   requiredBy: []
-  timestamp: '2026-01-20 04:06:16+09:00'
+  timestamp: '2026-04-10 12:19:53+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/graph/topological_sort_1.test.cpp
   - verify/graph/topological_sort_2.test.cpp
+  - verify/graph/topological_sort_1.test.cpp
 documentation_of: graph/topological_sort.hpp
 layout: document
 title: "Topological Sort (\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8)"

@@ -59,29 +59,31 @@ data:
     \                if (j + 1 != (int)(g[i].size())) os << \", \";\n            }\n\
     \            os << \"]\";\n            if (i + 1 != (int)(g.size())) os << \"\
     , \";\n        }\n        return os << \"]\";\n    }\n};\n#line 4 \"graph/traveling_salesman_problem.hpp\"\
-    \n\ntemplate <class T> std::vector<std::vector<T>> traveling_salesman_problem(Graph<T>&\
-    \ g, const T inf) {\n    const int n = (int)(g.size());\n    const int n2 = 1\
-    \ << n;\n\n    std::vector dp(n2, std::vector<T>(n, inf));\n    dp[0][0] = 0;\n\
-    \    for (int bit = 0; bit < n2; bit++) {\n        for (int u = 0; u < n; u++)\
-    \ {\n            if (dp[bit][u] == inf) continue;\n            for (auto&& e :\
-    \ g[u]) {\n                if (bit >> e.to & 1) continue;\n                dp[bit\
-    \ | (1 << e.to)][e.to] = std::min(dp[bit | (1 << e.to)][e.to], dp[bit][u] + e.cost);\n\
+    \n\ntemplate <class T>\nstd::vector<std::vector<T>> traveling_salesman_problem(Graph<T>&\
+    \ g,\n                                                       const T inf) {\n\
+    \    const int n = (int)(g.size());\n    const int n2 = 1 << n;\n\n    std::vector\
+    \ dp(n2, std::vector<T>(n, inf));\n    dp[0][0] = 0;\n    for (int bit = 0; bit\
+    \ < n2; bit++) {\n        for (int u = 0; u < n; u++) {\n            if (dp[bit][u]\
+    \ == inf) continue;\n            for (auto&& e : g[u]) {\n                if (bit\
+    \ >> e.to & 1) continue;\n                dp[bit | (1 << e.to)][e.to] =\n    \
+    \                std::min(dp[bit | (1 << e.to)][e.to], dp[bit][u] + e.cost);\n\
     \            }\n        }\n    }\n    return dp;\n}\n"
-  code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\ntemplate <class\
-    \ T> std::vector<std::vector<T>> traveling_salesman_problem(Graph<T>& g, const\
-    \ T inf) {\n    const int n = (int)(g.size());\n    const int n2 = 1 << n;\n\n\
-    \    std::vector dp(n2, std::vector<T>(n, inf));\n    dp[0][0] = 0;\n    for (int\
-    \ bit = 0; bit < n2; bit++) {\n        for (int u = 0; u < n; u++) {\n       \
-    \     if (dp[bit][u] == inf) continue;\n            for (auto&& e : g[u]) {\n\
-    \                if (bit >> e.to & 1) continue;\n                dp[bit | (1 <<\
-    \ e.to)][e.to] = std::min(dp[bit | (1 << e.to)][e.to], dp[bit][u] + e.cost);\n\
-    \            }\n        }\n    }\n    return dp;\n}"
+  code: "#pragma once\n\n#include \"../graph/graph_template.hpp\"\n\ntemplate <class\
+    \ T>\nstd::vector<std::vector<T>> traveling_salesman_problem(Graph<T>& g,\n  \
+    \                                                     const T inf) {\n    const\
+    \ int n = (int)(g.size());\n    const int n2 = 1 << n;\n\n    std::vector dp(n2,\
+    \ std::vector<T>(n, inf));\n    dp[0][0] = 0;\n    for (int bit = 0; bit < n2;\
+    \ bit++) {\n        for (int u = 0; u < n; u++) {\n            if (dp[bit][u]\
+    \ == inf) continue;\n            for (auto&& e : g[u]) {\n                if (bit\
+    \ >> e.to & 1) continue;\n                dp[bit | (1 << e.to)][e.to] =\n    \
+    \                std::min(dp[bit | (1 << e.to)][e.to], dp[bit][u] + e.cost);\n\
+    \            }\n        }\n    }\n    return dp;\n}\n"
   dependsOn:
   - graph/graph_template.hpp
   isVerificationFile: false
   path: graph/traveling_salesman_problem.hpp
   requiredBy: []
-  timestamp: '2026-01-20 04:06:16+09:00'
+  timestamp: '2026-04-10 12:19:53+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/traveling_salesman_problem.test.cpp

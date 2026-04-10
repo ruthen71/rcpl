@@ -34,9 +34,9 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lc_data_structure/lc_point_add_range_sum_segment_tree.test.cpp
-  - verify/graph/euler_tour.test.cpp
-  - verify/graph/heavy_light_decomposition_3.test.cpp
   - verify/graph/heavy_light_decomposition_2.test.cpp
+  - verify/graph/heavy_light_decomposition_3.test.cpp
+  - verify/graph/euler_tour.test.cpp
 documentation_of: algebra/monoid_s/monoid_sum.hpp
 layout: document
 redirect_from:

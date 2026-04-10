@@ -330,8 +330,8 @@ data:
   timestamp: '2026-01-20 04:06:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/geometry/incircle.test.cpp
   - verify/geometry/distance_ss.test.cpp
+  - verify/geometry/incircle.test.cpp
 documentation_of: geometry/distance.hpp
 layout: document
 title: "Distance (\u8DDD\u96E2)"

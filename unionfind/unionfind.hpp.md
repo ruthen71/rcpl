@@ -83,10 +83,10 @@ data:
   timestamp: '2025-12-10 04:21:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - unionfind/test/unionfind.test.cpp
-  - unionfind/test/unionfind_groups.test.cpp
   - verify/graph/kruskal.test.cpp
   - verify/graph/minimum_steiner_tree.test.cpp
+  - unionfind/test/unionfind_groups.test.cpp
+  - unionfind/test/unionfind.test.cpp
 documentation_of: unionfind/unionfind.hpp
 layout: document
 title: Unionfind

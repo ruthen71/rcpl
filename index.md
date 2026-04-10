@@ -440,6 +440,9 @@ data:
     - icon: ':warning:'
       path: misc/timer.hpp
       title: misc/timer.hpp
+    - icon: ':heavy_check_mark:'
+      path: misc/top_two.hpp
+      title: TopTwo
     - icon: ':question:'
       path: misc/topbit.hpp
       title: Topbit
@@ -490,6 +493,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: misc/test/bit_operation.test.cpp
       title: misc/test/bit_operation.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: misc/test/top_two.test.cpp
+      title: misc/test/top_two.test.cpp
   - name: random/test
     pages:
     - icon: ':heavy_check_mark:'

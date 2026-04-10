@@ -61,8 +61,8 @@ data:
   isVerificationFile: false
   path: convolution/fast_zeta_mobius_transform.hpp
   requiredBy:
-  - convolution/bitwise_or_convolution.hpp
   - convolution/bitwise_and_convolution.hpp
+  - convolution/bitwise_or_convolution.hpp
   timestamp: '2023-03-31 06:51:54+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

@@ -32,8 +32,8 @@ data:
   timestamp: '2025-12-10 04:21:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - unionfind/test/potentialized_unionfind_groups.test.cpp
   - unionfind/test/potentialized_unionfind.test.cpp
+  - unionfind/test/potentialized_unionfind_groups.test.cpp
 documentation_of: algebra/monoid/monoid_plus.hpp
 layout: document
 redirect_from:

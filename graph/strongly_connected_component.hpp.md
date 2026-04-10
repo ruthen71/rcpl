@@ -62,7 +62,7 @@ data:
     \                if (j + 1 != (int)(g[i].size())) os << \", \";\n            }\n\
     \            os << \"]\";\n            if (i + 1 != (int)(g.size())) os << \"\
     , \";\n        }\n        return os << \"]\";\n    }\n};\n#line 4 \"graph/strongly_connected_component.hpp\"\
-    \n\ntemplate <class T> std::vector<std::vector<int>> strongly_connected_component(Graph<T>&\
+    \n\ntemplate <class T>\nstd::vector<std::vector<int>> strongly_connected_component(Graph<T>&\
     \ g) {\n    const int n = (int)(g.size());\n    int now_ord = 0, group_num = 0;\n\
     \    std::vector<int> visited, low(n), ord(n, -1), ids(n);\n    visited.reserve(n);\n\
     \    auto dfs = [&](auto f, int cur) -> void {\n        low[cur] = ord[cur] =\
@@ -80,10 +80,10 @@ data:
     \    std::vector<std::vector<int>> groups(group_num);\n    for (int i = 0; i <\
     \ group_num; i++) groups[i].reserve(counts[i]);\n    for (int i = 0; i < n; i++)\
     \ groups[ids[i]].push_back(i);\n    return groups;\n}\n"
-  code: "#pragma once\n\n#include \"graph/graph_template.hpp\"\n\ntemplate <class\
-    \ T> std::vector<std::vector<int>> strongly_connected_component(Graph<T>& g) {\n\
-    \    const int n = (int)(g.size());\n    int now_ord = 0, group_num = 0;\n   \
-    \ std::vector<int> visited, low(n), ord(n, -1), ids(n);\n    visited.reserve(n);\n\
+  code: "#pragma once\n\n#include \"../graph/graph_template.hpp\"\n\ntemplate <class\
+    \ T>\nstd::vector<std::vector<int>> strongly_connected_component(Graph<T>& g)\
+    \ {\n    const int n = (int)(g.size());\n    int now_ord = 0, group_num = 0;\n\
+    \    std::vector<int> visited, low(n), ord(n, -1), ids(n);\n    visited.reserve(n);\n\
     \    auto dfs = [&](auto f, int cur) -> void {\n        low[cur] = ord[cur] =\
     \ now_ord++;\n        visited.push_back(cur);\n        for (auto&& e : g[cur])\
     \ {\n            if (ord[e.to] == -1) {\n                f(f, e.to);\n       \
@@ -98,13 +98,13 @@ data:
     \ }\n    std::vector<int> counts(group_num);\n    for (auto&& x : ids) counts[x]++;\n\
     \    std::vector<std::vector<int>> groups(group_num);\n    for (int i = 0; i <\
     \ group_num; i++) groups[i].reserve(counts[i]);\n    for (int i = 0; i < n; i++)\
-    \ groups[ids[i]].push_back(i);\n    return groups;\n}"
+    \ groups[ids[i]].push_back(i);\n    return groups;\n}\n"
   dependsOn:
   - graph/graph_template.hpp
   isVerificationFile: false
   path: graph/strongly_connected_component.hpp
   requiredBy: []
-  timestamp: '2026-01-20 04:06:16+09:00'
+  timestamp: '2026-04-10 12:19:53+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/strongly_connected_component_2.test.cpp

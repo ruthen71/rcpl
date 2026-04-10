@@ -61,8 +61,8 @@ data:
   - misc/test/bit_operation.test.cpp
   - verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
   - verify/graph/heavy_light_decomposition_1.test.cpp
-  - verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
   - verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp
+  - verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
   - verify/aoj_dsl/aoj_dsl_2_h_lazy_segment_tree.test.cpp
   - verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
 documentation_of: misc/bit_ceil.hpp

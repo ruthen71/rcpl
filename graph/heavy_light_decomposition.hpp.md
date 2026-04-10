@@ -216,9 +216,9 @@ data:
   timestamp: '2026-01-20 04:06:16+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/graph/heavy_light_decomposition_2.test.cpp
   - verify/graph/heavy_light_decomposition_1.test.cpp
   - verify/graph/heavy_light_decomposition_3.test.cpp
-  - verify/graph/heavy_light_decomposition_2.test.cpp
 documentation_of: graph/heavy_light_decomposition.hpp
 layout: document
 title: "Heavy-Light Decomposition (\u91CD\u8EFD\u5206\u89E3)"

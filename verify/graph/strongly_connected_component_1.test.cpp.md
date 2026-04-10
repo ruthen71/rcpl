@@ -80,26 +80,27 @@ data:
     \ i++) {\n        int p;\n        std::cin >> p;\n        p -= offset;\n     \
     \   T c = 1;\n        if (weight) std::cin >> c;\n        g.add_edge(p, i, c);\n\
     \    }\n    g.build();\n    return g;\n}\n#line 2 \"graph/strongly_connected_component.hpp\"\
-    \n\n#line 4 \"graph/strongly_connected_component.hpp\"\n\ntemplate <class T> std::vector<std::vector<int>>\
-    \ strongly_connected_component(Graph<T>& g) {\n    const int n = (int)(g.size());\n\
-    \    int now_ord = 0, group_num = 0;\n    std::vector<int> visited, low(n), ord(n,\
-    \ -1), ids(n);\n    visited.reserve(n);\n    auto dfs = [&](auto f, int cur) ->\
-    \ void {\n        low[cur] = ord[cur] = now_ord++;\n        visited.push_back(cur);\n\
-    \        for (auto&& e : g[cur]) {\n            if (ord[e.to] == -1) {\n     \
-    \           f(f, e.to);\n                low[cur] = std::min(low[cur], low[e.to]);\n\
-    \            } else {\n                low[cur] = std::min(low[cur], ord[e.to]);\n\
-    \            }\n        }\n        if (low[cur] == ord[cur]) {\n            while\
-    \ (true) {\n                int u = visited.back();\n                visited.pop_back();\n\
-    \                ord[u] = n;\n                ids[u] = group_num;\n          \
-    \      if (u == cur) break;\n            }\n            group_num++;\n       \
-    \ }\n    };\n    for (int i = 0; i < n; i++) {\n        if (ord[i] == -1) dfs(dfs,\
-    \ i);\n    }\n    for (auto&& x : ids) {\n        x = group_num - 1 - x;\n   \
-    \ }\n    std::vector<int> counts(group_num);\n    for (auto&& x : ids) counts[x]++;\n\
-    \    std::vector<std::vector<int>> groups(group_num);\n    for (int i = 0; i <\
-    \ group_num; i++) groups[i].reserve(counts[i]);\n    for (int i = 0; i < n; i++)\
-    \ groups[ids[i]].push_back(i);\n    return groups;\n}\n#line 7 \"verify/graph/strongly_connected_component_1.test.cpp\"\
-    \n\nint main() {\n    int V, E;\n    std::cin >> V >> E;\n    auto g = read_graph<int>(V,\
-    \ E, false, true, 0);\n    auto res = strongly_connected_component(g);\n    std::vector<int>\
+    \n\n#line 4 \"graph/strongly_connected_component.hpp\"\n\ntemplate <class T>\n\
+    std::vector<std::vector<int>> strongly_connected_component(Graph<T>& g) {\n  \
+    \  const int n = (int)(g.size());\n    int now_ord = 0, group_num = 0;\n    std::vector<int>\
+    \ visited, low(n), ord(n, -1), ids(n);\n    visited.reserve(n);\n    auto dfs\
+    \ = [&](auto f, int cur) -> void {\n        low[cur] = ord[cur] = now_ord++;\n\
+    \        visited.push_back(cur);\n        for (auto&& e : g[cur]) {\n        \
+    \    if (ord[e.to] == -1) {\n                f(f, e.to);\n                low[cur]\
+    \ = std::min(low[cur], low[e.to]);\n            } else {\n                low[cur]\
+    \ = std::min(low[cur], ord[e.to]);\n            }\n        }\n        if (low[cur]\
+    \ == ord[cur]) {\n            while (true) {\n                int u = visited.back();\n\
+    \                visited.pop_back();\n                ord[u] = n;\n          \
+    \      ids[u] = group_num;\n                if (u == cur) break;\n           \
+    \ }\n            group_num++;\n        }\n    };\n    for (int i = 0; i < n; i++)\
+    \ {\n        if (ord[i] == -1) dfs(dfs, i);\n    }\n    for (auto&& x : ids) {\n\
+    \        x = group_num - 1 - x;\n    }\n    std::vector<int> counts(group_num);\n\
+    \    for (auto&& x : ids) counts[x]++;\n    std::vector<std::vector<int>> groups(group_num);\n\
+    \    for (int i = 0; i < group_num; i++) groups[i].reserve(counts[i]);\n    for\
+    \ (int i = 0; i < n; i++) groups[ids[i]].push_back(i);\n    return groups;\n}\n\
+    #line 7 \"verify/graph/strongly_connected_component_1.test.cpp\"\n\nint main()\
+    \ {\n    int V, E;\n    std::cin >> V >> E;\n    auto g = read_graph<int>(V, E,\
+    \ false, true, 0);\n    auto res = strongly_connected_component(g);\n    std::vector<int>\
     \ id(V);\n    for (int i = 0; i < (int)(res.size()); i++) {\n        for (auto&&\
     \ e : res[i]) id[e] = i;\n    }\n    int Q;\n    std::cin >> Q;\n    for (int\
     \ i = 0; i < Q; i++) {\n        int u, v;\n        std::cin >> u >> v;\n     \
@@ -119,7 +120,7 @@ data:
   isVerificationFile: true
   path: verify/graph/strongly_connected_component_1.test.cpp
   requiredBy: []
-  timestamp: '2026-01-20 04:06:16+09:00'
+  timestamp: '2026-04-10 12:19:53+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/strongly_connected_component_1.test.cpp

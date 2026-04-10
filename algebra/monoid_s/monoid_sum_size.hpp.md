@@ -41,8 +41,8 @@ data:
   isVerificationFile: false
   path: algebra/monoid_s/monoid_sum_size.hpp
   requiredBy:
-  - algebra/monoid_s_f/monoid_sum_size_set.hpp
   - algebra/monoid_s_f/monoid_sum_size_add.hpp
+  - algebra/monoid_s_f/monoid_sum_size_set.hpp
   - algebra/monoid_s_f/monoid_sum_size_affine.hpp
   timestamp: '2024-03-24 17:04:51+09:00'
   verificationStatus: LIBRARY_ALL_WA
