@@ -1,14 +1,15 @@
-#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_E"
+#define PROBLEM \
+    "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_E"
 
-#include <bits/stdc++.h>
+#include <iostream>
 
-#include "algebra/monoid_f/monoid_add.hpp"
+#include "algebra/monoid/monoid_plus.hpp"
 #include "data_structure/dual_segment_tree.hpp"
 
 int main() {
     int N, Q;
     std::cin >> N >> Q;
-    DualSegmentTree<MonoidAdd<long long>> seg(N);
+    DualSegmentTree<MonoidPlus<long long>> seg(N);
     while (Q--) {
         int t;
         std::cin >> t;

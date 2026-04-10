@@ -1,14 +1,17 @@
-#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_D"
+#define PROBLEM \
+    "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_D"
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <numeric>
 
-#include "algebra/monoid_f/monoid_set.hpp"
+#include "algebra/monoid/monoid_assign.hpp"
 #include "data_structure/dual_segment_tree.hpp"
 
 int main() {
     int N, Q;
     std::cin >> N >> Q;
-    DualSegmentTree<MonoidSet<int>> seg(N);
+    constexpr int NONE = std::numeric_limits<int>::max();
+    DualSegmentTree<MonoidAssign<int, NONE>> seg(N);
     while (Q--) {
         int t;
         std::cin >> t;
