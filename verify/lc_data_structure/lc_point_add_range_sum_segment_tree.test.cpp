@@ -17,7 +17,7 @@ int main() {
         if (t == 0) {
             int p, x;
             std::cin >> p >> x;
-            seg.chset(p, x);
+            seg.add(p, x);
         } else {
             int l, r;
             std::cin >> l >> r;

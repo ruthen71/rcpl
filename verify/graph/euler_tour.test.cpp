@@ -1,11 +1,12 @@
-#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_D"
+#define PROBLEM \
+    "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_D"
 
 #include <iostream>
 
-#include "graph/read_graph.hpp"
-#include "graph/euler_tour.hpp"
-#include "data_structure/segment_tree.hpp"
 #include "algebra/monoid/monoid_plus.hpp"
+#include "data_structure/segment_tree.hpp"
+#include "graph/euler_tour.hpp"
+#include "graph/read_graph.hpp"
 
 int main() {
     int N;
@@ -34,8 +35,8 @@ int main() {
             int v, w;
             std::cin >> v >> w;
             int eid = id[v];
-            seg.chset(et.esl[eid], w);
-            seg.chset(et.esr[eid], -w);
+            seg.add(et.esl[eid], w);
+            seg.add(et.esr[eid], -w);
         } else {
             int u;
             std::cin >> u;

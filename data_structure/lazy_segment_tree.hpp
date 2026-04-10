@@ -39,7 +39,7 @@ template <class AM> struct LazySegmentTree {
         for (int i = 1; i <= log; i++) update(p >> i);
     }
 
-    void chset(int p, const S& x) {
+    void add(int p, const S& x) {
         assert(0 <= p and p < n);
         p += size;
         for (int i = log; i >= 1; i--) push(p >> i);

@@ -56,10 +56,10 @@ $a_p$ に $x$ を代入します。
 
 - $O(\log n)$
 
-## chset
+## add
 
 ```cpp
-void seg.chset(int p, S x)
+void seg.add(int p, S x)
 ```
 
 $a_p$ に $a_p \cdot x$ を代入します。

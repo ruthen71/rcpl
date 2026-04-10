@@ -53,7 +53,7 @@ template <class MS> struct SegmentTree2D {
         }
     }
 
-    void chset(int h, int w, const S& x) {
+    void add(int h, int w, const S& x) {
         assert(0 <= h and h < h and 0 <= w and w < w);
         h += sizeh;
         w += sizew;

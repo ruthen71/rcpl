@@ -26,7 +26,7 @@ int main() {
         if (type == 0) {
             int u, x;
             std::cin >> u >> x;
-            seg.chset(hld.subbegin[u], x);
+            seg.add(hld.subbegin[u], x);
         } else {
             int u;
             std::cin >> u;

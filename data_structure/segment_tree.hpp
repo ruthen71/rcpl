@@ -33,7 +33,7 @@ template <class MS> struct SegmentTree {
         for (int i = 1; i <= log; i++) update(p >> i);
     }
 
-    void chset(int p, const S& x) {
+    void add(int p, const S& x) {
         assert(0 <= p and p < n);
         p += size;
         d[p] = MS::operation(d[p], x);
