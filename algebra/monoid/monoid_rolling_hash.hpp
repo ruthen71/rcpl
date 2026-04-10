@@ -19,7 +19,7 @@ template <class Mint> struct MonoidRollingHash {
 
     static Mint base;
 
-    static void constexpr set_base(Mint b = Mint(0)) {
+    static void set_base(Mint b = Mint(0)) {
         if (b == Mint(0)) {
             std::mt19937_64 mt(
                 std::chrono::steady_clock::now().time_since_epoch().count());
