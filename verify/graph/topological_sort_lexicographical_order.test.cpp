@@ -2,9 +2,9 @@
 
 #include <iostream>
 
-#include "graph/read_graph.hpp"
-#include "graph/topological_sort.hpp"
-#include "random/base.hpp"
+#include "../../graph/read_graph.hpp"
+#include "../../graph/topological_sort.hpp"
+#include "../../random/base.hpp"
 
 void test1_lexicographical_order() {
     // 旧: https://atcoder.jp/contests/abc223/tasks/abc223_d
