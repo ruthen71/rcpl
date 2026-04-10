@@ -25,6 +25,7 @@
 "segment_tree/test/segment_tree_or.test.cpp": "2026-04-11 00:41:57 +0900",
 "segment_tree/test/segment_tree_plus.test.cpp": "2026-04-11 00:41:57 +0900",
 "segment_tree/test/segment_tree_rolling_hash.test.cpp": "2026-04-11 00:41:57 +0900",
+"segment_tree/test/segment_tree_times.test.cpp": "2026-04-11 01:16:54 +0900",
 "segment_tree/test/segment_tree_xor.test.cpp": "2026-04-11 00:41:57 +0900",
 "unionfind/test/potentialized_unionfind.test.cpp": "2025-12-10 04:21:17 +0900",
 "unionfind/test/potentialized_unionfind_groups.test.cpp": "2025-12-10 04:21:17 +0900",
