@@ -1,13 +1,13 @@
 ---
 title: ローリングハッシュ
-documentation_of: //algebra/monoid_s/monoid_rolling_hash.hpp
+documentation_of: //algebra/monoid/monoid_rolling_hash.hpp
 ---
 
 clang でコンパイルするときには `-std=c++2b` をつける
 
 ```cpp
 // mint は定義済
-#include "algebra/monoid_s/monoid_rolling_hash.hpp"
+#include "algebra/monoid/monoid_rolling_hash.hpp"
 using mrh = MonoidRollingHash<mint>;
 template <> mint mrh::base = 0;
 
