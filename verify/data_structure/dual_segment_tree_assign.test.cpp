@@ -2,7 +2,7 @@
     "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_D"
 
 #include <iostream>
-#include <numeric>
+#include <limits>
 
 #include "algebra/monoid/monoid_assign.hpp"
 #include "data_structure/dual_segment_tree.hpp"

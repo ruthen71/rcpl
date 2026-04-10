@@ -2,10 +2,10 @@
     "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_I"
 
 #include <iostream>
-#include <numeric>
+#include <limits>
 
-#include "algebra/acted_monoid/acted_monoid_plus_assign.hpp"
-#include "data_structure/lazy_segment_tree.hpp"
+#include "../../algebra/acted_monoid/acted_monoid_plus_assign.hpp"
+#include "../../data_structure/lazy_segment_tree.hpp"
 
 int main() {
     int N, Q;

@@ -2,7 +2,7 @@
     "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_F"
 
 #include <iostream>
-#include <numeric>
+#include <limits>
 
 #include "../../algebra/acted_monoid/acted_monoid_max_assign.hpp"
 #include "../../algebra/acted_monoid/acted_monoid_min_assign.hpp"

@@ -2,11 +2,11 @@
     "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H"
 
 #include <iostream>
-#include <numeric>
+#include <limits>
 
-#include "algebra/acted_monoid/acted_monoid_max_plus.hpp"
-#include "algebra/acted_monoid/acted_monoid_min_plus.hpp"
-#include "data_structure/lazy_segment_tree.hpp"
+#include "../../algebra/acted_monoid/acted_monoid_max_plus.hpp"
+#include "../../algebra/acted_monoid/acted_monoid_min_plus.hpp"
+#include "../../data_structure/lazy_segment_tree.hpp"
 
 int main() {
     int N, Q;
