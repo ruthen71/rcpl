@@ -1,11 +1,12 @@
-#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_E"
+#define PROBLEM \
+    "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_E"
 
 #include <iostream>
 
-#include "graph/read_graph.hpp"
-#include "graph/heavy_light_decomposition.hpp"
-#include "data_structure/lazy_segment_tree.hpp"
-#include "algebra/monoid_s_f/monoid_sum_size_add.hpp"
+#include "../../algebra/acted_monoid/acted_monoid_plus_plus.hpp"
+#include "../../data_structure/lazy_segment_tree.hpp"
+#include "../../graph/heavy_light_decomposition.hpp"
+#include "../../graph/read_graph.hpp"
 
 int main() {
     int N;
@@ -23,8 +24,7 @@ int main() {
     }
     const int root = N / 2;  // verify のために適当に決める
     HeavyLightDecomposition hld(g, root);
-    std::vector<std::pair<long long, int>> segi(N - 1, {0, 1});
-    LazySegmentTree<MonoidSumSizeAdd<long long>> seg(segi);
+    LazySegmentTree<ActedMonoidPlusPlus<long long>> seg(N - 1);
 
     int Q;
     std::cin >> Q;
@@ -42,11 +42,12 @@ int main() {
             int v;
             std::cin >> v;
             auto intervals = hld.path_query(0, v, true);
-            auto res = MonoidSumSizeAdd<long long>::MS::e();
+            auto res = ActedMonoidPlusPlus<long long>::MS::identity();
             for (auto&& [l, r] : intervals) {
-                res = MonoidSumSizeAdd<long long>::MS::op(res, seg.prod(l, r));
+                res = ActedMonoidPlusPlus<long long>::MS::operation(
+                    res, seg.prod(l, r));
             }
-            std::cout << res.first << '\n';
+            std::cout << res << '\n';
         }
     }
 
