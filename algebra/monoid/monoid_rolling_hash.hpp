@@ -40,4 +40,6 @@ template <class Mint> struct MonoidRollingHash {
         // {hash(""), base ^ len("")}
         return {Mint(0), Mint(1)};
     }
+
+    static constexpr bool commutative = false;
 };
