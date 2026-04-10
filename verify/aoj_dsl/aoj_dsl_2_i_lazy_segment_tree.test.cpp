@@ -1,14 +1,17 @@
-#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_I"
+#define PROBLEM \
+    "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_I"
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <numeric>
 
-#include "algebra/monoid_s_f/monoid_sum_size_set.hpp"
+#include "algebra/acted_monoid/acted_monoid_plus_assign.hpp"
 #include "data_structure/lazy_segment_tree.hpp"
 
 int main() {
     int N, Q;
     std::cin >> N >> Q;
-    LazySegmentTree<MonoidSumSizeSet<long long>> seg(std::vector<std::pair<long long, int>>(N, {0, 1}));
+    constexpr long long NONE = std::numeric_limits<long long>::max();
+    LazySegmentTree<ActedMonoidPlusAssign<long long, NONE>> seg(N);
     while (Q--) {
         int t;
         std::cin >> t;
@@ -19,7 +22,7 @@ int main() {
         } else {
             int l, r;
             std::cin >> l >> r;
-            std::cout << seg.prod(l, r + 1).first << '\n';
+            std::cout << seg.prod(l, r + 1) << '\n';
         }
     }
     return 0;
