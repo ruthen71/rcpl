@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/graph/heavy_light_decomposition_1.test.cpp
-    title: verify/graph/heavy_light_decomposition_1.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/graph/heavy_light_decomposition_2.test.cpp
-    title: verify/graph/heavy_light_decomposition_2.test.cpp
+    path: verify/graph/heavy_light_decomposition_path_add_path_sum.test.cpp
+    title: verify/graph/heavy_light_decomposition_path_add_path_sum.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/graph/heavy_light_decomposition_3.test.cpp
-    title: verify/graph/heavy_light_decomposition_3.test.cpp
-  _isVerificationFailed: true
+    path: verify/graph/heavy_light_decomposition_vertex_add_path_sum.test.cpp
+    title: verify/graph/heavy_light_decomposition_vertex_add_path_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/heavy_light_decomposition_vertex_add_subtree_sum.test.cpp
+    title: verify/graph/heavy_light_decomposition_vertex_add_subtree_sum.test.cpp
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/heavy_light_decomposition.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
@@ -214,11 +214,11 @@ data:
   path: graph/heavy_light_decomposition.hpp
   requiredBy: []
   timestamp: '2026-01-20 04:06:16+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/heavy_light_decomposition_2.test.cpp
-  - verify/graph/heavy_light_decomposition_1.test.cpp
-  - verify/graph/heavy_light_decomposition_3.test.cpp
+  - verify/graph/heavy_light_decomposition_vertex_add_subtree_sum.test.cpp
+  - verify/graph/heavy_light_decomposition_vertex_add_path_sum.test.cpp
+  - verify/graph/heavy_light_decomposition_path_add_path_sum.test.cpp
 documentation_of: graph/heavy_light_decomposition.hpp
 layout: document
 title: "Heavy-Light Decomposition (\u91CD\u8EFD\u5206\u89E3)"

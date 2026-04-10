@@ -1,40 +1,41 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/auxiliary_tree.hpp
     title: "Auxiliary Tree (\u865A\u6811)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/lowest_common_ancestor.hpp
     title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/read_graph.hpp
     title: "\u30B0\u30E9\u30D5\u5165\u529B\u30E9\u30A4\u30D6\u30E9\u30EA"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/countl_zero.hpp
     title: Countl Zero
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/topbit.hpp
     title: Topbit
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://atcoder.jp/contests/abc359/tasks/abc359_g
+    PROBLEM: https://judge.yosupo.jp/problem/aplusb
     links:
     - https://atcoder.jp/contests/abc359/tasks/abc359_g
+    - https://judge.yosupo.jp/problem/aplusb
   bundledCode: "#line 1 \"verify/graph/auxiliary_tree.test.cpp\"\n#define PROBLEM\
-    \ \"https://atcoder.jp/contests/abc359/tasks/abc359_g\"\n\n#include <iostream>\n\
-    \n#line 2 \"graph/read_graph.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\n\n\
-    #include <cassert>\n#include <vector>\n\ntemplate <class T> struct Edge {\n  \
-    \  int from, to;\n    T cost;\n    int id;\n\n    Edge() = default;\n    Edge(const\
-    \ int from, const int to, const T cost = T(1), const int id = -1)\n        : from(from),\
+    \ \"https://judge.yosupo.jp/problem/aplusb\"\n\n#include <iostream>\n\n#line 2\
+    \ \"graph/auxiliary_tree.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\n\n#include\
+    \ <cassert>\n#include <vector>\n\ntemplate <class T> struct Edge {\n    int from,\
+    \ to;\n    T cost;\n    int id;\n\n    Edge() = default;\n    Edge(const int from,\
+    \ const int to, const T cost = T(1), const int id = -1)\n        : from(from),\
     \ to(to), cost(cost), id(id) {}\n\n    friend bool operator<(const Edge<T>& a,\
     \ const Edge<T>& b) {\n        return a.cost < b.cost;\n    }\n\n    friend std::ostream&\
     \ operator<<(std::ostream& os, const Edge<T>& e) {\n        // output format:\
@@ -75,54 +76,40 @@ data:
     \    for (int j = 0; j < (int)(g[i].size()); j++) {\n                os << g[i][j];\n\
     \                if (j + 1 != (int)(g[i].size())) os << \", \";\n            }\n\
     \            os << \"]\";\n            if (i + 1 != (int)(g.size())) os << \"\
-    , \";\n        }\n        return os << \"]\";\n    }\n};\n#line 4 \"graph/read_graph.hpp\"\
-    \n\ntemplate <class T>\nGraph<T> read_graph(const int n,\n                   \
-    \ const int m,\n                    const bool weight = false,\n             \
-    \       const bool directed = false,\n                    const int offset = 1)\
-    \ {\n    Graph<T> g(n, directed);\n    for (int i = 0; i < m; i++) {\n       \
-    \ int a, b;\n        std::cin >> a >> b;\n        a -= offset, b -= offset;\n\
-    \        T c = 1;\n        if (weight) std::cin >> c;\n        g.add_edge(a, b,\
-    \ c);\n    }\n    g.build();\n    return g;\n}\n\ntemplate <class T>\nGraph<T>\
-    \ read_parent(const int n,\n                     const bool weight = false,\n\
-    \                     const bool directed = false,\n                     const\
-    \ int offset = 1) {\n    Graph<T> g(n, directed);\n    for (int i = 1; i < n;\
-    \ i++) {\n        int p;\n        std::cin >> p;\n        p -= offset;\n     \
-    \   T c = 1;\n        if (weight) std::cin >> c;\n        g.add_edge(p, i, c);\n\
-    \    }\n    g.build();\n    return g;\n}\n#line 2 \"graph/auxiliary_tree.hpp\"\
-    \n\n#line 2 \"graph/lowest_common_ancestor.hpp\"\n\n#line 2 \"misc/topbit.hpp\"\
-    \n\n#line 2 \"misc/countl_zero.hpp\"\n\n#if __cplusplus >= 202002L\n#include <bit>\n\
-    #endif\n\n// countl_zero\n// (000, 001, 010, 011, 100) -> (32, 31, 30, 30, 29)\n\
-    #if __cplusplus >= 202002L\nusing std::countl_zero;\n#else\nint countl_zero(unsigned\
-    \ int x) {\n    return x == 0 ? 32 : __builtin_clz(x);\n}\nint countl_zero(unsigned\
-    \ long long int x) {\n    return x == 0 ? 64 : __builtin_clzll(x);\n}\n#endif\n\
-    int countl_zero(int x) { return countl_zero((unsigned int)(x)); }\nint countl_zero(long\
-    \ long int x) {\n    return countl_zero((unsigned long long int)(x));\n}\n#line\
-    \ 4 \"misc/topbit.hpp\"\n\n// topbit\n// (000, 001, 010, 011, 100) -> (-1, 0,\
-    \ 1, 1, 2)\nint topbit(int x) { return 31 - countl_zero(x); }\nint topbit(unsigned\
-    \ int x) { return 31 - countl_zero(x); }\nint topbit(long long int x) { return\
-    \ 63 - countl_zero(x); }\nint topbit(unsigned long long int x) { return 63 - countl_zero(x);\
-    \ }\n#line 5 \"graph/lowest_common_ancestor.hpp\"\n\n#line 7 \"graph/lowest_common_ancestor.hpp\"\
-    \n\ntemplate <class T> struct LowestCommonAncestor {\n    int n, lg;\n    std::vector<int>\
-    \ depth;\n    std::vector<std::vector<int>> parent;\n\n    LowestCommonAncestor(Graph<T>&\
-    \ g, const int root = 0)\n        : n((int)(g.size())),\n          lg(topbit(n)\
-    \ + 1),\n          depth(n, 0),\n          parent(lg, std::vector<int>(n)) {\n\
-    \        auto dfs = [&](auto f, int cur, int par) -> void {\n            parent[0][cur]\
-    \ = par;\n            for (auto&& e : g[cur]) {\n                if (e.to == par)\
-    \ continue;\n                depth[e.to] = depth[cur] + 1;\n                f(f,\
-    \ e.to, cur);\n            }\n        };\n        dfs(dfs, root, -1);\n      \
-    \  for (int k = 0; k + 1 < lg; k++) {\n            for (int v = 0; v < n; v++)\
-    \ {\n                parent[k + 1][v] =\n                    parent[k][v] < 0\
-    \ ? -1 : parent[k][parent[k][v]];\n            }\n        }\n    }\n\n    int\
-    \ lca(int u, int v) {\n        assert((int)(depth.size()) == n);\n        if (depth[u]\
-    \ > depth[v]) std::swap(u, v);\n        // depth[u] <= depth[v]\n        for (int\
-    \ k = 0; k < lg; k++) {\n            if ((depth[v] - depth[u]) >> k & 1) v = parent[k][v];\n\
-    \        }\n        if (u == v) return u;\n        for (int k = lg - 1; k >= 0;\
-    \ k--) {\n            if (parent[k][u] != parent[k][v]) {\n                u =\
-    \ parent[k][u];\n                v = parent[k][v];\n            }\n        }\n\
-    \        return parent[0][u];\n    }\n\n    int level_ancestor(int u, const int\
-    \ d) {\n        assert((int)(depth.size()) == n);\n        if (depth[u] < d) return\
-    \ -1;\n        for (int k = 0; k < lg; k++) {\n            if (d >> k & 1) u =\
-    \ parent[k][u];\n        }\n        return u;\n    }\n\n    int distance(const\
+    , \";\n        }\n        return os << \"]\";\n    }\n};\n#line 2 \"graph/lowest_common_ancestor.hpp\"\
+    \n\n#line 2 \"misc/topbit.hpp\"\n\n#line 2 \"misc/countl_zero.hpp\"\n\n#if __cplusplus\
+    \ >= 202002L\n#include <bit>\n#endif\n\n// countl_zero\n// (000, 001, 010, 011,\
+    \ 100) -> (32, 31, 30, 30, 29)\n#if __cplusplus >= 202002L\nusing std::countl_zero;\n\
+    #else\nint countl_zero(unsigned int x) {\n    return x == 0 ? 32 : __builtin_clz(x);\n\
+    }\nint countl_zero(unsigned long long int x) {\n    return x == 0 ? 64 : __builtin_clzll(x);\n\
+    }\n#endif\nint countl_zero(int x) { return countl_zero((unsigned int)(x)); }\n\
+    int countl_zero(long long int x) {\n    return countl_zero((unsigned long long\
+    \ int)(x));\n}\n#line 4 \"misc/topbit.hpp\"\n\n// topbit\n// (000, 001, 010, 011,\
+    \ 100) -> (-1, 0, 1, 1, 2)\nint topbit(int x) { return 31 - countl_zero(x); }\n\
+    int topbit(unsigned int x) { return 31 - countl_zero(x); }\nint topbit(long long\
+    \ int x) { return 63 - countl_zero(x); }\nint topbit(unsigned long long int x)\
+    \ { return 63 - countl_zero(x); }\n#line 5 \"graph/lowest_common_ancestor.hpp\"\
+    \n\n#line 7 \"graph/lowest_common_ancestor.hpp\"\n\ntemplate <class T> struct\
+    \ LowestCommonAncestor {\n    int n, lg;\n    std::vector<int> depth;\n    std::vector<std::vector<int>>\
+    \ parent;\n\n    LowestCommonAncestor(Graph<T>& g, const int root = 0)\n     \
+    \   : n((int)(g.size())),\n          lg(topbit(n) + 1),\n          depth(n, 0),\n\
+    \          parent(lg, std::vector<int>(n)) {\n        auto dfs = [&](auto f, int\
+    \ cur, int par) -> void {\n            parent[0][cur] = par;\n            for\
+    \ (auto&& e : g[cur]) {\n                if (e.to == par) continue;\n        \
+    \        depth[e.to] = depth[cur] + 1;\n                f(f, e.to, cur);\n   \
+    \         }\n        };\n        dfs(dfs, root, -1);\n        for (int k = 0;\
+    \ k + 1 < lg; k++) {\n            for (int v = 0; v < n; v++) {\n            \
+    \    parent[k + 1][v] =\n                    parent[k][v] < 0 ? -1 : parent[k][parent[k][v]];\n\
+    \            }\n        }\n    }\n\n    int lca(int u, int v) {\n        assert((int)(depth.size())\
+    \ == n);\n        if (depth[u] > depth[v]) std::swap(u, v);\n        // depth[u]\
+    \ <= depth[v]\n        for (int k = 0; k < lg; k++) {\n            if ((depth[v]\
+    \ - depth[u]) >> k & 1) v = parent[k][v];\n        }\n        if (u == v) return\
+    \ u;\n        for (int k = lg - 1; k >= 0; k--) {\n            if (parent[k][u]\
+    \ != parent[k][v]) {\n                u = parent[k][u];\n                v = parent[k][v];\n\
+    \            }\n        }\n        return parent[0][u];\n    }\n\n    int level_ancestor(int\
+    \ u, const int d) {\n        assert((int)(depth.size()) == n);\n        if (depth[u]\
+    \ < d) return -1;\n        for (int k = 0; k < lg; k++) {\n            if (d >>\
+    \ k & 1) u = parent[k][u];\n        }\n        return u;\n    }\n\n    int distance(const\
     \ int u, const int v) {\n        return depth[u] + depth[v] - 2 * depth[lca(u,\
     \ v)];\n    }\n};\n#line 5 \"graph/auxiliary_tree.hpp\"\n\n#include <algorithm>\n\
     \ntemplate <class T> struct AuxiliaryTree {\n    int n, root;\n    std::vector<int>\
@@ -155,49 +142,80 @@ data:
     \ vs[i]);\n            while (vs[rs.back()] != l) rs.pop_back();\n           \
     \ aux.add_edge(rs.back(), i, depth[vs[i]] - depth[vs[rs.back()]]);\n         \
     \   rs.push_back(i);\n        }\n        aux.build();\n        return {aux, vs};\n\
-    \    }\n};\n#line 7 \"verify/graph/auxiliary_tree.test.cpp\"\n\nint main() {\n\
-    \    int N;\n    std::cin >> N;\n    auto g = read_graph<int>(N, N - 1);\n   \
-    \ std::vector<int> A(N);\n    std::vector<std::vector<int>> vs(N);\n    for (int\
-    \ i = 0; i < N; i++) {\n        std::cin >> A[i];\n        A[i]--;\n        vs[A[i]].push_back(i);\n\
-    \    }\n    AuxiliaryTree<int> aux(g);\n    long long ans = 0;\n    for (int col\
-    \ = 0; col < N; col++) {\n        auto vec = vs[col];\n        if ((int)(vec.size())\
-    \ == 0) continue;\n        auto res = aux.get(vec);\n        auto caux = res.first;\n\
-    \        auto label = res.second;\n        const int M = (int)(vec.size());\n\
-    \        std::vector<int> dp((int)(label.size()));\n        auto rec = [&](auto\
-    \ f, int cur, int par) -> void {\n            dp[cur] = (A[label[cur]] == col);\n\
-    \            for (auto&& e : caux[cur]) {\n                if (e.to == par) continue;\n\
-    \                f(f, e.to, cur);\n                dp[cur] += dp[e.to];\n    \
-    \            ans += (long long)e.cost * dp[e.to] * (M - dp[e.to]);\n         \
-    \   }\n        };\n        rec(rec, 0, -1);\n    }\n    std::cout << ans << '\\\
-    n';\n    return 0;\n}\n"
-  code: "#define PROBLEM \"https://atcoder.jp/contests/abc359/tasks/abc359_g\"\n\n\
-    #include <iostream>\n\n#include \"graph/read_graph.hpp\"\n#include \"graph/auxiliary_tree.hpp\"\
-    \n\nint main() {\n    int N;\n    std::cin >> N;\n    auto g = read_graph<int>(N,\
-    \ N - 1);\n    std::vector<int> A(N);\n    std::vector<std::vector<int>> vs(N);\n\
-    \    for (int i = 0; i < N; i++) {\n        std::cin >> A[i];\n        A[i]--;\n\
-    \        vs[A[i]].push_back(i);\n    }\n    AuxiliaryTree<int> aux(g);\n    long\
-    \ long ans = 0;\n    for (int col = 0; col < N; col++) {\n        auto vec = vs[col];\n\
-    \        if ((int)(vec.size()) == 0) continue;\n        auto res = aux.get(vec);\n\
-    \        auto caux = res.first;\n        auto label = res.second;\n        const\
-    \ int M = (int)(vec.size());\n        std::vector<int> dp((int)(label.size()));\n\
-    \        auto rec = [&](auto f, int cur, int par) -> void {\n            dp[cur]\
-    \ = (A[label[cur]] == col);\n            for (auto&& e : caux[cur]) {\n      \
-    \          if (e.to == par) continue;\n                f(f, e.to, cur);\n    \
-    \            dp[cur] += dp[e.to];\n                ans += (long long)e.cost *\
-    \ dp[e.to] * (M - dp[e.to]);\n            }\n        };\n        rec(rec, 0, -1);\n\
-    \    }\n    std::cout << ans << '\\n';\n    return 0;\n}"
+    \    }\n};\n#line 2 \"graph/read_graph.hpp\"\n\n#line 4 \"graph/read_graph.hpp\"\
+    \n\ntemplate <class T>\nGraph<T> read_graph(const int n,\n                   \
+    \ const int m,\n                    const bool weight = false,\n             \
+    \       const bool directed = false,\n                    const int offset = 1)\
+    \ {\n    Graph<T> g(n, directed);\n    for (int i = 0; i < m; i++) {\n       \
+    \ int a, b;\n        std::cin >> a >> b;\n        a -= offset, b -= offset;\n\
+    \        T c = 1;\n        if (weight) std::cin >> c;\n        g.add_edge(a, b,\
+    \ c);\n    }\n    g.build();\n    return g;\n}\n\ntemplate <class T>\nGraph<T>\
+    \ read_parent(const int n,\n                     const bool weight = false,\n\
+    \                     const bool directed = false,\n                     const\
+    \ int offset = 1) {\n    Graph<T> g(n, directed);\n    for (int i = 1; i < n;\
+    \ i++) {\n        int p;\n        std::cin >> p;\n        p -= offset;\n     \
+    \   T c = 1;\n        if (weight) std::cin >> c;\n        g.add_edge(p, i, c);\n\
+    \    }\n    g.build();\n    return g;\n}\n#line 7 \"verify/graph/auxiliary_tree.test.cpp\"\
+    \n\nlong long solve(Graph<int> g, std::vector<int> A) {\n    const int N = g.n;\n\
+    \    std::vector<std::vector<int>> vs(N);\n    for (int i = 0; i < N; i++) {\n\
+    \        A[i]--;\n        vs[A[i]].push_back(i);\n    }\n    AuxiliaryTree<int>\
+    \ aux(g);\n    long long ans = 0;\n    for (int col = 0; col < N; col++) {\n \
+    \       auto vec = vs[col];\n        if ((int)(vec.size()) == 0) continue;\n \
+    \       auto res = aux.get(vec);\n        auto caux = res.first;\n        auto\
+    \ label = res.second;\n        const int M = (int)(vec.size());\n        std::vector<int>\
+    \ dp((int)(label.size()));\n        auto rec = [&](auto f, int cur, int par) ->\
+    \ void {\n            dp[cur] = (A[label[cur]] == col);\n            for (auto&&\
+    \ e : caux[cur]) {\n                if (e.to == par) continue;\n             \
+    \   f(f, e.to, cur);\n                dp[cur] += dp[e.to];\n                ans\
+    \ += (long long)e.cost * dp[e.to] * (M - dp[e.to]);\n            }\n        };\n\
+    \        rec(rec, 0, -1);\n    }\n    return ans;\n}\n\nvoid test1_sample1() {\n\
+    \    const int n = 4;\n    Graph<int> g(n, false);\n    g.add_edge(2, 3);\n  \
+    \  g.add_edge(3, 1);\n    g.add_edge(0, 1);\n    std::vector<int> a = {2, 1, 1,\
+    \ 2};\n    assert(solve(g, a) == 4);\n}\n\nvoid test2_sample2() {\n    const int\
+    \ n = 8;\n    Graph<int> g(n, false);\n    g.add_edge(7, 5);\n    g.add_edge(2,\
+    \ 7);\n    g.add_edge(0, 3);\n    g.add_edge(6, 7);\n    g.add_edge(3, 4);\n \
+    \   g.add_edge(2, 3);\n    g.add_edge(7, 1);\n    std::vector<int> a = {1, 2,\
+    \ 2, 2, 3, 1, 1, 3};\n    assert(solve(g, a) == 19);\n}\n\nint main() {\n    //\
+    \ https://atcoder.jp/contests/abc359/tasks/abc359_g\n    test1_sample1();\n  \
+    \  test2_sample2();\n    int a, b;\n    std::cin >> a >> b;\n    std::cout <<\
+    \ a + b << '\\n';\n    return 0;\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n\n#include <iostream>\n\
+    \n#include \"../../graph/auxiliary_tree.hpp\"\n#include \"../../graph/read_graph.hpp\"\
+    \n\nlong long solve(Graph<int> g, std::vector<int> A) {\n    const int N = g.n;\n\
+    \    std::vector<std::vector<int>> vs(N);\n    for (int i = 0; i < N; i++) {\n\
+    \        A[i]--;\n        vs[A[i]].push_back(i);\n    }\n    AuxiliaryTree<int>\
+    \ aux(g);\n    long long ans = 0;\n    for (int col = 0; col < N; col++) {\n \
+    \       auto vec = vs[col];\n        if ((int)(vec.size()) == 0) continue;\n \
+    \       auto res = aux.get(vec);\n        auto caux = res.first;\n        auto\
+    \ label = res.second;\n        const int M = (int)(vec.size());\n        std::vector<int>\
+    \ dp((int)(label.size()));\n        auto rec = [&](auto f, int cur, int par) ->\
+    \ void {\n            dp[cur] = (A[label[cur]] == col);\n            for (auto&&\
+    \ e : caux[cur]) {\n                if (e.to == par) continue;\n             \
+    \   f(f, e.to, cur);\n                dp[cur] += dp[e.to];\n                ans\
+    \ += (long long)e.cost * dp[e.to] * (M - dp[e.to]);\n            }\n        };\n\
+    \        rec(rec, 0, -1);\n    }\n    return ans;\n}\n\nvoid test1_sample1() {\n\
+    \    const int n = 4;\n    Graph<int> g(n, false);\n    g.add_edge(2, 3);\n  \
+    \  g.add_edge(3, 1);\n    g.add_edge(0, 1);\n    std::vector<int> a = {2, 1, 1,\
+    \ 2};\n    assert(solve(g, a) == 4);\n}\n\nvoid test2_sample2() {\n    const int\
+    \ n = 8;\n    Graph<int> g(n, false);\n    g.add_edge(7, 5);\n    g.add_edge(2,\
+    \ 7);\n    g.add_edge(0, 3);\n    g.add_edge(6, 7);\n    g.add_edge(3, 4);\n \
+    \   g.add_edge(2, 3);\n    g.add_edge(7, 1);\n    std::vector<int> a = {1, 2,\
+    \ 2, 2, 3, 1, 1, 3};\n    assert(solve(g, a) == 19);\n}\n\nint main() {\n    //\
+    \ https://atcoder.jp/contests/abc359/tasks/abc359_g\n    test1_sample1();\n  \
+    \  test2_sample2();\n    int a, b;\n    std::cin >> a >> b;\n    std::cout <<\
+    \ a + b << '\\n';\n    return 0;\n}\n"
   dependsOn:
-  - graph/read_graph.hpp
-  - graph/graph_template.hpp
   - graph/auxiliary_tree.hpp
+  - graph/graph_template.hpp
   - graph/lowest_common_ancestor.hpp
   - misc/topbit.hpp
   - misc/countl_zero.hpp
+  - graph/read_graph.hpp
   isVerificationFile: true
   path: verify/graph/auxiliary_tree.test.cpp
   requiredBy: []
-  timestamp: '2026-01-20 04:06:16+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2026-04-11 00:41:57+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/auxiliary_tree.test.cpp
 layout: document

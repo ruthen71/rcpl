@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/data_structure/erasable_priority_queue.test.cpp
-    title: verify/data_structure/erasable_priority_queue.test.cpp
+    path: data_structure/test/erasable_priority_queue.test.cpp
+    title: data_structure/test/erasable_priority_queue.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -59,7 +59,7 @@ data:
   timestamp: '2024-08-09 02:21:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/data_structure/erasable_priority_queue.test.cpp
+  - data_structure/test/erasable_priority_queue.test.cpp
 documentation_of: data_structure/erasable_priority_queue.hpp
 layout: document
 title: "Erasable Priority Queue (\u524A\u9664\u53EF\u80FD\u512A\u5148\u5EA6\u4ED8\u304D\

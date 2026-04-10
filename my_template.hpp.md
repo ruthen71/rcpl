@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/countl_zero.hpp
     title: Countl Zero
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/countr_zero.hpp
     title: Countr Zero
   - icon: ':heavy_check_mark:'
@@ -13,7 +13,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: misc/popcount.hpp
     title: Popcount
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/topbit.hpp
     title: Topbit
   _extendedRequiredBy:

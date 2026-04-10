@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/countl_zero.hpp
     title: Countl Zero
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/auxiliary_tree.hpp
     title: "Auxiliary Tree (\u865A\u6811)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/lowest_common_ancestor.hpp
     title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
   - icon: ':warning:'
@@ -20,7 +20,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: random/base.hpp
     title: Random
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/enumerate_segment_tree_nodes.hpp
+    title: "Segment Tree \u306E 1 \u70B9\u5909\u66F4\u3084\u533A\u9593\u7DCF\u7A4D\
+      \u3092\u884C\u3046\u969B\u306B\u30A2\u30AF\u30BB\u30B9\u3059\u308B\u30CE\u30FC\
+      \u30C9\u756A\u53F7\u306E\u5217\u6319"
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/lazy_segment_tree.hpp
+    title: Lazy Segment Tree
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: data_structure/test/erasable_priority_queue.test.cpp
+    title: data_structure/test/erasable_priority_queue.test.cpp
   - icon: ':heavy_check_mark:'
     path: dp/test/inversion_number.test.cpp
     title: dp/test/inversion_number.test.cpp
@@ -30,18 +41,54 @@ data:
   - icon: ':heavy_check_mark:'
     path: random/test/base.test.cpp
     title: random/test/base.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/enumerate_segment_tree_nodes.test.cpp
+    title: segment_tree/test/enumerate_segment_tree_nodes.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/lazy_segment_tree_inversion01_flip.test.cpp
+    title: segment_tree/test/lazy_segment_tree_inversion01_flip.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/lazy_segment_tree_max01_flip.test.cpp
+    title: segment_tree/test/lazy_segment_tree_max01_flip.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/lazy_segment_tree_min_assign.test.cpp
+    title: segment_tree/test/lazy_segment_tree_min_assign.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/lazy_segment_tree_min_index_plus.test.cpp
+    title: segment_tree/test/lazy_segment_tree_min_index_plus.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/lazy_segment_tree_min_plus.test.cpp
+    title: segment_tree/test/lazy_segment_tree_min_plus.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/lazy_segment_tree_plus_assign.test.cpp
+    title: segment_tree/test/lazy_segment_tree_plus_assign.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/lazy_segment_tree_plus_plus.test.cpp
+    title: segment_tree/test/lazy_segment_tree_plus_plus.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/lazy_segment_tree_product_sum_add2.test.cpp
+    title: segment_tree/test/lazy_segment_tree_product_sum_add2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/lazy_segment_tree_sum_affine.test.cpp
+    title: segment_tree/test/lazy_segment_tree_sum_affine.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/graph/auxiliary_tree.test.cpp
     title: verify/graph/auxiliary_tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/heavy_light_decomposition_path_add_path_sum.test.cpp
+    title: verify/graph/heavy_light_decomposition_path_add_path_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/graph/lowest_common_ancestor_1.test.cpp
     title: verify/graph/lowest_common_ancestor_1.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/graph/lowest_common_ancestor_2.test.cpp
     title: verify/graph/lowest_common_ancestor_2.test.cpp
-  _isVerificationFailed: true
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/topological_sort_lexicographical_order.test.cpp
+    title: verify/graph/topological_sort_lexicographical_order.test.cpp
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"misc/topbit.hpp\"\n\n#line 2 \"misc/countl_zero.hpp\"\n\n\
@@ -85,15 +132,30 @@ data:
   - random/base.hpp
   - my_template_int128.hpp
   - my_template.hpp
+  - segment_tree/enumerate_segment_tree_nodes.hpp
+  - segment_tree/lazy_segment_tree.hpp
   timestamp: '2025-12-31 07:11:44+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - misc/test/bit_operation.test.cpp
   - verify/graph/lowest_common_ancestor_2.test.cpp
+  - verify/graph/topological_sort_lexicographical_order.test.cpp
   - verify/graph/auxiliary_tree.test.cpp
   - verify/graph/lowest_common_ancestor_1.test.cpp
+  - verify/graph/heavy_light_decomposition_path_add_path_sum.test.cpp
   - random/test/base.test.cpp
   - dp/test/inversion_number.test.cpp
+  - segment_tree/test/enumerate_segment_tree_nodes.test.cpp
+  - segment_tree/test/lazy_segment_tree_inversion01_flip.test.cpp
+  - segment_tree/test/lazy_segment_tree_min_assign.test.cpp
+  - segment_tree/test/lazy_segment_tree_min_plus.test.cpp
+  - segment_tree/test/lazy_segment_tree_plus_assign.test.cpp
+  - segment_tree/test/lazy_segment_tree_min_index_plus.test.cpp
+  - segment_tree/test/lazy_segment_tree_product_sum_add2.test.cpp
+  - segment_tree/test/lazy_segment_tree_sum_affine.test.cpp
+  - segment_tree/test/lazy_segment_tree_plus_plus.test.cpp
+  - segment_tree/test/lazy_segment_tree_max01_flip.test.cpp
+  - data_structure/test/erasable_priority_queue.test.cpp
 documentation_of: misc/topbit.hpp
 layout: document
 title: Topbit

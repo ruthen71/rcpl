@@ -3,12 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
-    title: verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
-  _isVerificationFailed: true
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/lazy_segment_tree_product_sum_add2.test.cpp
+    title: segment_tree/test/lazy_segment_tree_product_sum_add2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/lazy_segment_tree_sum_affine.test.cpp
+    title: segment_tree/test/lazy_segment_tree_sum_affine.test.cpp
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/static_modint.hpp\"\n\n#include <utility>\n#include\
@@ -119,9 +122,10 @@ data:
   path: math/static_modint.hpp
   requiredBy: []
   timestamp: '2024-12-04 12:30:48+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
+  - segment_tree/test/lazy_segment_tree_product_sum_add2.test.cpp
+  - segment_tree/test/lazy_segment_tree_sum_affine.test.cpp
 documentation_of: math/static_modint.hpp
 layout: document
 title: Static Modint

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/countl_zero.hpp
     title: Countl Zero
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/countr_zero.hpp
     title: Countr Zero
   - icon: ':heavy_check_mark:'
@@ -13,7 +13,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: misc/popcount.hpp
     title: Popcount
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/topbit.hpp
     title: Topbit
   - icon: ':warning:'
@@ -203,8 +203,8 @@ data:
     \    std::reverse(res.begin(), res.end());\n    return os << res;\n}\n// definition\
     \ & input\n#define I128(...)     \\\n    i128 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n\
     #define U128(...)     \\\n    u128 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n"
-  code: "#pragma once\n\n#include \"my_template.hpp\"\n// type definition\nusing i128\
-    \ = __int128_t;\nusing u128 = __uint128_t;\n// infinity\ntemplate <> constexpr\
+  code: "#pragma once\n\n#include \"./my_template.hpp\"\n// type definition\nusing\
+    \ i128 = __int128_t;\nusing u128 = __uint128_t;\n// infinity\ntemplate <> constexpr\
     \ i128 INF<i128> = i128(INF<i64>) * INF<i64>;  // 4e36\ntemplate <> constexpr\
     \ u128 INF<u128> = INF<i128>;                  // 4e36\n// input\nstd::istream&\
     \ operator>>(std::istream& is, i128& x) {\n    std::string s;\n    is >> s;\n\
@@ -233,7 +233,7 @@ data:
   isVerificationFile: false
   path: my_template_int128.hpp
   requiredBy: []
-  timestamp: '2025-12-31 07:11:44+09:00'
+  timestamp: '2026-04-11 00:41:57+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: my_template_int128.hpp

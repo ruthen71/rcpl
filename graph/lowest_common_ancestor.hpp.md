@@ -1,21 +1,21 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/graph_template.hpp
     title: "\u30B0\u30E9\u30D5\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/countl_zero.hpp
     title: Countl Zero
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/topbit.hpp
     title: Topbit
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/auxiliary_tree.hpp
     title: "Auxiliary Tree (\u865A\u6811)"
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/auxiliary_tree.test.cpp
     title: verify/graph/auxiliary_tree.test.cpp
   - icon: ':heavy_check_mark:'
@@ -24,9 +24,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/lowest_common_ancestor_2.test.cpp
     title: verify/graph/lowest_common_ancestor_2.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/lowest_common_ancestor.hpp\"\n\n#line 2 \"graph/graph_template.hpp\"\
@@ -142,7 +142,7 @@ data:
   requiredBy:
   - graph/auxiliary_tree.hpp
   timestamp: '2026-01-20 04:06:16+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/lowest_common_ancestor_2.test.cpp
   - verify/graph/auxiliary_tree.test.cpp

@@ -7,6 +7,9 @@ data:
     title: "Rolling Hash (\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: segment_tree/test/segment_tree_rolling_hash.test.cpp
+    title: segment_tree/test/segment_tree_rolling_hash.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/string/rolling_hash.test.cpp
     title: verify/string/rolling_hash.test.cpp
   _isVerificationFailed: false
@@ -90,6 +93,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/string/rolling_hash.test.cpp
+  - segment_tree/test/segment_tree_rolling_hash.test.cpp
 documentation_of: math/modint261.hpp
 layout: document
 title: Modint $\pmod{2^{61}-1} $

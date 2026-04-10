@@ -2,11 +2,14 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: data_structure/fenwick_tree.hpp
-    title: Fenwick Tree (Binary Indexed Tree)
+    path: algebra/monoid/monoid_plus.hpp
+    title: algebra/monoid/monoid_plus.hpp
   - icon: ':heavy_check_mark:'
     path: misc/mo.hpp
     title: Mo's Algorithm
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/fenwick_tree.hpp
+    title: segment_tree/fenwick_tree.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -18,8 +21,13 @@ data:
     links:
     - https://judge.yosupo.jp/problem/static_range_inversions_query
   bundledCode: "#line 1 \"verify/misc/mo.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_inversions_query\"\
-    \n\n#include <iostream>\n\n#line 2 \"misc/mo.hpp\"\n\n#include <vector>\n#include\
-    \ <algorithm>\n#include <numeric>\n#include <cmath>\n\n// Mo's Algorithm\n// https://snuke.hatenablog.com/entry/2016/07/01/000000\n\
+    \n\n#include <iostream>\n\n#line 2 \"algebra/monoid/monoid_plus.hpp\"\n\ntemplate\
+    \ <class T> struct MonoidPlus {\n    using value_type = T;\n    static constexpr\
+    \ T operation(const T& a, const T& b) noexcept {\n        return a + b;\n    }\n\
+    \    static constexpr T identity() noexcept { return T(0); }\n    static constexpr\
+    \ T inverse(const T& a) noexcept { return -a; }\n    static constexpr bool commutative\
+    \ = true;\n};\n#line 2 \"misc/mo.hpp\"\n\n#include <vector>\n#include <algorithm>\n\
+    #include <numeric>\n#include <cmath>\n\n// Mo's Algorithm\n// https://snuke.hatenablog.com/entry/2016/07/01/000000\n\
     // complexity: O(N * N / B + Q * B)\n// -> O(N sqrt(Q)) (B := N / sqrt(Q))\ntemplate\
     \ <class AddLeft, class AddRight, class DelLeft, class DelRight, class Out>\n\
     void mo(const int n, const std::vector<int> l, const std::vector<int> r, const\
@@ -47,63 +55,73 @@ data:
     \                      //\nvoid mo(const int n, const std::vector<int> &l, const\
     \ std::vector<int> &r,  //\n        const Add &add, const Del &del, const Out\
     \ &out, const int bucket_size_value = -1) {\n    mo(n, l, r, add, add, del, del,\
-    \ out, bucket_size_value);\n}\n#line 2 \"data_structure/fenwick_tree.hpp\"\n\n\
-    #line 4 \"data_structure/fenwick_tree.hpp\"\n#include <cassert>\n\ntemplate <class\
-    \ T> struct FenwickTree {\n    int n;\n    std::vector<T> seg;\n    FenwickTree()\
-    \ : n(0) {}\n    FenwickTree(int n) : n(n), seg(n + 1, 0) {}\n    FenwickTree(std::vector<T>&\
-    \ arr) {\n        n = int(arr.size());\n        seg.resize(n + 1);\n        for\
-    \ (int i = 0; i < n; i++) add(i, arr[i]);\n    }\n    // A[i] += x\n    void add(int\
-    \ i, const T& x) {\n        assert(0 <= i and i < n);\n        i++;  // 1-indexed\n\
-    \        while (i <= n) {\n            seg[i] += x;\n            i += i & -i;\n\
-    \        }\n    }\n    // A[0] + ... + A[i - 1]\n    T sum(int i) const {\n  \
-    \      assert(0 <= i and i <= n);\n        T s = T(0);\n        while (i > 0)\
-    \ {\n            s += seg[i];\n            i -= i & -i;\n        }\n        return\
-    \ s;\n    }\n    // A[a] + ... + A[b - 1]\n    T sum(int a, int b) const {\n \
-    \       assert(0 <= a and a <= b and b <= n);\n        return sum(b) - sum(a);\n\
-    \    }\n    // return A[i]\n    T get(int i) const { return sum(i, i + 1); }\n\
-    \    // A[i] = x\n    void set(int i, const T x) { add(i, x - get(i)); }\n\n \
-    \   std::vector<T> make_vector() {\n        std::vector<T> vec(n);\n        for\
-    \ (int i = 0; i < n; i++) vec[i] = get(i);\n        return vec;\n    }\n};\n#line\
-    \ 7 \"verify/misc/mo.test.cpp\"\n\nint main() {\n    int N, Q;\n    std::cin >>\
-    \ N >> Q;\n    std::vector<int> A(N);\n    for (int i = 0; i < N; i++) std::cin\
-    \ >> A[i];\n    std::vector<int> L(Q), R(Q);\n    for (int i = 0; i < Q; i++)\
-    \ std::cin >> L[i] >> R[i];\n\n    auto B = A;\n    std::sort(B.begin(), B.end());\n\
-    \    B.erase(std::unique(B.begin(), B.end()), B.end());\n    for (auto &&e : A)\
-    \ e = std::lower_bound(B.begin(), B.end(), e) - B.begin();\n\n    const int M\
-    \ = (int)(B.size());\n    FenwickTree<long long> fen(M);\n    std::vector<long\
-    \ long> ans(Q);\n    long long cur = 0;\n    auto add_left = [&](int i) {\n  \
-    \      cur += fen.sum(A[i]);\n        fen.add(A[i], 1);\n    };\n    auto add_right\
-    \ = [&](int i) {\n        cur += fen.sum(A[i] + 1, M);\n        fen.add(A[i],\
-    \ 1);\n    };\n    auto del_left = [&](int i) {\n        cur -= fen.sum(A[i]);\n\
-    \        fen.add(A[i], -1);\n    };\n    auto del_right = [&](int i) {\n     \
-    \   cur -= fen.sum(A[i] + 1, M);\n        fen.add(A[i], -1);\n    };\n    auto\
-    \ out = [&](int i) { ans[i] = cur; };\n    mo(N, L, R, add_left, add_right, del_left,\
-    \ del_right, out);\n    for (int i = 0; i < Q; i++) std::cout << ans[i] << '\\\
-    n';\n    return 0;\n}\n"
+    \ out, bucket_size_value);\n}\n#line 2 \"segment_tree/fenwick_tree.hpp\"\n\n#include\
+    \ <cassert>\n#line 5 \"segment_tree/fenwick_tree.hpp\"\n\n// Fenwick Tree\ntemplate\
+    \ <class MS> struct FenwickTree {\n  public:\n    using S = typename MS::value_type;\n\
+    \n    FenwickTree() = default;\n\n    explicit FenwickTree(int n)\n        : FenwickTree(std::vector<S>(n,\
+    \ MS::identity())) {}\n\n    explicit FenwickTree(const std::vector<S>& v) : n((int)(v.size()))\
+    \ {\n        d = std::vector<S>(n + 1, MS::identity());\n        for (int i =\
+    \ 1; i <= n; i++) {\n            d[i] = MS::operation(d[i], v[i - 1]);\n     \
+    \       int j = i + (i & -i);\n            if (j <= n) {\n                d[j]\
+    \ = MS::operation(d[j], d[i]);\n            }\n        }\n    }\n\n    void set(int\
+    \ p, const S& x) {\n        assert(0 <= p and p < n);\n        add(p, MS::operation(MS::inverse(get(p)),\
+    \ x));\n    }\n    void add(int p, const S& x) {\n        assert(0 <= p and p\
+    \ < n);\n        p++;  // 1-indexed\n        while (p <= n) {\n            d[p]\
+    \ = MS::operation(d[p], x);\n            p += p & -p;\n        }\n    }\n\n  \
+    \  S operator[](int p) const {\n        assert(0 <= p and p < n);\n        return\
+    \ prod(p, p + 1);\n    }\n\n    S get(int p) const {\n        assert(0 <= p and\
+    \ p < n);\n        return prod(p, p + 1);\n    }\n\n    S prod(int l, int r) const\
+    \ {\n        assert(0 <= l and l <= r and r <= n);\n        return MS::operation(prod(r),\
+    \ MS::inverse(prod(l)));\n    }\n\n    S prod(int p) const {\n        assert(0\
+    \ <= p and p <= n);\n        S s = MS::identity();\n        while (p > 0) {\n\
+    \            s = MS::operation(s, d[p]);\n            p -= p & -p;\n        }\n\
+    \        return s;\n    }\n\n    S all_prod() const { return prod(n); }\n\n  \
+    \  std::vector<S> make_vector() {\n        std::vector<S> vec(n);\n        for\
+    \ (int i = 0; i < n; i++) vec[i] = get(i);\n        return vec;\n    }\n\n  private:\n\
+    \    int n;\n    std::vector<S> d;\n};\n#line 8 \"verify/misc/mo.test.cpp\"\n\n\
+    int main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    std::vector<int> A(N);\n\
+    \    for (int i = 0; i < N; i++) std::cin >> A[i];\n    std::vector<int> L(Q),\
+    \ R(Q);\n    for (int i = 0; i < Q; i++) std::cin >> L[i] >> R[i];\n\n    auto\
+    \ B = A;\n    std::sort(B.begin(), B.end());\n    B.erase(std::unique(B.begin(),\
+    \ B.end()), B.end());\n    for (auto&& e : A) e = std::lower_bound(B.begin(),\
+    \ B.end(), e) - B.begin();\n\n    const int M = (int)(B.size());\n    FenwickTree<MonoidPlus<long\
+    \ long>> fen(M);\n    std::vector<long long> ans(Q);\n    long long cur = 0;\n\
+    \    auto add_left = [&](int i) {\n        cur += fen.prod(0, A[i]);\n       \
+    \ fen.add(A[i], 1);\n    };\n    auto add_right = [&](int i) {\n        cur +=\
+    \ fen.prod(A[i] + 1, M);\n        fen.add(A[i], 1);\n    };\n    auto del_left\
+    \ = [&](int i) {\n        cur -= fen.prod(0, A[i]);\n        fen.add(A[i], -1);\n\
+    \    };\n    auto del_right = [&](int i) {\n        cur -= fen.prod(A[i] + 1,\
+    \ M);\n        fen.add(A[i], -1);\n    };\n    auto out = [&](int i) { ans[i]\
+    \ = cur; };\n    mo(N, L, R, add_left, add_right, del_left, del_right, out);\n\
+    \    for (int i = 0; i < Q; i++) std::cout << ans[i] << '\\n';\n    return 0;\n\
+    }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_inversions_query\"\
-    \n\n#include <iostream>\n\n#include \"misc/mo.hpp\"\n#include \"data_structure/fenwick_tree.hpp\"\
+    \n\n#include <iostream>\n\n#include \"../../algebra/monoid/monoid_plus.hpp\"\n\
+    #include \"../../misc/mo.hpp\"\n#include \"../../segment_tree/fenwick_tree.hpp\"\
     \n\nint main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    std::vector<int>\
     \ A(N);\n    for (int i = 0; i < N; i++) std::cin >> A[i];\n    std::vector<int>\
     \ L(Q), R(Q);\n    for (int i = 0; i < Q; i++) std::cin >> L[i] >> R[i];\n\n \
     \   auto B = A;\n    std::sort(B.begin(), B.end());\n    B.erase(std::unique(B.begin(),\
-    \ B.end()), B.end());\n    for (auto &&e : A) e = std::lower_bound(B.begin(),\
-    \ B.end(), e) - B.begin();\n\n    const int M = (int)(B.size());\n    FenwickTree<long\
-    \ long> fen(M);\n    std::vector<long long> ans(Q);\n    long long cur = 0;\n\
-    \    auto add_left = [&](int i) {\n        cur += fen.sum(A[i]);\n        fen.add(A[i],\
-    \ 1);\n    };\n    auto add_right = [&](int i) {\n        cur += fen.sum(A[i]\
-    \ + 1, M);\n        fen.add(A[i], 1);\n    };\n    auto del_left = [&](int i)\
-    \ {\n        cur -= fen.sum(A[i]);\n        fen.add(A[i], -1);\n    };\n    auto\
-    \ del_right = [&](int i) {\n        cur -= fen.sum(A[i] + 1, M);\n        fen.add(A[i],\
-    \ -1);\n    };\n    auto out = [&](int i) { ans[i] = cur; };\n    mo(N, L, R,\
-    \ add_left, add_right, del_left, del_right, out);\n    for (int i = 0; i < Q;\
-    \ i++) std::cout << ans[i] << '\\n';\n    return 0;\n}"
+    \ B.end()), B.end());\n    for (auto&& e : A) e = std::lower_bound(B.begin(),\
+    \ B.end(), e) - B.begin();\n\n    const int M = (int)(B.size());\n    FenwickTree<MonoidPlus<long\
+    \ long>> fen(M);\n    std::vector<long long> ans(Q);\n    long long cur = 0;\n\
+    \    auto add_left = [&](int i) {\n        cur += fen.prod(0, A[i]);\n       \
+    \ fen.add(A[i], 1);\n    };\n    auto add_right = [&](int i) {\n        cur +=\
+    \ fen.prod(A[i] + 1, M);\n        fen.add(A[i], 1);\n    };\n    auto del_left\
+    \ = [&](int i) {\n        cur -= fen.prod(0, A[i]);\n        fen.add(A[i], -1);\n\
+    \    };\n    auto del_right = [&](int i) {\n        cur -= fen.prod(A[i] + 1,\
+    \ M);\n        fen.add(A[i], -1);\n    };\n    auto out = [&](int i) { ans[i]\
+    \ = cur; };\n    mo(N, L, R, add_left, add_right, del_left, del_right, out);\n\
+    \    for (int i = 0; i < Q; i++) std::cout << ans[i] << '\\n';\n    return 0;\n\
+    }\n"
   dependsOn:
+  - algebra/monoid/monoid_plus.hpp
   - misc/mo.hpp
-  - data_structure/fenwick_tree.hpp
+  - segment_tree/fenwick_tree.hpp
   isVerificationFile: true
   path: verify/misc/mo.test.cpp
   requiredBy: []
-  timestamp: '2024-12-17 21:10:31+09:00'
+  timestamp: '2026-04-11 00:41:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/misc/mo.test.cpp

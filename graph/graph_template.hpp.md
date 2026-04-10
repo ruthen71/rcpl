@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/auxiliary_tree.hpp
     title: "Auxiliary Tree (\u865A\u6811)"
   - icon: ':heavy_check_mark:'
@@ -15,7 +15,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/euler_tour.hpp
     title: "Euler Tour (\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/heavy_light_decomposition.hpp
     title: "Heavy-Light Decomposition (\u91CD\u8EFD\u5206\u89E3)"
   - icon: ':heavy_check_mark:'
@@ -24,14 +24,14 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/low_link.hpp
     title: "Low Link (\u95A2\u7BC0\u70B9\u30FB\u6A4B)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/lowest_common_ancestor.hpp
     title: "Lowest Common Ancestor (\u6700\u5C0F\u5171\u901A\u7956\u5148)"
   - icon: ':heavy_check_mark:'
     path: graph/minimum_steiner_tree.hpp
     title: "Minimum Steiner Tree (\u6700\u5C0F\u30B7\u30E5\u30BF\u30A4\u30CA\u30FC\
       \u6728)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/read_graph.hpp
     title: "\u30B0\u30E9\u30D5\u5165\u529B\u30E9\u30A4\u30D6\u30E9\u30EA"
   - icon: ':warning:'
@@ -40,7 +40,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/strongly_connected_component.hpp
     title: "Strongly Connected Component (\u5F37\u9023\u7D50\u6210\u5206)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/topological_sort.hpp
     title: "Topological Sort (\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8\
       )"
@@ -59,7 +59,7 @@ data:
     path: graph/zero_one_bfs.hpp
     title: 01-BFS
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/graph/auxiliary_tree.test.cpp
     title: verify/graph/auxiliary_tree.test.cpp
   - icon: ':heavy_check_mark:'
@@ -74,15 +74,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/euler_tour.test.cpp
     title: verify/graph/euler_tour.test.cpp
-  - icon: ':x:'
-    path: verify/graph/heavy_light_decomposition_1.test.cpp
-    title: verify/graph/heavy_light_decomposition_1.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/graph/heavy_light_decomposition_2.test.cpp
-    title: verify/graph/heavy_light_decomposition_2.test.cpp
+    path: verify/graph/heavy_light_decomposition_path_add_path_sum.test.cpp
+    title: verify/graph/heavy_light_decomposition_path_add_path_sum.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/graph/heavy_light_decomposition_3.test.cpp
-    title: verify/graph/heavy_light_decomposition_3.test.cpp
+    path: verify/graph/heavy_light_decomposition_vertex_add_path_sum.test.cpp
+    title: verify/graph/heavy_light_decomposition_vertex_add_path_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/heavy_light_decomposition_vertex_add_subtree_sum.test.cpp
+    title: verify/graph/heavy_light_decomposition_vertex_add_subtree_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/graph/kruskal.test.cpp
     title: verify/graph/kruskal.test.cpp
@@ -108,11 +108,11 @@ data:
     path: verify/graph/strongly_connected_component_2.test.cpp
     title: verify/graph/strongly_connected_component_2.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/graph/topological_sort_1.test.cpp
-    title: verify/graph/topological_sort_1.test.cpp
-  - icon: ':x:'
-    path: verify/graph/topological_sort_2.test.cpp
-    title: verify/graph/topological_sort_2.test.cpp
+    path: verify/graph/topological_sort.test.cpp
+    title: verify/graph/topological_sort.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/topological_sort_lexicographical_order.test.cpp
+    title: verify/graph/topological_sort_lexicographical_order.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/graph/traveling_salesman_problem.test.cpp
     title: verify/graph/traveling_salesman_problem.test.cpp
@@ -128,9 +128,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/graph/zero_one_bfs.test.cpp
     title: verify/graph/zero_one_bfs.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/graph_template.hpp\"\n\n#include <cassert>\n#include\
@@ -245,28 +245,28 @@ data:
   - graph/minimum_steiner_tree.hpp
   - graph/topological_sort.hpp
   timestamp: '2026-01-20 04:06:16+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/low_link_2.test.cpp
-  - verify/graph/topological_sort_2.test.cpp
   - verify/graph/tree_diameter_2.test.cpp
   - verify/graph/strongly_connected_component_2.test.cpp
   - verify/graph/kruskal.test.cpp
   - verify/graph/lowest_common_ancestor_2.test.cpp
   - verify/graph/traveling_salesman_problem.test.cpp
-  - verify/graph/heavy_light_decomposition_2.test.cpp
+  - verify/graph/topological_sort_lexicographical_order.test.cpp
+  - verify/graph/topological_sort.test.cpp
   - verify/graph/auxiliary_tree.test.cpp
-  - verify/graph/topological_sort_1.test.cpp
+  - verify/graph/heavy_light_decomposition_vertex_add_subtree_sum.test.cpp
+  - verify/graph/heavy_light_decomposition_vertex_add_path_sum.test.cpp
   - verify/graph/tree_diameter_1.test.cpp
   - verify/graph/strongly_connected_component_1.test.cpp
-  - verify/graph/heavy_light_decomposition_1.test.cpp
   - verify/graph/low_link_1.test.cpp
   - verify/graph/minimum_steiner_tree.test.cpp
   - verify/graph/dijkstra_1.test.cpp
-  - verify/graph/heavy_light_decomposition_3.test.cpp
   - verify/graph/euler_tour.test.cpp
   - verify/graph/bellman_ford.test.cpp
   - verify/graph/lowest_common_ancestor_1.test.cpp
+  - verify/graph/heavy_light_decomposition_path_add_path_sum.test.cpp
   - verify/graph/zero_one_bfs.test.cpp
   - verify/graph/dijkstra_2.test.cpp
   - verify/graph/warshall_floyd.test.cpp

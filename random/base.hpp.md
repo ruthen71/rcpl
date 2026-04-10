@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/countl_zero.hpp
     title: Countl Zero
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/topbit.hpp
     title: Topbit
   _extendedRequiredBy: []
@@ -15,6 +15,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: random/test/base.test.cpp
     title: random/test/base.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/topological_sort_lexicographical_order.test.cpp
+    title: verify/graph/topological_sort_lexicographical_order.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -92,6 +95,7 @@ data:
   timestamp: '2026-01-26 01:12:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/graph/topological_sort_lexicographical_order.test.cpp
   - random/test/base.test.cpp
   - dp/test/inversion_number.test.cpp
 documentation_of: random/base.hpp

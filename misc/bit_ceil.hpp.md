@@ -2,34 +2,97 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
-    path: data_structure/lazy_segment_tree.hpp
-    title: "Lazy Segment Tree (\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/dual_segment_tree.hpp
+    title: "Dual Segment Tree (\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/lazy_segment_tree.hpp
+    title: Lazy Segment Tree
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/segment_tree.hpp
+    title: Segment Tree
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/segment_tree_2d.hpp
+    title: "2D Segment Tree (2\u6B21\u5143\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: data_structure/test/erasable_priority_queue.test.cpp
+    title: data_structure/test/erasable_priority_queue.test.cpp
   - icon: ':heavy_check_mark:'
     path: misc/test/bit_operation.test.cpp
     title: misc/test/bit_operation.test.cpp
-  - icon: ':x:'
-    path: verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
-    title: verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
-  - icon: ':x:'
-    path: verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp
-    title: verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp
-  - icon: ':x:'
-    path: verify/aoj_dsl/aoj_dsl_2_h_lazy_segment_tree.test.cpp
-    title: verify/aoj_dsl/aoj_dsl_2_h_lazy_segment_tree.test.cpp
-  - icon: ':x:'
-    path: verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
-    title: verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
-  - icon: ':x:'
-    path: verify/graph/heavy_light_decomposition_1.test.cpp
-    title: verify/graph/heavy_light_decomposition_1.test.cpp
-  - icon: ':x:'
-    path: verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
-    title: verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
-  _isVerificationFailed: true
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/dual_segment_tree_assign.test.cpp
+    title: segment_tree/test/dual_segment_tree_assign.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/dual_segment_tree_plus.test.cpp
+    title: segment_tree/test/dual_segment_tree_plus.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/lazy_segment_tree_inversion01_flip.test.cpp
+    title: segment_tree/test/lazy_segment_tree_inversion01_flip.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/lazy_segment_tree_max01_flip.test.cpp
+    title: segment_tree/test/lazy_segment_tree_max01_flip.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/lazy_segment_tree_min_assign.test.cpp
+    title: segment_tree/test/lazy_segment_tree_min_assign.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/lazy_segment_tree_min_index_plus.test.cpp
+    title: segment_tree/test/lazy_segment_tree_min_index_plus.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/lazy_segment_tree_min_plus.test.cpp
+    title: segment_tree/test/lazy_segment_tree_min_plus.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/lazy_segment_tree_plus_assign.test.cpp
+    title: segment_tree/test/lazy_segment_tree_plus_assign.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/lazy_segment_tree_plus_plus.test.cpp
+    title: segment_tree/test/lazy_segment_tree_plus_plus.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/lazy_segment_tree_product_sum_add2.test.cpp
+    title: segment_tree/test/lazy_segment_tree_product_sum_add2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/lazy_segment_tree_sum_affine.test.cpp
+    title: segment_tree/test/lazy_segment_tree_sum_affine.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/segment_tree_2d.test.cpp
+    title: segment_tree/test/segment_tree_2d.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/segment_tree_and.test.cpp
+    title: segment_tree/test/segment_tree_and.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/segment_tree_gcd.test.cpp
+    title: segment_tree/test/segment_tree_gcd.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/segment_tree_min.test.cpp
+    title: segment_tree/test/segment_tree_min.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/segment_tree_or.test.cpp
+    title: segment_tree/test/segment_tree_or.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/segment_tree_plus.test.cpp
+    title: segment_tree/test/segment_tree_plus.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/segment_tree_rolling_hash.test.cpp
+    title: segment_tree/test/segment_tree_rolling_hash.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/segment_tree_xor.test.cpp
+    title: segment_tree/test/segment_tree_xor.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/euler_tour.test.cpp
+    title: verify/graph/euler_tour.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/heavy_light_decomposition_path_add_path_sum.test.cpp
+    title: verify/graph/heavy_light_decomposition_path_add_path_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/heavy_light_decomposition_vertex_add_path_sum.test.cpp
+    title: verify/graph/heavy_light_decomposition_vertex_add_path_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/graph/heavy_light_decomposition_vertex_add_subtree_sum.test.cpp
+    title: verify/graph/heavy_light_decomposition_vertex_add_subtree_sum.test.cpp
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"misc/bit_ceil.hpp\"\n\n#include <cassert>\n\n#if __cplusplus\
@@ -54,17 +117,38 @@ data:
   isVerificationFile: false
   path: misc/bit_ceil.hpp
   requiredBy:
-  - data_structure/lazy_segment_tree.hpp
+  - segment_tree/lazy_segment_tree.hpp
+  - segment_tree/dual_segment_tree.hpp
+  - segment_tree/segment_tree.hpp
+  - segment_tree/segment_tree_2d.hpp
   timestamp: '2025-12-31 07:11:44+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - misc/test/bit_operation.test.cpp
-  - verify/lc_data_structure/lc_range_affine_range_sum.test.cpp
-  - verify/graph/heavy_light_decomposition_1.test.cpp
-  - verify/aoj_dsl/aoj_dsl_2_g_lazy_segment_tree.test.cpp
-  - verify/aoj_dsl/aoj_dsl_2_f_lazy_segment_tree.test.cpp
-  - verify/aoj_dsl/aoj_dsl_2_h_lazy_segment_tree.test.cpp
-  - verify/aoj_dsl/aoj_dsl_2_i_lazy_segment_tree.test.cpp
+  - verify/graph/heavy_light_decomposition_vertex_add_subtree_sum.test.cpp
+  - verify/graph/heavy_light_decomposition_vertex_add_path_sum.test.cpp
+  - verify/graph/euler_tour.test.cpp
+  - verify/graph/heavy_light_decomposition_path_add_path_sum.test.cpp
+  - segment_tree/test/segment_tree_and.test.cpp
+  - segment_tree/test/dual_segment_tree_assign.test.cpp
+  - segment_tree/test/segment_tree_plus.test.cpp
+  - segment_tree/test/dual_segment_tree_plus.test.cpp
+  - segment_tree/test/lazy_segment_tree_inversion01_flip.test.cpp
+  - segment_tree/test/segment_tree_2d.test.cpp
+  - segment_tree/test/lazy_segment_tree_min_assign.test.cpp
+  - segment_tree/test/lazy_segment_tree_min_plus.test.cpp
+  - segment_tree/test/segment_tree_rolling_hash.test.cpp
+  - segment_tree/test/lazy_segment_tree_plus_assign.test.cpp
+  - segment_tree/test/lazy_segment_tree_min_index_plus.test.cpp
+  - segment_tree/test/lazy_segment_tree_product_sum_add2.test.cpp
+  - segment_tree/test/segment_tree_gcd.test.cpp
+  - segment_tree/test/segment_tree_xor.test.cpp
+  - segment_tree/test/lazy_segment_tree_sum_affine.test.cpp
+  - segment_tree/test/lazy_segment_tree_plus_plus.test.cpp
+  - segment_tree/test/segment_tree_min.test.cpp
+  - segment_tree/test/segment_tree_or.test.cpp
+  - segment_tree/test/lazy_segment_tree_max01_flip.test.cpp
+  - data_structure/test/erasable_priority_queue.test.cpp
 documentation_of: misc/bit_ceil.hpp
 layout: document
 title: Bit Ceil
