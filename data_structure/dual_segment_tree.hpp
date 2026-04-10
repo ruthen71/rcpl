@@ -1,17 +1,25 @@
 #pragma once
 
-#include <vector>
+#include "../misc/bit_ceil.hpp"
+#include "../misc/countr_zero.hpp"
+
 #include <cassert>
+#include <vector>
+
+// Dual Segment Tree
 template <class MF> struct DualSegmentTree {
-   public:
-    using F = typename MF::F;
-    DualSegmentTree() : DualSegmentTree(0) {}
-    DualSegmentTree(int n) : DualSegmentTree(std::vector<F>(n, MF::id())) {}
-    DualSegmentTree(const std::vector<F>& v) : n((int)(v.size())) {
-        log = 0;
-        while ((1U << log) < (unsigned int)(n)) log++;
-        size = 1 << log;
-        lz = std::vector<F>(size << 1, MF::id());
+  public:
+    using F = typename MF::value_type;
+
+    DualSegmentTree() = default;
+
+    explicit DualSegmentTree(int n)
+        : DualSegmentTree(std::vector<F>(n, MF::identity())) {}
+
+    explicit DualSegmentTree(const std::vector<F>& v) : n((int)(v.size())) {
+        size = bit_ceil(n);
+        log = countr_zero(size);
+        lz = std::vector<F>(size << 1, MF::identity());
         for (int i = 0; i < n; i++) lz[i + size] = v[i];
     }
 
@@ -67,13 +75,15 @@ template <class MF> struct DualSegmentTree {
         return vec;
     }
 
-   private:
+  private:
     int n, log, size;
     std::vector<F> lz;
-    void all_apply(int k, const F& f) { lz[k] = MF::composition(f, lz[k]); }
+
+    void all_apply(int k, const F& f) { lz[k] = MF::operation(lz[k], f); }
+
     void push(int k) {
         all_apply(k << 1, lz[k]);
         all_apply((k << 1) | 1, lz[k]);
-        lz[k] = MF::id();
+        lz[k] = MF::identity();
     }
 };

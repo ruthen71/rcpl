@@ -2,6 +2,7 @@
 
 #include "../misc/bit_ceil.hpp"
 #include "../misc/countr_zero.hpp"
+#include "../misc/topbit.hpp"
 
 #include <cassert>
 #include <vector>
@@ -15,14 +16,15 @@ template <class AM> struct LazySegmentTree {
     using F = typename MF::value_type;
 
     LazySegmentTree() = default;
+
     explicit LazySegmentTree(int n)
-        : LazySegmentTree(std::vector<S>(n, MS::e())) {}
+        : LazySegmentTree(std::vector<S>(n, MS::identity())) {}
 
     explicit LazySegmentTree(const std::vector<S>& v) : n((int)(v.size())) {
         size = bit_ceil(n);
         log = countr_zero(size);
-        d = std::vector<S>(size << 1, MS::e());
-        lz = std::vector<F>(size, MF::id());
+        d = std::vector<S>(size << 1, MS::identity());
+        lz = std::vector<F>(size, MF::identity());
         for (int i = 0; i < n; i++) d[i + size] = v[i];
         for (int i = size - 1; i >= 1; i--) {
             update(i);
@@ -41,7 +43,7 @@ template <class AM> struct LazySegmentTree {
         assert(0 <= p and p < n);
         p += size;
         for (int i = log; i >= 1; i--) push(p >> i);
-        d[p] = MS::op(d[p], x);
+        d[p] = MS::operation(d[p], x);
         for (int i = 1; i <= log; i++) update(p >> i);
     }
 
@@ -61,7 +63,7 @@ template <class AM> struct LazySegmentTree {
 
     S prod(int l, int r) {
         assert(0 <= l and l <= r and r <= n);
-        if (l == r) return MS::e();
+        if (l == r) return MS::identity();
 
         l += size;
         r += size;
@@ -71,14 +73,14 @@ template <class AM> struct LazySegmentTree {
             if (((r >> i) << i) != r) push((r - 1) >> i);
         }
 
-        S sml = MS::e(), smr = MS::e();
+        S sml = MS::identity(), smr = MS::identity();
         while (l < r) {
-            if (l & 1) sml = MS::op(sml, d[l++]);
-            if (r & 1) smr = MS::op(d[--r], smr);
+            if (l & 1) sml = MS::operation(sml, d[l++]);
+            if (r & 1) smr = MS::operation(d[--r], smr);
             l >>= 1;
             r >>= 1;
         }
-        return MS::op(sml, smr);
+        return MS::operation(sml, smr);
     }
 
     S all_prod() { return d[1]; }
@@ -87,7 +89,7 @@ template <class AM> struct LazySegmentTree {
         assert(0 <= p and p < n);
         p += size;
         for (int i = log; i >= 1; i--) push(p >> i);
-        d[p] = AM::mapping(f, d[p]);
+        d[p] = AM::mapping(f, d[p], 1);
         for (int i = 1; i <= log; i++) update(p >> i);
     }
 
@@ -123,25 +125,25 @@ template <class AM> struct LazySegmentTree {
 
     template <class G> int max_right(int l, G& g) {
         assert(0 <= l and l <= n);
-        assert(g(MS::e()));
+        assert(g(MS::identity()));
         if (l == n) return n;
         l += size;
         for (int i = log; i >= 1; i--) push(l >> i);
-        S sm = MS::e();
+        S sm = MS::identity();
         do {
             while ((l & 1) == 0) l >>= 1;
-            if (!g(MS::op(sm, d[l]))) {
+            if (!g(MS::operation(sm, d[l]))) {
                 while (l < size) {
                     push(l);
                     l <<= 1;
-                    if (g(MS::op(sm, d[l]))) {
-                        sm = MS::op(sm, d[l]);
+                    if (g(MS::operation(sm, d[l]))) {
+                        sm = MS::operation(sm, d[l]);
                         l++;
                     }
                 }
                 return l - size;
             }
-            sm = MS::op(sm, d[l]);
+            sm = MS::operation(sm, d[l]);
             l++;
         } while ((l & -l) != l);
         return n;
@@ -149,26 +151,26 @@ template <class AM> struct LazySegmentTree {
 
     template <class G> int min_left(int r, G& g) {
         assert(0 <= r and r <= n);
-        assert(g(MS::e()));
+        assert(g(MS::identity()));
         if (r == 0) return 0;
         r += size;
         for (int i = log; i >= 1; i--) push((r - 1) >> i);
-        S sm = MS::e();
+        S sm = MS::identity();
         do {
             r--;
             while (r > 1 and (r & 1)) r >>= 1;
-            if (!g(MS::op(d[r], sm))) {
+            if (!g(MS::operation(d[r], sm))) {
                 while (r < size) {
                     push(r);
                     r = (r << 1) | 1;
-                    if (g(MS::op(d[r], sm))) {
-                        sm = MS::op(d[r], sm);
+                    if (g(MS::operation(d[r], sm))) {
+                        sm = MS::operation(d[r], sm);
                         r--;
                     }
                 }
                 return r + 1 - size;
             }
-            sm = MS::op(d[r], sm);
+            sm = MS::operation(d[r], sm);
         } while ((r & -r) != r);
         return 0;
     }
@@ -184,16 +186,19 @@ template <class AM> struct LazySegmentTree {
     std::vector<S> d;
     std::vector<F> lz;
 
-    inline void update(int k) { d[k] = MS::op(d[k << 1], d[(k << 1) | 1]); }
+    inline void update(int k) {
+        d[k] = MS::operation(d[k << 1], d[(k << 1) | 1]);
+    }
 
     void all_apply(int k, const F& f) {
-        d[k] = AM::mapping(f, d[k]);
-        if (k < size) lz[k] = MF::composition(f, lz[k]);
+        d[k] = AM::mapping(f, d[k], 1 << (log - topbit(k)));
+        // MF::operation(f, g), g(f(x))
+        if (k < size) lz[k] = MF::operation(lz[k], f);
     }
 
     void push(int k) {
         all_apply(k << 1, lz[k]);
         all_apply((k << 1) | 1, lz[k]);
-        lz[k] = MF::id();
+        lz[k] = MF::identity();
     }
 };
