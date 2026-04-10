@@ -5,7 +5,7 @@
 #include "graph/read_graph.hpp"
 #include "graph/heavy_light_decomposition.hpp"
 #include "data_structure/segment_tree.hpp"
-#include "algebra/monoid_s/monoid_sum.hpp"
+#include "algebra/monoid/monoid_plus.hpp"
 
 int main() {
     int N, Q;
@@ -18,7 +18,7 @@ int main() {
     HeavyLightDecomposition hld(g, root);
     std::vector<long long> segi(N);
     for (int i = 0; i < N; i++) segi[i] = a[hld.vertices[i]];
-    SegmentTree<MonoidSum<long long>> seg(segi);
+    SegmentTree<MonoidPlus<long long>> seg(segi);
 
     for (int i = 0; i < Q; i++) {
         int type;

@@ -5,7 +5,7 @@
 #include "graph/read_graph.hpp"
 #include "graph/euler_tour.hpp"
 #include "data_structure/segment_tree.hpp"
-#include "algebra/monoid_s/monoid_sum.hpp"
+#include "algebra/monoid/monoid_plus.hpp"
 
 int main() {
     int N;
@@ -24,7 +24,7 @@ int main() {
     }
 
     EulerTour et(g);
-    SegmentTree<MonoidSum<long long>> seg(2 * N - 2);
+    SegmentTree<MonoidPlus<long long>> seg(2 * N - 2);
     int Q;
     std::cin >> Q;
     for (int q = 0; q < Q; q++) {
