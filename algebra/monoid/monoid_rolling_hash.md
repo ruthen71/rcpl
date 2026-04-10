@@ -1,5 +1,5 @@
 ---
-title: ローリングハッシュ
+title: monoid_rolling_hash
 documentation_of: ./monoid_rolling_hash.hpp
 ---
 
