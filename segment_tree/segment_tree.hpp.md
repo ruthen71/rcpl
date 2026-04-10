@@ -28,6 +28,9 @@ data:
     path: segment_tree/test/segment_tree_rolling_hash.test.cpp
     title: segment_tree/test/segment_tree_rolling_hash.test.cpp
   - icon: ':heavy_check_mark:'
+    path: segment_tree/test/segment_tree_times.test.cpp
+    title: segment_tree/test/segment_tree_times.test.cpp
+  - icon: ':heavy_check_mark:'
     path: segment_tree/test/segment_tree_xor.test.cpp
     title: segment_tree/test/segment_tree_xor.test.cpp
   - icon: ':heavy_check_mark:'
@@ -166,6 +169,7 @@ data:
   - segment_tree/test/segment_tree_plus.test.cpp
   - segment_tree/test/segment_tree_rolling_hash.test.cpp
   - segment_tree/test/segment_tree_gcd.test.cpp
+  - segment_tree/test/segment_tree_times.test.cpp
   - segment_tree/test/segment_tree_xor.test.cpp
   - segment_tree/test/segment_tree_min.test.cpp
   - segment_tree/test/segment_tree_or.test.cpp

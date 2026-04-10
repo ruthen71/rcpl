@@ -74,7 +74,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: algebra/monoid/monoid_rolling_hash.hpp
       title: monoid_rolling_hash
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: algebra/monoid/monoid_times.hpp
       title: algebra/monoid/monoid_times.hpp
     - icon: ':heavy_check_mark:'
@@ -581,6 +581,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: segment_tree/test/segment_tree_rolling_hash.test.cpp
       title: segment_tree/test/segment_tree_rolling_hash.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: segment_tree/test/segment_tree_times.test.cpp
+      title: segment_tree/test/segment_tree_times.test.cpp
     - icon: ':heavy_check_mark:'
       path: segment_tree/test/segment_tree_xor.test.cpp
       title: segment_tree/test/segment_tree_xor.test.cpp

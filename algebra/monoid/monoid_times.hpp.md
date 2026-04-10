@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/segment_tree_times.test.cpp
+    title: segment_tree/test/segment_tree_times.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"algebra/monoid/monoid_times.hpp\"\n\ntemplate <class T>\
@@ -24,8 +27,9 @@ data:
   path: algebra/monoid/monoid_times.hpp
   requiredBy: []
   timestamp: '2026-04-11 00:41:57+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - segment_tree/test/segment_tree_times.test.cpp
 documentation_of: algebra/monoid/monoid_times.hpp
 layout: document
 redirect_from:
