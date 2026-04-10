@@ -1,31 +1,33 @@
 #pragma once
 
 template <class T> struct MonoidS {
-    using S = ;  // todo
-    static constexpr S op(S a, S b) {
+    using value_type = ;  // todo
+    static constexpr value_type operation(const value_type& a,
+                                          const value_type& b) {
         // todo
     }
-    static constexpr S e() {
+    static constexpr value_type identity() {
         // todo
     }
 };
 
 template <class T> struct MonoidF {
-    using F = ;  // todo
-    static constexpr F composition(F f, F g) {
+    using value_type = ;  // todo
+    static constexpr value_type operation(const value_type& f,
+                                          const value_type& g) {
         // todo
     }
-    static constexpr F id() {
+    static constexpr value_type identity() {
         // todo
     }
 };
 
-template <class T> struct MonoidSF {
+template <class T> struct ActedMonoid {
     using MS = MonoidS<T>;
     using MF = MonoidF<T>;
-    using S = typename MS::S;
-    using F = typename MF::F;
-    static constexpr S mapping(F f, S x) {
+    using S = typename MS::value_type;
+    using F = typename MF::value_type;
+    static constexpr S mapping(const F f, const S x, const int size) {
         // todo
     }
 };
