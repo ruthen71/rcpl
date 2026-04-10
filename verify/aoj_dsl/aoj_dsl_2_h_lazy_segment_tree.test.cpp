@@ -1,25 +1,34 @@
-#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H"
+#define PROBLEM \
+    "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H"
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <numeric>
 
-#include "algebra/monoid_s_f/monoid_min_add.hpp"
+#include "algebra/acted_monoid/acted_monoid_max_plus.hpp"
+#include "algebra/acted_monoid/acted_monoid_min_plus.hpp"
 #include "data_structure/lazy_segment_tree.hpp"
 
 int main() {
     int N, Q;
     std::cin >> N >> Q;
-    LazySegmentTree<MonoidMinAdd<long long>> seg(std::vector<long long>(N, 0));
+    constexpr long long INF = std::numeric_limits<long long>::max();
+    LazySegmentTree<ActedMonoidMinPlus<long long, INF>> segmin(N);
+    LazySegmentTree<ActedMonoidMaxPlus<long long, INF>> segmax(N);
     while (Q--) {
         int t;
         std::cin >> t;
         if (t == 0) {
             int l, r, x;
             std::cin >> l >> r >> x;
-            seg.apply(l, r + 1, x);
+            r++;
+            segmin.apply(l, r, x);
+            segmax.apply(l, r, -x);
         } else {
             int l, r;
             std::cin >> l >> r;
-            std::cout << seg.prod(l, r + 1) << '\n';
+            r++;
+            assert(segmin.prod(l, r) == -segmax.prod(l, r));
+            std::cout << segmin.prod(l, r) << '\n';
         }
     }
     return 0;
