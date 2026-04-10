@@ -3,8 +3,8 @@
 #include "../monoid/monoid_assign.hpp"
 #include "../monoid/monoid_max_index.hpp"
 
-template <class T, T inf, bool left, T none> struct ActedMonoidMaxIndexAssign {
-    using MS = MonoidMaxIndex<T, inf, left>;
+template <class T, T inf, bool smaller_index, T none> struct ActedMonoidMaxIndexAssign {
+    using MS = MonoidMaxIndex<T, inf, smaller_index>;
     using MF = MonoidAssign<T, none>;
     using S = typename MS::value_type;
     using F = typename MF::value_type;
