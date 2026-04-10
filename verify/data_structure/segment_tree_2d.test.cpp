@@ -1,8 +1,9 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1068"
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <limits>
 
-#include "algebra/monoid_s/monoid_min.hpp"
+#include "algebra/monoid/monoid_min.hpp"
 #include "data_structure/segment_tree_2d.hpp"
 
 void solve(int R, int C, int Q) {
@@ -12,7 +13,8 @@ void solve(int R, int C, int Q) {
             std::cin >> A[i][j];
         }
     }
-    SegmentTree2D<MonoidMin<int>> seg(A);
+    constexpr int INF = std::numeric_limits<int>::max();
+    SegmentTree2D<MonoidMin<int, INF>> seg(A);
     while (Q--) {
         int r1, c1, r2, c2;
         std::cin >> r1 >> c1 >> r2 >> c2;
@@ -23,6 +25,7 @@ void solve(int R, int C, int Q) {
 
 int main() {
     int R, C, Q;
-    while (std::cin >> R >> C >> Q, !(R == 0 and C == 0 and Q == 0)) solve(R, C, Q);
+    while (std::cin >> R >> C >> Q, !(R == 0 and C == 0 and Q == 0))
+        solve(R, C, Q);
     return 0;
 }
