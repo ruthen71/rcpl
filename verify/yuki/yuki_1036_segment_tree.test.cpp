@@ -1,8 +1,8 @@
 #define PROBLEM "https://yukicoder.me/problems/no/1036"
 
-#include <bits/stdc++.h>
+#include <iostream>
 
-#include "algebra/monoid_s/monoid_gcd.hpp"
+#include "algebra/monoid/monoid_gcd.hpp"
 #include "data_structure/segment_tree.hpp"
 
 int main() {
