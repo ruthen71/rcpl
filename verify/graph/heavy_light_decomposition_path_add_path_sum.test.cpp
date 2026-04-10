@@ -4,7 +4,7 @@
 #include <iostream>
 
 #include "../../algebra/acted_monoid/acted_monoid_plus_plus.hpp"
-#include "../../data_structure/lazy_segment_tree.hpp"
+#include "../../segment_tree/lazy_segment_tree.hpp"
 #include "../../graph/heavy_light_decomposition.hpp"
 #include "../../graph/read_graph.hpp"
 

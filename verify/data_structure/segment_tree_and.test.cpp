@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include "../../algebra/monoid/monoid_and.hpp"
-#include "../../data_structure/segment_tree.hpp"
+#include "../../segment_tree/segment_tree.hpp"
 
 void test1_basic() {
     assert(MonoidAnd<int>::commutative == true);

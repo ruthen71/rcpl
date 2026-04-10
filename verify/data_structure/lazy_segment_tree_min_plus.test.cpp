@@ -6,7 +6,7 @@
 
 #include "../../algebra/acted_monoid/acted_monoid_max_plus.hpp"
 #include "../../algebra/acted_monoid/acted_monoid_min_plus.hpp"
-#include "../../data_structure/lazy_segment_tree.hpp"
+#include "../../segment_tree/lazy_segment_tree.hpp"
 
 int main() {
     int N, Q;

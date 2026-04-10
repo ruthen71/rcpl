@@ -2,9 +2,9 @@
 
 #include <iostream>
 
-#include "algebra/acted_monoid/acted_monoid_plus_affine.hpp"
-#include "data_structure/lazy_segment_tree.hpp"
-#include "math/static_modint.hpp"
+#include "../../algebra/acted_monoid/acted_monoid_plus_affine.hpp"
+#include "../../math/static_modint.hpp"
+#include "../../segment_tree/lazy_segment_tree.hpp"
 using mint = mint998;
 
 int main() {

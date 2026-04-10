@@ -2,8 +2,8 @@
 
 #include <iostream>
 
-#include "algebra/monoid/monoid_plus.hpp"
-#include "data_structure/segment_tree.hpp"
+#include "../../algebra/monoid/monoid_plus.hpp"
+#include "../../segment_tree/segment_tree.hpp"
 
 int main() {
     int N, Q;

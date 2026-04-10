@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include "../../algebra/acted_monoid/acted_monoid_product_sum_add2.hpp"
-#include "../../data_structure/lazy_segment_tree.hpp"
+#include "../../segment_tree/lazy_segment_tree.hpp"
 #include "../../math/static_modint.hpp"
 using mint = mint998;
 

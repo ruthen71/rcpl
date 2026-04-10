@@ -5,7 +5,7 @@
 
 #include "../../algebra/acted_monoid/acted_monoid_max_index_plus.hpp"
 #include "../../algebra/acted_monoid/acted_monoid_min_index_plus.hpp"
-#include "../../data_structure/lazy_segment_tree.hpp"
+#include "../../segment_tree/lazy_segment_tree.hpp"
 
 constexpr int INF = std::numeric_limits<int>::max();
 

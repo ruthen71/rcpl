@@ -4,7 +4,7 @@
 #include <numeric>
 
 #include "../../algebra/monoid/monoid_gcd.hpp"
-#include "../../data_structure/segment_tree.hpp"
+#include "../../segment_tree/segment_tree.hpp"
 
 int main() {
     int N;

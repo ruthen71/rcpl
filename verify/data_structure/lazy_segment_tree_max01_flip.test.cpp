@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include "../../algebra/acted_monoid/acted_monoid_max01_flip.hpp"
-#include "../../data_structure/lazy_segment_tree.hpp"
+#include "../../segment_tree/lazy_segment_tree.hpp"
 
 std::vector<int> solve(std::string& s,
                        std::vector<std::tuple<int, int, int>>& query) {

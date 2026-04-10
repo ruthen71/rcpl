@@ -4,7 +4,7 @@
 #include <limits>
 
 #include "../../algebra/monoid/monoid_min.hpp"
-#include "../../data_structure/segment_tree_2d.hpp"
+#include "../../segment_tree/segment_tree_2d.hpp"
 
 void solve(int R, int C, int Q) {
     std::vector<std::vector<int>> A(R, std::vector<int>(C));

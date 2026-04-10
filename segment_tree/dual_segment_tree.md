@@ -1,6 +1,6 @@
 ---
 title: Dual Segment Tree (双対セグメント木)
-documentation_of: //data_structure/dual_segment_tree.hpp
+documentation_of: ./dual_segment_tree.hpp
 ---
 
 普通のセグメント木+双対セグメント木=遅延セグメント木というイメージ

@@ -4,7 +4,7 @@
 #include <iostream>
 
 #include "algebra/monoid/monoid_plus.hpp"
-#include "data_structure/segment_tree.hpp"
+#include "segment_tree/segment_tree.hpp"
 #include "graph/euler_tour.hpp"
 #include "graph/read_graph.hpp"
 

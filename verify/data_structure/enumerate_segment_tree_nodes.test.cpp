@@ -1,7 +1,8 @@
 #define PROBLEM "https://atcoder.jp/contests/abc349/tasks/abc349_d"
 
 #include <iostream>
-#include "data_structure/enumerate_segment_tree_nodes.hpp"
+
+#include "../../segment_tree/enumerate_segment_tree_nodes.hpp"
 
 int main() {
     long long L, R;

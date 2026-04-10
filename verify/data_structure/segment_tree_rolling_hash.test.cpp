@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include "../../algebra/monoid/monoid_rolling_hash.hpp"
-#include "../../data_structure/segment_tree.hpp"
+#include "../../segment_tree/segment_tree.hpp"
 #include "../../math/modint261.hpp"
 
 using mint = mint261;

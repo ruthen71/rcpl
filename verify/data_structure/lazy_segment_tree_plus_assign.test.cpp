@@ -5,7 +5,7 @@
 #include <limits>
 
 #include "../../algebra/acted_monoid/acted_monoid_plus_assign.hpp"
-#include "../../data_structure/lazy_segment_tree.hpp"
+#include "../../segment_tree/lazy_segment_tree.hpp"
 
 int main() {
     int N, Q;
