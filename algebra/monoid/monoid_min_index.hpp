@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../algebra/value_index.hpp"
+#include "../../algebra/value_index.hpp"
 
 template <class T, T inf, bool smaller_index> struct MonoidMinIndex {
     using value_type = ValueIndex<T>;
@@ -11,8 +11,6 @@ template <class T, T inf, bool smaller_index> struct MonoidMinIndex {
         bool is_small = smaller_index ? (a.i < b.i) : (a.i >= b.i);
         return is_small ? a : b;
     }
-    static constexpr value_type identity() noexcept {
-        return value_type(inf, -1);
-    }
+    static constexpr value_type identity() noexcept { return {inf, -1}; }
     static constexpr bool commutative = true;
 };
