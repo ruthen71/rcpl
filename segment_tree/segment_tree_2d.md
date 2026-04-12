@@ -1,6 +1,6 @@
 ---
-title: 2D Segment Tree (2次元セグメント木)
-documentation_of: .//segment_tree_2d.hpp
+title: 2D Segment Tree (2 次元セグメント木)
+documentation_of: ./segment_tree_2d.hpp
 ---
 
 基本的に `algebra/monoid` 以下のファイルをインクルードして使う

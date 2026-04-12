@@ -115,7 +115,7 @@ template <class MS> struct SegmentTree {
         return 0;
     }
 
-    std::vector<S> make_vector() {
+    std::vector<S> make_vector() const {
         std::vector<S> vec(n);
         for (int i = 0; i < n; i++) vec[i] = get(i);
         return vec;

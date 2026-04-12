@@ -3,15 +3,15 @@
 #include <iostream>
 
 #include "../../algebra/monoid/monoid_plus.hpp"
-#include "../../segment_tree/fenwick_tree.hpp"
+#include "../../segment_tree/segment_tree_recursion.hpp"
 
 int main() {
     int N, Q;
     std::cin >> N >> Q;
     std::vector<long long> a(N);
     for (int i = 0; i < N; i++) std::cin >> a[i];
-    FenwickTree<MonoidPlus<long long>> seg_add(a);
-    FenwickTree<MonoidPlus<long long>> seg_set(a);
+    SegmentTreeRecursion<MonoidPlus<long long>> seg_add(a);
+    SegmentTreeRecursion<MonoidPlus<long long>> seg_set(a);
     while (Q--) {
         int t;
         std::cin >> t;
