@@ -48,7 +48,7 @@ template <class MS> struct SegmentTreeRecursion {
 
     S all_prod() const { return root->d; }
 
-    std::vector<S> make_vector() {
+    std::vector<S> make_vector() const {
         std::vector<S> vec(n);
         for (int i = 0; i < n; i++) vec[i] = get(i);
         return vec;
