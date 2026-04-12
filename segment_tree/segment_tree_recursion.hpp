@@ -41,22 +41,40 @@ template <class MS> struct SegmentTreeRecursion {
         return merge(build(v, l, m), build(v, m, r));
     }
 
-    Node* update(int p, const S& x, int l, int r, Node* np) {
+    Node* inner_set(int p, const S& x, int l, int r, Node* np) {
         if (l + 1 == r) {
             np->d = x;
             return np;
         }
         int m = (l + r) / 2;
         if (l <= p and p < m) {
-            return merge(update(p, x, l, m, np->l), np->r, np);
+            return merge(inner_set(p, x, l, m, np->l), np->r, np);
         } else {
-            return merge(np->l, update(p, x, m, r, np->r), np);
+            return merge(np->l, inner_set(p, x, m, r, np->r), np);
         }
     }
 
     void set(int p, const S& x) {
         assert(0 <= p and p < n);
-        update(p, x, 0, n, root);
+        inner_set(p, x, 0, n, root);
+    }
+
+    Node* inner_add(int p, const S& x, int l, int r, Node* np) {
+        if (l + 1 == r) {
+            np->d = MS::operation(np->d, x);
+            return np;
+        }
+        int m = (l + r) / 2;
+        if (l <= p and p < m) {
+            return merge(inner_add(p, x, l, m, np->l), np->r, np);
+        } else {
+            return merge(np->l, inner_add(p, x, m, r, np->r), np);
+        }
+    }
+
+    void add(int p, const S& x) {
+        assert(0 <= p and p < n);
+        inner_add(p, x, 0, n, root);
     }
 
     S operator[](int p) const {
