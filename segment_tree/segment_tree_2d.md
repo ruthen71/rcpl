@@ -1,5 +1,5 @@
 ---
-title: 2D Segment Tree (2次元セグメント木)
+title: 2D Segment Tree (2 次元セグメント木)
 documentation_of: .//segment_tree_2d.hpp
 ---
 
