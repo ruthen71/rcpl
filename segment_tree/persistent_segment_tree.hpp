@@ -1,7 +1,5 @@
 #pragma once
 
-#pragma once
-
 #include <cassert>
 #include <vector>
 
@@ -23,17 +21,47 @@ template <class MS> struct PersistentSegmentTree {
 
     explicit PersistentSegmentTree(const std::vector<S>& v)
         : n((int)(v.size())) {
-        root = build(v, 0, n);
+        roots.push_back(build(v, 0, n));
     }
 
-    void set(int p, const S& x) {
+    int get_time() { return (int)(roots.size()) - 1; }
+
+    Node* set(int p, const S& x, Node* root) {
         assert(0 <= p and p < n);
-        set(p, x, 0, n, root);
+        roots.push_back(set(p, x, 0, n, root));
+        return roots.back();
     }
 
-    void add(int p, const S& x) {
+    Node* set(int p, const S& x) { return set(p, x, roots.back()); }
+
+    Node* set(int p, const S& x, int t) {
+        assert(0 <= t and t < (int)(roots.size()));
+        return set(p, x, roots[t]);
+    }
+
+    Node* add(int p, const S& x, Node* root) {
         assert(0 <= p and p < n);
-        add(p, x, 0, n, root);
+        roots.push_back(add(p, x, 0, n, root));
+        return roots.back();
+    }
+
+    Node* add(int p, const S& x) { return add(p, x, roots.back()); }
+
+    Node* add(int p, const S& x, int t) {
+        assert(0 <= t and t < (int)(roots.size()));
+        return add(p, x, roots[t]);
+    }
+
+    S get(int p, Node* root) const {
+        assert(0 <= p and p < n);
+        return prod(p, p + 1, root);
+    }
+
+    S get(int p) const { return get(p, roots.back()); }
+
+    S get(int p, int t) const {
+        assert(0 <= t and t < (int)(roots.size()));
+        return get(p, roots[t]);
     }
 
     S operator[](int p) const {
@@ -41,32 +69,43 @@ template <class MS> struct PersistentSegmentTree {
         return prod(p, p + 1);
     }
 
-    S get(int p) const {
-        assert(0 <= p and p < n);
-        return prod(p, p + 1);
+    S prod(int l, int r, Node* root) const { return prod(l, r, 0, n, root); }
+
+    S prod(int l, int r) const { return prod(l, r, roots.back()); }
+
+    S prod(int l, int r, int t) const {
+        assert(0 <= t and t < (int)(roots.size()));
+        return prod(l, r, roots[t]);
     }
 
-    S prod(int l, int r) const { return prod(l, r, 0, n, root); }
+    S all_prod(Node* root) const { return root->d; }
 
-    S all_prod() const { return root->d; }
+    S all_prod() const { return all_prod(roots.back()); }
 
-    std::vector<S> make_vector() {
+    S all_prod(int t) const {
+        assert(0 <= t and t < (int)(roots.size()));
+        return all_prod(roots[t]);
+    }
+
+    std::vector<S> make_vector(Node* root) const {
         std::vector<S> vec(n);
-        for (int i = 0; i < n; i++) vec[i] = get(i);
+        for (int i = 0; i < n; i++) vec[i] = get(i, root);
         return vec;
+    }
+
+    std::vector<S> make_vector() const { return make_vector(roots.back()); }
+
+    std::vector<S> make_vector(int t) const {
+        assert(0 <= t and t < (int)(roots.size()));
+        return make_vector(roots[t]);
     }
 
   private:
     int n;
-    Node* root;
+    std::vector<Node*> roots;
 
-    Node* merge(Node* l, Node* r, Node* np = nullptr) {
-        if (np == nullptr) {
-            np = new Node(MS::operation(l->d, r->d), l, r);
-        } else {
-            np->d = MS::operation(l->d, r->d);
-        }
-        return np;
+    Node* merge(Node* l, Node* r) {
+        return new Node(MS::operation(l->d, r->d), l, r);
     }
 
     Node* build(const std::vector<S>& v, int l, int r) {
@@ -79,27 +118,25 @@ template <class MS> struct PersistentSegmentTree {
 
     Node* set(int p, const S& x, int l, int r, Node* np) {
         if (l + 1 == r) {
-            np->d = x;
-            return np;
+            return new Node(x);
         }
         int m = (l + r) / 2;
         if (l <= p and p < m) {
-            return merge(set(p, x, l, m, np->l), np->r, np);
+            return merge(set(p, x, l, m, np->l), np->r);
         } else {
-            return merge(np->l, set(p, x, m, r, np->r), np);
+            return merge(np->l, set(p, x, m, r, np->r));
         }
     }
 
     Node* add(int p, const S& x, int l, int r, Node* np) {
         if (l + 1 == r) {
-            np->d = MS::operation(np->d, x);
-            return np;
+            return new Node(MS::operation(np->d, x));
         }
         int m = (l + r) / 2;
         if (l <= p and p < m) {
-            return merge(add(p, x, l, m, np->l), np->r, np);
+            return merge(add(p, x, l, m, np->l), np->r);
         } else {
-            return merge(np->l, add(p, x, m, r, np->r), np);
+            return merge(np->l, add(p, x, m, r, np->r));
         }
     }
 
