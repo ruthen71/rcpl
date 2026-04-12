@@ -69,7 +69,10 @@ template <class MS> struct PersistentSegmentTree {
         return prod(p, p + 1);
     }
 
-    S prod(int l, int r, Node* root) const { return prod(l, r, 0, n, root); }
+    S prod(int l, int r, Node* root) const {
+        assert(0 <= l and l <= r and r <= n);
+        return prod(l, r, 0, n, root);
+    }
 
     S prod(int l, int r) const { return prod(l, r, roots.back()); }
 
