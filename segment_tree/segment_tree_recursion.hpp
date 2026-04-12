@@ -25,12 +25,12 @@ template <class MS> struct SegmentTreeRecursion {
 
     void set(int p, const S& x) {
         assert(0 <= p and p < n);
-        inner_set(p, x, 0, n, root);
+        set(p, x, 0, n, root);
     }
 
     void add(int p, const S& x) {
         assert(0 <= p and p < n);
-        inner_add(p, x, 0, n, root);
+        add(p, x, 0, n, root);
     }
 
     S operator[](int p) const {
@@ -43,7 +43,7 @@ template <class MS> struct SegmentTreeRecursion {
         return prod(p, p + 1);
     }
 
-    S prod(int l, int r) const { return inner_prod(l, r, 0, n, root); }
+    S prod(int l, int r) const { return prod(l, r, 0, n, root); }
 
     S all_prod() const { return root->d; }
 
@@ -68,39 +68,39 @@ template <class MS> struct SegmentTreeRecursion {
         return merge(build(v, l, m), build(v, m, r));
     }
 
-    Node* inner_set(int p, const S& x, int l, int r, Node* np) {
+    Node* set(int p, const S& x, int l, int r, Node* np) {
         if (l + 1 == r) {
             np->d = x;
             return np;
         }
         int m = (l + r) / 2;
         if (l <= p and p < m) {
-            return merge(inner_set(p, x, l, m, np->l), np->r, np);
+            return merge(set(p, x, l, m, np->l), np->r, np);
         } else {
-            return merge(np->l, inner_set(p, x, m, r, np->r), np);
+            return merge(np->l, set(p, x, m, r, np->r), np);
         }
     }
 
-    Node* inner_add(int p, const S& x, int l, int r, Node* np) {
+    Node* add(int p, const S& x, int l, int r, Node* np) {
         if (l + 1 == r) {
             np->d = MS::operation(np->d, x);
             return np;
         }
         int m = (l + r) / 2;
         if (l <= p and p < m) {
-            return merge(inner_add(p, x, l, m, np->l), np->r, np);
+            return merge(add(p, x, l, m, np->l), np->r, np);
         } else {
-            return merge(np->l, inner_add(p, x, m, r, np->r), np);
+            return merge(np->l, add(p, x, m, r, np->r), np);
         }
     }
 
-    S inner_prod(int ql, int qr, int l, int r, Node* np) const {
+    S prod(int ql, int qr, int l, int r, Node* np) const {
         // [ql, qr) と [l, r) が交差しない
         if (qr <= l or r <= ql) return MS::identity();
         // [ql, qr) が [l, r) を完全に含んでいる
         if (ql <= l and r <= qr) return np->d;
         int m = (l + r) / 2;
-        return MS::operation(inner_prod(ql, qr, l, m, np->l),
-                             inner_prod(ql, qr, m, r, np->r));
+        return MS::operation(prod(ql, qr, l, m, np->l),
+                             prod(ql, qr, m, r, np->r));
     }
 };
