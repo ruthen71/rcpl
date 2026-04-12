@@ -24,6 +24,7 @@ template <class T> struct RangeKthSmallest {
 
     T query(int l, int r, int k) {
         assert(0 <= l and l < r and r <= n);
+        assert(0 <= k and k < r - l);
         auto f = [&](int v) -> bool {
             return seg.prod(0, v, r) - seg.prod(0, v, l) >= k + 1;
         };

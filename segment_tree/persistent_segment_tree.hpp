@@ -9,8 +9,8 @@ template <class MS> struct PersistentSegmentTree {
     using S = typename MS::value_type;
 
     struct Node {
-        Node *l, *r;
         S d;
+        Node *l, *r;
         Node(S v, Node* l = nullptr, Node* r = nullptr) : d(v), l(l), r(r) {}
     };
 
