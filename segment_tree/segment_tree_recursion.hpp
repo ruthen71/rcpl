@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cassert>
+#include <vector>
 
 // Segment Tree (再帰 + ポインタ木)
 template <class MS> struct SegmentTreeRecursion {
