@@ -5,8 +5,8 @@
 #include <cassert>
 #include <vector>
 
-// Segment Tree (再帰 + ポインタ木)
-template <class MS> struct SegmentTreeRecursion {
+// Persistent Segment Tree
+template <class MS> struct PersistentSegmentTree {
   public:
     using S = typename MS::value_type;
 
@@ -16,12 +16,12 @@ template <class MS> struct SegmentTreeRecursion {
         Node(S v, Node* l = nullptr, Node* r = nullptr) : d(v), l(l), r(r) {}
     };
 
-    SegmentTreeRecursion() = default;
+    PersistentSegmentTree() = default;
 
-    explicit SegmentTreeRecursion(int n)
-        : SegmentTreeRecursion(std::vector<S>(n, MS::identity())) {}
+    explicit PersistentSegmentTree(int n)
+        : PersistentSegmentTree(std::vector<S>(n, MS::identity())) {}
 
-    explicit SegmentTreeRecursion(const std::vector<S>& v)
+    explicit PersistentSegmentTree(const std::vector<S>& v)
         : n((int)(v.size())) {
         root = build(v, 0, n);
     }
