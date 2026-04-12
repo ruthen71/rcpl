@@ -144,7 +144,7 @@ data:
   - segment_tree/test/segment_tree_2d.test.cpp
 documentation_of: segment_tree/segment_tree_2d.hpp
 layout: document
-title: "2D Segment Tree (2\u6B21\u5143\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
+title: "2D Segment Tree (2 \u6B21\u5143\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
 ---
 
 基本的に `algebra/monoid` 以下のファイルをインクルードして使う

@@ -27,7 +27,7 @@ data:
       \u30C9\u756A\u53F7\u306E\u5217\u6319"
   - icon: ':heavy_check_mark:'
     path: segment_tree/lazy_segment_tree.hpp
-    title: Lazy Segment Tree
+    title: "Lazy Segment Tree (\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: data_structure/test/erasable_priority_queue.test.cpp

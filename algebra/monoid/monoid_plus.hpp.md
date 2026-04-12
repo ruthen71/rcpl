@@ -24,9 +24,16 @@ data:
     path: algebra/acted_monoid/acted_monoid_plus_plus.hpp
     title: algebra/acted_monoid/acted_monoid_plus_plus.hpp
   - icon: ':heavy_check_mark:'
+    path: data_structure/range_kth_smallest.hpp
+    title: "\u533A\u9593\u306E k \u756A\u76EE\u306B\u5C0F\u3055\u3044\u5024\u3092\u6C42\
+      \u3081\u308B\u30AF\u30A8\u30EA"
+  - icon: ':heavy_check_mark:'
     path: dp/inversion_number.hpp
     title: "Inversion Number (\u8EE2\u5012\u6570)"
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: data_structure/test/range_kth_smallest.test.cpp
+    title: data_structure/test/range_kth_smallest.test.cpp
   - icon: ':heavy_check_mark:'
     path: dp/test/inversion_number.test.cpp
     title: dp/test/inversion_number.test.cpp
@@ -54,6 +61,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: segment_tree/test/segment_tree_plus.test.cpp
     title: segment_tree/test/segment_tree_plus.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: segment_tree/test/segment_tree_recursion.test.cpp
+    title: segment_tree/test/segment_tree_recursion.test.cpp
   - icon: ':heavy_check_mark:'
     path: unionfind/test/potentialized_unionfind.test.cpp
     title: unionfind/test/potentialized_unionfind.test.cpp
@@ -103,6 +113,7 @@ data:
   - algebra/acted_monoid/acted_monoid_max_plus.hpp
   - algebra/acted_monoid/acted_monoid_min_index_plus.hpp
   - dp/inversion_number.hpp
+  - data_structure/range_kth_smallest.hpp
   timestamp: '2025-12-10 04:21:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -118,8 +129,10 @@ data:
   - segment_tree/test/lazy_segment_tree_plus_assign.test.cpp
   - segment_tree/test/fenwick_tree_plus.test.cpp
   - segment_tree/test/lazy_segment_tree_min_index_plus.test.cpp
+  - segment_tree/test/segment_tree_recursion.test.cpp
   - segment_tree/test/lazy_segment_tree_sum_affine.test.cpp
   - segment_tree/test/lazy_segment_tree_plus_plus.test.cpp
+  - data_structure/test/range_kth_smallest.test.cpp
   - unionfind/test/potentialized_unionfind.test.cpp
   - unionfind/test/potentialized_unionfind_groups.test.cpp
 documentation_of: algebra/monoid/monoid_plus.hpp

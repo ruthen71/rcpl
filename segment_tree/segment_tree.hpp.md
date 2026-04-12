@@ -103,10 +103,10 @@ data:
     \          sm = MS::operation(d[r], sm);\n                        r--;\n     \
     \               }\n                }\n                return r + 1 - size;\n \
     \           }\n            sm = MS::operation(d[r], sm);\n        } while ((r\
-    \ & -r) != r);\n        return 0;\n    }\n\n    std::vector<S> make_vector() {\n\
-    \        std::vector<S> vec(n);\n        for (int i = 0; i < n; i++) vec[i] =\
-    \ get(i);\n        return vec;\n    }\n\n  private:\n    int n, log, size;\n \
-    \   std::vector<S> d;\n\n    inline void update(int k) {\n        d[k] = MS::operation(d[k\
+    \ & -r) != r);\n        return 0;\n    }\n\n    std::vector<S> make_vector() const\
+    \ {\n        std::vector<S> vec(n);\n        for (int i = 0; i < n; i++) vec[i]\
+    \ = get(i);\n        return vec;\n    }\n\n  private:\n    int n, log, size;\n\
+    \    std::vector<S> d;\n\n    inline void update(int k) {\n        d[k] = MS::operation(d[k\
     \ << 1], d[(k << 1) | 1]);\n    }\n};\n"
   code: "#pragma once\n\n#include \"../misc/bit_ceil.hpp\"\n#include \"../misc/countr_zero.hpp\"\
     \n\n#include <cassert>\n#include <vector>\n\n// Segment Tree\ntemplate <class\
@@ -148,10 +148,10 @@ data:
     \          sm = MS::operation(d[r], sm);\n                        r--;\n     \
     \               }\n                }\n                return r + 1 - size;\n \
     \           }\n            sm = MS::operation(d[r], sm);\n        } while ((r\
-    \ & -r) != r);\n        return 0;\n    }\n\n    std::vector<S> make_vector() {\n\
-    \        std::vector<S> vec(n);\n        for (int i = 0; i < n; i++) vec[i] =\
-    \ get(i);\n        return vec;\n    }\n\n  private:\n    int n, log, size;\n \
-    \   std::vector<S> d;\n\n    inline void update(int k) {\n        d[k] = MS::operation(d[k\
+    \ & -r) != r);\n        return 0;\n    }\n\n    std::vector<S> make_vector() const\
+    \ {\n        std::vector<S> vec(n);\n        for (int i = 0; i < n; i++) vec[i]\
+    \ = get(i);\n        return vec;\n    }\n\n  private:\n    int n, log, size;\n\
+    \    std::vector<S> d;\n\n    inline void update(int k) {\n        d[k] = MS::operation(d[k\
     \ << 1], d[(k << 1) | 1]);\n    }\n};\n"
   dependsOn:
   - misc/bit_ceil.hpp
@@ -159,7 +159,7 @@ data:
   isVerificationFile: false
   path: segment_tree/segment_tree.hpp
   requiredBy: []
-  timestamp: '2026-04-11 00:41:57+09:00'
+  timestamp: '2026-04-12 20:46:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/heavy_light_decomposition_vertex_add_subtree_sum.test.cpp
@@ -175,7 +175,7 @@ data:
   - segment_tree/test/segment_tree_or.test.cpp
 documentation_of: segment_tree/segment_tree.hpp
 layout: document
-title: Segment Tree
+title: "Segment Tree (\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
 ---
 
 長さ $n$ の配列 $a$ に対し
@@ -191,7 +191,7 @@ title: Segment Tree
 - 結合律（ $(a \cdot b) \cdot c = a \cdot (b \cdot c)$ ）が成立する。
 - 単位元（ $a \cdot e=e \cdot a=a$ となる $e$ ）が存在する。
 
-例えば、$\cdot$ として $\max$ を計算するモノイドは [ここ](../algebra/monoid_max.hpp) に定義されています。
+例えば、$\cdot$ として $\max$ を計算するモノイドは [ここ](../algebra/monoid/monoid_max.hpp) に定義されています。
 
 計算量は $\cdot$, $e$ が定数時間で計算できると仮定したときのものを記述します。
 

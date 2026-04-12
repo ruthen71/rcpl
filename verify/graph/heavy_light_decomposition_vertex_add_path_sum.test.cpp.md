@@ -21,7 +21,7 @@ data:
     title: Countr Zero
   - icon: ':heavy_check_mark:'
     path: segment_tree/segment_tree.hpp
-    title: Segment Tree
+    title: "Segment Tree (\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -95,10 +95,10 @@ data:
     \          sm = MS::operation(d[r], sm);\n                        r--;\n     \
     \               }\n                }\n                return r + 1 - size;\n \
     \           }\n            sm = MS::operation(d[r], sm);\n        } while ((r\
-    \ & -r) != r);\n        return 0;\n    }\n\n    std::vector<S> make_vector() {\n\
-    \        std::vector<S> vec(n);\n        for (int i = 0; i < n; i++) vec[i] =\
-    \ get(i);\n        return vec;\n    }\n\n  private:\n    int n, log, size;\n \
-    \   std::vector<S> d;\n\n    inline void update(int k) {\n        d[k] = MS::operation(d[k\
+    \ & -r) != r);\n        return 0;\n    }\n\n    std::vector<S> make_vector() const\
+    \ {\n        std::vector<S> vec(n);\n        for (int i = 0; i < n; i++) vec[i]\
+    \ = get(i);\n        return vec;\n    }\n\n  private:\n    int n, log, size;\n\
+    \    std::vector<S> d;\n\n    inline void update(int k) {\n        d[k] = MS::operation(d[k\
     \ << 1], d[(k << 1) | 1]);\n    }\n};\n#line 2 \"graph/heavy_light_decomposition.hpp\"\
     \n\n#line 2 \"graph/graph_template.hpp\"\n\n#line 5 \"graph/graph_template.hpp\"\
     \n\ntemplate <class T> struct Edge {\n    int from, to;\n    T cost;\n    int\
@@ -273,7 +273,7 @@ data:
   isVerificationFile: true
   path: verify/graph/heavy_light_decomposition_vertex_add_path_sum.test.cpp
   requiredBy: []
-  timestamp: '2026-04-11 00:41:57+09:00'
+  timestamp: '2026-04-12 20:46:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/heavy_light_decomposition_vertex_add_path_sum.test.cpp

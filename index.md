@@ -121,6 +121,10 @@ data:
     - icon: ':warning:'
       path: data_structure/matrix.hpp
       title: "Matrix (\u884C\u5217)"
+    - icon: ':heavy_check_mark:'
+      path: data_structure/range_kth_smallest.hpp
+      title: "\u533A\u9593\u306E k \u756A\u76EE\u306B\u5C0F\u3055\u3044\u5024\u3092\
+        \u6C42\u3081\u308B\u30AF\u30A8\u30EA"
     - icon: ':warning:'
       path: data_structure/static_matrix.hpp
       title: "Static Matrix (\u884C\u5217, \u30B5\u30A4\u30BA\u56FA\u5B9A)"
@@ -452,13 +456,20 @@ data:
       title: segment_tree/fenwick_tree.hpp
     - icon: ':heavy_check_mark:'
       path: segment_tree/lazy_segment_tree.hpp
-      title: Lazy Segment Tree
+      title: "Lazy Segment Tree (\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
+    - icon: ':heavy_check_mark:'
+      path: segment_tree/persistent_segment_tree.hpp
+      title: "Persistent Segment Tree (\u6C38\u7D9A\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
+        )"
     - icon: ':heavy_check_mark:'
       path: segment_tree/segment_tree.hpp
-      title: Segment Tree
+      title: "Segment Tree (\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     - icon: ':heavy_check_mark:'
       path: segment_tree/segment_tree_2d.hpp
-      title: "2D Segment Tree (2\u6B21\u5143\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
+      title: "2D Segment Tree (2 \u6B21\u5143\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
+    - icon: ':heavy_check_mark:'
+      path: segment_tree/segment_tree_recursion.hpp
+      title: "Segment Tree (\u518D\u5E30 + \u30DD\u30A4\u30F3\u30BF\u6728)"
   - name: string
     pages:
     - icon: ':warning:'
@@ -496,6 +507,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/test/erasable_priority_queue.test.cpp
       title: data_structure/test/erasable_priority_queue.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: data_structure/test/range_kth_smallest.test.cpp
+      title: data_structure/test/range_kth_smallest.test.cpp
   - name: dp/test
     pages:
     - icon: ':heavy_check_mark:'
@@ -578,6 +592,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: segment_tree/test/segment_tree_plus.test.cpp
       title: segment_tree/test/segment_tree_plus.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: segment_tree/test/segment_tree_recursion.test.cpp
+      title: segment_tree/test/segment_tree_recursion.test.cpp
     - icon: ':heavy_check_mark:'
       path: segment_tree/test/segment_tree_rolling_hash.test.cpp
       title: segment_tree/test/segment_tree_rolling_hash.test.cpp

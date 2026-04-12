@@ -50,28 +50,32 @@ data:
     \    int n;\n    std::vector<S> d;\n};\n#line 7 \"segment_tree/test/fenwick_tree_plus.test.cpp\"\
     \n\nint main() {\n    int N, Q;\n    std::cin >> N >> Q;\n    std::vector<long\
     \ long> a(N);\n    for (int i = 0; i < N; i++) std::cin >> a[i];\n    FenwickTree<MonoidPlus<long\
-    \ long>> seg(a);\n    while (Q--) {\n        int t;\n        std::cin >> t;\n\
-    \        if (t == 0) {\n            int p, x;\n            std::cin >> p >> x;\n\
-    \            seg.add(p, x);\n        } else {\n            int l, r;\n       \
-    \     std::cin >> l >> r;\n            std::cout << seg.prod(l, r) << '\\n';\n\
-    \        }\n    }\n    return 0;\n}\n"
+    \ long>> seg_add(a);\n    FenwickTree<MonoidPlus<long long>> seg_set(a);\n   \
+    \ while (Q--) {\n        int t;\n        std::cin >> t;\n        if (t == 0) {\n\
+    \            int p, x;\n            std::cin >> p >> x;\n            seg_add.add(p,\
+    \ x);\n            seg_set.set(p, seg_set.get(p) + x);\n        } else {\n   \
+    \         int l, r;\n            std::cin >> l >> r;\n            assert(seg_add.prod(l,\
+    \ r) == seg_set.prod(l, r));\n            std::cout << seg_add.prod(l, r) << '\\\
+    n';\n        }\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\
     \n#include <iostream>\n\n#include \"../../algebra/monoid/monoid_plus.hpp\"\n#include\
     \ \"../../segment_tree/fenwick_tree.hpp\"\n\nint main() {\n    int N, Q;\n   \
     \ std::cin >> N >> Q;\n    std::vector<long long> a(N);\n    for (int i = 0; i\
-    \ < N; i++) std::cin >> a[i];\n    FenwickTree<MonoidPlus<long long>> seg(a);\n\
-    \    while (Q--) {\n        int t;\n        std::cin >> t;\n        if (t == 0)\
-    \ {\n            int p, x;\n            std::cin >> p >> x;\n            seg.add(p,\
-    \ x);\n        } else {\n            int l, r;\n            std::cin >> l >> r;\n\
-    \            std::cout << seg.prod(l, r) << '\\n';\n        }\n    }\n    return\
-    \ 0;\n}\n"
+    \ < N; i++) std::cin >> a[i];\n    FenwickTree<MonoidPlus<long long>> seg_add(a);\n\
+    \    FenwickTree<MonoidPlus<long long>> seg_set(a);\n    while (Q--) {\n     \
+    \   int t;\n        std::cin >> t;\n        if (t == 0) {\n            int p,\
+    \ x;\n            std::cin >> p >> x;\n            seg_add.add(p, x);\n      \
+    \      seg_set.set(p, seg_set.get(p) + x);\n        } else {\n            int\
+    \ l, r;\n            std::cin >> l >> r;\n            assert(seg_add.prod(l, r)\
+    \ == seg_set.prod(l, r));\n            std::cout << seg_add.prod(l, r) << '\\\
+    n';\n        }\n    }\n    return 0;\n}\n"
   dependsOn:
   - algebra/monoid/monoid_plus.hpp
   - segment_tree/fenwick_tree.hpp
   isVerificationFile: true
   path: segment_tree/test/fenwick_tree_plus.test.cpp
   requiredBy: []
-  timestamp: '2026-04-11 00:41:57+09:00'
+  timestamp: '2026-04-12 20:46:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: segment_tree/test/fenwick_tree_plus.test.cpp

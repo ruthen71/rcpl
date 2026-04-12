@@ -12,7 +12,7 @@ data:
     title: Countr Zero
   - icon: ':heavy_check_mark:'
     path: segment_tree/segment_tree_2d.hpp
-    title: "2D Segment Tree (2\u6B21\u5143\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
+    title: "2D Segment Tree (2 \u6B21\u5143\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false

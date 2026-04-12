@@ -248,7 +248,7 @@ data:
   - segment_tree/test/lazy_segment_tree_max01_flip.test.cpp
 documentation_of: segment_tree/lazy_segment_tree.hpp
 layout: document
-title: Lazy Segment Tree
+title: "Lazy Segment Tree (\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
 ---
 
 長さ $n$ の配列 $a$ に対し

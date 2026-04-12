@@ -12,7 +12,7 @@ data:
     title: Countr Zero
   - icon: ':heavy_check_mark:'
     path: segment_tree/segment_tree.hpp
-    title: Segment Tree
+    title: "Segment Tree (\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -85,10 +85,10 @@ data:
     \          sm = MS::operation(d[r], sm);\n                        r--;\n     \
     \               }\n                }\n                return r + 1 - size;\n \
     \           }\n            sm = MS::operation(d[r], sm);\n        } while ((r\
-    \ & -r) != r);\n        return 0;\n    }\n\n    std::vector<S> make_vector() {\n\
-    \        std::vector<S> vec(n);\n        for (int i = 0; i < n; i++) vec[i] =\
-    \ get(i);\n        return vec;\n    }\n\n  private:\n    int n, log, size;\n \
-    \   std::vector<S> d;\n\n    inline void update(int k) {\n        d[k] = MS::operation(d[k\
+    \ & -r) != r);\n        return 0;\n    }\n\n    std::vector<S> make_vector() const\
+    \ {\n        std::vector<S> vec(n);\n        for (int i = 0; i < n; i++) vec[i]\
+    \ = get(i);\n        return vec;\n    }\n\n  private:\n    int n, log, size;\n\
+    \    std::vector<S> d;\n\n    inline void update(int k) {\n        d[k] = MS::operation(d[k\
     \ << 1], d[(k << 1) | 1]);\n    }\n};\n#line 7 \"segment_tree/test/segment_tree_or.test.cpp\"\
     \n\nvoid test1_basic() {\n    assert(MonoidOr<int>::commutative == true);\n  \
     \  assert(MonoidOr<int>::identity() == 0);\n}\n\nvoid test2_sequence() {\n   \
@@ -118,7 +118,7 @@ data:
   isVerificationFile: true
   path: segment_tree/test/segment_tree_or.test.cpp
   requiredBy: []
-  timestamp: '2026-04-11 00:41:57+09:00'
+  timestamp: '2026-04-12 20:46:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: segment_tree/test/segment_tree_or.test.cpp
