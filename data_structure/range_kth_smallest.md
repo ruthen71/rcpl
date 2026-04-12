@@ -13,6 +13,10 @@ RangeKthSmallest<T> rks(std::vector<T> a)
 
 長さ $n$ の数列 $a$ で初期化します。
 
+### 計算量
+
+- $O(n \log n)$
+
 ## query
 
 ```cpp
@@ -25,7 +29,7 @@ $k$ は 0-indexed です。
 
 ### 制約
 
-- $0 \leq l \leq r \leq n$
+- $0 \leq l < r \leq n$
 - $0 \leq k < r - l$
 
 ### 計算量
