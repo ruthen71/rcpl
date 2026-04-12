@@ -4,13 +4,15 @@
 #include <vector>
 
 // Persistent Segment Tree
-template <class MS> struct PersistentSegmentTree {
+// N + Q log_2(N) は N = Q = 500000 のとき 10000000 くらい
+template <class MS, int MAX_NODES = 20'000'000> struct PersistentSegmentTree {
   public:
     using S = typename MS::value_type;
 
     struct Node {
         S d;
         Node *l, *r;
+        Node() = default;
         Node(S v, Node* l = nullptr, Node* r = nullptr) : d(v), l(l), r(r) {}
     };
 
@@ -106,14 +108,20 @@ template <class MS> struct PersistentSegmentTree {
   private:
     int n;
     std::vector<Node*> roots;
+    static inline Node pool[MAX_NODES];
+    static inline int pool_idx = 0;
+
+    Node* new_node(S v, Node* l = nullptr, Node* r = nullptr) {
+        return &(pool[pool_idx++] = Node(v, l, r));
+    }
 
     Node* merge(Node* l, Node* r) {
-        return new Node(MS::operation(l->d, r->d), l, r);
+        return new_node(MS::operation(l->d, r->d), l, r);
     }
 
     Node* build(const std::vector<S>& v, int l, int r) {
         if (l + 1 == r) {
-            return new Node(v[l]);
+            return new_node(v[l]);
         }
         int m = (l + r) / 2;
         return merge(build(v, l, m), build(v, m, r));
@@ -121,7 +129,7 @@ template <class MS> struct PersistentSegmentTree {
 
     Node* set(int p, const S& x, int l, int r, Node* np) {
         if (l + 1 == r) {
-            return new Node(x);
+            return new_node(x);
         }
         int m = (l + r) / 2;
         if (l <= p and p < m) {
@@ -133,7 +141,7 @@ template <class MS> struct PersistentSegmentTree {
 
     Node* add(int p, const S& x, int l, int r, Node* np) {
         if (l + 1 == r) {
-            return new Node(MS::operation(np->d, x));
+            return new_node(MS::operation(np->d, x));
         }
         int m = (l + r) / 2;
         if (l <= p and p < m) {

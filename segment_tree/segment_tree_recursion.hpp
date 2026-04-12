@@ -4,13 +4,15 @@
 #include <vector>
 
 // Segment Tree (再帰 + ポインタ木)
-template <class MS> struct SegmentTreeRecursion {
+// 2N は N = 500000 のとき 1000000 くらい
+template <class MS, int MAX_NODES = 2'000'000> struct SegmentTreeRecursion {
   public:
     using S = typename MS::value_type;
 
     struct Node {
         S d;
         Node *l, *r;
+        Node() = default;
         Node(S v, Node* l = nullptr, Node* r = nullptr) : d(v), l(l), r(r) {}
     };
 
@@ -60,10 +62,16 @@ template <class MS> struct SegmentTreeRecursion {
   private:
     int n;
     Node* root;
+    static inline Node pool[MAX_NODES];
+    static inline int pool_idx = 0;
+
+    Node* new_node(S v, Node* l = nullptr, Node* r = nullptr) {
+        return &(pool[pool_idx++] = Node(v, l, r));
+    }
 
     Node* merge(Node* l, Node* r, Node* np = nullptr) {
         if (np == nullptr) {
-            np = new Node(MS::operation(l->d, r->d), l, r);
+            np = new_node(MS::operation(l->d, r->d), l, r);
         } else {
             np->d = MS::operation(l->d, r->d);
         }
@@ -72,7 +80,7 @@ template <class MS> struct SegmentTreeRecursion {
 
     Node* build(const std::vector<S>& v, int l, int r) {
         if (l + 1 == r) {
-            return new Node(v[l]);
+            return new_node(v[l]);
         }
         int m = (l + r) / 2;
         return merge(build(v, l, m), build(v, m, r));
