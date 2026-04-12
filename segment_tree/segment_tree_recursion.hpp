@@ -4,6 +4,7 @@
 
 // Segment Tree (再帰 + ポインタ木)
 template <class MS> struct SegmentTreeRecursion {
+  public:
     using S = typename MS::value_type;
 
     struct Node {
@@ -11,8 +12,6 @@ template <class MS> struct SegmentTreeRecursion {
         S d;
         Node(S v, Node* l = nullptr, Node* r = nullptr) : d(v), l(l), r(r) {}
     };
-    int n;
-    Node* root;
 
     SegmentTreeRecursion() = default;
 
@@ -23,6 +22,34 @@ template <class MS> struct SegmentTreeRecursion {
         : n((int)(v.size())) {
         root = build(v, 0, n);
     }
+
+    void set(int p, const S& x) {
+        assert(0 <= p and p < n);
+        inner_set(p, x, 0, n, root);
+    }
+
+    void add(int p, const S& x) {
+        assert(0 <= p and p < n);
+        inner_add(p, x, 0, n, root);
+    }
+
+    S operator[](int p) const {
+        assert(0 <= p and p < n);
+        return prod(p, p + 1);
+    }
+
+    S get(int p) const {
+        assert(0 <= p and p < n);
+        return prod(p, p + 1);
+    }
+
+    S prod(int l, int r) const { return inner_prod(l, r, 0, n, root); }
+
+    S all_prod() const { return root->d; }
+
+  private:
+    int n;
+    Node* root;
 
     Node* merge(Node* l, Node* r, Node* np = nullptr) {
         if (np == nullptr) {
@@ -54,11 +81,6 @@ template <class MS> struct SegmentTreeRecursion {
         }
     }
 
-    void set(int p, const S& x) {
-        assert(0 <= p and p < n);
-        inner_set(p, x, 0, n, root);
-    }
-
     Node* inner_add(int p, const S& x, int l, int r, Node* np) {
         if (l + 1 == r) {
             np->d = MS::operation(np->d, x);
@@ -72,23 +94,6 @@ template <class MS> struct SegmentTreeRecursion {
         }
     }
 
-    void add(int p, const S& x) {
-        assert(0 <= p and p < n);
-        inner_add(p, x, 0, n, root);
-    }
-
-    S operator[](int p) const {
-        assert(0 <= p and p < n);
-        return prod(p, p + 1);
-    }
-
-    S get(int p) const {
-        assert(0 <= p and p < n);
-        return prod(p, p + 1);
-    }
-
-    S prod(int l, int r) const { return inner_prod(l, r, 0, n, root); }
-
     S inner_prod(int ql, int qr, int l, int r, Node* np) const {
         // [ql, qr) と [l, r) が交差しない
         if (qr <= l or r <= ql) return MS::identity();
@@ -98,6 +103,4 @@ template <class MS> struct SegmentTreeRecursion {
         return MS::operation(inner_prod(ql, qr, l, m, np->l),
                              inner_prod(ql, qr, m, r, np->r));
     }
-
-    S all_prod() const { return root->d; }
 };
