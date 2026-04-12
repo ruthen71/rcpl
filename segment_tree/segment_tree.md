@@ -16,7 +16,7 @@ documentation_of: ./segment_tree.hpp
 - 結合律（ $(a \cdot b) \cdot c = a \cdot (b \cdot c)$ ）が成立する。
 - 単位元（ $a \cdot e=e \cdot a=a$ となる $e$ ）が存在する。
 
-例えば、$\cdot$ として $\max$ を計算するモノイドは [ここ](../algebra/monoid_max.hpp) に定義されています。
+例えば、$\cdot$ として $\max$ を計算するモノイドは [ここ](../algebra/monoid//monoid_max.hpp) に定義されています。
 
 計算量は $\cdot$, $e$ が定数時間で計算できると仮定したときのものを記述します。
 
