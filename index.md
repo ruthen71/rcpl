@@ -447,6 +447,10 @@ data:
       path: segment_tree/dual_segment_tree.hpp
       title: "Dual Segment Tree (\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     - icon: ':heavy_check_mark:'
+      path: segment_tree/dynamic_segment_tree.hpp
+      title: "Dynamic Segment Tree (\u52D5\u7684\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
+        )"
+    - icon: ':heavy_check_mark:'
       path: segment_tree/enumerate_segment_tree_nodes.hpp
       title: "Segment Tree \u306E 1 \u70B9\u5909\u66F4\u3084\u533A\u9593\u7DCF\u7A4D\
         \u3092\u884C\u3046\u969B\u306B\u30A2\u30AF\u30BB\u30B9\u3059\u308B\u30CE\u30FC\
@@ -541,6 +545,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: segment_tree/test/dual_segment_tree_plus.test.cpp
       title: segment_tree/test/dual_segment_tree_plus.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: segment_tree/test/dynamic_segment_tree.test.cpp
+      title: segment_tree/test/dynamic_segment_tree.test.cpp
     - icon: ':heavy_check_mark:'
       path: segment_tree/test/enumerate_segment_tree_nodes.test.cpp
       title: segment_tree/test/enumerate_segment_tree_nodes.test.cpp

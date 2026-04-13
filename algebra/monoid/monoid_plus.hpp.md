@@ -41,6 +41,9 @@ data:
     path: segment_tree/test/dual_segment_tree_plus.test.cpp
     title: segment_tree/test/dual_segment_tree_plus.test.cpp
   - icon: ':heavy_check_mark:'
+    path: segment_tree/test/dynamic_segment_tree.test.cpp
+    title: segment_tree/test/dynamic_segment_tree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: segment_tree/test/fenwick_tree_plus.test.cpp
     title: segment_tree/test/fenwick_tree_plus.test.cpp
   - icon: ':heavy_check_mark:'
@@ -128,6 +131,7 @@ data:
   - segment_tree/test/lazy_segment_tree_min_plus.test.cpp
   - segment_tree/test/lazy_segment_tree_plus_assign.test.cpp
   - segment_tree/test/fenwick_tree_plus.test.cpp
+  - segment_tree/test/dynamic_segment_tree.test.cpp
   - segment_tree/test/lazy_segment_tree_min_index_plus.test.cpp
   - segment_tree/test/segment_tree_recursion.test.cpp
   - segment_tree/test/lazy_segment_tree_sum_affine.test.cpp
