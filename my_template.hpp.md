@@ -7,6 +7,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: misc/countr_zero.hpp
     title: Countr Zero
+  - icon: ':warning:'
+    path: misc/io.hpp
+    title: I/O
   - icon: ':heavy_check_mark:'
     path: misc/lowbit.hpp
     title: Lowbit
@@ -136,12 +139,22 @@ data:
     \ INF<i64>;                      // 2e18\ntemplate <> constexpr f32 INF<f32> =\
     \ INF<i64>;                      // 2e18\ntemplate <> constexpr f64 INF<f64> =\
     \ INF<i64>;                      // 2e18\ntemplate <> constexpr f128 INF<f128>\
-    \ = INF<i64>;                    // 2e18\n// I/O\n// input\ntemplate <class T>\n\
-    std::istream& operator>>(std::istream& is, std::vector<T>& v) {\n    for (auto&&\
-    \ i : v) is >> i;\n    return is;\n}\ntemplate <class... T> void in(T&... a) {\
-    \ (std::cin >> ... >> a); }\nvoid scan() {}\ntemplate <class Head, class... Tail>\
-    \ void scan(Head& head, Tail&... tail) {\n    in(head);\n    scan(tail...);\n\
-    }\n// input macro\n#define INT(...)     \\\n    int __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n\
+    \ = INF<i64>;                    // 2e18\ntemplate <class T>\nstd::istream& operator>>(std::istream&\
+    \ is, std::vector<T>& v) {\n    for (auto&& i : v) is >> i;\n    return is;\n\
+    }\ntemplate <class T>\nstd::ostream& operator<<(std::ostream& os, const std::vector<T>&\
+    \ v) {\n    auto n = v.size();\n    for (size_t i = 0; i < n; i++) {\n       \
+    \ if (i) os << ' ';\n        os << v[i];\n    }\n    return os;\n}\n#line 2 \"\
+    misc/io.hpp\"\n\n#line 4 \"misc/io.hpp\"\n\n// I/O\n// input\ntemplate <class...\
+    \ T> void in(T&... a) { (std::cin >> ... >> a); }\nvoid scan() {}\ntemplate <class\
+    \ Head, class... Tail> void scan(Head& head, Tail&... tail) {\n    in(head);\n\
+    \    scan(tail...);\n}\n// output\ntemplate <class... T> void out(const T&...\
+    \ a) { (std::cout << ... << a); }\nvoid print() { out('\\n'); }\ntemplate <class\
+    \ Head, class... Tail> void print(Head&& head, Tail&&... tail) {\n    out(head);\n\
+    \    if (sizeof...(Tail)) out(' ');\n    print(tail...);\n}\n// output for interactive\
+    \ problems\nvoid printi() { std::cout << std::endl; }\ntemplate <class Head, class...\
+    \ Tail> void printi(Head&& head, Tail&&... tail) {\n    out(head);\n    if (sizeof...(Tail))\
+    \ out(' ');\n    printi(tail...);\n}\n#line 197 \"my_template.hpp\"\n// input\
+    \ macro\n#define INT(...)     \\\n    int __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n\
     #define I64(...)     \\\n    i64 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define\
     \ U32(...)     \\\n    u32 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define U64(...)\
     \     \\\n    u64 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define F32(...)   \
@@ -160,25 +173,16 @@ data:
     \ name3(size), name4(size); \\\n    for (int i = 0; i < size; i++) scan(name1[i],\
     \ name2[i], name3[i], name4[i])\n#define VV(type, name, h, w)                \
     \       \\\n    std::vector name((h), std::vector<type>((w))); \\\n    scan(name)\n\
-    // output\ntemplate <class T>\nstd::ostream& operator<<(std::ostream& os, const\
-    \ std::vector<T>& v) {\n    auto n = v.size();\n    for (size_t i = 0; i < n;\
-    \ i++) {\n        if (i) os << ' ';\n        os << v[i];\n    }\n    return os;\n\
-    }\ntemplate <class... T> void out(const T&... a) { (std::cout << ... << a); }\n\
-    void print() { out('\\n'); }\ntemplate <class Head, class... Tail> void print(Head&&\
-    \ head, Tail&&... tail) {\n    out(head);\n    if (sizeof...(Tail)) out(' ');\n\
-    \    print(tail...);\n}\n// for interactive problems\nvoid printi() { std::cout\
-    \ << std::endl; }\ntemplate <class Head, class... Tail> void printi(Head&& head,\
-    \ Tail&&... tail) {\n    out(head);\n    if (sizeof...(Tail)) out(' ');\n    printi(tail...);\n\
-    }\n// bool output\nvoid YES(bool t = 1) { print(t ? \"YES\" : \"NO\"); }\nvoid\
-    \ Yes(bool t = 1) { print(t ? \"Yes\" : \"No\"); }\nvoid yes(bool t = 1) { print(t\
-    \ ? \"yes\" : \"no\"); }\nvoid NO(bool t = 1) { YES(!t); }\nvoid No(bool t = 1)\
-    \ { Yes(!t); }\nvoid no(bool t = 1) { yes(!t); }\nvoid POSSIBLE(bool t = 1) {\
-    \ print(t ? \"POSSIBLE\" : \"IMPOSSIBLE\"); }\nvoid Possible(bool t = 1) { print(t\
-    \ ? \"Possible\" : \"Impossible\"); }\nvoid possible(bool t = 1) { print(t ? \"\
-    possible\" : \"impossible\"); }\nvoid IMPOSSIBLE(bool t = 1) { POSSIBLE(!t); }\n\
-    void Impossible(bool t = 1) { Possible(!t); }\nvoid impossible(bool t = 1) { possible(!t);\
-    \ }\nvoid FIRST(bool t = 1) { print(t ? \"FIRST\" : \"SECOND\"); }\nvoid First(bool\
-    \ t = 1) { print(t ? \"First\" : \"Second\"); }\nvoid first(bool t = 1) { print(t\
+    // bool output\nvoid YES(bool t = 1) { print(t ? \"YES\" : \"NO\"); }\nvoid Yes(bool\
+    \ t = 1) { print(t ? \"Yes\" : \"No\"); }\nvoid yes(bool t = 1) { print(t ? \"\
+    yes\" : \"no\"); }\nvoid NO(bool t = 1) { YES(!t); }\nvoid No(bool t = 1) { Yes(!t);\
+    \ }\nvoid no(bool t = 1) { yes(!t); }\nvoid POSSIBLE(bool t = 1) { print(t ? \"\
+    POSSIBLE\" : \"IMPOSSIBLE\"); }\nvoid Possible(bool t = 1) { print(t ? \"Possible\"\
+    \ : \"Impossible\"); }\nvoid possible(bool t = 1) { print(t ? \"possible\" : \"\
+    impossible\"); }\nvoid IMPOSSIBLE(bool t = 1) { POSSIBLE(!t); }\nvoid Impossible(bool\
+    \ t = 1) { Possible(!t); }\nvoid impossible(bool t = 1) { possible(!t); }\nvoid\
+    \ FIRST(bool t = 1) { print(t ? \"FIRST\" : \"SECOND\"); }\nvoid First(bool t\
+    \ = 1) { print(t ? \"First\" : \"Second\"); }\nvoid first(bool t = 1) { print(t\
     \ ? \"first\" : \"second\"); }\nvoid SECOND(bool t = 1) { FIRST(!t); }\nvoid Second(bool\
     \ t = 1) { First(!t); }\nvoid second(bool t = 1) { first(!t); }\n// I/O speed\
     \ up\nstruct SetUpIO {\n    SetUpIO() {\n        std::ios::sync_with_stdio(false);\n\
@@ -265,20 +269,20 @@ data:
     \ INF<i64>;                      // 2e18\ntemplate <> constexpr f32 INF<f32> =\
     \ INF<i64>;                      // 2e18\ntemplate <> constexpr f64 INF<f64> =\
     \ INF<i64>;                      // 2e18\ntemplate <> constexpr f128 INF<f128>\
-    \ = INF<i64>;                    // 2e18\n// I/O\n// input\ntemplate <class T>\n\
-    std::istream& operator>>(std::istream& is, std::vector<T>& v) {\n    for (auto&&\
-    \ i : v) is >> i;\n    return is;\n}\ntemplate <class... T> void in(T&... a) {\
-    \ (std::cin >> ... >> a); }\nvoid scan() {}\ntemplate <class Head, class... Tail>\
-    \ void scan(Head& head, Tail&... tail) {\n    in(head);\n    scan(tail...);\n\
-    }\n// input macro\n#define INT(...)     \\\n    int __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n\
-    #define I64(...)     \\\n    i64 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define\
-    \ U32(...)     \\\n    u32 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define U64(...)\
-    \     \\\n    u64 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define F32(...)   \
-    \  \\\n    f32 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define F64(...)     \\\
-    \n    f64 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define F128(...)     \\\n \
-    \   f128 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define STR(...)            \
-    \ \\\n    std::string __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define CHR(...)\
-    \      \\\n    char __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define VEC(type,\
+    \ = INF<i64>;                    // 2e18\ntemplate <class T>\nstd::istream& operator>>(std::istream&\
+    \ is, std::vector<T>& v) {\n    for (auto&& i : v) is >> i;\n    return is;\n\
+    }\ntemplate <class T>\nstd::ostream& operator<<(std::ostream& os, const std::vector<T>&\
+    \ v) {\n    auto n = v.size();\n    for (size_t i = 0; i < n; i++) {\n       \
+    \ if (i) os << ' ';\n        os << v[i];\n    }\n    return os;\n}\n#include \"\
+    ./misc/io.hpp\"\n// input macro\n#define INT(...)     \\\n    int __VA_ARGS__;\
+    \ \\\n    scan(__VA_ARGS__)\n#define I64(...)     \\\n    i64 __VA_ARGS__; \\\n\
+    \    scan(__VA_ARGS__)\n#define U32(...)     \\\n    u32 __VA_ARGS__; \\\n   \
+    \ scan(__VA_ARGS__)\n#define U64(...)     \\\n    u64 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n\
+    #define F32(...)     \\\n    f32 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define\
+    \ F64(...)     \\\n    f64 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define F128(...)\
+    \     \\\n    f128 __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define STR(...)  \
+    \           \\\n    std::string __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define\
+    \ CHR(...)      \\\n    char __VA_ARGS__; \\\n    scan(__VA_ARGS__)\n#define VEC(type,\
     \ name, size)     \\\n    std::vector<type> name(size); \\\n    scan(name)\n#define\
     \ VEC2(type, name1, name2, size)          \\\n    std::vector<type> name1(size),\
     \ name2(size); \\\n    for (int i = 0; i < size; i++) scan(name1[i], name2[i])\n\
@@ -289,25 +293,16 @@ data:
     \ name3(size), name4(size); \\\n    for (int i = 0; i < size; i++) scan(name1[i],\
     \ name2[i], name3[i], name4[i])\n#define VV(type, name, h, w)                \
     \       \\\n    std::vector name((h), std::vector<type>((w))); \\\n    scan(name)\n\
-    // output\ntemplate <class T>\nstd::ostream& operator<<(std::ostream& os, const\
-    \ std::vector<T>& v) {\n    auto n = v.size();\n    for (size_t i = 0; i < n;\
-    \ i++) {\n        if (i) os << ' ';\n        os << v[i];\n    }\n    return os;\n\
-    }\ntemplate <class... T> void out(const T&... a) { (std::cout << ... << a); }\n\
-    void print() { out('\\n'); }\ntemplate <class Head, class... Tail> void print(Head&&\
-    \ head, Tail&&... tail) {\n    out(head);\n    if (sizeof...(Tail)) out(' ');\n\
-    \    print(tail...);\n}\n// for interactive problems\nvoid printi() { std::cout\
-    \ << std::endl; }\ntemplate <class Head, class... Tail> void printi(Head&& head,\
-    \ Tail&&... tail) {\n    out(head);\n    if (sizeof...(Tail)) out(' ');\n    printi(tail...);\n\
-    }\n// bool output\nvoid YES(bool t = 1) { print(t ? \"YES\" : \"NO\"); }\nvoid\
-    \ Yes(bool t = 1) { print(t ? \"Yes\" : \"No\"); }\nvoid yes(bool t = 1) { print(t\
-    \ ? \"yes\" : \"no\"); }\nvoid NO(bool t = 1) { YES(!t); }\nvoid No(bool t = 1)\
-    \ { Yes(!t); }\nvoid no(bool t = 1) { yes(!t); }\nvoid POSSIBLE(bool t = 1) {\
-    \ print(t ? \"POSSIBLE\" : \"IMPOSSIBLE\"); }\nvoid Possible(bool t = 1) { print(t\
-    \ ? \"Possible\" : \"Impossible\"); }\nvoid possible(bool t = 1) { print(t ? \"\
-    possible\" : \"impossible\"); }\nvoid IMPOSSIBLE(bool t = 1) { POSSIBLE(!t); }\n\
-    void Impossible(bool t = 1) { Possible(!t); }\nvoid impossible(bool t = 1) { possible(!t);\
-    \ }\nvoid FIRST(bool t = 1) { print(t ? \"FIRST\" : \"SECOND\"); }\nvoid First(bool\
-    \ t = 1) { print(t ? \"First\" : \"Second\"); }\nvoid first(bool t = 1) { print(t\
+    // bool output\nvoid YES(bool t = 1) { print(t ? \"YES\" : \"NO\"); }\nvoid Yes(bool\
+    \ t = 1) { print(t ? \"Yes\" : \"No\"); }\nvoid yes(bool t = 1) { print(t ? \"\
+    yes\" : \"no\"); }\nvoid NO(bool t = 1) { YES(!t); }\nvoid No(bool t = 1) { Yes(!t);\
+    \ }\nvoid no(bool t = 1) { yes(!t); }\nvoid POSSIBLE(bool t = 1) { print(t ? \"\
+    POSSIBLE\" : \"IMPOSSIBLE\"); }\nvoid Possible(bool t = 1) { print(t ? \"Possible\"\
+    \ : \"Impossible\"); }\nvoid possible(bool t = 1) { print(t ? \"possible\" : \"\
+    impossible\"); }\nvoid IMPOSSIBLE(bool t = 1) { POSSIBLE(!t); }\nvoid Impossible(bool\
+    \ t = 1) { Possible(!t); }\nvoid impossible(bool t = 1) { possible(!t); }\nvoid\
+    \ FIRST(bool t = 1) { print(t ? \"FIRST\" : \"SECOND\"); }\nvoid First(bool t\
+    \ = 1) { print(t ? \"First\" : \"Second\"); }\nvoid first(bool t = 1) { print(t\
     \ ? \"first\" : \"second\"); }\nvoid SECOND(bool t = 1) { FIRST(!t); }\nvoid Second(bool\
     \ t = 1) { First(!t); }\nvoid second(bool t = 1) { first(!t); }\n// I/O speed\
     \ up\nstruct SetUpIO {\n    SetUpIO() {\n        std::ios::sync_with_stdio(false);\n\
@@ -319,11 +314,12 @@ data:
   - misc/popcount.hpp
   - misc/topbit.hpp
   - misc/countl_zero.hpp
+  - misc/io.hpp
   isVerificationFile: false
   path: my_template.hpp
   requiredBy:
   - my_template_int128.hpp
-  timestamp: '2025-12-31 07:11:44+09:00'
+  timestamp: '2026-05-10 18:24:54+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: my_template.hpp

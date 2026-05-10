@@ -415,6 +415,9 @@ data:
     - icon: ':warning:'
       path: misc/custom_hash.hpp
       title: misc/custom_hash.hpp
+    - icon: ':warning:'
+      path: misc/io.hpp
+      title: I/O
     - icon: ':heavy_check_mark:'
       path: misc/lowbit.hpp
       title: Lowbit
