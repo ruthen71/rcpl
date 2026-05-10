@@ -179,19 +179,21 @@ template <> constexpr u64 INF<u64> = INF<i64>;                      // 2e18
 template <> constexpr f32 INF<f32> = INF<i64>;                      // 2e18
 template <> constexpr f64 INF<f64> = INF<i64>;                      // 2e18
 template <> constexpr f128 INF<f128> = INF<i64>;                    // 2e18
-// I/O
-// input
 template <class T>
 std::istream& operator>>(std::istream& is, std::vector<T>& v) {
     for (auto&& i : v) is >> i;
     return is;
 }
-template <class... T> void in(T&... a) { (std::cin >> ... >> a); }
-void scan() {}
-template <class Head, class... Tail> void scan(Head& head, Tail&... tail) {
-    in(head);
-    scan(tail...);
+template <class T>
+std::ostream& operator<<(std::ostream& os, const std::vector<T>& v) {
+    auto n = v.size();
+    for (size_t i = 0; i < n; i++) {
+        if (i) os << ' ';
+        os << v[i];
+    }
+    return os;
 }
+#include "./misc/io.hpp"
 // input macro
 #define INT(...)     \
     int __VA_ARGS__; \
@@ -235,30 +237,6 @@ template <class Head, class... Tail> void scan(Head& head, Tail&... tail) {
 #define VV(type, name, h, w)                       \
     std::vector name((h), std::vector<type>((w))); \
     scan(name)
-// output
-template <class T>
-std::ostream& operator<<(std::ostream& os, const std::vector<T>& v) {
-    auto n = v.size();
-    for (size_t i = 0; i < n; i++) {
-        if (i) os << ' ';
-        os << v[i];
-    }
-    return os;
-}
-template <class... T> void out(const T&... a) { (std::cout << ... << a); }
-void print() { out('\n'); }
-template <class Head, class... Tail> void print(Head&& head, Tail&&... tail) {
-    out(head);
-    if (sizeof...(Tail)) out(' ');
-    print(tail...);
-}
-// for interactive problems
-void printi() { std::cout << std::endl; }
-template <class Head, class... Tail> void printi(Head&& head, Tail&&... tail) {
-    out(head);
-    if (sizeof...(Tail)) out(' ');
-    printi(tail...);
-}
 // bool output
 void YES(bool t = 1) { print(t ? "YES" : "NO"); }
 void Yes(bool t = 1) { print(t ? "Yes" : "No"); }
