@@ -1,7 +1,7 @@
 #pragma once
 
-#include <utility>
 #include <cassert>
+#include <utility>
 
 // constexpr ... for constexpr bool prime()
 template <int m> struct StaticModint {
@@ -21,12 +21,12 @@ template <int m> struct StaticModint {
 
     constexpr unsigned int val() const { return _v; }
 
-    constexpr mint &operator++() {
+    constexpr mint& operator++() {
         _v++;
         if (_v == umod()) _v = 0;
         return *this;
     }
-    constexpr mint &operator--() {
+    constexpr mint& operator--() {
         if (_v == 0) _v = umod();
         _v--;
         return *this;
@@ -42,23 +42,23 @@ template <int m> struct StaticModint {
         return result;
     }
 
-    constexpr mint &operator+=(const mint &rhs) {
+    constexpr mint& operator+=(const mint& rhs) {
         _v += rhs._v;
         if (_v >= umod()) _v -= umod();
         return *this;
     }
-    constexpr mint &operator-=(const mint &rhs) {
+    constexpr mint& operator-=(const mint& rhs) {
         _v -= rhs._v;
         if (_v >= umod()) _v += umod();
         return *this;
     }
-    constexpr mint &operator*=(const mint &rhs) {
+    constexpr mint& operator*=(const mint& rhs) {
         unsigned long long z = _v;
         z *= rhs._v;
         _v = (unsigned int)(z % umod());
         return *this;
     }
-    constexpr mint &operator/=(const mint &rhs) { return (*this *= rhs.inv()); }
+    constexpr mint& operator/=(const mint& rhs) { return (*this *= rhs.inv()); }
 
     constexpr mint operator+() const { return *this; }
     constexpr mint operator-() const { return mint() - *this; }
@@ -85,13 +85,27 @@ template <int m> struct StaticModint {
         }
     }
 
-    friend constexpr mint operator+(const mint &lhs, const mint &rhs) { return mint(lhs) += rhs; }
-    friend constexpr mint operator-(const mint &lhs, const mint &rhs) { return mint(lhs) -= rhs; }
-    friend constexpr mint operator*(const mint &lhs, const mint &rhs) { return mint(lhs) *= rhs; }
-    friend constexpr mint operator/(const mint &lhs, const mint &rhs) { return mint(lhs) /= rhs; }
-    friend constexpr bool operator==(const mint &lhs, const mint &rhs) { return lhs._v == rhs._v; }
-    friend constexpr bool operator!=(const mint &lhs, const mint &rhs) { return lhs._v != rhs._v; }
-    friend std::ostream &operator<<(std::ostream &os, const mint &v) { return os << v.val(); }
+    friend constexpr mint operator+(const mint& lhs, const mint& rhs) {
+        return mint(lhs) += rhs;
+    }
+    friend constexpr mint operator-(const mint& lhs, const mint& rhs) {
+        return mint(lhs) -= rhs;
+    }
+    friend constexpr mint operator*(const mint& lhs, const mint& rhs) {
+        return mint(lhs) *= rhs;
+    }
+    friend constexpr mint operator/(const mint& lhs, const mint& rhs) {
+        return mint(lhs) /= rhs;
+    }
+    friend constexpr bool operator==(const mint& lhs, const mint& rhs) {
+        return lhs._v == rhs._v;
+    }
+    friend constexpr bool operator!=(const mint& lhs, const mint& rhs) {
+        return lhs._v != rhs._v;
+    }
+    friend std::ostream& operator<<(std::ostream& os, const mint& v) {
+        return os << v.val();
+    }
 
     static constexpr bool prime = []() -> bool {
         if (m == 1) return false;
