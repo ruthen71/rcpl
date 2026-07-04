@@ -237,15 +237,15 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/heavy_light_decomposition_path_add_path_sum.test.cpp
-  - segment_tree/test/lazy_segment_tree_inversion01_flip.test.cpp
-  - segment_tree/test/lazy_segment_tree_min_assign.test.cpp
-  - segment_tree/test/lazy_segment_tree_min_plus.test.cpp
-  - segment_tree/test/lazy_segment_tree_plus_assign.test.cpp
-  - segment_tree/test/lazy_segment_tree_min_index_plus.test.cpp
   - segment_tree/test/lazy_segment_tree_product_sum_add2.test.cpp
   - segment_tree/test/lazy_segment_tree_sum_affine.test.cpp
-  - segment_tree/test/lazy_segment_tree_plus_plus.test.cpp
   - segment_tree/test/lazy_segment_tree_max01_flip.test.cpp
+  - segment_tree/test/lazy_segment_tree_min_plus.test.cpp
+  - segment_tree/test/lazy_segment_tree_plus_plus.test.cpp
+  - segment_tree/test/lazy_segment_tree_min_index_plus.test.cpp
+  - segment_tree/test/lazy_segment_tree_min_assign.test.cpp
+  - segment_tree/test/lazy_segment_tree_inversion01_flip.test.cpp
+  - segment_tree/test/lazy_segment_tree_plus_assign.test.cpp
 documentation_of: segment_tree/lazy_segment_tree.hpp
 layout: document
 title: "Lazy Segment Tree (\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"

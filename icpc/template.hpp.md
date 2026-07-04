@@ -64,15 +64,15 @@ data:
   isVerificationFile: false
   path: icpc/template.hpp
   requiredBy:
-  - icpc/modint.hpp
-  - icpc/uf.hpp
-  - icpc/dice.hpp
-  - icpc/lca.hpp
-  - icpc/binomal.hpp
-  - icpc/scc.hpp
   - icpc/ntt.hpp
-  - icpc/matrix.hpp
+  - icpc/scc.hpp
   - icpc/segtree.hpp
+  - icpc/lca.hpp
+  - icpc/dice.hpp
+  - icpc/uf.hpp
+  - icpc/matrix.hpp
+  - icpc/modint.hpp
+  - icpc/binomal.hpp
   timestamp: '2023-05-31 02:53:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

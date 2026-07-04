@@ -153,26 +153,26 @@ data:
     \      if (k < size) lz[k] = MF::operation(lz[k], f);\n    }\n\n    void push(int\
     \ k) {\n        all_apply(k << 1, lz[k]);\n        all_apply((k << 1) | 1, lz[k]);\n\
     \        lz[k] = MF::identity();\n    }\n};\n#line 2 \"math/static_modint.hpp\"\
-    \n\n#include <utility>\n#line 5 \"math/static_modint.hpp\"\n\n// constexpr ...\
+    \n\n#line 4 \"math/static_modint.hpp\"\n#include <utility>\n\n// constexpr ...\
     \ for constexpr bool prime()\ntemplate <int m> struct StaticModint {\n    using\
     \ mint = StaticModint;\n    unsigned int _v;\n\n    static constexpr int mod()\
     \ { return m; }\n    static constexpr unsigned int umod() { return m; }\n\n  \
     \  constexpr StaticModint() : _v(0) {}\n\n    template <class T> constexpr StaticModint(T\
     \ v) {\n        long long x = (long long)(v % (long long)(umod()));\n        if\
     \ (x < 0) x += umod();\n        _v = (unsigned int)(x);\n    }\n\n    constexpr\
-    \ unsigned int val() const { return _v; }\n\n    constexpr mint &operator++()\
+    \ unsigned int val() const { return _v; }\n\n    constexpr mint& operator++()\
     \ {\n        _v++;\n        if (_v == umod()) _v = 0;\n        return *this;\n\
-    \    }\n    constexpr mint &operator--() {\n        if (_v == 0) _v = umod();\n\
+    \    }\n    constexpr mint& operator--() {\n        if (_v == 0) _v = umod();\n\
     \        _v--;\n        return *this;\n    }\n    constexpr mint operator++(int)\
     \ {\n        mint result = *this;\n        ++*this;\n        return result;\n\
     \    }\n    constexpr mint operator--(int) {\n        mint result = *this;\n \
-    \       --*this;\n        return result;\n    }\n\n    constexpr mint &operator+=(const\
-    \ mint &rhs) {\n        _v += rhs._v;\n        if (_v >= umod()) _v -= umod();\n\
-    \        return *this;\n    }\n    constexpr mint &operator-=(const mint &rhs)\
+    \       --*this;\n        return result;\n    }\n\n    constexpr mint& operator+=(const\
+    \ mint& rhs) {\n        _v += rhs._v;\n        if (_v >= umod()) _v -= umod();\n\
+    \        return *this;\n    }\n    constexpr mint& operator-=(const mint& rhs)\
     \ {\n        _v -= rhs._v;\n        if (_v >= umod()) _v += umod();\n        return\
-    \ *this;\n    }\n    constexpr mint &operator*=(const mint &rhs) {\n        unsigned\
+    \ *this;\n    }\n    constexpr mint& operator*=(const mint& rhs) {\n        unsigned\
     \ long long z = _v;\n        z *= rhs._v;\n        _v = (unsigned int)(z % umod());\n\
-    \        return *this;\n    }\n    constexpr mint &operator/=(const mint &rhs)\
+    \        return *this;\n    }\n    constexpr mint& operator/=(const mint& rhs)\
     \ { return (*this *= rhs.inv()); }\n\n    constexpr mint operator+() const { return\
     \ *this; }\n    constexpr mint operator-() const { return mint() - *this; }\n\n\
     \    constexpr mint pow(long long n) const {\n        assert(n >= 0);\n      \
@@ -181,32 +181,34 @@ data:
     \ }\n\n    constexpr mint inv() const {\n        if (prime) {\n            assert(_v);\n\
     \            return pow(umod() - 2);\n        } else {\n            auto eg =\
     \ inv_gcd(_v, m);\n            assert(eg.first == 1);\n            return eg.second;\n\
-    \        }\n    }\n\n    friend constexpr mint operator+(const mint &lhs, const\
-    \ mint &rhs) { return mint(lhs) += rhs; }\n    friend constexpr mint operator-(const\
-    \ mint &lhs, const mint &rhs) { return mint(lhs) -= rhs; }\n    friend constexpr\
-    \ mint operator*(const mint &lhs, const mint &rhs) { return mint(lhs) *= rhs;\
-    \ }\n    friend constexpr mint operator/(const mint &lhs, const mint &rhs) { return\
-    \ mint(lhs) /= rhs; }\n    friend constexpr bool operator==(const mint &lhs, const\
-    \ mint &rhs) { return lhs._v == rhs._v; }\n    friend constexpr bool operator!=(const\
-    \ mint &lhs, const mint &rhs) { return lhs._v != rhs._v; }\n    friend std::ostream\
-    \ &operator<<(std::ostream &os, const mint &v) { return os << v.val(); }\n\n \
-    \   static constexpr bool prime = []() -> bool {\n        if (m == 1) return false;\n\
-    \        if (m == 2 || m == 7 || m == 61) return true;\n        if (m % 2 == 0)\
-    \ return false;\n        unsigned int d = m - 1;\n        while (d % 2 == 0) d\
-    \ /= 2;\n        for (unsigned int a : {2, 7, 61}) {\n            unsigned int\
-    \ t = d;\n            mint y = mint(a).pow(t);\n            while (t != m - 1\
-    \ and y != 1 and y != m - 1) {\n                y *= y;\n                t <<=\
-    \ 1;\n            }\n            if (y != m - 1 and t % 2 == 0) {\n          \
-    \      return false;\n            }\n        }\n        return true;\n    }();\n\
-    \    static constexpr std::pair<int, int> inv_gcd(int a, int b) {\n        if\
-    \ (a == 0) return {b, 0};\n        int s = b, t = a, m0 = 0, m1 = 1;\n       \
-    \ while (t) {\n            const int u = s / t;\n            s -= t * u;\n   \
-    \         m0 -= m1 * u;\n            std::swap(s, t);\n            std::swap(m0,\
-    \ m1);\n        }\n        if (m0 < 0) m0 += b / s;\n        return {s, m0};\n\
-    \    }\n};\nusing mint107 = StaticModint<1000000007>;\nusing mint998 = StaticModint<998244353>;\n\
-    #line 8 \"segment_tree/test/lazy_segment_tree_product_sum_add2.test.cpp\"\nusing\
-    \ mint = mint998;\n\nstd::vector<int> solve(std::vector<int>& a,\n           \
-    \            std::vector<int>& b,\n                       std::vector<std::tuple<int,\
+    \        }\n    }\n\n    friend constexpr mint operator+(const mint& lhs, const\
+    \ mint& rhs) {\n        return mint(lhs) += rhs;\n    }\n    friend constexpr\
+    \ mint operator-(const mint& lhs, const mint& rhs) {\n        return mint(lhs)\
+    \ -= rhs;\n    }\n    friend constexpr mint operator*(const mint& lhs, const mint&\
+    \ rhs) {\n        return mint(lhs) *= rhs;\n    }\n    friend constexpr mint operator/(const\
+    \ mint& lhs, const mint& rhs) {\n        return mint(lhs) /= rhs;\n    }\n   \
+    \ friend constexpr bool operator==(const mint& lhs, const mint& rhs) {\n     \
+    \   return lhs._v == rhs._v;\n    }\n    friend constexpr bool operator!=(const\
+    \ mint& lhs, const mint& rhs) {\n        return lhs._v != rhs._v;\n    }\n   \
+    \ friend std::ostream& operator<<(std::ostream& os, const mint& v) {\n       \
+    \ return os << v.val();\n    }\n\n    static constexpr bool prime = []() -> bool\
+    \ {\n        if (m == 1) return false;\n        if (m == 2 || m == 7 || m == 61)\
+    \ return true;\n        if (m % 2 == 0) return false;\n        unsigned int d\
+    \ = m - 1;\n        while (d % 2 == 0) d /= 2;\n        for (unsigned int a :\
+    \ {2, 7, 61}) {\n            unsigned int t = d;\n            mint y = mint(a);\n\
+    \            y = y.pow(t);\n            while (t != m - 1 and y != 1 and y !=\
+    \ m - 1) {\n                y *= y;\n                t <<= 1;\n            }\n\
+    \            if (y != m - 1 and t % 2 == 0) {\n                return false;\n\
+    \            }\n        }\n        return true;\n    }();\n    static constexpr\
+    \ std::pair<int, int> inv_gcd(int a, int b) {\n        if (a == 0) return {b,\
+    \ 0};\n        int s = b, t = a, m0 = 0, m1 = 1;\n        while (t) {\n      \
+    \      const int u = s / t;\n            s -= t * u;\n            m0 -= m1 * u;\n\
+    \            std::swap(s, t);\n            std::swap(m0, m1);\n        }\n   \
+    \     if (m0 < 0) m0 += b / s;\n        return {s, m0};\n    }\n};\nusing mint107\
+    \ = StaticModint<1000000007>;\nusing mint998 = StaticModint<998244353>;\n#line\
+    \ 8 \"segment_tree/test/lazy_segment_tree_product_sum_add2.test.cpp\"\nusing mint\
+    \ = mint998;\n\nstd::vector<int> solve(std::vector<int>& a,\n                \
+    \       std::vector<int>& b,\n                       std::vector<std::tuple<int,\
     \ int, int, int>>& query) {\n    const int n = (int)(a.size());\n    std::vector<ProductSum<mint>>\
     \ segi(n);\n    for (int i = 0; i < n; i++) {\n        segi[i] = {mint(a[i]) *\
     \ mint(b[i]), mint(a[i]), mint(b[i])};\n    }\n    LazySegmentTree<ActedMonoidProductSumAdd2<mint>>\
@@ -261,7 +263,7 @@ data:
   isVerificationFile: true
   path: segment_tree/test/lazy_segment_tree_product_sum_add2.test.cpp
   requiredBy: []
-  timestamp: '2026-04-11 00:41:57+09:00'
+  timestamp: '2026-07-04 12:53:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: segment_tree/test/lazy_segment_tree_product_sum_add2.test.cpp

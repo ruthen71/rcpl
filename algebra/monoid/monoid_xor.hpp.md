@@ -38,14 +38,14 @@ data:
   isVerificationFile: false
   path: algebra/monoid/monoid_xor.hpp
   requiredBy:
-  - algebra/acted_monoid/acted_monoid_max01_flip.hpp
   - algebra/acted_monoid/acted_monoid_inversion01_flip.hpp
+  - algebra/acted_monoid/acted_monoid_max01_flip.hpp
   timestamp: '2026-04-11 00:41:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - segment_tree/test/lazy_segment_tree_inversion01_flip.test.cpp
   - segment_tree/test/segment_tree_xor.test.cpp
   - segment_tree/test/lazy_segment_tree_max01_flip.test.cpp
+  - segment_tree/test/lazy_segment_tree_inversion01_flip.test.cpp
 documentation_of: algebra/monoid/monoid_xor.hpp
 layout: document
 redirect_from:

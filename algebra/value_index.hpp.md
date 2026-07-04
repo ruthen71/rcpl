@@ -33,10 +33,10 @@ data:
   isVerificationFile: false
   path: algebra/value_index.hpp
   requiredBy:
-  - algebra/monoid/monoid_max_index.hpp
-  - algebra/monoid/monoid_min_index.hpp
   - algebra/acted_monoid/acted_monoid_max_index_plus.hpp
   - algebra/acted_monoid/acted_monoid_min_index_plus.hpp
+  - algebra/monoid/monoid_min_index.hpp
+  - algebra/monoid/monoid_max_index.hpp
   timestamp: '2026-04-11 00:41:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

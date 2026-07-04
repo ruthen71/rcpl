@@ -95,8 +95,8 @@ data:
   timestamp: '2026-01-20 04:06:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/dijkstra_1.test.cpp
   - verify/graph/dijkstra_2.test.cpp
+  - verify/graph/dijkstra_1.test.cpp
 documentation_of: graph/dijkstra.hpp
 layout: document
 title: "Dijkstra's algorithm (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"

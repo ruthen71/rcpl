@@ -108,37 +108,37 @@ data:
   isVerificationFile: false
   path: algebra/monoid/monoid_plus.hpp
   requiredBy:
-  - algebra/acted_monoid/acted_monoid_plus_assign.hpp
-  - algebra/acted_monoid/acted_monoid_min_plus.hpp
-  - algebra/acted_monoid/acted_monoid_plus_affine.hpp
-  - algebra/acted_monoid/acted_monoid_plus_plus.hpp
-  - algebra/acted_monoid/acted_monoid_max_index_plus.hpp
-  - algebra/acted_monoid/acted_monoid_max_plus.hpp
-  - algebra/acted_monoid/acted_monoid_min_index_plus.hpp
-  - dp/inversion_number.hpp
   - data_structure/range_kth_smallest.hpp
+  - algebra/acted_monoid/acted_monoid_max_index_plus.hpp
+  - algebra/acted_monoid/acted_monoid_min_plus.hpp
+  - algebra/acted_monoid/acted_monoid_min_index_plus.hpp
+  - algebra/acted_monoid/acted_monoid_plus_assign.hpp
+  - algebra/acted_monoid/acted_monoid_max_plus.hpp
+  - algebra/acted_monoid/acted_monoid_plus_plus.hpp
+  - algebra/acted_monoid/acted_monoid_plus_affine.hpp
+  - dp/inversion_number.hpp
   timestamp: '2025-12-10 04:21:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/misc/mo.test.cpp
-  - verify/graph/heavy_light_decomposition_vertex_add_subtree_sum.test.cpp
   - verify/graph/heavy_light_decomposition_vertex_add_path_sum.test.cpp
+  - verify/graph/heavy_light_decomposition_vertex_add_subtree_sum.test.cpp
   - verify/graph/euler_tour.test.cpp
   - verify/graph/heavy_light_decomposition_path_add_path_sum.test.cpp
-  - dp/test/inversion_number.test.cpp
-  - segment_tree/test/segment_tree_plus.test.cpp
-  - segment_tree/test/dual_segment_tree_plus.test.cpp
-  - segment_tree/test/lazy_segment_tree_min_plus.test.cpp
-  - segment_tree/test/lazy_segment_tree_plus_assign.test.cpp
-  - segment_tree/test/fenwick_tree_plus.test.cpp
+  - verify/misc/mo.test.cpp
+  - data_structure/test/range_kth_smallest.test.cpp
   - segment_tree/test/dynamic_segment_tree.test.cpp
+  - segment_tree/test/lazy_segment_tree_sum_affine.test.cpp
+  - segment_tree/test/lazy_segment_tree_min_plus.test.cpp
+  - segment_tree/test/fenwick_tree_plus.test.cpp
+  - segment_tree/test/lazy_segment_tree_plus_plus.test.cpp
   - segment_tree/test/lazy_segment_tree_min_index_plus.test.cpp
   - segment_tree/test/segment_tree_recursion.test.cpp
-  - segment_tree/test/lazy_segment_tree_sum_affine.test.cpp
-  - segment_tree/test/lazy_segment_tree_plus_plus.test.cpp
-  - data_structure/test/range_kth_smallest.test.cpp
+  - segment_tree/test/segment_tree_plus.test.cpp
+  - segment_tree/test/dual_segment_tree_plus.test.cpp
+  - segment_tree/test/lazy_segment_tree_plus_assign.test.cpp
   - unionfind/test/potentialized_unionfind.test.cpp
   - unionfind/test/potentialized_unionfind_groups.test.cpp
+  - dp/test/inversion_number.test.cpp
 documentation_of: algebra/monoid/monoid_plus.hpp
 layout: document
 redirect_from:

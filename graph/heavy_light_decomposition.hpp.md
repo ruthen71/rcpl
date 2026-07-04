@@ -216,8 +216,8 @@ data:
   timestamp: '2026-01-20 04:06:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/heavy_light_decomposition_vertex_add_subtree_sum.test.cpp
   - verify/graph/heavy_light_decomposition_vertex_add_path_sum.test.cpp
+  - verify/graph/heavy_light_decomposition_vertex_add_subtree_sum.test.cpp
   - verify/graph/heavy_light_decomposition_path_add_path_sum.test.cpp
 documentation_of: graph/heavy_light_decomposition.hpp
 layout: document
