@@ -115,7 +115,8 @@ template <int m> struct StaticModint {
         while (d % 2 == 0) d /= 2;
         for (unsigned int a : {2, 7, 61}) {
             unsigned int t = d;
-            mint y = mint(a).pow(t);
+            mint y = mint(a);
+            y = y.pow(t);
             while (t != m - 1 and y != 1 and y != m - 1) {
                 y *= y;
                 t <<= 1;
