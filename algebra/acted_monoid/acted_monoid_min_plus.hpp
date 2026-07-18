@@ -9,6 +9,7 @@ template <class T, T inf> struct ActedMonoidMinPlus {
     using S = typename MS::value_type;
     using F = typename MF::value_type;
     static constexpr S mapping(const F f, const S x, const int size) {
+        if (x == MS::identity()) return x;
         return x + f;
     }
 };

@@ -9,7 +9,7 @@ template <class T, T inf, bool smaller_index> struct ActedMonoidMinIndexPlus {
     using S = typename MS::value_type;
     using F = typename MF::value_type;
     static constexpr S mapping(const F f, const S x, const int size) {
-        if (f == MF::identity()) {
+        if (f == MF::identity() or x.v == MS::identity().v) {
             return {x.v, x.i};
         }
         return {x.v + f, x.i};
