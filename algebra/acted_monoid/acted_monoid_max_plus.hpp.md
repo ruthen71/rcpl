@@ -31,19 +31,21 @@ data:
     \ T, T inf> struct ActedMonoidMaxPlus {\n    using MS = MonoidMax<T, inf>;\n \
     \   using MF = MonoidPlus<T>;\n    using S = typename MS::value_type;\n    using\
     \ F = typename MF::value_type;\n    static constexpr S mapping(const F f, const\
-    \ S x, const int size) {\n        return x + f;\n    }\n};\n"
+    \ S x, const int size) {\n        if (x == MS::identity()) return x;\n       \
+    \ return x + f;\n    }\n};\n"
   code: "#pragma once\n\n#include \"../monoid/monoid_max.hpp\"\n#include \"../monoid/monoid_plus.hpp\"\
     \n\ntemplate <class T, T inf> struct ActedMonoidMaxPlus {\n    using MS = MonoidMax<T,\
     \ inf>;\n    using MF = MonoidPlus<T>;\n    using S = typename MS::value_type;\n\
     \    using F = typename MF::value_type;\n    static constexpr S mapping(const\
-    \ F f, const S x, const int size) {\n        return x + f;\n    }\n};\n"
+    \ F f, const S x, const int size) {\n        if (x == MS::identity()) return x;\n\
+    \        return x + f;\n    }\n};\n"
   dependsOn:
   - algebra/monoid/monoid_max.hpp
   - algebra/monoid/monoid_plus.hpp
   isVerificationFile: false
   path: algebra/acted_monoid/acted_monoid_max_plus.hpp
   requiredBy: []
-  timestamp: '2026-04-11 00:41:57+09:00'
+  timestamp: '2026-07-18 23:31:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - segment_tree/test/lazy_segment_tree_min_plus.test.cpp

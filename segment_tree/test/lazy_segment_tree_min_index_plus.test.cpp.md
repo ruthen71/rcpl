@@ -67,38 +67,38 @@ data:
     \ {\n    using MS = MonoidMaxIndex<T, inf, smaller_index>;\n    using MF = MonoidPlus<T>;\n\
     \    using S = typename MS::value_type;\n    using F = typename MF::value_type;\n\
     \    static constexpr S mapping(const F f, const S x, const int size) {\n    \
-    \    if (f == MF::identity()) {\n            return {x.v, x.i};\n        }\n \
-    \       return {x.v + f, x.i};\n    }\n};\n#line 2 \"algebra/acted_monoid/acted_monoid_min_index_plus.hpp\"\
-    \n\n#line 2 \"algebra/monoid/monoid_min_index.hpp\"\n\n#line 4 \"algebra/monoid/monoid_min_index.hpp\"\
-    \n\ntemplate <class T, T inf, bool smaller_index> struct MonoidMinIndex {\n  \
-    \  using value_type = ValueIndex<T>;\n    static constexpr value_type operation(const\
-    \ value_type& a,\n                                          const value_type&\
-    \ b) {\n        if (a.v < b.v) return a;\n        if (a.v > b.v) return b;\n \
-    \       bool is_small = smaller_index ? (a.i < b.i) : (a.i >= b.i);\n        return\
-    \ is_small ? a : b;\n    }\n    static constexpr value_type identity() noexcept\
-    \ { return {inf, -1}; }\n    static constexpr bool commutative = true;\n};\n#line\
-    \ 5 \"algebra/acted_monoid/acted_monoid_min_index_plus.hpp\"\n\ntemplate <class\
-    \ T, T inf, bool smaller_index> struct ActedMonoidMinIndexPlus {\n    using MS\
-    \ = MonoidMinIndex<T, inf, smaller_index>;\n    using MF = MonoidPlus<T>;\n  \
-    \  using S = typename MS::value_type;\n    using F = typename MF::value_type;\n\
+    \    if (f == MF::identity() or x.v == MS::identity().v) {\n            return\
+    \ {x.v, x.i};\n        }\n        return {x.v + f, x.i};\n    }\n};\n#line 2 \"\
+    algebra/acted_monoid/acted_monoid_min_index_plus.hpp\"\n\n#line 2 \"algebra/monoid/monoid_min_index.hpp\"\
+    \n\n#line 4 \"algebra/monoid/monoid_min_index.hpp\"\n\ntemplate <class T, T inf,\
+    \ bool smaller_index> struct MonoidMinIndex {\n    using value_type = ValueIndex<T>;\n\
+    \    static constexpr value_type operation(const value_type& a,\n            \
+    \                              const value_type& b) {\n        if (a.v < b.v)\
+    \ return a;\n        if (a.v > b.v) return b;\n        bool is_small = smaller_index\
+    \ ? (a.i < b.i) : (a.i >= b.i);\n        return is_small ? a : b;\n    }\n   \
+    \ static constexpr value_type identity() noexcept { return {inf, -1}; }\n    static\
+    \ constexpr bool commutative = true;\n};\n#line 5 \"algebra/acted_monoid/acted_monoid_min_index_plus.hpp\"\
+    \n\ntemplate <class T, T inf, bool smaller_index> struct ActedMonoidMinIndexPlus\
+    \ {\n    using MS = MonoidMinIndex<T, inf, smaller_index>;\n    using MF = MonoidPlus<T>;\n\
+    \    using S = typename MS::value_type;\n    using F = typename MF::value_type;\n\
     \    static constexpr S mapping(const F f, const S x, const int size) {\n    \
-    \    if (f == MF::identity()) {\n            return {x.v, x.i};\n        }\n \
-    \       return {x.v + f, x.i};\n    }\n};\n#line 2 \"segment_tree/lazy_segment_tree.hpp\"\
-    \n\n#line 2 \"misc/bit_ceil.hpp\"\n\n#include <cassert>\n\n#if __cplusplus >=\
-    \ 202002L\n#include <bit>\n#endif\n\n// bit_ceil\n// (0, 1, 2, 3, 4) -> (1, 1,\
-    \ 2, 4, 4)\n#if __cplusplus >= 202002L\nusing std::bit_ceil;\n#else\nunsigned\
-    \ int bit_ceil(unsigned int x) {\n    unsigned int p = 1;\n    while (p < x) p\
-    \ *= 2;\n    return p;\n}\nunsigned long long int bit_ceil(unsigned long long\
-    \ int x) {\n    unsigned long long int p = 1;\n    while (p < x) p *= 2;\n   \
-    \ return p;\n}\n#endif\nint bit_ceil(int x) {\n    assert(x >= 0);\n    return\
-    \ bit_ceil((unsigned int)(x));\n}\nlong long int bit_ceil(long long int x) {\n\
-    \    assert(x >= 0);\n    return bit_ceil((unsigned long long int)(x));\n}\n#line\
-    \ 2 \"misc/countr_zero.hpp\"\n\n#if __cplusplus >= 202002L\n#include <bit>\n#endif\n\
-    \n// countr_zero\n// (000, 001, 010, 011, 100) -> (32, 0, 1, 0, 2)\n#if __cplusplus\
-    \ >= 202002L\nusing std::countr_zero;\n#else\nint countr_zero(unsigned int x)\
-    \ {\n    return x == 0 ? 32 : __builtin_ctz(x);\n}\nint countr_zero(unsigned long\
-    \ long int x) {\n    return x == 0 ? 64 : __builtin_ctzll(x);\n}\n#endif\nint\
-    \ countr_zero(int x) { return countr_zero((unsigned int)(x)); }\nint countr_zero(long\
+    \    if (f == MF::identity() or x.v == MS::identity().v) {\n            return\
+    \ {x.v, x.i};\n        }\n        return {x.v + f, x.i};\n    }\n};\n#line 2 \"\
+    segment_tree/lazy_segment_tree.hpp\"\n\n#line 2 \"misc/bit_ceil.hpp\"\n\n#include\
+    \ <cassert>\n\n#if __cplusplus >= 202002L\n#include <bit>\n#endif\n\n// bit_ceil\n\
+    // (0, 1, 2, 3, 4) -> (1, 1, 2, 4, 4)\n#if __cplusplus >= 202002L\nusing std::bit_ceil;\n\
+    #else\nunsigned int bit_ceil(unsigned int x) {\n    unsigned int p = 1;\n    while\
+    \ (p < x) p *= 2;\n    return p;\n}\nunsigned long long int bit_ceil(unsigned\
+    \ long long int x) {\n    unsigned long long int p = 1;\n    while (p < x) p *=\
+    \ 2;\n    return p;\n}\n#endif\nint bit_ceil(int x) {\n    assert(x >= 0);\n \
+    \   return bit_ceil((unsigned int)(x));\n}\nlong long int bit_ceil(long long int\
+    \ x) {\n    assert(x >= 0);\n    return bit_ceil((unsigned long long int)(x));\n\
+    }\n#line 2 \"misc/countr_zero.hpp\"\n\n#if __cplusplus >= 202002L\n#include <bit>\n\
+    #endif\n\n// countr_zero\n// (000, 001, 010, 011, 100) -> (32, 0, 1, 0, 2)\n#if\
+    \ __cplusplus >= 202002L\nusing std::countr_zero;\n#else\nint countr_zero(unsigned\
+    \ int x) {\n    return x == 0 ? 32 : __builtin_ctz(x);\n}\nint countr_zero(unsigned\
+    \ long long int x) {\n    return x == 0 ? 64 : __builtin_ctzll(x);\n}\n#endif\n\
+    int countr_zero(int x) { return countr_zero((unsigned int)(x)); }\nint countr_zero(long\
     \ long int x) {\n    return countr_zero((unsigned long long int)(x));\n}\n#line\
     \ 2 \"misc/topbit.hpp\"\n\n#line 2 \"misc/countl_zero.hpp\"\n\n#if __cplusplus\
     \ >= 202002L\n#include <bit>\n#endif\n\n// countl_zero\n// (000, 001, 010, 011,\
@@ -281,7 +281,7 @@ data:
   isVerificationFile: true
   path: segment_tree/test/lazy_segment_tree_min_index_plus.test.cpp
   requiredBy: []
-  timestamp: '2026-04-11 00:41:57+09:00'
+  timestamp: '2026-07-18 23:31:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: segment_tree/test/lazy_segment_tree_min_index_plus.test.cpp

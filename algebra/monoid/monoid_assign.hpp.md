@@ -41,9 +41,9 @@ data:
   isVerificationFile: false
   path: algebra/monoid/monoid_assign.hpp
   requiredBy:
-  - algebra/acted_monoid/acted_monoid_plus_assign.hpp
-  - algebra/acted_monoid/acted_monoid_min_assign.hpp
   - algebra/acted_monoid/acted_monoid_max_assign.hpp
+  - algebra/acted_monoid/acted_monoid_min_assign.hpp
+  - algebra/acted_monoid/acted_monoid_plus_assign.hpp
   timestamp: '2026-04-11 00:41:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

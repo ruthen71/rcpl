@@ -101,8 +101,8 @@ data:
   timestamp: '2026-04-11 00:41:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - segment_tree/test/dual_segment_tree_assign.test.cpp
   - segment_tree/test/dual_segment_tree_plus.test.cpp
+  - segment_tree/test/dual_segment_tree_assign.test.cpp
 documentation_of: segment_tree/dual_segment_tree.hpp
 layout: document
 title: "Dual Segment Tree (\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"

@@ -57,17 +57,18 @@ data:
     template <class T, T inf> struct ActedMonoidMaxPlus {\n    using MS = MonoidMax<T,\
     \ inf>;\n    using MF = MonoidPlus<T>;\n    using S = typename MS::value_type;\n\
     \    using F = typename MF::value_type;\n    static constexpr S mapping(const\
-    \ F f, const S x, const int size) {\n        return x + f;\n    }\n};\n#line 2\
-    \ \"algebra/acted_monoid/acted_monoid_min_plus.hpp\"\n\n#line 2 \"algebra/monoid/monoid_min.hpp\"\
-    \n\ntemplate <class T, T inf> struct MonoidMin {\n    using value_type = T;\n\
-    \    static constexpr T operation(const T& a, const T& b) noexcept {\n       \
-    \ return std::min(a, b);\n    }\n    static constexpr T identity() noexcept {\
-    \ return inf; }\n    static constexpr bool commutative = true;\n};\n#line 5 \"\
-    algebra/acted_monoid/acted_monoid_min_plus.hpp\"\n\ntemplate <class T, T inf>\
-    \ struct ActedMonoidMinPlus {\n    using MS = MonoidMin<T, inf>;\n    using MF\
-    \ = MonoidPlus<T>;\n    using S = typename MS::value_type;\n    using F = typename\
-    \ MF::value_type;\n    static constexpr S mapping(const F f, const S x, const\
-    \ int size) {\n        return x + f;\n    }\n};\n#line 2 \"segment_tree/lazy_segment_tree.hpp\"\
+    \ F f, const S x, const int size) {\n        if (x == MS::identity()) return x;\n\
+    \        return x + f;\n    }\n};\n#line 2 \"algebra/acted_monoid/acted_monoid_min_plus.hpp\"\
+    \n\n#line 2 \"algebra/monoid/monoid_min.hpp\"\n\ntemplate <class T, T inf> struct\
+    \ MonoidMin {\n    using value_type = T;\n    static constexpr T operation(const\
+    \ T& a, const T& b) noexcept {\n        return std::min(a, b);\n    }\n    static\
+    \ constexpr T identity() noexcept { return inf; }\n    static constexpr bool commutative\
+    \ = true;\n};\n#line 5 \"algebra/acted_monoid/acted_monoid_min_plus.hpp\"\n\n\
+    template <class T, T inf> struct ActedMonoidMinPlus {\n    using MS = MonoidMin<T,\
+    \ inf>;\n    using MF = MonoidPlus<T>;\n    using S = typename MS::value_type;\n\
+    \    using F = typename MF::value_type;\n    static constexpr S mapping(const\
+    \ F f, const S x, const int size) {\n        if (x == MS::identity()) return x;\n\
+    \        return x + f;\n    }\n};\n#line 2 \"segment_tree/lazy_segment_tree.hpp\"\
     \n\n#line 2 \"misc/bit_ceil.hpp\"\n\n#include <cassert>\n\n#if __cplusplus >=\
     \ 202002L\n#include <bit>\n#endif\n\n// bit_ceil\n// (0, 1, 2, 3, 4) -> (1, 1,\
     \ 2, 4, 4)\n#if __cplusplus >= 202002L\nusing std::bit_ceil;\n#else\nunsigned\
@@ -207,7 +208,7 @@ data:
   isVerificationFile: true
   path: segment_tree/test/lazy_segment_tree_min_plus.test.cpp
   requiredBy: []
-  timestamp: '2026-04-11 00:41:57+09:00'
+  timestamp: '2026-07-18 23:31:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: segment_tree/test/lazy_segment_tree_min_plus.test.cpp

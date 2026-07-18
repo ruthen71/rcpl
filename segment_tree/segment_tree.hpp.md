@@ -163,15 +163,15 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/graph/heavy_light_decomposition_vertex_add_path_sum.test.cpp
-  - verify/graph/heavy_light_decomposition_vertex_add_subtree_sum.test.cpp
   - verify/graph/euler_tour.test.cpp
-  - segment_tree/test/segment_tree_xor.test.cpp
-  - segment_tree/test/segment_tree_min.test.cpp
-  - segment_tree/test/segment_tree_rolling_hash.test.cpp
-  - segment_tree/test/segment_tree_plus.test.cpp
+  - verify/graph/heavy_light_decomposition_vertex_add_subtree_sum.test.cpp
   - segment_tree/test/segment_tree_or.test.cpp
+  - segment_tree/test/segment_tree_rolling_hash.test.cpp
   - segment_tree/test/segment_tree_gcd.test.cpp
+  - segment_tree/test/segment_tree_xor.test.cpp
   - segment_tree/test/segment_tree_times.test.cpp
+  - segment_tree/test/segment_tree_plus.test.cpp
+  - segment_tree/test/segment_tree_min.test.cpp
   - segment_tree/test/segment_tree_and.test.cpp
 documentation_of: segment_tree/segment_tree.hpp
 layout: document

@@ -41,15 +41,16 @@ data:
     \ {\n    using MS = MonoidMaxIndex<T, inf, smaller_index>;\n    using MF = MonoidPlus<T>;\n\
     \    using S = typename MS::value_type;\n    using F = typename MF::value_type;\n\
     \    static constexpr S mapping(const F f, const S x, const int size) {\n    \
-    \    if (f == MF::identity()) {\n            return {x.v, x.i};\n        }\n \
-    \       return {x.v + f, x.i};\n    }\n};\n"
+    \    if (f == MF::identity() or x.v == MS::identity().v) {\n            return\
+    \ {x.v, x.i};\n        }\n        return {x.v + f, x.i};\n    }\n};\n"
   code: "#pragma once\n\n#include \"../monoid/monoid_max_index.hpp\"\n#include \"\
     ../monoid/monoid_plus.hpp\"\n\ntemplate <class T, T inf, bool smaller_index> struct\
     \ ActedMonoidMaxIndexPlus {\n    using MS = MonoidMaxIndex<T, inf, smaller_index>;\n\
     \    using MF = MonoidPlus<T>;\n    using S = typename MS::value_type;\n    using\
     \ F = typename MF::value_type;\n    static constexpr S mapping(const F f, const\
-    \ S x, const int size) {\n        if (f == MF::identity()) {\n            return\
-    \ {x.v, x.i};\n        }\n        return {x.v + f, x.i};\n    }\n};\n"
+    \ S x, const int size) {\n        if (f == MF::identity() or x.v == MS::identity().v)\
+    \ {\n            return {x.v, x.i};\n        }\n        return {x.v + f, x.i};\n\
+    \    }\n};\n"
   dependsOn:
   - algebra/monoid/monoid_max_index.hpp
   - algebra/value_index.hpp
@@ -57,7 +58,7 @@ data:
   isVerificationFile: false
   path: algebra/acted_monoid/acted_monoid_max_index_plus.hpp
   requiredBy: []
-  timestamp: '2026-04-11 00:41:57+09:00'
+  timestamp: '2026-07-18 23:31:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - segment_tree/test/lazy_segment_tree_min_index_plus.test.cpp

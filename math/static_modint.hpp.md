@@ -127,8 +127,8 @@ data:
   timestamp: '2026-07-04 12:53:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - segment_tree/test/lazy_segment_tree_product_sum_add2.test.cpp
   - segment_tree/test/lazy_segment_tree_sum_affine.test.cpp
+  - segment_tree/test/lazy_segment_tree_product_sum_add2.test.cpp
 documentation_of: math/static_modint.hpp
 layout: document
 title: Static Modint

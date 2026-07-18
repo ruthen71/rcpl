@@ -144,8 +144,8 @@ data:
   timestamp: '2026-01-20 04:06:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/auxiliary_tree.test.cpp
   - verify/graph/lowest_common_ancestor_2.test.cpp
+  - verify/graph/auxiliary_tree.test.cpp
   - verify/graph/lowest_common_ancestor_1.test.cpp
 documentation_of: graph/lowest_common_ancestor.hpp
 layout: document

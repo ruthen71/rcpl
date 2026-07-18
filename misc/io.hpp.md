@@ -39,8 +39,8 @@ data:
   isVerificationFile: false
   path: misc/io.hpp
   requiredBy:
-  - my_template_int128.hpp
   - my_template.hpp
+  - my_template_int128.hpp
   timestamp: '2026-05-10 18:24:54+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

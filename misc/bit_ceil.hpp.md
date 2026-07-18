@@ -127,32 +127,32 @@ data:
   timestamp: '2025-12-31 07:11:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/heavy_light_decomposition_vertex_add_path_sum.test.cpp
-  - verify/graph/heavy_light_decomposition_vertex_add_subtree_sum.test.cpp
-  - verify/graph/euler_tour.test.cpp
-  - verify/graph/heavy_light_decomposition_path_add_path_sum.test.cpp
+  - misc/test/bit_operation.test.cpp
   - data_structure/test/erasable_priority_queue.test.cpp
-  - segment_tree/test/lazy_segment_tree_product_sum_add2.test.cpp
+  - verify/graph/heavy_light_decomposition_path_add_path_sum.test.cpp
+  - verify/graph/heavy_light_decomposition_vertex_add_path_sum.test.cpp
+  - verify/graph/euler_tour.test.cpp
+  - verify/graph/heavy_light_decomposition_vertex_add_subtree_sum.test.cpp
+  - segment_tree/test/segment_tree_or.test.cpp
+  - segment_tree/test/segment_tree_2d.test.cpp
+  - segment_tree/test/segment_tree_rolling_hash.test.cpp
+  - segment_tree/test/dual_segment_tree_plus.test.cpp
   - segment_tree/test/dual_segment_tree_assign.test.cpp
   - segment_tree/test/lazy_segment_tree_sum_affine.test.cpp
-  - segment_tree/test/segment_tree_xor.test.cpp
-  - segment_tree/test/lazy_segment_tree_max01_flip.test.cpp
-  - segment_tree/test/lazy_segment_tree_min_plus.test.cpp
-  - segment_tree/test/segment_tree_2d.test.cpp
-  - segment_tree/test/segment_tree_min.test.cpp
-  - segment_tree/test/segment_tree_rolling_hash.test.cpp
-  - segment_tree/test/lazy_segment_tree_plus_plus.test.cpp
-  - segment_tree/test/lazy_segment_tree_min_index_plus.test.cpp
-  - segment_tree/test/segment_tree_plus.test.cpp
-  - segment_tree/test/segment_tree_or.test.cpp
-  - segment_tree/test/dual_segment_tree_plus.test.cpp
   - segment_tree/test/lazy_segment_tree_min_assign.test.cpp
-  - segment_tree/test/lazy_segment_tree_inversion01_flip.test.cpp
-  - segment_tree/test/lazy_segment_tree_plus_assign.test.cpp
   - segment_tree/test/segment_tree_gcd.test.cpp
+  - segment_tree/test/lazy_segment_tree_inversion01_flip.test.cpp
+  - segment_tree/test/lazy_segment_tree_product_sum_add2.test.cpp
+  - segment_tree/test/segment_tree_xor.test.cpp
+  - segment_tree/test/lazy_segment_tree_min_index_plus.test.cpp
+  - segment_tree/test/lazy_segment_tree_plus_assign.test.cpp
+  - segment_tree/test/lazy_segment_tree_min_plus.test.cpp
+  - segment_tree/test/lazy_segment_tree_plus_plus.test.cpp
   - segment_tree/test/segment_tree_times.test.cpp
+  - segment_tree/test/segment_tree_plus.test.cpp
+  - segment_tree/test/lazy_segment_tree_max01_flip.test.cpp
+  - segment_tree/test/segment_tree_min.test.cpp
   - segment_tree/test/segment_tree_and.test.cpp
-  - misc/test/bit_operation.test.cpp
 documentation_of: misc/bit_ceil.hpp
 layout: document
 title: Bit Ceil

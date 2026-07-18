@@ -41,9 +41,9 @@ data:
   timestamp: '2026-04-11 00:41:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - segment_tree/test/lazy_segment_tree_min_assign.test.cpp
   - segment_tree/test/lazy_segment_tree_min_plus.test.cpp
   - segment_tree/test/segment_tree_min.test.cpp
-  - segment_tree/test/lazy_segment_tree_min_assign.test.cpp
 documentation_of: algebra/monoid/monoid_max.hpp
 layout: document
 redirect_from:

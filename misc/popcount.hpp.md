@@ -85,8 +85,8 @@ data:
   isVerificationFile: false
   path: misc/popcount.hpp
   requiredBy:
-  - my_template_int128.hpp
   - my_template.hpp
+  - my_template_int128.hpp
   timestamp: '2025-12-31 07:11:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
