@@ -28,6 +28,6 @@ template <class T> std::pair<T, std::vector<int>> tree_diameter(Graph<T>& g) {
     parent.assign(n, -1);
     dfs(dfs, s, -1);
     int t = std::max_element(dist.begin(), dist.end()) - dist.begin();
-    auto path = restore_path(parent, t);
+    auto path = restore_path(parent, s, t);
     return {dist[t], path};
 }

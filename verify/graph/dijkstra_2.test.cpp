@@ -17,8 +17,9 @@ int main() {
         std::cout << -1 << '\n';
         return 0;
     }
-    auto ans = restore_path(p, t);
+    auto ans = restore_path(p, s, t);
     std::cout << d[t] << ' ' << ans.size() - 1 << '\n';
-    for (int i = 0; i < ans.size() - 1; i++) std::cout << ans[i] << ' ' << ans[i + 1] << '\n';
+    for (int i = 0; i < ans.size() - 1; i++)
+        std::cout << ans[i] << ' ' << ans[i + 1] << '\n';
     return 0;
 }
