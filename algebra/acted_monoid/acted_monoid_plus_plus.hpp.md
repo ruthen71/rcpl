@@ -41,8 +41,8 @@ data:
   timestamp: '2026-04-11 00:41:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/heavy_light_decomposition_path_add_path_sum.test.cpp
   - segment_tree/test/lazy_segment_tree_plus_plus.test.cpp
+  - verify/graph/heavy_light_decomposition_path_add_path_sum.test.cpp
 documentation_of: algebra/acted_monoid/acted_monoid_plus_plus.hpp
 layout: document
 redirect_from:

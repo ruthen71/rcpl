@@ -325,8 +325,8 @@ data:
   isVerificationFile: false
   path: geometry/distance.hpp
   requiredBy:
-  - geometry/all.hpp
   - geometry/incircle.hpp
+  - geometry/all.hpp
   timestamp: '2026-01-20 04:06:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

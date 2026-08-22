@@ -84,9 +84,9 @@ data:
     \   T c = 1;\n        if (weight) std::cin >> c;\n        g.add_edge(p, i, c);\n\
     \    }\n    g.build();\n    return g;\n}\n#line 2 \"graph/tree_diameter.hpp\"\n\
     \n#include <algorithm>\n#include <utility>\n\n#line 2 \"graph/restore_path.hpp\"\
-    \n\n#line 5 \"graph/restore_path.hpp\"\n\n// restore path from root[t] to t\n\
-    std::vector<int> restore_path(std::vector<int>& par, int t) {\n    std::vector<int>\
-    \ path = {t};\n    while (par[path.back()] != -1) path.emplace_back(par[path.back()]);\n\
+    \n\n#line 5 \"graph/restore_path.hpp\"\n\n// restore path from s to t\nstd::vector<int>\
+    \ restore_path(std::vector<int>& par, int s, int t) {\n    std::vector<int> path\
+    \ = {t};\n    while (path.back() != s) path.emplace_back(par[path.back()]);\n\
     \    std::reverse(path.begin(), path.end());\n    return path;\n}\n#line 8 \"\
     graph/tree_diameter.hpp\"\n\n// {\u76F4\u5F84\u306E\u8FBA\u306E\u91CD\u307F\u306E\
     \u7DCF\u548C, \u901A\u308B\u9802\u70B9\u96C6\u5408}\ntemplate <class T> std::pair<T,\
@@ -98,7 +98,7 @@ data:
     \       }\n        return;\n    };\n\n    dfs(dfs, 0, -1);\n    int s = std::max_element(dist.begin(),\
     \ dist.end()) - dist.begin();\n    dist.assign(n, 0);\n    parent.assign(n, -1);\n\
     \    dfs(dfs, s, -1);\n    int t = std::max_element(dist.begin(), dist.end())\
-    \ - dist.begin();\n    auto path = restore_path(parent, t);\n    return {dist[t],\
+    \ - dist.begin();\n    auto path = restore_path(parent, s, t);\n    return {dist[t],\
     \ path};\n}\n#line 7 \"verify/graph/tree_diameter_1.test.cpp\"\n\nint main() {\n\
     \    int N;\n    std::cin >> N;\n    auto g = read_graph<long long>(N, N - 1,\
     \ true, false, 0);\n    auto [d, path] = tree_diameter(g);\n    std::cout << d\
@@ -116,7 +116,7 @@ data:
   isVerificationFile: true
   path: verify/graph/tree_diameter_1.test.cpp
   requiredBy: []
-  timestamp: '2026-01-20 04:06:16+09:00'
+  timestamp: '2026-08-22 23:35:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/tree_diameter_1.test.cpp

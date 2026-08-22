@@ -95,9 +95,9 @@ data:
   timestamp: '2026-01-26 01:12:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/topological_sort_lexicographical_order.test.cpp
-  - random/test/base.test.cpp
   - dp/test/inversion_number.test.cpp
+  - random/test/base.test.cpp
+  - verify/graph/topological_sort_lexicographical_order.test.cpp
 documentation_of: random/base.hpp
 layout: document
 title: Random

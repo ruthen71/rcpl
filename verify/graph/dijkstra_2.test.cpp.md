@@ -94,18 +94,19 @@ data:
     \    Graph<T> g(n, directed);\n    for (int i = 1; i < n; i++) {\n        int\
     \ p;\n        std::cin >> p;\n        p -= offset;\n        T c = 1;\n       \
     \ if (weight) std::cin >> c;\n        g.add_edge(p, i, c);\n    }\n    g.build();\n\
-    \    return g;\n}\n#line 2 \"graph/restore_path.hpp\"\n\n#line 4 \"graph/restore_path.hpp\"\
-    \n#include <algorithm>\n\n// restore path from root[t] to t\nstd::vector<int>\
-    \ restore_path(std::vector<int>& par, int t) {\n    std::vector<int> path = {t};\n\
-    \    while (par[path.back()] != -1) path.emplace_back(par[path.back()]);\n   \
-    \ std::reverse(path.begin(), path.end());\n    return path;\n}\n#line 8 \"verify/graph/dijkstra_2.test.cpp\"\
-    \n\nint main() {\n    int N, M, s, t;\n    std::cin >> N >> M >> s >> t;\n   \
-    \ auto g = read_graph<long long>(N, M, true, true, 0);\n    std::vector<int> ss\
-    \ = {s};\n    const long long INF = 1LL << 60;\n    auto [d, p, r] = dijkstra(g,\
-    \ ss, INF);\n    if (d[t] == INF) {\n        std::cout << -1 << '\\n';\n     \
-    \   return 0;\n    }\n    auto ans = restore_path(p, t);\n    std::cout << d[t]\
-    \ << ' ' << ans.size() - 1 << '\\n';\n    for (int i = 0; i < ans.size() - 1;\
-    \ i++) std::cout << ans[i] << ' ' << ans[i + 1] << '\\n';\n    return 0;\n}\n"
+    \    return g;\n}\n#line 2 \"graph/restore_path.hpp\"\n\n#include <algorithm>\n\
+    #line 5 \"graph/restore_path.hpp\"\n\n// restore path from s to t\nstd::vector<int>\
+    \ restore_path(std::vector<int>& par, int s, int t) {\n    std::vector<int> path\
+    \ = {t};\n    while (path.back() != s) path.emplace_back(par[path.back()]);\n\
+    \    std::reverse(path.begin(), path.end());\n    return path;\n}\n#line 8 \"\
+    verify/graph/dijkstra_2.test.cpp\"\n\nint main() {\n    int N, M, s, t;\n    std::cin\
+    \ >> N >> M >> s >> t;\n    auto g = read_graph<long long>(N, M, true, true, 0);\n\
+    \    std::vector<int> ss = {s};\n    const long long INF = 1LL << 60;\n    auto\
+    \ [d, p, r] = dijkstra(g, ss, INF);\n    if (d[t] == INF) {\n        std::cout\
+    \ << -1 << '\\n';\n        return 0;\n    }\n    auto ans = restore_path(p, s,\
+    \ t);\n    std::cout << d[t] << ' ' << ans.size() - 1 << '\\n';\n    for (int\
+    \ i = 0; i < ans.size() - 1; i++)\n        std::cout << ans[i] << ' ' << ans[i\
+    \ + 1] << '\\n';\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/shortest_path\"\n\n#include\
     \ <iostream>\n\n#include \"graph/dijkstra.hpp\"\n#include \"graph/read_graph.hpp\"\
     \n#include \"graph/restore_path.hpp\"\n\nint main() {\n    int N, M, s, t;\n \
@@ -113,9 +114,9 @@ data:
     \ true, 0);\n    std::vector<int> ss = {s};\n    const long long INF = 1LL <<\
     \ 60;\n    auto [d, p, r] = dijkstra(g, ss, INF);\n    if (d[t] == INF) {\n  \
     \      std::cout << -1 << '\\n';\n        return 0;\n    }\n    auto ans = restore_path(p,\
-    \ t);\n    std::cout << d[t] << ' ' << ans.size() - 1 << '\\n';\n    for (int\
-    \ i = 0; i < ans.size() - 1; i++) std::cout << ans[i] << ' ' << ans[i + 1] <<\
-    \ '\\n';\n    return 0;\n}"
+    \ s, t);\n    std::cout << d[t] << ' ' << ans.size() - 1 << '\\n';\n    for (int\
+    \ i = 0; i < ans.size() - 1; i++)\n        std::cout << ans[i] << ' ' << ans[i\
+    \ + 1] << '\\n';\n    return 0;\n}\n"
   dependsOn:
   - graph/dijkstra.hpp
   - graph/graph_template.hpp
@@ -124,7 +125,7 @@ data:
   isVerificationFile: true
   path: verify/graph/dijkstra_2.test.cpp
   requiredBy: []
-  timestamp: '2026-01-20 04:06:16+09:00'
+  timestamp: '2026-08-22 23:35:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/graph/dijkstra_2.test.cpp

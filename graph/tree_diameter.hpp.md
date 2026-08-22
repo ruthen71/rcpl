@@ -69,9 +69,9 @@ data:
     \                if (j + 1 != (int)(g[i].size())) os << \", \";\n            }\n\
     \            os << \"]\";\n            if (i + 1 != (int)(g.size())) os << \"\
     , \";\n        }\n        return os << \"]\";\n    }\n};\n#line 2 \"graph/restore_path.hpp\"\
-    \n\n#line 5 \"graph/restore_path.hpp\"\n\n// restore path from root[t] to t\n\
-    std::vector<int> restore_path(std::vector<int>& par, int t) {\n    std::vector<int>\
-    \ path = {t};\n    while (par[path.back()] != -1) path.emplace_back(par[path.back()]);\n\
+    \n\n#line 5 \"graph/restore_path.hpp\"\n\n// restore path from s to t\nstd::vector<int>\
+    \ restore_path(std::vector<int>& par, int s, int t) {\n    std::vector<int> path\
+    \ = {t};\n    while (path.back() != s) path.emplace_back(par[path.back()]);\n\
     \    std::reverse(path.begin(), path.end());\n    return path;\n}\n#line 8 \"\
     graph/tree_diameter.hpp\"\n\n// {\u76F4\u5F84\u306E\u8FBA\u306E\u91CD\u307F\u306E\
     \u7DCF\u548C, \u901A\u308B\u9802\u70B9\u96C6\u5408}\ntemplate <class T> std::pair<T,\
@@ -83,7 +83,7 @@ data:
     \       }\n        return;\n    };\n\n    dfs(dfs, 0, -1);\n    int s = std::max_element(dist.begin(),\
     \ dist.end()) - dist.begin();\n    dist.assign(n, 0);\n    parent.assign(n, -1);\n\
     \    dfs(dfs, s, -1);\n    int t = std::max_element(dist.begin(), dist.end())\
-    \ - dist.begin();\n    auto path = restore_path(parent, t);\n    return {dist[t],\
+    \ - dist.begin();\n    auto path = restore_path(parent, s, t);\n    return {dist[t],\
     \ path};\n}\n"
   code: "#pragma once\n\n#include <algorithm>\n#include <utility>\n\n#include \"../graph/graph_template.hpp\"\
     \n#include \"../graph/restore_path.hpp\"\n\n// {\u76F4\u5F84\u306E\u8FBA\u306E\
@@ -97,19 +97,19 @@ data:
     \ -1);\n    int s = std::max_element(dist.begin(), dist.end()) - dist.begin();\n\
     \    dist.assign(n, 0);\n    parent.assign(n, -1);\n    dfs(dfs, s, -1);\n   \
     \ int t = std::max_element(dist.begin(), dist.end()) - dist.begin();\n    auto\
-    \ path = restore_path(parent, t);\n    return {dist[t], path};\n}\n"
+    \ path = restore_path(parent, s, t);\n    return {dist[t], path};\n}\n"
   dependsOn:
   - graph/graph_template.hpp
   - graph/restore_path.hpp
   isVerificationFile: false
   path: graph/tree_diameter.hpp
   requiredBy: []
-  timestamp: '2026-01-20 04:06:16+09:00'
+  timestamp: '2026-08-22 23:35:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/graph/tree_diameter_2.test.cpp
-  - verify/graph/tree_diameter_1.test.cpp
   - verify/graph/zero_one_bfs.test.cpp
+  - verify/graph/tree_diameter_1.test.cpp
+  - verify/graph/tree_diameter_2.test.cpp
 documentation_of: graph/tree_diameter.hpp
 layout: document
 title: "Tree Diameter (\u6728\u306E\u76F4\u5F84)"

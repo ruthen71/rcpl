@@ -75,9 +75,9 @@ data:
   timestamp: '2026-04-11 00:41:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/misc/mo.test.cpp
   - segment_tree/test/fenwick_tree_plus.test.cpp
   - dp/test/inversion_number.test.cpp
+  - verify/misc/mo.test.cpp
 documentation_of: segment_tree/fenwick_tree.hpp
 layout: document
 redirect_from:
